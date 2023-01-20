@@ -11,6 +11,11 @@ typedef struct s_entite {
 
 
 
+t_entite* creerEntite();
+void deplacerEntite(t_entite entite);
+
+
+
 
 
 #endif

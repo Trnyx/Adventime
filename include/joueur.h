@@ -4,6 +4,7 @@
 
 
 #include <statistiques.h>
+#include <inventaire.h>
 
 
 
