@@ -12,6 +12,7 @@ LIB = -lm
 
 # Nom des dossiers contenant les ressources du programme
 BINDIR = bin
+INCDIR = include
 OBJDIR = obj
 # Bien placer les fichiers sources dans un dossier nommé ainsi :
 SRCDIR = src
@@ -21,7 +22,7 @@ DIRS = $(BINDIR) $(OBJDIR)
 # Sélectionne tous les fichiers sources et les en-têtes
 # La fonction wildcard permet de cibler un ensemble de fichiers
 SOURCES = $(wildcard $(SRCDIR)/*.c)
-INCLUDES = $(wildcard $(SRCDIR)/*.h)
+INCLUDES = $(wildcard $(INCDIR)/*.h)
 
 # Crée la variable objects à partir de la variable sources en remplaçant SRC/ par OBJ/ et .c par .o
 OBJECTS = $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
