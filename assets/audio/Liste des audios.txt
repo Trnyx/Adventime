@@ -1,0 +1,16 @@
+Sons :
+    Joueur :
+
+
+
+Musiques
+    Menu :
+        - Menu principal
+
+
+    En jeu :
+        - Ambiance Jour
+        - Ambiance Nuit
+        - Combat Jour
+        - Combat Nuit
+        - Combat Boss
