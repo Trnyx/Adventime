@@ -1,3 +1,13 @@
+/*
+ * \file 
+ *
+ * \brief
+ *
+ * \author
+ */
+
+
+
 #ifndef _JEU_MONSTRE_
 #define _JEU_MONSTRE_
 
@@ -22,22 +32,27 @@ typedef enum s_monstreType {
 
 
 
-/**
- * The data of a Monster saved in the database
+/*
+ * \struct t_monstre
+ * \brief Structure modélisant un monstre
  */
 typedef struct s_monstre {
-    struct entite_s;
-    /** The current name of the Monster */
-    char* name;
-    /** The tag of the Monster */
-    t_monstreTag tag; // type : MonstreTag
-    /** The type of the Monster */
-    t_monstreType type; // type : MonstreType
-    /** The statistics of the Monster */
-    t_statistiques statistiques;
-    /** The basic data of the statistics of the Monster */
-    t_baseStatistiques baseStatistiques;
+    #include <attributs_entite.h>;
+    
+    char* name;                             /**< Le nom d'un Monstre */
+
+    t_monstreTag tag;                       /**< Le tag du Monstre */
+    t_monstreType type;                     /**< Le type du Monstre */
+    
+    t_statistiques statistiques;            /**< Les statistiques du Monstre */
+    t_baseStatistiques baseStatistiques;    /**< Les statistiques de base du Monster */
 } t_monstre;
+
+
+
+
+
+t_monstre creerMonstre();
 
 
 

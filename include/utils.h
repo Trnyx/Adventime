@@ -1,10 +1,23 @@
+/*
+ * \file 
+ *
+ * \brief
+ *
+ * \author
+ */
+
+
+
 #ifndef _JEU_UTILS_
 #define _JEU_UTILS_
 
 
 
 
-
+/*
+ * \struct
+ * \brief
+ */
 typedef struct s_vecteur2 {
     float x;
     float y;
@@ -12,6 +25,10 @@ typedef struct s_vecteur2 {
 
 
 
+/*
+ * \struct
+ * \brief
+ */
 typedef struct s_vecteur3 {
     float x;
     float y;

@@ -1,8 +1,20 @@
+/*
+ * \file 
+ *
+ * \brief
+ *
+ * \author
+ */
+
+
+
 #include <utils.h>
 
-/** The ID of the Entity */
-int id;
-/** The current position of the Entity */
-t_vecteur2 position;
+
+
+int id;                 /**< l'ID d'une entité */
+t_vecteur2 position;    /**< La position de l'entité */
+
+
 /** */
 // Texture / Tag
