@@ -6,9 +6,9 @@ CC = gcc
 # Paramètres de la compilation
 CFLAGS = -Wall
 # Nom de l'exécutable
-EXEC = nomExec
+EXEC = Adventime
 # Librairies intégrées
-LIB = -lm
+LIB = 
 
 # Nom des dossiers contenant les ressources du programme
 BINDIR = bin
