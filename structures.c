@@ -87,13 +87,13 @@ typedef struct s_joueur {
 
 typedef enum s_monstreTag {
     OISEAU
-} t_monstreTag;
+} e_monstreTag;
 
 
 typedef enum s_monstreType {
     MONTAGNARD,
     PLANTE
-} t_monstreType;
+} e_typeMonstre;
 
 
 
@@ -106,9 +106,9 @@ typedef struct s_monstre {
     /** The current name of the Monster */
     char* name;
     /** The tag of the Monster */
-    t_monstreTag tag; // type : MonstreTag
+    e_monstreTag tag; // type : MonstreTag
     /** The type of the Monster */
-    t_monstreType type; // type : MonstreType
+    e_typeMonstre type; // type : MonstreType
     /** The statistics of the Monster */
     t_statistiques statistiques;
     /** The basic data of the statistics of the Monster */
