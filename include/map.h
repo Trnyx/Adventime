@@ -20,8 +20,8 @@
 #define TAILLE_MAP 10
 #define TAILLE_CHUNK 12
 
-#define NB_BIOMES 5;
-#define NB_BLOCKS 9;
+#define NB_BIOMES 5
+#define NB_BLOCKS 9
 
 
 
