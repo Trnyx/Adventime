@@ -23,23 +23,45 @@
 
 
 
-typedef enum s_monstreTag {
-    OISEAU
-} e_monstreTag;
-
-
-typedef enum s_monstreType {
-    NORMAL,
-    PLANTE,
-    MONTAGNE,
-} e_typeMonstre;
-
-
+/* -------------------------------------------------------------------------- */
+/*                                 Enumeration                                */
+/* -------------------------------------------------------------------------- */
 
 
 /**
- * @struct t_monstre
- * @brief Structure modélisant un monstre
+ * @brief 
+ * 
+ */
+typedef enum s_montreTag {
+    MONSTRE_OISEAU,
+    NB_MONSTRE_TAGS
+} e_monstreTag;
+
+
+/**
+ * @brief 
+ * 
+ */
+typedef enum s_monstreType {
+    MONSTRE_TYPE_NORMAL,
+    MONSTRE_TYPE_PLANTE,
+    MONSTRE_TYPE_EAU,
+    MONSTRE_TYPE_MONTAGNARD,
+    NB_MONSTRE_TYPES,
+} e_monstreType;
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Structures                                 */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
  */
 typedef struct s_monstre {
     struct entite_s;
@@ -47,7 +69,7 @@ typedef struct s_monstre {
     char* name;                             /**< Le nom d'un Monstre */
 
     e_monstreTag tag;                       /**< Le tag du Monstre */
-    e_typeMonstre type;                     /**< Le type du Monstre */
+    e_monstreType type;                     /**< Le type du Monstre */
     
     t_statistiques statistiques;            /**< Les statistiques du Monstre */
     t_baseStatistiques baseStatistiques;    /**< Les statistiques de base du Monster */
@@ -55,9 +77,39 @@ typedef struct s_monstre {
 
 
 
+/**
+ * @brief 
+ * 
+ */
+typedef struct s_baseStatistiquesIntervales {
+    int attaque[2];
+    int defense[2];
+    int vitesse[2];
+    int pv;
+    int courbeExp[2];
+} t_baseStatistiquesIntervales;
 
 
-t_monstre creerMonstre();
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Constantes                                 */
+/* -------------------------------------------------------------------------- */
+
+
+extern const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONSTRE_TYPES];
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Fonctions                                 */
+/* -------------------------------------------------------------------------- */
+
+
+t_monstre creerMonstre(const int x, const int y, e_biome biome);
 
 
 
