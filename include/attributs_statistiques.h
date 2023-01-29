@@ -1,10 +1,12 @@
-/*
- * \file 
+/**
+ * @file attributs_statistiques.h
  *
- * \brief
+ * @brief
  *
- * \author
+ * @author Clément Hibon
+ * @version 1.1
  */
+
 
 
 

@@ -1,10 +1,13 @@
-/*
- * \file 
+/**
+ * @file map.h
  *
- * \brief
+ * @brief
  *
- * \author
+ * @author Clément Hibon
+ * @version 1.2
  */
+
+
 
 
 
@@ -62,9 +65,9 @@ typedef enum s_blockTag {
 
 
 
-/*
- * \struct t_block
- * \brief
+/**
+ * @struct t_block
+ * @brief
  */
 typedef struct s_block {
     t_vecteur2 position;
@@ -73,9 +76,9 @@ typedef struct s_block {
 } t_block;
 
 
-/*
- * \struct t_chunk
- * \brief
+/**
+ * @struct t_chunk
+ * @brief
  */
 typedef struct s_chunk {
     e_biome biome;
@@ -84,9 +87,9 @@ typedef struct s_chunk {
 } t_chunk;
 
 
-/*
- * \struct t_map
- * \brief
+/**
+ * @struct t_map
+ * @brief
  */
 typedef struct s_map {
     t_chunk *chunks[TAILLE_MAP][TAILLE_MAP];
@@ -94,9 +97,9 @@ typedef struct s_map {
 
 
 
-/*
- * \struct t_baseBiome
- * \brief
+/**
+ * @struct t_baseBiome
+ * @brief
  */
 typedef struct s_baseBiome {
     e_biome biome;
@@ -106,9 +109,9 @@ typedef struct s_baseBiome {
 } t_baseBiome;
 
 
-/*
- * \struct t_predominance
- * \brief
+/**
+ * @struct t_predominance
+ * @brief
  */
 typedef struct s_predominance {
     int tag;
@@ -147,6 +150,11 @@ const t_baseBiome baseBiomes[] = {
     { FORET, 1, { HERBE_1, HERBE_2, HERBE_3 }, { 45, 35, 20 } },
     { MONTAGNE, 2, { MONTAGNE_1, MONTAGNE_2 }, { 50, 50 } },
 };
+
+
+
+
+
 
 
 

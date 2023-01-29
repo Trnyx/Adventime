@@ -1,9 +1,9 @@
-/*
- * \file 
+/**
+ * @file 
  *
- * \brief
+ * @brief
  *
- * \author
+ * @author
  */
 
 
@@ -15,9 +15,9 @@
 
 
 
-/*
- * \struct t_entite
- * \brief Structure modélisant une entité
+/**
+ * @struct t_entite
+ * @brief Structure modélisant une entité
  */
 typedef struct s_entite {
     #include <attributs_entite.h>

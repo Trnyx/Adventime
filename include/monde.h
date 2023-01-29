@@ -1,10 +1,13 @@
-/*
- * \file 
+/**
+ * @file monde.h
  *
- * \brief
+ * @brief
  *
- * \author
+ * @author Clément Hibon
+ * @version 1.1
  */
+
+
 
 
 
@@ -22,9 +25,9 @@
 
 
 
-/*
- * \struct t_monde
- * \brief
+/**
+ * @struct t_monde
+ * @brief
  */
 typedef struct s_monde {
     unsigned int seed;

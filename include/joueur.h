@@ -1,9 +1,9 @@
-/*
- * \file 
+/**
+ * @file 
  *
- * \brief
+ * @brief
  *
- * \author
+ * @author
  */
 
 
@@ -15,17 +15,18 @@
 
 #include <statistiques.h>
 #include <inventaire.h>
+#include <entite.h>
 
 
 
 
 
-/*
- * \struct t_joueur
- * \brief Structure modélisant un joueur
+/**
+ * @struct t_joueur
+ * @brief Structure modélisant un joueur
  */
 typedef struct s_joueur {
-    #include <attributs_entite.h>
+    struct s_entite;
 
     char *name;                     /**< Le nom du joueur */
     t_statistiques statistiques;    /**< Les statistiques du joueur */
@@ -37,7 +38,7 @@ typedef struct s_joueur {
 
 
 
-t_joueur creerJoueur();
+t_joueur* creerJoueur(const int x, const int y);
 void detruireJoueur(t_joueur *joueur);
 
 

@@ -1,10 +1,13 @@
-/*
- * \file 
+/**
+ * @file monstre.h
  *
- * \brief
+ * @brief
  *
- * \author
+ * @author Clément Hibon
+ * @version 1.1
  */
+
+
 
 
 
@@ -14,6 +17,7 @@
 
 
 #include <statistiques.h>
+#include <entite.h>
 
 
 
@@ -21,28 +25,29 @@
 
 typedef enum s_monstreTag {
     OISEAU
-} t_monstreTag;
+} e_monstreTag;
 
 
 typedef enum s_monstreType {
-    MONTAGNARD,
-    PLANTE
-} t_monstreType;
+    NORMAL,
+    PLANTE,
+    MONTAGNE,
+} e_typeMonstre;
 
 
 
 
-/*
- * \struct t_monstre
- * \brief Structure modélisant un monstre
+/**
+ * @struct t_monstre
+ * @brief Structure modélisant un monstre
  */
 typedef struct s_monstre {
-    #include <attributs_entite.h>;
+    struct entite_s;
     
     char* name;                             /**< Le nom d'un Monstre */
 
-    t_monstreTag tag;                       /**< Le tag du Monstre */
-    t_monstreType type;                     /**< Le type du Monstre */
+    e_monstreTag tag;                       /**< Le tag du Monstre */
+    e_typeMonstre type;                     /**< Le type du Monstre */
     
     t_statistiques statistiques;            /**< Les statistiques du Monstre */
     t_baseStatistiques baseStatistiques;    /**< Les statistiques de base du Monster */

@@ -1,9 +1,9 @@
-/*
- * \file 
+/**
+ * @file 
  *
- * \brief
+ * @brief
  *
- * \author
+ * @author
  */
 
 
@@ -15,9 +15,9 @@
 
 
 
-/*
- * \struct t_itemSlot
- * \brief
+/**
+ * @struct t_itemSlot
+ * @brief
  */
 typedef struct s_itemSlot {
     int slot;
@@ -27,9 +27,9 @@ typedef struct s_itemSlot {
 
 
 
-/*
- * \struct t_inventaire
- * \brief
+/**
+ * @struct t_inventaire
+ * @brief
  */
 typedef struct s_inventaire {
     int monnaie;

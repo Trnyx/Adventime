@@ -1,9 +1,9 @@
-/*
- * \file 
+/**
+ * @file 
  *
- * \brief
+ * @brief
  *
- * \author
+ * @author
  */
 
 
@@ -14,9 +14,9 @@
 
 
 
-/*
- * \struct
- * \brief
+/**
+ * @struct
+ * @brief
  */
 typedef struct s_vecteur2 {
     float x;
