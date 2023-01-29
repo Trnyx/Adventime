@@ -10,8 +10,90 @@
 
 
 #include <stdlib.h>
-#include <utils.h>
 #include <map.h>
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Constantes                                 */
+/* -------------------------------------------------------------------------- */
+
+
+const e_biome biomes[] = { 
+    BIOME_PROFONDEUR, 
+    BIOME_LAC,
+    BIOME_PLAINE, 
+    BIOME_FORET, 
+    BIOME_MONTAGNE,
+};
+
+
+const int probabilitesBiomes[] = { 
+    PROBA_BIOME_PROFONDEUR,
+    PROBA_BIOME_LAC, 
+    PROBA_BIOME_PLAINE, 
+    PROBA_BIOME_FORET, 
+    PROBA_BIOME_MONTAGNE 
+};
+
+
+const t_baseBiome basesBiomes[] = {
+    { 
+        BIOME_PROFONDEUR, -1, 
+        // Sol
+        { SOL_EAU_PROFONDE, SOL_EAU }, { 100, 0 },
+        // Vegetations
+        { 0 }, { 0 }, { 0.0 },
+        // Monstres
+        { 0 }, { 0 },
+    },
+
+
+    { 
+        BIOME_LAC, 0, 
+        // Sol
+        { SOL_EAU, SOL_SABLE }, { 70, 30 },
+        // Vegetations
+        { PALMIER }, { 100 }, { 0.0 },
+        // Monstres
+        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_EAU }, { 15, 85 },
+    },
+  
+  
+    { 
+        BIOME_PLAINE, 1, 
+        // Sol
+        { SOL_HERBE_1, SOL_HERBE_2 }, { 55, 45 }, 
+        // Vegetations
+        { CHAINE }, { 30 }, { 1.0 },
+        // Monstres
+        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 90, 10 },
+    },
+  
+  
+    { 
+        BIOME_FORET, 1, 
+        // Sol
+        { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 30, 40, 20 }, 
+        // Vegetations
+        { CHAINE }, { 100 }, { 3.0 },
+        // Monstres
+        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 30, 70 },
+    },
+  
+  
+    { 
+        BIOME_MONTAGNE, 2, 
+        // Sol
+        { SOL_MONTAGNE_1, SOL_MONTAGNE_2 }, { 50, 50 }, 
+        // Vegetations
+        { CHAINE, SAPIN }, { 50, 50 }, { 1.0, 2.0 },
+        // Monstres
+        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_MONTAGNARD }, { 15, 85 },
+    },
+};
 
 
 
@@ -32,7 +114,7 @@
  * @version 1.1
  */
 int blockEstDansLeChunk(const int x, const int y) {
-    return x > 0 && y > 0 && x < TAILLE_CHUNK - 1 && y < TAILLE_CHUNK - 1;
+    return x >= 0 && y >= 0 && x < TAILLE_CHUNK - 1 && y < TAILLE_CHUNK - 1;
 }
 
 
@@ -46,7 +128,7 @@ int blockEstDansLeChunk(const int x, const int y) {
  * @version 1.1
  */
 int blockEstDansLaMap(const int x, const int y) {
-    return x > 0 && y > 0 && x < (TAILLE_MAP * TAILLE_CHUNK) - 1 && y < (TAILLE_MAP * TAILLE_CHUNK) - 1;
+    return x >= 0 && y >= 0 && x < (TAILLE_MAP * TAILLE_CHUNK) - 1 && y < (TAILLE_MAP * TAILLE_CHUNK) - 1;
 }
 
 
@@ -59,8 +141,8 @@ int blockEstDansLaMap(const int x, const int y) {
  * 
  * @version 1.1
  */ 
-int chunkEstDansLaMap(const int x, const int y) {
-    return x > 0 && y > 0 && x < TAILLE_MAP - 1 && y < TAILLE_MAP - 1;
+int chunkEstDansLaMap(const int x, const int y, const int z) {
+    return x >= 0 && y >= 0 && z >= 0 && x < TAILLE_MAP - 1 && y < TAILLE_MAP - 1;
 }
 
 
@@ -78,10 +160,16 @@ int chunkEstDansLaMap(const int x, const int y) {
  * @param chunk 
  * @return t_block* 
  * 
- * @version 1.1
+ * @version 1.2
  */
 t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk) {
-    return chunk->blocks[y][x];
+    for (int i = 0; i < TAILLE_CHUNK * TAILLE_CHUNK; i++) {
+        if (chunk->blocks[i].positionDansChunk.x == x && chunk->blocks[i].positionDansChunk.y == y) {
+            return &chunk->blocks[i];
+        }
+    }
+
+    return NULL;
 }
 
 
@@ -94,10 +182,16 @@ t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk) {
  * @param map 
  * @return t_chunk* 
  * 
- * @version 1.1
+ * @version 1.2
  */
-t_chunk* getChunk(const int x, const int y, t_map *map) {
-    return map->chunks[y][x];
+t_chunk* getChunk(const int x, const int y, const int couche, t_map *map) {
+    for (int i = 0; i < TAILLE_MAP * TAILLE_MAP * NB_COUCHE; i++) {
+        if (map->chunks[i].position.x == x && map->chunks[i].position.y == y && map->chunks[i].position.z == couche) {
+            return &map->chunks[i];
+        }
+    }
+
+    return NULL;
 }
 
 
@@ -105,15 +199,16 @@ t_chunk* getChunk(const int x, const int y, t_map *map) {
  * @brief Get the Predominance object
  * 
  * @param alentours 
+ * @param nbElementsAlentours 
  * @return t_predominance 
  * 
  * @version 1.1
  */
-t_predominance getPredominance(int alentours[]) {
+t_predominance getPredominance(int alentours[], int nbElementsAlentours) {
     t_predominance predominance = { 0, 0 };  
 
   
-    for (int i = 0; i < longueur(alentours); i++) {
+    for (int i = 0; i < nbElementsAlentours; i++) {
         if (alentours[i] > predominance.occurence) {
             predominance.occurence = alentours[i];
             predominance.tag = i;
@@ -145,21 +240,17 @@ t_predominance getPredominance(int alentours[]) {
  * @version 1.1
  */
 e_biome selectionBiome(const int xChunk, const int yChunk) {
-    if (!chunkEstDansLaMap(xChunk, yChunk)) return PROFONDEUR;
+    if (xChunk == 0 || yChunk == 0 || xChunk == TAILLE_MAP - 1 || yChunk == TAILLE_MAP - 1) return BIOME_PROFONDEUR;
 
-    e_biome biome = PROFONDEUR;
-  
 
-    while (biome == PROFONDEUR) {
-        int index = getNombreAleatoire(0, NB_BIOMES - 1); // rand() % NB_BIOMES;
-        int probabilite = getNombreAleatoire(0, 100); // rand() % 100;
+    int probabilite = getNombreAleatoire(1, 100); 
 
-        int probabiliteBiome = probabilitesBiomes[index];
-        if (probabiliteBiome > probabilite) return biomes[index];
+    for (int i = 0; i < NB_BIOMES; i++) {
+        if (probabilitesBiomes[i] >= probabilite) return biomes[i];
     }
-
+    
   
-    return biome;
+    return -1;
 }
 
 
@@ -167,26 +258,24 @@ e_biome selectionBiome(const int xChunk, const int yChunk) {
 /**
  * @brief 
  * 
- * @param x 
- * @param y 
  * @param biome 
- * @return e_blockTag 
+ * @return e_solTag 
  * 
  * @version 1.1
  */
-e_blockTag selectionBlock(const int x, const int y, const e_biome biome) {
-    e_blockTag blockTag = VIDE;
-    t_baseBiome baseBiome = baseBiomes[biome];
-    int nombreBlockPossible = sizeof(baseBiome.typeDeBlocks) / sizeof(baseBiome.typeDeBlocks[0]); // longueur(baseBiome.typeDeBlocks);
+e_solTag selectionBlock(const e_biome biome) {
+    e_solTag blockTag = VIDE;
+    t_baseBiome baseBiome = basesBiomes[biome];
+    int nombreBlockPossible = sizeof(baseBiome.typesDeSol) / sizeof(baseBiome.typesDeSol[0]);
 
 
     while (blockTag == VIDE) {
-        int index =  getNombreAleatoire(0, nombreBlockPossible - 1); // rand() % nombreBlockPossible;
-        int probabilite =  getNombreAleatoire(0, 100); // rand() % 100;
+        int index =  getNombreAleatoire(0, nombreBlockPossible - 1);
+        int probabilite =  getNombreAleatoire(0, 100);
     
         int probabiliteBlock = baseBiome.probabiliteDesBlocks[index];
         if (probabiliteBlock >= probabilite) {
-            return baseBiome.typeDeBlocks[index];
+            return baseBiome.typesDeSol[index];
         }
     }
   
@@ -213,22 +302,26 @@ e_blockTag selectionBlock(const int x, const int y, const e_biome biome) {
  * @version 1.1
  */
 e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) { 
+    if (biomeActuel == BIOME_PROFONDEUR) return biomeActuel;
+
     int modificateurAltitude = 0;
     int changement = 0;
   
   
     switch (biomePredominant.tag) {
-        case MONTAGNE: 
-            if (biomePredominant.occurence >= 2 && biomePredominant.occurence <= 3) changement = 1;
+        case BIOME_MONTAGNE: 
+            if (biomePredominant.occurence >= 1 && biomePredominant.occurence <= 2) changement = 1;
             break;
-        case PLAINE: 
-        case FORET: 
-            if (biomePredominant.occurence >= 2 && biomePredominant.occurence <= 6) changement = 1;
+        case BIOME_PLAINE: 
+            if (biomePredominant.occurence >= 3 && biomePredominant.occurence <= 6) changement = 1;
             break;
-        case LAC: 
-            if (biomePredominant.occurence == 5) changement = 1;
+        case BIOME_FORET: 
+            if (biomePredominant.occurence >= 2 && biomePredominant.occurence <= 4) changement = 1;
             break;
-        case PROFONDEUR: 
+        case BIOME_LAC: 
+            if (biomePredominant.occurence >= 3) changement = 1;
+            break;
+        case BIOME_PROFONDEUR: 
             if (biomePredominant.occurence >= 3) changement = 1;
             break;
     }
@@ -259,7 +352,7 @@ e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) {
  * 
  * @version 1.1
  */
-e_blockTag changerBlock(t_predominance blockPredominant, e_blockTag blockActuel) {
+e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
     int modificateurAltitude = 0;
 
     if (blockPredominant.tag > blockActuel) modificateurAltitude = 1;
@@ -284,7 +377,7 @@ e_blockTag changerBlock(t_predominance blockPredominant, e_blockTag blockActuel)
  * @param map 
  * @return int* 
  * 
- * @version 1.1
+ * @version 1.2
  */
 int* getBiomesAlentours(t_chunk chunk, t_map *map) {
     static int biomesAlentours[NB_BIOMES] = { 0 };
@@ -293,11 +386,11 @@ int* getBiomesAlentours(t_chunk chunk, t_map *map) {
 
     for (int y = chunk.position.y - 1; y <= chunk.position.y + 1; y++) {
         for (int x = chunk.position.x - 1; x <= chunk.position.x + 1; x++) {
-            if (!chunkEstDansLaMap(x, y)) continue;
+            if (!chunkEstDansLaMap(x, y, COUCHE_SOL)) continue;
             if (x == chunk.position.x && y == chunk.position.y) continue;
 
           
-            chunkCourrant = getChunk(x, y, map);
+            chunkCourrant = getChunk(x, y, COUCHE_SOL, map);
             if (chunkCourrant != NULL) {
                 biomesAlentours[chunkCourrant->biome]++;
             }
@@ -331,7 +424,7 @@ int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
             if (x == xBlock && y == yBlock) continue;
             if (!blockEstDansLaMap(x, y)) continue;
 
-            chunk = getChunk(x / TAILLE_CHUNK, y / TAILLE_CHUNK, map);
+            chunk = getChunk(x / TAILLE_CHUNK, y / TAILLE_CHUNK, COUCHE_SOL, map);
             if (chunk == NULL) continue;
 
 
@@ -362,10 +455,10 @@ int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
  * @param chunk 
  * @param map 
  * 
- * @version 1.1
+ * @version 1.2
  */
 void normalisationDuChunk(t_chunk* chunk, t_map *map) {
-    e_blockTag blockVoisins[TAILLE_CHUNK][TAILLE_CHUNK] = { EAU_PROFONDE };
+    e_solTag blockVoisins[TAILLE_CHUNK][TAILLE_CHUNK] = { SOL_EAU_PROFONDE };
     t_block *block = NULL;
 
 
@@ -374,10 +467,44 @@ void normalisationDuChunk(t_chunk* chunk, t_map *map) {
             block = getBlockDansChunk(x, y, chunk);
 
             int *blocksAlentours = getBlocksAlentours(block->position.x, block->position.y, map);
-            t_predominance blockPredominant = getPredominance(blocksAlentours);
+            t_predominance blockPredominant = getPredominance(blocksAlentours, NB_BLOCKS);
 
-            if (blockPredominant.occurence >= 3) {
-                block->tag = changerBlock(blockPredominant, block->tag);
+            if (blockPredominant.occurence >= 5) {
+                blockVoisins[x][y] = changerBlock(blockPredominant, block->tag);
+            }
+            else {
+                blockVoisins[x][y] = block->tag;
+            }
+        }
+    }
+
+
+    for (int x = 0; x < TAILLE_CHUNK; x++) {
+        for (int y = 0; y < TAILLE_CHUNK; y++) {
+            t_block *block = getBlockDansChunk(x, y, chunk);
+            block->tag = blockVoisins[x][y];
+        }
+    }
+}
+
+
+
+/**
+ * @brief 
+ * 
+ * @param chunk 
+ * @param map 
+ */
+void lissageDuChunk(t_chunk* chunk, t_map *map) {
+    for (int x = 0; x < TAILLE_CHUNK; x++) {
+        for (int y = 0; y < TAILLE_CHUNK; y++) {
+            t_block *block = getBlockDansChunk(x, y, chunk);
+
+            int *blocksAlentours = getBlocksAlentours(block->position.x, block->position.y, map);
+            t_predominance blockPredominant = getPredominance(blocksAlentours, NB_BLOCKS);
+
+            if (blockPredominant.occurence >= 7) {
+                block->tag = blockPredominant.tag;
             }
         }
     }
@@ -395,16 +522,17 @@ void normalisationDuChunk(t_chunk* chunk, t_map *map) {
  * @version 1.1
  */
 void normalisationDeLaMap(t_map* map) {  
-    e_biome nouveauxBiomes[TAILLE_MAP][TAILLE_MAP] = { PROFONDEUR };
+    e_biome nouveauxBiomes[TAILLE_MAP][TAILLE_MAP] = { BIOME_PROFONDEUR };
     t_chunk *chunk = NULL;
 
 
     for (int y = 0; y < TAILLE_MAP; y++) {
         for (int x = 0; x < TAILLE_MAP; x++) {
-            chunk = getChunk(x, y, map);
+            chunk = getChunk(x, y, COUCHE_SOL, map);
+            if (chunk == NULL) continue;
           
             int *biomesAlentours = getBiomesAlentours(*chunk, map);
-            t_predominance biomePredominant = getPredominance(biomesAlentours);
+            t_predominance biomePredominant = getPredominance(biomesAlentours, NB_BIOMES);
 
           
             nouveauxBiomes[y][x] = changerBiome(biomePredominant, chunk->biome);
@@ -414,7 +542,7 @@ void normalisationDeLaMap(t_map* map) {
 
     for (int y = 0; y < TAILLE_MAP; y++) {
         for (int x = 0; x < TAILLE_MAP; x++) {
-            chunk = getChunk(x, y, map);
+            chunk = getChunk(x, y, COUCHE_SOL, map);
             chunk->biome = nouveauxBiomes[y][x];
         }
     }
@@ -434,51 +562,23 @@ void normalisationDeLaMap(t_map* map) {
  * 
  * @param x 
  * @param y 
- * @return t_chunk* 
+ * @param z 
+ * @return t_chunk 
  * 
- * @version 1.1
+ * @version 1.2
  */
-t_chunk* initialisationChunk(const int x, const int y) {
-    t_chunk* chunk = malloc(sizeof(t_chunk));
+t_chunk initialisationChunk(const int x, const int y, const int z) {
+    t_chunk chunk;
 
 
-    e_biome biome = selectionBiome(x, y);
-    chunk->biome = biome;
+    chunk.blocks = calloc(TAILLE_CHUNK * TAILLE_CHUNK, sizeof(t_block));
+    chunk.biome = selectionBiome(x, y);
 
-    t_vecteur2 position = { x, y };
-    chunk->position = position;
+    t_vecteur3 position = { x, y, z };
+    chunk.position = position;
 
 
     return chunk;
-}
-
-
-
-/**
- * @brief 
- * 
- * @param x 
- * @param y 
- * @param chunk 
- * @return t_block* 
- * 
- * @version 1.1
- */
-t_block* initialisationBlock(const int x, const int y, const t_chunk chunk) {
-    t_block* block = malloc(sizeof(t_block));
-
-
-    e_blockTag blockTag = selectionBlock(x, y, chunk.biome);
-    block->tag = blockTag;
-
-    t_vecteur2 position = { TAILLE_CHUNK * chunk.position.x + x, TAILLE_CHUNK * chunk.position.y + y };
-    t_vecteur2 positionDansChunk = { x, y };
-  
-    block->position = position;
-    block->positionDansChunk = positionDansChunk;
-
-
-    return block;
 }
 
 
@@ -493,26 +593,58 @@ t_block* initialisationBlock(const int x, const int y, const t_chunk chunk) {
 /**
  * @brief 
  * 
+ * @param x 
+ * @param y 
+ * @param chunk 
+ * @param estVide 
+ * @return t_block 
+ * 
+ * @version 1.2
+ */
+t_block generationBlock(const int x, const int y, const t_chunk *chunk, const int estVide) {
+    t_block block;
+
+
+    block.tag = estVide ? VIDE : selectionBlock(chunk->biome);
+
+    t_vecteur2 position = { (TAILLE_CHUNK * chunk->position.x) + x, (TAILLE_CHUNK * chunk->position.y) + y };
+    t_vecteur2 positionDansChunk = { x, y };
+  
+    block.position = position;
+    block.positionDansChunk = positionDansChunk;
+
+
+    return block;
+}
+
+
+
+/**
+ * @brief 
+ * 
  * @param chunk 
  * @param map 
+ * @param estVide 
  * @return t_chunk* 
  * 
- * @version 1.1
+ * @version 1.2
  */
-t_chunk* generationChunk(t_chunk *chunk, t_map *map) {
-    t_block *blockTempo = NULL;
-
-  
-    for (int y = 0; y < TAILLE_CHUNK; y++) {
-        for (int x = 0; x < TAILLE_CHUNK; x++) {
-            chunk->blocks[y][x] = initialisationBlock(x, y, *chunk);
+t_chunk* generationChunk(t_chunk *chunk, t_map *map, const int estVide) {
+    for (int x = 0, i = 0; x < TAILLE_CHUNK; x++) {
+        for (int y = 0; y < TAILLE_CHUNK; y++) {
+            chunk->blocks[i++] = generationBlock(x, y, chunk, estVide);
         }
     }
+
+
+    if (estVide) return chunk;
 
 
     for (int i = 0; i < 2; i++) {
         normalisationDuChunk(chunk, map);
     }
+
+    lissageDuChunk(chunk, map);
 
 
     return chunk;
@@ -531,10 +663,14 @@ t_map* genererMap() {
     t_map* map = malloc(sizeof(t_map));
     t_chunk* chunkTempo = NULL;
 
+    map->chunks = calloc(TAILLE_MAP * TAILLE_MAP * NB_COUCHE, sizeof(t_chunk));
 
-    for (int y = 0; y < TAILLE_MAP; y++) {
-        for (int x = 0; x < TAILLE_MAP; x++) {
-            map->chunks[y][x] = initialisationChunk(x, y);
+
+    for (int i = 0, x = 0; x < TAILLE_MAP; x++) {
+        for (int y = 0; y < TAILLE_MAP; y++) {
+            for (int z = 0; z < NB_COUCHE; z++) {
+                map->chunks[i++] = initialisationChunk(x, y, z);
+            }
         }
     }
 
@@ -544,12 +680,21 @@ t_map* genererMap() {
     }
 
 
-    for (int y = 0; y < TAILLE_MAP; y++) {
-        for (int x = 0; x < TAILLE_MAP; x++) {
-            chunkTempo = getChunk(x, y, map);
-            generationChunk(chunkTempo, map);
+    for (int x = 0; x < TAILLE_MAP; x++) {
+        for (int y = 0; y < TAILLE_MAP; y++) {
+            for (int z = 0; z < NB_COUCHE; z++) {
+                chunkTempo = getChunk(x, y, z, map);
+
+                if (z == COUCHE_SOL) 
+                    generationChunk(chunkTempo, map, 0);
+                else
+                    generationChunk(chunkTempo, map, 1);
+            }
         }
     }
+
+
+    // genererVegetations(map);
 
     
 
@@ -589,22 +734,22 @@ int detruireBlock(t_block **block) {
  * @param chunk 
  * @return int 
  * 
- * @version 1.1
+ * @version 1.2
  */
 int detruireChunk(t_chunk **chunk) {
     if (chunk == NULL || *chunk == NULL) return 0;
-    t_block *block = NULL;
+    // t_block *block = NULL;
   
 
-    for (int y = 0; y < TAILLE_CHUNK; y++) {
-        for (int x = 0; x < TAILLE_CHUNK; x++) {
-            block = getBlockDansChunk(x, y, *chunk);
-            detruireBlock(&block);
-        }
-    }
+    // for (int x = 0; x < TAILLE_CHUNK; x++) {
+    //     for (int y = 0; y < TAILLE_CHUNK; y++) {
+    //         block = getBlockDansChunk(x, y, *chunk);
+    //         // detruireBlock(&block);
+    //     }
+    // }
   
-    free(*chunk);
-    *chunk = NULL;
+    free((*chunk)->blocks);
+    (*chunk)->blocks = NULL;
 
   
     return 0;
@@ -617,19 +762,25 @@ int detruireChunk(t_chunk **chunk) {
  * @param map 
  * @return int 
  * 
- * @version 1.1
+ * @version 1.2
  */
 int detruireMap(t_map **map) {
     if (map == NULL || *map == NULL) return 0;
     t_chunk *chunk = NULL;
   
 
-    for (int y = 0; y < TAILLE_MAP; y++) {
-        for (int x = 0; x < TAILLE_MAP; x++) {
-            chunk = getChunk(x, y, *map);
-            detruireChunk(&chunk);
+    for (int x = 0; x < TAILLE_MAP; x++) {
+        for (int y = 0; y < TAILLE_MAP; y++) {
+            for (int z = 0; z < NB_COUCHE; z++) {
+                chunk = getChunk(x, y, z, *map);
+                detruireChunk(&chunk);
+            }
         }
     }
+
+
+    free((*map)->chunks);
+    (*map)->chunks = NULL;
   
     free(*map);
     *map = NULL;
