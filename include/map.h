@@ -27,7 +27,7 @@
 #define TAILLE_MAP 14
 #define TAILLE_CHUNK 16
 
-#define NB_BLOCKS 9
+// #define NB_TYPES_SOL 9
 
 
 
@@ -93,6 +93,7 @@ typedef enum {
     SOL_MONTAGNE_1, 
     SOL_MONTAGNE_2,
     SOL_NEIGE,
+    NB_TYPES_SOL
 } e_solTag;
 
 
@@ -147,7 +148,7 @@ typedef struct s_baseBiome {
     e_solTag typesDeSol[3];
     int probabiliteDesBlocks[3];
 
-    e_vegetatalTag tagVegetations[2];
+    e_vegetalTag tagVegetations[2];
     int probabilitesVegetations[2];
     float vegetationDensite[2];
 

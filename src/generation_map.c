@@ -410,7 +410,7 @@ int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
  * @version 1.1
  */
 int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
-    static int blocksAlentours[NB_BLOCKS] = { 0 };
+    static int blocksAlentours[NB_TYPES_SOL] = { 0 };
     t_chunk *chunk = NULL;
     t_block *block = NULL;
 
@@ -463,7 +463,7 @@ void normalisationDuChunk(t_chunk* chunk, t_map *map) {
             block = getBlockDansChunk(x, y, chunk);
 
             int *blocksAlentours = getBlocksAlentours(block->position.x, block->position.y, map);
-            t_predominance blockPredominant = getPredominance(blocksAlentours, NB_BLOCKS);
+            t_predominance blockPredominant = getPredominance(blocksAlentours, NB_TYPES_SOL);
 
             if (blockPredominant.occurence >= 2) {
                 blockVoisins[x][y] = changerBlock(blockPredominant, block->tag);
@@ -504,7 +504,7 @@ void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
             block = getBlockDansChunk(x, y, chunk);
             int *blocksAlentours = getBlocksAlentours(block->position.x, block->position.y, map);
 
-            for (int i = 0; i < NB_BLOCKS; i++) {
+            for (int i = 0; i < NB_TYPES_SOL; i++) {
                 if (i > block->tag)
                     hauteurVoisins[x][y] += blocksAlentours[i];
                 else if (i < block->tag)

@@ -8,6 +8,8 @@
 
 
 
+#include <stdlib.h>
+#include <time.h>
 #include <monde.h>
 
 
@@ -35,7 +37,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
 
 t_monde creerMonde(int seed) {
     if (seed == -1) 
-        setGenerationSeed(rand());
+        setGenerationSeed(time(NULL));
     else
         setGenerationSeed(seed);
 
