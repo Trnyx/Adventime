@@ -42,7 +42,7 @@
  * @brief 
  * 
  */
-typedef enum s_coucheMap {
+typedef enum {
     COUCHE_SOL,
     COUCHE_VEGETATION,
     COUCHE_ENTITE,
@@ -55,7 +55,7 @@ typedef enum s_coucheMap {
  * @brief 
  * 
  */
-typedef enum s_biomeTag {
+typedef enum {
     BIOME_PROFONDEUR,
     BIOME_LAC,
     BIOME_PLAINE,
@@ -69,7 +69,7 @@ typedef enum s_biomeTag {
  * @brief 
  * 
  */
-typedef enum s_biomeProba {
+typedef enum {
     PROBA_BIOME_PROFONDEUR = 0,
     PROBA_BIOME_LAC = 15,
     PROBA_BIOME_PLAINE = 50,
@@ -82,7 +82,7 @@ typedef enum s_biomeProba {
  * @brief 
  * 
  */
-typedef enum s_blockTag {
+typedef enum {
     VIDE = -100,
     SOL_EAU_PROFONDE = 0,
     SOL_EAU,
@@ -147,9 +147,9 @@ typedef struct s_baseBiome {
     e_solTag typesDeSol[3];
     int probabiliteDesBlocks[3];
 
-    e_vegetationTag tagVegetations[2];
+    e_vegetatalTag tagVegetations[2];
     int probabilitesVegetations[2];
-    float vegetationDensite;
+    float vegetationDensite[2];
 
     e_monstreType typesMonstre[2];
     int probabilitesTypesMonstre[2];

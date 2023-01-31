@@ -202,14 +202,14 @@ t_chunk* getChunk(const int x, const int y, const int couche, t_map *map) {
  * @param nbElementsAlentours 
  * @return t_predominance 
  * 
- * @version 1.1
+ * @version 1.2
  */
-t_predominance getPredominance(int alentours[], int nbElementsAlentours) {
+t_predominance getPredominance(int alentours[], const int nbElementsAlentours) {
     t_predominance predominance = { 0, 0 };  
 
   
     for (int i = 0; i < nbElementsAlentours; i++) {
-        if (alentours[i] > predominance.occurence) {
+        if (alentours[i] >= predominance.occurence && i != predominance.tag) {
             predominance.occurence = alentours[i];
             predominance.tag = i;
         }
@@ -243,7 +243,7 @@ e_biome selectionBiome(const int xChunk, const int yChunk) {
     if (xChunk == 0 || yChunk == 0 || xChunk == TAILLE_MAP - 1 || yChunk == TAILLE_MAP - 1) return BIOME_PROFONDEUR;
 
 
-    int probabilite = getNombreAleatoire(1, 100); 
+    const int probabilite = getNombreAleatoire(1, 100); 
 
     for (int i = 0; i < NB_BIOMES; i++) {
         if (probabilitesBiomes[i] >= probabilite) return biomes[i];
@@ -265,15 +265,15 @@ e_biome selectionBiome(const int xChunk, const int yChunk) {
  */
 e_solTag selectionBlock(const e_biome biome) {
     e_solTag blockTag = VIDE;
-    t_baseBiome baseBiome = basesBiomes[biome];
-    int nombreBlockPossible = sizeof(baseBiome.typesDeSol) / sizeof(baseBiome.typesDeSol[0]);
+    const t_baseBiome baseBiome = basesBiomes[biome];
+    const int nombreBlockPossible = sizeof(baseBiome.typesDeSol) / sizeof(baseBiome.typesDeSol[0]);
 
 
     while (blockTag == VIDE) {
-        int index =  getNombreAleatoire(0, nombreBlockPossible - 1);
-        int probabilite =  getNombreAleatoire(0, 100);
+        const int index =  getNombreAleatoire(0, nombreBlockPossible - 1);
+        const int probabilite =  getNombreAleatoire(0, 100);
     
-        int probabiliteBlock = baseBiome.probabiliteDesBlocks[index];
+        const int probabiliteBlock = baseBiome.probabiliteDesBlocks[index];
         if (probabiliteBlock >= probabilite) {
             return baseBiome.typesDeSol[index];
         }
@@ -299,10 +299,10 @@ e_solTag selectionBlock(const e_biome biome) {
  * @param biomeActuel 
  * @return e_biome 
  * 
- * @version 1.1
+ * @version 1.2
  */
 e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) { 
-    if (biomeActuel == BIOME_PROFONDEUR) return biomeActuel;
+    if (biomePredominant.tag == biomeActuel) return biomeActuel;
 
     int modificateurAltitude = 0;
     int changement = 0;
@@ -310,7 +310,7 @@ e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) {
   
     switch (biomePredominant.tag) {
         case BIOME_MONTAGNE: 
-            if (biomePredominant.occurence >= 1 && biomePredominant.occurence <= 2) changement = 1;
+            if (biomePredominant.occurence >= 1 && biomePredominant.occurence <= 3) changement = 1;
             break;
         case BIOME_PLAINE: 
             if (biomePredominant.occurence >= 3 && biomePredominant.occurence <= 6) changement = 1;
@@ -322,7 +322,7 @@ e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) {
             if (biomePredominant.occurence >= 3) changement = 1;
             break;
         case BIOME_PROFONDEUR: 
-            if (biomePredominant.occurence >= 3) changement = 1;
+            if (biomePredominant.occurence >= 3 && biomePredominant.occurence <= 5) changement = 1;
             break;
     }
 
@@ -335,7 +335,6 @@ e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) {
     }
 
 
-    if (biomeActuel == biomePredominant.tag) return biomeActuel;
     return biomeActuel + modificateurAltitude;
 }
 
@@ -350,15 +349,12 @@ e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) {
  * @param blockActuel 
  * @return e_blockTag 
  * 
- * @version 1.1
+ * @version 1.2
  */
 e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
-    int modificateurAltitude = 0;
+    if (blockPredominant.tag == blockActuel) return blockActuel;
 
-    if (blockPredominant.tag > blockActuel) modificateurAltitude = 1;
-    else if (blockPredominant.tag < blockActuel) modificateurAltitude = -1;
-
-    return blockActuel + modificateurAltitude;
+    return blockActuel + (blockPredominant.tag - blockActuel);
 }
 
 
@@ -379,15 +375,15 @@ e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
  * 
  * @version 1.2
  */
-int* getBiomesAlentours(t_chunk chunk, t_map *map) {
+int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
     static int biomesAlentours[NB_BIOMES] = { 0 };
     t_chunk *chunkCourrant = NULL;
   
 
-    for (int y = chunk.position.y - 1; y <= chunk.position.y + 1; y++) {
-        for (int x = chunk.position.x - 1; x <= chunk.position.x + 1; x++) {
+    for (int y = chunk->position.y - 1; y <= chunk->position.y + 1; y++) {
+        for (int x = chunk->position.x - 1; x <= chunk->position.x + 1; x++) {
             if (!chunkEstDansLaMap(x, y, COUCHE_SOL)) continue;
-            if (x == chunk.position.x && y == chunk.position.y) continue;
+            if (x == chunk->position.x && y == chunk->position.y) continue;
 
           
             chunkCourrant = getChunk(x, y, COUCHE_SOL, map);
@@ -416,7 +412,7 @@ int* getBiomesAlentours(t_chunk chunk, t_map *map) {
 int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
     static int blocksAlentours[NB_BLOCKS] = { 0 };
     t_chunk *chunk = NULL;
-    t_block *blockTempo = NULL;
+    t_block *block = NULL;
 
   
     for (int y = yBlock - 1; y <= yBlock + 1; y++) {
@@ -428,11 +424,11 @@ int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
             if (chunk == NULL) continue;
 
 
-            blockTempo = getBlockDansChunk(x % TAILLE_CHUNK, y % TAILLE_CHUNK, chunk);
-            if (blockTempo == NULL) continue;
+            block = getBlockDansChunk(x % TAILLE_CHUNK, y % TAILLE_CHUNK, chunk);
+            if (block == NULL) continue;
           
           
-            blocksAlentours[blockTempo->tag]++;
+            blocksAlentours[block->tag]++;
         }
     }
 
@@ -455,7 +451,7 @@ int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
  * @param chunk 
  * @param map 
  * 
- * @version 1.2
+ * @version 1.3
  */
 void normalisationDuChunk(t_chunk* chunk, t_map *map) {
     e_solTag blockVoisins[TAILLE_CHUNK][TAILLE_CHUNK] = { SOL_EAU_PROFONDE };
@@ -469,7 +465,7 @@ void normalisationDuChunk(t_chunk* chunk, t_map *map) {
             int *blocksAlentours = getBlocksAlentours(block->position.x, block->position.y, map);
             t_predominance blockPredominant = getPredominance(blocksAlentours, NB_BLOCKS);
 
-            if (blockPredominant.occurence >= 5) {
+            if (blockPredominant.occurence >= 2) {
                 blockVoisins[x][y] = changerBlock(blockPredominant, block->tag);
             }
             else {
@@ -481,7 +477,7 @@ void normalisationDuChunk(t_chunk* chunk, t_map *map) {
 
     for (int x = 0; x < TAILLE_CHUNK; x++) {
         for (int y = 0; y < TAILLE_CHUNK; y++) {
-            t_block *block = getBlockDansChunk(x, y, chunk);
+            block = getBlockDansChunk(x, y, chunk);
             block->tag = blockVoisins[x][y];
         }
     }
@@ -494,18 +490,38 @@ void normalisationDuChunk(t_chunk* chunk, t_map *map) {
  * 
  * @param chunk 
  * @param map 
+ * @param ceuil 
+ * 
+ * @version 1.2
  */
-void lissageDuChunk(t_chunk* chunk, t_map *map) {
+void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
+    e_solTag hauteurVoisins[TAILLE_CHUNK][TAILLE_CHUNK] = { 0 };
+    t_block *block = NULL;
+
+
     for (int x = 0; x < TAILLE_CHUNK; x++) {
         for (int y = 0; y < TAILLE_CHUNK; y++) {
-            t_block *block = getBlockDansChunk(x, y, chunk);
-
+            block = getBlockDansChunk(x, y, chunk);
             int *blocksAlentours = getBlocksAlentours(block->position.x, block->position.y, map);
-            t_predominance blockPredominant = getPredominance(blocksAlentours, NB_BLOCKS);
 
-            if (blockPredominant.occurence >= 7) {
-                block->tag = blockPredominant.tag;
+            for (int i = 0; i < NB_BLOCKS; i++) {
+                if (i > block->tag)
+                    hauteurVoisins[x][y] += blocksAlentours[i];
+                else if (i < block->tag)
+                    hauteurVoisins[x][y] -= blocksAlentours[i];
             }
+        }
+    }
+
+
+    for (int x = 0; x < TAILLE_CHUNK; x++) {
+        for (int y = 0; y < TAILLE_CHUNK; y++) {
+            block = getBlockDansChunk(x, y, chunk);
+
+            if (hauteurVoisins[x][y] >= ceuil) 
+                block->tag++;
+            else if (hauteurVoisins[x][y] <= -ceuil)
+                block->tag--;
         }
     }
 }
@@ -530,8 +546,9 @@ void normalisationDeLaMap(t_map* map) {
         for (int x = 0; x < TAILLE_MAP; x++) {
             chunk = getChunk(x, y, COUCHE_SOL, map);
             if (chunk == NULL) continue;
+            if (chunk->position.x == 0 || chunk->position.y == 0 || chunk->position.x == TAILLE_MAP - 1 || chunk->position.y == TAILLE_MAP - 1) continue;
           
-            int *biomesAlentours = getBiomesAlentours(*chunk, map);
+            int *biomesAlentours = getBiomesAlentours(chunk, map);
             t_predominance biomePredominant = getPredominance(biomesAlentours, NB_BIOMES);
 
           
@@ -627,7 +644,7 @@ t_block generationBlock(const int x, const int y, const t_chunk *chunk, const in
  * @param estVide 
  * @return t_chunk* 
  * 
- * @version 1.2
+ * @version 1.3
  */
 t_chunk* generationChunk(t_chunk *chunk, t_map *map, const int estVide) {
     for (int x = 0, i = 0; x < TAILLE_CHUNK; x++) {
@@ -642,9 +659,10 @@ t_chunk* generationChunk(t_chunk *chunk, t_map *map, const int estVide) {
 
     for (int i = 0; i < 2; i++) {
         normalisationDuChunk(chunk, map);
+        lissageDuChunk(chunk, map, 7 - i);
     }
 
-    lissageDuChunk(chunk, map);
+    lissageDuChunk(chunk, map, 5);
 
 
     return chunk;
@@ -675,7 +693,7 @@ t_map* genererMap() {
     }
 
 
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 1; i++) {
         normalisationDeLaMap(map);
     }
 
