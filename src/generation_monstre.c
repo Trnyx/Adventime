@@ -1,9 +1,10 @@
 /**
  * @file generation_monstre.c
  *
- * @brief
+ * @brief Génération d'un monstre
  *
  * @author Clément Hibon
+ * @date 23 janvier
  * @version 1.1
  */
 
@@ -17,6 +18,10 @@
 
 
 
+/**
+ * @brief Tableau regroupant les intervales des statistiques de bases en fonction du type du monstre
+ * 
+ */
 const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONSTRE_TYPES] = {
     { { 60, 70 }, { 60, 70 }, { 10, 10 }, 80, { 0 } }, // NORMAL
     { { 65, 75 }, { 55, 65 }, { 15, 15 }, 80, { 0 } }, // PLANTE
@@ -34,10 +39,10 @@ const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONSTRE_TYPE
 
 
 /**
- * @brief 
+ * @brief Choisis le type d'un monstre en fonction du biome où il apparait
  * 
- * @param baseBiome 
- * @return e_monstreType 
+ * @param baseBiome La base du biome dans lequel le monstre apparait
+ * @return Le type du monstre
  */
 e_monstreType choisirTypeMonstre(const t_baseBiome baseBiome) {
     e_monstreType type = -1;
@@ -68,10 +73,13 @@ e_monstreType choisirTypeMonstre(const t_baseBiome baseBiome) {
 
 
 /**
- * @brief 
+ * @brief Génère les statistiques de base d'un monstre
  * 
- * @param type 
- * @return t_baseStatistiques 
+ * Elles sont déterminées de façon aléatoire dans un intervalle définit dans les informations de base d'un monstre
+ * Les statistiques de base sont utilisés à chaque fois que les statistiques ont besoins d'être calculées
+ * 
+ * @param type Le type du monstre
+ * @return Les statistiques de base du monstre
  */
 t_baseStatistiques genererStatistiquesDeBase(const e_monstreType type) {
     t_baseStatistiques baseStatistiques;
@@ -91,11 +99,11 @@ t_baseStatistiques genererStatistiquesDeBase(const e_monstreType type) {
 
 
 /**
- * @brief 
+ * @brief Calcul des statistiques en fonction des statistiques de bases et du niveau du monstre
  * 
- * @param base 
- * @param niveau 
- * @return int 
+ * @param base La statistique de base concerné
+ * @param niveau Le niveau du monstre
+ * @return La valeur de la statistique
  */
 int calculStatistique(const int base, const int niveau) {
     return ((((2 * base + base * niveau * 0.6) * niveau) / 100) + niveau + 10);
@@ -103,12 +111,12 @@ int calculStatistique(const int base, const int niveau) {
 
 
 /**
- * @brief 
+ * @brief Calcul la statistique "pv" d'un monstre en fonction de ses points d'attaque, de défense et de la base des pv
  * 
- * @param attaque 
- * @param defense 
- * @param basePv 
- * @return int 
+ * @param attaque Les points d'attaque du monstre
+ * @param defense Les points de défense du monstre
+ * @param basePv La statistique de base
+ * @return Le nombre de point de vie maximum du monstre
  */
 int calculPv(const int attaque, const int defense, const int basePv) {
     return (attaque + defense) + (basePv * 0.3) + 10;
@@ -117,11 +125,11 @@ int calculPv(const int attaque, const int defense, const int basePv) {
 
 
 /**
- * @brief 
+ * @brief Génère les statistiques du monstre en fonction des statistiques de base
  * 
- * @param baseStatistiques 
- * @param niveau 
- * @return t_statistiques 
+ * @param baseStatistiques Les statistiques de base du monstre
+ * @param niveau Le niveau du monstre
+ * @return Les statistiques du monstre
  */
 t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau) {
     t_statistiques statistiques;
@@ -144,12 +152,12 @@ t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, co
 
 
 /**
- * @brief 
+ * @brief Génère un monstre
  * 
- * @param x 
- * @param y 
- * @param biome 
- * @return t_monstre* 
+ * @param x La coordonnée x du monstre
+ * @param y La coordonnée y du monstre
+ * @param biome Le biome dans lequel le monstre apparait
+ * @return Un pointeur sur le monstre généré
  */
 t_monstre* creerMonstre(const int x, const int y, e_biome biome) {
     t_monstre *monstre = malloc(sizeof(t_monstre));

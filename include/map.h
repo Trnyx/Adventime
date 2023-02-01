@@ -4,6 +4,7 @@
  * @brief
  *
  * @author Clément Hibon
+ * @date 21 janvier
  * @version 1.2
  */
 
@@ -27,7 +28,8 @@
 #define TAILLE_MAP 14
 #define TAILLE_CHUNK 16
 
-// #define NB_TYPES_SOL 9
+#define NOMBRE_DE_NORMALISATION_MAP 1
+#define NOMBRE_DE_NORMALISATION_CHUNK 2
 
 
 
@@ -39,8 +41,9 @@
 
 
 /**
- * @brief 
+ * @brief Tag permettant de reconnaitre la couche du chunk concerné
  * 
+ * Un compteur du nombre de couche est également initialisé à la fin de l'énumérateur
  */
 typedef enum {
     COUCHE_SOL,
@@ -52,8 +55,9 @@ typedef enum {
 
 
 /**
- * @brief 
+ * @brief Tag permettant de reconnaitre le biome 
  * 
+ * Un compteur du nombre de biome est également initialisé à la fin de l'énumérateur
  */
 typedef enum {
     BIOME_PROFONDEUR,
@@ -66,8 +70,7 @@ typedef enum {
 
 
 /**
- * @brief 
- * 
+ * @brief Enumérateur regroupant les probabilités d'apparition d'un biome
  */
 typedef enum {
     PROBA_BIOME_PROFONDEUR = 0,
@@ -79,8 +82,9 @@ typedef enum {
 
 
 /**
- * @brief 
+ * @brief Tag permettant de reconnaitre le type de sol
  * 
+ * Un compteur du nombre de types de sol est également initialisé à la fin de l'énumérateur
  */
 typedef enum {
     VIDE = -100,
@@ -106,8 +110,7 @@ typedef enum {
 
 
 /**
- * @brief
- * 
+ * @brief Modélise un block
  */
 typedef struct s_block {
     t_vecteur2 position;
@@ -117,8 +120,7 @@ typedef struct s_block {
 
 
 /**
- * @brief 
- * 
+ * @brief Modélise un chunk
  */
 typedef struct s_chunk {
     e_biome biome;
@@ -128,8 +130,7 @@ typedef struct s_chunk {
 
 
 /**
- * @brief 
- * 
+ * @brief MOdélise une map
  */
 typedef struct s_map {
     t_chunk *chunks;
@@ -138,8 +139,7 @@ typedef struct s_map {
 
 
 /**
- * @brief 
- * 
+ * @brief Modélise la base d'un biome
  */
 typedef struct s_baseBiome {
     e_biome biome;
@@ -158,8 +158,7 @@ typedef struct s_baseBiome {
 
 
 /**
- * @brief 
- * 
+ * @brief Modélise un objet prédominant
  */
 typedef struct s_predominance {
     int tag;

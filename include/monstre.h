@@ -4,6 +4,7 @@
  * @brief
  *
  * @author Clément Hibon
+ * @date 23 janvier
  * @version 1.1
  */
 
@@ -29,20 +30,22 @@
 
 
 /**
- * @brief 
+ * @brief Enumérateur regroupant les différents tags des monstres
  * 
+ * Un compteur du nombre de tags est également initialisé à la fin de l'énumérateur
  */
-typedef enum s_montreTag {
+typedef enum {
     MONSTRE_OISEAU,
     NB_MONSTRE_TAGS
 } e_monstreTag;
 
 
 /**
- * @brief 
+ * @brief Enumérateur regroupant les différents types des monstres
  * 
+ * Un compteur du nombre de types est également initialisé à la fin de l'énumérateur
  */
-typedef enum s_monstreType {
+typedef enum {
     MONSTRE_TYPE_NORMAL,
     MONSTRE_TYPE_PLANTE,
     MONSTRE_TYPE_EAU,
@@ -60,8 +63,7 @@ typedef enum s_monstreType {
 
 
 /**
- * @brief 
- * 
+ * @brief Modélise un monstre
  */
 typedef struct s_monstre {
     struct entite_s;
@@ -78,8 +80,7 @@ typedef struct s_monstre {
 
 
 /**
- * @brief 
- * 
+ * @brief Modélise les intervales des statistiques de base d'un monstre
  */
 typedef struct s_baseStatistiquesIntervales {
     int attaque[2];

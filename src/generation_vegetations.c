@@ -1,9 +1,19 @@
 /**
  * @file generation_vegetations.c
  *
- * @brief
+ * @brief Génération de la végétation 
+ * 
+ * La génération de la végétation suit le principe du "Poisson Disk Sampling"
+ * 
+ * Poisson Disk Sampling est une technique permettant de sélectionner de manière aléatoire des points serrés de façon à ce qu'ils respectent une distance minimale 
+ * Comme les points sont choisis de façon aléatoire, le résultat a un aspect plus organique
+ * 
+ * L'algorithme suit donc les étapes suivantes
+ * 
+ * 
  *
  * @author Clément Hibon
+ * @date 27 janvier
  * @version 1.1
  */
 
@@ -23,6 +33,9 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Tableau regroupant les informations de base des végétaux
+ */
 const t_baseVegetal basesVegetaux[] = {
     { HERBE, 1.0 },
     // { ROSE, 3.0 },
@@ -42,10 +55,10 @@ const t_baseVegetal basesVegetaux[] = {
 
 
 /**
- * @brief 
+ * @brief Sélectionne le tag du végétal
  * 
- * @param baseBiome 
- * @return e_vegetalTag 
+ * @param baseBiome La base du biome dans lequel le végétal est placé
+ * @return Le tag du végétal
  * 
  * @version 1.1
  */
@@ -71,17 +84,17 @@ e_vegetalTag selectionVegetation(t_baseBiome baseBiome) {
 
 
 /**
- * @brief 
+ * @brief Vérifie que le végétal peut être placé
  * 
- * @param x 
- * @param y 
- * @param grid 
- * @param rayon 
- * @return int 
+ * @param x La coordonnée x (relative) du végétal 
+ * @param y La coordonnée y (relative) du végétal 
+ * @param grid Le tableau regroupant les positions des végétaux déjà placés
+ * @param rayon Le rayon minimum pour 
+ * @return Vrai si le végétal peut être placé aux coordonnées données, faux sinon
  * 
  * @version 1.1
  */
-int peutPlacerVegetatal(const int x, const int y, const t_discSampling grid, const float rayon) {
+int peutPlacerVegetatal(const int x, const int y, const t_diskSampling grid, const float rayon) {
     int peutEtrePlace = 0;
     int i = 0;
 
@@ -108,15 +121,15 @@ int peutPlacerVegetatal(const int x, const int y, const t_discSampling grid, con
 
 
 /**
- * @brief 
+ * @brief Génère une grille en se basant sur la technique du "Poisson Disk Sampling"
  * 
- * @param chunk 
- * @return t_discSampling 
+ * @param chunk Un pointeur sur le chunk de la couche du sol
+ * @return La grille de placement des végétaux
  * 
  * @version 1.1
  */
-t_discSampling genererDiscSampling(t_chunk *chunk) {
-    t_discSampling vegetals;
+t_diskSampling genererDiskSampling(t_chunk *chunk) {
+    t_diskSampling vegetals;
     const int nbVegetaux = getNombreAleatoire((TAILLE_CHUNK) / 2, (2 * TAILLE_CHUNK) / 3);
 
     vegetals.nbVegetaux = 0;
@@ -157,9 +170,9 @@ t_discSampling genererDiscSampling(t_chunk *chunk) {
 
 
 /**
- * @brief 
+ * @brief Génère les végétaux
  * 
- * @param map 
+ * @param map Un pointeur sur la map dans laquelle sera généré les végétaux
  * 
  * @version 1.1
  */
@@ -175,7 +188,7 @@ void genererVegetations(t_map *map) {
             if (chunk == NULL) continue;
             if (chunk->biome == BIOME_PROFONDEUR) continue;
 
-            t_discSampling vegetaux = genererDiscSampling(chunk);
+            t_diskSampling vegetaux = genererDiskSampling(chunk);
           
             for (int i = 0; i < vegetaux.nbVegetaux; i++) {
                 t_vecteur2 positionVegetal = vegetaux.vegetauxPositions[i];

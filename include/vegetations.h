@@ -4,6 +4,7 @@
  * @brief
  *
  * @author Clément Hibon
+ * @date 27 janvier
  * @version 1.1
  */
 
@@ -34,8 +35,7 @@
 
 
 /**
- * @brief 
- * 
+ * @brief Tag permettant de reconnaitre les végétaux
  */
 typedef enum {
     HERBE = 100,
@@ -56,8 +56,7 @@ typedef enum {
 
 
 /**
- * @brief 
- * 
+ * @brief Modélise un végétal
  */
 typedef struct s_vegetation {
     t_vecteur2 position;
@@ -67,8 +66,7 @@ typedef struct s_vegetation {
 
 
 /**
- * @brief 
- * 
+ * @brief Modélise la base d'un végétal
  */
 typedef struct s_baseVegetation {
     e_vegetalTag tag;
@@ -80,14 +78,13 @@ typedef struct s_baseVegetation {
 
 
 /**
- * @brief 
- * 
+ * @brief Modélise un "Disk Sampling"
  */
-typedef struct s_discSampling {
+typedef struct s_diskSampling {
     int nbVegetaux;
     t_vecteur2 *vegetauxPositions;
     e_vegetalTag *vegetauxTags;
-} t_discSampling;
+} t_diskSampling;
 
 
 
