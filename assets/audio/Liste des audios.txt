@@ -1,5 +1,17 @@
 Sons :
+    Menu :
+        Menu Sélection
     Joueur :
+        Attaque
+        Dégât reçu
+        Mort
+    Monstre :
+        Attaque
+        Dégât reçu
+        Mort
+    Autres :
+        Dégât arme
+        Item Récupération
 
 
 
