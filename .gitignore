@@ -55,4 +55,5 @@ Mkfile.old
 dkms.conf
 
 /.vscode
-/SDL2/
+/lib/
+/include/SDL2/
