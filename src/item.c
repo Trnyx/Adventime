@@ -25,7 +25,7 @@ unsigned long int item_cpt = 0;/**<Compteur d'item*/
   * \brief Vérifie que l'item existe.
   * \param item
   */
-extern booleen_t item_existe(t_item* const item)
+extern t_booleen item_existe(t_item* const item)
 {
     if (item == NULL)
         return(FAUX);
@@ -37,7 +37,7 @@ extern booleen_t item_existe(t_item* const item)
  * \brief Affiche les caractéristiques d'un item.
  * \param item
  */
-static void item_afficher(t_item* item)
+static t_err item_afficher(t_item* item)
 {
     printf("{\n");
     if (item_existe(item))
@@ -47,13 +47,14 @@ static void item_afficher(t_item* item)
         printf("%s\n", item->nom);
     }
     printf("}");
+    return(OK);
 }
 
 /**
  * \brief Détruis un item.
  * \param item L'addresse de l'item.
  */
-static void item_detruire(t_item** item)
+static t_err item_detruire(t_item** item)
 {
     free((*item)->categorie);
     (*item)->categorie = NULL;
@@ -64,6 +65,7 @@ static void item_detruire(t_item** item)
     free(*item);
     *item = NULL;
     item_cpt--;
+    return(OK);
 }
 
 /**

@@ -36,7 +36,7 @@ extern unsigned long int item_cpt;
   * \brief Vérifie que l'item existe.
   * \param item
   */
-extern booleen_t item_existe(t_item* const item);
+extern t_booleen item_existe(t_item* const item);
 
 /**
  * \brief Crée un item.
