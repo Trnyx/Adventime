@@ -1,5 +1,5 @@
 /**
- * @file window.h
+ * @file initialiseur.h
  * 
  * @brief 
  * 
@@ -10,37 +10,25 @@
 
 
 
-
-#ifndef _JEU_WINDOW_
-#define _JEU_WINDOW_
-
+#ifndef _JEU_INITIALISEUR_
+#define _JEU_INITIALISEUR_
 
 
 
 
-#include <SDL2/SDL.h>
+
 #include "moteur.h"
-
-
-
-
-
-#define WINDOW_WIDTH 1280
-#define WINDOW_HEIGHT 720
-
-
-
-
+#include "audio.h"
 
 
 
 
 /* -------------------------------------------------------------------------- */
-/*                                  Fonctions                                 */
+/*                                  Fonction                                  */
 /* -------------------------------------------------------------------------- */
 
 
-void initSDL(t_moteur *moteur);
+void initAll(t_moteur **moteur);
 
 
 
@@ -49,7 +37,3 @@ void initSDL(t_moteur *moteur);
 
 
 #endif
-
-
-
-
