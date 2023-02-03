@@ -16,5 +16,5 @@ char* nom; /**<Nom de l'item*/
 /**
  * POINTEURS DE FONCTION
  */
-void (*afficher)(t_item* const);
-void (*detruire)(t_item**);
+t_err (*afficher)(t_item* const);
+t_err (*detruire)(t_item**);
