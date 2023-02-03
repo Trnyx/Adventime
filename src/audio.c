@@ -25,8 +25,8 @@
  * @param nouveauVolume 
  */
 void changerVolume(int nouveauVolume) {
-    // Mix_VolumeMusic(3 * volume / 4);
-    // Mix_Volume(-1, volume);
+    Mix_VolumeMusic(3 * nouveauVolume / 4);
+    Mix_Volume(-1, nouveauVolume);
 }
 
 
@@ -58,19 +58,43 @@ int chargerAudio(int volume, t_musiques **musiques, t_bruitages **bruitages) {
 
 
     /* -------------------------------- Musiques -------------------------------- */
-    // Mix_LoadMUS("assets/audio/musiques/.mp3");
+    // Menu
+    m->menu_principal = Mix_LoadMUS("assets/audio/musiques/.mp3");
 
+    // Ambiance
+    m->ambiance = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    // m->ambiance_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
+
+    // Combat
+    m->combat = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    // m->combat_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    // m->combat_boss = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    
     
     /* -------------------------------- Bruitages ------------------------------- */
-    // Mix_LoadWAV("assets/audio/bruitages/.wav");
+    // Menu
+    // b->menu_selection = Mix_LoadWAV("assets/audio/bruitages/.wav");
+
+    // Joueur
+    // b->joueur_attaque = Mix_LoadWAV("assets/audio/bruitages/.wav");
+    // b->joueur_degat = Mix_LoadWAV("assets/audio/bruitages/.wav");
+    // b->joueur_mort = Mix_LoadWAV("assets/audio/bruitages/.wav");
+
+    // Monstre
+    // b->monstre_attaque = Mix_LoadWAV("assets/audio/bruitages/.wav");
+    // b->monstre_degat = Mix_LoadWAV("assets/audio/bruitages/.wav");
+    // b->monstre_mort = Mix_LoadWAV("assets/audio/bruitages/.wav");
+
+    // Autres
+    // b->item_recuperation = Mix_LoadWAV("assets/audio/bruitages/.wav");
 
 
 
     changerVolume(volume);
 
 
-    *musiques;
-    *bruitages;
+    *musiques = m;
+    *bruitages = b;
 
 
     return 0;

@@ -18,8 +18,8 @@
 
 
 
-// #include <SDL2/SDL.h>
-// #include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 
 
@@ -34,11 +34,17 @@
  */
 typedef struct s_musiques {
     // Menu Principal
-    // Ambiance Jour
-    // Ambiance Nuit
-    // Combat Jour
-    // Combat Nuit
-    // Combat Boss
+    Mix_Music *menu_principal;
+
+    // Ambiance
+    Mix_Music *ambiance;
+    // Mix_Music *ambianc_nuit;
+
+    // Combat
+    Mix_Music *combat;
+    // Mix_Music *combat_nuit;
+    // Mix_Music *combat_boss;
+    
 } t_musiques;
 
 
@@ -48,17 +54,20 @@ typedef struct s_musiques {
  */
 typedef struct s_bruitages {
     // Menu :
-    //  - Menu sélection
+    Mix_Chunk *menu_selection;
+
     // Joueur :
-    //  - Attaque
-    //  - Dégat recu
-    //  - Mort
+    Mix_Chunk *joueur_attaque;
+    Mix_Chunk *joueur_degat;
+    Mix_Chunk *joueur_mort;
+    
     // Monstre :
-    //  - Attaque
-    //  - Dégat recu
-    //  - Mort
+    Mix_Chunk *monstre_attaque;
+    Mix_Chunk *monstre_degat;
+    Mix_Chunk *monstre_mort;
+
     // Autres :
-    //  - Item récupération
+    Mix_Chunk *item_recuperation;
 } t_bruitages;
 
 
