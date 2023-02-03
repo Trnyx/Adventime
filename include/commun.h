@@ -13,6 +13,13 @@
 /**
  * \brief Définition du type booléen.
  */
-typedef enum booleen_s { FAUX, VRAI } booleen_t;
+typedef enum s_booleen { FAUX, VRAI } t_booleen;
+
+/**
+ * \brief Définition du type erreur.
+ */
+typedef int t_err; 
+/* Erreurs */
+#define OK 0
 
 #endif
