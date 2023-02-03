@@ -4,11 +4,23 @@
 # Compilateur
 CC = gcc
 # Paramètres de la compilation
-CFLAGS = -g -Wall -fms-extensions -lm
+CFLAGS = -g -Wall -fms-extensions -Llib -lm
+
 # Nom de l'exécutable
 EXEC = Adventime
+
 # Librairies intégrées
 LIB = 
+
+
+# SDL
+SDL_DIR=${HOME}/SDL2
+SDL_LIB_DIR=${SDL_DIR}/lib
+SDL_INC_DIR=${SDL_DIR}/include
+
+LIBS = -L${SDL_LIB_DIR} -lSDL2main -lSDL2 -lSDL2_mixer 
+INCS = -I${SDL_INC_DIR} 
+
 
 
 
@@ -58,12 +70,12 @@ $(OBJDIR):
 # $< : Nom de la première dépendance de la liste des dépendances
 # $@ : Nom de la cible
 $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
-	$(CC) $(CFLAGS) -c $< -I$(SRCDIR) -o $@
+	$(CC) $(CFLAGS) -c $< $(INCS) -o $@
 	@echo "Compilation de "$<" effectuée."
 
 # Exécute l'édition des liens
 $(BINDIR)/$(EXEC): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LIB)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LIBS)
 	@echo "Édition des liens effectuée."
 
 
