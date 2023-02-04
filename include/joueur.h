@@ -13,8 +13,9 @@
 
 
 
-#include <statistiques.h>
-#include <inventaire.h>
+#include "statistiques.h"
+#include "inventaire.h"
+#include "entite.h"
 
 
 

@@ -3,7 +3,9 @@
  *
  * \brief
  *
- * \author
+ * @author Clément Hibon
+ * @date 21 janvier
+ * @version 1.0
  */
 
 

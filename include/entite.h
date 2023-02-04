@@ -11,6 +11,7 @@
 
 
 
+
 #ifndef _JEU_ENTITE_
 #define _JEU_ENTITE_
 
@@ -18,13 +19,47 @@
 
 
 
+#include <SDL2/SDL.h>
+#include "utilitaire.h"
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Enumeration                                */
+/* -------------------------------------------------------------------------- */
+
+
+typedef enum {
+    ENTITE_RIEN,
+    ENTITE_JOUEUR,
+    ENTITE_MONSTRE,
+} e_entiteType;
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Structures                                 */
+/* -------------------------------------------------------------------------- */
+
+
 /**
  * @struct t_entite
  * @brief Structure modélisant une entité
  */
 typedef struct s_entite {
-    #include <attributs_entite.h>
+    int id;
+
     t_vecteur2 position;
+    t_vecteur2 orientation;
+    int vitesse;
+
+    e_entiteType type;
+
+    SDL_Rect hitbox;
 } t_entite;
 
 
@@ -37,7 +72,9 @@ typedef struct s_entite {
 
 
 t_entite* creerEntite();
-void deplacerEntite(t_entite entite);
+void detruireEntite(t_entite **entite);
+
+int deplacerEntite(t_entite *entite);
 
 
 
