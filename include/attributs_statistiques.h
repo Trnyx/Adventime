@@ -1,7 +1,7 @@
-/*
- * \file 
+/**
+ * @file attributs_statistiques.h
  *
- * \brief
+ * @brief
  *
  * @author Clément Hibon
  * @date 21 janvier
