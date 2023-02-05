@@ -17,7 +17,6 @@
 
 
 
-#include "map.h"
 #include "statistiques.h"
 #include "entite.h"
 
@@ -61,13 +60,15 @@ typedef enum {
 /* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */
 /* -------------------------------------------------------------------------- */
+#include "map.h"
+
 
 
 /**
  * @brief Modélise un monstre
  */
 typedef struct s_monstre {
-    struct entite_s;
+    struct s_entite;
     
     char* name;                             /**< Le nom d'un Monstre */
 
@@ -111,7 +112,7 @@ extern const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONST
 /* -------------------------------------------------------------------------- */
 
 
-t_monstre creerMonstre(const int x, const int y, e_biome biome);
+t_monstre* creerMonstre(const int x, const int y, e_biome biome);
 
 
 

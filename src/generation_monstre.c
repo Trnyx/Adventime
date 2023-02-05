@@ -11,8 +11,8 @@
 
 
 #include <stdlib.h>
-#include <monstre.h>
-#include <map.h>
+#include "../include/monstre.h"
+#include "../include/map.h"
 
 
 
@@ -165,7 +165,8 @@ t_monstre* creerMonstre(const int x, const int y, e_biome biome) {
     monstre->position.x = x;
     monstre->position.y = y;
 
-    monstre->tag = choisirMonstreTag();
+    // monstre->tag = choisirMonstreTag();
+    monstre->tag = MONSTRE_OISEAU;
     monstre->type = choisirTypeMonstre(basesBiomes[biome]);
 
     monstre->statistiques.niveau = 3;

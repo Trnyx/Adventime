@@ -57,7 +57,7 @@ typedef struct s_entite {
     t_vecteur2 orientation;
     int vitesse;
 
-    e_entiteType type;
+    // e_entiteType type;
 
     SDL_Rect hitbox;
 } t_entite;

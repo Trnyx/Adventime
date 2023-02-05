@@ -31,7 +31,7 @@
  */
 typedef struct s_monde {
     unsigned int seed;
-    t_map map;
+    t_map *map;
     // t_joueur joueur;
 } t_monde;
 
