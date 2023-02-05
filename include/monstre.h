@@ -13,7 +13,8 @@
 
 
 
-#include <statistiques.h>
+#include "entite.h"
+#include "statistiques.h"
 
 
 
@@ -37,7 +38,7 @@ typedef enum s_monstreType {
  * \brief Structure modélisant un monstre
  */
 typedef struct s_monstre {
-    #include <attributs_entite.h>;
+    struct s_entite;
     
     char* name;                             /**< Le nom d'un Monstre */
 

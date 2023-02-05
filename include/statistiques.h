@@ -1,9 +1,11 @@
-/*
- * \file 
+/**
+ * @file statisitques.h
  *
- * \brief
+ * @brief
  *
- * \author
+ * @author Clément Hibon
+ * @date 23 janvier
+ * @version 1.1
  */
 
 
@@ -15,12 +17,12 @@
 
 
 
-/*
- * \struct t_statistiques
- * \brief 
+/**
+ * @struct t_statistiques
+ * @brief 
  */
 typedef struct s_statistiques {
-    #include <attributs_statistiques.h>
+    #include "attributs_statistiques.h"
 
     int pvMax;
     int experience;
@@ -29,12 +31,12 @@ typedef struct s_statistiques {
 
 
 
-/*
- * \struct t_baseStatistiques
- * \brief 
+/**
+ * @struct t_baseStatistiques
+ * @brief 
  */
 typedef struct s_baseStatistiques {
-    #include <attributs_statistiques.h>
+    #include "attributs_statistiques.h"
     
     int experience_courbe;
 } t_baseStatistiques;
