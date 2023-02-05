@@ -50,10 +50,12 @@ typedef struct s_monde {
  *  => Pour le seed "123", les 5 premières au début de l'execution du code 
  *     suivra toujours cet ordre
  */
-void setGenerationSeed(unsigned int seed);
+unsigned int setGenerationSeed(unsigned int seed);
 
 
 t_monde* creerMonde(int seed);
+void detruireMonde(t_monde **monde);
+void afficherMonde(t_monde *monde);
 
 
 

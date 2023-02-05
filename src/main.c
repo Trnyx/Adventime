@@ -15,7 +15,7 @@
 
 
 
-#define TAILLE_BLOCK 16
+#define TAILLE_BLOCK 4
 
 
 SDL_Texture* getTexture(int block, t_textures *textures) {    
@@ -46,15 +46,19 @@ int main(int argc, char* argv[]) {
     initAll(&moteur, &textures);
 
 
-    t_monde *monde = creerMonde(-1);
+
+    int seed = -1;
+
+    t_monde *monde = creerMonde(seed);
+    // afficherMonde(monde);
+
     t_map *map = monde->map;
-    printf("SEED : %i\n", monde->seed);
 
 
     // SDL_Surface *surface = IMG_Load("assets/images/sol_herbe_1.png");
     // SDL_Texture *texture = SDL_CreateTextureFromSurface(moteur->renderer, surface);
 
-    // SDL_Rect taille_texture = { 0, 0, 16, 16 };
+    SDL_Rect taille_texture = { 0, 0, 16, 16 };
     // SDL_Rect taille_rendu = { 0, 0, 64, 64 };
 
 
@@ -112,6 +116,7 @@ int main(int argc, char* argv[]) {
     }
 
     cleanup:
+    detruireMonde(&monde);
     SDL_DestroyRenderer(moteur->renderer);
     SDL_DestroyWindow(moteur->window);
     SDL_Quit();
