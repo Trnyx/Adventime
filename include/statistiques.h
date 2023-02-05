@@ -23,7 +23,7 @@
  * @brief 
  */
 typedef struct s_statistiques {
-    #include <attributs_statistiques.h>
+    #include "attributs_statistiques.h"
 
     int pvMax;
     int experience;
@@ -37,7 +37,7 @@ typedef struct s_statistiques {
  * @brief 
  */
 typedef struct s_baseStatistiques {
-    #include <attributs_statistiques.h>
+    #include "attributs_statistiques.h"
     
     int experience_courbe;
 } t_baseStatistiques;

@@ -17,8 +17,9 @@
 
 
 
-#include <statistiques.h>
-#include <entite.h>
+#include "map.h"
+#include "statistiques.h"
+#include "entite.h"
 
 
 
