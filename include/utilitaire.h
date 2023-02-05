@@ -1,26 +1,17 @@
 /**
- * @file entite.h
- * 
- * @brief 
- * 
- * @author Clément Hibon
- * @date 3 février
- * @version 1.1
+ * @file utils.h
+ *
+ * @brief
+ *
+ * @author Clément Hibon, Julien Houget
+ * @date 21 janvier
+ * @version 1.3
  */
 
 
 
-
-
-#ifndef _JEU_ENTITE_
-#define _JEU_ENTITE_
-
-
-
-
-
-#include <SDL2/SDL.h>
-#include "utilitaire.h"
+#ifndef _JEU_UTILS_
+#define _JEU_UTILS_
 
 
 
@@ -31,13 +22,13 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ */
 typedef enum {
-    ENTITE_RIEN,
-    ENTITE_JOUEUR,
-    ENTITE_MONSTRE,
-} e_entiteType;
-
-
+    FAUX,
+    VRAI
+} boolean;
 
 
 
@@ -47,20 +38,25 @@ typedef enum {
 
 
 /**
- * @struct t_entite
- * @brief Structure modélisant une entité
+ * @struct
+ * @brief
  */
-typedef struct s_entite {
-    int id;
+typedef struct s_vecteur2 {
+    float x;
+    float y;
+} t_vecteur2;
 
-    t_vecteur2 position;
-    t_vecteur2 orientation;
-    int vitesse;
 
-    e_entiteType type;
 
-    SDL_Rect hitbox;
-} t_entite;
+/**
+ * @struct
+ * @brief
+ */
+typedef struct s_vecteur3 {
+    float x;
+    float y;
+    float z;
+} t_vecteur3;
 
 
 
@@ -71,10 +67,8 @@ typedef struct s_entite {
 /* -------------------------------------------------------------------------- */
 
 
-t_entite* creerEntite();
-void detruireEntite(t_entite **entite);
-
-int deplacerEntite(t_entite *entite);
+int getNombreAleatoire(const int min, const int max);
+// int getNombreAvecProbabilite();
 
 
 
