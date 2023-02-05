@@ -16,10 +16,10 @@
 
 
 
-#include <utils.h>
-#include <map.h>
-#include <joueur.h>
-#include <entite.h>
+#include "utilitaire.h"
+#include "map.h"
+// #include "joueur.h"
+// #include "entite.h"
 
 
 
@@ -31,8 +31,8 @@
  */
 typedef struct s_monde {
     unsigned int seed;
-    t_map map;
-    t_joueur joueur;
+    t_map *map;
+    // t_joueur joueur;
 } t_monde;
 
 
@@ -53,7 +53,7 @@ typedef struct s_monde {
 void setGenerationSeed(unsigned int seed);
 
 
-t_monde creerMonde(int seed);
+t_monde* creerMonde(int seed);
 
 
 

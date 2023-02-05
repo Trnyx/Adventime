@@ -21,8 +21,8 @@
 
 #include <stdlib.h>
 #include <math.h>
-#include <vegetations.h>
-#include <map.h>
+#include "../include/vegetations.h"
+#include "../include/map.h"
 
 
 

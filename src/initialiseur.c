@@ -14,6 +14,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "../include/initialiseur.h"
 // #include image.h
 // #include ttf.h
@@ -25,12 +26,15 @@
 /**
  * @brief 
  */
-void initAll(t_moteur **moteur) {
+void initAll(t_moteur **moteur, t_textures **textures) {
     // Moteur
     *moteur = initMoteur();
 
     // Audio
     
-    // Image
-    // TTF
+    // SDL Image
+    *textures = initTextures((*moteur)->renderer);
+    
+
+    // SDL TTF
 }
