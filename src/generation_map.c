@@ -289,14 +289,14 @@ e_biome selectionBiome(const int xChunk, const int yChunk) {
  * @version 1.1
  */
 e_solTag selectionBlock(const e_biome biome) {
-    e_solTag blockTag = VIDE;
+    e_solTag solTag = VIDE;
     const t_baseBiome baseBiome = basesBiomes[biome];
     const int nombreBlockPossible = sizeof(baseBiome.typesDeSol) / sizeof(baseBiome.typesDeSol[0]);
 
 
-    while (blockTag == VIDE) {
+    while (solTag == VIDE) {
         const int index =  getNombreAleatoire(0, nombreBlockPossible - 1);
-        const int probabilite =  getNombreAleatoire(0, 100);
+        const int probabilite =  getNombreAleatoire(1, 100);
     
         const int probabiliteBlock = baseBiome.probabiliteDesBlocks[index];
         if (probabiliteBlock >= probabilite) {
@@ -305,7 +305,7 @@ e_solTag selectionBlock(const e_biome biome) {
     }
   
   
-    return blockTag;
+    return solTag;
 }
 
 
@@ -414,8 +414,8 @@ int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
 
     for (int y = chunk->position.y - 1; y <= chunk->position.y + 1; y++) {
         for (int x = chunk->position.x - 1; x <= chunk->position.x + 1; x++) {
-            if (!chunkEstDansLaMap(x, y, COUCHE_SOL)) continue;
             if (x == chunk->position.x && y == chunk->position.y) continue;
+            if (!chunkEstDansLaMap(x, y, COUCHE_SOL)) continue;
 
           
             chunkCourrant = getChunk(x, y, COUCHE_SOL, map);
@@ -541,7 +541,10 @@ void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
                     hauteurVoisins[x][y] += blocksAlentours[i];
                 else if (i < block->tag)
                     hauteurVoisins[x][y] -= blocksAlentours[i];
+
+                blocksAlentours[i] = 0;
             }
+
         }
     }
 
@@ -574,8 +577,8 @@ void normalisationDeLaMap(t_map* map) {
     t_chunk *chunk = NULL;
 
 
-    for (int y = 0; y < TAILLE_MAP; y++) {
-        for (int x = 0; x < TAILLE_MAP; x++) {
+    for (int x = 0; x < TAILLE_MAP; x++) {
+        for (int y = 0; y < TAILLE_MAP; y++) {
             chunk = getChunk(x, y, COUCHE_SOL, map);
             if (chunk == NULL) continue;
             if (chunk->position.x == 0 || chunk->position.y == 0 || chunk->position.x == TAILLE_MAP - 1 || chunk->position.y == TAILLE_MAP - 1) continue;
@@ -584,15 +587,15 @@ void normalisationDeLaMap(t_map* map) {
             t_predominance biomePredominant = getPredominance(biomesAlentours, NB_BIOMES);
 
           
-            nouveauxBiomes[y][x] = changerBiome(biomePredominant, chunk->biome);
+            nouveauxBiomes[x][y] = changerBiome(biomePredominant, chunk->biome);
         }
     }
 
 
-    for (int y = 0; y < TAILLE_MAP; y++) {
-        for (int x = 0; x < TAILLE_MAP; x++) {
+    for (int x = 0; x < TAILLE_MAP; x++) {
+        for (int y = 0; y < TAILLE_MAP; y++) {
             chunk = getChunk(x, y, COUCHE_SOL, map);
-            chunk->biome = nouveauxBiomes[y][x];
+            chunk->biome = nouveauxBiomes[x][y];
         }
     }
 }
@@ -655,11 +658,11 @@ t_chunk initialisationChunk(const int x, const int y, const int z) {
  * 
  * @version 1.2
  */
-t_block generationBlock(const int x, const int y, const t_chunk *chunk, const int estVide) {
+t_block generationBlock(const int x, const int y, const t_chunk *chunk, const boolean estVide) {
     t_block block;
 
 
-    block.tag = estVide ? VIDE : selectionBlock(chunk->biome);
+    block.tag = estVide == VRAI ? VIDE : selectionBlock(chunk->biome);
 
     t_vecteur2 position = { (TAILLE_CHUNK * chunk->position.x) + x, (TAILLE_CHUNK * chunk->position.y) + y };
     t_vecteur2 positionDansChunk = { x, y };
@@ -683,7 +686,7 @@ t_block generationBlock(const int x, const int y, const t_chunk *chunk, const in
  * 
  * @version 1.3
  */
-t_chunk* generationChunk(t_chunk *chunk, t_map *map, const int estVide) {
+t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
     for (int x = 0, i = 0; x < TAILLE_CHUNK; x++) {
         for (int y = 0; y < TAILLE_CHUNK; y++) {
             chunk->blocks[i++] = generationBlock(x, y, chunk, estVide);
@@ -693,7 +696,7 @@ t_chunk* generationChunk(t_chunk *chunk, t_map *map, const int estVide) {
 
     // Si le chunk est vide, tous les blocks sont identiques (VIDE)
     // il n'y a donc nul besoin de normaliser le chunk 
-    if (estVide) return chunk;
+    if (estVide == VRAI) return chunk;
 
 
     for (int i = 0; i < NOMBRE_DE_NORMALISATION_CHUNK; i++) {
@@ -743,9 +746,9 @@ t_map* genererMap() {
                 chunkTempo = getChunk(x, y, z, map);
 
                 if (z == COUCHE_SOL) 
-                    generationChunk(chunkTempo, map, 0);
+                    generationChunk(chunkTempo, map, FAUX);
                 else
-                    generationChunk(chunkTempo, map, 1);
+                    generationChunk(chunkTempo, map, VRAI);
             }
         }
     }

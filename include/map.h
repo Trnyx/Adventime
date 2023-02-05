@@ -24,10 +24,10 @@
 
 
 
-#define TAILLE_MAP 8
-#define TAILLE_CHUNK 5
-// #define TAILLE_MAP 14
-// #define TAILLE_CHUNK 16
+// #define TAILLE_MAP 8
+// #define TAILLE_CHUNK 5
+#define TAILLE_MAP 14
+#define TAILLE_CHUNK 16
 
 #define NOMBRE_DE_NORMALISATION_MAP 1
 #define NOMBRE_DE_NORMALISATION_CHUNK 2
