@@ -5,13 +5,7 @@
 #include "../include/initialiseur.h"
 #include "../include/moteur.h"
 #include "../include/main.h"
-
-
-
-
-
-
-
+#include "SDL2/SDL_render.h"
 
 
 int main() {
