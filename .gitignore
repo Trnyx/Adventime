@@ -1,6 +1,6 @@
 # buffers
 *.*~
-
+*~
 # Prerequisites
 *.d
 
@@ -55,8 +55,9 @@ Mkfile.old
 dkms.conf
 
 /.vscode
-/lib/
-/include/SDL2/
-/bin/
 /obj/
 /save/
+/bin/
+/lib/
+
+.DS_Store
