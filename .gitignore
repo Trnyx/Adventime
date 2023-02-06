@@ -1,6 +1,6 @@
 # buffers
 *.*~
-
+*~
 # Prerequisites
 *.d
 
@@ -21,19 +21,19 @@
 
 # Libraries
 *.lib
-# *.a
-# *.la
+*.a
+*.la
 *.lo
 
 # Shared objects (inc. Windows DLLs)
-# *.dll
+*.dll
 *.so
 *.so.*
 *.dylib
 
 # Executables
-# *.exe
-# *.out
+*.exe
+*.out
 *.app
 *.i*86
 *.x86_64
@@ -57,3 +57,7 @@ dkms.conf
 /.vscode
 /obj/
 /save/
+/bin/
+/lib/
+
+.DS_Store
