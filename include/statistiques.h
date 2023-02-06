@@ -10,6 +10,8 @@
 
 
 
+
+
 #ifndef _JEU_STATISTIQUES_
 #define _JEU_STATISTIQUES_
 
@@ -20,8 +22,12 @@
 /**
  * @struct t_statistiques
  * @brief 
+/**
+ * @struct t_statistiques
+ * @brief 
  */
 typedef struct s_statistiques {
+    #include "attributs_statistiques.h"
     #include "attributs_statistiques.h"
 
     unsigned int pvMax;
@@ -34,8 +40,12 @@ typedef struct s_statistiques {
 /**
  * @struct t_baseStatistiques
  * @brief 
+/**
+ * @struct t_baseStatistiques
+ * @brief 
  */
 typedef struct s_baseStatistiques {
+    #include "attributs_statistiques.h"
     #include "attributs_statistiques.h"
     
     unsigned int experience_courbe;

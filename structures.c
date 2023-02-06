@@ -85,15 +85,35 @@
 
 
 
-// typedef enum s_monstreTag {
-//     OISEAU
-// } e_monstreTag;
+typedef enum s_monstreTag {
+    OISEAU
+} e_monstreTag;
 
 
-// typedef enum s_monstreType {
-//     MONTAGNARD,
-//     PLANTE
-// } e_typeMonstre;
+typedef enum s_monstreType {
+    MONTAGNARD,
+    PLANTE
+} e_typeMonstre;
+
+
+
+
+/**
+ * The data of a Monster saved in the database
+ */
+typedef struct s_monstre {
+    struct entite_s;
+    /** The current name of the Monster */
+    char* name;
+    /** The tag of the Monster */
+    e_monstreTag tag; // type : MonstreTag
+    /** The type of the Monster */
+    e_typeMonstre type; // type : MonstreType
+    /** The statistics of the Monster */
+    t_statistiques statistiques;
+    /** The basic data of the statistics of the Monster */
+    t_baseStatistiques baseStatistiques;
+} t_monstre;
 
 
 

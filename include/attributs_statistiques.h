@@ -10,6 +10,7 @@
 
 
 
+
 float pv;             /**<  */
 float attaque;        /**<  */
 float defense;        /**<  */

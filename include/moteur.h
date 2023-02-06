@@ -1,4 +1,11 @@
 /**
+<<<<<<< HEAD
+ * @file 
+ *
+ * @brief
+ *
+ * @author
+=======
  * @file moteur.h
  *
  * @brief
@@ -6,6 +13,7 @@
  * @author Eliott Remars & Clément Hibon
  * @date 3 février
  * @version 1.1
+>>>>>>> main
  */
 
 

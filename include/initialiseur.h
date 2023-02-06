@@ -18,17 +18,18 @@
 
 
 #include "moteur.h"
-#include "audio.h"
+#include "textures.h"
+// #include "audio.h"
 
 
 
 
 /* -------------------------------------------------------------------------- */
-/*                                  Fonction                                  */
+/*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
 
 
-void initAll(t_moteur **moteur);
+void initAll(t_moteur **moteur, t_textures **textures);
 
 
 
