@@ -52,9 +52,10 @@ typedef enum {
  * @struct t_entite
  * @brief Structure modélisant une entité
  */
-typedef struct s_entite {
+typedef struct s_entite t_entite;
+struct s_entite {
     #include "attributs_entite.h"
-} t_entite;
+};
 
 
 
