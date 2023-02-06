@@ -80,6 +80,8 @@ typedef struct s_textures {
 t_textures* initTextures(SDL_Renderer *renderer);
 void detruireTextures(t_textures **textures);
 
+SDL_Texture* getTexture(int tag, t_textures *textures);
+
 
 
 
