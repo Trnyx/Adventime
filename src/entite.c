@@ -35,9 +35,8 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->position = position;
     entite->orientation.x = 1;
     entite->orientation.y = 0;
-    entite->vitesse = 0;
 
-    entite->type = ENTITE_RIEN;
+    entite->entiteType = ENTITE_RIEN;
 
     entite->hitbox.x = 0;
     entite->hitbox.y = 0;

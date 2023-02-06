@@ -1,15 +1,19 @@
-/*
- * \file 
- *
- * \brief
- *
- * \author
+/**
+ * @file joueur.h
+ * 
+ * @brief 
+ * 
+ * @author Clément Hibon
+ * @date 3 février
+ * @version 1.1
  */
 
 
 
 #ifndef _JEU_JOUEUR_
 #define _JEU_JOUEUR_
+
+
 
 
 
@@ -21,16 +25,30 @@
 
 
 
-/*
- * \struct t_joueur
- * \brief Structure modélisant un joueur
+#define JOUEUR_VITESSE_DEFAUT 6
+#define JOUEUR_ATTAQUE_DEFAUT 10
+#define JOUEUR_DEFENSE_DEFAUT 10
+#define JOUEUR_PV_DEFAUT 20
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Structures                                 */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @struct t_joueur
+ * @brief Structure modélisant un joueur
  */
 typedef struct s_joueur {
-    #include <attributs_entite.h>
+    #include "attributs_entite.h"
 
-    char *name;                     /**< Le nom du joueur */
     t_statistiques statistiques;    /**< Les statistiques du joueur */
-    t_inventaire inventaire;        /**< L'inventaire du joueur */
+    // t_inventaire *inventaire;        /**< L'inventaire du joueur */
+
     
 } t_joueur;
 
@@ -38,8 +56,13 @@ typedef struct s_joueur {
 
 
 
-t_joueur creerJoueur();
-void detruireJoueur(t_joueur *joueur);
+/* -------------------------------------------------------------------------- */
+/*                                  Fonctions                                 */
+/* -------------------------------------------------------------------------- */
+
+
+t_joueur* creerJoueur();
+void detruireJoueur(t_joueur **joueur);
 
 
 

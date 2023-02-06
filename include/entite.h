@@ -34,7 +34,9 @@
 typedef enum {
     ENTITE_RIEN,
     ENTITE_JOUEUR,
-    ENTITE_MONSTRE,
+    ENTITE_ANIMAL,
+    ENTITE_MONSTRE_AGGRESSIF,
+    ENTITE_MONSTRE_PASSIF,
 } e_entiteType;
 
 
@@ -51,15 +53,7 @@ typedef enum {
  * @brief Structure modélisant une entité
  */
 typedef struct s_entite {
-    int id;
-
-    t_vecteur2 position;
-    t_vecteur2 orientation;
-    int vitesse;
-
-    e_entiteType type;
-
-    SDL_Rect hitbox;
+    #include "attributs_entite.h"
 } t_entite;
 
 
@@ -71,7 +65,7 @@ typedef struct s_entite {
 /* -------------------------------------------------------------------------- */
 
 
-t_entite* creerEntite();
+t_entite* creerEntite(const t_vecteur2 position);
 void detruireEntite(t_entite **entite);
 
 int deplacerEntite(t_entite *entite);

@@ -24,9 +24,9 @@
 typedef struct s_statistiques {
     #include "attributs_statistiques.h"
 
-    int pvMax;
-    int experience;
-    int niveau;
+    unsigned int pvMax;
+    unsigned int experience;
+    unsigned int niveau;
 } t_statistiques;
 
 
@@ -38,7 +38,7 @@ typedef struct s_statistiques {
 typedef struct s_baseStatistiques {
     #include "attributs_statistiques.h"
     
-    int experience_courbe;
+    unsigned int experience_courbe;
 } t_baseStatistiques;
 
 

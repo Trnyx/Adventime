@@ -10,7 +10,7 @@
 
 
 
-int pv;             /**<  */
-int attaque;        /**<  */
-int defense;        /**<  */
-int vitesse;        /**<  */
+float pv;             /**<  */
+float attaque;        /**<  */
+float defense;        /**<  */
+float vitesse;        /**<  */

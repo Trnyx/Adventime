@@ -67,7 +67,7 @@ typedef enum {
  * @brief Modélise un monstre
  */
 typedef struct s_monstre {
-    struct entite_s;
+    #include "attributs_entite.h"
     
     char* name;                             /**< Le nom d'un Monstre */
 
