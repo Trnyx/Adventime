@@ -1,4 +1,3 @@
-#include <SDL2/SDL.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -11,6 +10,7 @@
 #include "../include/moteur.h"
 #include "../include/main.h"
 #include "../include/monde.h"
+#include "../include/joueur.h"
 
 
 
@@ -34,9 +34,10 @@ int main(int argc, char* argv[]) {
     int seed = -1;
 
     t_monde *monde = creerMonde(seed);
-    // afficherMonde(monde);
-
     t_map *map = monde->map;
+
+    t_vecteur2 positionJoueur = getPointApparitionJoueur(map);
+    t_joueur *joueur = creerJoueur(positionJoueur);
 
 
     // SDL_Surface *surface = IMG_Load("assets/images/sol_herbe_1.png");
@@ -102,6 +103,7 @@ int main(int argc, char* argv[]) {
 
     cleanup:
     detruireMonde(&monde);
+    detruireJoueur(&joueur);
     SDL_DestroyRenderer(moteur->renderer);
     SDL_DestroyWindow(moteur->window);
     SDL_Quit();

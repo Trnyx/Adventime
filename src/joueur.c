@@ -20,8 +20,9 @@
 
 void detruireJoueur(t_joueur **joueur) {
     if (joueur != NULL && *joueur != NULL) {
-        free(*joueur);
-        *joueur = NULL;
+        detruireEntite((t_entite**) joueur);
+        // free(*joueur);
+        // *joueur = NULL;
     }
 };
 
@@ -30,8 +31,8 @@ void detruireJoueur(t_joueur **joueur) {
 
 
 t_joueur* creerJoueur(t_vecteur2 position) {
-    t_joueur *joueur = malloc(sizeof(t_joueur));
     t_entite *entite = creerEntite(position);
+    t_joueur *joueur = realloc(entite, sizeof(t_joueur));
 
 
     joueur->position = entite->position;

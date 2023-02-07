@@ -58,6 +58,14 @@ void detruireMonde(t_monde **monde);
 void afficherMonde(t_monde *monde);
 
 
+t_vecteur2 getPointApparitionJoueur(t_map *map);
+
+
+
+
+
+
+
 
 
 
