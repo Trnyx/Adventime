@@ -21,6 +21,13 @@
 
 
 
+/**
+ * @brief Get the Texture object
+ * 
+ * @param tag Le tag de la texture à afficher
+ * @param textures 
+ * @return SDL_Texture* 
+ */
 SDL_Texture* getTexture(int tag, t_textures *textures) {    
     switch (tag) {
         case SOL_EAU_PROFONDE: return textures->sol_profondeur;
@@ -127,6 +134,14 @@ t_textures* initTextures(SDL_Renderer *renderer) {
 
 
     /* --------------------------------- Joueur --------------------------------- */
+
+
+    surface = IMG_Load("assets/images/joueur.png");
+    textures->joueur = SDL_CreateTextureFromSurface(renderer, surface);
+    if (surface == NULL) {
+        printf("Erreur Chargement Texture : Impossible de charger joueur.png\n%s\n", SDL_GetError());
+    }
+    SDL_FreeSurface(surface);
 
 
     /* -------------------------------- Monstres -------------------------------- */

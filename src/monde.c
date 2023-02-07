@@ -28,9 +28,13 @@ unsigned int setGenerationSeed(unsigned int seed) {
 
 
 t_vecteur2 getPointApparitionJoueur(t_map *map) {
-    float x, y;
-    t_vecteur2 position = { x, y };
+    const int centre = (TAILLE_MAP * TAILLE_CHUNK) / 2;
+    
+    
+    const float x = centre, y = centre;
 
+
+    t_vecteur2 position = { x, y };
     return position;
 }
 

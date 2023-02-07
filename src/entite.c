@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "../include/moteur.h"
 #include "../include/entite.h"
 #include "../include/utilitaire.h"
 
@@ -51,8 +52,11 @@ t_entite* creerEntite(const t_vecteur2 position) {
 
 
 
-int peutDeplacerEntite() {
+boolean peutDeplacerEntite() {
+    int collision = FAUX;
 
+
+    return collision;
 }
 
 
@@ -63,8 +67,23 @@ int peutDeplacerEntite() {
  * @param entite 
  * @return int 
  */
-int deplacerEntite(t_entite *entite) {
+boolean deplacerEntite(t_entite *entite, const float vitesse) {
+    const float distance = vitesse * TPS;
 
+    // const float normale = sqrt(pow( , 2) + pow( , 2));
+    t_vecteur2 positionSuivante = { entite->position.x, entite->position.y };
+
+    boolean peutSeDeplacer = peutDeplacerEntite();
+
+    if (peutSeDeplacer == VRAI) {
+
+    }
+    else {
+
+    }
+
+
+    return peutSeDeplacer;
 }
 
 

@@ -44,6 +44,10 @@ int main(int argc, char* argv[]) {
     // SDL_Texture *texture = SDL_CreateTextureFromSurface(moteur->renderer, surface);
 
     SDL_Rect taille_texture = { 0, 0, 16, 16 };
+    SDL_Rect rendu;
+
+    rendu.h = TAILLE_BLOCK;
+    rendu.w = TAILLE_BLOCK;
     // SDL_Rect taille_rendu = { 0, 0, 64, 64 };
 
 
@@ -76,12 +80,10 @@ int main(int argc, char* argv[]) {
                             SDL_Texture *texture = getTexture(block->tag, textures);
                             if (texture == NULL) continue;
 
-                            SDL_Rect rendu; // = { block->position.x, block->position.y, TAILLE_BLOCK, TAILLE_BLOCK };
+                            // rendu; // = { block->position.x, block->position.y, TAILLE_BLOCK, TAILLE_BLOCK };
                             // rendu.x = block->position.x * TAILLE_BLOCK;
                             rendu.x = (TAILLE_CHUNK * xChunk + xBlock) * TAILLE_BLOCK;
                             rendu.y = (TAILLE_CHUNK * yChunk + yBlock) * TAILLE_BLOCK;
-                            rendu.h = TAILLE_BLOCK;
-                            rendu.w = TAILLE_BLOCK;
 
                             // printf("BLOCK => %i\n", block->tag);
                             SDL_RenderCopy(moteur->renderer, texture, NULL, &rendu);
@@ -92,7 +94,9 @@ int main(int argc, char* argv[]) {
             }
             
 
-
+            rendu.x = joueur->position.x * TAILLE_BLOCK;
+            rendu.y = joueur->position.y * TAILLE_BLOCK;
+            SDL_RenderCopy(moteur->renderer, textures->joueur, NULL, &rendu);
 
 
             // On fait le rendu

@@ -40,6 +40,25 @@
 
 
 /**
+ * @brief 
+ */
+typedef struct s_action_flags {
+    // Déplacements
+    int up;
+    int down;
+    int left;
+    int right;
+
+    // Intéractions
+    int interaction;
+
+    // Autres
+    int miniMap;
+} t_action_flags;
+
+
+
+/**
  * @struct t_joueur
  * @brief Structure modélisant un joueur
  */
@@ -47,8 +66,9 @@ typedef struct s_joueur {
     #include "attributs_entite.h"
 
     t_statistiques statistiques;    /**< Les statistiques du joueur */
-    // t_inventaire *inventaire;        /**< L'inventaire du joueur */
+    // t_inventaire *inventaire;        /**< L'inventaire du joueur */   
 
+    t_action_flags *actionFlags; 
     
 } t_joueur;
 
