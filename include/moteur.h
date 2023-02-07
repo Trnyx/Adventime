@@ -46,6 +46,29 @@
  * @brief 
  * 
  */
+typedef struct s_controles {
+    // Directions
+    SDL_Scancode key_up;
+    SDL_Scancode key_down;
+    SDL_Scancode key_left;
+    SDL_Scancode key_right;
+
+    // Interactions
+    SDL_Scancode interaction;
+    int attack;
+
+    // Autres
+    SDL_Scancode escape;
+    SDL_Scancode miniMap;
+
+} t_controles;
+
+
+
+/**
+ * @brief 
+ * 
+ */
 typedef struct s_moteur {
 
     SDL_Window *window;         /**< La fenetre du jeu*/
@@ -55,7 +78,7 @@ typedef struct s_moteur {
     int window_height;          /**< Hauteur de la fenêtre */
 
 
-
+    t_controles *controles;     /**< Les contrôles du jeu */
     
 
 } t_moteur;
