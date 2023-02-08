@@ -26,26 +26,12 @@
 /**
  * @brief 
  * 
- * @param position 
- * @return t_entite* 
+ * @param entiteSource 
+ * @param entiteCible 
+ * @return float 
  */
-t_entite* creerEntite(const t_vecteur2 position) {
-    t_entite *entite = malloc(sizeof(t_entite));
-
-
-    entite->position = position;
-    entite->orientation.x = 1;
-    entite->orientation.y = 0;
-
-    entite->entiteType = ENTITE_RIEN;
-
-    entite->hitbox.x = 0;
-    entite->hitbox.y = 0;
-    entite->hitbox.h = 0;
-    entite->hitbox.w = 0;
-    
-
-    return entite;
+float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *entiteCible) {
+    return calculDistanceEntrePoints(entiteSource->position, entiteCible->position);
 }
 
 
@@ -112,6 +98,11 @@ boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vit
 
 
 
+/**
+ * @brief 
+ * 
+ * @param entite 
+ */
 void detruireEntite(t_entite **entite) {
     if (entite != NULL && *entite != NULL) {
 
@@ -119,4 +110,33 @@ void detruireEntite(t_entite **entite) {
         *entite = NULL;
 
     }
+}
+
+
+
+
+
+/**
+ * @brief 
+ * 
+ * @param position 
+ * @return t_entite* 
+ */
+t_entite* creerEntite(const t_vecteur2 position) {
+    t_entite *entite = malloc(sizeof(t_entite));
+
+
+    entite->position = position;
+    entite->orientation.x = 1;
+    entite->orientation.y = 0;
+
+    entite->entiteType = ENTITE_RIEN;
+
+    entite->hitbox.x = 0;
+    entite->hitbox.y = 0;
+    entite->hitbox.h = 0;
+    entite->hitbox.w = 0;
+    
+
+    return entite;
 }
