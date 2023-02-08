@@ -57,8 +57,8 @@ int main(int argc, char* argv[]) {
             if(evt.type == SDL_QUIT) {
                 goto cleanup;
             }
-            SDL_RenderClear(moteur->renderer);
 
+            updateCamera(moteur, joueur->position);
         
 
             // On pose les textures

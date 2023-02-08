@@ -15,7 +15,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../include/moteur.h"
 #include "../include/camera.h"
+
+
+
+
+
+void updateCamera(t_moteur *moteur, const t_vecteur2 position) {
+    moteur->camera->position = position;
+}
 
 
 
