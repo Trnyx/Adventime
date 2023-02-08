@@ -67,7 +67,7 @@ const t_baseBiome basesBiomes[] = {
         // Sol
         { SOL_EAU_PROFONDE, SOL_EAU }, { 100, 0 },
         // Vegetations
-        { 0 }, { 0 }, { 0.0 },
+        { 0 }, { 0 }, 0.0,
         // Monstres
         { 0 }, { 0 },
     },
@@ -78,7 +78,7 @@ const t_baseBiome basesBiomes[] = {
         // Sol
         { SOL_EAU, SOL_SABLE }, { 70, 30 },
         // Vegetations
-        { PALMIER }, { 100 }, { 0.0 },
+        { PALMIER }, { 100 }, 0.0,
         // Monstres
         { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_EAU }, { 15, 85 },
     },
@@ -89,7 +89,7 @@ const t_baseBiome basesBiomes[] = {
         // Sol
         { SOL_HERBE_1, SOL_HERBE_2 }, { 55, 45 }, 
         // Vegetations
-        { CHAINE }, { 30 }, { 1.0 },
+        { CHAINE }, { 30 }, 1.0,
         // Monstres
         { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 90, 10 },
     },
@@ -100,7 +100,7 @@ const t_baseBiome basesBiomes[] = {
         // Sol
         { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 30, 40, 20 }, 
         // Vegetations
-        { CHAINE }, { 100 }, { 3.0 },
+        { CHAINE }, { 100 }, 3.0,
         // Monstres
         { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 30, 70 },
     },
@@ -111,7 +111,7 @@ const t_baseBiome basesBiomes[] = {
         // Sol
         { SOL_MONTAGNE_1, SOL_MONTAGNE_2 }, { 50, 50 }, 
         // Vegetations
-        { CHAINE, SAPIN }, { 50, 50 }, { 1.0, 2.0 },
+        { CHAINE, SAPIN }, { 50, 50 }, 0.7,
         // Monstres
         { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_MONTAGNARD }, { 15, 85 },
     },
@@ -183,9 +183,11 @@ int chunkEstDansLaMap(const int x, const int y, const int z) {
  * @param chunk Un pointeur sur le chunk où sera récupérer le block
  * @return Un pointeur sur le block trouvé, NULL sinon
  * 
- * @version 1.2
+ * @version 1.3
  */
 t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk) {
+    if (!blockEstDansLeChunk(x, y)) return NULL;
+
     for (int i = 0; i < TAILLE_CHUNK * TAILLE_CHUNK; i++) {
         if (chunk->blocks[i].positionDansChunk.x == x && chunk->blocks[i].positionDansChunk.y == y) {
             return &chunk->blocks[i];
@@ -193,6 +195,27 @@ t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk) {
     }
 
     return NULL;
+}
+
+
+/**
+ * @brief Récupère un block se situant dans la map
+ * 
+ * @param x La cooronnée x (relative à la map) du block
+ * @param y La cooronnée y (relative à la map) du block
+ * @param z La couche où se situe du block
+ * @param map Un pointeur sur la map où sera récupérer le block
+ * @return Un pointeur sur le block trouvé, NULL sinon
+ * 
+ * @version 1.1
+ */
+t_block* getBlockDansMap(const int x, const int y, const int z, t_map *map) {
+    if (!blockEstDansLaMap(x, y)) return NULL;
+
+    t_chunk *chunk = getChunk(x / TAILLE_CHUNK, y / TAILLE_CHUNK, z, map);
+    if (chunk == NULL) return NULL;
+
+    return getBlockDansChunk(x % TAILLE_CHUNK, y % TAILLE_CHUNK, chunk);
 }
 
 
@@ -206,9 +229,11 @@ t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk) {
  * @param map Un pointeur sur la map où sera récupéré le chunk
  * @return Un pointeur sur le chunk trouvé, NULL sinon
  * 
- * @version 1.2
+ * @version 1.3
  */
 t_chunk* getChunk(const int x, const int y, const int couche, t_map *map) {
+    if (!chunkEstDansLaMap(x, y, couche)) return NULL;
+
     for (int i = 0; i < TAILLE_MAP * TAILLE_MAP * NB_COUCHE; i++) {
         if (map->chunks[i].position.x == x && map->chunks[i].position.y == y && map->chunks[i].position.z == couche) {
             return &map->chunks[i];

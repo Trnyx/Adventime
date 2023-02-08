@@ -126,7 +126,7 @@ int peutPlacerVegetatal(const int x, const int y, const t_diskSampling grid, con
  * @param chunk Un pointeur sur le chunk de la couche du sol
  * @return La grille de placement des végétaux
  * 
- * @version 1.1
+ * @version 1.2
  */
 t_diskSampling genererDiskSampling(t_chunk *chunk) {
     t_diskSampling vegetals;
@@ -140,8 +140,8 @@ t_diskSampling genererDiskSampling(t_chunk *chunk) {
     const e_vegetalTag vegetalTag = selectionVegetation(baseBiome) % HERBE;
 
   
-    if (baseBiome.vegetationDensite[0]) {
-        const float rayon = 10.0 / baseBiome.vegetationDensite[0];
+    if (baseBiome.vegetationDensite > 0) {
+        const float rayon = (TAILLE_CHUNK / 2) / baseBiome.vegetationDensite;
       
       
         for (int n = 0; n < nbVegetaux; n++) {
