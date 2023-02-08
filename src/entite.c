@@ -61,10 +61,17 @@ t_entite* creerEntite(const t_vecteur2 position) {
  * @return boolean 
  */
 boolean peutDeplacerEntite(const t_map *map, const t_entite *entite, const t_vecteur2 positionSuivante) {
-    t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, map);
+    t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_VEGETATION, map);
     if (block == NULL) return FAUX;
 
-    if (block->tag == VIDE) return VRAI;
+    // Check si non vide
+    if (block->tag != VIDE) return FAUX;
+
+    // Check si plus de 1 de hauteur 
+    block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_SOL, map);
+    t_block* blockPositionActuelle = getBlockDansMap(entite->position.x, entite->position.y, COUCHE_SOL, map);
+    if (abs(block->tag - blockPositionActuelle->tag) > 1) return FAUX;
+
 
     return VRAI;
 }
