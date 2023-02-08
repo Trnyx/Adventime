@@ -1,11 +1,4 @@
 /**
-<<<<<<< HEAD
- * @file 
- *
- * @brief
- *
- * @author
-=======
  * @file moteur.h
  *
  * @brief
@@ -13,7 +6,6 @@
  * @author Eliott Remars & Clément Hibon
  * @date 3 février
  * @version 1.1
->>>>>>> main
  */
 
 
@@ -25,6 +17,9 @@
 
 
 #include <SDL2/SDL.h>
+
+#include "camera.h"
+#include "textures.h"
 #include "monde.h"
 
 
@@ -81,7 +76,8 @@ typedef struct s_moteur {
 
     t_monde *monde;             /**< Le monde chargé */
     
-
+    t_camera *camera;           /**< La caméra */
+    t_textures *textures;       /**< Toutes les textures du jeu */
     t_controles *controles;     /**< Les contrôles du jeu */
     
 

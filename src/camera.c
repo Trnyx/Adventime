@@ -27,7 +27,7 @@ t_camera* creerCamera(t_vecteur2 position) {
 
     camera->position = position;
 
-    t_vecteur2 futurePosition = { 0, 0};
+    t_vecteur2 futurePosition = { 0, 0 };
     camera->futurePosition = futurePosition;
 
 

@@ -25,9 +25,8 @@
 int main(int argc, char* argv[]) {
 
     t_moteur *moteur = NULL;
-    t_textures *textures = NULL;
 
-    initAll(&moteur, &textures);
+    initAll(&moteur);
 
 
 
@@ -77,7 +76,7 @@ int main(int argc, char* argv[]) {
                             if (block == NULL) continue;
 
 
-                            SDL_Texture *texture = getTexture(block->tag, textures);
+                            SDL_Texture *texture = getTexture(block->tag, moteur->textures);
                             if (texture == NULL) continue;
 
                             // rendu; // = { block->position.x, block->position.y, TAILLE_BLOCK, TAILLE_BLOCK };
@@ -96,7 +95,7 @@ int main(int argc, char* argv[]) {
 
             rendu.x = joueur->position.x * TAILLE_BLOCK;
             rendu.y = joueur->position.y * TAILLE_BLOCK;
-            SDL_RenderCopy(moteur->renderer, textures->joueur, NULL, &rendu);
+            SDL_RenderCopy(moteur->renderer, moteur->textures->joueur, NULL, &rendu);
 
 
             // On fait le rendu

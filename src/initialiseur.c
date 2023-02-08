@@ -26,14 +26,18 @@
 /**
  * @brief 
  */
-void initAll(t_moteur **moteur, t_textures **textures) {
+void initAll(t_moteur **moteur) {
     // Moteur
     *moteur = initMoteur();
+    t_vecteur2 positionCamera = { 0, 0 };
+    (*moteur)->camera = creerCamera(positionCamera);
+    (*moteur)->textures = initTextures((*moteur)->renderer);
+
 
     // Audio
     
+    
     // SDL Image
-    *textures = initTextures((*moteur)->renderer);
     
 
     // SDL TTF

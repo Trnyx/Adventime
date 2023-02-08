@@ -18,7 +18,6 @@
 
 
 #include "moteur.h"
-#include "textures.h"
 // #include "audio.h"
 
 
@@ -29,7 +28,7 @@
 /* -------------------------------------------------------------------------- */
 
 
-void initAll(t_moteur **moteur, t_textures **textures);
+void initAll(t_moteur **moteur);
 
 
 
