@@ -1,5 +1,5 @@
 /**
- * @file utils.h
+ * @file utilitaire.h
  *
  * @brief
  *
@@ -69,6 +69,8 @@ typedef struct s_vecteur3 {
 
 int getNombreAleatoire(const int min, const int max);
 // int getNombreAvecProbabilite();
+
+float calculDistanceEntrePoints(const t_vecteur2 source, const t_vecteur2 cible);
 
 
 

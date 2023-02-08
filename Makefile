@@ -5,7 +5,7 @@
 # Compilateur
 CC = gcc
 # Paramètres de la compilation
-CFLAGS = -g -Wall -fms-extensions -Llib -lm
+CFLAGS = -g -Wall -fms-extensions
 
 # Nom de l'exécutable
 EXEC = Adventime
@@ -15,13 +15,16 @@ LIB =
 
 
 # SDL
-SDL_DIR=${HOME}/SDL2
-SDL_LIB_DIR=${SDL_DIR}/lib
-SDL_INC_DIR=${SDL_DIR}/include
+SDL_LIB_DIR=${PWD}/lib
+SDL_INC_DIR=${PWD}/include
 
-LIBS = -L${SDL_LIB_DIR} -lSDL2main -lSDL2 -lSDL2_mixer 
 INCS = -I${SDL_INC_DIR} 
 
+ifeq ($(OS),Windows_NT)
+LIBS = -L${SDL_LIB_DIR} -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image
+else
+LIBS = -L${SDL_LIB_DIR} -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image
+endif
 
 
 
@@ -85,7 +88,7 @@ $(BINDIR)/$(EXEC): $(OBJECTS)
 
 # Supprime les fichiers objets
 clean:
-	rm -rf $(OBJDIR)
+	rm -rf ./$(OBJDIR)/*.o
 	@echo "Nettoyage des fichiers objets effectué."
 
 
