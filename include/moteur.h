@@ -25,6 +25,7 @@
 
 
 #include <SDL2/SDL.h>
+#include "monde.h"
 
 
 
@@ -77,6 +78,9 @@ typedef struct s_moteur {
     int window_width;           /**< Largeur de la fenêtre */
     int window_height;          /**< Hauteur de la fenêtre */
 
+
+    t_monde *monde;             /**< Le monde chargé */
+    
 
     t_controles *controles;     /**< Les contrôles du jeu */
     

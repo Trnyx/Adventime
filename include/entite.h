@@ -69,7 +69,7 @@ struct s_entite {
 t_entite* creerEntite(const t_vecteur2 position);
 void detruireEntite(t_entite **entite);
 
-boolean deplacerEntite(t_entite *entite, const float vitesse);
+boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vitesse);
 
 
 

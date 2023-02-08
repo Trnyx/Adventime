@@ -52,11 +52,21 @@ t_entite* creerEntite(const t_vecteur2 position) {
 
 
 
-boolean peutDeplacerEntite() {
-    int collision = FAUX;
+/**
+ * @brief 
+ * 
+ * @param map 
+ * @param entite 
+ * @param positionSuivante 
+ * @return boolean 
+ */
+boolean peutDeplacerEntite(const t_map *map, const t_entite *entite, const t_vecteur2 positionSuivante) {
+    t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, map);
+    if (block == NULL) return FAUX;
 
+    if (block->tag == VIDE) return VRAI;
 
-    return collision;
+    return VRAI;
 }
 
 
@@ -64,22 +74,27 @@ boolean peutDeplacerEntite() {
 /**
  * @brief 
  * 
+ * @param moteur 
  * @param entite 
- * @return int 
+ * @param vitesse 
+ * @return boolean 
  */
-boolean deplacerEntite(t_entite *entite, const float vitesse) {
+boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vitesse) {
     const float distance = vitesse * TPS;
 
-    // const float normale = sqrt(pow( , 2) + pow( , 2));
-    t_vecteur2 positionSuivante = { entite->position.x, entite->position.y };
+    // Justification calcul normale
+    const float normale = sqrt(pow(entite->orientation.x, 2) + pow(entite->orientation.y, 2));
 
-    boolean peutSeDeplacer = peutDeplacerEntite();
+    // Justification calcul
+    t_vecteur2 positionSuivante;
+    positionSuivante.x = entite->position.x + (distance * (entite->orientation.x / normale));
+    positionSuivante.y = entite->position.y + (distance * (entite->orientation.y / normale));
+    
+    boolean peutSeDeplacer = peutDeplacerEntite(moteur->monde->map, entite, positionSuivante);
+
 
     if (peutSeDeplacer == VRAI) {
-
-    }
-    else {
-
+        entite->position = positionSuivante;
     }
 
 

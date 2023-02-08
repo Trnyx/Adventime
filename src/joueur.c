@@ -18,11 +18,52 @@
 
 
 
+/**
+ * @brief 
+ * 
+ * @return t_action_flags* 
+ */
+t_action_flags* initialiserActionFlags() {
+    t_action_flags *flags = malloc(sizeof(t_action_flags));
+
+    flags->up = 0;
+    flags->down = 0;
+    flags->left = 0;
+    flags->right = 0;
+    flags->interaction = 0;
+    flags->miniMap = 0;
+
+    return flags;
+}
+
+
+
+/**
+ * @brief 
+ * 
+ * @param flags 
+ */
+void detruireActionFlags(t_action_flags **flags) {
+    if (flags != NULL && *flags != NULL) {
+        free(*flags);
+        *flags = NULL;
+    }
+}
+
+
+
+
+
+/**
+ * @brief 
+ * 
+ * @param joueur 
+ */
 void detruireJoueur(t_joueur **joueur) {
     if (joueur != NULL && *joueur != NULL) {
         detruireEntite((t_entite**) joueur);
-        // free(*joueur);
-        // *joueur = NULL;
+
+        detruireActionFlags(&(*joueur)->actionFlags);
     }
 };
 
@@ -30,6 +71,12 @@ void detruireJoueur(t_joueur **joueur) {
 
 
 
+/**
+ * @brief 
+ * 
+ * @param position 
+ * @return t_joueur* 
+ */
 t_joueur* creerJoueur(t_vecteur2 position) {
     t_entite *entite = creerEntite(position);
     t_joueur *joueur = realloc(entite, sizeof(t_joueur));
@@ -49,7 +96,7 @@ t_joueur* creerJoueur(t_vecteur2 position) {
     joueur->statistiques.experience = 0;
     joueur->statistiques.niveau = 0;
 
-
+    joueur->actionFlags = initialiserActionFlags();
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
 
