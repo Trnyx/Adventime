@@ -154,7 +154,7 @@ typedef struct s_baseBiome {
 
     e_vegetalTag tagVegetations[2];
     int probabilitesVegetations[2];
-    float vegetationDensite[2];
+    float vegetationDensite;
 
     e_monstreType typesMonstre[2];
     int probabilitesTypesMonstre[2];
@@ -196,6 +196,7 @@ int blockEstDansLaMap(const int x, const int y);
 int chunkEstDansLaMap(const int x, const int y, const int z);
 
 t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk);
+t_block* getBlockDansMap(const int x, const int y, const int z, t_map *map);
 t_chunk* getChunk(const int x, const int y, const int z, t_map *map);
 
 
