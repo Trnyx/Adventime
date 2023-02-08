@@ -63,7 +63,8 @@ typedef struct s_action_flags {
  * @brief Structure modélisant un joueur
  */
 typedef struct s_joueur {
-    #include "attributs_entite.h"
+    // #include "attributs_entite.h"
+    struct s_entite;
 
     t_statistiques statistiques;    /**< Les statistiques du joueur */
     // t_inventaire *inventaire;        /**< L'inventaire du joueur */   

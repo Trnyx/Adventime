@@ -45,7 +45,7 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
  * @param positionSuivante 
  * @return boolean 
  */
-boolean peutDeplacerEntite(const t_map *map, const t_entite *entite, const t_vecteur2 positionSuivante) {
+boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 positionSuivante) {
     t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_VEGETATION, map);
     if (block == NULL) return FAUX;
 

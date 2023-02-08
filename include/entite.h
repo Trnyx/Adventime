@@ -56,7 +56,17 @@ typedef enum {
  */
 typedef struct s_entite t_entite;
 struct s_entite {
-    #include "attributs_entite.h"
+    // #include "attributs_entite.h"
+    unsigned int id;
+    e_entiteType entiteType;
+
+    t_vecteur2 position;
+    t_vecteur2 orientation;
+
+    SDL_Rect hitbox;
+
+
+    void (*detruire)(t_entite**);
 };
 
 

@@ -18,8 +18,8 @@
 
 #include <SDL2/SDL.h>
 
-#include "camera.h"
 #include "textures.h"
+#include "camera.h"
 #include "monde.h"
 
 

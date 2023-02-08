@@ -36,6 +36,11 @@
 /* -------------------------------------------------------------------------- */
 
 
+// Nous avons besoin de définir cette structure "temporaire"
+// afin que le compilateur connaisse son existence
+typedef struct s_moteur t_moteur;
+
+
 /**
  * @brief 
  * 
@@ -57,7 +62,7 @@ typedef struct s_camera {
 t_camera* creerCamera(t_vecteur2 position);
 void detruireCamera(t_camera **camera);
 
-void updateCamera();
+void updateCamera(t_moteur *moteur, const t_vecteur2 position);
 
 
 
