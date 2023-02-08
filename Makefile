@@ -18,11 +18,12 @@ LIB =
 SDL_LIB_DIR=${PWD}/lib
 SDL_INC_DIR=${PWD}/include
 
-LIBS = -L${SDL_LIB_DIR} -lSDL2 -lSDL2main -lSDL2_mixer -lSDL2_image
 INCS = -I${SDL_INC_DIR} 
 
 ifeq ($(OS),Windows_NT)
-LIBS += -lmingw32 
+LIBS = -L${SDL_LIB_DIR} -lmingw32 -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image
+else
+LIBS = -L${SDL_LIB_DIR} -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image
 endif
 
 
