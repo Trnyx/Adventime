@@ -11,7 +11,7 @@
 
 
 
-#include "../include/initialiseur.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 

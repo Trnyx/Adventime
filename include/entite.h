@@ -22,7 +22,7 @@
 #include <SDL2/SDL.h>
 
 #include "utilitaire.h"
-#include "../include/moteur.h"
+#include "moteur.h"
 
 
 
