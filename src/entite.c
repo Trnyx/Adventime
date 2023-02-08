@@ -15,7 +15,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "../include/moteur.h"
 #include "../include/entite.h"
 #include "../include/utilitaire.h"
 
