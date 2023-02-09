@@ -21,7 +21,9 @@
 
 
 
+#include <stdio.h>
 #include <stdlib.h>
+
 #include "../include/map.h"
 
 
@@ -47,77 +49,6 @@ const int probabilitesBiomes[NB_BIOMES] = {
 };
 
 
-/**
- * @brief Tableau initialisant toutes les informations de bases d'un biome 
- * 
- * Les différents informations définis :
- *      - Le biome
- *      - L'altitude du biome
- *      - Les types de sol que peut avoir le biome
- *      - Les probabilites (cumulative) d'apparition des sols
- *      - Les tag des végétaux pouvant apparaitre dans le biome
- *      - Les probabilites d'apparition des tags des végétaux
- *      - La densite de la végétation
- *      - Les types des monstres qui peuvent apparaitre dans le biome
- *      - Les probabilites d'apparition des types des monstres
- */
-const t_baseBiome basesBiomes[] = {
-    { 
-        BIOME_PROFONDEUR, -1, 
-        // Sol
-        { SOL_EAU_PROFONDE, SOL_EAU }, { 100, 0 },
-        // Vegetations
-        { 0 }, { 0 }, 0.0,
-        // Monstres
-        { 0 }, { 0 },
-    },
-
-
-    { 
-        BIOME_LAC, 0, 
-        // Sol
-        { SOL_EAU, SOL_SABLE }, { 70, 30 },
-        // Vegetations
-        { PALMIER }, { 100 }, 0.0,
-        // Monstres
-        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_EAU }, { 15, 85 },
-    },
-  
-  
-    { 
-        BIOME_PLAINE, 1, 
-        // Sol
-        { SOL_HERBE_1, SOL_HERBE_2 }, { 55, 45 }, 
-        // Vegetations
-        { CHAINE }, { 30 }, 1.0,
-        // Monstres
-        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 90, 10 },
-    },
-  
-  
-    { 
-        BIOME_FORET, 1, 
-        // Sol
-        { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 30, 40, 20 }, 
-        // Vegetations
-        { CHAINE }, { 100 }, 3.0,
-        // Monstres
-        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 30, 70 },
-    },
-  
-  
-    { 
-        BIOME_MONTAGNE, 2, 
-        // Sol
-        { SOL_MONTAGNE_1, SOL_MONTAGNE_2 }, { 50, 50 }, 
-        // Vegetations
-        { CHAINE, SAPIN }, { 50, 50 }, 0.7,
-        // Monstres
-        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_MONTAGNARD }, { 15, 85 },
-    },
-};
-
-
 
 
 
@@ -136,7 +67,7 @@ const t_baseBiome basesBiomes[] = {
  * @version 1.1
  */
 int blockEstDansLeChunk(const int x, const int y) {
-    return x >= 0 && y >= 0 && x < TAILLE_CHUNK - 1 && y < TAILLE_CHUNK - 1;
+    return x >= 0 && y >= 0 && x < TAILLE_CHUNK && y < TAILLE_CHUNK;
 }
 
 
@@ -150,7 +81,7 @@ int blockEstDansLeChunk(const int x, const int y) {
  * @version 1.1
  */
 int blockEstDansLaMap(const int x, const int y) {
-    return x >= 0 && y >= 0 && x < (TAILLE_MAP * TAILLE_CHUNK) - 1 && y < (TAILLE_MAP * TAILLE_CHUNK) - 1;
+    return x >= 0 && y >= 0 && x < (TAILLE_MAP * TAILLE_CHUNK) && y < (TAILLE_MAP * TAILLE_CHUNK);
 }
 
 
@@ -165,7 +96,7 @@ int blockEstDansLaMap(const int x, const int y) {
  * @version 1.1
  */ 
 int chunkEstDansLaMap(const int x, const int y, const int z) {
-    return x >= 0 && y >= 0 && z >= 0 && x < TAILLE_MAP - 1 && y < TAILLE_MAP - 1;
+    return x >= 0 && y >= 0 && z >= 0 && x < TAILLE_MAP && y < TAILLE_MAP && z < NB_COUCHE;
 }
 
 
@@ -606,7 +537,7 @@ void normalisationDeLaMap(t_map* map) {
         for (int y = 0; y < TAILLE_MAP; y++) {
             chunk = getChunk(x, y, COUCHE_SOL, map);
             if (chunk == NULL) continue;
-            if (chunk->position.x == 0 || chunk->position.y == 0 || chunk->position.x == TAILLE_MAP - 1 || chunk->position.y == TAILLE_MAP - 1) continue;
+            if (!chunkEstDansLaMap(x, y, COUCHE_SOL)) continue;
           
             int *biomesAlentours = getBiomesAlentours(chunk, map);
             t_predominance biomePredominant = getPredominance(biomesAlentours, NB_BIOMES);

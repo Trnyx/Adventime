@@ -14,13 +14,14 @@
  *
  * @author Clément Hibon
  * @date 27 janvier
- * @version 1.1
+ * @version 1.2
  */
 
 
 
 #include <stdlib.h>
 #include <math.h>
+
 #include "../include/vegetations.h"
 #include "../include/map.h"
 
@@ -31,19 +32,6 @@
 /* -------------------------------------------------------------------------- */
 /*                                 Constantes                                 */
 /* -------------------------------------------------------------------------- */
-
-
-/**
- * @brief Tableau regroupant les informations de base des végétaux
- */
-const t_baseVegetal basesVegetaux[] = {
-    { HERBE, 1.0 },
-    // { ROSE, 3.0 },
-    // { TULIPE, 3.0 },
-    { CHAINE, 3.0 },
-    { PALMIER, 6.0 },
-    { SAPIN, 5.0 },
-};
 
 
 
@@ -86,22 +74,21 @@ e_vegetalTag selectionVegetation(t_baseBiome baseBiome) {
 /**
  * @brief Vérifie que le végétal peut être placé
  * 
- * @param x La coordonnée x (relative) du végétal 
- * @param y La coordonnée y (relative) du végétal 
+ * @param positionVegetal La position du végétal  à placer
  * @param grid Le tableau regroupant les positions des végétaux déjà placés
  * @param rayon Le rayon minimum pour 
  * @return Vrai si le végétal peut être placé aux coordonnées données, faux sinon
  * 
- * @version 1.1
+ * @version 1.2
  */
-int peutPlacerVegetatal(const int x, const int y, const t_diskSampling grid, const float rayon) {
+int peutPlacerVegetatal(const t_vecteur2 positionVegetal, const t_diskSampling grid, const float rayon) {
     int peutEtrePlace = 0;
     int i = 0;
 
 
     while (!peutEtrePlace && i < grid.nbVegetaux) {
         const t_vecteur2 vegetalDejaPlace = grid.vegetauxPositions[i++];      
-        const float norme = sqrt(pow(vegetalDejaPlace.x - x, 2) + pow(vegetalDejaPlace.y - y, 2));
+        const float norme = calculDistanceEntrePoints(positionVegetal, vegetalDejaPlace);
 
         if (norme >= rayon && norme <= rayon * 2.0) 
             peutEtrePlace = 1;
@@ -151,7 +138,7 @@ t_diskSampling genererDiskSampling(t_chunk *chunk) {
             };
     
     
-            if (!n || peutPlacerVegetatal(nouveauPoint.x, nouveauPoint.y, vegetals, rayon)) {
+            if (!n || peutPlacerVegetatal(nouveauPoint, vegetals, rayon)) {
                 vegetals.vegetauxPositions[n] = nouveauPoint;
                 vegetals.vegetauxTags[n] = HERBE;
                 vegetals.nbVegetaux++;

@@ -18,21 +18,6 @@
 
 
 
-/**
- * @brief Tableau regroupant les intervales des statistiques de bases en fonction du type du monstre
- * 
- */
-const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONSTRE_TYPES] = {
-    { { 60, 70 }, { 60, 70 }, { 10, 10 }, 80, { 0 } }, // NORMAL
-    { { 65, 75 }, { 55, 65 }, { 15, 15 }, 80, { 0 } }, // PLANTE
-    { { 55, 65 }, { 60, 70 }, { 10, 10 }, 90, { 0 } }, // EAU
-    { { 55, 65 }, { 75, 85 }, { 15, 15 }, 80, { 0 } }, // MONTAGNARD
-};
-
-
-
-
-
 /* -------------------------------------------------------------------------- */
 /*                                  Selection                                 */
 /* -------------------------------------------------------------------------- */
