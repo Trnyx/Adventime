@@ -30,6 +30,7 @@ void regulerFPS(t_moteur *moteur) {
 
 
 t_moteur* initMoteur() {
+  
     t_moteur *moteur = malloc(sizeof(t_moteur));
 
 
@@ -56,7 +57,11 @@ void detruireMoteur(t_moteur **moteur) {
 
 
 
-void updateEchelle(t_moteur *moteur) {}
+void updateEchelle(t_moteur *moteur) {
+
+  SDL_GetWindowSize(moteur->window, &moteur->window_width, &moteur->window_height);
+  
+}
 
 
 
