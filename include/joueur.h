@@ -82,7 +82,7 @@ typedef struct s_joueur {
 /* -------------------------------------------------------------------------- */
 
 
-t_joueur* creerJoueur(t_vecteur2 position);
+t_joueur* creerJoueur(const t_vecteur2 position);
 void detruireJoueur(t_joueur **joueur);
 
 

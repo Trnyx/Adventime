@@ -133,7 +133,8 @@ t_entite* creerEntite(const t_vecteur2 position) {
     }
 
 
-    entite->position = position;
+    entite->position.x = position.x;
+    entite->position.y = position.y;
     entite->orientation.x = 1;
     entite->orientation.y = 0;
 

@@ -51,4 +51,7 @@ void initSDL(t_moteur *moteur) {
 
     moteur->window = window;
     moteur->renderer = renderer;
+
+    moteur->window_height = WINDOW_HEIGHT;
+    moteur->window_width = WINDOW_WIDTH;
 }

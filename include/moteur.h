@@ -78,7 +78,7 @@ typedef struct s_moteur {
     
     t_camera *camera;           /**< La caméra */
     t_textures *textures;       /**< Toutes les textures du jeu */
-    t_controles *controles;     /**< Les contrôles du jeu */
+    t_controles controles;     /**< Les contrôles du jeu */
     
 
 } t_moteur;

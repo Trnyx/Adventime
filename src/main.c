@@ -16,7 +16,6 @@
 
 
 
-#define TAILLE_BLOCK 4
 
 
 
@@ -33,20 +32,21 @@ int main(int argc, char* argv[]) {
     int seed = -1;
 
     t_monde *monde = creerMonde(seed);
-    t_map *map = monde->map;
 
-    t_vecteur2 positionJoueur = getPointApparitionJoueur(map);
+    const t_vecteur2 positionJoueur = getPointApparitionJoueur(monde->map);
     t_joueur *joueur = creerJoueur(positionJoueur);
 
+    monde->joueur = joueur;
+    moteur->monde = monde;
 
     // SDL_Surface *surface = IMG_Load("assets/images/sol_herbe_1.png");
     // SDL_Texture *texture = SDL_CreateTextureFromSurface(moteur->renderer, surface);
 
-    SDL_Rect taille_texture = { 0, 0, 16, 16 };
-    SDL_Rect rendu;
+    // SDL_Rect taille_texture = { 0, 0, 16, 16 };
+    // SDL_Rect rendu;
 
-    rendu.h = TAILLE_BLOCK;
-    rendu.w = TAILLE_BLOCK;
+    // rendu.h = TAILLE_BLOCK;
+    // rendu.w = TAILLE_BLOCK;
     // SDL_Rect taille_rendu = { 0, 0, 64, 64 };
 
 
@@ -62,40 +62,40 @@ int main(int argc, char* argv[]) {
         
 
             // On pose les textures
-            for (int xChunk = 0; xChunk < TAILLE_MAP; xChunk++) {
-                for (int yChunk = 0; yChunk < TAILLE_MAP; yChunk++) {
+            // for (int xChunk = 0; xChunk < TAILLE_MAP; xChunk++) {
+            //     for (int yChunk = 0; yChunk < TAILLE_MAP; yChunk++) {
 
-                    t_chunk *chunk = getChunk(xChunk, yChunk, COUCHE_SOL, map);
-                    if (chunk == NULL) continue;
-
-
-                    for (int xBlock = 0; xBlock < TAILLE_CHUNK; xBlock++) {
-                        for (int yBlock = 0; yBlock < TAILLE_CHUNK; yBlock++) {
-
-                            t_block *block = getBlockDansChunk(xBlock, yBlock, chunk);
-                            if (block == NULL) continue;
+            //         t_chunk *chunk = getChunk(xChunk, yChunk, COUCHE_SOL, map);
+            //         if (chunk == NULL) continue;
 
 
-                            SDL_Texture *texture = getTexture(block->tag, moteur->textures);
-                            if (texture == NULL) continue;
+            //         for (int xBlock = 0; xBlock < TAILLE_CHUNK; xBlock++) {
+            //             for (int yBlock = 0; yBlock < TAILLE_CHUNK; yBlock++) {
 
-                            // rendu; // = { block->position.x, block->position.y, TAILLE_BLOCK, TAILLE_BLOCK };
-                            // rendu.x = block->position.x * TAILLE_BLOCK;
-                            rendu.x = (TAILLE_CHUNK * xChunk + xBlock) * TAILLE_BLOCK;
-                            rendu.y = (TAILLE_CHUNK * yChunk + yBlock) * TAILLE_BLOCK;
+            //                 t_block *block = getBlockDansChunk(xBlock, yBlock, chunk);
+            //                 if (block == NULL) continue;
 
-                            // printf("BLOCK => %i\n", block->tag);
-                            SDL_RenderCopy(moteur->renderer, texture, NULL, &rendu);
-                        }   
-                    }
+
+            //                 SDL_Texture *texture = getTexture(block->tag, moteur->textures);
+            //                 if (texture == NULL) continue;
+
+            //                 // rendu; // = { block->position.x, block->position.y, TAILLE_BLOCK, TAILLE_BLOCK };
+            //                 // rendu.x = block->position.x * TAILLE_BLOCK;
+            //                 rendu.x = (TAILLE_CHUNK * xChunk + xBlock) * TAILLE_BLOCK;
+            //                 rendu.y = (TAILLE_CHUNK * yChunk + yBlock) * TAILLE_BLOCK;
+
+            //                 // printf("BLOCK => %i\n", block->tag);
+            //                 SDL_RenderCopy(moteur->renderer, texture, NULL, &rendu);
+            //             }   
+            //         }
                     
-                }
-            }
+            //     }
+            // }
             
 
-            rendu.x = joueur->position.x * TAILLE_BLOCK;
-            rendu.y = joueur->position.y * TAILLE_BLOCK;
-            SDL_RenderCopy(moteur->renderer, moteur->textures->joueur, NULL, &rendu);
+            // rendu.x = joueur->position.x * TAILLE_BLOCK;
+            // rendu.y = joueur->position.y * TAILLE_BLOCK;
+            // SDL_RenderCopy(moteur->renderer, moteur->textures->joueur, NULL, &rendu);
 
 
             // On fait le rendu
@@ -107,6 +107,7 @@ int main(int argc, char* argv[]) {
     cleanup:
     detruireMonde(&monde);
     detruireJoueur(&joueur);
+    detruireMoteur(&moteur);
     SDL_DestroyRenderer(moteur->renderer);
     SDL_DestroyWindow(moteur->window);
     SDL_Quit();

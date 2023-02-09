@@ -61,9 +61,8 @@ void detruireActionFlags(t_action_flags **flags) {
  */
 void detruireJoueur(t_joueur **joueur) {
     if (joueur != NULL && *joueur != NULL) {
-        detruireEntite((t_entite**) joueur);
-
         detruireActionFlags(&(*joueur)->actionFlags);
+        detruireEntite((t_entite**) joueur);
     }
 };
 
@@ -77,13 +76,11 @@ void detruireJoueur(t_joueur **joueur) {
  * @param position 
  * @return t_joueur* 
  */
-t_joueur* creerJoueur(t_vecteur2 position) {
+t_joueur* creerJoueur(const t_vecteur2 position) {
     t_entite *entite = creerEntite(position);
     t_joueur *joueur = realloc(entite, sizeof(t_joueur));
 
 
-    joueur->position = entite->position;
-    joueur->orientation = entite->orientation;
     joueur->entiteType = ENTITE_JOUEUR;
 
     joueur->statistiques.vitesse = JOUEUR_VITESSE_DEFAUT;
