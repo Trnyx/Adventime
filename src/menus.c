@@ -33,6 +33,8 @@
 
 state_main main_menu(struct nk_context *ctx, t_moteur *moteur) {
 
+  set_style(ctx, THEME_BLUE);
+
   state_main click = 0;
 
   SDL_Rect dstrect;
