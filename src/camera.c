@@ -33,6 +33,12 @@ void updateCamera(t_moteur *moteur, const t_vecteur2 position) {
 t_camera* creerCamera(t_vecteur2 position) {
     t_camera *camera = malloc(sizeof(t_camera));
 
+    if (camera == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour la caméra");
+        free(camera);
+        return NULL;
+    }
+
 
     camera->position = position;
 

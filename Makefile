@@ -10,7 +10,7 @@ CFLAGS = -g -Wall -fms-extensions
 EXEC = Adventime
 
 # Librairies intégrées
-LIB = 
+LIBS = -lm
 
 
 # SDL
@@ -21,9 +21,9 @@ SDL_FLAGS = -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf
 INCS = -I${SDL_INC_DIR} 
 
 ifeq ($(OS),Windows_NT)
-LIBS = -L${SDL_LIB_DIR} -lmingw32 ${SDL_FLAGS}
+SDL_LIBS = -L${SDL_LIB_DIR} -lmingw32 ${SDL_FLAGS}
 else
-LIBS = -L${SDL_LIB_DIR} ${SDL_FLAGS}
+SDL_LIBS = -L${SDL_LIB_DIR} ${SDL_FLAGS}
 endif
 
 
@@ -79,7 +79,7 @@ $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 # Exécute l'édition des liens
 $(BINDIR)/$(EXEC): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LIBS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LIBS) $(SDL_LIBS)
 	@echo "Édition des liens effectuée."
 
 

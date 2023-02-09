@@ -50,6 +50,14 @@ SDL_Texture* getTexture(int tag, t_textures *textures) {
 
 t_textures* initTextures(SDL_Renderer *renderer) {
     t_textures *textures = malloc(sizeof(t_textures));
+
+    if (textures == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour les textures");
+        free(textures);
+        return NULL;
+    }
+
+    
     SDL_Surface *surface = NULL;
 
 

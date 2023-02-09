@@ -54,7 +54,7 @@ t_moteur* initMoteur() {
 
 
     initSDL(moteur);
-    initControles(moteur->controles);
+    initControles(&moteur->controles);
 
     moteur->camera = NULL;
     moteur->textures = NULL;

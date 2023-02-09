@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "../include/moteur.h"
+#include "../include/monde.h"
 #include "../include/entite.h"
 #include "../include/utilitaire.h"
 
@@ -123,6 +125,12 @@ void detruireEntite(t_entite **entite) {
  */
 t_entite* creerEntite(const t_vecteur2 position) {
     t_entite *entite = malloc(sizeof(t_entite));
+
+    if (entite == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer une entite");
+        free(entite);
+        return NULL;
+    }
 
 
     entite->position = position;

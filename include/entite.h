@@ -22,7 +22,6 @@
 #include <SDL2/SDL.h>
 
 #include "utilitaire.h"
-#include "moteur.h"
 
 
 
@@ -48,6 +47,12 @@ typedef enum {
 /* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */
 /* -------------------------------------------------------------------------- */
+
+
+// Nous avons besoin de définir cette structure "temporaire"
+// afin que le compilateur connaisse son existence
+typedef struct s_moteur t_moteur;
+
 
 
 /**

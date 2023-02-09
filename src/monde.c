@@ -169,6 +169,12 @@ void afficherMonde(t_monde *monde) {
 t_monde* creerMonde(int seed) {
     t_monde *monde = malloc(sizeof(t_monde));
 
+    if (monde == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le monde");
+        free(monde);
+        return NULL;
+    }
+
 
     if (seed == -1) {
         seed = setGenerationSeed(time(NULL));
