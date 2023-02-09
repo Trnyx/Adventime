@@ -1,4 +1,3 @@
-@ -1,94 +0,0 @@
 # Auteur : Julien Houget
 
 
@@ -79,7 +78,7 @@ $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 
 # Exécute l'édition des liens
 $(BINDIR)/$(EXEC): $(OBJECTS)
-	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LIBS)
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LIBS) -lm
 	@echo "Édition des liens effectuée."
 
 

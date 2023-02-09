@@ -21,7 +21,9 @@
 
 
 
+#include <stdio.h>
 #include <stdlib.h>
+
 #include "../include/map.h"
 
 
@@ -65,7 +67,7 @@ const int probabilitesBiomes[NB_BIOMES] = {
  * @version 1.1
  */
 int blockEstDansLeChunk(const int x, const int y) {
-    return x >= 0 && y >= 0 && x < TAILLE_CHUNK - 1 && y < TAILLE_CHUNK - 1;
+    return x >= 0 && y >= 0 && x < TAILLE_CHUNK && y < TAILLE_CHUNK;
 }
 
 
@@ -79,7 +81,7 @@ int blockEstDansLeChunk(const int x, const int y) {
  * @version 1.1
  */
 int blockEstDansLaMap(const int x, const int y) {
-    return x >= 0 && y >= 0 && x < (TAILLE_MAP * TAILLE_CHUNK) - 1 && y < (TAILLE_MAP * TAILLE_CHUNK) - 1;
+    return x >= 0 && y >= 0 && x < (TAILLE_MAP * TAILLE_CHUNK) && y < (TAILLE_MAP * TAILLE_CHUNK);
 }
 
 
@@ -94,7 +96,7 @@ int blockEstDansLaMap(const int x, const int y) {
  * @version 1.1
  */ 
 int chunkEstDansLaMap(const int x, const int y, const int z) {
-    return x >= 0 && y >= 0 && z >= 0 && x < TAILLE_MAP - 1 && y < TAILLE_MAP - 1;
+    return x >= 0 && y >= 0 && z >= 0 && x < TAILLE_MAP && y < TAILLE_MAP && z < NB_COUCHE;
 }
 
 
@@ -535,7 +537,7 @@ void normalisationDeLaMap(t_map* map) {
         for (int y = 0; y < TAILLE_MAP; y++) {
             chunk = getChunk(x, y, COUCHE_SOL, map);
             if (chunk == NULL) continue;
-            if (chunk->position.x == 0 || chunk->position.y == 0 || chunk->position.x == TAILLE_MAP - 1 || chunk->position.y == TAILLE_MAP - 1) continue;
+            if (!chunkEstDansLaMap(x, y, COUCHE_SOL)) continue;
           
             int *biomesAlentours = getBiomesAlentours(chunk, map);
             t_predominance biomePredominant = getPredominance(biomesAlentours, NB_BIOMES);
