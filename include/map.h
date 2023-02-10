@@ -19,6 +19,7 @@
 
 
 #include "utilitaire.h"
+#include "liste.h"
 
 
 
@@ -138,6 +139,7 @@ typedef struct s_chunk {
  */
 typedef struct s_map {
     t_chunk *chunks;
+    t_liste *entites;
 } t_map;
 
 
