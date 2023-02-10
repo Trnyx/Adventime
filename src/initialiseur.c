@@ -42,3 +42,9 @@ void initAll(t_moteur **moteur) {
 
     // SDL TTF
 }
+
+
+
+void detruireAll(t_moteur **moteur) {
+    
+}

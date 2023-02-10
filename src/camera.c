@@ -31,6 +31,8 @@ void afficherCamera(t_moteur *moteur) {
     rendu.h = TAILLE_BLOCK_RENDU;
     rendu.w = TAILLE_BLOCK_RENDU;
 
+    const int centrageLargeur = ((int)moteur->camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
+    const int centrageHauteur = ((int)moteur->camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
 
     for (int x = moteur->camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR; x <= moteur->camera->position.x + TAILLE_CAMERA_DEMI_LARGEUR; x++) {
         for (int y = moteur->camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR; y <= moteur->camera->position.y + TAILLE_CAMERA_DEMI_HAUTEUR; y++) {
@@ -43,8 +45,8 @@ void afficherCamera(t_moteur *moteur) {
 
             // rendu; // = { block->position.x, block->position.y, TAILLE_BLOCK_RENDU, TAILLE_BLOCK_RENDU };
             // rendu.x = block->position.x * TAILLE_BLOCK_RENDU;
-            rendu.x = (x % ((int)moteur->camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR)) * TAILLE_BLOCK_RENDU;
-            rendu.y = (y % ((int)moteur->camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR)) * TAILLE_BLOCK_RENDU;
+            rendu.x = (x % centrageLargeur) * TAILLE_BLOCK_RENDU;
+            rendu.y = (y % centrageHauteur) * TAILLE_BLOCK_RENDU;
             SDL_Log("BLOCK POSITION : %i:%i", x % (int)moteur->camera->position.x, y % (int)moteur->camera->position.y);
 
             // printf("BLOCK => %i\n", block->tag);
@@ -54,8 +56,8 @@ void afficherCamera(t_moteur *moteur) {
     }
 
 
-    rendu.x = moteur->monde->joueur->position.x * TAILLE_BLOCK_RENDU;
-    rendu.y = moteur->monde->joueur->position.y * TAILLE_BLOCK_RENDU;
+    rendu.x = ((int)moteur->monde->joueur->position.x % centrageLargeur) * TAILLE_BLOCK_RENDU;
+    rendu.y = ((int)moteur->monde->joueur->position.y % centrageHauteur) * TAILLE_BLOCK_RENDU;
     SDL_RenderCopy(moteur->renderer, moteur->textures->joueur, NULL, &rendu);
 
     SDL_Log("JOUEUR : %1.0f:%1.0f", moteur->monde->joueur->position.x, moteur->monde->joueur->position.y);

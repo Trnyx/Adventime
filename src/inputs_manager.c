@@ -15,21 +15,20 @@
 #include <stdlib.h>
 #include <SDL2/SDL.h>
 
-#include "../include/moteur.h"
-#include "../include/joueur.h"
+#include "../include/input_manager.h"
 
 
 
 
 
-void inputManager(t_joueur *joueur, t_controles *controles) {
+int inputManager(t_joueur *joueur, t_controles *controles) {
     SDL_Event event;
 
     while (SDL_PollEvent(&event)) {
 
         switch (event.type) {
             case SDL_QUIT:
-                // return Quitter le jeu
+                return -1;
                 break;
             
             
@@ -119,5 +118,7 @@ void inputManager(t_joueur *joueur, t_controles *controles) {
 
         }
 
+
+        return 1;
     }
 }

@@ -11,6 +11,7 @@
 #include "../include/main.h"
 #include "../include/monde.h"
 #include "../include/joueur.h"
+#include "../include/input_manager.h"
 
 
 
@@ -51,13 +52,14 @@ int main(int argc, char* argv[]) {
 
 
 
-    SDL_Event evt;
+    int continuer = 1;
     while (1) {
-        while (SDL_PollEvent(&evt)) {
-            if(evt.type == SDL_QUIT) {
-                goto cleanup;
-            }
+        while (continuer == 1) {
+            // if(evt.type == SDL_QUIT) {
+            //     goto cleanup;
+            // }
 
+            continuer = inputManager(joueur, &moteur->controles);
             updateCamera(moteur, joueur->position);
         
 
@@ -102,11 +104,17 @@ int main(int argc, char* argv[]) {
             SDL_RenderPresent(moteur->renderer);
             SDL_RenderClear(moteur->renderer);
         }
+
+        if (continuer == -1) {
+            goto cleanup;
+        }
     }
 
     cleanup:
-    detruireMonde(&monde);
     detruireJoueur(&joueur);
+    detruireMonde(&monde);
+    detruireCamera(&moteur->camera);
+    detruireTextures(&moteur->textures);
     detruireMoteur(&moteur);
     SDL_DestroyRenderer(moteur->renderer);
     SDL_DestroyWindow(moteur->window);
