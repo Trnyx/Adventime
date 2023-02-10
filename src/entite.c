@@ -144,7 +144,16 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->hitbox.y = 0;
     entite->hitbox.h = 0;
     entite->hitbox.w = 0;
+
+    entite->deplacementType = DEPLACEMENT_STATIQUE;
+
+    entite->update = NULL;
+    entite->detruire = detruireEntite;
     
+
+    entite->timestampCreation = SDL_GetTicks();
+    entite->timestampActualisation = entite->timestampCreation;
+
 
     return entite;
 }

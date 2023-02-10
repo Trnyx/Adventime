@@ -76,6 +76,8 @@ typedef struct s_monstre {
     
     char* name;                             /**< Le nom d'un Monstre */
 
+    int rayonDetection;                     /**< Le rayon dans lequel le joueur sera détecté ù*/
+
     e_monstreTag tag;                       /**< Le tag du Monstre */
     e_monstreType type;                     /**< Le type du Monstre */
 

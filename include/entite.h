@@ -41,6 +41,14 @@ typedef enum {
 } e_entiteType;
 
 
+typedef enum {
+    DEPLACEMENT_JOUEUR = -1,
+    DEPLACEMENT_STATIQUE,
+    DEPLACEMENT_NORMAL,
+    DEPLACEMENT_COMBAT,
+} e_deplacementType;
+
+
 
 
 
@@ -63,16 +71,37 @@ typedef struct s_entite t_entite;
 struct s_entite {
     // #include "attributs_entite.h"
     unsigned int id;
-    e_entiteType entiteType;
-
     t_vecteur2 position;
     t_vecteur2 orientation;
 
+    e_entiteType entiteType;
+
     SDL_Rect hitbox;
 
+    t_vecteur2 positionDeplacement;
+    unsigned int rayonDeplacement;
+    e_deplacementType deplacementType;
 
+
+    unsigned int timestampCreation;
+    unsigned int timestampActualisation;
+
+
+    void (*update)(t_moteur*, t_entite*);
     void (*detruire)(t_entite**);
 };
+
+
+/*
+typedef struct s_entite {
+    struct s_entite_base;
+
+    t_vecteur2 positionDeplacement;
+    int rayonDeplacement;
+    e_deplacementType deplacementType;
+
+} t_entite;
+*/
 
 
 
