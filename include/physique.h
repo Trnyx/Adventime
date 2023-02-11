@@ -18,6 +18,10 @@
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                                 Constantes                                 */
+/* -------------------------------------------------------------------------- */
+
 /* ---------------------------------- Temps --------------------------------- */
 
 // Nombre de jour par heure (vrai) 
@@ -54,9 +58,9 @@
 #define ENTITE_RAYON_COMBAT_ATTAQUE 2
 
 // La durée de vie minimum d'une entité
-#define ENTITE_DUREE_VIE_MIN 
+#define ENTITE_DUREE_VIE_MIN TEMPS_JOUR / 4
 // La durée de vie maximum d'une entité
-#define ENTITE_DUREE_VIE_MAX
+#define ENTITE_DUREE_VIE_MAX TEMPS_JOUR / 2
 
 
 
@@ -67,4 +71,14 @@
 // La probabimité que l'entité se déplace obligatoirement 
 #define PROBABILITE_DEPLACEMENT_OBLIGATOIRE 100
 
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Fonctions                                 */
+/* -------------------------------------------------------------------------- */
+
+
+void update(t_moteur *moteur);
 

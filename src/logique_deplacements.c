@@ -119,10 +119,10 @@ void deplacementCombat(t_moteur *moteur, t_entite *entite) {
 int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_entite*) {
     switch (deplacement) {
         case DEPLACEMENT_NORMAL:  
-            return;
+            return deplacementNormal;
 
         case DEPLACEMENT_COMBAT:  
-            return;
+            return deplacementCombat;
 
             
         case DEPLACEMENT_STATIQUE: 
