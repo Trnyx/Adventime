@@ -68,8 +68,8 @@ typedef struct s_moteur t_moteur;
  * @struct t_entite
  * @brief Structure modélisant une entité
  */
-typedef struct s_entite t_entite;
-struct s_entite {
+typedef struct s_entite_base t_entite_base;
+struct s_entite_base {
     // #include "attributs_entite.h"
     unsigned int id;
     t_vecteur2 position;
@@ -78,10 +78,6 @@ struct s_entite {
     e_entiteType entiteType;
 
     SDL_Rect hitbox;
-
-    t_vecteur2 positionDeplacement;
-    unsigned int rayonDeplacement;
-    e_deplacementType deplacementType;
 
 
     time_t timestampCreation;
@@ -93,16 +89,14 @@ struct s_entite {
 };
 
 
-/*
+
 typedef struct s_entite {
     struct s_entite_base;
 
     t_vecteur2 positionDeplacement;
     int rayonDeplacement;
     e_deplacementType deplacementType;
-
 } t_entite;
-*/
 
 
 

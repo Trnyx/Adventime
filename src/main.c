@@ -5,6 +5,7 @@
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_image.h>
 
+#include "../include/physique.h"
 #include "../include/initialiseur.h"
 #include "../include/textures.h"
 #include "../include/moteur.h"
@@ -60,7 +61,8 @@ int main(int argc, char* argv[]) {
             // }
 
             continuer = inputManager(joueur, &moteur->controles);
-            updateCamera(moteur, joueur->position);
+            update(moteur);
+            // updateCamera(moteur, joueur->position);
         
 
             // On pose les textures
@@ -101,8 +103,8 @@ int main(int argc, char* argv[]) {
 
 
             // On fait le rendu
-            SDL_RenderPresent(moteur->renderer);
-            SDL_RenderClear(moteur->renderer);
+            // SDL_RenderPresent(moteur->renderer);
+            // SDL_RenderClear(moteur->renderer);
         }
 
         if (continuer == -1) {

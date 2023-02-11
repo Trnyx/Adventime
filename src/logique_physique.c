@@ -190,6 +190,8 @@ void update(t_moteur *moteur) {
 
 
     updateCamera(moteur->camera, joueur->position);
-
+    
+    SDL_RenderPresent(moteur->renderer);
+    SDL_RenderClear(moteur->renderer);
     
 }

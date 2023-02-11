@@ -38,6 +38,13 @@ t_action_flags* initialiserActionFlags() {
 
 
 
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Destruction                                */
+/* -------------------------------------------------------------------------- */
+
+
 /**
  * @brief 
  * 
@@ -49,8 +56,6 @@ void detruireActionFlags(t_action_flags **flags) {
         *flags = NULL;
     }
 }
-
-
 
 
 
@@ -70,6 +75,11 @@ void detruireJoueur(t_joueur **joueur) {
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                                  Creation                                  */
+/* -------------------------------------------------------------------------- */
+
+
 /**
  * @brief 
  * 
@@ -86,7 +96,6 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->statistiques.vitesse = JOUEUR_VITESSE_DEFAUT;
     joueur->statistiques.attaque = JOUEUR_ATTAQUE_DEFAUT;
     joueur->statistiques.defense = JOUEUR_DEFENSE_DEFAUT;
-
     joueur->statistiques.pv = JOUEUR_PV_DEFAUT;
     joueur->statistiques.pvMax = JOUEUR_PV_DEFAUT;
 
@@ -94,6 +103,8 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->statistiques.niveau = 0;
 
     joueur->actionFlags = initialiserActionFlags();
+
+    // joueur->update = (void (*)(t_moteur*, t_entite*)) updateJoueur;
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
 
