@@ -118,7 +118,10 @@ extern const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONST
 /* -------------------------------------------------------------------------- */
 
 
-t_monstre* creerMonstre(const int x, const int y, e_biome biome);
+t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome);
+t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome);
+
+void detruireMonstre(t_monstre **monstre);
 
 
 

@@ -20,6 +20,7 @@
 
 
 #include <SDL2/SDL.h>
+#include <time.h>
 
 #include "utilitaire.h"
 
@@ -83,8 +84,8 @@ struct s_entite {
     e_deplacementType deplacementType;
 
 
-    unsigned int timestampCreation;
-    unsigned int timestampActualisation;
+    time_t timestampCreation;
+    time_t timestampActualisation;
 
 
     void (*update)(t_moteur*, t_entite*);

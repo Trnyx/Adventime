@@ -151,7 +151,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->detruire = detruireEntite;
     
 
-    entite->timestampCreation = SDL_GetTicks();
+    entite->timestampCreation = time(NULL);
     entite->timestampActualisation = entite->timestampCreation;
 
 
