@@ -139,17 +139,11 @@ t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, co
 /**
  * @brief Génère un monstre
  * 
- * @param x La coordonnée x du monstre
- * @param y La coordonnée y du monstre
+ * @param monstre Pointeur sur le monstre à générer
  * @param biome Le biome dans lequel le monstre apparait
  * @return Un pointeur sur le monstre généré
  */
-t_monstre* creerMonstre(const int x, const int y, e_biome biome) {
-    t_monstre *monstre = malloc(sizeof(t_monstre));
-
-    monstre->position.x = x;
-    monstre->position.y = y;
-
+t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome) {
     // monstre->tag = choisirMonstreTag();
     monstre->tag = MONSTRE_OISEAU;
     monstre->type = choisirTypeMonstre(basesBiomes[biome]);
@@ -163,24 +157,3 @@ t_monstre* creerMonstre(const int x, const int y, e_biome biome) {
 
 
 
-
-
-/* -------------------------------------------------------------------------- */
-/*                                 Destruction                                */
-/* -------------------------------------------------------------------------- */
-
-
-/**
- * @brief 
- * 
- * @param monstre 
- * @return int 
- */
-int detruireMonstre(t_monstre **monstre) {
-    if (monstre == NULL && *monstre == NULL) return 0;
-
-    free(*monstre);
-    *monstre = NULL;
-
-    return 0;
-}
