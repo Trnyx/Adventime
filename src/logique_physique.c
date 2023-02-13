@@ -69,7 +69,7 @@
 
 
 
-
+unsigned long int u = 0;
 /**
  * @brief Fonction appelé à chaque frame du jeu
  * 
@@ -78,7 +78,7 @@
  * @param moteur Pointeur sur le moteur du jeu
  */
 void update(t_moteur *moteur) {
-
+    printf("Update (%li)\n", u++);
     t_joueur *joueur = moteur->monde->joueur;
 
     t_liste *entites = moteur->monde->map->entites;
@@ -93,7 +93,7 @@ void update(t_moteur *moteur) {
     /*                                   Joueur                                   */
     /* -------------------------------------------------------------------------- */
 
-    // updateJoueur(joueur);
+    joueur->update(moteur, (t_entite*) joueur);
 
     
 
@@ -106,71 +106,71 @@ void update(t_moteur *moteur) {
 
     /* ---------------- Entites actuellement présente dans la map --------------- */
 
-    en_tete(entites);
-    if (!liste_vide(entites)) {
+    // en_tete(entites);
+    // if (!liste_vide(entites)) {
 
-        while (!hors_liste(entites)) {
-            valeur_elt(entites, &entite);
-
-
-
-            if (entite != NULL) {
-                const float distance = calculDistanceEntreEntites(entite, (t_entite*)joueur);
-
-                // Actualisation 
-                entite->timestampActualisation = timestampFrame;
+    //     while (!hors_liste(entites)) {
+    //         valeur_elt(entites, &entite);
 
 
-                if (distance < JOUEUR_RAYON_ACTIF) {
-                    entite->update(moteur, (t_entite**)entite);
-                    // Deplacement
-                    // monstre => joueur détection
-                    // combat
-                }
+
+    //         if (entite != NULL) {
+    //             const float distance = calculDistanceEntreEntites(entite, (t_entite*)joueur);
+
+    //             // Actualisation 
+    //             entite->timestampActualisation = timestampFrame;
 
 
-                else if (distance >= JOUEUR_RAYON_SEMIACTIF && distance < JOUEUR_RAYON_INACTIF) {
+    //             if (distance < JOUEUR_RAYON_ACTIF) {
+    //                 entite->update(moteur, (t_entite*) entite);
+    //                 // Deplacement
+    //                 // monstre => joueur détection
+    //                 // combat
+    //             }
 
-                    // Gestion de la durée de vie
-                    if (entite->timestampActualisation - entite->timestampCreation >= ENTITE_DUREE_VIE_MAX) {                        
-                        entite->detruire((t_entite**)&entite);
-                        oter_elt(entites);
-                    }
+
+    //             else if (distance >= JOUEUR_RAYON_SEMIACTIF && distance < JOUEUR_RAYON_INACTIF) {
+
+    //                 // Gestion de la durée de vie
+    //                 if (entite->timestampActualisation - entite->timestampCreation >= ENTITE_DUREE_VIE_MAX) {                        
+    //                     entite->detruire((t_entite**) &entite);
+    //                     oter_elt(entites);
+    //                 }
                     
-                }
+    //             }
 
 
-                else if (distance >= JOUEUR_RAYON_INACTIF) {
-                    // Si monstre aggrassif
-                    // Supprimer monstre
-                    // Monstre supprimer break;
-                }
+    //             else if (distance >= JOUEUR_RAYON_INACTIF) {
+    //                 // Si monstre aggrassif
+    //                 // Supprimer monstre
+    //                 // Monstre supprimer break;
+    //             }
 
 
-                nombreMobs++;
-            }
-        }
-    }
+    //             nombreMobs++;
+    //         }
+    //     }
+    // }
 
 
-    /* -------------------------- Apparition d'entites -------------------------- */
+    // /* -------------------------- Apparition d'entites -------------------------- */
 
-    if (nombreMobs < MOB_CAP) {
+    // if (nombreMobs < MOB_CAP) {
 
-        //      Si le nombre de monstres aggressifs max n'est pas atteint
-        //          Calcul la probabilité d'apparition d'un monstre
-        //          Si apparition possible
-        //              Apparition du monste dans le rayon semi actif
-        //      Si le nombre de monstres passif max n'est pas atteint
-        //          Calcul la probabilité d'apparition d'un monstre
-        //          Si apparition possible
-        //              Apparition du monste dans le rayon semi actif
-        //      Si le nombre d'animaux max n'est pas atteint
-        //          Calcul la probabilité d'apparition d'un animal
-        //          Si apparition possible
-        //              Apparition de l'animal dans le rayon actif ou semi actif
+    //     //      Si le nombre de monstres aggressifs max n'est pas atteint
+    //     //          Calcul la probabilité d'apparition d'un monstre
+    //     //          Si apparition possible
+    //     //              Apparition du monste dans le rayon semi actif
+    //     //      Si le nombre de monstres passif max n'est pas atteint
+    //     //          Calcul la probabilité d'apparition d'un monstre
+    //     //          Si apparition possible
+    //     //              Apparition du monste dans le rayon semi actif
+    //     //      Si le nombre d'animaux max n'est pas atteint
+    //     //          Calcul la probabilité d'apparition d'un animal
+    //     //          Si apparition possible
+    //     //              Apparition de l'animal dans le rayon actif ou semi actif
 
-    }
+    // }
 
 
 
@@ -188,9 +188,19 @@ void update(t_moteur *moteur) {
     /*                                  Affichage                                 */
     /* -------------------------------------------------------------------------- */
 
+    /* ---------------- Construction de l'affichage de la caméra ---------------- */
 
-    updateCamera(moteur->camera, joueur->position);
+    updateCamera(moteur, joueur->position);
+    afficherCamera(moteur);
+
+
+    /* --------------- Construction de l'affichage de l'interface --------------- */
+
+    // afficherInterface(joueur);
     
+
+    /* ------------------------ Affichage à l'utilisateur ----------------------- */
+
     SDL_RenderPresent(moteur->renderer);
     SDL_RenderClear(moteur->renderer);
     

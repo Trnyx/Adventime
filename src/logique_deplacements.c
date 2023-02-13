@@ -25,7 +25,7 @@
 
 
 
-t_vecteur2 choisirPointDeDeplacement(int rayon) {
+t_vecteur2 choisirPointDeDeplacement(const int rayon) {
     t_vecteur2 point = {
         getNombreAleatoire(1, rayon),
         getNombreAleatoire(1, rayon),
@@ -38,7 +38,7 @@ t_vecteur2 choisirPointDeDeplacement(int rayon) {
 
 
 
-void deplacementNormal(t_moteur *moteur, t_entite *entite) {
+int deplacementNormal(t_moteur *moteur, t_mob *mob) {
     // Génère un nombre aléatoire représentant la possibilité de déplacement
     // Si l'entité se déplace
     //  Génère une position aléatoire dans un rayon
@@ -54,13 +54,13 @@ void deplacementNormal(t_moteur *moteur, t_entite *entite) {
     const int proba = getNombreAleatoire(1, 100);
 
     if (proba > PROBABILITE_DEPLACEMENT_AUCUN) {
-        entite->deplacementType = DEPLACEMENT_NORMAL;
+        mob->deplacementType = DEPLACEMENT_NORMAL;
 
-        t_vecteur2 pointARejoindre = choisirPointDeDeplacement(entite->rayonDeplacement);
-        entite->positionDeplacement.x = entite->position.x + pointARejoindre.x;
-        entite->positionDeplacement.y = entite->position.y + pointARejoindre.y;
+        t_vecteur2 pointARejoindre = choisirPointDeDeplacement(mob->rayonDeplacement);
+        mob->positionDeplacement.x = mob->position.x + pointARejoindre.x;
+        mob->positionDeplacement.y = mob->position.y + pointARejoindre.y;
         
-        if (blockEstDansLaMap(entite->positionDeplacement.x, entite->positionDeplacement.y)) {
+        if (blockEstDansLaMap(mob->positionDeplacement.x, mob->positionDeplacement.y)) {
 
         }
         else {
@@ -69,13 +69,16 @@ void deplacementNormal(t_moteur *moteur, t_entite *entite) {
             }
         }
     }
+
+
+    return 0;
 }
 
 
 
 
 
-void deplacementCombat(t_moteur *moteur, t_entite *entite) {
+int deplacementCombat(t_moteur *moteur, t_mob *mob) {
     // Si le joueur est dans le rayon de positionnement
     //  Le monstre se déplace en direction du joueur 
     // 
@@ -89,7 +92,7 @@ void deplacementCombat(t_moteur *moteur, t_entite *entite) {
 
     t_joueur *joueur = moteur->monde->joueur;
 
-    const float distance = calculDistanceEntreEntites(entite, (t_entite*)joueur);
+    const float distance = calculDistanceEntreEntites((t_entite*)mob, (t_entite*)joueur);
 
     
     if (distance <= ENTITE_RAYON_COMBAT_POSITIONNEMENT && distance > ENTITE_RAYON_COMBAT_ATTAQUE) {
@@ -105,6 +108,9 @@ void deplacementCombat(t_moteur *moteur, t_entite *entite) {
     else if (distance < ENTITE_RAYON_COMBAT_RETRAIT) {
 
     }
+
+
+    return 0;
 }
 
 
@@ -116,7 +122,7 @@ void deplacementCombat(t_moteur *moteur, t_entite *entite) {
 
 
 
-int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_entite*) {
+int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_mob*) {
     switch (deplacement) {
         case DEPLACEMENT_NORMAL:  
             return deplacementNormal;

@@ -34,7 +34,7 @@ void initControles(t_controles *controles) {
     controles->key_up = SDL_SCANCODE_W;
     controles->key_down = SDL_SCANCODE_S;
     controles->key_left = SDL_SCANCODE_A;
-    controles->key_right = SDL_SCANCODE_E;
+    controles->key_right = SDL_SCANCODE_D;
 
     // Interactions
     controles->interaction = SDL_SCANCODE_F;

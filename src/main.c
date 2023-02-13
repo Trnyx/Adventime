@@ -36,9 +36,8 @@ int main(int argc, char* argv[]) {
     t_monde *monde = creerMonde(seed);
 
     const t_vecteur2 positionJoueur = getPointApparitionJoueur(monde->map);
-    t_joueur *joueur = creerJoueur(positionJoueur);
+    monde->joueur = creerJoueur(positionJoueur);
 
-    monde->joueur = joueur;
     moteur->monde = monde;
 
     // SDL_Surface *surface = IMG_Load("assets/images/sol_herbe_1.png");
@@ -54,13 +53,14 @@ int main(int argc, char* argv[]) {
 
 
     int continuer = 1;
-    while (1) {
-        while (continuer == 1) {
+    // while (1) {
+        while (continuer != -1) {
             // if(evt.type == SDL_QUIT) {
             //     goto cleanup;
             // }
 
-            continuer = inputManager(joueur, &moteur->controles);
+            continuer = inputManager(moteur->monde->joueur, &moteur->controles);
+            printf("Continuer ? %i\n", continuer);
             update(moteur);
             // updateCamera(moteur, joueur->position);
         
@@ -107,17 +107,18 @@ int main(int argc, char* argv[]) {
             // SDL_RenderClear(moteur->renderer);
         }
 
-        if (continuer == -1) {
-            goto cleanup;
-        }
-    }
+        // if (continuer == -1) {
+        //     goto cleanup;
+        // }
+    // }
 
-    cleanup:
-    detruireJoueur(&joueur);
-    detruireMonde(&monde);
+    // cleanup:
+    detruireJoueur(&moteur->monde->joueur);
+    detruireMonde(&moteur->monde);
     detruireCamera(&moteur->camera);
     detruireTextures(&moteur->textures);
     detruireMoteur(&moteur);
+
     SDL_DestroyRenderer(moteur->renderer);
     SDL_DestroyWindow(moteur->window);
     SDL_Quit();

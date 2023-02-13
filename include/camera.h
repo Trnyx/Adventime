@@ -66,6 +66,7 @@ t_camera* creerCamera(t_vecteur2 position);
 void detruireCamera(t_camera **camera);
 
 void updateCamera(t_moteur *moteur, const t_vecteur2 position);
+void afficherCamera(t_moteur *moteur);
 
 
 

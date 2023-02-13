@@ -68,35 +68,40 @@ typedef struct s_moteur t_moteur;
  * @struct t_entite
  * @brief Structure modélisant une entité
  */
-typedef struct s_entite_base t_entite_base;
-struct s_entite_base {
+typedef struct s_entite t_entite;
+struct s_entite {
     // #include "attributs_entite.h"
     unsigned int id;
-    t_vecteur2 position;
-    t_vecteur2 orientation;
+    t_vecteur2 position;                /**< La position actuelle de l'entité */
+    t_vecteur2 orientation;             /**< L'orientation actuelle de l'entité */
 
-    e_entiteType entiteType;
+    e_entiteType entiteType;            /**< Le type de l'entité */
 
-    SDL_Rect hitbox;
-
-
-    time_t timestampCreation;
-    time_t timestampActualisation;
+    SDL_Rect hitbox;                    /**< La hitbox de l'entité */
 
 
-    void (*update)(t_moteur*, t_entite*);
-    void (*detruire)(t_entite**);
+    time_t timestampCreation;           /**< Le timestamp à laquelle l'entité à été créé */
+    time_t timestampActualisation;      /**< Le dernier timestamp à laquelle l'entité à été actualisé */
+
+
+    void (*update)(t_moteur*, t_entite*);   /**< Fonction d'actualisation de l'entité */
+    void (*detruire)(t_entite**);           /**< Fonction de suppression de l'entité */
 };
 
 
 
-typedef struct s_entite {
-    struct s_entite_base;
+/**
+ * @brief Structure représentant un mob
+ * 
+ * Un mob est une entité mobile (mob correspond à l'abreviation)
+ */
+typedef struct s_mob {
+    struct s_entite;                        /**< inclue les bases d'une entité */
 
-    t_vecteur2 positionDeplacement;
-    int rayonDeplacement;
-    e_deplacementType deplacementType;
-} t_entite;
+    int rayonDeplacement;                   /**< Le rayon dans lequel le mob peut se déplacer */
+    t_vecteur2 positionDeplacement;         /**< La position à laquelle le mob peut se déplacer */
+    e_deplacementType deplacementType;      /**< Le type de déplacement du mob */
+} t_mob;
 
 
 
@@ -108,6 +113,7 @@ typedef struct s_entite {
 
 
 t_entite* creerEntite(const t_vecteur2 position);
+t_mob* creerMob(const t_vecteur2 position);
 void detruireEntite(t_entite **entite);
 
 float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *entiteCible);

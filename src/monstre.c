@@ -64,8 +64,6 @@ void detruireMonstre(t_monstre **monstre) {
 
         detruireEntite((t_entite**) monstre);
     }
-
-    return 0;
 }
 
 
@@ -85,8 +83,8 @@ void detruireMonstre(t_monstre **monstre) {
  * @return t_monstre* 
  */
 t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome) {
-    t_entite *entite = creerEntite(position);
-    t_monstre *monstre = realloc(entite, sizeof(t_monstre));
+    t_mob *mob = creerMob(position);
+    t_monstre *monstre = realloc(mob, sizeof(t_monstre));
 
 
     monstre->entiteType = ENTITE_MONSTRE_AGGRESSIF;
@@ -96,6 +94,6 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome) {
     monstre->detruire = (void (*)(t_entite**)) detruireMonstre;
 
 
-    entite = NULL;
+    mob = NULL;
     return monstre;
 }

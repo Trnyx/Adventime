@@ -12,28 +12,30 @@
 
 
 
+#include <stdlib.h>
+#include <stdio.h>
+
 #include "../include/joueur.h"
 
 
 
 
 
-/**
- * @brief 
- * 
- * @return t_action_flags* 
- */
-t_action_flags* initialiserActionFlags() {
-    t_action_flags *flags = malloc(sizeof(t_action_flags));
+boolean doitSeDeplacer(t_action_flags *flags) {
+    return flags->up || flags->down || flags->left || flags->right;
+}
 
-    flags->up = 0;
-    flags->down = 0;
-    flags->left = 0;
-    flags->right = 0;
-    flags->interaction = 0;
-    flags->miniMap = 0;
 
-    return flags;
+int updateJoueur(t_moteur *moteur, t_joueur *joueur) {
+    printf("Update Joueur => ");
+    printf("Flags (N : %i / S : %i / O : %i / E : %i) => ", joueur->actionFlags->up, joueur->actionFlags->down, joueur->actionFlags->left, joueur->actionFlags->right);
+
+    if (doitSeDeplacer(joueur->actionFlags)) {
+        printf("Deplacement du joueur (N : %i / S : %i / O : %i / E : %i) => ", joueur->actionFlags->up, joueur->actionFlags->down, joueur->actionFlags->left, joueur->actionFlags->right);
+        deplacerEntite(moteur, (t_entite*) joueur, joueur->statistiques.vitesse);
+    }
+
+    printf("Fin Update Joueur\n");
 }
 
 
@@ -83,10 +85,33 @@ void detruireJoueur(t_joueur **joueur) {
 /**
  * @brief 
  * 
+ * @return t_action_flags* 
+ */
+t_action_flags* initialiserActionFlags() {
+    t_action_flags *flags = malloc(sizeof(t_action_flags));
+
+    flags->up = 0;
+    flags->down = 0;
+    flags->left = 0;
+    flags->right = 0;
+    flags->interaction = 0;
+    flags->miniMap = 0;
+
+    return flags;
+}
+
+
+
+
+
+/**
+ * @brief 
+ * 
  * @param position 
  * @return t_joueur* 
  */
 t_joueur* creerJoueur(const t_vecteur2 position) {
+    printf("Creation du joueur (%1.0f:%1.0f) => ", position.x, position.y);
     t_entite *entite = creerEntite(position);
     t_joueur *joueur = realloc(entite, sizeof(t_joueur));
 
@@ -104,10 +129,11 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
     joueur->actionFlags = initialiserActionFlags();
 
-    // joueur->update = (void (*)(t_moteur*, t_entite*)) updateJoueur;
+    joueur->update = (void (*)(t_moteur*, t_entite*)) updateJoueur;
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
 
+    printf("Succes\n");
     entite = NULL;
     return joueur;
 };
