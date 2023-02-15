@@ -44,18 +44,18 @@
  */
 typedef struct s_controles {
     // Directions
-    SDL_Scancode key_up;
-    SDL_Scancode key_down;
-    SDL_Scancode key_left;
-    SDL_Scancode key_right;
+    SDL_Scancode key_up;        /**< La touche de direction vers le haut */
+    SDL_Scancode key_down;      /**< La touche de direction vers le bas */
+    SDL_Scancode key_left;      /**< La touche de direction vers la gauche */
+    SDL_Scancode key_right;     /**< La touche de direction vers la droite */
 
     // Interactions
-    SDL_Scancode interaction;
-    int attack;
+    SDL_Scancode interaction;   /**< La touche d'interaction */
+    int attack;                 /**< Le clique pour l'attaque */
 
     // Autres
-    SDL_Scancode escape;
-    SDL_Scancode miniMap;
+    SDL_Scancode escape;        /**< La touche echap */
+    SDL_Scancode miniMap;       /**< La touche pour afficher la mini map */
 
 } t_controles;
 
@@ -78,7 +78,7 @@ typedef struct s_moteur {
     
     t_camera *camera;           /**< La caméra */
     t_textures *textures;       /**< Toutes les textures du jeu */
-    t_controles controles;     /**< Les contrôles du jeu */
+    t_controles controles;      /**< Les contrôles du jeu */
     
 
 } t_moteur;

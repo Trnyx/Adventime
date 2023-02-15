@@ -41,16 +41,16 @@ int inputManager(t_joueur *joueur, t_controles *controles) {
             case SDL_KEYDOWN:
                 // Deplacement
                 if (controles->key_up == event.key.keysym.scancode) {
-                    joueur->actionFlags->up = joueur->actionFlags->down + 1;
+                    joueur->actionFlags->up = 1;
                 }
                 else if (controles->key_down == event.key.keysym.scancode) {
-                    joueur->actionFlags->down = joueur->actionFlags->up + 1;
+                    joueur->actionFlags->down = 1;
                 }
                 else if (controles->key_left == event.key.keysym.scancode) {
-                    joueur->actionFlags->left = joueur->actionFlags->right + 1;
+                    joueur->actionFlags->left = 1;
                 }
                 else if (controles->key_right == event.key.keysym.scancode) {
-                    joueur->actionFlags->right = joueur->actionFlags->left + 1;
+                    joueur->actionFlags->right = 1;
                 }
 
                 // Interaction

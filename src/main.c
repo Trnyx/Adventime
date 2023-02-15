@@ -39,6 +39,7 @@ int main(int argc, char* argv[]) {
     monde->joueur = creerJoueur(positionJoueur);
 
     moteur->monde = monde;
+    moteur->camera->position = monde->joueur->position;
 
     // SDL_Surface *surface = IMG_Load("assets/images/sol_herbe_1.png");
     // SDL_Texture *texture = SDL_CreateTextureFromSurface(moteur->renderer, surface);
@@ -60,7 +61,7 @@ int main(int argc, char* argv[]) {
             // }
 
             continuer = inputManager(moteur->monde->joueur, &moteur->controles);
-            printf("Continuer ? %i\n", continuer);
+            // printf("Continuer ? %i\n", continuer);
             update(moteur);
             // updateCamera(moteur, joueur->position);
         

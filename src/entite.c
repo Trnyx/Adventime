@@ -49,17 +49,19 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
  */
 boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 positionSuivante) {
     t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_VEGETATION, map);
-    // printf("Block => ");
     if (block == NULL) return FAUX;
 
-    // Check si non vide
-    // printf("TAG (%i) => ", block->tag);
+    // Check si le block est bien vide
     if (block->tag != VIDE) return FAUX;
 
-    // Check si plus de 1 de hauteur 
     block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_SOL, map);
+    // Check si le block est un block profondeur
+    if (block->tag == SOL_EAU_PROFONDE) return FAUX;
+
     t_block* blockPositionActuelle = getBlockDansMap(entite->position.x, entite->position.y, COUCHE_SOL, map);
-    // printf("DIFFERENCE (%i / %i : %i) => ", block->tag, blockPositionActuelle->tag, abs(block->tag - blockPositionActuelle->tag));
+    // printf("Position Actuelle : %i => ", blockPositionActuelle->tag);
+
+    // Check si plus de 1 de hauteur 
     if (abs(block->tag - blockPositionActuelle->tag) > 1) return FAUX;
 
 
@@ -77,7 +79,8 @@ boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 
  * @return boolean 
  */
 boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vitesse) {
-    const float distance = vitesse * TPS / 100;
+    const float distance = vitesse * TPS / 1000.0;
+    // printf("Vitesse : %1.2f / TPS : %1.2f => ", vitesse, TPS);
 
     // Justification calcul normale
     const float normale = sqrt(pow(entite->orientation.x, 2) + pow(entite->orientation.y, 2));
@@ -86,11 +89,11 @@ boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vit
     t_vecteur2 positionSuivante;
     positionSuivante.x = entite->position.x + (distance * (entite->orientation.x / normale));
     positionSuivante.y = entite->position.y + (distance * (entite->orientation.y / normale));
-    printf("(distance : %1.2f, normale : %1.2f) ", distance, normale);
+    // printf("(distance : %1.2f, normale : %1.2f) ", distance, normale);
     printf("Position suivante : %1.2f:%1.2f => ", positionSuivante.x, positionSuivante.y);
     
     boolean peutSeDeplacer = peutDeplacerEntite(moteur->monde->map, entite, positionSuivante);
-    printf("Peut se deplacer ? %i => ", peutSeDeplacer);
+    // printf("Peut se deplacer ? %i => ", peutSeDeplacer);
 
 
     if (peutSeDeplacer == VRAI) {
@@ -159,8 +162,8 @@ t_entite* creerEntite(const t_vecteur2 position) {
 
     entite->hitbox.x = 0;
     entite->hitbox.y = 0;
-    entite->hitbox.h = 0;
-    entite->hitbox.w = 0;
+    entite->hitbox.h = 16;
+    entite->hitbox.w = 16;
 
     
     entite->update = NULL;

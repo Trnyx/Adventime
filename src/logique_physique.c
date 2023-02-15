@@ -78,7 +78,7 @@ unsigned long int u = 0;
  * @param moteur Pointeur sur le moteur du jeu
  */
 void update(t_moteur *moteur) {
-    printf("Update (%li)\n", u++);
+    // printf("Update (%li)\n", u++);
     t_joueur *joueur = moteur->monde->joueur;
 
     t_liste *entites = moteur->monde->map->entites;
