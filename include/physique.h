@@ -49,10 +49,11 @@
 /* --------------------------------- Entite --------------------------------- */
 
 // Le nombre d'entité total possible
-#define MOB_CAP 100
+#define MOB_CAP 256
 #define MONSTRE_AGGRESSIF_CAP 20
 
 
+#define ENTITE_RAYON_COMBAT_DETECTION 8
 #define ENTITE_RAYON_COMBAT_POSITIONNEMENT 12
 #define ENTITE_RAYON_COMBAT_RETRAIT 1
 #define ENTITE_RAYON_COMBAT_ATTAQUE 2

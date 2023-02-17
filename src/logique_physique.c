@@ -106,51 +106,79 @@ void update(t_moteur *moteur) {
 
     /* ---------------- Entites actuellement présente dans la map --------------- */
 
-    // en_tete(entites);
-    // if (!liste_vide(entites)) {
+    en_tete(entites);
+    if (!liste_vide(entites)) {
 
-    //     while (!hors_liste(entites)) {
-    //         valeur_elt(entites, &entite);
-
-
-
-    //         if (entite != NULL) {
-    //             const float distance = calculDistanceEntreEntites(entite, (t_entite*)joueur);
-
-    //             // Actualisation 
-    //             entite->timestampActualisation = timestampFrame;
+        while (!hors_liste(entites)) {
+            valeur_elt(entites, &entite);
 
 
-    //             if (distance < JOUEUR_RAYON_ACTIF) {
-    //                 entite->update(moteur, (t_entite*) entite);
-    //                 // Deplacement
-    //                 // monstre => joueur détection
-    //                 // combat
-    //             }
+            if (entite != NULL) {
+                // La distance séparant l'entité actuelle et le joueur
+                const float distance = calculDistanceEntreEntites(entite, (t_entite*)joueur);
+
+                // Actualisation des temps d'actualisation
+                entite->timestampActualisation = timestampFrame;
 
 
-    //             else if (distance >= JOUEUR_RAYON_SEMIACTIF && distance < JOUEUR_RAYON_INACTIF) {
-
-    //                 // Gestion de la durée de vie
-    //                 if (entite->timestampActualisation - entite->timestampCreation >= ENTITE_DUREE_VIE_MAX) {                        
-    //                     entite->detruire((t_entite**) &entite);
-    //                     oter_elt(entites);
-    //                 }
+                // Lorsque l'entité se trouve dans le disque actif par rapport au joueur
+                if (distance <=JOUEUR_RAYON_ACTIF) {
+                    // Deplacement
+                    entite->update(moteur, (t_entite*)entite);
                     
-    //             }
+                    // En fonction du type de l'entité
+                    switch (entite->entiteType) {
+                        // Si l'entité est un monstre 
+                        case ENTITE_MONSTRE_AGGRESSIF:
+                            // Si le joueur est dans le rayon de détection du monstre
+                            if (entite->deplacementType != DEPLACEMENT_COMBAT && distance < ENTITE_RAYON_COMBAT_DETECTION) {
+                                entite->deplacementType = DEPLACEMENT_COMBAT;
+                            }
+
+                        default:
+                            // Si le joueur est dans le rayon de détection du monstre
+                            if (entite->deplacementType == DEPLACEMENT_COMBAT && distance > ENTITE_RAYON_COMBAT_POSITIONNEMENT) {
+                                entite->deplacementType = DEPLACEMENT_NORMAL;
+                            }
+                            break;
+                    }
+                    
+
+                    // combat
+                    entite->update(moteur, (t_entite*)entite);
+                }
 
 
-    //             else if (distance >= JOUEUR_RAYON_INACTIF) {
-    //                 // Si monstre aggrassif
-    //                 // Supprimer monstre
-    //                 // Monstre supprimer break;
-    //             }
+                // Lorsque l'entité se trouve dans le disque semi actif par rapport au joueur
+                else if (distance > JOUEUR_RAYON_SEMIACTIF && distance <= JOUEUR_RAYON_INACTIF) {
+
+                    // Gestion de la durée de vie de l'entité
+                    if (entite->timestampActualisation - entite->timestampCreation >= ENTITE_DUREE_VIE_MAX) {                        
+                        entite->detruire((t_entite**) &entite);
+                        oter_elt(entites);
+                        continue;
+                    }
+                    
+                }
 
 
-    //             nombreMobs++;
-    //         }
-    //     }
-    // }
+                // Lorsque l'entité se trouve au delà des deux disques précédents
+                // L'entité est concidéré dans un disque inactif
+                else if (distance > JOUEUR_RAYON_INACTIF) {
+                    // Si le monstre est aggressif
+                    // Suppression du monstre
+                    if (entite->entiteType == ENTITE_MONSTRE_AGGRESSIF) {
+                        entite->detruire((t_entite**) &entite);
+                        oter_elt(entites);
+                        continue;
+                    }
+                }
+
+
+                nombreMobs++;
+            }
+        }
+    }
 
 
     // /* -------------------------- Apparition d'entites -------------------------- */

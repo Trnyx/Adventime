@@ -676,8 +676,14 @@ t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
  * @version 1.1
  */
 t_map* genererMap() {
+    printf("Generation map => ");
     t_map* map = malloc(sizeof(t_map));
+
+    map->entites = malloc(sizeof(t_liste));
+    init_liste(map->entites);
+
     t_chunk* chunkTempo = NULL;
+
 
     map->chunks = calloc(TAILLE_MAP * TAILLE_MAP * NB_COUCHE, sizeof(t_chunk));
 
@@ -714,6 +720,7 @@ t_map* genererMap() {
 
     
 
+    printf("Succes\n");
     return map;
 }
 

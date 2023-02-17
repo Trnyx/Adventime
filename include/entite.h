@@ -100,6 +100,7 @@ typedef struct s_mob {
 
     int rayonDeplacement;                   /**< Le rayon dans lequel le mob peut se déplacer */
     t_vecteur2 positionDeplacement;         /**< La position à laquelle le mob peut se déplacer */
+    
     e_deplacementType deplacementType;      /**< Le type de déplacement du mob */
 } t_mob;
 
