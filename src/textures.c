@@ -21,14 +21,25 @@
 
 
 
+void splitTexture(SDL_Rect *rectangle, const int x, const int y, const int tailleX, const int tailleY, const int decalageX, const int decalageY) {
+    rectangle->x = x * decalageX;
+    rectangle->y = y * decalageY;
+    rectangle->h = tailleX;
+    rectangle->w = tailleY;
+}
+
+
+
+
+
 /**
- * @brief Get the Texture object
+ * @brief 
  * 
  * @param tag Le tag de la texture à afficher
  * @param textures 
  * @return SDL_Texture* 
  */
-SDL_Texture* getTexture(int tag, t_textures *textures) {    
+SDL_Texture* getTexture(const int tag, t_textures *textures) {    
     switch (tag) {
         case SOL_EAU_PROFONDE: return textures->sol_profondeur;
         case SOL_EAU: return textures->sol_eau;
@@ -48,6 +59,17 @@ SDL_Texture* getTexture(int tag, t_textures *textures) {
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                                  Création                                  */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
+ * @param renderer 
+ * @return t_textures* 
+ */
 t_textures* initTextures(SDL_Renderer *renderer) {
     t_textures *textures = malloc(sizeof(t_textures));
 
@@ -63,6 +85,13 @@ t_textures* initTextures(SDL_Renderer *renderer) {
 
     /* ----------------------------------- Map ---------------------------------- */
     // assets/images/.png
+
+    // surface = IMG_Load("assets/images/sol_tileset.png");
+    // textures->sol_profondeur = SDL_CreateTextureFromSurface(renderer, surface);
+    // if (surface == NULL) {
+    //     printf("Erreur Chargement Texture : Impossible de charger sol_profondeur.png\n%s\n", SDL_GetError());
+    // }
+    // SDL_FreeSurface(surface);
 
     surface = IMG_Load("assets/images/sol_profondeur.png");
     textures->sol_profondeur = SDL_CreateTextureFromSurface(renderer, surface);
@@ -166,6 +195,11 @@ t_textures* initTextures(SDL_Renderer *renderer) {
 
 
 
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Destruction                                */
+/* -------------------------------------------------------------------------- */
 
 
 void detruireTextures(t_textures **textures) {

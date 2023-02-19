@@ -41,6 +41,7 @@
 typedef struct s_textures {
 
     // Map
+    SDL_Texture *sol;
     SDL_Texture *sol_profondeur;
     SDL_Texture *sol_eau;
     SDL_Texture *sol_sable;
@@ -80,7 +81,8 @@ typedef struct s_textures {
 t_textures* initTextures(SDL_Renderer *renderer);
 void detruireTextures(t_textures **textures);
 
-SDL_Texture* getTexture(int tag, t_textures *textures);
+SDL_Texture* getTexture(const int tag, t_textures *textures);
+void splitTexture(SDL_Rect *rectangle, const int x, const int y, const int tailleX, const int tailleY, const int decalageX, const int decalageY);
 
 
 

@@ -131,14 +131,14 @@ void update(t_moteur *moteur) {
                         // Si l'entité est un monstre 
                         case ENTITE_MONSTRE_AGGRESSIF:
                             // Si le joueur est dans le rayon de détection du monstre
-                            if (entite->deplacementType != DEPLACEMENT_COMBAT && distance < ENTITE_RAYON_COMBAT_DETECTION) {
-                                entite->deplacementType = DEPLACEMENT_COMBAT;
+                            if (((t_mob*)entite)->deplacementType != DEPLACEMENT_COMBAT && distance < ENTITE_RAYON_COMBAT_DETECTION) {
+                                ((t_mob*)entite)->deplacementType = DEPLACEMENT_COMBAT;
                             }
 
                         default:
                             // Si le joueur est dans le rayon de détection du monstre
-                            if (entite->deplacementType == DEPLACEMENT_COMBAT && distance > ENTITE_RAYON_COMBAT_POSITIONNEMENT) {
-                                entite->deplacementType = DEPLACEMENT_NORMAL;
+                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > ENTITE_RAYON_COMBAT_POSITIONNEMENT) {
+                                ((t_mob*)entite)->deplacementType = DEPLACEMENT_NORMAL;
                             }
                             break;
                     }
