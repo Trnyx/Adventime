@@ -716,7 +716,7 @@ t_map* genererMap() {
     }
 
 
-    // genererVegetations(map);
+    genererVegetations(map);
 
     
 

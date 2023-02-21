@@ -184,8 +184,9 @@ void genererVegetations(t_map *map) {
                 if (block == NULL) continue;
                 if (block->tag <= SOL_EAU) continue;
         
+                chunk = getChunk(x, y, COUCHE_VEGETATION, map);
                 block = getBlockDansChunk((int)positionVegetal.x % TAILLE_CHUNK, (int)positionVegetal.y % TAILLE_CHUNK, chunk);
-                block->tag = HERBE;
+                block->tag = CHAINE;
             }
 
             free(vegetaux.vegetauxPositions);

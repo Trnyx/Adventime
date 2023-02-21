@@ -135,6 +135,7 @@ void update(t_moteur *moteur) {
                                 ((t_mob*)entite)->deplacementType = DEPLACEMENT_COMBAT;
                             }
 
+                        // Sur toutes les entités
                         default:
                             // Si le joueur est dans le rayon de détection du monstre
                             if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > ENTITE_RAYON_COMBAT_POSITIONNEMENT) {

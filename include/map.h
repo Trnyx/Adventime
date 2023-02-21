@@ -203,6 +203,7 @@ t_chunk* getChunk(const int x, const int y, const int z, t_map *map);
 
 
 t_map* genererMap();
+void genererVegetations(t_map *map);
 int detruireMap(t_map **map);
 
 
