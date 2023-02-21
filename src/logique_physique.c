@@ -108,6 +108,7 @@ void update(t_moteur *moteur) {
 
     en_tete(entites);
     if (!liste_vide(entites)) {
+        printf("Update Entites => ");
 
         while (!hors_liste(entites)) {
             valeur_elt(entites, &entite);
@@ -116,13 +117,15 @@ void update(t_moteur *moteur) {
             if (entite != NULL) {
                 // La distance séparant l'entité actuelle et le joueur
                 const float distance = calculDistanceEntreEntites(entite, (t_entite*)joueur);
+                printf("distance : %1.2f ", distance);
 
                 // Actualisation des temps d'actualisation
                 entite->timestampActualisation = timestampFrame;
 
 
                 // Lorsque l'entité se trouve dans le disque actif par rapport au joueur
-                if (distance <=JOUEUR_RAYON_ACTIF) {
+                if (distance <= JOUEUR_RAYON_ACTIF) {
+                    printf("(Actif) => ");
                     // Deplacement
                     entite->update(moteur, (t_entite*)entite);
                     
@@ -146,17 +149,18 @@ void update(t_moteur *moteur) {
                     
 
                     // combat
-                    entite->update(moteur, (t_entite*)entite);
+                    // entite->update(moteur, (t_entite*)entite);
                 }
 
 
                 // Lorsque l'entité se trouve dans le disque semi actif par rapport au joueur
-                else if (distance > JOUEUR_RAYON_SEMIACTIF && distance <= JOUEUR_RAYON_INACTIF) {
+                else if (distance > JOUEUR_RAYON_ACTIF && distance <= JOUEUR_RAYON_SEMIACTIF) {
+                    printf("(Semi Actif) => ");
 
                     // Gestion de la durée de vie de l'entité
                     if (entite->timestampActualisation - entite->timestampCreation >= ENTITE_DUREE_VIE_MAX) {                        
-                        entite->detruire((t_entite**) &entite);
                         oter_elt(entites);
+                        entite->detruire((t_entite**) &entite);
                         continue;
                     }
                     
@@ -165,12 +169,13 @@ void update(t_moteur *moteur) {
 
                 // Lorsque l'entité se trouve au delà des deux disques précédents
                 // L'entité est concidéré dans un disque inactif
-                else if (distance > JOUEUR_RAYON_INACTIF) {
+                else if (distance > JOUEUR_RAYON_SEMIACTIF) {
+                    printf("(Inactif) => ");
                     // Si le monstre est aggressif
                     // Suppression du monstre
                     if (entite->entiteType == ENTITE_MONSTRE_AGGRESSIF) {
-                        entite->detruire((t_entite**) &entite);
                         oter_elt(entites);
+                        entite->detruire((t_entite**) &entite);
                         continue;
                     }
                 }
@@ -178,7 +183,12 @@ void update(t_moteur *moteur) {
 
                 nombreMobs++;
             }
+
+
+            suivant(entites);
         }
+
+        printf("Fin Update Entites\n");
     }
 
 

@@ -23,15 +23,11 @@
 
 
 int updateMonstre(t_moteur *moteur, t_monstre *monstre) {
-    time_t timestampFrame = time(NULL);
-    monstre->timestampActualisation = timestampFrame;
+    printf("Update Monstre => ");
+    
+    printf("Deplacement : %i => ", monstre->deplacementType);
 
-
-    if (difftime(monstre->timestampActualisation, monstre->timestampCreation) >= ENTITE_DUREE_VIE_MAX) {
-        return -1;
-    }
-
-
+    printf("Fin Update Monstre\n");
     return 1;
 }
 
@@ -58,12 +54,14 @@ int updateMonstre(t_moteur *moteur, t_monstre *monstre) {
  * @return int 
  */
 void detruireMonstre(t_monstre **monstre) {
+    printf("Destruction Monstre => ");
     if (monstre != NULL && *monstre != NULL) {
         // free(*monstre);
         // *monstre = NULL;
 
-        detruireEntite((t_entite**) monstre);
+        detruireMob((t_mob**) monstre);
     }
+    printf("Succes\n");
 }
 
 

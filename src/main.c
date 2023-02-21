@@ -41,15 +41,15 @@ int main(int argc, char* argv[]) {
     moteur->monde = monde;
     moteur->camera->position = monde->joueur->position;
 
-    // SDL_Surface *surface = IMG_Load("assets/images/sol_herbe_1.png");
-    // SDL_Texture *texture = SDL_CreateTextureFromSurface(moteur->renderer, surface);
 
-    // SDL_Rect taille_texture = { 0, 0, 16, 16 };
-    // SDL_Rect rendu;
 
-    // rendu.h = TAILLE_BLOCK;
-    // rendu.w = TAILLE_BLOCK;
-    // SDL_Rect taille_rendu = { 0, 0, 64, 64 };
+    t_vecteur2 positionMonstre;
+    positionMonstre.x = positionJoueur.x + 6;
+    positionMonstre.y = positionJoueur.y;
+
+    t_monstre *monstre = creerMonstre(positionMonstre, BIOME_PLAINE);
+    ajout_droit(monde->map->entites, (t_entite*) monstre);
+
 
 
 

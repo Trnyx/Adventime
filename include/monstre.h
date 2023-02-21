@@ -72,7 +72,7 @@ typedef enum {
  */
 typedef struct s_monstre {
     // #include "attributs_entite.h"
-    struct s_entite;
+    struct s_mob;
     
     char* name;                             /**< Le nom d'un Monstre */
 
