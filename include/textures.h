@@ -41,20 +41,13 @@
 typedef struct s_textures {
 
     // Map
+    SDL_Texture *null;
+
+    // Map
     SDL_Texture *sol;
-    SDL_Texture *sol_profondeur;
-    SDL_Texture *sol_eau;
-    SDL_Texture *sol_sable;
-    SDL_Texture *sol_herbe_1;
-    SDL_Texture *sol_herbe_2;
-    SDL_Texture *sol_herbe_3;
-    SDL_Texture *sol_montagne_1;
-    SDL_Texture *sol_montagne_2;
-    SDL_Texture *sol_neige;
 
     // Végétaux
-    SDL_Texture *vegetaux_herbe;
-    SDL_Texture *vegetaux_chene;
+    SDL_Texture *vegetaux;
 
 
     // Joueur
@@ -82,7 +75,7 @@ t_textures* initTextures(SDL_Renderer *renderer);
 void detruireTextures(t_textures **textures);
 
 SDL_Texture* getTexture(const int tag, t_textures *textures);
-void splitTexture(SDL_Rect *rectangle, const int x, const int y, const int tailleX, const int tailleY, const int decalageX, const int decalageY);
+void splitTexture(SDL_Rect *rectangle, const int x, const int y, const int tailleX, const int tailleY);
 
 
 
