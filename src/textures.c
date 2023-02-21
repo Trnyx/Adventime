@@ -178,7 +178,6 @@ t_textures* initTextures(SDL_Renderer *renderer) {
 
     /* -------------------------------- Végétaux -------------------------------- */
 
-
     surface = IMG_Load("assets/images/vegetaux_tileset.png");
     textures->vegetaux = SDL_CreateTextureFromSurface(renderer, surface);
     if (surface == NULL) {
@@ -189,16 +188,22 @@ t_textures* initTextures(SDL_Renderer *renderer) {
 
     /* --------------------------------- Joueur --------------------------------- */
 
-
-    surface = IMG_Load("assets/images/joueur.png");
+    surface = IMG_Load("assets/images/joueur_tileset.png");
     textures->joueur = SDL_CreateTextureFromSurface(renderer, surface);
     if (surface == NULL) {
-        printf("Erreur Chargement Texture : Impossible de charger joueur.png\n%s\n", SDL_GetError());
+        printf("Erreur Chargement Texture : Impossible de charger joueur_tileset.png\n%s\n", SDL_GetError());
     }
     SDL_FreeSurface(surface);
 
 
     /* -------------------------------- Monstres -------------------------------- */
+
+    surface = IMG_Load("assets/images/monstres_tileset.png");
+    textures->monstres = SDL_CreateTextureFromSurface(renderer, surface);
+    if (surface == NULL) {
+        printf("Erreur Chargement Texture : Impossible de charger monstres_tileset.png\n%s\n", SDL_GetError());
+    }
+    SDL_FreeSurface(surface);
 
 
     /* --------------------------------- Animaux -------------------------------- */
@@ -220,6 +225,7 @@ t_textures* initTextures(SDL_Renderer *renderer) {
 
 
 void detruireTextures(t_textures **textures) {
+    printf("Destruction Textures => ");
     if (textures != NULL && *textures != NULL) {
 
         if ((*textures)->null != NULL) 
@@ -246,4 +252,5 @@ void detruireTextures(t_textures **textures) {
         *textures = NULL;
 
     }
+    printf("Succes\n");
 }

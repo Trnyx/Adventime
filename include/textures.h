@@ -21,6 +21,12 @@
 
 
 
+#define TAILLE_TILE 16
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Enumeration                                */
 /* -------------------------------------------------------------------------- */
@@ -42,21 +48,16 @@ typedef struct s_textures {
 
     // Map
     SDL_Texture *null;
-
-    // Map
     SDL_Texture *sol;
 
     // Végétaux
     SDL_Texture *vegetaux;
 
 
-    // Joueur
+    // Entités
     SDL_Texture *joueur;
-
-    // Monstres
     SDL_Texture *monstres;
-
-    // Animaux
+    SDL_Texture *animaux;
 
     // Autres
 

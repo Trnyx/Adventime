@@ -116,6 +116,7 @@ typedef struct s_mob {
 t_entite* creerEntite(const t_vecteur2 position);
 t_mob* creerMob(const t_vecteur2 position);
 void detruireEntite(t_entite **entite);
+void detruireMob(t_mob **mob);
 
 float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *entiteCible);
 boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vitesse);

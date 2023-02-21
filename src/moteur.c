@@ -70,12 +70,14 @@ t_moteur* initMoteur() {
 
 
 void detruireMoteur(t_moteur **moteur) {
+    printf("Destruction Moteur => ");
     if (moteur != NULL && *moteur != NULL) {
 
         free((*moteur));
         *moteur = NULL;
         
     }
+    printf("Succes\n");
 }
 
 

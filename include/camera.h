@@ -19,6 +19,7 @@
 
 
 #include "utilitaire.h"
+#include "textures.h"
 
 
 
@@ -51,6 +52,9 @@ typedef struct s_moteur t_moteur;
 typedef struct s_camera {
     t_vecteur2 position;
     t_vecteur2 futurePosition;
+
+    t_vecteur2 origine;
+    t_vecteur2 offset;
 } t_camera;
 
 
@@ -67,6 +71,8 @@ void detruireCamera(t_camera **camera);
 
 void updateCamera(t_moteur *moteur, const t_vecteur2 position);
 void afficherCamera(t_moteur *moteur);
+
+int positionRelativeEnPositionSurEcran(const float coordonnee, const float offset, const float origine, const float tailleRendu);
 
 
 

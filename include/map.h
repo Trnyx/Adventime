@@ -206,6 +206,9 @@ t_map* genererMap();
 void genererVegetations(t_map *map);
 int detruireMap(t_map **map);
 
+void dessinerSol(t_moteur *moteur, SDL_Rect *rendu);
+void dessinerVegetation(t_moteur *moteur, SDL_Rect *rendu);
+
 
 
 

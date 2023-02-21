@@ -780,6 +780,7 @@ int detruireChunk(t_chunk **chunk) {
  * @version 1.2
  */
 int detruireMap(t_map **map) {
+    printf("Destruction Map => ");
     if (map == NULL || *map == NULL) return 0;
     t_chunk *chunk = NULL;
   

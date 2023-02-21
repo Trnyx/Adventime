@@ -120,10 +120,27 @@ boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vit
  * @param entite 
  */
 void detruireEntite(t_entite **entite) {
+    printf("Destruction Entite => ");
     if (entite != NULL && *entite != NULL) {
 
         free(*entite);
         *entite = NULL;
+
+    }
+}
+
+
+
+/**
+ * @brief 
+ * 
+ * @param mob 
+ */
+void detruireMob(t_mob **mob) {
+    printf("Destruction Mob => ");
+    if (mob != NULL && *mob != NULL) {
+
+        detruireEntite((t_entite**)mob);
 
     }
 }
@@ -190,6 +207,8 @@ t_mob* creerMob(const t_vecteur2 position) {
     mob->positionDeplacement.y = 0;
 
     mob->deplacementType = DEPLACEMENT_STATIQUE;
+
+    mob->detruire = detruireMob;
 
 
     entite = NULL;
