@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "../include/physique.h"
 #include "../include/moteur.h"
 #include "../include/monde.h"
 #include "../include/entite.h"
@@ -172,7 +173,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
 
     entite->position.x = position.x;
     entite->position.y = position.y;
-    entite->orientation.x = 1;
+    entite->orientation.x = 0;
     entite->orientation.y = 0;
 
     entite->entiteType = ENTITE_RIEN;
@@ -199,16 +200,19 @@ t_entite* creerEntite(const t_vecteur2 position) {
 t_mob* creerMob(const t_vecteur2 position) {
     t_entite *entite = creerEntite(position);
     t_mob *mob = realloc(entite, sizeof(t_mob));
-
+    const time_t t = time(NULL);
 
     mob->rayonDeplacement = 0;
 
-    mob->positionDeplacement.x = 0;
-    mob->positionDeplacement.y = 0;
+    mob->positionDeplacement.x = position.x;
+    mob->positionDeplacement.y = position.y;
+    mob->timestampDebutDeplacement = t;
+    mob->timestampFinDeplacement = t;
+    mob->delaiAttente = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
 
     mob->deplacementType = DEPLACEMENT_STATIQUE;
 
-    mob->detruire = detruireMob;
+    mob->detruire = (void (*)(t_entite**)) detruireMob;
 
 
     entite = NULL;

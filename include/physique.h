@@ -58,6 +58,15 @@
 #define ENTITE_RAYON_COMBAT_RETRAIT 1
 #define ENTITE_RAYON_COMBAT_ATTAQUE 2
 
+
+// La durée maximale de déplacement d'un mob [en seconde]
+#define MOB_DUREE_DEPLACEMENT 5
+// La durée minimale d'attente entre deux déplacements [en seconde]
+#define MOB_DELAI_MIN_ENTRE_DEPLACEMENT 3
+// La durée maximale d'attente entre deux déplacements [en seconde]
+#define MOB_DELAI_MAX_ENTRE_DEPLACEMENT 8
+
+
 // La durée de vie minimum d'une entité
 #define ENTITE_DUREE_VIE_MIN TEMPS_JOUR / 4
 // La durée de vie maximum d'une entité

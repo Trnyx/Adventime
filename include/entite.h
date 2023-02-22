@@ -84,8 +84,8 @@ struct s_entite {
     time_t timestampActualisation;      /**< Le dernier timestamp à laquelle l'entité à été actualisé */
 
 
-    void (*update)(t_moteur*, t_entite*);   /**< Fonction d'actualisation de l'entité */
-    void (*detruire)(t_entite**);           /**< Fonction de suppression de l'entité */
+    int  (*update)(t_moteur*, t_entite*, const float);      /**< Fonction d'actualisation de l'entité */
+    void (*detruire)(t_entite**);                           /**< Fonction de suppression de l'entité */
 };
 
 
@@ -98,8 +98,11 @@ struct s_entite {
 typedef struct s_mob {
     struct s_entite;                        /**< inclue les bases d'une entité */
 
-    int rayonDeplacement;                   /**< Le rayon dans lequel le mob peut se déplacer */
+    unsigned int rayonDeplacement;          /**< Le rayon dans lequel le mob peut se déplacer */
     t_vecteur2 positionDeplacement;         /**< La position à laquelle le mob peut se déplacer */
+    time_t timestampDebutDeplacement;       /**< Timestamp de départ de déplacement */
+    time_t timestampFinDeplacement;         /**< Timestamp de fin de déplacement */
+    int delaiAttente;                       /**< Temps d'attente entre deux déplacements */
     
     e_deplacementType deplacementType;      /**< Le type de déplacement du mob */
 } t_mob;
@@ -120,6 +123,8 @@ void detruireMob(t_mob **mob);
 
 float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *entiteCible);
 boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vitesse);
+
+int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_mob*, const float);
 
 
 

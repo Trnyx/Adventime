@@ -93,7 +93,7 @@ void update(t_moteur *moteur) {
     /*                                   Joueur                                   */
     /* -------------------------------------------------------------------------- */
 
-    joueur->update(moteur, (t_entite*) joueur);
+    joueur->update(moteur, (t_entite*) joueur, 0.0);
 
     
 
@@ -126,8 +126,6 @@ void update(t_moteur *moteur) {
                 // Lorsque l'entité se trouve dans le disque actif par rapport au joueur
                 if (distance <= JOUEUR_RAYON_ACTIF) {
                     printf("(Actif) => ");
-                    // Deplacement
-                    entite->update(moteur, (t_entite*)entite);
                     
                     // En fonction du type de l'entité
                     switch (entite->entiteType) {
@@ -147,6 +145,9 @@ void update(t_moteur *moteur) {
                             break;
                     }
                     
+
+                    // Deplacement
+                    entite->update(moteur, (t_entite*)entite, distance);
 
                     // combat
                     // entite->update(moteur, (t_entite*)entite);

@@ -174,7 +174,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
     joueur->actionFlags = initialiserActionFlags();
 
-    joueur->update = (void (*)(t_moteur*, t_entite*)) updateJoueur;
+    joueur->update = (int    (*)(t_moteur*, t_entite*, const float)) updateJoueur;
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
 
