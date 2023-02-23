@@ -129,6 +129,7 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome) {
 
     monstre->rayonDetection = 0;
     monstre->rayonDeplacement = 4;
+    monstre->deplacementType = DEPLACEMENT_NORMAL;
 
     monstre->update = (int (*)(t_moteur*, t_entite*, const float)) updateMonstre;
     monstre->detruire = (void (*)(t_entite**)) detruireMonstre;
