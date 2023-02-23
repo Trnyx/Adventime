@@ -13,8 +13,10 @@
 
 
 
+#include <stdio.h>
 #include <stdlib.h>
-#include <audio.h>
+
+#include "../include/audio.h"
 
 
 
@@ -36,22 +38,53 @@ void changerVolume(int nouveauVolume) {
 /**
  * @brief 
  * 
+ * @param music 
+ */
+void play_music(Mix_Music *music) {
+    Mix_PlayMusic(music, -1);
+}
+
+
+/**
+ * @brief 
+ * 
+ * @param sound 
+ * @param channel 
+ */
+void play_bruitage(Mix_Chunk *sound, int channel) {
+    Mix_PlayChannel(channel, sound, 0);
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Chargement                                 */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
  * @param volume 
  * @param musiques 
  * @param bruitages 
  * @return int 
  */
-int chargerAudio(int volume, t_musiques **musiques, t_bruitages **bruitages) {
+int chargerAudio(const int volume, t_musiques **musiques, t_bruitages **bruitages) {
     t_musiques *m = malloc(sizeof(t_musiques));
     if (m == NULL) {
-        printf("Impossible d'allouer la mémoire pour les musiques");;
+        printf("Impossible d'allouer la mémoire pour les musiques");
+        free(m);
         return -1;
     }
 
 
     t_bruitages *b = malloc(sizeof(t_bruitages));
     if (b == NULL) {
-        printf("Impossible d'allouer la mémoire pour les bruitages");;
+        printf("Impossible d'allouer la mémoire pour les bruitages");
+        free(b);
         return -1;
     }
 
@@ -59,11 +92,11 @@ int chargerAudio(int volume, t_musiques **musiques, t_bruitages **bruitages) {
 
     /* -------------------------------- Musiques -------------------------------- */
     // Menu
-    m->menu_principal = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    m->menu_principal = Mix_LoadMUS("assets/audio/musiques/menu.mp3");
 
     // Ambiance
-    m->ambiance = Mix_LoadMUS("assets/audio/musiques/.mp3");
-    // m->ambiance_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    m->ambiance_jour = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    m->ambiance_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
 
     // Combat
     m->combat = Mix_LoadMUS("assets/audio/musiques/.mp3");
@@ -104,6 +137,35 @@ int chargerAudio(int volume, t_musiques **musiques, t_bruitages **bruitages) {
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                                    Init                                    */
+/* -------------------------------------------------------------------------- */
+
+
+t_audio* initAudio() {
+    t_audio *audio = malloc(sizeof(t_audio));
+
+
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) {
+        printf("WARNING : Erreur d'initialisation de SDL MIXER : %s\n", Mix_GetError());
+    }
+
+
+    chargerAudio(MIX_MAX_VOLUME, &audio->musiques, &audio->bruitages);
+
+
+    return audio;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Destruction                                */
+/* -------------------------------------------------------------------------- */
+
+
 /**
  * @brief 
  * 
@@ -120,14 +182,14 @@ int detruireAudio(t_musiques **musiques, t_bruitages **bruitages) {
     // Mix_FreeMusic((*musiques)->);
 
     free(*musiques);
-    *musiques == NULL;
+    *musiques = NULL;
 
 
     /* -------------------------------- Bruitages ------------------------------- */
     // Mix_FreeChunk((*bruitages)->);
 
     free(*bruitages);
-    *bruitages == NULL;
+    *bruitages = NULL;
 
 
 
