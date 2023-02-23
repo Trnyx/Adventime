@@ -4,7 +4,7 @@
 # Compilateur
 CC = gcc
 # Paramètres de la compilation
-CFLAGS = -g -Wall -fms-extensions
+CFLAGS = -g -Wall -fms-extensions -Llib -lm
 
 # Nom de l'exécutable
 EXEC = Adventime
@@ -88,7 +88,7 @@ $(BINDIR)/$(EXEC): $(OBJECTS)
 
 # Supprime les fichiers objets
 clean:
-	rm -rf ./$(OBJDIR)/*.o
+	rm -rf $(OBJDIR)
 	@echo "Nettoyage des fichiers objets effectué."
 
 

@@ -1,0 +1,28 @@
+Sons :
+    Menu :
+        Menu Sélection
+    Joueur :
+        Attaque
+        Dégât reçu
+        Mort
+    Monstre :
+        Attaque
+        Dégât reçu
+        Mort
+    Autres :
+        Dégât arme
+        Item Récupération
+
+
+
+Musiques
+    Menu :
+        - Menu principal
+
+
+    En jeu :
+        - Ambiance Jour
+        - Ambiance Nuit
+        - Combat Jour
+        - Combat Nuit
+        - Combat Boss
