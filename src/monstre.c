@@ -28,7 +28,9 @@ int updateMonstre(t_moteur *moteur, t_monstre *monstre, const float distance) {
     printf("Deplacement : %i => ", monstre->deplacementType);
 
 
-    getDeplacement(monstre->deplacementType)(moteur, (t_mob*)monstre, distance);
+    int (*deplacement)(t_moteur *, t_mob *, const float) = getDeplacement(monstre->deplacementType);
+    printf("Fonction : %p => ", deplacement);
+    if (deplacement != NULL) deplacement(moteur, (t_mob*)monstre, distance);
 
 
     // // Si le monstre n'a pas atteint la position qu'il doit atteindre

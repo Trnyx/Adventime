@@ -39,16 +39,7 @@ t_vecteur2 choisirPointDeDeplacement(const int rayon) {
 
 
 int deplacementNormal(t_moteur *moteur, t_mob *mob) {
-    // Génère un nombre aléatoire représentant la probabilité de déplacement
-    // Si l'entité se déplace
-    //  Génère une position aléatoire dans un rayon
-    //  Si la position est valide et attaignable
-    //      L'entité se déplace
-    //  Sinon
-    //      Dans le cas où le déplacement est potentiel
-    //          On ne fait rien
-    //      Dans le cas où le déplacement est obligatoire
-    //          On cherche une nouvelle position
+    
 
 
 
@@ -76,12 +67,23 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
             }
         }
         else {
+            // Génère un nombre aléatoire représentant la probabilité de déplacement
+            // Si l'entité se déplace
+            //  Génère une position aléatoire dans un rayon
+            //  Si la position est valide et attaignable
+            //      L'entité se déplace
+            //  Sinon
+            //      Dans le cas où le déplacement est potentiel
+            //          On ne fait rien
+            //      Dans le cas où le déplacement est obligatoire
+            //          On cherche une nouvelle position
+
             const int proba = getNombreAleatoire(1, 100);
             printf("Deplacement Normal (%i) => ", proba);
 
             if (proba > PROBABILITE_DEPLACEMENT_AUCUN) {
                 printf("Choix nouvelle position => ");
-                mob->deplacementType = DEPLACEMENT_NORMAL;
+                // mob->deplacementType = DEPLACEMENT_NORMAL;
 
                 t_vecteur2 pointARejoindre = choisirPointDeDeplacement(mob->rayonDeplacement);
                 t_vecteur2 positionFinale = {
@@ -131,23 +133,26 @@ int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) 
 
 
     t_joueur *joueur = moteur->monde->joueur;
+    float vitesse = 0.0;
 
-    const float distance = calculDistanceEntreEntites((t_entite*)mob, (t_entite*)joueur);
+    mob->orientation.x = (joueur->position.x - mob->position.x);
+    mob->orientation.y = (joueur->position.y - mob->position.y);
 
     
-    if (distance <= ENTITE_RAYON_COMBAT_POSITIONNEMENT && distance > ENTITE_RAYON_COMBAT_ATTAQUE) {
-
+    if (distanceJoueur <= ENTITE_RAYON_COMBAT_POSITIONNEMENT && distanceJoueur > ENTITE_RAYON_COMBAT_ATTAQUE) {
+        vitesse = 3.0;
     }
 
-
-    else if (distance <= ENTITE_RAYON_COMBAT_ATTAQUE && distance > ENTITE_RAYON_COMBAT_RETRAIT) {
-
+    else if (distanceJoueur <= ENTITE_RAYON_COMBAT_ATTAQUE && distanceJoueur > ENTITE_RAYON_COMBAT_RETRAIT) {
+        vitesse = 0.0;
     } 
     
-    
-    else if (distance < ENTITE_RAYON_COMBAT_RETRAIT) {
-
+    else if (distanceJoueur < ENTITE_RAYON_COMBAT_RETRAIT) {
+        vitesse = -2.0 / distanceJoueur;
     }
+
+
+    deplacerEntite(moteur, (t_entite*)mob, vitesse);
 
 
     return 0;
@@ -169,7 +174,7 @@ int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_mob*, const fl
             return (int (*)(t_moteur*, t_mob*, const float)) deplacementNormal;
 
         case DEPLACEMENT_COMBAT:  
-            return (int (*)(t_moteur*, t_mob*, const float)) deplacementNormal;//deplacementCombat;
+            return (int (*)(t_moteur*, t_mob*, const float)) deplacementCombat;
 
             
         case DEPLACEMENT_STATIQUE: 

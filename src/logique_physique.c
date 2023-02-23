@@ -132,13 +132,14 @@ void update(t_moteur *moteur) {
                         // Si l'entité est un monstre 
                         case ENTITE_MONSTRE_AGGRESSIF:
                             // Si le joueur est dans le rayon de détection du monstre
-                            if (((t_mob*)entite)->deplacementType != DEPLACEMENT_COMBAT && distance < ENTITE_RAYON_COMBAT_DETECTION) {
+                            // Le monstre est alors en mode combat
+                            if (((t_mob*)entite)->deplacementType != DEPLACEMENT_COMBAT && distance <= ENTITE_RAYON_COMBAT_DETECTION) {
                                 ((t_mob*)entite)->deplacementType = DEPLACEMENT_COMBAT;
                             }
 
                         // Sur toutes les entités
                         default:
-                            // Si le joueur est dans le rayon de détection du monstre
+                            // Si le joueur est 
                             if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > ENTITE_RAYON_COMBAT_POSITIONNEMENT) {
                                 ((t_mob*)entite)->deplacementType = DEPLACEMENT_NORMAL;
                             }
@@ -159,7 +160,8 @@ void update(t_moteur *moteur) {
                     printf("(Semi Actif) => ");
 
                     // Gestion de la durée de vie de l'entité
-                    if (entite->timestampActualisation - entite->timestampCreation >= ENTITE_DUREE_VIE_MAX) {                        
+                    // Si l'entité à atteint la durée de vie maximale d'une entité alors elle est supprimé
+                    if (entite->timestampActualisation - entite->timestampCreation >= ENTITE_DUREE_VIE_MAX) {
                         oter_elt(entites);
                         entite->detruire((t_entite**) &entite);
                         continue;
