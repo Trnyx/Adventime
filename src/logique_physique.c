@@ -17,6 +17,7 @@
 #include "../include/physique.h"
 #include "../include/utilitaire.h"
 #include "../include/moteur.h"
+#include "../include/audio.h"
 
 
 
@@ -77,7 +78,7 @@ unsigned long int u = 0;
  * 
  * @param moteur Pointeur sur le moteur du jeu
  */
-void update(t_moteur *moteur) {
+void update(t_moteur *moteur, t_audio *audio) {
     // printf("Update (%li)\n", u++);
     t_joueur *joueur = moteur->monde->joueur;
 
@@ -86,6 +87,8 @@ void update(t_moteur *moteur) {
     unsigned int nombreMobs = 0;
 
     time_t timestampFrame = time(NULL);
+
+    e_musiques_type musiqueType;
 
 
 
@@ -135,6 +138,7 @@ void update(t_moteur *moteur) {
                             // Le monstre est alors en mode combat
                             if (((t_mob*)entite)->deplacementType != DEPLACEMENT_COMBAT && distance <= ENTITE_RAYON_COMBAT_DETECTION) {
                                 ((t_mob*)entite)->deplacementType = DEPLACEMENT_COMBAT;
+                                musiqueType = MUSIC_COMBAT;
                             }
 
                         // Sur toutes les entités
@@ -142,6 +146,7 @@ void update(t_moteur *moteur) {
                             // Si le joueur est 
                             if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > ENTITE_RAYON_COMBAT_POSITIONNEMENT) {
                                 ((t_mob*)entite)->deplacementType = DEPLACEMENT_NORMAL;
+                                musiqueType = MUSIC_AMBIANCE;
                             }
                             break;
                     }
@@ -221,6 +226,20 @@ void update(t_moteur *moteur) {
     /* -------------------------------------------------------------------------- */
     /*                            Interaction & Dégâts                            */
     /* -------------------------------------------------------------------------- */
+
+
+
+
+
+    /* -------------------------------------------------------------------------- */
+    /*                                   Musique                                  */
+    /* -------------------------------------------------------------------------- */
+
+
+    if (audio->musiqueType != musiqueType) {
+        audio->musiqueType = musiqueType;
+        selectionMusique(audio);
+    }
 
 
 

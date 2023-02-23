@@ -26,7 +26,7 @@
 /**
  * @brief 
  */
-void initAll(t_moteur **moteur) {
+void initAll(t_moteur **moteur, t_audio **audio) {
     // Moteur
     *moteur = initMoteur();
     t_vecteur2 positionCamera = { 0, 0 };
@@ -35,6 +35,7 @@ void initAll(t_moteur **moteur) {
 
 
     // Audio
+    *audio = initAudio();
     
     
     // SDL Image

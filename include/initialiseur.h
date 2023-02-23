@@ -18,7 +18,7 @@
 
 
 #include "moteur.h"
-// #include "audio.h"
+#include "audio.h"
 
 
 
@@ -28,7 +28,7 @@
 /* -------------------------------------------------------------------------- */
 
 
-void initAll(t_moteur **moteur);
+void initAll(t_moteur **moteur, t_audio **audio);
 
 
 

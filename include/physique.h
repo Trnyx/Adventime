@@ -13,6 +13,7 @@
 
 
 #include "map.h"
+#include "audio.h"
 
 
 
@@ -53,7 +54,7 @@
 #define MONSTRE_AGGRESSIF_CAP 20
 
 
-#define ENTITE_RAYON_COMBAT_DETECTION 6.0
+#define ENTITE_RAYON_COMBAT_DETECTION 4.0
 #define ENTITE_RAYON_COMBAT_POSITIONNEMENT 10.0
 #define ENTITE_RAYON_COMBAT_RETRAIT 1.5
 #define ENTITE_RAYON_COMBAT_ATTAQUE 1.8
@@ -90,5 +91,5 @@
 /* -------------------------------------------------------------------------- */
 
 
-void update(t_moteur *moteur);
+void update(t_moteur *moteur, t_audio *audio);
 

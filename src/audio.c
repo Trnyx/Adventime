@@ -59,6 +59,36 @@ void play_bruitage(Mix_Chunk *sound, int channel) {
 
 
 
+void selectionMusique(t_audio *audio) {
+    t_musiques *musiques = audio->musiques;
+    Mix_Music *musique = NULL;
+
+
+    switch (audio->musiqueType) {
+        case MUSIC_MENU:
+            musique = musiques->menu_principal;
+            break;
+
+        case MUSIC_AMBIANCE:
+            musique = musiques->ambiance_nuit;
+            break;
+            
+        case MUSIC_COMBAT:
+            musique = musiques->combat;
+            break;
+        
+        default:
+            musique = musiques->ambiance_nuit;
+    }
+
+
+    play_music(musique);
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Chargement                                 */
 /* -------------------------------------------------------------------------- */
@@ -96,10 +126,10 @@ int chargerAudio(const int volume, t_musiques **musiques, t_bruitages **bruitage
 
     // Ambiance
     m->ambiance_jour = Mix_LoadMUS("assets/audio/musiques/.mp3");
-    m->ambiance_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    m->ambiance_nuit = Mix_LoadMUS("assets/audio/musiques/ambiance_nuit.mp3");
 
     // Combat
-    m->combat = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    m->combat = Mix_LoadMUS("assets/audio/musiques/combat.mp3");
     // m->combat_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
     // m->combat_boss = Mix_LoadMUS("assets/audio/musiques/.mp3");
     
@@ -152,6 +182,7 @@ t_audio* initAudio() {
 
 
     chargerAudio(MIX_MAX_VOLUME, &audio->musiques, &audio->bruitages);
+    audio->musiqueType = MUSIC_MENU;
 
 
     return audio;
@@ -172,26 +203,33 @@ t_audio* initAudio() {
  * @param musique 
  * @param bruitage 
  */
-int detruireAudio(t_musiques **musiques, t_bruitages **bruitages) {
-    if (musiques == NULL || *musiques == NULL) return -1;
-    if (bruitages == NULL || *bruitages == NULL) return -1;
+int detruireAudio(t_audio **audio) {
+    if (audio == NULL || *audio == NULL) return -1;
+    t_musiques *musiques = (*audio)->musiques;
+    t_bruitages *bruitages = (*audio)->bruitages;
+
+    if (musiques == NULL) return -1;
+    if (bruitages == NULL) return -1;
 
 
 
     /* -------------------------------- Musiques -------------------------------- */
     // Mix_FreeMusic((*musiques)->);
 
-    free(*musiques);
-    *musiques = NULL;
+    free(musiques);
+    musiques = NULL;
 
 
     /* -------------------------------- Bruitages ------------------------------- */
     // Mix_FreeChunk((*bruitages)->);
 
-    free(*bruitages);
-    *bruitages = NULL;
+    free(bruitages);
+    bruitages = NULL;
 
 
+
+    free(*audio);
+    *audio = NULL;
 
     return 0;
 }

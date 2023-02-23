@@ -9,6 +9,7 @@
 #include "../include/initialiseur.h"
 #include "../include/textures.h"
 #include "../include/moteur.h"
+#include "../include/audio.h"
 #include "../include/main.h"
 #include "../include/monde.h"
 #include "../include/joueur.h"
@@ -26,8 +27,9 @@
 int main(int argc, char* argv[]) {
 
     t_moteur *moteur = NULL;
+    t_audio *audio = NULL;
 
-    initAll(&moteur);
+    initAll(&moteur, &audio);
 
 
 
@@ -53,6 +55,7 @@ int main(int argc, char* argv[]) {
 
 
 
+
     int continuer = 1;
     // while (1) {
         while (continuer != -1) {
@@ -62,7 +65,7 @@ int main(int argc, char* argv[]) {
 
             continuer = inputManager(moteur->monde->joueur, &moteur->controles);
             // printf("Continuer ? %i\n", continuer);
-            update(moteur);
+            update(moteur, audio);
             // updateCamera(moteur, joueur->position);
         
 
@@ -119,13 +122,11 @@ int main(int argc, char* argv[]) {
     detruireCamera(&moteur->camera);
     detruireTextures(&moteur->textures);
     detruireMoteur(&moteur);
+    detruireAudio(&audio);
 
     SDL_DestroyRenderer(moteur->renderer);
     SDL_DestroyWindow(moteur->window);
     SDL_Quit();
-
-    return 0;
-}
 
     return 0;
 }
