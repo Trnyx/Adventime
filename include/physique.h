@@ -13,6 +13,7 @@
 
 
 #include "map.h"
+#include "moteur.h"
 #include "audio.h"
 
 
@@ -26,9 +27,17 @@
 /* ---------------------------------- Temps --------------------------------- */
 
 // Nombre de jour par heure (vrai) 
-#define NOMBRE_JOUR 4
+#define NOMBRE_JOUR 3
 // Le temps d'un jour dans le jeu (en seconde)
-#define TEMPS_JOUR 3600 / NOMBRE_JOUR
+// Nombre de seconde réelles pour faire un jour dans le jeu
+#define TEMPS_JOUR (3600 / NOMBRE_JOUR)
+
+// Le temps d'une heure dans le jeu (en seconde)
+// Nombre de seconde réelles pour faire une heure dans le jeu
+// #define TEMPS_HEURE (TEMPS_JOUR / 24)
+// Le temps d'une minute dans le jeu (en seconde)
+// Nombre de seconde réelles pour faire une minute dans le jeu
+// #define TEMPS_MINUTE (TEMPS_HEURE / 60)
 
 
 
@@ -54,10 +63,10 @@
 #define MONSTRE_AGGRESSIF_CAP 20
 
 
-#define ENTITE_RAYON_COMBAT_DETECTION 4.0
-#define ENTITE_RAYON_COMBAT_POSITIONNEMENT 10.0
-#define ENTITE_RAYON_COMBAT_RETRAIT 1.5
-#define ENTITE_RAYON_COMBAT_ATTAQUE 1.8
+#define MONSTRE_RAYON_COMBAT_DETECTION 4.0
+#define MOB_RAYON_COMBAT_POSITIONNEMENT 10.0
+#define MOB_RAYON_COMBAT_RETRAIT 1.5
+#define MOB_RAYON_COMBAT_ATTAQUE 1.8
 
 
 // La durée maximale de déplacement d'un mob [en seconde]

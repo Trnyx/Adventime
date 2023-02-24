@@ -82,11 +82,24 @@ void update(t_moteur *moteur, t_audio *audio) {
     // printf("Update (%li)\n", u++);
     t_joueur *joueur = moteur->monde->joueur;
 
+
     t_liste *entites = moteur->monde->map->entites;
     t_entite *entite = NULL;
     unsigned int nombreMobs = 0;
+    unsigned int nombreMobsCombat = 0;
+
+
+    printf("TIME => ");
 
     time_t timestampFrame = time(NULL);
+
+    t_temps *temps = moteur->temps;
+    printf("%lli => ", timestampFrame);
+
+    *temps = getTemps(timestampFrame);
+    printf("JOUR : %i => ", getJourDeLaSemaine(&timestampFrame));
+    printf("TIME IN GAME (%1.2d) => %i : %i (%i) \n", TEMPS_JOUR, temps->heures, temps->minutes, temps->timestamp);
+
 
     e_musiques_type musiqueType;
 
@@ -136,17 +149,16 @@ void update(t_moteur *moteur, t_audio *audio) {
                         case ENTITE_MONSTRE_AGGRESSIF:
                             // Si le joueur est dans le rayon de détection du monstre
                             // Le monstre est alors en mode combat
-                            if (((t_mob*)entite)->deplacementType != DEPLACEMENT_COMBAT && distance <= ENTITE_RAYON_COMBAT_DETECTION) {
+                            if (((t_mob*)entite)->deplacementType != DEPLACEMENT_COMBAT && distance <= MONSTRE_RAYON_COMBAT_DETECTION) {
                                 ((t_mob*)entite)->deplacementType = DEPLACEMENT_COMBAT;
-                                musiqueType = MUSIC_COMBAT;
+                                nombreMobsCombat++;
                             }
 
                         // Sur toutes les entités
                         default:
                             // Si le joueur est 
-                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > ENTITE_RAYON_COMBAT_POSITIONNEMENT) {
+                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
                                 ((t_mob*)entite)->deplacementType = DEPLACEMENT_NORMAL;
-                                musiqueType = MUSIC_AMBIANCE;
                             }
                             break;
                     }
@@ -235,6 +247,9 @@ void update(t_moteur *moteur, t_audio *audio) {
     /*                                   Musique                                  */
     /* -------------------------------------------------------------------------- */
 
+
+    if (nombreMobsCombat) musiqueType = MUSIC_COMBAT;
+    else musiqueType = MUSIC_AMBIANCE;
 
     if (audio->musiqueType != musiqueType) {
         audio->musiqueType = musiqueType;
