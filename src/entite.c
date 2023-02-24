@@ -91,14 +91,14 @@ boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vit
     positionSuivante.x = entite->position.x + (distance * (entite->direction.x / normale));
     positionSuivante.y = entite->position.y + (distance * (entite->direction.y / normale));
     // printf("(distance : %1.2f, normale : %1.2f) ", distance, normale);
-    printf("Position suivante : %1.2f:%1.2f => ", positionSuivante.x, positionSuivante.y);
+    // printf("Position suivante : %1.2f:%1.2f => ", positionSuivante.x, positionSuivante.y);
     
     boolean peutSeDeplacer = peutDeplacerEntite(moteur->monde->map, entite, positionSuivante);
     // printf("Peut se deplacer ? %i => ", peutSeDeplacer);
 
 
     if (peutSeDeplacer == VRAI) {
-        printf("Precedente : %1.2f:%1.2f | Nouvelle : %1.2f:%1.2f\n", entite->position.x, entite->position.y, positionSuivante.x, positionSuivante.y);
+        // printf("Precedente : %1.2f:%1.2f | Nouvelle : %1.2f:%1.2f\n", entite->position.x, entite->position.y, positionSuivante.x, positionSuivante.y);
         entite->position = positionSuivante;
     }
 
@@ -197,6 +197,12 @@ t_entite* creerEntite(const t_vecteur2 position) {
 
 
 
+/**
+ * @brief 
+ * 
+ * @param position 
+ * @return t_mob* 
+ */
 t_mob* creerMob(const t_vecteur2 position) {
     t_entite *entite = creerEntite(position);
     t_mob *mob = realloc(entite, sizeof(t_mob));
@@ -208,7 +214,7 @@ t_mob* creerMob(const t_vecteur2 position) {
     mob->positionDeplacement.y = position.y;
     mob->timestampDebutDeplacement = t;
     mob->timestampFinDeplacement = t;
-    mob->delaiAttente = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
+    mob->delaiAttente = 10;
 
     mob->deplacementType = DEPLACEMENT_STATIQUE;
 

@@ -137,11 +137,17 @@ void afficherCamera(t_moteur *moteur) {
     if (!liste_vide(moteur->monde->map->entites)) {
         t_monstre *monstre;
         en_tete(moteur->monde->map->entites);
-        valeur_elt(moteur->monde->map->entites, (t_entite**)&monstre);
+
+        while (!hors_liste(moteur->monde->map->entites)) {
+            valeur_elt(moteur->monde->map->entites, (t_entite**)&monstre);
+
+            rendu.x = positionRelativeEnPositionSurEcran(monstre->position.x, 0.0, camera->origine.x, rendu.w); // positionnementEnPixel.x - offset.x;
+            rendu.y = positionRelativeEnPositionSurEcran(monstre->position.y, 0.0, camera->origine.y, rendu.h); // positionnementEnPixel.y - offset.y;
+            SDL_RenderCopy(moteur->renderer, moteur->textures->monstres, &sprite, &rendu);
+
+            suivant(moteur->monde->map->entites);
+        }
         
-        rendu.x = positionRelativeEnPositionSurEcran(monstre->position.x, 0.0, camera->origine.x, rendu.w); // positionnementEnPixel.x - offset.x;
-        rendu.y = positionRelativeEnPositionSurEcran(monstre->position.y, 0.0, camera->origine.y, rendu.h); // positionnementEnPixel.y - offset.y;
-        SDL_RenderCopy(moteur->renderer, moteur->textures->monstres, &sprite, &rendu);
     }
 
 
@@ -168,11 +174,11 @@ void afficherCamera(t_moteur *moteur) {
  * @param position 
  */
 void updateCamera(t_moteur *moteur, const t_vecteur2 position) {
-    printf("Update Camera => ");
+    // printf("Update Camera => ");
     t_camera *camera = moteur->camera;
     camera->position = position;
-    printf("%1.2f:%1.2f => ", position.x, position.y);
-    printf("Fin Update Camera\n");
+    // printf("%1.2f:%1.2f => ", position.x, position.y);
+    // printf("Fin Update Camera\n");
 }
 
 

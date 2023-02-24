@@ -48,7 +48,7 @@
 // Le rayon dans lequel la physique du jeu est concidérée comme active
 #define JOUEUR_RAYON_ACTIF (TAILLE_CHUNK + (TAILLE_CHUNK / 2))
 // Le rayon dans lequel la physique du jeu est concidérée comme semi active
-#define JOUEUR_RAYON_SEMIACTIF (JOUEUR_RAYON_ACTIF * 2) 
+#define JOUEUR_RAYON_SEMIACTIF (JOUEUR_RAYON_ACTIF * 3) 
 // Le rayon dans lequel la physique du jeu est inactive
 #define JOUEUR_RAYON_INACTIF (JOUEUR_RAYON_ACTIF * 4)
 
@@ -56,15 +56,19 @@
 
 
 
-/* --------------------------------- Entite --------------------------------- */
+/* ----------------------------- Mobs Et Entités ---------------------------- */
 
 // Le nombre d'entité total possible
 #define MOB_CAP 256
-#define MONSTRE_AGGRESSIF_CAP 20
+// Le nombre maximum de montstre aggressif
+#define MONSTRE_AGGRESSIF_CAP 16
+// Le nombre maximum d'animaux
+#define MONSTRE_PASSIF_CAP 24
 
 
+//
 #define MONSTRE_RAYON_COMBAT_DETECTION 4.0
-#define MOB_RAYON_COMBAT_POSITIONNEMENT 10.0
+#define MOB_RAYON_COMBAT_POSITIONNEMENT 8.0
 #define MOB_RAYON_COMBAT_RETRAIT 1.5
 #define MOB_RAYON_COMBAT_ATTAQUE 1.8
 
@@ -90,6 +94,11 @@
 #define PROBABILITE_DEPLACEMENT_POTENTIEL 75 
 // La probabimité que l'entité se déplace obligatoirement 
 #define PROBABILITE_DEPLACEMENT_OBLIGATOIRE 100
+
+//
+#define PROBABILITE_APPARITION_MONSTRE 30
+//
+#define PROBABILITE_APPARITION_ANIMAL 
 
 
 

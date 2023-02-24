@@ -52,3 +52,22 @@ int getNombreAvecProbabilite() {
 float calculDistanceEntrePoints(const t_vecteur2 source, const t_vecteur2 cible) {
     return sqrt( pow(cible.x - source.x, 2) + pow(cible.y - source.y, 2) );
 }
+
+
+
+
+
+/**
+ * @brief 
+ * 
+ * @param rayon 
+ * @return t_vecteur2 
+ */
+t_vecteur2 choisirPointDansRayon(const int rayon) {
+    t_vecteur2 point = {
+        getNombreAleatoire(-rayon, rayon),
+        getNombreAleatoire(-rayon, rayon),
+    };
+
+    return point;
+}

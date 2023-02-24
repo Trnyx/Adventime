@@ -39,26 +39,26 @@ boolean doitSeDeplacer(t_action_flags *flags) {
  * @param joueur 
  */
 void getDirectionJoueur(t_joueur *joueur) {
-    t_vecteur2 orientation = { 0, 0 };
+    t_vecteur2 direction = { 0, 0 };
 
 
     if (joueur->actionFlags->right == joueur->actionFlags->left)
-        orientation.x = 0;
+        direction.x = 0;
     else if (joueur->actionFlags->left)
-        orientation.x = -1;
+        direction.x = -1;
     else if (joueur->actionFlags->right)
-        orientation.x = 1;
+        direction.x = 1;
     
 
     if (joueur->actionFlags->up == -joueur->actionFlags->down)
-        orientation.y = 0;
+        direction.y = 0;
     else if (joueur->actionFlags->up)
-        orientation.y = -1;
+        direction.y = -1;
     else if (joueur->actionFlags->down)
-        orientation.y = 1;
+        direction.y = 1;
     
 
-    joueur->orientation = orientation;
+    joueur->direction = direction;
 }
 
 
@@ -71,16 +71,16 @@ void getDirectionJoueur(t_joueur *joueur) {
  * @return int 
  */
 int updateJoueur(t_moteur *moteur, t_joueur *joueur) {
-    printf("Update Joueur => ");
+    // printf("Update Joueur => ");
 
     if (doitSeDeplacer(joueur->actionFlags)) {
-        printf("Deplacement du joueur (N : %i / S : %i / O : %i / E : %i) => ", joueur->actionFlags->up, joueur->actionFlags->down, joueur->actionFlags->left, joueur->actionFlags->right);
+        // printf("Deplacement du joueur (N : %i / S : %i / O : %i / E : %i) => ", joueur->actionFlags->up, joueur->actionFlags->down, joueur->actionFlags->left, joueur->actionFlags->right);
 
         getDirectionJoueur(joueur);
         deplacerEntite(moteur, (t_entite*) joueur, joueur->statistiques.vitesse);
     }
 
-    printf("Fin Update Joueur\n");
+    // printf("Fin Update Joueur\n");
 }
 
 

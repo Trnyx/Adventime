@@ -71,6 +71,7 @@ int getNombreAleatoire(const int min, const int max);
 // int getNombreAvecProbabilite();
 
 float calculDistanceEntrePoints(const t_vecteur2 source, const t_vecteur2 cible);
+t_vecteur2 choisirPointDansRayon(const int rayon);
 
 
 

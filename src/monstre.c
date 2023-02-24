@@ -23,13 +23,13 @@
 
 
 int updateMonstre(t_moteur *moteur, t_monstre *monstre, const float distance) {
-    printf("Update Monstre => ");
+    // printf("Update Monstre => ");
     
-    printf("Deplacement : %i => ", monstre->deplacementType);
+    // printf("Deplacement : %i => ", monstre->deplacementType);
 
 
     int (*deplacement)(t_moteur *, t_mob *, const float) = getDeplacement(monstre->deplacementType);
-    printf("Fonction : %p => ", deplacement);
+    // printf("Fonction : %p => ", deplacement);
     if (deplacement != NULL) deplacement(moteur, (t_mob*)monstre, distance);
 
 
@@ -38,12 +38,12 @@ int updateMonstre(t_moteur *moteur, t_monstre *monstre, const float distance) {
     // // Sinon cela signifie qu'il peut se déplacer à nouveau
     // if (difftime(monstre->timestampActualisation, monstre->timestampFinDeplacement) > monstre->delaiAttente) {
     //     if (monstre->position.x != monstre->positionDeplacement.x || monstre->position.y != monstre->positionDeplacement.y) {
-    //         monstre->orientation.x = (monstre->positionDeplacement.x - monstre->position.x);
-    //         monstre->orientation.y = (monstre->positionDeplacement.y - monstre->position.y);
+    //         monstre->direction.x = (monstre->positionDeplacement.x - monstre->position.x);
+    //         monstre->direction.y = (monstre->positionDeplacement.y - monstre->position.y);
 
     //         const float distanceRestante = calculDistanceEntrePoints(monstre->position, monstre->positionDeplacement);
 
-    //         printf("Orientation (%1.2f:%1.2f) ", monstre->orientation.x, monstre->orientation.y);
+    //         printf("Orientation (%1.2f:%1.2f) ", monstre->direction.x, monstre->direction.y);
     //         printf("Position Actuelle : %1.2f:%1.2f ", monstre->position.x, monstre->position.y);
     //         printf("Position target : %1.2f:%1.2f => ", monstre->positionDeplacement.x, monstre->positionDeplacement.y);
 
@@ -66,7 +66,7 @@ int updateMonstre(t_moteur *moteur, t_monstre *monstre, const float distance) {
 
 
 
-    printf("Fin Update Monstre\n");
+    // printf("Fin Update Monstre\n");
     return 1;
 }
 
@@ -137,4 +137,53 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome) {
 
     mob = NULL;
     return monstre;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Apparition                                 */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
+ * @param entites 
+ * @param biome 
+ * @param positionJoueur 
+ */
+void apparitionMonstre(t_liste *entites, const t_vecteur2 positionJoueur) {
+    const float rayon = JOUEUR_RAYON_INACTIF - JOUEUR_RAYON_SEMIACTIF;
+    t_vecteur2 position = choisirPointDansRayon(rayon);
+
+
+    // Rapport du point généré à la position du joueur dans le disque semiactif
+    if (position.x >= 0) 
+        position.x = (position.x + JOUEUR_RAYON_ACTIF) + positionJoueur.x; 
+    else if (position.x < 0) 
+        position.x = (position.x - JOUEUR_RAYON_ACTIF) + positionJoueur.x; 
+
+    if (position.y >= 0) 
+        position.y = (position.y + JOUEUR_RAYON_ACTIF) + positionJoueur.y; 
+    else if (position.y < 0) 
+        position.y = (position.y - JOUEUR_RAYON_ACTIF) + positionJoueur.y; 
+    // t_vecteur2 position = choisirPointDansRayon(JOUEUR_RAYON_SEMIACTIF);
+
+
+    // // Rapport du point généré à la position du joueur dans le disque semiactif
+    // position.x += positionJoueur.x;
+    // position.y += positionJoueur.y;
+
+
+    // TODO : Récupérer biome
+    // TODO : Si pas de block sur le point d'apparition, monstre ne peut pas apparaitre
+    const e_biome biome = BIOME_PLAINE;
+
+
+    t_monstre *monstre = creerMonstre(position, biome);
+    en_queue(entites);
+    ajout_droit(entites, (t_entite*)monstre);
 }

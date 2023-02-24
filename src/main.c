@@ -45,12 +45,12 @@ int main(int argc, char* argv[]) {
 
 
 
-    t_vecteur2 positionMonstre;
-    positionMonstre.x = positionJoueur.x + 6;
-    positionMonstre.y = positionJoueur.y;
 
-    t_monstre *monstre = creerMonstre(positionMonstre, BIOME_PLAINE);
-    ajout_droit(monde->map->entites, (t_entite*) monstre);
+    // t_vecteur2 positionMonstre;
+    // positionMonstre.x = positionJoueur.x + 6;
+    // positionMonstre.y = positionJoueur.y;
+    // t_monstre *monstre = creerMonstre(positionMonstre, BIOME_PLAINE);
+    // ajout_droit(monde->map->entites, (t_entite*) monstre);
 
 
 

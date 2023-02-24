@@ -25,19 +25,6 @@
 
 
 
-t_vecteur2 choisirPointDeDeplacement(const int rayon) {
-    t_vecteur2 point = {
-        getNombreAleatoire(-rayon, rayon),
-        getNombreAleatoire(-rayon, rayon),
-    };
-
-
-    return point;
-}
-
-
-
-
 int deplacementNormal(t_moteur *moteur, t_mob *mob) {
     
 
@@ -48,14 +35,14 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
     // Sinon cela signifie qu'il peut se déplacer à nouveau
     if (difftime(mob->timestampActualisation, mob->timestampFinDeplacement) > mob->delaiAttente) {
         if (mob->position.x != mob->positionDeplacement.x || mob->position.y != mob->positionDeplacement.y) {
-            mob->orientation.x = (mob->positionDeplacement.x - mob->position.x);
-            mob->orientation.y = (mob->positionDeplacement.y - mob->position.y);
+            mob->direction.x = (mob->positionDeplacement.x - mob->position.x);
+            mob->direction.y = (mob->positionDeplacement.y - mob->position.y);
 
             const float distanceRestante = calculDistanceEntrePoints(mob->position, mob->positionDeplacement);
 
-            printf("Orientation (%1.2f:%1.2f) ", mob->orientation.x, mob->orientation.y);
-            printf("Position Actuelle : %1.2f:%1.2f ", mob->position.x, mob->position.y);
-            printf("Position target : %1.2f:%1.2f => ", mob->positionDeplacement.x, mob->positionDeplacement.y);
+            // printf("Direction (%1.2f:%1.2f) ", mob->direction.x, mob->direction.y);
+            // printf("Position Actuelle : %1.2f:%1.2f ", mob->position.x, mob->position.y);
+            // printf("Position target : %1.2f:%1.2f => ", mob->positionDeplacement.x, mob->positionDeplacement.y);
 
             if (difftime(mob->timestampActualisation, mob->timestampDebutDeplacement) <= MOB_DUREE_DEPLACEMENT && distanceRestante > 0.1) {
                 deplacerEntite(moteur, (t_entite*)mob, 4.0);
@@ -79,26 +66,26 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
             //          On cherche une nouvelle position
 
             const int proba = getNombreAleatoire(1, 100);
-            printf("Deplacement Normal (%i) => ", proba);
+            // printf("Deplacement Normal (%i) => ", proba);
 
             if (proba > PROBABILITE_DEPLACEMENT_AUCUN) {
-                printf("Choix nouvelle position => ");
+                // printf("Choix nouvelle position => ");
                 // mob->deplacementType = DEPLACEMENT_NORMAL;
 
-                t_vecteur2 pointARejoindre = choisirPointDeDeplacement(mob->rayonDeplacement);
+                t_vecteur2 pointARejoindre = choisirPointDansRayon(mob->rayonDeplacement);
                 t_vecteur2 positionFinale = {
                     mob->position.x + pointARejoindre.x,
                     mob->position.y + pointARejoindre.y,
                 };
 
-                printf("Point : %1.2f:%1.2f => ", pointARejoindre.x, pointARejoindre.y);
+                // printf("Point : %1.2f:%1.2f => ", pointARejoindre.x, pointARejoindre.y);
                 
                 // Si le point choisit et un point valide
                 if (blockEstDansLaMap(positionFinale.x, positionFinale.y)) {
                     mob->positionDeplacement.x = positionFinale.x;
                     mob->positionDeplacement.y = positionFinale.y;
 
-                    printf("Position target : %1.2f:%1.2f => ", mob->positionDeplacement.x, mob->positionDeplacement.y);
+                    // printf("Position target : %1.2f:%1.2f => ", mob->positionDeplacement.x, mob->positionDeplacement.y);
 
                     mob->timestampDebutDeplacement = mob->timestampActualisation;
                 }
@@ -135,8 +122,8 @@ int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) 
     t_joueur *joueur = moteur->monde->joueur;
     float vitesse = 0.0;
 
-    mob->orientation.x = (joueur->position.x - mob->position.x);
-    mob->orientation.y = (joueur->position.y - mob->position.y);
+    mob->direction.x = (joueur->position.x - mob->position.x);
+    mob->direction.y = (joueur->position.y - mob->position.y);
 
     
     if (distanceJoueur <= MOB_RAYON_COMBAT_POSITIONNEMENT && distanceJoueur > MOB_RAYON_COMBAT_ATTAQUE) {
