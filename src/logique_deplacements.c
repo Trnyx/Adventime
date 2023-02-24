@@ -139,15 +139,15 @@ int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) 
     mob->orientation.y = (joueur->position.y - mob->position.y);
 
     
-    if (distanceJoueur <= ENTITE_RAYON_COMBAT_POSITIONNEMENT && distanceJoueur > ENTITE_RAYON_COMBAT_ATTAQUE) {
+    if (distanceJoueur <= MOB_RAYON_COMBAT_POSITIONNEMENT && distanceJoueur > MOB_RAYON_COMBAT_ATTAQUE) {
         vitesse = 3.0;
     }
 
-    else if (distanceJoueur <= ENTITE_RAYON_COMBAT_ATTAQUE && distanceJoueur > ENTITE_RAYON_COMBAT_RETRAIT) {
+    else if (distanceJoueur <= MOB_RAYON_COMBAT_ATTAQUE && distanceJoueur > MOB_RAYON_COMBAT_RETRAIT) {
         vitesse = 0.0;
     } 
     
-    else if (distanceJoueur < ENTITE_RAYON_COMBAT_RETRAIT) {
+    else if (distanceJoueur < MOB_RAYON_COMBAT_RETRAIT) {
         vitesse = -2.0 / distanceJoueur;
     }
 
