@@ -78,7 +78,8 @@ void selectionMusique(t_audio *audio) {
             break;
         
         default:
-            musique = musiques->ambiance_nuit;
+            musique = musiques->menu_principal;
+            break;
     }
 
 

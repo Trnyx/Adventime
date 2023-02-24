@@ -89,16 +89,16 @@ void update(t_moteur *moteur, t_audio *audio) {
     unsigned int nombreMobsCombat = 0;
 
 
-    printf("TIME => ");
+    // printf("TIME => ");
 
     time_t timestampFrame = time(NULL);
 
     t_temps *temps = moteur->temps;
-    printf("%lli => ", timestampFrame);
+    // printf("%lli => ", timestampFrame);
 
     *temps = getTemps(timestampFrame);
-    printf("JOUR : %i => ", getJourDeLaSemaine(&timestampFrame));
-    printf("TIME IN GAME (%1.2d) => %i : %i (%i) \n", TEMPS_JOUR, temps->heures, temps->minutes, temps->timestamp);
+    // printf("JOUR : %i => ", getJourDeLaSemaine(&timestampFrame));
+    // printf("TIME IN GAME (%1.2d) => %i : %i (%i) \n", TEMPS_JOUR, temps->heures, temps->minutes, temps->timestamp);
 
 
     e_musiques_type musiqueType;
@@ -151,7 +151,6 @@ void update(t_moteur *moteur, t_audio *audio) {
                             // Le monstre est alors en mode combat
                             if (((t_mob*)entite)->deplacementType != DEPLACEMENT_COMBAT && distance <= MONSTRE_RAYON_COMBAT_DETECTION) {
                                 ((t_mob*)entite)->deplacementType = DEPLACEMENT_COMBAT;
-                                nombreMobsCombat++;
                             }
 
                         // Sur toutes les entités
@@ -160,6 +159,9 @@ void update(t_moteur *moteur, t_audio *audio) {
                             if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
                                 ((t_mob*)entite)->deplacementType = DEPLACEMENT_NORMAL;
                             }
+
+                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT)
+                                nombreMobsCombat++;
                             break;
                     }
                     
