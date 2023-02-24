@@ -73,7 +73,8 @@ struct s_entite {
     // #include "attributs_entite.h"
     unsigned int id;
     t_vecteur2 position;                /**< La position actuelle de l'entité */
-    t_vecteur2 orientation;             /**< L'orientation actuelle de l'entité */
+    t_vecteur2 direction;               /**< La direction (déplacement) actuelle de l'entité */
+    t_vecteur2 orientation;             /**< L'orientation (regard) actuelle de l'entité */
 
     e_entiteType entiteType;            /**< Le type de l'entité */
 

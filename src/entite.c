@@ -49,7 +49,7 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
  * @return boolean 
  */
 boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 positionSuivante) {
-    t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_VEGETATION, map);
+    t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_OBJETS, map);
     if (block == NULL) return FAUX;
 
     // Check si le block est bien vide
@@ -84,12 +84,12 @@ boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vit
     // printf("Vitesse : %1.2f / TPS : %1.2f => ", vitesse, TPS);
 
     // Justification calcul normale
-    const float normale = sqrt(pow(entite->orientation.x, 2) + pow(entite->orientation.y, 2));
+    const float normale = sqrt(pow(entite->direction.x, 2) + pow(entite->direction.y, 2));
 
     // Justification calcul
     t_vecteur2 positionSuivante;
-    positionSuivante.x = entite->position.x + (distance * (entite->orientation.x / normale));
-    positionSuivante.y = entite->position.y + (distance * (entite->orientation.y / normale));
+    positionSuivante.x = entite->position.x + (distance * (entite->direction.x / normale));
+    positionSuivante.y = entite->position.y + (distance * (entite->direction.y / normale));
     // printf("(distance : %1.2f, normale : %1.2f) ", distance, normale);
     printf("Position suivante : %1.2f:%1.2f => ", positionSuivante.x, positionSuivante.y);
     
@@ -173,8 +173,8 @@ t_entite* creerEntite(const t_vecteur2 position) {
 
     entite->position.x = position.x;
     entite->position.y = position.y;
-    entite->orientation.x = 0;
-    entite->orientation.y = 0;
+    entite->direction.x = 0;
+    entite->direction.y = 0;
 
     entite->entiteType = ENTITE_RIEN;
 

@@ -117,7 +117,7 @@ void afficherMonde(t_monde *monde) {
     else 
         while (yChunk < TAILLE_MAP) {   
             chunk = getChunk(xChunk, yChunk, COUCHE_SOL, map);
-            vegetationChunk = getChunk(xChunk, yChunk, COUCHE_VEGETATION, map);
+            vegetationChunk = getChunk(xChunk, yChunk, COUCHE_OBJETS, map);
           
             if (chunk == NULL) {
                 xChunk++;

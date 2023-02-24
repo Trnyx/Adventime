@@ -144,7 +144,7 @@ void dessinerVegetation(t_moteur *moteur, SDL_Rect *rendu) {
             rendu->y = positionRelativeEnPositionSurEcran(y, camera->offset.y, camera->origine.y, rendu->h) + rendu->h;
 
 
-            t_block *block = getBlockDansMap(x, y, COUCHE_VEGETATION, moteur->monde->map);
+            t_block *block = getBlockDansMap(x, y, COUCHE_OBJETS, moteur->monde->map);
             if (block == NULL) continue;
             if (block->tag == VIDE) continue;
 

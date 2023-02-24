@@ -49,7 +49,7 @@
  */
 typedef enum {
     COUCHE_SOL,
-    COUCHE_VEGETATION,
+    COUCHE_OBJETS,
     COUCHE_ENTITE,
     NB_COUCHE,
 } e_coucheMap;
