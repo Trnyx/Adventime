@@ -19,6 +19,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 
+#include "utilitaire.h"
+
 
 
 
@@ -116,7 +118,7 @@ int chargerAudio(int volume, t_musiques **musiques, t_bruitages **bruitages);
 int detruireAudio(t_audio **audio);
 
 void changerVolume(int nouveauVolume);
-void play_music(Mix_Music *music);
+void play_music(Mix_Music *music, boolean repeat);
 void play_bruitage(Mix_Chunk *sound, int channel);
 void selectionMusique(t_audio *audio);
 

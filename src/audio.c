@@ -40,8 +40,8 @@ void changerVolume(int nouveauVolume) {
  * 
  * @param music 
  */
-void play_music(Mix_Music *music) {
-    Mix_PlayMusic(music, -1);
+void play_music(Mix_Music *music, boolean repeat) {
+    Mix_PlayMusic(music, repeat ? -1 : 0);
 }
 
 
@@ -83,7 +83,7 @@ void selectionMusique(t_audio *audio) {
     }
 
 
-    play_music(musique);
+    play_music(musique, FAUX);
 }
 
 
