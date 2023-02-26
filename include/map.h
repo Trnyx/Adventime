@@ -207,6 +207,7 @@ int chunkEstDansLaMap(const int x, const int y, const int z);
 t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk);
 t_block* getBlockDansMap(const int x, const int y, const int z, t_map *map);
 t_chunk* getChunk(const int x, const int y, const int z, t_map *map);
+t_chunk* getChunkGraceABlock(const int x, const int y, const int z, t_map *map);
 
 
 t_map* genererMap();

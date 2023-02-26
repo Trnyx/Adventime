@@ -141,14 +141,15 @@ t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, co
  * 
  * @param monstre Pointeur sur le monstre à générer
  * @param biome Le biome dans lequel le monstre apparait
+ * @param niveauJoueur Le niveau du joueur
  * @return Un pointeur sur le monstre généré
  */
-t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome) {
+t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome, const int niveauJoueur) {
     // monstre->tag = choisirMonstreTag();
     monstre->tag = MONSTRE_OISEAU;
     monstre->type = choisirTypeMonstre(basesBiomes[biome]);
 
-    monstre->statistiques.niveau = 3;
+    monstre->statistiques.niveau = niveauJoueur;
     monstre->baseStatistiques = genererStatistiquesDeBase(monstre->type);
     monstre->statistiques = genererStatistiques(monstre->baseStatistiques, monstre->statistiques.niveau);
     

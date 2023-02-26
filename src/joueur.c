@@ -171,7 +171,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->statistiques.pvMax = JOUEUR_PV_DEFAUT;
 
     joueur->statistiques.experience = 0;
-    joueur->statistiques.niveau = 0;
+    joueur->statistiques.niveau = 1;
 
     joueur->actionFlags = initialiserActionFlags();
 

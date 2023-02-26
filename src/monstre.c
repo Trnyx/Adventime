@@ -119,13 +119,13 @@ void detruireMonstre(t_monstre **monstre) {
  * @param biome 
  * @return t_monstre* 
  */
-t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome) {
+t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const int niveauJoueur) {
     t_mob *mob = creerMob(position);
     t_monstre *monstre = realloc(mob, sizeof(t_monstre));
 
 
     monstre->entiteType = ENTITE_MONSTRE_AGGRESSIF;
-    genererMonstre(monstre, biome);
+    genererMonstre(monstre, biome, niveauJoueur);
 
     monstre->rayonDetection = 0;
     monstre->rayonDeplacement = 4;
@@ -154,8 +154,9 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome) {
  * @param entites 
  * @param biome 
  * @param positionJoueur 
+ * @param niveauJoueur 
  */
-void apparitionMonstre(t_liste *entites, const t_vecteur2 positionJoueur) {
+void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJoueur, const int niveauJoueur) {
     const float rayon = JOUEUR_RAYON_INACTIF - JOUEUR_RAYON_SEMIACTIF;
     t_vecteur2 position = choisirPointDansRayon(rayon);
 
@@ -178,12 +179,22 @@ void apparitionMonstre(t_liste *entites, const t_vecteur2 positionJoueur) {
     // position.y += positionJoueur.y;
 
 
-    // TODO : Récupérer biome
-    // TODO : Si pas de block sur le point d'apparition, monstre ne peut pas apparaitre
-    const e_biome biome = BIOME_PLAINE;
+    t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
 
+    if (chunk != NULL) {
+        printf("Chunk => ");
+        const e_biome biome = chunk->biome;
+        t_block *block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
 
-    t_monstre *monstre = creerMonstre(position, biome);
-    en_queue(entites);
-    ajout_droit(entites, (t_entite*)monstre);
+        if (block != NULL) {
+            printf("Block => ");
+            if (block->tag == VIDE) {
+                printf("%i => ", block->tag);
+                t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
+
+                en_queue(entites);
+                ajout_droit(entites, (t_entite*)monstre);
+            }
+        }
+    }
 }

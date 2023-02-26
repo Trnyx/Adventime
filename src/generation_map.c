@@ -107,75 +107,6 @@ int chunkEstDansLaMap(const int x, const int y, const int z) {
 
 
 /**
- * @brief Récupère un block se situant dans un chunk
- * 
- * @param x La cooronnée x (relative au chunk) du block
- * @param y La cooronnée y (relative au chunk) du block
- * @param chunk Un pointeur sur le chunk où sera récupérer le block
- * @return Un pointeur sur le block trouvé, NULL sinon
- * 
- * @version 1.3
- */
-t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk) {
-    if (!blockEstDansLeChunk(x, y)) return NULL;
-
-    for (int i = 0; i < TAILLE_CHUNK * TAILLE_CHUNK; i++) {
-        if (chunk->blocks[i].positionDansChunk.x == x && chunk->blocks[i].positionDansChunk.y == y) {
-            return &chunk->blocks[i];
-        }
-    }
-
-    return NULL;
-}
-
-
-/**
- * @brief Récupère un block se situant dans la map
- * 
- * @param x La cooronnée x (relative à la map) du block
- * @param y La cooronnée y (relative à la map) du block
- * @param z La couche où se situe du block
- * @param map Un pointeur sur la map où sera récupérer le block
- * @return Un pointeur sur le block trouvé, NULL sinon
- * 
- * @version 1.1
- */
-t_block* getBlockDansMap(const int x, const int y, const int z, t_map *map) {
-    if (!blockEstDansLaMap(x, y)) return NULL;
-
-    t_chunk *chunk = getChunk(x / TAILLE_CHUNK, y / TAILLE_CHUNK, z, map);
-    if (chunk == NULL) return NULL;
-
-    return getBlockDansChunk(x % TAILLE_CHUNK, y % TAILLE_CHUNK, chunk);
-}
-
-
-
-/**
- * @brief Récupère un chunk se situant dans la map
- * 
- * @param x La coordonnée x du chunk
- * @param y La coordonnée y du chunk
- * @param couche La couche du chunk 
- * @param map Un pointeur sur la map où sera récupéré le chunk
- * @return Un pointeur sur le chunk trouvé, NULL sinon
- * 
- * @version 1.3
- */
-t_chunk* getChunk(const int x, const int y, const int couche, t_map *map) {
-    if (!chunkEstDansLaMap(x, y, couche)) return NULL;
-
-    for (int i = 0; i < TAILLE_MAP * TAILLE_MAP * NB_COUCHE; i++) {
-        if (map->chunks[i].position.x == x && map->chunks[i].position.y == y && map->chunks[i].position.z == couche) {
-            return &map->chunks[i];
-        }
-    }
-
-    return NULL;
-}
-
-
-/**
  * @brief Récupère l'objet prédominant dans les alentours 
  * 
  * @param alentours Un tableau regroupant la quantité des éléments se situant autour de l'objet initialement observé
@@ -408,7 +339,7 @@ int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
             if (x == xBlock && y == yBlock) continue;
             if (!blockEstDansLaMap(x, y)) continue;
 
-            chunk = getChunk(x / TAILLE_CHUNK, y / TAILLE_CHUNK, COUCHE_SOL, map);
+            chunk = getChunkGraceABlock(x, y, COUCHE_SOL, map);
             if (chunk == NULL) continue;
 
 

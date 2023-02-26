@@ -82,11 +82,12 @@ void update(t_moteur *moteur, t_audio *audio) {
     // printf("Update (%li)\n", u++);
     t_joueur *joueur = moteur->monde->joueur;
 
-    t_map *map;
+    t_map *map = NULL;
     switch (joueur->map) {
         case MAP_OVERWORLD: map = moteur->monde->map; break;
         case MAP_CAVE: map = moteur->monde->map; break;
     }
+
 
     t_liste *entites = map->entites;
     t_entite *entite = NULL;
@@ -130,7 +131,7 @@ void update(t_moteur *moteur, t_audio *audio) {
 
     en_tete(entites);
     if (!liste_vide(entites)) {
-        // printf("Update Entites => ");
+        printf("Update Entites => ");
 
         while (!hors_liste(entites)) {
             valeur_elt(entites, &entite);
@@ -239,6 +240,7 @@ void update(t_moteur *moteur, t_audio *audio) {
 
     en_tete(entites);
     if (nombreMobs < MOB_CAP) {
+        printf("Apparition Entites => ");
         int proba = getNombreAleatoire(1, 100);
 
         //      Si le nombre de monstres aggressifs max n'est pas atteint
@@ -247,7 +249,7 @@ void update(t_moteur *moteur, t_audio *audio) {
         //              Apparition du monste dans le rayon semi actif
         if (nombreMonstresAggressifs < MONSTRE_AGGRESSIF_CAP) {
             if (proba <= PROBABILITE_APPARITION_MONSTRE) {
-                apparitionMonstre(entites, joueur->position);
+                apparitionMonstre(entites, map, joueur->position, joueur->statistiques.niveau);
             }
         }
 
@@ -260,6 +262,7 @@ void update(t_moteur *moteur, t_audio *audio) {
         //          Si apparition possible
         //              Apparition de l'animal dans le rayon actif ou semi actif
 
+        printf("Fin\n");
     }
 
 
