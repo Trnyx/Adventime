@@ -20,6 +20,7 @@
 
 #include "utilitaire.h"
 #include "textures.h"
+#include "map.h"
 
 
 
@@ -70,7 +71,7 @@ t_camera* creerCamera(t_vecteur2 position);
 void detruireCamera(t_camera **camera);
 
 void updateCamera(t_moteur *moteur, const t_vecteur2 position);
-void afficherCamera(t_moteur *moteur);
+void afficherCamera(t_moteur *moteur, t_map *map);
 
 int positionRelativeEnPositionSurEcran(const float coordonnee, const float offset, const float origine, const float tailleRendu);
 

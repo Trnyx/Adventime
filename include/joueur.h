@@ -20,6 +20,7 @@
 #include "statistiques.h"
 #include "inventaire.h"
 #include "entite.h"
+#include "map.h"
 
 
 
@@ -69,7 +70,8 @@ typedef struct s_joueur {
     t_statistiques statistiques;    /**< Les statistiques du joueur */
     // t_inventaire *inventaire;        /**< L'inventaire du joueur */   
 
-    t_action_flags *actionFlags; 
+    t_action_flags *actionFlags;    /**< */
+    e_mapType map;                  /**< */
     
 } t_joueur;
 

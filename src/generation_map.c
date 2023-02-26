@@ -682,6 +682,7 @@ t_map* genererMap() {
     map->entites = malloc(sizeof(t_liste));
     init_liste(map->entites);
 
+    map->type = MAP_OVERWORLD;
     t_chunk* chunkTempo = NULL;
 
 

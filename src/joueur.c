@@ -162,6 +162,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
 
     joueur->entiteType = ENTITE_JOUEUR;
+    joueur->map = MAP_OVERWORLD;
 
     joueur->statistiques.vitesse = JOUEUR_VITESSE_DEFAUT;
     joueur->statistiques.attaque = JOUEUR_ATTAQUE_DEFAUT;
@@ -174,7 +175,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
     joueur->actionFlags = initialiserActionFlags();
 
-    joueur->update = (int    (*)(t_moteur*, t_entite*, const float)) updateJoueur;
+    joueur->update = (int(*)(t_moteur*, t_entite*, const float)) updateJoueur;
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
 

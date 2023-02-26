@@ -63,7 +63,7 @@ int dessinerBlockSol(t_moteur *moteur, const int tag, SDL_Rect *rendu) {
  * @param offset 
  * @param rendu 
  */
-void dessinerSol(t_moteur *moteur, SDL_Rect *rendu) {
+void dessinerSol(t_moteur *moteur, t_map *map, SDL_Rect *rendu) {
     t_camera *camera = moteur->camera;
 
     for (float x = camera->origine.x - 1; x <= camera->position.x + TAILLE_CAMERA_DEMI_LARGEUR + 1; x++) {
@@ -72,7 +72,7 @@ void dessinerSol(t_moteur *moteur, SDL_Rect *rendu) {
             rendu->y = positionRelativeEnPositionSurEcran(y, camera->offset.y, camera->origine.y, rendu->h) + rendu->h;
 
 
-            t_block *block = getBlockDansMap(x, y, COUCHE_SOL, moteur->monde->map);
+            t_block *block = getBlockDansMap(x, y, COUCHE_SOL, map);
             if (block == NULL) {
                 SDL_RenderCopy(moteur->renderer, moteur->textures->null, NULL, rendu);
                 continue;
@@ -135,7 +135,7 @@ int dessinerVegetal(t_moteur *moteur, const int tag, SDL_Rect *rendu) {
  * @param offset 
  * @param rendu 
  */
-void dessinerVegetation(t_moteur *moteur, SDL_Rect *rendu) {
+void dessinerVegetation(t_moteur *moteur, t_map *map, SDL_Rect *rendu) {
     t_camera *camera = moteur->camera;
 
     for (float x = camera->origine.x - 1; x <= camera->position.x + TAILLE_CAMERA_DEMI_LARGEUR + 1; x++) {
@@ -144,7 +144,7 @@ void dessinerVegetation(t_moteur *moteur, SDL_Rect *rendu) {
             rendu->y = positionRelativeEnPositionSurEcran(y, camera->offset.y, camera->origine.y, rendu->h) + rendu->h;
 
 
-            t_block *block = getBlockDansMap(x, y, COUCHE_OBJETS, moteur->monde->map);
+            t_block *block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
             if (block == NULL) continue;
             if (block->tag == VIDE) continue;
 

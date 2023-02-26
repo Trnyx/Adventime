@@ -73,7 +73,7 @@ int positionRelativeEnPositionSurEcran(const float coordonnee, const float offse
  * 
  * @param moteur 
  */
-void afficherCamera(t_moteur *moteur) {
+void afficherCamera(t_moteur *moteur, t_map *map) {
     t_camera *camera = moteur->camera;
     const float TAILLE_BLOCK_RENDU_H = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
     const float TAILLE_BLOCK_RENDU_L = moteur->window_width / TAILLE_CAMERA_LARGEUR;
@@ -119,7 +119,7 @@ void afficherCamera(t_moteur *moteur) {
 
     //     }
     // }
-    dessinerSol(moteur, &rendu);
+    dessinerSol(moteur, map, &rendu);
 
     // SDL_Log("JOUEUR : %1.0f:%1.0f", moteur->monde->joueur->position.x, moteur->monde->joueur->position.y);
 
@@ -134,18 +134,18 @@ void afficherCamera(t_moteur *moteur) {
     // Monstres
 
 
-    if (!liste_vide(moteur->monde->map->entites)) {
+    if (!liste_vide(map->entites)) {
         t_monstre *monstre;
-        en_tete(moteur->monde->map->entites);
+        en_tete(map->entites);
 
-        while (!hors_liste(moteur->monde->map->entites)) {
-            valeur_elt(moteur->monde->map->entites, (t_entite**)&monstre);
+        while (!hors_liste(map->entites)) {
+            valeur_elt(map->entites, (t_entite**)&monstre);
 
             rendu.x = positionRelativeEnPositionSurEcran(monstre->position.x, 0.0, camera->origine.x, rendu.w); // positionnementEnPixel.x - offset.x;
             rendu.y = positionRelativeEnPositionSurEcran(monstre->position.y, 0.0, camera->origine.y, rendu.h); // positionnementEnPixel.y - offset.y;
             SDL_RenderCopy(moteur->renderer, moteur->textures->monstres, &sprite, &rendu);
 
-            suivant(moteur->monde->map->entites);
+            suivant(map->entites);
         }
         
     }
@@ -161,7 +161,9 @@ void afficherCamera(t_moteur *moteur) {
 
     /* -------------------------------- Vegetaux -------------------------------- */
 
-    dessinerVegetation(moteur, &rendu);
+    if (map->type == MAP_OVERWORLD) {
+        dessinerVegetation(moteur, map, &rendu);
+    }
 
 }
 

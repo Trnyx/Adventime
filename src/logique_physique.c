@@ -82,8 +82,13 @@ void update(t_moteur *moteur, t_audio *audio) {
     // printf("Update (%li)\n", u++);
     t_joueur *joueur = moteur->monde->joueur;
 
+    t_map *map;
+    switch (joueur->map) {
+        case MAP_OVERWORLD: map = moteur->monde->map; break;
+        case MAP_CAVE: map = moteur->monde->map; break;
+    }
 
-    t_liste *entites = moteur->monde->map->entites;
+    t_liste *entites = map->entites;
     t_entite *entite = NULL;
     unsigned int nombreMobs = 0;
     unsigned int nombreMobsCombat = 0;
@@ -293,7 +298,7 @@ void update(t_moteur *moteur, t_audio *audio) {
     /* ---------------- Construction de l'affichage de la caméra ---------------- */
 
     updateCamera(moteur, joueur->position);
-    afficherCamera(moteur);
+    afficherCamera(moteur, map);
 
 
     /* --------------- Construction de l'affichage de l'interface --------------- */

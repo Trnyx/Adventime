@@ -42,6 +42,12 @@
 /* -------------------------------------------------------------------------- */
 
 
+typedef enum {
+    MAP_OVERWORLD,
+    MAP_CAVE,
+} e_mapType;
+
+
 /**
  * @brief Tag permettant de reconnaitre la couche du chunk concerné
  * 
@@ -138,6 +144,7 @@ typedef struct s_chunk {
  * @brief MOdélise une map
  */
 typedef struct s_map {
+    e_mapType type;
     t_chunk *chunks;
     t_liste *entites;
 } t_map;
@@ -206,8 +213,8 @@ t_map* genererMap();
 void genererVegetations(t_map *map);
 int detruireMap(t_map **map);
 
-void dessinerSol(t_moteur *moteur, SDL_Rect *rendu);
-void dessinerVegetation(t_moteur *moteur, SDL_Rect *rendu);
+void dessinerSol(t_moteur *moteur, t_map *map, SDL_Rect *rendu);
+void dessinerVegetation(t_moteur *moteur, t_map *map, SDL_Rect *rendu);
 
 
 
