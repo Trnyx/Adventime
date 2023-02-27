@@ -67,7 +67,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
  */
 t_monde* creerMonde(int seed) {
     t_monde *monde = malloc(sizeof(t_monde));
-    time_t timestamp = time(NULL);
+    const time_t timestamp = time(NULL);
 
     if (monde == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le monde");
@@ -85,7 +85,7 @@ t_monde* creerMonde(int seed) {
 
 
     monde->seed = seed;
-    monde->map = genererMap();
+    monde->map = genererMap(MAP_OVERWORLD);
 
     monde->temps = initTemps(timestamp);
 

@@ -147,8 +147,14 @@ void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
 t_temps* initTemps(const time_t timestamp) {
     t_temps *temps = malloc(sizeof(t_temps));
 
-    getTemps(timestamp);
-    temps.cycleVrai = getCycleVrai(timestamp);
+    if (temps == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le temps");
+        free(temps);
+        return NULL;
+    }
+
+    getTemps(temps, timestamp);
+    temps->cycleVrai = getCycleVrai(timestamp);
 
     return temps;
 }

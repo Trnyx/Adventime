@@ -42,6 +42,10 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ */
 typedef enum {
     MAP_OVERWORLD,
     MAP_CAVE,
@@ -124,9 +128,9 @@ typedef enum {
  * @brief Modélise un block
  */
 typedef struct s_block {
-    t_vecteur2 position;
-    t_vecteur2 positionDansChunk;
-    int tag;
+    t_vecteur2 position;                /**< */
+    t_vecteur2 positionDansChunk;       /**< */
+    int tag;                            /**< */
 } t_block;
 
 
@@ -134,9 +138,9 @@ typedef struct s_block {
  * @brief Modélise un chunk
  */
 typedef struct s_chunk {
-    e_biome biome;
-    t_vecteur3 position;
-    t_block *blocks;
+    e_biome biome;              /**< */
+    t_vecteur3 position;        /**< */
+    t_block *blocks;            /**< */
 } t_chunk;
 
 
@@ -144,9 +148,9 @@ typedef struct s_chunk {
  * @brief MOdélise une map
  */
 typedef struct s_map {
-    e_mapType type;
-    t_chunk *chunks;
-    t_liste *entites;
+    e_mapType type;             /**< */
+    t_chunk *chunks;            /**< */
+    t_liste *entites;           /**< */
 } t_map;
 
 
@@ -155,18 +159,18 @@ typedef struct s_map {
  * @brief Modélise la base d'un biome
  */
 typedef struct s_baseBiome {
-    e_biome biome;
-    int altitude;
+    e_biome biome;                          /**< */
+    int altitude;                           /**< */
 
-    e_solTag typesDeSol[3];
-    int probabiliteDesBlocks[3];
+    e_solTag typesDeSol[3];                 /**< */
+    int probabiliteDesBlocks[3];            /**< */
 
-    e_vegetalTag tagVegetations[2];
-    int probabilitesVegetations[2];
-    float vegetationDensite;
+    e_vegetalTag tagVegetations[2];         /**< */
+    int probabilitesVegetations[2];         /**< */
+    float vegetationDensite;                /**< */
 
-    e_monstreType typesMonstre[2];
-    int probabilitesTypesMonstre[2];
+    e_monstreType typesMonstre[2];          /**< */
+    int probabilitesTypesMonstre[2];        /**< */
 } t_baseBiome;
 
 
@@ -174,8 +178,8 @@ typedef struct s_baseBiome {
  * @brief Modélise un objet prédominant
  */
 typedef struct s_predominance {
-    int tag;
-    int occurence;
+    int tag;                /**< */
+    int occurence;          /**< */
 } t_predominance;
 
 
@@ -210,7 +214,7 @@ t_chunk* getChunk(const int x, const int y, const int z, t_map *map);
 t_chunk* getChunkGraceABlock(const int x, const int y, const int z, t_map *map);
 
 
-t_map* genererMap();
+t_map* genererMap(e_mapType type);
 void genererVegetations(t_map *map);
 int detruireMap(t_map **map);
 

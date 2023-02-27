@@ -34,13 +34,12 @@ int main(int argc, char* argv[]) {
 
 
     int seed = -1;
-
     t_monde *monde = creerMonde(seed);
+    moteur->monde = monde;
 
     const t_vecteur2 positionJoueur = getPointApparitionJoueur(monde->map);
     monde->joueur = creerJoueur(positionJoueur);
 
-    moteur->monde = monde;
     moteur->camera->position = monde->joueur->position;
 
 

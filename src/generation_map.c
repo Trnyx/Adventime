@@ -25,6 +25,7 @@
 #include <stdlib.h>
 
 #include "../include/map.h"
+#include "../include/physique.h"
 
 
 
@@ -599,21 +600,14 @@ t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
 
 
 
+
 /**
- * @brief Génère une map compplète
+ * @brief 
  * 
- * @return Un pointeur sur la map générée
- * 
- * @version 1.1
+ * @param map 
+ * @return t_map* 
  */
-t_map* genererMap() {
-    printf("Generation map => ");
-    t_map* map = malloc(sizeof(t_map));
-
-    map->entites = malloc(sizeof(t_liste));
-    init_liste(map->entites);
-
-    map->type = MAP_OVERWORLD;
+t_map* genererOverworld(t_map *map) {
     t_chunk* chunkTempo = NULL;
 
 
@@ -650,6 +644,44 @@ t_map* genererMap() {
 
     genererVegetations(map);
 
+
+    return map;
+}
+
+
+
+
+
+/**
+ * @brief Génère une map compplète
+ * 
+ * @return Un pointeur sur la map générée
+ * 
+ * @version 1.2
+ */
+t_map* genererMap(e_mapType type) {
+    printf("Generation map => ");
+
+    t_map* map = malloc(sizeof(t_map));
+
+    if (map == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour la map");
+        free(map);
+        return NULL;
+    }
+
+    map->entites = malloc(sizeof(t_liste));
+    init_liste(map->entites);
+
+    map->type = type;
+    
+
+    switch (type) {
+        case MAP_OVERWORLD: genererOverworld(map); break;
+        // case MAP_CAVE: genererCave(map); break;
+        default:
+            break;
+    }
     
 
     printf("Succes\n");

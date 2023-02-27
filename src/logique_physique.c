@@ -105,11 +105,7 @@ void update(t_moteur *moteur, t_audio *audio) {
     time_t timestampFrame = time(NULL);
     t_temps *temps = monde->temps;
 
-    gestionnaireTempsEvenements(temps);
-
-
-    // printf("JOUR : %i => ", getJourDeLaSemaine(&timestampFrame));
-    // printf("TIME IN GAME (%1.2d) => %i : %i (%i) \n", TEMPS_JOUR, temps->heures, temps->minutes, temps->timestamp);
+    gestionnaireTempsEvenements(temps, timestampFrame);
 
 
     e_musiques_type musiqueType;
