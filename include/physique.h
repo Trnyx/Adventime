@@ -24,7 +24,7 @@
 /*                                 Constantes                                 */
 /* -------------------------------------------------------------------------- */
 
-/* ---------------------------------- Temps --------------------------------- */
+/* ------------------------------ Temps en jeu ------------------------------ */
 
 // Nombre de jour par heure (vrai) 
 #define NOMBRE_JOUR 3
@@ -32,12 +32,25 @@
 // Nombre de seconde réelles pour faire un jour dans le jeu
 #define TEMPS_JOUR (3600 / NOMBRE_JOUR)
 
-// Le temps d'une heure dans le jeu (en seconde)
-// Nombre de seconde réelles pour faire une heure dans le jeu
-// #define TEMPS_HEURE (TEMPS_JOUR / 24)
-// Le temps d'une minute dans le jeu (en seconde)
-// Nombre de seconde réelles pour faire une minute dans le jeu
-// #define TEMPS_MINUTE (TEMPS_HEURE / 60)
+// L'heure (en jeu) à laquelle il est concidéré que c'est le matin
+#define HEURE_JEU_MATIN 8
+// L'heure (en jeu) à laquelle il est concidéré que c'est l'après midi
+#define HEURE_JEU_APRES_MIDI 14
+// L'heure (en jeu) à laquelle il est concidéré que c'est la nuit
+#define HEURE_JEU_NUIT 20
+
+
+
+
+
+/* ------------------------------- Temps vrai ------------------------------- */
+
+// Heure (vrai) à laquelle il est concidéré qu'il fait jour
+#define HEURE_VRAI_JOUR 6
+// Heure (vrai) à laquelle il est concidéré qu'il fait nuit
+#define HEURE_VRAI_NUIT 20
+// Heure (vrai) à laquelle on change de journée (pour l'actualisation dans le jeu)
+#define HEURE_VRAI_ACTUALISATION 4
 
 
 

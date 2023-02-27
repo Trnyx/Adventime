@@ -77,20 +77,24 @@
  * Elle gère toute la physique et logique du jeu
  * 
  * @param moteur Pointeur sur le moteur du jeu
+ * @param audio Pointeur sur l'audio du jeu
  */
 void update(t_moteur *moteur, t_audio *audio) {
     // printf("Update (%li)\n", u++);
-    t_joueur *joueur = moteur->monde->joueur;
+    t_monde *monde = moteur->monde;
+    t_joueur *joueur = monde->joueur;
+
 
     t_map *map = NULL;
     switch (joueur->map) {
-        case MAP_OVERWORLD: map = moteur->monde->map; break;
-        case MAP_CAVE: map = moteur->monde->map; break;
+        case MAP_OVERWORLD: map = monde->map; break;
+        case MAP_CAVE: map = monde->map; break;
     }
 
 
     t_liste *entites = map->entites;
     t_entite *entite = NULL;
+
     unsigned int nombreMobs = 0;
     unsigned int nombreMobsCombat = 0;
     unsigned int nombreMonstresAggressifs = 0;
@@ -99,11 +103,11 @@ void update(t_moteur *moteur, t_audio *audio) {
     // printf("TIME => ");
 
     time_t timestampFrame = time(NULL);
+    t_temps *temps = monde->temps;
 
-    t_temps *temps = moteur->temps;
-    // printf("%lli => ", timestampFrame);
+    gestionnaireTempsEvenements(temps);
 
-    *temps = getTemps(timestampFrame);
+
     // printf("JOUR : %i => ", getJourDeLaSemaine(&timestampFrame));
     // printf("TIME IN GAME (%1.2d) => %i : %i (%i) \n", TEMPS_JOUR, temps->heures, temps->minutes, temps->timestamp);
 
@@ -240,7 +244,6 @@ void update(t_moteur *moteur, t_audio *audio) {
 
     en_tete(entites);
     if (nombreMobs < MOB_CAP) {
-        printf("Apparition Entites => ");
         int proba = getNombreAleatoire(1, 100);
 
         //      Si le nombre de monstres aggressifs max n'est pas atteint
@@ -261,8 +264,6 @@ void update(t_moteur *moteur, t_audio *audio) {
         //          Calcul la probabilité d'apparition d'un animal
         //          Si apparition possible
         //              Apparition de l'animal dans le rayon actif ou semi actif
-
-        printf("Fin\n");
     }
 
 

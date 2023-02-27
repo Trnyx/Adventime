@@ -21,7 +21,6 @@
 #include "textures.h"
 #include "camera.h"
 #include "monde.h"
-#include "temps.h"
 
 
 
@@ -76,7 +75,6 @@ typedef struct s_moteur {
 
 
     t_monde *monde;             /**< Le monde chargé */
-    t_temps *temps;             /**< Le temps dans le jeu */
     
     t_camera *camera;           /**< La caméra */
     t_textures *textures;       /**< Toutes les textures du jeu */

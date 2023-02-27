@@ -29,8 +29,8 @@
 
 
 typedef enum {
-    NUIT,
-    JOUR,
+    CYCLE_NUIT,
+    CYCLE_JOUR,
 } e_cycle;
 
 
@@ -54,10 +54,14 @@ typedef enum {
 
 
 typedef struct s_temps {
-    unsigned int heures;
-    unsigned int minutes;
-    unsigned int timestamp;
-} t_temps;
+    unsigned int heures;            /**< */
+    unsigned int minutes;           /**< */
+    unsigned int timestampJeu;      /**< */
+    time_t timestamp;               /**< */
+
+    e_cycle cycleJeu;               /**< */
+    e_cycle cycleVrai;              /**< */
+} t_temps; 
 
 
 /* -------------------------------------------------------------------------- */
@@ -65,11 +69,15 @@ typedef struct s_temps {
 /* -------------------------------------------------------------------------- */
 
 
-t_temps* initTemps(time_t timestamp);
+t_temps* initTemps(const time_t timestamp);
 void detruireTemps(t_temps **temps);
 
-e_jour getJourDeLaSemaine(time_t *timestamp);
-t_temps getTemps(time_t t);
+e_jour getJourDeLaSemaine(const time_t timestamp);
+e_cycle getCycleJeu(t_temps *temps);
+e_cycle getCycleVrai(const time_t timestamp);
+t_temps* getTemps(t_temps *temps, const time_t timestamp);
+
+void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp);
 
 
 

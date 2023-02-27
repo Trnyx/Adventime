@@ -60,7 +60,6 @@ t_moteur* initMoteur() {
     moteur->textures = NULL;
     
     moteur->monde = NULL;
-    moteur->temps = NULL;
 
 
     return moteur;

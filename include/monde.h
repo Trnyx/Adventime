@@ -19,7 +19,7 @@
 #include "utilitaire.h"
 #include "map.h"
 #include "joueur.h"
-// #include "entite.h"
+#include "temps.h"
 
 
 
@@ -30,9 +30,12 @@
  * @brief
  */
 typedef struct s_monde {
-    unsigned int seed;
-    t_map *map;
-    t_joueur *joueur;
+    unsigned int seed;      /**< */
+
+    t_map *map;             /**< */
+    t_joueur *joueur;       /**< */
+
+    t_temps *temps;         /**< Le temps dans le jeu */
 } t_monde;
 
 
