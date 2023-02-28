@@ -221,6 +221,8 @@ t_chunk* getChunkGraceABlock(const int x, const int y, const int z, t_map *map);
 
 t_map* genererMap(e_mapType type);
 void genererVegetations(t_map *map);
+void genererAnimaux(t_map *map);
+
 int detruireMap(t_map **map);
 
 void dessinerSol(t_moteur *moteur, t_map *map, SDL_Rect *rendu);

@@ -644,6 +644,8 @@ t_map* genererOverworld(t_map *map) {
 
     genererVegetations(map);
 
+    genererAnimaux(map);
+
 
     return map;
 }
