@@ -33,7 +33,7 @@
 
 state_main main_menu(struct nk_context *ctx, t_moteur *moteur) {
 
-  set_style(ctx, THEME_BLUE);
+  /* set_style(ctx, THEME_BLUE); */
 
   state_main click = 0;
 
@@ -93,6 +93,7 @@ state_main main_menu(struct nk_context *ctx, t_moteur *moteur) {
         click = JEU_QUITTER;
       }
       nk_sdl_handle_event(&evt);
+      if((evt.type==SDL_MOUSEBUTTONUP)||(evt.type==SDL_MOUSEBUTTONDOWN)||(evt.type==SDL_KEYUP)||(evt.type==SDL_KEYDOWN)) break;
     }
     nk_input_end(ctx);
 
@@ -173,8 +174,11 @@ state_main menu_options(struct nk_context *ctx, t_moteur *moteur) {
   state_main click = 0;
 
   int hovered = 1;
+  int screen_size = 0;
   static float value = 50.f;
   static int check = 1;
+
+  static const char *size[] = {"1920x1080","1280x720"};
 
   while (click == 0) {
     SDL_RenderClear(moteur->renderer);
@@ -185,6 +189,7 @@ state_main menu_options(struct nk_context *ctx, t_moteur *moteur) {
         click = JEU_QUITTER;
       }
       nk_sdl_handle_event(&evt);
+      if((evt.type==SDL_MOUSEBUTTONUP)||(evt.type==SDL_MOUSEBUTTONDOWN)||(evt.type==SDL_KEYUP)||(evt.type==SDL_KEYDOWN)) break;
     }
     nk_input_end(ctx);
 
@@ -209,11 +214,18 @@ state_main menu_options(struct nk_context *ctx, t_moteur *moteur) {
       nk_layout_space_push(
 			   ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
 					(moteur->window_height * 0.2), 300, 50));
+
+      screen_size = nk_combo(ctx, size, NK_LEN(size), screen_size, 25, nk_vec2(200, 200)); 
+
+      nk_layout_space_push(
+			   ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
+					(moteur->window_height * 0.3), 300, 50));
+      
       nk_label(ctx, "Plein écran", NK_TEXT_LEFT);
 
             nk_layout_space_push(
 			   ctx, nk_rect(((float)moteur->window_width / 2) + 300.0 / 2,
-					(moteur->window_height * 0.2), 300, 50));
+					(moteur->window_height * 0.3), 300, 50));
 	    
       if(nk_checkbox_label(ctx, "", &check)) {
 	if (check) {
@@ -248,8 +260,6 @@ state_main menu_options(struct nk_context *ctx, t_moteur *moteur) {
     nk_sdl_render(NK_ANTI_ALIASING_ON);
 
     SDL_RenderPresent(moteur->renderer);
-
-    nk_clear(ctx);
   }
   return click;
 }
