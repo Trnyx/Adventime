@@ -1,14 +1,9 @@
-/**
- * \file test_item.c
- * \brief Script de test pour l'item
- * \author Julien Houget
- * \date 27/01/22
- */
-
 #include <stdio.h>
 #include "../include/item.h"
+#include "../include/test.h"
+#include "../include/arme.h"
 
-int main()
+void test()
 {
     t_item* item = NULL;
 
@@ -30,6 +25,24 @@ int main()
     item->detruire(&item);
     printf("Nombre de t_item  = %lu\n", item_cpt);
 
+    
+    t_arme* arme = NULL;
 
-    return(0);
+    printf("Test d'existance sur une t_arme inexistant :\n");
+    (arme_existe(arme) ? printf("Erreur\n") : printf("OK\n"));
+
+    printf("Test création t_arme :\n");
+    arme = arme_creer(item, 4);
+    printf("Nombre de t_arme  = %lu\n", arme_cpt);
+
+    printf("Test affichage arme :\n");
+    arme->afficher(arme);
+    printf("\n");
+
+    printf("Test d'existance sur un t_arme existant :\n");
+    (arme_existe(arme) ? printf("OK\n") : printf("Erreur\n"));
+
+    printf("Test destruction arme :\n");
+    arme->detruire(&arme);
+    printf("Nombre de t_arme  = %lu\n", arme_cpt);
 }

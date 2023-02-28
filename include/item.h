@@ -18,6 +18,8 @@
 typedef struct s_item t_item;
 struct s_item {
 #include "attributs_item.h"
+  t_err(*afficher)(t_item* const);
+  t_err(*detruire)(t_item**);
 };
 
 /**
