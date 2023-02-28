@@ -111,6 +111,38 @@ boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vit
 
 
 /* -------------------------------------------------------------------------- */
+/*                                  Affichage                                 */
+/* -------------------------------------------------------------------------- */
+
+
+void dessinerEntite(t_moteur *moteur, t_entite *entite, SDL_Rect *sprite, SDL_Rect *rendu) {
+    SDL_Texture *texture = NULL;
+    
+    rendu->x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu->w); // positionnementEnPixel.x - offset.x;
+    rendu->y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu->h); // positionnementEnPixel.y - offset.y;
+
+
+    switch (entite->entiteType) {
+        case ENTITE_JOUEUR: 
+            texture = moteur->textures->joueur; 
+
+            sprite->x = 0;
+            sprite->y = entite->orientation * TAILLE_TILE;
+            
+            break;
+        default:
+            break;
+    }
+
+
+    SDL_RenderCopy(moteur->renderer, texture, sprite, rendu);
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                 Destruction                                */
 /* -------------------------------------------------------------------------- */
 
@@ -175,6 +207,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->position.y = position.y;
     entite->direction.x = 0;
     entite->direction.y = 0;
+    entite->orientation = SUD;
 
     entite->entiteType = ENTITE_RIEN;
 

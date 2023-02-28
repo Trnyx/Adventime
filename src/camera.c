@@ -153,11 +153,8 @@ void afficherCamera(t_moteur *moteur, t_map *map) {
 
     /* --------------------------------- Joueur --------------------------------- */
 
-    rendu.x = positionRelativeEnPositionSurEcran(moteur->monde->joueur->position.x, 0.0, camera->origine.x, rendu.w); // positionnementEnPixel.x - offset.x;
-    rendu.y = positionRelativeEnPositionSurEcran(moteur->monde->joueur->position.y, 0.0, camera->origine.y, rendu.h); // positionnementEnPixel.y - offset.y;
-    SDL_RenderCopy(moteur->renderer, moteur->textures->joueur, &sprite, &rendu);
-
-    // dessinerEntite(moteur, moteur->textures->joueur, (t_entite*)moteur->monde->joueur, origine, offset, rendu);
+    // dessinerJoueur(moteur, moteur->monde->joueur, &rendu);
+    dessinerEntite(moteur, (t_entite*)moteur->monde->joueur, &sprite, &rendu);
 
     /* -------------------------------- Vegetaux -------------------------------- */
 

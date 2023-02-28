@@ -14,8 +14,11 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
+#include <SDL2/SDL.h>
 
 #include "../include/joueur.h"
+#include "../include/camera.h"
 
 
 
@@ -30,7 +33,6 @@
 boolean doitSeDeplacer(t_action_flags *flags) {
     return flags->up || flags->down || flags->left || flags->right;
 }
-
 
 
 /**
@@ -63,6 +65,24 @@ void getDirectionJoueur(t_joueur *joueur) {
 
 
 
+
+void getOrientationJoueur(t_moteur *moteur, t_joueur *joueur) {
+    unsigned int x, y;
+    SDL_GetMouseState(&x, &y);
+    printf("Souris : %i : %i\n", x, y);
+    
+    float angle = atan2(720 / 2 - y, 1280 / 2 - x) * (180 / M_PI);
+    if (angle < 0) {
+        angle = 360 - (-angle);
+    }
+    
+    SDL_Log("Angle : %1.0f\n", angle);
+}
+
+
+
+
+
 /**
  * @brief 
  * 
@@ -80,7 +100,10 @@ int updateJoueur(t_moteur *moteur, t_joueur *joueur) {
         deplacerEntite(moteur, (t_entite*) joueur, joueur->statistiques.vitesse);
     }
 
+    getOrientationJoueur(moteur, joueur);
+
     // printf("Fin Update Joueur\n");
+    return 0;
 }
 
 

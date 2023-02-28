@@ -33,6 +33,10 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ */
 typedef enum {
     ENTITE_RIEN,
     ENTITE_JOUEUR,
@@ -42,12 +46,28 @@ typedef enum {
 } e_entiteType;
 
 
+/**
+ * @brief 
+ * 
+ */
 typedef enum {
     DEPLACEMENT_JOUEUR = -1,
     DEPLACEMENT_STATIQUE,
     DEPLACEMENT_NORMAL,
     DEPLACEMENT_COMBAT,
 } e_deplacementType;
+
+
+/**
+ * @brief 
+ * 
+ */
+typedef enum {
+    SUD,
+    OUEST,
+    EST,
+    NORD,
+} e_orientation;
 
 
 
@@ -74,7 +94,7 @@ struct s_entite {
     unsigned int id;
     t_vecteur2 position;                /**< La position actuelle de l'entité */
     t_vecteur2 direction;               /**< La direction (déplacement) actuelle de l'entité */
-    t_vecteur2 orientation;             /**< L'orientation (regard) actuelle de l'entité */
+    e_orientation orientation;          /**< L'orientation (regard) actuelle de l'entité */
 
     e_entiteType entiteType;            /**< Le type de l'entité */
 
@@ -130,6 +150,8 @@ void detruireMob(t_mob **mob);
 
 float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *entiteCible);
 boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vitesse);
+
+void dessinerEntite(t_moteur *moteur, t_entite *entite, SDL_Rect *sprite, SDL_Rect *rendu);
 
 int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_mob*, const float);
 

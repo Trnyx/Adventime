@@ -102,7 +102,6 @@ int inputManager(t_joueur *joueur, t_controles *controles) {
             /* -------------------------------------------------------------------------- */
 
 
-            /* ------------------------- Position de las souris ------------------------- */
             /* --------------------------- Clique de la souris -------------------------- */
 
             case SDL_MOUSEBUTTONDOWN:
@@ -117,7 +116,12 @@ int inputManager(t_joueur *joueur, t_controles *controles) {
 
         }
 
+        /* -------------------------- Position de la souris ------------------------- */
+        // Dans la fonction updateJoueur
+
 
         return 1;
     }
+
+    return 1;
 }
