@@ -161,8 +161,6 @@ state_main main_menu(struct nk_context *ctx, t_moteur *moteur) {
     nk_sdl_render(NK_ANTI_ALIASING_ON);
 
     SDL_RenderPresent(moteur->renderer);
-
-    nk_clear(ctx);
   }
   return click;
 }
