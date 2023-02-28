@@ -67,14 +67,25 @@ void getDirectionJoueur(t_joueur *joueur) {
 
 
 void getOrientationJoueur(t_moteur *moteur, t_joueur *joueur) {
-    unsigned int x, y;
+    int x, y;
     SDL_GetMouseState(&x, &y);
     printf("Souris : %i : %i\n", x, y);
     
     float angle = atan2(720 / 2 - y, 1280 / 2 - x) * (180 / M_PI);
-    if (angle < 0) {
+    if (angle < 0)
         angle = 360 - (-angle);
-    }
+
+
+    if (angle >= 45 && angle < 135)
+        joueur->orientation = NORD;
+    else if (angle >= 135 && angle < 225)
+        joueur->orientation = EST;
+    else if (angle >= 225 && angle < 315)
+        joueur->orientation = SUD;
+    else
+        joueur->orientation = OUEST;
+
+
     
     SDL_Log("Angle : %1.0f\n", angle);
 }
