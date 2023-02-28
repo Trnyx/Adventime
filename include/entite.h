@@ -99,13 +99,19 @@ struct s_entite {
 typedef struct s_mob {
     struct s_entite;                        /**< inclue les bases d'une entité */
 
+    // Deplacement 
     unsigned int rayonDeplacement;          /**< Le rayon dans lequel le mob peut se déplacer */
     t_vecteur2 positionDeplacement;         /**< La position à laquelle le mob peut se déplacer */
+
     time_t timestampDebutDeplacement;       /**< Timestamp de départ de déplacement */
     time_t timestampFinDeplacement;         /**< Timestamp de fin de déplacement */
-    int delaiAttente;                       /**< Temps d'attente entre deux déplacements */
+    unsigned int delaiAttenteDeplacement;   /**< Temps d'attente entre deux déplacements */
     
     e_deplacementType deplacementType;      /**< Le type de déplacement du mob */
+
+    // Attaque
+    time_t timestampAttaque;                /**< Timestamp de la dernière attaque */
+    unsigned int delaiAttenteAttaque;       /**< Temps d'attente entre deux attaque */
 } t_mob;
 
 

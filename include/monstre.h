@@ -89,13 +89,30 @@ typedef struct s_monstre {
  * @brief Modélise les intervales des statistiques de base d'un monstre
  */
 typedef struct s_baseStatistiquesIntervales {
-    int attaque[2];
-    int defense[2];
-    int vitesse[2];
-    int pv;
-    int courbeExp[2];
+    int attaque[2];         /**< */
+    int defense[2];         /**< */
+    int vitesse[2];         /**< */
+    int pv;                 /**< */
+    int courbeExp[2];       /**< */
 } t_baseStatistiquesIntervales;
 
+
+
+
+
+/**
+ * @brief 
+ * 
+ */
+typedef struct s_boss_flags {
+    unsigned int lundi;
+    unsigned int mardi;
+    unsigned int mercredi;
+    unsigned int jeudi;
+    unsigned int vendredi;
+    unsigned int samedi;
+    unsigned int dimanche;
+} t_boss_flags;
 
 
 

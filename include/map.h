@@ -49,6 +49,8 @@
 typedef enum {
     MAP_OVERWORLD,
     MAP_CAVE,
+    MAP_BOSS_TEMPLE,
+    MAP_MAISON,
 } e_mapType;
 
 
@@ -150,7 +152,10 @@ typedef struct s_chunk {
 typedef struct s_map {
     e_mapType type;             /**< */
     t_chunk *chunks;            /**< */
+
     t_liste *entites;           /**< */
+
+    t_monstre *boss;            /**< */
 } t_map;
 
 

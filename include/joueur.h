@@ -19,6 +19,7 @@
 
 #include "statistiques.h"
 #include "inventaire.h"
+#include "monstre.h"
 #include "entite.h"
 #include "map.h"
 
@@ -72,6 +73,8 @@ typedef struct s_joueur {
 
     t_action_flags *actionFlags;    /**< */
     e_mapType map;                  /**< */
+
+    t_boss_flags bossFlags;         /**< */
     
 } t_joueur;
 

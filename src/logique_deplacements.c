@@ -33,7 +33,7 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
     // Si le mob n'a pas atteint la position qu'il doit atteindre
     //  on le fait se déplacer en direction de son point
     // Sinon cela signifie qu'il peut se déplacer à nouveau
-    if (difftime(mob->timestampActualisation, mob->timestampFinDeplacement) > mob->delaiAttente) {
+    if (difftime(mob->timestampActualisation, mob->timestampFinDeplacement) > mob->delaiAttenteDeplacement) {
         if (mob->position.x != mob->positionDeplacement.x || mob->position.y != mob->positionDeplacement.y) {
             mob->direction.x = (mob->positionDeplacement.x - mob->position.x);
             mob->direction.y = (mob->positionDeplacement.y - mob->position.y);
@@ -50,7 +50,7 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
             else {
                 mob->positionDeplacement = mob->position;
                 mob->timestampFinDeplacement = mob->timestampActualisation;
-                mob->delaiAttente = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
+                mob->delaiAttenteDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
             }
         }
         else {

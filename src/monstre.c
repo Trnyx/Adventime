@@ -36,7 +36,7 @@ int updateMonstre(t_moteur *moteur, t_monstre *monstre, const float distance) {
     // // Si le monstre n'a pas atteint la position qu'il doit atteindre
     // //  on le fait se déplacer en direction de son point
     // // Sinon cela signifie qu'il peut se déplacer à nouveau
-    // if (difftime(monstre->timestampActualisation, monstre->timestampFinDeplacement) > monstre->delaiAttente) {
+    // if (difftime(monstre->timestampActualisation, monstre->timestampFinDeplacement) > monstre->delaiAttenteDeplacement) {
     //     if (monstre->position.x != monstre->positionDeplacement.x || monstre->position.y != monstre->positionDeplacement.y) {
     //         monstre->direction.x = (monstre->positionDeplacement.x - monstre->position.x);
     //         monstre->direction.y = (monstre->positionDeplacement.y - monstre->position.y);
@@ -53,7 +53,7 @@ int updateMonstre(t_moteur *moteur, t_monstre *monstre, const float distance) {
     //         else {
     //             monstre->positionDeplacement = monstre->position;
     //             monstre->timestampFinDeplacement = monstre->timestampActualisation;
-    //             monstre->delaiAttente = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
+    //             monstre->delaiAttenteDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
     //         }
     //     }
     //     else {

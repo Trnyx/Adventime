@@ -33,11 +33,16 @@
 #define TEMPS_JOUR (3600 / NOMBRE_JOUR)
 
 // L'heure (en jeu) à laquelle il est concidéré que c'est le matin
-#define HEURE_JEU_MATIN 8
+#define HEURE_JEU_MATIN 8 
 // L'heure (en jeu) à laquelle il est concidéré que c'est l'après midi
 #define HEURE_JEU_APRES_MIDI 14
 // L'heure (en jeu) à laquelle il est concidéré que c'est la nuit
 #define HEURE_JEU_NUIT 20
+
+// L'heure (en jeu) à laquelle il est concidéré que le soleil se lève
+#define HEURE_JEU_LEVE_SOLEIL 6 
+// L'heure (en jeu) à laquelle il est concidéré que le soleil se couche
+#define HEURE_JEU_COUCHE_SOLEIL 18
 
 
 

@@ -208,15 +208,22 @@ t_mob* creerMob(const t_vecteur2 position) {
     t_mob *mob = realloc(entite, sizeof(t_mob));
     const time_t t = time(NULL);
 
+    // Déplacement
     mob->rayonDeplacement = 0;
 
     mob->positionDeplacement.x = position.x;
     mob->positionDeplacement.y = position.y;
     mob->timestampDebutDeplacement = t;
     mob->timestampFinDeplacement = t;
-    mob->delaiAttente = 10;
+    mob->delaiAttenteDeplacement = 10;
 
     mob->deplacementType = DEPLACEMENT_STATIQUE;
+
+
+    // Attaque
+    mob->timestampAttaque = t;
+    mob->delaiAttenteAttaque = 5;
+
 
     mob->detruire = (void (*)(t_entite**)) detruireMob;
 
