@@ -28,12 +28,11 @@
 int deplacementNormal(t_moteur *moteur, t_mob *mob) {
     
 
-
-
     // Si le mob n'a pas atteint la position qu'il doit atteindre
     //  on le fait se déplacer en direction de son point
     // Sinon cela signifie qu'il peut se déplacer à nouveau
     if (difftime(mob->timestampActualisation, mob->timestampFinDeplacement) > mob->delaiAttenteDeplacement) {
+
         if (mob->position.x != mob->positionDeplacement.x || mob->position.y != mob->positionDeplacement.y) {
             mob->direction.x = (mob->positionDeplacement.x - mob->position.x);
             mob->direction.y = (mob->positionDeplacement.y - mob->position.y);
@@ -72,8 +71,8 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
                 // printf("Choix nouvelle position => ");
                 // mob->deplacementType = DEPLACEMENT_NORMAL;
 
-                t_vecteur2 pointARejoindre = choisirPointDansRayon(mob->rayonDeplacement);
-                t_vecteur2 positionFinale = {
+                const t_vecteur2 pointARejoindre = choisirPointDansRayon(mob->rayonDeplacement);
+                const t_vecteur2 positionFinale = {
                     mob->position.x + pointARejoindre.x,
                     mob->position.y + pointARejoindre.y,
                 };
@@ -96,6 +95,11 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
                 }
             }
         }
+
+
+        const float angle = calculAngleEntrePoints(mob->position, mob->positionDeplacement);
+        orienterEntite(angle, (t_entite*) mob);
+
     }
     
 
@@ -141,6 +145,9 @@ int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) 
 
     deplacerEntite(moteur, (t_entite*)mob, vitesse);
 
+    const float angle = calculAngleEntrePoints(mob->position, joueur->position);
+    orienterEntite(angle, (t_entite*) mob);
+
 
     return 0;
 }
@@ -155,7 +162,7 @@ int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) 
 
 
 int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_mob*, const float) {
-    printf("Get Deplacement %i => ", deplacement);
+    // printf("Get Deplacement %i => ", deplacement);
     switch (deplacement) {
         case DEPLACEMENT_NORMAL:  
             return (int (*)(t_moteur*, t_mob*, const float)) deplacementNormal;

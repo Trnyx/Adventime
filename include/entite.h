@@ -150,6 +150,7 @@ void detruireMob(t_mob **mob);
 
 float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *entiteCible);
 boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vitesse);
+void orienterEntite(const float angle, t_entite *entite);
 
 void dessinerEntite(t_moteur *moteur, t_entite *entite);
 

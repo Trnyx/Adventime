@@ -110,6 +110,29 @@ boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vit
 
 
 
+/**
+ * @brief 
+ * 
+ * @param angle 
+ * @param entite 
+ */
+void orienterEntite(const float angle, t_entite *entite) {
+    if (!angle);
+
+    else if (angle >= 45 && angle < 135)
+        entite->orientation = NORD;
+    else if (angle >= 135 && angle < 225)
+        entite->orientation = EST;
+    else if (angle >= 225 && angle < 315)
+        entite->orientation = SUD;
+    else
+        entite->orientation = OUEST;
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                  Affichage                                 */
 /* -------------------------------------------------------------------------- */

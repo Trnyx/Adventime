@@ -67,7 +67,7 @@ void getDirectionJoueur(t_joueur *joueur) {
 
 
 
-void getOrientationJoueur(t_moteur *moteur, t_joueur *joueur) {
+float getOrientationJoueur(t_moteur *moteur, t_joueur *joueur) {
     // int x, y;
     // SDL_GetMouseState(&x, &y);
     // printf("Souris : %i : %i\n", x, y);
@@ -76,25 +76,26 @@ void getOrientationJoueur(t_moteur *moteur, t_joueur *joueur) {
     // if (angle < 0)
     //     angle = 360 - (-angle);
 
-    const t_vecteur2 tailleEcran = {
-        moteur->window_width,
-        moteur->window_height,
+    const t_vecteur2 centreEcran = {
+        moteur->window_width / 2,
+        moteur->window_height / 2,
     };
-    const float angle = calculAngleEntrePoints(tailleEcran, moteur->positionSouris);
+
+    return calculAngleEntrePoints(centreEcran, moteur->positionSouris);
 
 
-    if (angle >= 45 && angle < 135)
-        joueur->orientation = NORD;
-    else if (angle >= 135 && angle < 225)
-        joueur->orientation = EST;
-    else if (angle >= 225 && angle < 315)
-        joueur->orientation = SUD;
-    else
-        joueur->orientation = OUEST;
+    // if (angle >= 45 && angle < 135)
+    //     joueur->orientation = NORD;
+    // else if (angle >= 135 && angle < 225)
+    //     joueur->orientation = EST;
+    // else if (angle >= 225 && angle < 315)
+    //     joueur->orientation = SUD;
+    // else
+    //     joueur->orientation = OUEST;
 
 
     
-    SDL_Log("Angle : %1.0f\n", angle);
+    // SDL_Log("Angle : %1.0f\n", angle);
 }
 
 
@@ -113,12 +114,12 @@ int updateJoueur(t_moteur *moteur, t_joueur *joueur) {
 
     if (doitSeDeplacer(joueur->actionFlags)) {
         // printf("Deplacement du joueur (N : %i / S : %i / O : %i / E : %i) => ", joueur->actionFlags->up, joueur->actionFlags->down, joueur->actionFlags->left, joueur->actionFlags->right);
-
         getDirectionJoueur(joueur);
         deplacerEntite(moteur, (t_entite*) joueur, joueur->statistiques.vitesse);
     }
 
-    getOrientationJoueur(moteur, joueur);
+    const float angle = getOrientationJoueur(moteur, joueur);
+    orienterEntite(angle, (t_entite*) joueur);
 
     // printf("Fin Update Joueur\n");
     return 0;

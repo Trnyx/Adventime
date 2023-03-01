@@ -141,7 +141,7 @@ void update(t_moteur *moteur, t_audio *audio) {
 
     en_tete(entites);
     if (!liste_vide(entites)) {
-        printf("Update Entites => ");
+        // printf("Update Entites => ");
 
         while (!hors_liste(entites)) {
             valeur_elt(entites, &entite);
@@ -243,8 +243,8 @@ void update(t_moteur *moteur, t_audio *audio) {
             suivant(entites);
         }
 
-        printf("Mobs Total : %i  /  Monstre Agressif : %i\n", nombreMobs, nombreMonstresAggressifs);
-        printf("Fin Update Entites\n");
+        // printf("Mobs Total : %i  /  Monstre Agressif : %i\n", nombreMobs, nombreMonstresAggressifs);
+        // printf("Fin Update Entites\n");
     }
 
 
