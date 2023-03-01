@@ -113,10 +113,20 @@ void update(t_moteur *moteur, t_audio *audio) {
 
 
     /* -------------------------------------------------------------------------- */
+    /*                                Affichage Sol                               */
+    /* -------------------------------------------------------------------------- */
+
+
+    dessinerSol(moteur, map);
+
+
+
+    /* -------------------------------------------------------------------------- */
     /*                                   Joueur                                   */
     /* -------------------------------------------------------------------------- */
 
     joueur->update(moteur, (t_entite*) joueur, 0.0);
+    dessinerEntite(moteur, (t_entite*) joueur);
 
     
 
@@ -180,6 +190,8 @@ void update(t_moteur *moteur, t_audio *audio) {
 
                     // combat
                     // entite->update(moteur, (t_entite*)entite);
+
+                    dessinerEntite(moteur, (t_entite*)entite);
                 }
 
 
@@ -227,7 +239,7 @@ void update(t_moteur *moteur, t_audio *audio) {
                 nombreMobs++;
             }
 
-
+            
             suivant(entites);
         }
 
@@ -297,8 +309,11 @@ void update(t_moteur *moteur, t_audio *audio) {
     /* ---------------- Construction de l'affichage de la caméra ---------------- */
 
     updateCamera(moteur, joueur->position);
-    afficherCamera(moteur, map);
+    // afficherCamera(moteur, map);
 
+    if (map->type == MAP_OVERWORLD) {
+        dessinerVegetation(moteur, map);
+    }
 
     /* --------------- Construction de l'affichage de l'interface --------------- */
 

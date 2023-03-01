@@ -51,11 +51,13 @@ typedef struct s_moteur t_moteur;
  * 
  */
 typedef struct s_camera {
-    t_vecteur2 position;
-    t_vecteur2 futurePosition;
+    t_vecteur2 position;            /**< */
+    t_vecteur2 futurePosition;      /**< */
 
-    t_vecteur2 origine;
-    t_vecteur2 offset;
+    t_vecteur2 origine;             /**< */
+    t_vecteur2 offset;              /**< */
+
+    t_vecteur2 tailleRendu;         /**< */
 } t_camera;
 
 

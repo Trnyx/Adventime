@@ -115,27 +115,44 @@ boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vit
 /* -------------------------------------------------------------------------- */
 
 
-void dessinerEntite(t_moteur *moteur, t_entite *entite, SDL_Rect *sprite, SDL_Rect *rendu) {
+/**
+ * @brief 
+ * 
+ * @param moteur 
+ * @param entite 
+ */
+void dessinerEntite(t_moteur *moteur, t_entite *entite) {
     SDL_Texture *texture = NULL;
-    
-    rendu->x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu->w); // positionnementEnPixel.x - offset.x;
-    rendu->y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu->h); // positionnementEnPixel.y - offset.y;
+    SDL_Rect sprite;
+    sprite.h = sprite.w = TAILLE_TILE;
+
+    SDL_Rect rendu;
+    rendu.w = moteur->camera->tailleRendu.x;
+    rendu.h = moteur->camera->tailleRendu.y;
+
+    rendu.x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w); // positionnementEnPixel.x - offset.x;
+    rendu.y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h); // positionnementEnPixel.y - offset.y;
 
 
     switch (entite->entiteType) {
         case ENTITE_JOUEUR: 
             texture = moteur->textures->joueur; 
-
-            sprite->x = 0;
-            sprite->y = entite->orientation * TAILLE_TILE;
-            
             break;
+
+        case ENTITE_MONSTRE_AGGRESSIF:
+            texture = moteur->textures->monstres;
+            break;
+
         default:
             break;
     }
 
 
-    SDL_RenderCopy(moteur->renderer, texture, sprite, rendu);
+    sprite.x = 0;
+    sprite.y = entite->orientation * TAILLE_TILE;
+
+
+    SDL_RenderCopy(moteur->renderer, texture, &sprite, &rendu);
 }
 
 

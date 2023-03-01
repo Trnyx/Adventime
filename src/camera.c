@@ -75,8 +75,8 @@ int positionRelativeEnPositionSurEcran(const float coordonnee, const float offse
  */
 void afficherCamera(t_moteur *moteur, t_map *map) {
     t_camera *camera = moteur->camera;
-    const float TAILLE_BLOCK_RENDU_H = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
-    const float TAILLE_BLOCK_RENDU_L = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
 
     // const float origineX = (camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
     // const float origineY = (camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
@@ -87,9 +87,8 @@ void afficherCamera(t_moteur *moteur, t_map *map) {
 
 
     SDL_Rect rendu;
-    rendu.w = TAILLE_BLOCK_RENDU_L;
-    rendu.h = TAILLE_BLOCK_RENDU_H;
-
+    rendu.w = camera->tailleRendu.x;
+    rendu.h = camera->tailleRendu.y;
 
 
     /* ----------------------------------- Map ---------------------------------- */
@@ -119,47 +118,47 @@ void afficherCamera(t_moteur *moteur, t_map *map) {
 
     //     }
     // }
-    dessinerSol(moteur, map, &rendu);
+    // dessinerSol(moteur, map, &rendu);
 
     // SDL_Log("JOUEUR : %1.0f:%1.0f", moteur->monde->joueur->position.x, moteur->monde->joueur->position.y);
 
 
     /* --------------------------------- Entites -------------------------------- */
-    SDL_Rect sprite;
-    sprite.x = 0;
-    sprite.y = 0;
-    sprite.w = TAILLE_TILE;
-    sprite.h = TAILLE_TILE;
+    // SDL_Rect sprite;
+    // sprite.x = 0;
+    // sprite.y = 0;
+    // sprite.w = TAILLE_TILE;
+    // sprite.h = TAILLE_TILE;
     // Animaux
     // Monstres
 
 
-    if (!liste_vide(map->entites)) {
-        t_monstre *monstre;
-        en_tete(map->entites);
+    // if (!liste_vide(map->entites)) {
+    //     t_monstre *monstre;
+    //     en_tete(map->entites);
 
-        while (!hors_liste(map->entites)) {
-            valeur_elt(map->entites, (t_entite**)&monstre);
+    //     while (!hors_liste(map->entites)) {
+    //         valeur_elt(map->entites, (t_entite**)&monstre);
 
-            rendu.x = positionRelativeEnPositionSurEcran(monstre->position.x, 0.0, camera->origine.x, rendu.w); // positionnementEnPixel.x - offset.x;
-            rendu.y = positionRelativeEnPositionSurEcran(monstre->position.y, 0.0, camera->origine.y, rendu.h); // positionnementEnPixel.y - offset.y;
-            SDL_RenderCopy(moteur->renderer, moteur->textures->monstres, &sprite, &rendu);
+    //         rendu.x = positionRelativeEnPositionSurEcran(monstre->position.x, 0.0, camera->origine.x, rendu.w); // positionnementEnPixel.x - offset.x;
+    //         rendu.y = positionRelativeEnPositionSurEcran(monstre->position.y, 0.0, camera->origine.y, rendu.h); // positionnementEnPixel.y - offset.y;
+    //         SDL_RenderCopy(moteur->renderer, moteur->textures->monstres, &sprite, &rendu);
 
-            suivant(map->entites);
-        }
+    //         suivant(map->entites);
+    //     }
         
-    }
+    // }
 
 
     /* --------------------------------- Joueur --------------------------------- */
 
-    // dessinerJoueur(moteur, moteur->monde->joueur, &rendu);
-    dessinerEntite(moteur, (t_entite*)moteur->monde->joueur, &sprite, &rendu);
+    // dessinerEntite(moteur, (t_entite*) joueur);
+
 
     /* -------------------------------- Vegetaux -------------------------------- */
 
     if (map->type == MAP_OVERWORLD) {
-        dessinerVegetation(moteur, map, &rendu);
+        // dessinerVegetation(moteur, map, &rendu);
     }
 
 }
@@ -175,6 +174,16 @@ void afficherCamera(t_moteur *moteur, t_map *map) {
 void updateCamera(t_moteur *moteur, const t_vecteur2 position) {
     // printf("Update Camera => ");
     t_camera *camera = moteur->camera;
+    camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
+
+    // const float origineX = (camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
+    // const float origineY = (camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
+    camera->origine.x = (camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
+    camera->origine.y = (camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
+    camera->offset.x = (camera->position.x - (int)camera->position.x);
+    camera->offset.y = (camera->position.y - (int)camera->position.y);
+
     camera->position = position;
     // printf("%1.2f:%1.2f => ", position.x, position.y);
     // printf("Fin Update Camera\n");

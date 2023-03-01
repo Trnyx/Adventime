@@ -225,8 +225,8 @@ void genererAnimaux(t_map *map);
 
 int detruireMap(t_map **map);
 
-void dessinerSol(t_moteur *moteur, t_map *map, SDL_Rect *rendu);
-void dessinerVegetation(t_moteur *moteur, t_map *map, SDL_Rect *rendu);
+void dessinerSol(t_moteur *moteur, t_map *map);
+void dessinerVegetation(t_moteur *moteur, t_map *map);
 
 
 
