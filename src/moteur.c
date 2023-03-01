@@ -22,7 +22,10 @@
 
 
 void regulerFPS(t_moteur *moteur) {
-
+    int tempsEcoule = SDL_GetTicks() - moteur->frame;
+    if (TPS > tempsEcoule) 
+        SDL_Delay(TPS - tempsEcoule);
+    moteur->frame = SDL_GetTicks();
 }
 
 
@@ -54,12 +57,14 @@ t_moteur* initMoteur() {
 
 
     initSDL(moteur);
-    initControles(&moteur->controles);
 
     moteur->camera = NULL;
     moteur->textures = NULL;
+    initControles(&moteur->controles);
     
     moteur->monde = NULL;
+
+    moteur->frame = SDL_GetTicks();
 
 
     return moteur;

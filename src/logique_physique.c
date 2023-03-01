@@ -80,6 +80,7 @@
  * @param audio Pointeur sur l'audio du jeu
  */
 void update(t_moteur *moteur, t_audio *audio) {
+    regulerFPS(moteur);
     // printf("Update (%li)\n", u++);
     t_monde *monde = moteur->monde;
     t_joueur *joueur = monde->joueur;
