@@ -18,6 +18,7 @@
 
 #include <SDL2/SDL.h>
 
+#include "utilitaire.h"
 #include "textures.h"
 #include "camera.h"
 #include "monde.h"
@@ -67,18 +68,19 @@ typedef struct s_controles {
  */
 typedef struct s_moteur {
 
-    SDL_Window *window;         /**< La fenetre du jeu*/
-    SDL_Renderer *renderer;     /**< Le renderer du jeu*/
+    SDL_Window *window;             /**< La fenetre du jeu*/
+    SDL_Renderer *renderer;         /**< Le renderer du jeu*/
 
-    int window_width;           /**< Largeur de la fenêtre */
-    int window_height;          /**< Hauteur de la fenêtre */
+    unsigned int window_width;      /**< Largeur de la fenêtre */
+    unsigned int window_height;     /**< Hauteur de la fenêtre */
+    t_vecteur2 positionSouris;      /**< La position de la souris sur l'écran*/
 
 
-    t_monde *monde;             /**< Le monde chargé */
+    t_monde *monde;                 /**< Le monde chargé */
     
-    t_camera *camera;           /**< La caméra */
-    t_textures *textures;       /**< Toutes les textures du jeu */
-    t_controles controles;      /**< Les contrôles du jeu */
+    t_camera *camera;               /**< La caméra */
+    t_textures *textures;           /**< Toutes les textures du jeu */
+    t_controles controles;          /**< Les contrôles du jeu */
     
 
 } t_moteur;

@@ -62,7 +62,7 @@ int main(int argc, char* argv[]) {
             //     goto cleanup;
             // }
 
-            continuer = inputManager(moteur->monde->joueur, &moteur->controles);
+            continuer = inputManager(moteur->monde->joueur, moteur);
             // printf("Continuer ? %i\n", continuer);
             update(moteur, audio);
             // updateCamera(moteur, joueur->position);

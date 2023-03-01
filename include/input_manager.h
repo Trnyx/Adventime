@@ -23,7 +23,12 @@
 
 
 
-int inputManager(t_joueur *joueur, t_controles *controles);
+/* -------------------------------------------------------------------------- */
+/*                                  Fonctions                                 */
+/* -------------------------------------------------------------------------- */
+
+
+int inputManager(t_joueur *joueur, t_moteur *moteur);
 
 
 

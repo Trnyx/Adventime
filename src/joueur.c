@@ -19,6 +19,7 @@
 
 #include "../include/joueur.h"
 #include "../include/camera.h"
+#include "../include/moteur.h"
 
 
 
@@ -67,13 +68,19 @@ void getDirectionJoueur(t_joueur *joueur) {
 
 
 void getOrientationJoueur(t_moteur *moteur, t_joueur *joueur) {
-    int x, y;
-    SDL_GetMouseState(&x, &y);
-    printf("Souris : %i : %i\n", x, y);
+    // int x, y;
+    // SDL_GetMouseState(&x, &y);
+    // printf("Souris : %i : %i\n", x, y);
     
-    float angle = atan2(720 / 2 - y, 1280 / 2 - x) * (180 / M_PI);
-    if (angle < 0)
-        angle = 360 - (-angle);
+    // float angle = atan2(720 / 2 - y, 1280 / 2 - x) * (180 / M_PI);
+    // if (angle < 0)
+    //     angle = 360 - (-angle);
+
+    const t_vecteur2 tailleEcran = {
+        moteur->window_width,
+        moteur->window_height,
+    };
+    const float angle = calculAngleEntrePoints(tailleEcran, moteur->positionSouris);
 
 
     if (angle >= 45 && angle < 135)
