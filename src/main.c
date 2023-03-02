@@ -1,16 +1,31 @@
-
-
-#include "../include/main.h"
-#include "../include/initialiseur.h"
-#include "../include/menus.h"
-#include "../include/moteur.h"
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/main.h"
 
-int main() {
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
+#include <SDL2/SDL_image.h>
+
+#include "../include/menus.h"
+#include "../include/physique.h"
+#include "../include/initialiseur.h"
+#include "../include/textures.h"
+#include "../include/moteur.h"
+#include "../include/audio.h"
+#include "../include/main.h"
+#include "../include/monde.h"
+#include "../include/joueur.h"
+#include "../include/input_manager.h"
+
+
+
+
+
+
+
+
+
+
+int main(int argc, char* argv[]) {
 
   t_moteur * moteur;
   struct nk_context *ctx = NULL;

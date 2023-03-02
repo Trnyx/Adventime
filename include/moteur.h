@@ -18,6 +18,11 @@
 
 #include <SDL2/SDL.h>
 
+#include "utilitaire.h"
+#include "textures.h"
+#include "camera.h"
+#include "monde.h"
+
 
 
 
@@ -38,17 +43,46 @@
  * @brief 
  * 
  */
+typedef struct s_controles {
+    // Directions
+    SDL_Scancode key_up;        /**< La touche de direction vers le haut */
+    SDL_Scancode key_down;      /**< La touche de direction vers le bas */
+    SDL_Scancode key_left;      /**< La touche de direction vers la gauche */
+    SDL_Scancode key_right;     /**< La touche de direction vers la droite */
+
+    // Interactions
+    SDL_Scancode interaction;   /**< La touche d'interaction */
+    int attack;                 /**< Le clique pour l'attaque */
+
+    // Autres
+    SDL_Scancode escape;        /**< La touche echap */
+    SDL_Scancode miniMap;       /**< La touche pour afficher la mini map */
+
+} t_controles;
+
+
+
+/**
+ * @brief 
+ * 
+ */
 typedef struct s_moteur {
 
-    SDL_Window *window;         /**< La fenetre du jeu*/
-    SDL_Renderer *renderer;     /**< Le renderer du jeu*/
+    SDL_Window *window;             /**< La fenetre du jeu*/
+    SDL_Renderer *renderer;         /**< Le renderer du jeu*/
 
-    int window_width;           /**< Largeur de la fenêtre */
-    int window_height;          /**< Hauteur de la fenêtre */
+    unsigned int window_width;      /**< Largeur de la fenêtre */
+    unsigned int window_height;     /**< Hauteur de la fenêtre */
+    t_vecteur2 positionSouris;      /**< La position de la souris sur l'écran*/
 
 
-
+    t_monde *monde;                 /**< Le monde chargé */
     
+    t_camera *camera;               /**< La caméra */
+    t_textures *textures;           /**< Toutes les textures du jeu */
+    t_controles controles;          /**< Les contrôles du jeu */
+    
+    unsigned int frame;             /**< Le timestamp (tick) de la drame actuelle */
 
 } t_moteur;
 

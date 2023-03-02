@@ -1,14 +1,17 @@
-/*
- * \file 
+/**
+ * @file attributs_statistiques.h
  *
- * \brief
+ * @brief
  *
- * \author
+ * @author Clément Hibon
+ * @date 21 janvier
+ * @version 1.0
  */
 
 
 
-int pv;             /**<  */
-int attaque;        /**<  */
-int defense;        /**<  */
-int vitesse;        /**<  */
+
+float pv;             /**<  */
+float attaque;        /**<  */
+float defense;        /**<  */
+float vitesse;        /**<  */

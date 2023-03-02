@@ -1,20 +1,22 @@
-/*
- * \file 
- *
- * \brief
- *
- * \author
+/**
+ * @file attributs_entite.h
+ * 
+ * @brief 
+ * 
+ * @author Clément Hibon
+ * @date 3 février
+ * @version 1.1
  */
 
 
 
-#include <utils.h>
+unsigned int id;
+e_entiteType entiteType;
+
+t_vecteur2 position;
+t_vecteur2 orientation;
+
+SDL_Rect hitbox;
 
 
-
-int id;                 /**< l'ID d'une entité */
-t_vecteur2 position;    /**< La position de l'entité */
-
-
-/** */
-// Texture / Tag
+void (*detruire)(t_entite**);
