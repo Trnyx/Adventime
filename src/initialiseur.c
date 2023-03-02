@@ -16,6 +16,7 @@
 #include <stdlib.h>
 
 #include "../include/initialiseur.h"
+#include "../include/menus.h"
 // #include image.h
 // #include ttf.h
 
@@ -50,6 +51,8 @@ void initAll(t_moteur **moteur, t_audio **audio) {
 
 
 void detruireAll(t_moteur *moteur, t_audio *audio) {
+    nk_sdl_shutdown();
+
     detruireJoueur(&moteur->monde->joueur);
     detruireMonde(&moteur->monde);
     

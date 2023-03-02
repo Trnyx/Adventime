@@ -15,6 +15,7 @@
 #include "../include/monde.h"
 #include "../include/joueur.h"
 #include "../include/input_manager.h"
+#include "../include/jeu.h"
 
 
 
@@ -27,30 +28,33 @@
 
 int main(int argc, char* argv[]) {
 
-  t_moteur * moteur;
-  struct nk_context *ctx = NULL;
-  
-  state_main state = 1;
-  
-  initAll(&moteur);
-  ctx = nk_sdl_init(moteur->window, moteur->renderer);
-  
-  while (state != JEU_QUITTER) {
+	t_moteur *moteur = NULL;
+	t_audio *audio = NULL;
+	struct nk_context *ctx = NULL;
+	
+	state_main state = 1;
+	
 
-    switch (state) {
-    case M_MENU: state = main_menu(ctx, moteur); break;
-    case M_JOUER: state = main_menu(ctx, moteur); break;
-    case M_OPTIONS: state = menu_options(ctx, moteur); break;
-    default: state = JEU_QUITTER; break;
-    }
 
-  }
+	initAll(&moteur, &audio);
+	ctx = nk_sdl_init(moteur->window, moteur->renderer);
+	
+	
+	while (state != JEU_QUITTER) {
 
-  nk_sdl_shutdown();
-  SDL_DestroyRenderer(moteur->renderer);
-  SDL_DestroyWindow(moteur->window);
-  SDL_Quit();
-  detruireMoteur(&moteur);
+		switch (state) {
+			case M_MENU: state = main_menu(ctx, moteur); break;
+			case M_JOUER: state = jouer(MONDE_CREER, moteur, audio); break;
+			case M_OPTIONS: state = menu_options(ctx, moteur); break;
+			default: state = JEU_QUITTER; break;
+		}
 
-  return 0;
+	}
+
+	
+
+	detruireMoteur(&moteur);
+	SDL_Quit();
+
+	return 0;
 }

@@ -71,8 +71,8 @@ typedef struct s_moteur {
     SDL_Window *window;             /**< La fenetre du jeu*/
     SDL_Renderer *renderer;         /**< Le renderer du jeu*/
 
-    unsigned int window_width;      /**< Largeur de la fenêtre */
-    unsigned int window_height;     /**< Hauteur de la fenêtre */
+    int window_width;               /**< Largeur de la fenêtre */
+    int window_height;              /**< Hauteur de la fenêtre */
     t_vecteur2 positionSouris;      /**< La position de la souris sur l'écran*/
 
 

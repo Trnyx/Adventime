@@ -77,7 +77,7 @@ state_main main_menu(struct nk_context *ctx, t_moteur *moteur) {
 
   bg.r = 0.10f, bg.g = 0.18f, bg.b = 0.24f, bg.a = 1.0f;
 
-  SDL_Surface *bg_img = IMG_Load("../assets/images/menu.png");
+  SDL_Surface *bg_img = IMG_Load("assets/images/menu.png");
   SDL_Texture *texture = SDL_CreateTextureFromSurface(moteur->renderer, bg_img);
 
   while (click == 0) {
