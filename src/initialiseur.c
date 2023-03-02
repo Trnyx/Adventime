@@ -17,6 +17,7 @@
 
 #include "../include/initialiseur.h"
 #include "../include/menus.h"
+#include "SDL2/SDL_image.h"
 // #include image.h
 // #include ttf.h
 
@@ -36,6 +37,13 @@ void initAll(t_moteur **moteur, t_audio **audio) {
     (*moteur)->textures = initTextures((*moteur)->renderer);
 
     SDL_SetRenderDrawBlendMode((*moteur)->renderer, SDL_BLENDMODE_BLEND);
+
+    SDL_Surface * logo = NULL;
+    logo = IMG_Load("assets/images/logo.png");
+
+    SDL_SetWindowIcon((*moteur)->window, logo);
+
+    SDL_FreeSurface(logo);
 
 
     // Audio
