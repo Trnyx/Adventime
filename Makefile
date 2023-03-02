@@ -1,5 +1,7 @@
 # Auteur : Julien Houget
 
+SYS := $(shell uname)
+
 
 # Compilateur
 CC = gcc
@@ -81,6 +83,13 @@ $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 $(BINDIR)/$(EXEC): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LIBS) $(SDL_LIBS)
 	@echo "Édition des liens effectuée."
+ifeq ($(SYS),Darwin)
+	sips -i "assets/images/logo.png";
+	DeRez -only icns "assets/images/logo.png" > tmpicns.rsrc;
+	Rez -append tmpicns.rsrc -o bin/Adventime;
+	SetFile -a C bin/Adventime;
+	rm tmpicns.rsrc
+endif
 
 
 # À faire : la génération de la doc.
