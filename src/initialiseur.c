@@ -34,6 +34,8 @@ void initAll(t_moteur **moteur, t_audio **audio) {
     (*moteur)->camera = creerCamera(positionCamera);
     (*moteur)->textures = initTextures((*moteur)->renderer);
 
+    SDL_SetRenderDrawBlendMode((*moteur)->renderer, SDL_BLENDMODE_BLEND);
+
 
     // Audio
     *audio = initAudio();

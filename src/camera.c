@@ -17,6 +17,7 @@
 
 #include "../include/moteur.h"
 #include "../include/camera.h"
+#include "../include/physique.h"
 
 
 
@@ -61,6 +62,39 @@ int positionRelativeEnPositionSurEcran(const float coordonnee, const float offse
 
 
 
+
+void dessinerCalqueAmbiance(t_moteur *moteur, t_temps *temps) {
+    SDL_Rect calque;
+    calque.x = calque.y = 0;
+    calque.h = moteur->window_height;
+    calque.w = moteur->window_width;
+    
+
+    Uint8 r, g, b;
+    unsigned int a;
+
+
+    if (temps->heures >= HEURE_JEU_LEVE_SOLEIL && temps->heures < HEURE_JEU_MATIN) {
+        r = 0xff; g = 0xa7; b = 0x00; a = 30;
+    }
+    else if (temps->heures >= HEURE_JEU_MATIN && temps->heures < HEURE_JEU_APRES_MIDI) {
+        r = 0x00; g = 0x00; b = 0x00; a = 0;
+    }
+    else if (temps->heures >= HEURE_JEU_APRES_MIDI && temps->heures < HEURE_JEU_COUCHE_SOLEIL) {
+        r = 0x00; g = 0x00; b = 0x00; a = 0;
+    }
+    else if (temps->heures >= HEURE_JEU_COUCHE_SOLEIL && temps->heures < HEURE_JEU_NUIT) {
+        r = 0xfb; g = 0x90; b = 0x62; a = 40;
+    }
+    else {
+        r = 0x19; g = 0x19; b = 0x70; a = 34;
+    }
+    
+
+
+    SDL_SetRenderDrawColor(moteur->renderer, r, g, b, a);
+    SDL_RenderFillRect(moteur->renderer, &calque);
+}
 
 
 /* -------------------------------------------------------------------------- */

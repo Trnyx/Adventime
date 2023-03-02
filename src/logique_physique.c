@@ -105,6 +105,7 @@ void update(t_moteur *moteur, t_audio *audio) {
 
     unsigned int timestampFrame = SDL_GetTicks();
     t_temps *temps = monde->temps;
+    // printf("%i : %i\n", temps->heures, temps->minutes);
 
     gestionnaireTempsEvenements(temps, time(NULL));
 
@@ -314,6 +315,7 @@ void update(t_moteur *moteur, t_audio *audio) {
 
     if (map->type == MAP_OVERWORLD) {
         dessinerVegetation(moteur, map);
+        dessinerCalqueAmbiance(moteur, temps);
     }
 
     /* --------------- Construction de l'affichage de l'interface --------------- */
