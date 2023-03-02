@@ -16,7 +16,15 @@
 
 #include "../include/main.h"
 #include "../include/jeu.h"
+#include "../include/physique.h"
+#include "../include/initialiseur.h"
+#include "../include/textures.h"
+#include "../include/moteur.h"
+#include "../include/audio.h"
+#include "../include/main.h"
 #include "../include/monde.h"
+#include "../include/joueur.h"
+#include "../include/input_manager.h"
 
 
 
