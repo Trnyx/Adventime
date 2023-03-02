@@ -57,7 +57,7 @@ typedef struct s_temps {
     unsigned int heures;            /**< */
     unsigned int minutes;           /**< */
     unsigned int timestampJeu;      /**< */
-    time_t timestamp;               /**< */
+    unsigned int timestamp;         /**< */
 
     e_cycle cycleJeu;               /**< */
     e_cycle cycleVrai;              /**< */

@@ -103,10 +103,10 @@ void update(t_moteur *moteur, t_audio *audio) {
 
     // printf("TIME => ");
 
-    time_t timestampFrame = time(NULL);
+    unsigned int timestampFrame = SDL_GetTicks();
     t_temps *temps = monde->temps;
 
-    gestionnaireTempsEvenements(temps, timestampFrame);
+    gestionnaireTempsEvenements(temps, time(NULL));
 
 
     e_musiques_type musiqueType;
@@ -202,7 +202,7 @@ void update(t_moteur *moteur, t_audio *audio) {
 
                     // Gestion de la durée de vie de l'entité
                     // Si l'entité à atteint la durée de vie maximale d'une entité alors elle est supprimé
-                    if (entite->timestampActualisation - entite->timestampCreation >= ENTITE_DUREE_VIE_MAX) {
+                    if (entite->timestampActualisation - entite->timestampCreation >= (ENTITE_DUREE_VIE_MAX * 1000)) {
                         oter_elt(entites);
                         entite->detruire((t_entite**) &entite);
                         suivant(entites);

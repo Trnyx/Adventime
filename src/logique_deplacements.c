@@ -37,7 +37,7 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
     // Si le mob n'a pas atteint la position qu'il doit atteindre
     //  on le fait se déplacer en direction de son point
     // Sinon cela signifie qu'il peut se déplacer à nouveau
-    if (difftime(mob->timestampActualisation, mob->timestampFinDeplacement) > mob->delaiAttenteDeplacement) {
+    if (mob->timestampActualisation - mob->timestampFinDeplacement > mob->delaiAttenteDeplacement * 1000) {
 
         if (mob->position.x != mob->positionDeplacement.x || mob->position.y != mob->positionDeplacement.y) {
             mob->direction.x = (mob->positionDeplacement.x - mob->position.x);
@@ -49,7 +49,7 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
             // printf("Position Actuelle : %1.2f:%1.2f ", mob->position.x, mob->position.y);
             // printf("Position target : %1.2f:%1.2f => ", mob->positionDeplacement.x, mob->positionDeplacement.y);
 
-            if (difftime(mob->timestampActualisation, mob->timestampDebutDeplacement) <= MOB_DUREE_DEPLACEMENT && distanceRestante > 0.1) {
+            if ((mob->timestampActualisation - mob->timestampDebutDeplacement <= (MOB_DUREE_DEPLACEMENT * 1000)) && distanceRestante > 0.1) {
                 deplacerEntite(moteur, (t_entite*)mob, 4.0);
             }
             else {
@@ -171,7 +171,7 @@ int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) 
 
 
 int deplacementAttaque(t_moteur *moteur, t_mob* mob, const float timestamp) {
-
+    return 0;
 }
 
 

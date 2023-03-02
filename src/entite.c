@@ -261,7 +261,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->detruire = detruireEntite;
     
 
-    entite->timestampCreation = time(NULL);
+    entite->timestampCreation = SDL_GetTicks();
     entite->timestampActualisation = entite->timestampCreation;
 
 
@@ -279,7 +279,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
 t_mob* creerMob(const t_vecteur2 position) {
     t_entite *entite = creerEntite(position);
     t_mob *mob = realloc(entite, sizeof(t_mob));
-    const time_t t = time(NULL);
+    const int t = SDL_GetTicks();
 
     // Déplacement
     mob->rayonDeplacement = 0;

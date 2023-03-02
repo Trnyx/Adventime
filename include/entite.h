@@ -93,17 +93,17 @@ typedef struct s_entite t_entite;
 struct s_entite {
     // #include "attributs_entite.h"
     unsigned int id;
-    t_vecteur2 position;                /**< La position actuelle de l'entité */
-    t_vecteur2 direction;               /**< La direction (déplacement) actuelle de l'entité */
-    e_orientation orientation;          /**< L'orientation (regard) actuelle de l'entité */
+    t_vecteur2 position;                        /**< La position actuelle de l'entité */
+    t_vecteur2 direction;                       /**< La direction (déplacement) actuelle de l'entité */
+    e_orientation orientation;                  /**< L'orientation (regard) actuelle de l'entité */
 
-    e_entiteType entiteType;            /**< Le type de l'entité */
+    e_entiteType entiteType;                    /**< Le type de l'entité */
 
-    SDL_Rect hitbox;                    /**< La hitbox de l'entité */
+    SDL_Rect hitbox;                            /**< La hitbox de l'entité */
 
 
-    time_t timestampCreation;           /**< Le timestamp à laquelle l'entité à été créé */
-    time_t timestampActualisation;      /**< Le dernier timestamp à laquelle l'entité à été actualisé */
+    unsigned int timestampCreation;             /**< Le timestamp à laquelle l'entité à été créé */
+    unsigned int timestampActualisation;        /**< Le dernier timestamp à laquelle l'entité à été actualisé */
 
 
     int  (*update)(t_moteur*, t_entite*, const float);      /**< Fonction d'actualisation de l'entité */
@@ -124,14 +124,14 @@ typedef struct s_mob {
     unsigned int rayonDeplacement;          /**< Le rayon dans lequel le mob peut se déplacer */
     t_vecteur2 positionDeplacement;         /**< La position à laquelle le mob peut se déplacer */
 
-    time_t timestampDebutDeplacement;       /**< Timestamp de départ de déplacement */
-    time_t timestampFinDeplacement;         /**< Timestamp de fin de déplacement */
-    unsigned int delaiAttenteDeplacement;   /**< Temps d'attente entre deux déplacements */
+    unsigned int timestampDebutDeplacement; /**< Timestamp de départ de déplacement */
+    unsigned int timestampFinDeplacement;   /**< Timestamp de fin de déplacement */
+    unsigned int delaiAttenteDeplacement;   /**< Temps d'attente entre deux déplacements (en seconde) */
     
     e_deplacementType deplacementType;      /**< Le type de déplacement du mob */
 
     // Attaque
-    time_t timestampAttaque;                /**< Timestamp de la dernière attaque */
+    unsigned int timestampAttaque;          /**< Timestamp de la dernière attaque */
     unsigned int delaiAttenteAttaque;       /**< Temps d'attente entre deux attaque */
 } t_mob;
 
