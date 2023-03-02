@@ -55,6 +55,7 @@ typedef enum {
     DEPLACEMENT_STATIQUE,
     DEPLACEMENT_NORMAL,
     DEPLACEMENT_COMBAT,
+    DEPLACEMENT_ATTAQUE,
 } e_deplacementType;
 
 

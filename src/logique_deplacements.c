@@ -24,7 +24,13 @@
 
 
 
-
+/**
+ * @brief 
+ * 
+ * @param moteur 
+ * @param mob 
+ * @return int 
+ */
 int deplacementNormal(t_moteur *moteur, t_mob *mob) {
     
 
@@ -111,6 +117,14 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
 
 
 
+/**
+ * @brief 
+ * 
+ * @param moteur 
+ * @param mob 
+ * @param distanceJoueur 
+ * @return int 
+ */
 int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) {
     // Si le joueur est dans le rayon de positionnement
     //  Le monstre se déplace en direction du joueur 
@@ -156,6 +170,14 @@ int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) 
 
 
 
+int deplacementAttaque(t_moteur *moteur, t_mob* mob, const float timestamp) {
+
+}
+
+
+
+
+
 
 
 
@@ -169,6 +191,9 @@ int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_mob*, const fl
 
         case DEPLACEMENT_COMBAT:  
             return (int (*)(t_moteur*, t_mob*, const float)) deplacementCombat;
+
+        case DEPLACEMENT_ATTAQUE:  
+            return (int (*)(t_moteur*, t_mob*, const float)) deplacementAttaque;
 
             
         case DEPLACEMENT_STATIQUE: 
