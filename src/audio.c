@@ -201,8 +201,7 @@ t_audio* initAudio() {
 /**
  * @brief 
  * 
- * @param musique 
- * @param bruitage 
+ * @param audio 
  */
 int detruireAudio(t_audio **audio) {
     if (audio == NULL || *audio == NULL) return -1;
@@ -217,12 +216,27 @@ int detruireAudio(t_audio **audio) {
     /* -------------------------------- Musiques -------------------------------- */
     // Mix_FreeMusic((*musiques)->);
 
+    Mix_FreeMusic((*audio)->musiques->ambiance_jour);
+    Mix_FreeMusic((*audio)->musiques->ambiance_nuit);
+    Mix_FreeMusic((*audio)->musiques->combat);
+    Mix_FreeMusic((*audio)->musiques->menu_principal);
+
     free(musiques);
     musiques = NULL;
 
 
+
     /* -------------------------------- Bruitages ------------------------------- */
     // Mix_FreeChunk((*bruitages)->);
+
+    Mix_FreeChunk((*audio)->bruitages->menu_selection);
+    Mix_FreeChunk((*audio)->bruitages->joueur_attaque);
+    Mix_FreeChunk((*audio)->bruitages->joueur_degat);
+    Mix_FreeChunk((*audio)->bruitages->joueur_mort);
+    Mix_FreeChunk((*audio)->bruitages->monstre_attaque);
+    Mix_FreeChunk((*audio)->bruitages->monstre_degat);
+    Mix_FreeChunk((*audio)->bruitages->monstre_mort);
+    Mix_FreeChunk((*audio)->bruitages->item_recuperation);
 
     free(bruitages);
     bruitages = NULL;
@@ -231,6 +245,8 @@ int detruireAudio(t_audio **audio) {
 
     free(*audio);
     *audio = NULL;
+
+    Mix_CloseAudio();
 
     return 0;
 }

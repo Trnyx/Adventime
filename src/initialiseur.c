@@ -40,9 +40,7 @@ void initAll(t_moteur **moteur, t_audio **audio) {
 
     SDL_Surface * logo = NULL;
     logo = IMG_Load("assets/images/logo.png");
-
     SDL_SetWindowIcon((*moteur)->window, logo);
-
     SDL_FreeSurface(logo);
 
 
