@@ -132,7 +132,7 @@ typedef struct s_mob {
 
     // Attaque
     unsigned int timestampAttaque;          /**< Timestamp de la dernière attaque */
-    unsigned int delaiAttenteAttaque;       /**< Temps d'attente entre deux attaque */
+    unsigned int delaiAttenteAttaque;       /**< Temps d'attente entre deux attaque (en seconde) */
 } t_mob;
 
 

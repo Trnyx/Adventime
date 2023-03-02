@@ -24,6 +24,19 @@
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                                Verification                                */
+/* -------------------------------------------------------------------------- */
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Deplacement                                */
+/* -------------------------------------------------------------------------- */
+
+
 /**
  * @brief 
  * 
@@ -171,6 +184,18 @@ int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) 
 
 
 int deplacementAttaque(t_moteur *moteur, t_mob* mob, const float timestamp) {
+    // Attente avant action
+    // Une fois attente terminé 
+    //   Déplacement attaque
+    //   Choix aléatoire du temps d'attente avant prochaine attaque 
+
+
+    if (timestamp - mob->timestampActualisation >= mob->delaiAttenteAttaque) {
+        
+        deplacerEntite(moteur, (t_entite*)mob, 5.0);
+    }
+
+    
     return 0;
 }
 
@@ -181,6 +206,11 @@ int deplacementAttaque(t_moteur *moteur, t_mob* mob, const float timestamp) {
 
 
 
+
+
+/* -------------------------------------------------------------------------- */
+/*                                     Get                                    */
+/* -------------------------------------------------------------------------- */
 
 
 int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_mob*, const float) {

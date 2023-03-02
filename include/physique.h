@@ -27,7 +27,7 @@
 /* ------------------------------ Temps en jeu ------------------------------ */
 
 // Nombre de jour par heure (vrai) 
-#define NOMBRE_JOUR 3
+#define NOMBRE_JOUR 4
 // Le temps d'un jour dans le jeu (en seconde)
 // Nombre de seconde réelles pour faire un jour dans le jeu
 #define TEMPS_JOUR (3600 / NOMBRE_JOUR)
