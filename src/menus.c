@@ -233,7 +233,7 @@ state_main menu_options(struct nk_context *ctx, t_moteur *moteur) {
 	  SDL_SetWindowFullscreen(moteur->window, 0);
 	  updateEchelle(moteur);
 	} else {
-	  SDL_SetWindowFullscreen(moteur->window, SDL_WINDOW_FULLSCREEN);
+	  SDL_SetWindowFullscreen(moteur->window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 	  updateEchelle(moteur);
 	}
       }
