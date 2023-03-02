@@ -74,6 +74,11 @@ int inputManager(t_joueur *joueur, t_moteur *moteur) {
                     joueur->actionFlags->miniMap = 1;
                 }
 
+                // Echap
+                else if (controles.escape == event.key.keysym.scancode) {
+                    return -1;
+                }
+
                 break;
 
 
