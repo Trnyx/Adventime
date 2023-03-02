@@ -116,15 +116,7 @@ int main(int argc, char* argv[]) {
     // }
 
     // cleanup:
-    detruireJoueur(&moteur->monde->joueur);
-    detruireMonde(&moteur->monde);
-    detruireCamera(&moteur->camera);
-    detruireTextures(&moteur->textures);
-    detruireMoteur(&moteur);
-    detruireAudio(&audio);
-
-    SDL_DestroyRenderer(moteur->renderer);
-    SDL_DestroyWindow(moteur->window);
+    detruireAll(moteur, audio);
     SDL_Quit();
 
     return 0;

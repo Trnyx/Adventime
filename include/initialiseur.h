@@ -29,6 +29,7 @@
 
 
 void initAll(t_moteur **moteur, t_audio **audio);
+void detruireAll(t_moteur *moteur, t_audio *audio);
 
 
 

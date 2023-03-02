@@ -86,9 +86,9 @@ void afficherCamera(t_moteur *moteur, t_map *map) {
     camera->offset.y = (camera->position.y - (int)camera->position.y);
 
 
-    SDL_Rect rendu;
-    rendu.w = camera->tailleRendu.x;
-    rendu.h = camera->tailleRendu.y;
+    // SDL_Rect rendu;
+    // rendu.w = camera->tailleRendu.x;
+    // rendu.h = camera->tailleRendu.y;
 
 
     /* ----------------------------------- Map ---------------------------------- */
@@ -157,9 +157,9 @@ void afficherCamera(t_moteur *moteur, t_map *map) {
 
     /* -------------------------------- Vegetaux -------------------------------- */
 
-    if (map->type == MAP_OVERWORLD) {
-        // dessinerVegetation(moteur, map, &rendu);
-    }
+    // if (map->type == MAP_OVERWORLD) {
+    //     dessinerVegetation(moteur, map, &rendu);
+    // }
 
 }
 

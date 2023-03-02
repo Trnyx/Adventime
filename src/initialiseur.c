@@ -35,7 +35,6 @@ void initAll(t_moteur **moteur, t_audio **audio) {
     (*moteur)->textures = initTextures((*moteur)->renderer);
 
 
-
     // Audio
     *audio = initAudio();
     
@@ -48,6 +47,16 @@ void initAll(t_moteur **moteur, t_audio **audio) {
 
 
 
-void detruireAll(t_moteur **moteur) {
+void detruireAll(t_moteur *moteur, t_audio *audio) {
+    detruireJoueur(&moteur->monde->joueur);
+    detruireMonde(&moteur->monde);
     
+    detruireCamera(&moteur->camera);
+    detruireTextures(&moteur->textures);
+
+    SDL_DestroyRenderer(moteur->renderer);
+    SDL_DestroyWindow(moteur->window);
+    detruireMoteur(&moteur);
+
+    detruireAudio(&audio);
 }
