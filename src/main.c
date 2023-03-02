@@ -24,6 +24,7 @@ int main() {
 
     switch (state) {
     case M_MENU: state = main_menu(ctx, moteur); break;
+    case M_JOUER: state = main_menu(ctx, moteur); break;
     case M_OPTIONS: state = menu_options(ctx, moteur); break;
     default: state = JEU_QUITTER; break;
     }

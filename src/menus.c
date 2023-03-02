@@ -109,6 +109,9 @@ state_main main_menu(struct nk_context *ctx, t_moteur *moteur) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.6), 300, 50));
       if (nk_button_label(ctx, "Jouer")) {
+	SDL_DestroyTexture(texture);
+        SDL_FreeSurface(bg_img);
+        click = M_JOUER;
       }
 
       if (nk_widget_is_hovered(ctx)) {
