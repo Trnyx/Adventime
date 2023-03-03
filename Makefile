@@ -97,7 +97,7 @@ endif
 
 # Supprime les fichiers objets
 clean:
-	rm -rf $(OBJDIR)
+	rm -rf $(OBJDIR)/*.o
 	@echo "Nettoyage des fichiers objets effectué."
 
 

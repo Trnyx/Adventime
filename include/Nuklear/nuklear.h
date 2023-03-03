@@ -368,7 +368,7 @@ extern "C" {
     #endif
   #endif
   #ifndef NK_SIZE_TYPE
-    #if defined(_WIN64) && defined(_MSC_VER)
+    #if defined(_WIN64) 
       #define NK_SIZE_TYPE unsigned __int64
     #elif (defined(_WIN32) || defined(WIN32)) && defined(_MSC_VER)
       #define NK_SIZE_TYPE unsigned __int32
@@ -383,7 +383,7 @@ extern "C" {
     #endif
   #endif
   #ifndef NK_POINTER_TYPE
-    #if defined(_WIN64) && defined(_MSC_VER)
+    #if defined(_WIN64) 
       #define NK_POINTER_TYPE unsigned __int64
     #elif (defined(_WIN32) || defined(WIN32)) && defined(_MSC_VER)
       #define NK_POINTER_TYPE unsigned __int32
