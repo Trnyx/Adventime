@@ -17,14 +17,12 @@
 
 
 #include "../include/main.h"
-#include "../include/moteur.h"
-#include "../include/audio.h"
 
 
 
 
 
-state_main jouer(e_actionMonde action, t_moteur *moteur, t_audio *audio);
+state_main jouer(e_actionMonde action);
 
 
 

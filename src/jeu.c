@@ -32,7 +32,7 @@
 
 
 
-static int nouveauMonde(t_moteur *moteur, t_audio *audio) {
+static int nouveauMonde() {
     int seed = -1;
     t_monde *monde = creerMonde(seed);
     moteur->monde = monde;
@@ -45,8 +45,8 @@ static int nouveauMonde(t_moteur *moteur, t_audio *audio) {
 
     int continuer = 1;
     while (continuer != -1) {
-        continuer = inputManager(moteur->monde->joueur, moteur);
-        update(moteur, audio);
+        continuer = inputManager(moteur->monde->joueur);
+        update();
     }
 
     return continuer;
@@ -60,14 +60,12 @@ static int nouveauMonde(t_moteur *moteur, t_audio *audio) {
  * @brief 
  * 
  * @param action 
- * @param moteur 
- * @param audio 
  * @return state_main 
  */
-state_main jouer(e_actionMonde action, t_moteur *moteur, t_audio *audio) {
+state_main jouer(e_actionMonde action) {
     switch (action) {
         default:
-            nouveauMonde(moteur, audio);
+            nouveauMonde();
             break;
     }
 

@@ -105,6 +105,10 @@ typedef struct s_audio {
 } t_audio;
 
 
+// Le moteur est en global pour faciliter l'accès
+extern t_audio *audio;
+
+
 
 
 
@@ -115,12 +119,12 @@ typedef struct s_audio {
 
 t_audio *initAudio(void);
 int chargerAudio(int volume, t_musiques **musiques, t_bruitages **bruitages);
-int detruireAudio(t_audio **audio);
+void detruireAudio(t_audio **audio);
 
 void changerVolume(int nouveauVolume);
 void play_music(Mix_Music *music, boolean repeat);
 void play_bruitage(Mix_Chunk *sound, int channel);
-void selectionMusique(t_audio *audio);
+void selectionMusique();
 
 
 

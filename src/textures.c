@@ -74,7 +74,7 @@ t_textures* initTextures(SDL_Renderer *renderer) {
     t_textures *textures = malloc(sizeof(t_textures));
 
     if (textures == NULL) {
-        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour les textures");
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour les textures\n");
         free(textures);
         return NULL;
     }

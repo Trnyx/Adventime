@@ -667,7 +667,7 @@ t_map* genererMap(e_mapType type) {
     t_map* map = malloc(sizeof(t_map));
 
     if (map == NULL) {
-        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour la map");
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour la map\n");
         free(map);
         return NULL;
     }

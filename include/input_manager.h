@@ -28,7 +28,7 @@
 /* -------------------------------------------------------------------------- */
 
 
-int inputManager(t_joueur *joueur, t_moteur *moteur);
+int inputManager(t_joueur *joueur);
 
 
 

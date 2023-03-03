@@ -18,6 +18,7 @@
 // #define NK_INCLUDE_STANDARD_VARARGS
 #define NK_SDL_RENDERER_IMPLEMENTATION
 
+#include "../include/moteur.h"
 #include "../include/menus.h"
 
 /**
@@ -26,12 +27,11 @@
  * @details    Afficher les boutons Jouer, Options et Quitter du menu principal
  *
  * @param      ctx
- * @param      moteur
  *
  * @return     void
  */
 
-state_main main_menu(struct nk_context *ctx, t_moteur *moteur) {
+state_main main_menu(struct nk_context *ctx) {
 
   /* set_style(ctx, THEME_BLUE); */
 
@@ -168,7 +168,7 @@ state_main main_menu(struct nk_context *ctx, t_moteur *moteur) {
   return click;
 }
 
-state_main menu_options(struct nk_context *ctx, t_moteur *moteur) {
+state_main menu_options(struct nk_context *ctx) {
 
   set_style(ctx, THEME_BLACK);
 

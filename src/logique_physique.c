@@ -75,12 +75,9 @@
  * @brief Fonction appelé à chaque frame du jeu
  * 
  * Elle gère toute la physique et logique du jeu
- * 
- * @param moteur Pointeur sur le moteur du jeu
- * @param audio Pointeur sur l'audio du jeu
  */
-void update(t_moteur *moteur, t_audio *audio) {
-    regulerFPS(moteur);
+void update() {
+    regulerFPS();
     // printf("Update (%li)\n", u++);
     t_monde *monde = moteur->monde;
     t_joueur *joueur = monde->joueur;
@@ -119,7 +116,7 @@ void update(t_moteur *moteur, t_audio *audio) {
     /* -------------------------------------------------------------------------- */
 
 
-    dessinerSol(moteur, map);
+    dessinerSol(map);
 
 
 
@@ -127,8 +124,8 @@ void update(t_moteur *moteur, t_audio *audio) {
     /*                                   Joueur                                   */
     /* -------------------------------------------------------------------------- */
 
-    joueur->update(moteur, (t_entite*) joueur, 0.0);
-    dessinerEntite(moteur, (t_entite*) joueur);
+    joueur->update((t_entite*) joueur, 0.0);
+    dessinerEntite((t_entite*) joueur);
 
     
 
@@ -188,12 +185,12 @@ void update(t_moteur *moteur, t_audio *audio) {
                     
 
                     // Deplacement
-                    entite->update(moteur, (t_entite*)entite, distance);
+                    entite->update((t_entite*)entite, distance);
 
                     // combat
-                    // entite->update(moteur, (t_entite*)entite);
+                    // entite->update((t_entite*)entite);
 
-                    dessinerEntite(moteur, (t_entite*)entite);
+                    dessinerEntite((t_entite*)entite);
                 }
 
 
@@ -310,12 +307,12 @@ void update(t_moteur *moteur, t_audio *audio) {
 
     /* ---------------- Construction de l'affichage de la caméra ---------------- */
 
-    updateCamera(moteur, joueur->position);
-    // afficherCamera(moteur, map);
+    updateCamera(joueur->position);
+    // afficherCamera(map);
 
     if (map->type == MAP_OVERWORLD) {
-        dessinerVegetation(moteur, map);
-        dessinerCalqueAmbiance(moteur, temps);
+        dessinerVegetation(map);
+        dessinerCalqueAmbiance(temps);
     }
 
     /* --------------- Construction de l'affichage de l'interface --------------- */

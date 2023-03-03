@@ -19,7 +19,6 @@
 
 
 #include <SDL2/SDL.h>
-#include "moteur.h"
 
 
 
@@ -40,7 +39,7 @@
 /* -------------------------------------------------------------------------- */
 
 
-void initSDL(t_moteur *moteur);
+void initSDL();
 
 
 

@@ -148,7 +148,7 @@ t_temps* initTemps(const time_t timestamp) {
     t_temps *temps = malloc(sizeof(t_temps));
 
     if (temps == NULL) {
-        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le temps");
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le temps\n");
         free(temps);
         return NULL;
     }

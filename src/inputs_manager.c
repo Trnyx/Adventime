@@ -21,7 +21,7 @@
 
 
 
-int inputManager(t_joueur *joueur, t_moteur *moteur) {
+int inputManager(t_joueur *joueur) {
     t_controles controles = moteur->controles;
     SDL_Event event;
 

@@ -21,6 +21,18 @@
 
 
 
+/* ----------------------------- Pointeur Global ---------------------------- */
+
+t_audio *audio = NULL;
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Fonctions                                 */
+/* -------------------------------------------------------------------------- */
+
+
 /**
  * @brief 
  * 
@@ -59,7 +71,7 @@ void play_bruitage(Mix_Chunk *sound, int channel) {
 
 
 
-void selectionMusique(t_audio *audio) {
+void selectionMusique() {
     t_musiques *musiques = audio->musiques;
     Mix_Music *musique = NULL;
 
@@ -174,7 +186,7 @@ int chargerAudio(const int volume, t_musiques **musiques, t_bruitages **bruitage
 
 
 t_audio* initAudio() {
-    t_audio *audio = malloc(sizeof(t_audio));
+    t_audio *a = malloc(sizeof(t_audio));
 
 
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) {
@@ -182,11 +194,11 @@ t_audio* initAudio() {
     }
 
 
-    chargerAudio(MIX_MAX_VOLUME, &audio->musiques, &audio->bruitages);
-    audio->musiqueType = MUSIC_MENU;
+    chargerAudio(MIX_MAX_VOLUME, &a->musiques, &a->bruitages);
+    a->musiqueType = MUSIC_MENU;
 
 
-    return audio;
+    return a;
 }
 
 
@@ -203,52 +215,65 @@ t_audio* initAudio() {
  * 
  * @param audio 
  */
-int detruireAudio(t_audio **audio) {
-    if (audio == NULL || *audio == NULL) return -1;
-    t_musiques *musiques = (*audio)->musiques;
-    t_bruitages *bruitages = (*audio)->bruitages;
+void detruireAudio(t_audio **audio) {
+    printf("Destruction Audio => ");
+    if (audio != NULL && *audio != NULL) {
 
-    if (musiques == NULL) return -1;
-    if (bruitages == NULL) return -1;
-
-
-
-    /* -------------------------------- Musiques -------------------------------- */
-    // Mix_FreeMusic((*musiques)->);
-
-    Mix_FreeMusic((*audio)->musiques->ambiance_jour);
-    Mix_FreeMusic((*audio)->musiques->ambiance_nuit);
-    Mix_FreeMusic((*audio)->musiques->combat);
-    Mix_FreeMusic((*audio)->musiques->menu_principal);
-
-    free(musiques);
-    musiques = NULL;
+        t_musiques *musiques = (*audio)->musiques;
+        t_bruitages *bruitages = (*audio)->bruitages;
 
 
 
-    /* -------------------------------- Bruitages ------------------------------- */
-    // Mix_FreeChunk((*bruitages)->);
-
-    Mix_FreeChunk((*audio)->bruitages->menu_selection);
-    Mix_FreeChunk((*audio)->bruitages->joueur_attaque);
-    Mix_FreeChunk((*audio)->bruitages->joueur_degat);
-    Mix_FreeChunk((*audio)->bruitages->joueur_mort);
-    Mix_FreeChunk((*audio)->bruitages->monstre_attaque);
-    Mix_FreeChunk((*audio)->bruitages->monstre_degat);
-    Mix_FreeChunk((*audio)->bruitages->monstre_mort);
-    Mix_FreeChunk((*audio)->bruitages->item_recuperation);
-
-    free(bruitages);
-    bruitages = NULL;
 
 
+        /* -------------------------------- Musiques -------------------------------- */
+        if (musiques != NULL) {
+            printf("Destruction musiques => ");
+            // Mix_FreeMusic((*musiques)->);
 
-    free(*audio);
-    *audio = NULL;
+            Mix_FreeMusic((*audio)->musiques->ambiance_jour);
+            Mix_FreeMusic((*audio)->musiques->ambiance_nuit);
+            Mix_FreeMusic((*audio)->musiques->combat);
+            Mix_FreeMusic((*audio)->musiques->menu_principal);
 
-    Mix_CloseAudio();
+            free(musiques);
+            musiques = NULL;
+        }
+        else {
+            printf("Pas de musique => ");
+        }
 
-    return 0;
+
+        /* -------------------------------- Bruitages ------------------------------- */
+        if (bruitages != NULL) {
+            printf("Destruction bruitages => ");
+            // Mix_FreeChunk((*bruitages)->);
+
+            // Mix_FreeChunk((*audio)->bruitages->menu_selection);
+            // Mix_FreeChunk((*audio)->bruitages->joueur_attaque);
+            // Mix_FreeChunk((*audio)->bruitages->joueur_degat);
+            // Mix_FreeChunk((*audio)->bruitages->joueur_mort);
+            // Mix_FreeChunk((*audio)->bruitages->monstre_attaque);
+            // Mix_FreeChunk((*audio)->bruitages->monstre_degat);
+            // Mix_FreeChunk((*audio)->bruitages->monstre_mort);
+            // Mix_FreeChunk((*audio)->bruitages->item_recuperation);
+
+            free(bruitages);
+            bruitages = NULL;
+        }
+        else {
+            printf("Pas de bruitage => ");
+        }
+
+
+        printf("Destruction global => ");
+        free(*audio);
+        *audio = NULL;
+
+        Mix_CloseAudio();
+
+    }
+    printf("Succes\n");
 }
 
 

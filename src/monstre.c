@@ -22,15 +22,15 @@
 
 
 
-int updateMonstre(t_moteur *moteur, t_monstre *monstre, const float distance) {
+int updateMonstre(t_monstre *monstre, const float distance) {
     // printf("Update Monstre => ");
     
     // printf("Deplacement : %i => ", monstre->deplacementType);
 
 
-    int (*deplacement)(t_moteur *, t_mob *, const float) = getDeplacement(monstre->deplacementType);
+    int (*deplacement)(t_mob*, const float) = getDeplacement(monstre->deplacementType);
     // printf("Fonction : %p => ", deplacement);
-    if (deplacement != NULL) deplacement(moteur, (t_mob*)monstre, distance);
+    if (deplacement != NULL) deplacement((t_mob*)monstre, distance);
 
 
     // // Si le monstre n'a pas atteint la position qu'il doit atteindre
@@ -131,7 +131,7 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
     monstre->rayonDeplacement = 4;
     monstre->deplacementType = DEPLACEMENT_NORMAL;
 
-    monstre->update = (int (*)(t_moteur*, t_entite*, const float)) updateMonstre;
+    monstre->update = (int (*)(t_entite*, const float)) updateMonstre;
     monstre->detruire = (void (*)(t_entite**)) detruireMonstre;
 
 

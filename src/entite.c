@@ -74,12 +74,11 @@ boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 
 /**
  * @brief 
  * 
- * @param moteur 
  * @param entite 
  * @param vitesse 
  * @return boolean 
  */
-boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vitesse) {
+boolean deplacerEntite(t_entite *entite, const float vitesse) {
     const float distance = vitesse * TPS / 1000.0;
     // printf("Vitesse : %1.2f / TPS : %1.2f => ", vitesse, TPS);
 
@@ -141,10 +140,9 @@ void orienterEntite(const float angle, t_entite *entite) {
 /**
  * @brief 
  * 
- * @param moteur 
  * @param entite 
  */
-void dessinerEntite(t_moteur *moteur, t_entite *entite) {
+void dessinerEntite(t_entite *entite) {
     SDL_Texture *texture = NULL;
     SDL_Rect sprite;
     sprite.h = sprite.w = TAILLE_TILE;
@@ -237,7 +235,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     t_entite *entite = malloc(sizeof(t_entite));
 
     if (entite == NULL) {
-        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer une entite");
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer une entite\n");
         free(entite);
         return NULL;
     }

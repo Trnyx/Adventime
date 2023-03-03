@@ -87,6 +87,10 @@ typedef struct s_moteur {
 } t_moteur;
 
 
+// Le moteur est en global pour faciliter l'accès
+extern t_moteur *moteur;
+
+
 
 
 
@@ -95,10 +99,10 @@ typedef struct s_moteur {
 /* -------------------------------------------------------------------------- */
 
 
-void regulerFPS(t_moteur *moteur);
+void regulerFPS();
 t_moteur* initMoteur();
 void detruireMoteur(t_moteur **moteur);
-void updateEchelle(t_moteur *moteur);
+void updateEchelle();
 
 
 

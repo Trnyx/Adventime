@@ -70,7 +70,7 @@ t_monde* creerMonde(int seed) {
     const time_t timestamp = time(NULL);
 
     if (monde == NULL) {
-        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le monde");
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le monde\n");
         free(monde);
         return NULL;
     }

@@ -67,7 +67,7 @@ void getDirectionJoueur(t_joueur *joueur) {
 
 
 
-float getOrientationJoueur(t_moteur *moteur, t_joueur *joueur) {
+float getOrientationJoueur(t_joueur *joueur) {
     // int x, y;
     // SDL_GetMouseState(&x, &y);
     // printf("Souris : %i : %i\n", x, y);
@@ -105,20 +105,19 @@ float getOrientationJoueur(t_moteur *moteur, t_joueur *joueur) {
 /**
  * @brief 
  * 
- * @param moteur 
  * @param joueur 
  * @return int 
  */
-int updateJoueur(t_moteur *moteur, t_joueur *joueur) {
+int updateJoueur(t_joueur *joueur) {
     // printf("Update Joueur => ");
 
     if (doitSeDeplacer(joueur->actionFlags)) {
         // printf("Deplacement du joueur (N : %i / S : %i / O : %i / E : %i) => ", joueur->actionFlags->up, joueur->actionFlags->down, joueur->actionFlags->left, joueur->actionFlags->right);
         getDirectionJoueur(joueur);
-        deplacerEntite(moteur, (t_entite*) joueur, joueur->statistiques.vitesse);
+        deplacerEntite((t_entite*) joueur, joueur->statistiques.vitesse);
     }
 
-    const float angle = getOrientationJoueur(moteur, joueur);
+    const float angle = getOrientationJoueur(joueur);
     orienterEntite(angle, (t_entite*) joueur);
 
     // printf("Fin Update Joueur\n");
@@ -157,6 +156,9 @@ void detruireJoueur(t_joueur **joueur) {
     if (joueur != NULL && *joueur != NULL) {
         detruireActionFlags(&(*joueur)->actionFlags);
         detruireEntite((t_entite**) joueur);
+    }
+    else {
+        printf("PAS DE JOUEUR => ");
     }
 };
 
@@ -217,7 +219,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
     joueur->actionFlags = initialiserActionFlags();
 
-    joueur->update = (int(*)(t_moteur*, t_entite*, const float)) updateJoueur;
+    joueur->update = (int(*)(t_entite*, const float)) updateJoueur;
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
 

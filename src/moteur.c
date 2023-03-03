@@ -21,7 +21,20 @@
 
 
 
-void regulerFPS(t_moteur *moteur) {
+/* ----------------------------- Pointeur Global ---------------------------- */
+
+t_moteur *moteur = NULL;
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Fonctions                                 */
+/* -------------------------------------------------------------------------- */
+
+
+void regulerFPS() {
     int tempsEcoule = SDL_GetTicks() - moteur->frame;
     if (TPS > tempsEcoule) 
         SDL_Delay(TPS - tempsEcoule);
@@ -53,22 +66,26 @@ void initControles(t_controles *controles) {
 
 
 t_moteur* initMoteur() {
-  
-    t_moteur *moteur = malloc(sizeof(t_moteur));
+    t_moteur *m = malloc(sizeof(t_moteur));
 
+    if (m == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le moteur\n");
+        free(m);
+        return NULL;
+    }
 
-    initSDL(moteur);
+    initSDL(m);
 
-    moteur->camera = NULL;
-    moteur->textures = NULL;
-    initControles(&moteur->controles);
+    m->camera = NULL;
+    m->textures = NULL;
+    initControles(&m->controles);
     
-    moteur->monde = NULL;
+    m->monde = NULL;
 
-    moteur->frame = SDL_GetTicks();
+    m->frame = SDL_GetTicks();
 
 
-    return moteur;
+    return m;
 }
 
 
@@ -90,7 +107,7 @@ void detruireMoteur(t_moteur **moteur) {
 
 
 
-void updateEchelle(t_moteur *moteur) {
+void updateEchelle() {
 
     SDL_GetWindowSize(moteur->window, &moteur->window_width, &moteur->window_height);
   

@@ -53,7 +53,7 @@ int positionRelativeEnPositionSurEcran(const float coordonnee, const float offse
 
 
 
-// int dessinerEntite(t_moteur *moteur, SDL_Texture *texture, t_entite *entite, const t_vecteur2 origine, const t_vecteur2 offset, SDL_Rect *rendu) {
+// int dessinerEntite(SDL_Texture *texture, t_entite *entite, const t_vecteur2 origine, const t_vecteur2 offset, SDL_Rect *rendu) {
 //     rendu.x = positionRelativeEnPositionSurEcran(entite->position.x, offset.x, origine.x, rendu->w); // positionnementEnPixel.x - offset.x;
 //     rendu.y = positionRelativeEnPositionSurEcran(entite->position.y, offset.y, origine.y, rendu->h); // positionnementEnPixel.y - offset.y;
 
@@ -63,7 +63,7 @@ int positionRelativeEnPositionSurEcran(const float coordonnee, const float offse
 
 
 
-void dessinerCalqueAmbiance(t_moteur *moteur, t_temps *temps) {
+void dessinerCalqueAmbiance(t_temps *temps) {
     SDL_Rect calque;
     calque.x = calque.y = 0;
     calque.h = moteur->window_height;
@@ -105,19 +105,19 @@ void dessinerCalqueAmbiance(t_moteur *moteur, t_temps *temps) {
 /**
  * @brief 
  * 
- * @param moteur 
+ * @param map 
  */
-void afficherCamera(t_moteur *moteur, t_map *map) {
+void afficherCamera(t_map *map) {
     t_camera *camera = moteur->camera;
-    camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
-    camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
+    // camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    // camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
 
     // const float origineX = (camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
     // const float origineY = (camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
-    camera->origine.x = (camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
-    camera->origine.y = (camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
-    camera->offset.x = (camera->position.x - (int)camera->position.x);
-    camera->offset.y = (camera->position.y - (int)camera->position.y);
+    // camera->origine.x = (camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
+    // camera->origine.y = (camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
+    // camera->offset.x = (camera->position.x - (int)camera->position.x);
+    // camera->offset.y = (camera->position.y - (int)camera->position.y);
 
 
     // SDL_Rect rendu;
@@ -202,10 +202,9 @@ void afficherCamera(t_moteur *moteur, t_map *map) {
 /**
  * @brief 
  * 
- * @param moteur 
  * @param position 
  */
-void updateCamera(t_moteur *moteur, const t_vecteur2 position) {
+void updateCamera(const t_vecteur2 position) {
     // printf("Update Camera => ");
     t_camera *camera = moteur->camera;
     camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
@@ -238,12 +237,12 @@ void updateCamera(t_moteur *moteur, const t_vecteur2 position) {
  * @param position 
  * @return t_camera* 
  */
-t_camera* creerCamera(t_vecteur2 position) {
+t_camera* creerCamera(const t_vecteur2 position) {
     printf("Creation camera => ");
     t_camera *camera = malloc(sizeof(t_camera));
 
     if (camera == NULL) {
-        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour la caméra");
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour la caméra\n");
         free(camera);
         return NULL;
     }

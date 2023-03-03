@@ -125,7 +125,7 @@ t_chunk* getChunkGraceABlock(const int x, const int y, const int couche, t_map *
 /* ----------------------------------- Sol ---------------------------------- */
 
 
-int dessinerBlockSol(t_moteur *moteur, const int tag, SDL_Rect *rendu) {
+int dessinerBlockSol(const int tag, SDL_Rect *rendu) {
     SDL_Rect source;
 
 
@@ -153,12 +153,11 @@ int dessinerBlockSol(t_moteur *moteur, const int tag, SDL_Rect *rendu) {
 /**
  * @brief 
  * 
- * @param moteur 
  * @param origine 
  * @param offset 
  * @param rendu 
  */
-void dessinerSol(t_moteur *moteur, t_map *map) {
+void dessinerSol(t_map *map) {
     t_camera *camera = moteur->camera;
     SDL_Rect rendu;
     rendu.w = camera->tailleRendu.x;
@@ -181,7 +180,7 @@ void dessinerSol(t_moteur *moteur, t_map *map) {
             // if (texture == NULL) continue;
 
             // SDL_Rect source = dessinerSol(moteur, block->tag, rendu);
-            dessinerBlockSol(moteur, block->tag, &rendu);
+            dessinerBlockSol(block->tag, &rendu);
 
 
             // SDL_RenderCopy(moteur->renderer, moteur->textures->sol, &source, &rendu);
@@ -196,7 +195,7 @@ void dessinerSol(t_moteur *moteur, t_map *map) {
 /* ------------------------------- Vegetations ------------------------------ */
 
 
-int dessinerVegetal(t_moteur *moteur, const int tag, SDL_Rect *rendu) {
+int dessinerVegetal(const int tag, SDL_Rect *rendu) {
     SDL_Rect source;
     SDL_Rect renduVegetaux;
 
@@ -228,12 +227,11 @@ int dessinerVegetal(t_moteur *moteur, const int tag, SDL_Rect *rendu) {
 /**
  * @brief 
  * 
- * @param moteur 
  * @param origine 
  * @param offset 
  * @param rendu 
  */
-void dessinerVegetation(t_moteur *moteur, t_map *map) {
+void dessinerVegetation(t_map *map) {
     t_camera *camera = moteur->camera;
     SDL_Rect rendu;
     rendu.w = camera->tailleRendu.x;
@@ -250,7 +248,7 @@ void dessinerVegetation(t_moteur *moteur, t_map *map) {
             if (block->tag == VIDE) continue;
 
 
-            dessinerVegetal(moteur, block->tag, &rendu);
+            dessinerVegetal(block->tag, &rendu);
         }
     }
 }

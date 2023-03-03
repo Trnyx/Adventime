@@ -13,8 +13,6 @@
 
 
 #include "map.h"
-#include "moteur.h"
-#include "audio.h"
 
 
 
@@ -127,5 +125,5 @@
 /* -------------------------------------------------------------------------- */
 
 
-void update(t_moteur *moteur, t_audio *audio);
+void update();
 

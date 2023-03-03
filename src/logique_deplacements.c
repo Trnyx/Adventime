@@ -40,11 +40,10 @@
 /**
  * @brief 
  * 
- * @param moteur 
  * @param mob 
  * @return int 
  */
-int deplacementNormal(t_moteur *moteur, t_mob *mob) {
+int deplacementNormal(t_mob *mob) {
     
 
     // Si le mob n'a pas atteint la position qu'il doit atteindre
@@ -63,7 +62,7 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
             // printf("Position target : %1.2f:%1.2f => ", mob->positionDeplacement.x, mob->positionDeplacement.y);
 
             if ((mob->timestampActualisation - mob->timestampDebutDeplacement <= (MOB_DUREE_DEPLACEMENT * 1000)) && distanceRestante > 0.1) {
-                deplacerEntite(moteur, (t_entite*)mob, 4.0);
+                deplacerEntite((t_entite*)mob, 4.0);
             }
             else {
                 mob->positionDeplacement = mob->position;
@@ -133,12 +132,11 @@ int deplacementNormal(t_moteur *moteur, t_mob *mob) {
 /**
  * @brief 
  * 
- * @param moteur 
  * @param mob 
  * @param distanceJoueur 
  * @return int 
  */
-int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) {
+int deplacementCombat(t_mob *mob, const float distanceJoueur) {
     // Si le joueur est dans le rayon de positionnement
     //  Le monstre se déplace en direction du joueur 
     // 
@@ -170,7 +168,7 @@ int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) 
     }
 
 
-    deplacerEntite(moteur, (t_entite*)mob, vitesse);
+    deplacerEntite((t_entite*)mob, vitesse);
 
     const float angle = calculAngleEntrePoints(mob->position, joueur->position);
     orienterEntite(angle, (t_entite*) mob);
@@ -183,7 +181,7 @@ int deplacementCombat(t_moteur *moteur, t_mob *mob, const float distanceJoueur) 
 
 
 
-int deplacementAttaque(t_moteur *moteur, t_mob* mob, const float timestamp) {
+int deplacementAttaque(t_mob* mob, const float timestamp) {
     // Attente avant action
     // Une fois attente terminé 
     //   Déplacement attaque
@@ -192,7 +190,7 @@ int deplacementAttaque(t_moteur *moteur, t_mob* mob, const float timestamp) {
 
     if (timestamp - mob->timestampActualisation >= mob->delaiAttenteAttaque) {
         
-        deplacerEntite(moteur, (t_entite*)mob, 5.0);
+        deplacerEntite((t_entite*)mob, 5.0);
     }
 
     
@@ -213,17 +211,17 @@ int deplacementAttaque(t_moteur *moteur, t_mob* mob, const float timestamp) {
 /* -------------------------------------------------------------------------- */
 
 
-int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_mob*, const float) {
+int (*getDeplacement(e_deplacementType deplacement))(t_mob*, const float) {
     // printf("Get Deplacement %i => ", deplacement);
     switch (deplacement) {
         case DEPLACEMENT_NORMAL:  
-            return (int (*)(t_moteur*, t_mob*, const float)) deplacementNormal;
+            return (int (*)(t_mob*, const float)) deplacementNormal;
 
         case DEPLACEMENT_COMBAT:  
-            return (int (*)(t_moteur*, t_mob*, const float)) deplacementCombat;
+            return (int (*)(t_mob*, const float)) deplacementCombat;
 
         case DEPLACEMENT_ATTAQUE:  
-            return (int (*)(t_moteur*, t_mob*, const float)) deplacementAttaque;
+            return (int (*)(t_mob*, const float)) deplacementAttaque;
 
             
         case DEPLACEMENT_STATIQUE: 

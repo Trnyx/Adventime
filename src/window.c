@@ -14,6 +14,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+
+#include "../include/moteur.h"
 #include "../include/window.h"
 
 
@@ -25,7 +27,6 @@
 /**
  * @brief 
  * 
- * @param moteur 
  * @return int 
  */
 void initSDL(t_moteur *moteur) {
@@ -35,7 +36,7 @@ void initSDL(t_moteur *moteur) {
 
 
 
-    SDL_Window * window;
+    SDL_Window *window;
     window = SDL_CreateWindow("Adventime", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN|SDL_WINDOW_ALLOW_HIGHDPI);
 
 
@@ -44,7 +45,7 @@ void initSDL(t_moteur *moteur) {
     flags |= SDL_RENDERER_PRESENTVSYNC;
 
 
-    SDL_Renderer * renderer;
+    SDL_Renderer *renderer;
     renderer = SDL_CreateRenderer(window, -1, flags);
 
 

@@ -106,7 +106,7 @@ struct s_entite {
     unsigned int timestampActualisation;        /**< Le dernier timestamp à laquelle l'entité à été actualisé */
 
 
-    int  (*update)(t_moteur*, t_entite*, const float);      /**< Fonction d'actualisation de l'entité */
+    int  (*update)(t_entite*, const float);      /**< Fonction d'actualisation de l'entité */
     void (*detruire)(t_entite**);                           /**< Fonction de suppression de l'entité */
 };
 
@@ -150,12 +150,12 @@ void detruireEntite(t_entite **entite);
 void detruireMob(t_mob **mob);
 
 float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *entiteCible);
-boolean deplacerEntite(const t_moteur *moteur, t_entite *entite, const float vitesse);
+boolean deplacerEntite(t_entite *entite, const float vitesse);
 void orienterEntite(const float angle, t_entite *entite);
 
-void dessinerEntite(t_moteur *moteur, t_entite *entite);
+void dessinerEntite(t_entite *entite);
 
-int (*getDeplacement(e_deplacementType deplacement))(t_moteur*, t_mob*, const float);
+int (*getDeplacement(e_deplacementType deplacement))(t_mob*, const float);
 
 
 
