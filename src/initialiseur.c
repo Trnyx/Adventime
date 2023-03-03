@@ -57,32 +57,22 @@ void initAll(t_moteur **moteur, t_audio **audio) {
 
 
 void detruireAll(t_moteur *moteur, t_audio *audio) {
-printf("Nuklear => ");
     nk_sdl_shutdown();
 
     if (moteur->monde != NULL) {
         
-        printf("detruireJoueur => ");
         if (moteur->monde->joueur != NULL) 
             detruireJoueur(&moteur->monde->joueur);
 
-        printf("detruireMonde => ");
         detruireMonde(&moteur->monde);
     }
     
-    printf("detruireCamera => ");
     detruireCamera(&moteur->camera);
-    printf("detruireTextures => ");
     detruireTextures(&moteur->textures);
 
-    printf("SDL_DestroyRenderer => ");
     SDL_DestroyRenderer(moteur->renderer);
-    printf("SDL_DestroyWindow => ");
     SDL_DestroyWindow(moteur->window);
-    printf("detruireMoteur => ");
     detruireMoteur(&moteur);
 
-    printf("detruireAudio => ");
     detruireAudio(&audio);
-    printf("FIN\n");
 }
