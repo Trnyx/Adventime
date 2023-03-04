@@ -40,7 +40,7 @@ static int nouveauMonde() {
     const t_vecteur2 positionJoueur = getPointApparitionJoueur(monde->map);
     monde->joueur = creerJoueur(positionJoueur);
 
-    moteur->camera->position = monde->joueur->position;
+    updateCamera(monde->joueur->position);
 
 
     int continuer = 1;

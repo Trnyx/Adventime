@@ -32,7 +32,7 @@ void initAll(t_moteur **moteur, t_audio **audio) {
     // Moteur
     *moteur = initMoteur();
     
-    t_vecteur2 positionCamera = { 0, 0 };
+    const t_vecteur2 positionCamera = { 0, 0 };
     (*moteur)->camera = creerCamera(positionCamera);
     (*moteur)->textures = initTextures((*moteur)->renderer);
 
