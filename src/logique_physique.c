@@ -18,6 +18,8 @@
 #include "../include/utilitaire.h"
 #include "../include/moteur.h"
 #include "../include/audio.h"
+#include "../include/entite.h"
+#include "../include/mob.h"
 
 
 
@@ -294,7 +296,7 @@ void update() {
 
     if (audio->musiqueType != musiqueType) {
         audio->musiqueType = musiqueType;
-        selectionMusique(audio);
+        selectionMusique(temps);
     }
 
 

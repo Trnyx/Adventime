@@ -17,6 +17,8 @@
 
 #include "../include/temps.h"
 #include "../include/physique.h"
+#include "../include/moteur.h"
+#include "../include/audio.h"
 
 
 
@@ -47,7 +49,7 @@ e_jour getJourDeLaSemaine(const time_t timestamp) {
  * @return e_cycle 
  */
 e_cycle getCycleJeu(t_temps *temps) {
-    if (temps->heures >= HEURE_JEU_MATIN && temps->heures < HEURE_JEU_NUIT) return CYCLE_JOUR;
+    if (temps->heures >= HEURE_JEU_LEVE_SOLEIL && temps->heures < HEURE_JEU_NUIT) return CYCLE_JOUR;
     else return CYCLE_NUIT;
 }
 
@@ -63,6 +65,29 @@ e_cycle getCycleVrai(const time_t timestamp) {
 
     if (temps->tm_hour >= HEURE_VRAI_JOUR && temps->tm_hour < HEURE_VRAI_NUIT) return CYCLE_JOUR;
     else return CYCLE_NUIT;
+}
+
+
+
+e_periode getPeriode(t_temps *temps) {
+    e_periode periode = temps->periode;
+
+
+    if (temps->minutes == 0) {
+        if ( (temps->heures >= HEURE_JEU_LEVE_SOLEIL) && (temps->heures < HEURE_JEU_LEVE_SOLEIL) )
+            periode = PERIODE_JOUR_LEVE_SOLEIL;
+        else if ( (temps->heures >= HEURE_JEU_MATIN) && (temps->heures < HEURE_JEU_APRES_MIDI) )
+            periode = PERIODE_JOUR_MATIN;
+        else if ( (temps->heures >= HEURE_JEU_APRES_MIDI) && (temps->heures < HEURE_JEU_COUCHE_SOLEIL) )
+            periode = PERIODE_JOUR_APRES_MIDI;
+        else if ( (temps->heures >= HEURE_JEU_COUCHE_SOLEIL) && (temps->heures < HEURE_JEU_NUIT ) )
+            periode = PERIODE_JOUR_COUCHE_SOLEIL;
+        else 
+            periode = PERIODE_NUIT;
+    }
+
+
+    return periode;
 }
 
 
@@ -94,10 +119,11 @@ t_temps* getTemps(t_temps *temps, const time_t timestamp) {
     temps->timestamp = timestamp;
 
     temps->cycleJeu = getCycleJeu(temps);
-
     if (!heures) {
         temps->cycleVrai = getCycleVrai(timestamp);
     }
+
+    temps->periode = getPeriode(temps);
 
 
     return temps;
@@ -113,12 +139,17 @@ t_temps* getTemps(t_temps *temps, const time_t timestamp) {
 
 
 void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
+    e_cycle cyclePrecedent = temps->cycleJeu;
+    e_periode periodePrecedente = temps->periode;
     getTemps(temps, timestamp);
     
 
-    // if () {
-
-    // }
+    if (periodePrecedente != temps->periode) {
+        if (cyclePrecedent != temps->cycleJeu)
+            audio->timestampDebutMusique = moteur->frame;
+        
+        selectionMusique(temps);
+    }
 }
 
 
