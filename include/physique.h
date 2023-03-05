@@ -75,7 +75,9 @@
 /* ----------------------------- Mobs Et Entités ---------------------------- */
 
 // Le nombre d'entité total possible
-#define MOB_CAP 256
+#define ENTITE_CAP 256
+// Le nombre de mob total possible
+#define MOB_CAP 128
 // Le nombre maximum de montstre aggressif
 #define MONSTRE_AGGRESSIF_CAP 16
 // Le nombre maximum d'animaux
@@ -83,10 +85,10 @@
 
 
 //
-#define MONSTRE_RAYON_COMBAT_DETECTION 4.0
+#define MONSTRE_RAYON_COMBAT_DETECTION 4.5
 #define MOB_RAYON_COMBAT_POSITIONNEMENT 8.0
-#define MOB_RAYON_COMBAT_RETRAIT 1.5
-#define MOB_RAYON_COMBAT_ATTAQUE 1.8
+#define MOB_RAYON_COMBAT_RETRAIT 1.4
+#define MOB_RAYON_COMBAT_ATTAQUE 1.9
 
 
 // La durée maximale de déplacement d'un mob [en seconde]
@@ -104,12 +106,12 @@
 
 
 
-// La probabimité que l'entité ne se déplace pas
-#define PROBABILITE_DEPLACEMENT_AUCUN 40 
-// La probabimité que l'entité se déplace 
-#define PROBABILITE_DEPLACEMENT_POTENTIEL 75 
-// La probabimité que l'entité se déplace obligatoirement 
-#define PROBABILITE_DEPLACEMENT_OBLIGATOIRE 100
+// La probabimité que le mob ne face rien
+#define PROBABILITE_MOUVEMENT_AUCUN 20
+// La probabimité que le mob se tourne
+#define PROBABILITE_MOUVEMENT_ROTATION 55
+// La probabimité que le mob se déplace 
+#define PROBABILITE_MOUVEMENT_DEPLACEMENT 100
 
 //
 #define PROBABILITE_APPARITION_MONSTRE 30

@@ -160,7 +160,7 @@ void dessinerEntite(t_entite *entite) {
             texture = moteur->textures->joueur; 
             break;
 
-        case ENTITE_MONSTRE_AGGRESSIF:
+        case ENTITE_MOB:
             texture = moteur->textures->monstres;
             break;
 
@@ -196,22 +196,6 @@ void detruireEntite(t_entite **entite) {
 
         free(*entite);
         *entite = NULL;
-
-    }
-}
-
-
-
-/**
- * @brief 
- * 
- * @param mob 
- */
-void detruireMob(t_mob **mob) {
-    printf("Destruction Mob => ");
-    if (mob != NULL && *mob != NULL) {
-
-        detruireEntite((t_entite**)mob);
 
     }
 }
@@ -262,43 +246,9 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->timestampCreation = SDL_GetTicks();
     entite->timestampActualisation = entite->timestampCreation;
 
+    entite->destructionInactif = VRAI;
+
 
     return entite;
 }
 
-
-
-/**
- * @brief 
- * 
- * @param position 
- * @return t_mob* 
- */
-t_mob* creerMob(const t_vecteur2 position) {
-    t_entite *entite = creerEntite(position);
-    t_mob *mob = realloc(entite, sizeof(t_mob));
-    const int t = SDL_GetTicks();
-
-    // Déplacement
-    mob->rayonDeplacement = 0;
-
-    mob->positionDeplacement.x = position.x;
-    mob->positionDeplacement.y = position.y;
-    mob->timestampDebutDeplacement = t;
-    mob->timestampFinDeplacement = t;
-    mob->delaiAttenteDeplacement = 10;
-
-    mob->deplacementType = DEPLACEMENT_STATIQUE;
-
-
-    // Attaque
-    mob->timestampAttaque = t;
-    mob->delaiAttenteAttaque = 5;
-
-
-    mob->detruire = (void (*)(t_entite**)) detruireMob;
-
-
-    entite = NULL;
-    return mob;
-}

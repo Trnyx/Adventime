@@ -20,7 +20,7 @@
 
 
 #include "statistiques.h"
-#include "entite.h"
+#include "mob.h"
 
 
 

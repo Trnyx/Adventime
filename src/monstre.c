@@ -24,13 +24,20 @@
 
 int updateMonstre(t_monstre *monstre, const float distance) {
     // printf("Update Monstre => ");
+
+    // Si le joueur est dans le rayon de détection du monstre
+    if (monstre->deplacementType != DEPLACEMENT_COMBAT && distance <= MONSTRE_RAYON_COMBAT_DETECTION) {
+        monstre->deplacementType = DEPLACEMENT_COMBAT;
+    }
     
-    // printf("Deplacement : %i => ", monstre->deplacementType);
+    
+    updateMob((t_mob*)monstre, distance);
 
 
-    int (*deplacement)(t_mob*, const float) = getDeplacement(monstre->deplacementType);
-    // printf("Fonction : %p => ", deplacement);
-    if (deplacement != NULL) deplacement((t_mob*)monstre, distance);
+    // // printf("Deplacement : %i => ", monstre->deplacementType);
+    // int (*deplacement)(t_mob*, const float) = getDeplacement(monstre->deplacementType);
+    // // printf("Fonction : %p => ", deplacement);
+    // if (deplacement != NULL) deplacement((t_mob*)monstre, distance);
 
 
     // // Si le monstre n'a pas atteint la position qu'il doit atteindre
@@ -124,7 +131,7 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
     t_monstre *monstre = realloc(mob, sizeof(t_monstre));
 
 
-    monstre->entiteType = ENTITE_MONSTRE_AGGRESSIF;
+    monstre->aggressif = VRAI;
     genererMonstre(monstre, biome, niveauJoueur);
 
     monstre->rayonDetection = 0;
@@ -134,6 +141,7 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
     monstre->update = (int (*)(t_entite*, const float)) updateMonstre;
     monstre->detruire = (void (*)(t_entite**)) detruireMonstre;
 
+    monstre->destructionInactif = monstre->aggressif;
 
     mob = NULL;
     return monstre;
@@ -182,14 +190,14 @@ void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJo
     t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
 
     if (chunk != NULL) {
-        printf("Chunk => ");
+        // printf("Chunk => ");
         const e_biome biome = chunk->biome;
         t_block *block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
 
         if (block != NULL) {
-            printf("Block => ");
+            // printf("Block => ");
             if (block->tag == VIDE) {
-                printf("%i => ", block->tag);
+                // printf("%i => ", block->tag);
                 t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
 
                 en_queue(entites);

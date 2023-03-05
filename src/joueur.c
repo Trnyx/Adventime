@@ -222,6 +222,8 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->update = (int(*)(t_entite*, const float)) updateJoueur;
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
+    joueur->destructionInactif = FAUX;
+
 
     printf("Succes\n");
     entite = NULL;
