@@ -143,7 +143,7 @@ void update() {
     /*                                   Joueur                                   */
     /* -------------------------------------------------------------------------- */
 
-    joueur->update((t_entite*) joueur, 0.0);
+    joueur->update((t_entite*) joueur, 0.0, NULL);
     dessinerEntite((t_entite*) joueur);
 
     
@@ -218,11 +218,9 @@ void update() {
                                 nombreMobsCombat++;
 
                                 // Update de la position cible 
-                                ((t_mob*)entite)->positionDeplacement = joueur->position;
+                                if (((t_mob*)entite)->operation != ATTAQUE)
+                                    ((t_mob*)entite)->positionDeplacement = ((t_mob*)entite)->cible->position;
                             }
-
-
-                            
 
                             break;
 
@@ -239,7 +237,7 @@ void update() {
                     
 
                     // Deplacement
-                    entite->update((t_entite*)entite, distance);
+                    entite->update((t_entite*)entite, distance, (t_entite*)joueur);
 
                     // combat
                     // entite->update((t_entite*)entite);

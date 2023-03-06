@@ -40,10 +40,64 @@
 #include "../include/utilitaire.h"
 #include "../include/mob.h"
 #include "../include/deplacement.h"
+#include "../include/moteur.h"
 
 
 
 
+
+
+#define ATTAQUE_MODIFICATEUR 1.6
+
+
+void attaquer(t_mob *mob, const float distanceFinale) {
+    deplacerVers(mob, mob->statistiques.vitesse * ATTAQUE_MODIFICATEUR, mob->positionDeplacement);
+    
+    if (distanceFinale < 1.0) {
+        printf("COMBAT : TOUCHE\n");
+
+        mob->timestampAttaque = moteur->frame;
+        mob->delaiAttenteAttaque = getNombreAleatoire(3, 8);
+        mob->operation = ATTENTE;
+    }
+}
+
+
+
+
+
+void combatMob(t_mob *mob, float distance) {
+    if (mob->operation == ATTAQUE) {
+        distance = calculDistanceEntrePoints(mob->position, mob->positionDeplacement);
+        attaquer(mob, distance);
+    }
+
+    else {
+        // Si la cible est trop loin
+        if (distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
+            mob->deplacementType = DEPLACEMENT_NORMAL;
+        }
+
+        // Sinon Si la cible est dans le rayon de positionnement
+        else if (distance <= MOB_RAYON_COMBAT_POSITIONNEMENT && distance > MOB_RAYON_COMBAT_ATTAQUE) {
+            mob->operation = SE_DEPLACE_VERS;
+        }
+
+        // Sinon Si la cible est dans le rayon d'attaque
+        else if (distance <= MOB_RAYON_COMBAT_ATTAQUE && distance > MOB_RAYON_COMBAT_RETRAIT) {
+            if (mob->timestampActualisation - mob->timestampAttaque > mob->delaiAttenteAttaque * 1000) {
+                mob->operation = ATTAQUE;
+            }
+            else
+                mob->operation = SE_DEPLACE_AUTOUR;
+        }
+
+        // Sinon Si la cible est trop proche 
+        else {
+            mob->operation = S_ELOIGNE_DE;
+        }
+    }
+}
 
 
 /* -------------------------------------------------------------------------- */
@@ -59,46 +113,28 @@
  */
 void updateMob(t_mob* mob, const float distance) {
     if (mob->deplacementType == DEPLACEMENT_COMBAT) {
-        // Si la cible est trop loin
-        if (distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
-            mob->deplacementType = DEPLACEMENT_NORMAL;
-        }
-
-        // Sinon Si la cible est dans le rayon de positionnement
-        else if (distance <= MOB_RAYON_COMBAT_POSITIONNEMENT && distance > MOB_RAYON_COMBAT_ATTAQUE) {
-            mob->operation = SE_DEPLACE_VERS;
-        }
-
-        // Sinon Si la cible est dans le rayon d'attaque
-        else if (distance <= MOB_RAYON_COMBAT_ATTAQUE && distance > MOB_RAYON_COMBAT_RETRAIT) {
-            mob->operation = SE_DEPLACE_AUTOUR;
-        }
-
-        // Sinon Si la cible est trop proche 
-        else {
-            mob->operation = S_ELOIGNE_DE;
-        }
+        combatMob(mob, distance);
     } 
 
 
 
     if (mob->operation == SE_DEPLACE_AUTOUR) {
         // Deplacement autour de la cible
-        deplacerAutour(mob, mob->positionDeplacement);
+        deplacerAutour(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_AUTOUR, mob->positionDeplacement);
     }
 
     else if (mob->operation == SE_DEPLACE_VERS) {
         // Deplacement vers la cible
-        deplacerVers(mob, mob->positionDeplacement);
+        deplacerVers(mob, mob->statistiques.vitesse, mob->positionDeplacement);
         mob->operation = ATTENTE;
     }
 
     else if (mob->operation == S_ELOIGNE_DE) {
-        seloigneDe(mob, mob->positionDeplacement);
+        seloigneDe(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_ELOIGNEMENT, mob->positionDeplacement);
         mob->operation = ATTENTE;
     }
     
-    else {
+    else if (mob->operation != ATTAQUE) {
         // On check si le mob est à sa position cible
         // Si il ne l'est pas
         //     Si le temps de déplacement maximum est dépassé
@@ -130,7 +166,7 @@ void updateMob(t_mob* mob, const float distance) {
                 finDeplacement(mob);
             }
             else {
-                deplacerVers(mob, mob->positionDeplacement);
+                deplacerVers(mob, mob->statistiques.vitesse, mob->positionDeplacement);
             }
         }
 
@@ -227,6 +263,8 @@ t_mob* creerMob(const t_vecteur2 position) {
     mob->entiteType = ENTITE_MOB;
     mob->aggressif = FAUX;
 
+    mob->cible = NULL;
+
     // Déplacement
     mob->rayonDeplacement = 0;
 
@@ -242,7 +280,7 @@ t_mob* creerMob(const t_vecteur2 position) {
 
     // Attaque
     mob->timestampAttaque = t;
-    mob->delaiAttenteAttaque = 5;
+    mob->delaiAttenteAttaque = 0;
 
 
     mob->detruire = (void (*)(t_entite**)) detruireMob;

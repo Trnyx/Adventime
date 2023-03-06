@@ -46,21 +46,28 @@ void finDeplacement(t_mob *mob) {
 
 
 
+static void orienterVersCible(t_mob *mob) {
+    const float angle = calculAngleEntrePoints(mob->position, mob->positionDeplacement);
+    orienterEntite(angle, (t_entite*)mob);
+}
+
+
+
+
+
 /**
  * @brief 
  * 
  * @param mob 
  * @param cible 
  */
-void deplacerVers(t_mob *mob, const t_vecteur2 cible) {
+void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
     printf("Deplacer vers => %1.2f:%1.2f\n", cible.x, cible.y);
     mob->direction.x = (cible.x - mob->position.x);
     mob->direction.y = (cible.y - mob->position.y);
 
-    const float angle = calculAngleEntrePoints(mob->position, mob->positionDeplacement);
-
-    deplacerEntite((t_entite*)mob, 4.0);
-    orienterEntite(angle, (t_entite*)mob);
+    deplacerEntite((t_entite*)mob, vitesse);
+    orienterVersCible(mob);
 }
 
 
@@ -71,27 +78,25 @@ void deplacerVers(t_mob *mob, const t_vecteur2 cible) {
  * @param mob 
  * @param cible 
  */
-void seloigneDe(t_mob *mob, const t_vecteur2 cible) {
+void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
+    // deplacerEntite((t_entite*)mob, mob->statistiques.vitesse / 3);
+}
+
+
+
+/**
+ * @brief 
+ * 
+ * @param mob 
+ * @param cible 
+ */
+void seloigneDe(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
     printf("Deplacer vers => %1.2f:%1.2f\n", cible.x, cible.y);
     mob->direction.x = (mob->position.x - cible.x);
     mob->direction.y = (mob->position.y - cible.y);
 
-    const float angle = calculAngleEntrePoints(mob->position, mob->positionDeplacement);
-
-    deplacerEntite((t_entite*)mob, 4.0);
-    orienterEntite(angle, (t_entite*)mob);
-}
-
-
-
-/**
- * @brief 
- * 
- * @param mob 
- * @param cible 
- */
-void deplacerAutour(t_mob *mob, const t_vecteur2 cible) {
-    // deplacerEntite((t_entite*)mob, 2.0);
+    deplacerEntite((t_entite*)mob, vitesse);
+    orienterVersCible(mob);
 }
 
 
@@ -128,7 +133,7 @@ int deplacementNormal(t_mob *mob) {
             // printf("Position target : %1.2f:%1.2f => ", mob->positionDeplacement.x, mob->positionDeplacement.y);
 
             if (mob->operation != ATTENTE) {
-                deplacerVers(mob, mob->positionDeplacement);
+                deplacerVers(mob, mob->statistiques.vitesse, mob->positionDeplacement);
                 // deplacerEntite((t_entite*)mob, 4.0);
             }
             else {

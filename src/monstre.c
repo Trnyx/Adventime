@@ -22,14 +22,24 @@
 
 
 
-int updateMonstre(t_monstre *monstre, const float distance) {
+int updateMonstre(t_monstre *monstre, float distance, t_entite *cible) {
     // printf("Update Monstre => ");
 
     // Si le joueur est dans le rayon de détection du monstre
     if (monstre->deplacementType != DEPLACEMENT_COMBAT && distance <= MONSTRE_RAYON_COMBAT_DETECTION) {
         monstre->deplacementType = DEPLACEMENT_COMBAT;
+        monstre->cible = cible;
+    }
+    else if (monstre->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
+        monstre->deplacementType = DEPLACEMENT_NORMAL;
+        monstre->cible = NULL;
+        monstre->operation = ATTENTE;
     }
     
+
+    if (monstre->deplacementType == DEPLACEMENT_COMBAT)
+        distance = calculDistanceEntreEntites((t_entite*)monstre, monstre->cible);
+
     
     updateMob((t_mob*)monstre, distance);
 
@@ -138,7 +148,7 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
     monstre->rayonDeplacement = 4;
     monstre->deplacementType = DEPLACEMENT_NORMAL;
 
-    monstre->update = (int (*)(t_entite*, const float)) updateMonstre;
+    monstre->update = (int (*)(t_entite*, float, t_entite*)) updateMonstre;
     monstre->detruire = (void (*)(t_entite**)) detruireMonstre;
 
     monstre->destructionInactif = monstre->aggressif;

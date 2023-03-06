@@ -121,7 +121,7 @@ t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, co
 
     statistiques.attaque = calculStatistique(baseStatistiques.attaque, niveau);
     statistiques.defense = calculStatistique(baseStatistiques.defense, niveau);
-    statistiques.vitesse = calculStatistique(baseStatistiques.vitesse, niveau);
+    statistiques.vitesse = 4.0; // calculStatistique(baseStatistiques.vitesse, niveau);
     statistiques.pv = calculPv(statistiques.attaque, statistiques.defense, baseStatistiques.pv);
 
     return statistiques;
