@@ -20,7 +20,7 @@
 
 
 #include "statistiques.h"
-#include "entite.h"
+#include "mob.h"
 
 
 
@@ -64,8 +64,6 @@ typedef struct s_animal {
     int rayonDetection;                     /**< Le rayon dans lequel le joueur sera détecté */
 
     e_animalTag tag;                        /**< Le tag de l'animal */
-
-    t_statistiques statistiques;            /**< Les statistiques de l'animal */
 } t_animal;
 
 

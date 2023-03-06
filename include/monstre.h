@@ -19,7 +19,6 @@
 
 
 
-#include "statistiques.h"
 #include "mob.h"
 
 
@@ -78,9 +77,6 @@ typedef struct s_monstre {
 
     e_monstreTag tag;                       /**< Le tag du Monstre */
     e_monstreType type;                     /**< Le type du Monstre */
-
-    t_statistiques statistiques;            /**< Les statistiques du Monstre */
-    t_baseStatistiques baseStatistiques;    /**< Les statistiques de base du Monster */
 } t_monstre;
 
 

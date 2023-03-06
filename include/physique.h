@@ -84,11 +84,24 @@
 #define MONSTRE_PASSIF_CAP 24
 
 
-//
+// Rayon dans lequel un monstre détecte un joueur pour se mettre en combat
 #define MONSTRE_RAYON_COMBAT_DETECTION 4.5
+// Rayon dans lequel les mobs se positionne (suivent leur cible) pour combattre
 #define MOB_RAYON_COMBAT_POSITIONNEMENT 8.0
-#define MOB_RAYON_COMBAT_RETRAIT 1.4
-#define MOB_RAYON_COMBAT_ATTAQUE 1.9
+// Rayon dans lequel les mobs recul face à leur cible
+#define MOB_RAYON_COMBAT_RETRAIT 1.8
+// Rayon dans lequel les mobs sont suffisamment proche pour attaquer
+#define MOB_RAYON_COMBAT_ATTAQUE 2.2
+
+
+//
+#define MOB_VITESSE_MODIFICATEUR_POSITIONNEMENT
+//
+#define MOB_VITESSE_MODIFICATEUR_AUTOUR 0.5
+//
+#define MOB_VITESSE_MODIFICATEUR_ELOIGNEMENT 0.8
+//
+#define MOB_VITESSE_MODIFICATEUR_ATTAQUE 1.1
 
 
 // La durée maximale de déplacement d'un mob [en seconde]
