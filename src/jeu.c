@@ -47,8 +47,16 @@ static int nouveauMonde() {
     while (continuer != -1) {
         continuer = inputManager(moteur->monde->joueur);
         update();
+
+        // Dès qu'on change de zone (map)
+        // On sauvegarde l'état de la map précédente
+        //  - Map (chunk / blocs)
+        //  - Mobs
+        //      - Ignore les monstres aggressifs
+        //      - Ignore les entités à suppression après un temps
     }
 
+    // Sauvegarde du monde complet ici
     return continuer;
 }
 

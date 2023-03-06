@@ -127,6 +127,11 @@ const t_baseVegetal basesVegetaux[] = {
 /**
  * @brief Tableau regroupant les intervales des statistiques de bases en fonction du type du monstre
  * 
+ * - attaque
+ * - defense
+ * - vitesse
+ * - pv
+ * - courbeExp
  */
 const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONSTRE_TYPES] = {
     { { 60, 70 }, { 60, 70 }, { 10, 10 }, 80, { 0 } }, // NORMAL
