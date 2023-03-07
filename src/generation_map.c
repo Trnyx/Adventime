@@ -16,7 +16,7 @@
  * 
  * @author Clément Hibon
  * @date 21 janvier
- * @version 1.1
+ * @version 1.4
  */
 
 
@@ -46,7 +46,8 @@ const int probabilitesBiomes[NB_BIOMES] = {
     PROBA_BIOME_LAC, 
     PROBA_BIOME_PLAINE, 
     PROBA_BIOME_FORET, 
-    PROBA_BIOME_MONTAGNE 
+    PROBA_BIOME_MONTAGNE,
+    PROBA_BIOME_DESERT,
 };
 
 
@@ -224,6 +225,9 @@ e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) {
   
   
     switch (biomePredominant.tag) {
+        case BIOME_DESERT: 
+            if (biomePredominant.occurence >= 1 && biomePredominant.occurence <= 2) changement = 1;
+            break;
         case BIOME_MONTAGNE: 
             if (biomePredominant.occurence >= 1 && biomePredominant.occurence <= 3) changement = 1;
             break;

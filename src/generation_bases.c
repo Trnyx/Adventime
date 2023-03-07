@@ -6,7 +6,7 @@
  *
  * @author Clément Hibon
  * @date 8 février
- * @version 1.1
+ * @version 1.2
  */
 
 
@@ -75,7 +75,7 @@ const t_baseBiome basesBiomes[] = {
     { 
         BIOME_FORET, 1, 
         // Sol
-        { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 30, 40, 20 }, 
+        { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 30, 40, 30 }, 
         // Vegetations
         { CHAINE }, { 100 }, 3.0,
         // Monstres
@@ -91,6 +91,17 @@ const t_baseBiome basesBiomes[] = {
         { CHAINE, SAPIN }, { 50, 50 }, 0.7,
         // Monstres
         { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_MONTAGNARD }, { 15, 85 },
+    },
+  
+  
+    { 
+        BIOME_DESERT, 1, 
+        // Sol
+        { SOL_SABLE, SOL_HERBE_1 }, { 90, 10 }, 
+        // Vegetations
+        { CHAINE, SAPIN }, { 50, 50 }, 0.7,
+        // Monstres
+        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_DESERTIQUE }, { 10, 90 },
     },
 };
 
@@ -138,4 +149,5 @@ const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONSTRE_TYPE
     { { 65, 75 }, { 55, 65 }, { 15, 15 }, 80, { 0 } }, // PLANTE
     { { 55, 65 }, { 60, 70 }, { 10, 10 }, 90, { 0 } }, // EAU
     { { 55, 65 }, { 75, 85 }, { 15, 15 }, 80, { 0 } }, // MONTAGNARD
+    { { 70, 75 }, { 70, 75 }, { 10, 10 }, 90, { 0 } }, // DESERTIQUE
 };

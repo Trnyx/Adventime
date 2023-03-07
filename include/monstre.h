@@ -5,7 +5,7 @@
  *
  * @author Clément Hibon
  * @date 23 janvier
- * @version 1.1
+ * @version 1.3
  */
 
 
@@ -52,6 +52,7 @@ typedef enum {
     MONSTRE_TYPE_PLANTE,
     MONSTRE_TYPE_EAU,
     MONSTRE_TYPE_MONTAGNARD,
+    MONSTRE_TYPE_DESERTIQUE,
     NB_MONSTRE_TYPES,
 } e_monstreType;
 
