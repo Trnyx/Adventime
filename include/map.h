@@ -92,7 +92,7 @@ typedef enum {
     PROBA_BIOME_LAC = 15,
     PROBA_BIOME_PLAINE = 45,
     PROBA_BIOME_FORET = 65,
-    PROBA_BIOME_MONTAGNE = 90,
+    PROBA_BIOME_MONTAGNE = 80,
     PROBA_BIOME_DESERT = 100,
 } e_biomeProba;
 

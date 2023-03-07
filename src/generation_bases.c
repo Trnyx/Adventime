@@ -75,7 +75,7 @@ const t_baseBiome basesBiomes[] = {
     { 
         BIOME_FORET, 1, 
         // Sol
-        { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 30, 40, 30 }, 
+        { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 20, 55, 35 }, 
         // Vegetations
         { CHAINE }, { 100 }, 3.0,
         // Monstres
@@ -88,7 +88,7 @@ const t_baseBiome basesBiomes[] = {
         // Sol
         { SOL_MONTAGNE_1, SOL_MONTAGNE_2 }, { 50, 50 }, 
         // Vegetations
-        { CHAINE, SAPIN }, { 50, 50 }, 0.7,
+        { SAPIN }, { 100 }, 0.7,
         // Monstres
         { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_MONTAGNARD }, { 15, 85 },
     },
@@ -99,7 +99,7 @@ const t_baseBiome basesBiomes[] = {
         // Sol
         { SOL_SABLE, SOL_HERBE_1 }, { 90, 10 }, 
         // Vegetations
-        { CHAINE, SAPIN }, { 50, 50 }, 0.7,
+        { PALMIER }, { 100 }, 0.7,
         // Monstres
         { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_DESERTIQUE }, { 10, 90 },
     },
@@ -119,8 +119,6 @@ const t_baseBiome basesBiomes[] = {
  */
 const t_baseVegetal basesVegetaux[] = {
     { HERBE, 1.0 },
-    // { ROSE, 3.0 },
-    // { TULIPE, 3.0 },
     { CHAINE, 3.0 },
     { PALMIER, 6.0 },
     { SAPIN, 5.0 },

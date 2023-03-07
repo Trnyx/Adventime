@@ -190,7 +190,6 @@ int chargerAudio(const int volume, t_musiques **musiques, t_bruitages **bruitage
     // m->combat_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
     m->boss = NULL;
     loadMusiqueBoss(m, getJourDeLaSemaine(time(NULL)));
-    printf("Bonjour\n");
     // m->combat_boss = Mix_LoadMUS("assets/audio/musiques/.mp3");
     
     

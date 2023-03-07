@@ -219,7 +219,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
     joueur->actionFlags = initialiserActionFlags();
 
-    joueur->update = (int(*)(t_entite*, const float)) updateJoueur;
+    joueur->update = (int(*)(t_entite*, const float, t_entite*)) updateJoueur;
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
     joueur->destructionInactif = FAUX;

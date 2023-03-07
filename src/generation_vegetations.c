@@ -50,16 +50,33 @@
  * 
  * @version 1.1
  */
-e_vegetalTag selectionVegetation(t_baseBiome baseBiome) {
-    const int probabilite = getNombreAleatoire(1, 100); // rand() % 100;
-    const int nbVegetauxPossibles = sizeof(baseBiome.tagVegetations) / sizeof(baseBiome.tagVegetations[0]);
+e_vegetalTag selectionVegetation(e_solTag sol) {
+    // const int probabilite = getNombreAleatoire(1, 100); // rand() % 100;
+    // const int nbVegetauxPossibles = sizeof(baseBiome.tagVegetations) / sizeof(baseBiome.tagVegetations[0]);
 
-    for (int i = 0; i < nbVegetauxPossibles; i++) {
-        if (baseBiome.probabilitesVegetations[i] >= probabilite) return baseBiome.tagVegetations[i];
-    }
+    // for (int i = 0; i < nbVegetauxPossibles; i++) {
+    //     if (baseBiome.probabilitesVegetations[i] >= probabilite) return baseBiome.tagVegetations[i];
+    // }
     
   
-    return -1;
+    // return HERBE;
+
+    switch (sol) {
+        case SOL_SABLE:
+            return PALMIER;
+
+        case SOL_HERBE_1:
+        case SOL_HERBE_2:
+        case SOL_HERBE_3:
+            return CHAINE;
+
+        case SOL_MONTAGNE_1:
+        case SOL_MONTAGNE_2:
+            return SAPIN;
+
+        default:
+            return -1;
+    }
 }
 
 
@@ -81,7 +98,7 @@ e_vegetalTag selectionVegetation(t_baseBiome baseBiome) {
  * 
  * @version 1.2
  */
-int peutPlacerVegetatal(const t_vecteur2 positionVegetal, const t_diskSampling grid, const float rayon) {
+boolean peutPlacerVegetal(const t_vecteur2 positionVegetal, const t_diskSampling grid, const float rayon) {
     int peutEtrePlace = 0;
     int i = 0;
 
@@ -91,11 +108,11 @@ int peutPlacerVegetatal(const t_vecteur2 positionVegetal, const t_diskSampling g
         const float norme = calculDistanceEntrePoints(positionVegetal, vegetalDejaPlace);
 
         if (norme >= rayon && norme <= rayon * 2.0) 
-            peutEtrePlace = 1;
+            peutEtrePlace = VRAI;
     }
 
   
-    return peutEtrePlace;
+    return FAUX;
 }
 
 
@@ -116,7 +133,7 @@ int peutPlacerVegetatal(const t_vecteur2 positionVegetal, const t_diskSampling g
  * 
  * @version 1.3
  */
-t_diskSampling genererDiskSampling(t_chunk *chunk, const t_baseBiome baseBiome) {
+t_diskSampling genererDiskSampling(t_chunk *chunk) {
     t_diskSampling vegetals;
     const int nbVegetaux = getNombreAleatoire((TAILLE_CHUNK) / 2, (2 * TAILLE_CHUNK) / 3);
 
@@ -124,12 +141,16 @@ t_diskSampling genererDiskSampling(t_chunk *chunk, const t_baseBiome baseBiome) 
     vegetals.vegetauxPositions = calloc(nbVegetaux, sizeof(t_vecteur2));
     vegetals.vegetauxTags = calloc(nbVegetaux, sizeof(e_vegetalTag));
 
-    // const t_baseBiome baseBiome = basesBiomes[chunk->biome];
+    const t_baseBiome baseBiome = basesBiomes[chunk->biome];
     // const e_vegetalTag vegetalTag = selectionVegetation(baseBiome);
+    // printf("VEGETAL TAG : %i => ", vegetalTag);
+    // printf("DENSITE : %1.2f => ", baseBiome.vegetationDensite);
 
   
     if (baseBiome.vegetationDensite > 0) {
         const float rayon = (TAILLE_CHUNK / 2) / baseBiome.vegetationDensite;
+        // const float rayon = baseVegetal.radius / baseBiome.vegetationDensite;
+        printf("RAYON : %1.2f => ", rayon);
       
       
         for (int n = 0; n < nbVegetaux; n++) {
@@ -139,11 +160,14 @@ t_diskSampling genererDiskSampling(t_chunk *chunk, const t_baseBiome baseBiome) 
             };
     
     
-            if (!n || peutPlacerVegetatal(nouveauPoint, vegetals, rayon)) {
+            if (!n || peutPlacerVegetal(nouveauPoint, vegetals, rayon)) {
                 vegetals.vegetauxPositions[n] = nouveauPoint;
                 // vegetals.vegetauxTags[n] = vegetalTag;
                 vegetals.nbVegetaux++;
+                printf("PLACE\n");
             }
+            else
+                printf("NON PLACE\n");
         }
     }
 
@@ -167,6 +191,7 @@ t_diskSampling genererDiskSampling(t_chunk *chunk, const t_baseBiome baseBiome) 
 void genererVegetations(t_map *map) {
     t_chunk *chunk = NULL;
     t_block *block = NULL;
+    printf(" GENERATION VEGETATION \n");
 
 
     for (int x = 0; x < TAILLE_MAP; x++) {
@@ -176,16 +201,17 @@ void genererVegetations(t_map *map) {
             if (chunk == NULL) continue;
             if (chunk->biome == BIOME_PROFONDEUR) continue;
 
-            const t_baseBiome baseBiome = basesBiomes[chunk->biome];
-            t_diskSampling vegetaux = genererDiskSampling(chunk, baseBiome);
+            // const t_baseBiome baseBiome = basesBiomes[chunk->biome];
+            t_diskSampling vegetaux = genererDiskSampling(chunk);
           
             for (int i = 0; i < vegetaux.nbVegetaux; i++) {
                 const t_vecteur2 positionVegetal = vegetaux.vegetauxPositions[i];
-                const e_vegetalTag vegetalTag = selectionVegetation(baseBiome);
                 
                 block = getBlockDansChunk((int)positionVegetal.x % TAILLE_CHUNK, (int)positionVegetal.y % TAILLE_CHUNK, chunk);
                 if (block == NULL) continue;
                 if (block->tag <= SOL_EAU) continue;
+
+                const e_vegetalTag vegetalTag = selectionVegetation(block->tag);
         
                 chunk = getChunk(x, y, COUCHE_OBJETS, map);
                 block = getBlockDansChunk((int)positionVegetal.x % TAILLE_CHUNK, (int)positionVegetal.y % TAILLE_CHUNK, chunk);

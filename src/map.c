@@ -204,7 +204,10 @@ int dessinerVegetal(const int tag, SDL_Rect *rendu) {
         case HERBE:
             splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
             break;
+            
         case CHAINE:
+        case SAPIN:
+        case PALMIER:
             splitTexture(&source, (2 * TAILLE_TILE * (tag % HERBE)),0, 3*TAILLE_TILE,2*TAILLE_TILE);
             break;
 

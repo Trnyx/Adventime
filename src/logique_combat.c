@@ -64,9 +64,14 @@ float calculDegat(const int pointAttaque, const int pointDefense, const int nive
 
 
 
-// Renvoie si le mob est mort
+/**
+ * @brief 
+ * 
+ * @param mob Le mob qui subbit les dégats
+ * @param degat Les dégats à infliger au mob
+ * @return VRAI si le mob est mort
+ */
 boolean appliquerDegat(t_mob *mob, const float degat) {
-    // Check mort
     mob->statistiques.pv -= degat;
 
     return mob->statistiques.pv <= 0;
@@ -74,13 +79,19 @@ boolean appliquerDegat(t_mob *mob, const float degat) {
 
 
 
+/**
+ * @brief 
+ * 
+ * @param mob 
+ * @param cible 
+ */
 void metUncoup(t_mob *mob, t_mob *cible) {
     if (toucheLaCible(cible->position)) {
         const float degat = calculDegat(mob->statistiques.attaque, cible->statistiques.defense, mob->statistiques.niveau, cible->statistiques.niveau);
         const boolean cibleEstMorte = appliquerDegat(cible, degat);
 
         if (cibleEstMorte) {
-
+            //
             cible->detruire(&cible);
         }
     }
