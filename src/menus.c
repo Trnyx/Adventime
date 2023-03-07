@@ -33,8 +33,6 @@
 
 state_main main_menu(struct nk_context *ctx) {
 
-  // play_music(audio->musiques->menu_principal, VRAI);
-
   /* set_style(ctx, THEME_BLUE); */
 
   state_main click = 0;
