@@ -145,10 +145,10 @@ void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
     
 
     if (periodePrecedente != temps->periode) {
-        if (cyclePrecedent != temps->cycleJeu)
-            audio->timestampDebutMusique = moteur->frame;
+    //     if (cyclePrecedent != temps->cycleJeu)
+    //         audio->timestampDebutMusique = moteur->frame;
         
-        selectionMusique(temps);
+    //     selectionMusique(temps);
     }
 }
 

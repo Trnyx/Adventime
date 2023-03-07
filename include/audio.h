@@ -70,7 +70,7 @@ typedef struct s_musiques {
     // Combat
     Mix_Music *combat;              /**< */
     // Mix_Music *combat_nuit;
-    // Mix_Music *combat_boss;
+    Mix_Music *boss;
     
 } t_musiques;
 

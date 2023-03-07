@@ -86,6 +86,10 @@ void selectionMusique(t_temps *temps) {
             musique = musiques->menu_principal;
             break;
 
+        case MUSIC_BOSS:
+            musique = musiques->boss;
+            break;
+
         case MUSIC_AMBIANCE:
             switch (temps->periode) {
                 case PERIODE_NUIT:
@@ -131,6 +135,19 @@ void selectionMusique(t_temps *temps) {
 /* -------------------------------------------------------------------------- */
 
 
+void loadMusiqueBoss(t_musiques *musiques, e_jour jour) {
+    char buffer[64];
+    sprintf(buffer, "assets/audio/musiques/boss/boss_%i.mp3", jour);
+
+    if (musiques->boss != NULL) 
+        Mix_FreeMusic(musiques->boss);
+
+    musiques->boss = Mix_LoadMUS(buffer);
+    if (musiques->boss == NULL) printf("ERROR");
+    else printf("Succes\n");
+}
+
+
 /**
  * @brief 
  * 
@@ -171,6 +188,9 @@ int chargerAudio(const int volume, t_musiques **musiques, t_bruitages **bruitage
     // Combat
     m->combat = Mix_LoadMUS("assets/audio/musiques/combat.mp3");
     // m->combat_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    m->boss = NULL;
+    loadMusiqueBoss(m, getJourDeLaSemaine(time(NULL)));
+    printf("Bonjour\n");
     // m->combat_boss = Mix_LoadMUS("assets/audio/musiques/.mp3");
     
     
@@ -265,6 +285,7 @@ void detruireAudio(t_audio **audio) {
             Mix_FreeMusic((*audio)->musiques->ambiance_jour_couche_soleil);
             Mix_FreeMusic((*audio)->musiques->ambiance_nuit);
             Mix_FreeMusic((*audio)->musiques->combat);
+            Mix_FreeMusic((*audio)->musiques->boss);
             Mix_FreeMusic((*audio)->musiques->menu_principal);
 
             free(musiques);
