@@ -39,3 +39,75 @@
 
 
 
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Degats                                   */
+/* -------------------------------------------------------------------------- */
+
+
+boolean toucheLaCible(const t_vecteur2 mob, const t_vecteur2 cible) {
+    // Calcul la distance
+    // Calcul l'angle
+    return VRAI;
+}
+
+
+
+
+
+float calculDegat(const int pointAttaque, const int pointDefense, const int niveauAttaquant, const int niveauDefenseur) {
+    return 0;
+}
+
+
+
+
+
+// Renvoie si le mob est mort
+boolean appliquerDegat(t_mob *mob, const float degat) {
+    // Check mort
+    mob->statistiques.pv -= degat;
+
+    return mob->statistiques.pv <= 0;
+}
+
+
+
+void metUncoup(t_mob *mob, t_mob *cible) {
+    if (toucheLaCible(cible->position)) {
+        const float degat = calculDegat();
+        const boolean cibleEstMorte = appliquerDegat(cible, degat);
+
+        if (cibleEstMorte) {
+            cible->detruire(&cible);
+        }
+    }
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Experiences                                */
+/* -------------------------------------------------------------------------- */
+
+
+int calculExperience() {
+    return 0;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                             Items & Inventaires                            */
+/* -------------------------------------------------------------------------- */
+
+
+//Créer 
+void dropInventaire(/*t_stockage inventaire*/) {
+
+}
