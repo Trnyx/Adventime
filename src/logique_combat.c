@@ -76,10 +76,11 @@ boolean appliquerDegat(t_mob *mob, const float degat) {
 
 void metUncoup(t_mob *mob, t_mob *cible) {
     if (toucheLaCible(cible->position)) {
-        const float degat = calculDegat();
+        const float degat = calculDegat(mob->statistiques.attaque, cible->statistiques.defense, mob->statistiques.niveau, cible->statistiques.niveau);
         const boolean cibleEstMorte = appliquerDegat(cible, degat);
 
         if (cibleEstMorte) {
+
             cible->detruire(&cible);
         }
     }
@@ -94,8 +95,9 @@ void metUncoup(t_mob *mob, t_mob *cible) {
 /* -------------------------------------------------------------------------- */
 
 
-int calculExperience() {
-    return 0;
+int calculExperience(t_mob *mob) {
+    int exp = mob->statistiques.experience;
+    return exp;
 }
 
 
@@ -107,7 +109,33 @@ int calculExperience() {
 /* -------------------------------------------------------------------------- */
 
 
-//Créer 
+// Créer à la position de la mort
+// Un truc qui stock l'inventaire du joueur
 void dropInventaire(/*t_stockage inventaire*/) {
 
+}
+
+
+
+
+void dropItems() {
+    // récupère la base du mob
+    // Calcul la probabilité de l'item qui est drop
+    // Aléatoire
+}
+
+
+
+
+
+void mort(t_entite *entite) {
+    switch (entite->entiteType) {
+        case ENTITE_JOUEUR:
+            // reapparitionJoueur();
+            break;
+
+        default:
+            entite->detruire(&entite);
+            break;
+    }
 }

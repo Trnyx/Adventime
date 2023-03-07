@@ -98,6 +98,12 @@ struct s_entite {
 
 
 
+typedef struct s_entiteVivante {
+
+} t_entiteVivante;
+
+
+
 
 
 /* -------------------------------------------------------------------------- */
