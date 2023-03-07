@@ -14,7 +14,7 @@
  *
  * @author Clément Hibon
  * @date 27 janvier
- * @version 1.2
+ * @version 1.3
  */
 
 
@@ -111,20 +111,21 @@ int peutPlacerVegetatal(const t_vecteur2 positionVegetal, const t_diskSampling g
  * @brief Génère une grille en se basant sur la technique du "Poisson Disk Sampling"
  * 
  * @param chunk Un pointeur sur le chunk de la couche du sol
+ * @param baseBiome Les informations de base du biome
  * @return La grille de placement des végétaux
  * 
- * @version 1.2
+ * @version 1.3
  */
-t_diskSampling genererDiskSampling(t_chunk *chunk) {
+t_diskSampling genererDiskSampling(t_chunk *chunk, const t_baseBiome baseBiome) {
     t_diskSampling vegetals;
     const int nbVegetaux = getNombreAleatoire((TAILLE_CHUNK) / 2, (2 * TAILLE_CHUNK) / 3);
 
     vegetals.nbVegetaux = 0;
     vegetals.vegetauxPositions = calloc(nbVegetaux, sizeof(t_vecteur2));
-    vegetals.vegetauxTags = calloc(nbVegetaux, sizeof(t_vecteur2));
+    vegetals.vegetauxTags = calloc(nbVegetaux, sizeof(e_vegetalTag));
 
-    const t_baseBiome baseBiome = basesBiomes[chunk->biome];
-    const e_vegetalTag vegetalTag = selectionVegetation(baseBiome) % HERBE;
+    // const t_baseBiome baseBiome = basesBiomes[chunk->biome];
+    // const e_vegetalTag vegetalTag = selectionVegetation(baseBiome);
 
   
     if (baseBiome.vegetationDensite > 0) {
@@ -140,7 +141,7 @@ t_diskSampling genererDiskSampling(t_chunk *chunk) {
     
             if (!n || peutPlacerVegetatal(nouveauPoint, vegetals, rayon)) {
                 vegetals.vegetauxPositions[n] = nouveauPoint;
-                vegetals.vegetauxTags[n] = HERBE;
+                // vegetals.vegetauxTags[n] = vegetalTag;
                 vegetals.nbVegetaux++;
             }
         }
@@ -148,7 +149,7 @@ t_diskSampling genererDiskSampling(t_chunk *chunk) {
 
   
     vegetals.vegetauxPositions = realloc(vegetals.vegetauxPositions, sizeof(t_vecteur2) * vegetals.nbVegetaux);
-    vegetals.vegetauxTags = realloc(vegetals.vegetauxTags, sizeof(t_vecteur2) * vegetals.nbVegetaux);
+    vegetals.vegetauxTags = realloc(vegetals.vegetauxTags, sizeof(e_vegetalTag) * vegetals.nbVegetaux);
     return vegetals;
 }
 
@@ -161,7 +162,7 @@ t_diskSampling genererDiskSampling(t_chunk *chunk) {
  * 
  * @param map Un pointeur sur la map dans laquelle sera généré les végétaux
  * 
- * @version 1.1
+ * @version 1.2
  */
 void genererVegetations(t_map *map) {
     t_chunk *chunk = NULL;
@@ -175,10 +176,12 @@ void genererVegetations(t_map *map) {
             if (chunk == NULL) continue;
             if (chunk->biome == BIOME_PROFONDEUR) continue;
 
-            t_diskSampling vegetaux = genererDiskSampling(chunk);
+            const t_baseBiome baseBiome = basesBiomes[chunk->biome];
+            t_diskSampling vegetaux = genererDiskSampling(chunk, baseBiome);
           
             for (int i = 0; i < vegetaux.nbVegetaux; i++) {
-                t_vecteur2 positionVegetal = vegetaux.vegetauxPositions[i];
+                const t_vecteur2 positionVegetal = vegetaux.vegetauxPositions[i];
+                const e_vegetalTag vegetalTag = selectionVegetation(baseBiome);
                 
                 block = getBlockDansChunk((int)positionVegetal.x % TAILLE_CHUNK, (int)positionVegetal.y % TAILLE_CHUNK, chunk);
                 if (block == NULL) continue;
@@ -186,7 +189,7 @@ void genererVegetations(t_map *map) {
         
                 chunk = getChunk(x, y, COUCHE_OBJETS, map);
                 block = getBlockDansChunk((int)positionVegetal.x % TAILLE_CHUNK, (int)positionVegetal.y % TAILLE_CHUNK, chunk);
-                block->tag = CHAINE;
+                block->tag = vegetalTag;
             }
 
             free(vegetaux.vegetauxPositions);
