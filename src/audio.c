@@ -82,14 +82,6 @@ void selectionMusique(t_temps *temps) {
 
 
     switch (audio->musiqueType) {
-        case MUSIC_MENU:
-            musique = musiques->menu_principal;
-            break;
-
-        case MUSIC_BOSS:
-            musique = musiques->boss;
-            break;
-
         case MUSIC_AMBIANCE:
             switch (temps->periode) {
                 case PERIODE_NUIT:
@@ -113,9 +105,15 @@ void selectionMusique(t_temps *temps) {
             }
             break;
             
+
         case MUSIC_COMBAT:
             musique = musiques->combat;
             break;
+
+        case MUSIC_BOSS:
+            musique = musiques->boss;
+            break;
+        
         
         default:
             musique = musiques->menu_principal;
