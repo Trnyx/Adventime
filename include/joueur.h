@@ -32,6 +32,8 @@
 #define JOUEUR_DEFENSE_DEFAUT 10
 #define JOUEUR_PV_DEFAUT 20
 
+#define JOUEUR_COOLDOWN_ATTAQUE 1
+
 
 
 
@@ -54,6 +56,9 @@ typedef struct s_action_flags {
     // Intéractions
     int interaction;
 
+    // Attaque
+    int attack;
+
     // Autres
     int miniMap;
 } t_action_flags;
@@ -72,6 +77,8 @@ typedef struct s_joueur {
     e_mapType map;                  /**< */
 
     t_boss_flags bossFlags;         /**< */
+
+    int cooldownAttaque;            /**< */
     
 } t_joueur;
 

@@ -17,11 +17,41 @@
 #include <math.h>
 #include <SDL2/SDL.h>
 
+#include "../include/moteur.h"
 #include "../include/joueur.h"
 #include "../include/camera.h"
-#include "../include/moteur.h"
+#include "../include/combat.h"
 
 
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                Verifications                               */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
+ * @param joueur 
+ * @return boolean 
+ */
+boolean peutAttaquer(t_joueur *joueur) {
+    return moteur->frame - joueur->timestampActualisation >= joueur->cooldownAttaque;
+}
+
+
+
+/**
+ * @brief 
+ * 
+ * @param flags 
+ * @return boolean 
+ */
+boolean doitAttaquer(t_action_flags *flags) {
+    return flags->attack;
+}
 
 
 
@@ -34,6 +64,14 @@
 boolean doitSeDeplacer(t_action_flags *flags) {
     return flags->up || flags->down || flags->left || flags->right;
 }
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                     Get                                    */
+/* -------------------------------------------------------------------------- */
 
 
 /**
@@ -68,38 +106,21 @@ void getDirectionJoueur(t_joueur *joueur) {
 
 
 float getOrientationJoueur(t_joueur *joueur) {
-    // int x, y;
-    // SDL_GetMouseState(&x, &y);
-    // printf("Souris : %i : %i\n", x, y);
-    
-    // float angle = atan2(720 / 2 - y, 1280 / 2 - x) * (180 / M_PI);
-    // if (angle < 0)
-    //     angle = 360 - (-angle);
-
     const t_vecteur2 centreEcran = {
         moteur->window_width / 2,
         moteur->window_height / 2,
     };
 
     return calculAngleEntrePoints(centreEcran, moteur->positionSouris);
-
-
-    // if (angle >= 45 && angle < 135)
-    //     joueur->orientation = NORD;
-    // else if (angle >= 135 && angle < 225)
-    //     joueur->orientation = EST;
-    // else if (angle >= 225 && angle < 315)
-    //     joueur->orientation = SUD;
-    // else
-    //     joueur->orientation = OUEST;
-
-
-    
-    // SDL_Log("Angle : %1.0f\n", angle);
 }
 
 
 
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Update                                   */
+/* -------------------------------------------------------------------------- */
 
 
 /**
@@ -109,18 +130,20 @@ float getOrientationJoueur(t_joueur *joueur) {
  * @return int 
  */
 int updateJoueur(t_joueur *joueur) {
-    // printf("Update Joueur => ");
-
     if (doitSeDeplacer(joueur->actionFlags)) {
-        // printf("Deplacement du joueur (N : %i / S : %i / O : %i / E : %i) => ", joueur->actionFlags->up, joueur->actionFlags->down, joueur->actionFlags->left, joueur->actionFlags->right);
         getDirectionJoueur(joueur);
-        deplacerEntite((t_entite*) joueur, joueur->statistiques.vitesse);
+        deplacerEntite((t_entite*)joueur, joueur->statistiques.vitesse);
     }
 
     const float angle = getOrientationJoueur(joueur);
-    orienterEntite(angle, (t_entite*) joueur);
+    orienterEntite(angle, (t_entite*)joueur);
 
-    // printf("Fin Update Joueur\n");
+
+    if (doitAttaquer(jouer->actionFlags) && peutAttaquer(joueur)) {
+        // joueurAttaque(joueur, angle);
+    }
+
+
     return 0;
 }
 
@@ -183,6 +206,7 @@ t_action_flags* initialiserActionFlags() {
     flags->down = 0;
     flags->left = 0;
     flags->right = 0;
+    flags->attack = 0;
     flags->interaction = 0;
     flags->miniMap = 0;
 
