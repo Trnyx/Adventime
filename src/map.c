@@ -195,6 +195,8 @@ void dessinerSol(t_map *map) {
 /* ------------------------------- Vegetations ------------------------------ */
 
 
+#define LARGEUR_ARBRE (3 * TAILLE_TILE)
+#define HAUTEUR_ARBRE (2 * TAILLE_TILE)
 int dessinerVegetal(const int tag, SDL_Rect *rendu) {
     SDL_Rect source;
     SDL_Rect renduVegetaux;
@@ -206,9 +208,9 @@ int dessinerVegetal(const int tag, SDL_Rect *rendu) {
             break;
             
         case CHAINE:
-        case SAPIN:
         case PALMIER:
-            splitTexture(&source, (2 * TAILLE_TILE * (tag % HERBE)),0, 3*TAILLE_TILE,2*TAILLE_TILE);
+        case SAPIN:
+            splitTexture(&source, (LARGEUR_ARBRE * (tag % HERBE)),0, LARGEUR_ARBRE,HAUTEUR_ARBRE);
             break;
 
 

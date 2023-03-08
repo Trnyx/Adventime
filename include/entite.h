@@ -22,6 +22,7 @@
 #include <SDL2/SDL.h>
 
 #include "utilitaire.h"
+#include "statistiques.h"
 
 
 
@@ -41,6 +42,20 @@ typedef enum {
     ENTITE_JOUEUR,
     ENTITE_MOB,
 } e_entiteType;
+
+
+/**
+ * @brief Enumérateur regroupant les différents tags des monstres
+ * 
+ * Un compteur du nombre de tags est également initialisé à la fin de l'énumérateur
+ */
+typedef enum {
+    TAG_AUCUN,
+    TAG_ANIMAL_VACHE,
+    TAG_ANIMAL_COCHON,
+    TAG_MONSTRE_BASIC,
+    NB_TAGS
+} e_entiteTag;
 
 
 /**
@@ -82,6 +97,7 @@ struct s_entite {
     e_orientation orientation;                                          /**< L'orientation (regard) actuelle de l'entité */
 
     e_entiteType entiteType;                                            /**< Le type de l'entité */
+    e_entiteTag tag;                                                    /**< Le tag de l'entité */
 
     SDL_Rect hitbox;                                                    /**< La hitbox de l'entité */
 
@@ -99,6 +115,11 @@ struct s_entite {
 
 
 typedef struct s_entiteVivante {
+    struct s_entite;
+    
+    // Statistiques
+    t_statistiques statistiques;            /**< Les statistiques du Mob */
+    t_baseStatistiques baseStatistiques;    /**< Les statistiques de base du MoMob */
 
 } t_entiteVivante;
 

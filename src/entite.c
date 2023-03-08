@@ -137,6 +137,7 @@ void orienterEntite(const float angle, t_entite *entite) {
 /* -------------------------------------------------------------------------- */
 
 
+#define TAILLE_SET (8 * TAILLE_TILE)
 /**
  * @brief 
  * 
@@ -146,6 +147,9 @@ void dessinerEntite(t_entite *entite) {
     SDL_Texture *texture = NULL;
     SDL_Rect sprite;
     sprite.h = sprite.w = TAILLE_TILE;
+    sprite.x = 0;
+    sprite.y = entite->orientation * TAILLE_TILE;
+
 
     SDL_Rect rendu;
     rendu.w = moteur->camera->tailleRendu.x;
@@ -161,7 +165,17 @@ void dessinerEntite(t_entite *entite) {
             break;
 
         case ENTITE_MOB:
-            texture = moteur->textures->monstres;
+            switch (entite->tag) {
+                case TAG_ANIMAL_VACHE: 
+                    texture = moteur->textures->animaux; 
+                    sprite.x = 0;
+                    break;
+                case TAG_MONSTRE_BASIC: 
+                    texture = moteur->textures->monstres; 
+                    sprite.x = (((t_monstre*)entite)->estNocturne ? NB_MONSTRE_TYPES * TAILLE_SET : ((t_monstre*)entite)->type) * (TAILLE_SET);
+                    break;
+                default: break;
+            }
             break;
 
         default:
@@ -169,8 +183,6 @@ void dessinerEntite(t_entite *entite) {
     }
 
 
-    sprite.x = 0;
-    sprite.y = entite->orientation * TAILLE_TILE;
 
 
     SDL_RenderCopy(moteur->renderer, texture, &sprite, &rendu);
@@ -232,6 +244,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->orientation = SUD;
 
     entite->entiteType = ENTITE_RIEN;
+    entite->tag = TAG_AUCUN;
 
     entite->hitbox.x = 0;
     entite->hitbox.y = 0;

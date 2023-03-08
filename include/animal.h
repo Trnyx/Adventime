@@ -31,19 +31,6 @@
 /* -------------------------------------------------------------------------- */
 
 
-/**
- * @brief Enumérateur regroupant les différents tags des animaux
- * 
- * Un compteur du nombre de tags est également initialisé à la fin de l'énumérateur
- */
-typedef enum {
-    ANIMAUX_VACHE,
-    ANIMAUX_COCHON,
-    ANIMAUX_POULET,
-    NB_ANIMAUX_TAGS
-} e_animalTag;
-
-
 
 
 
@@ -62,8 +49,6 @@ typedef struct s_animal {
     char* name;                             /**< Le nom de l'animal */
 
     int rayonDetection;                     /**< Le rayon dans lequel le joueur sera détecté */
-
-    e_animalTag tag;                        /**< Le tag de l'animal */
 } t_animal;
 
 

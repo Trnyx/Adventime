@@ -202,16 +202,18 @@ void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJo
     if (chunk != NULL) {
         // printf("Chunk => ");
         const e_biome biome = chunk->biome;
-        t_block *block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
+        if (biome != BIOME_PROFONDEUR){
+            t_block *block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
 
-        if (block != NULL) {
-            // printf("Block => ");
-            if (block->tag == VIDE) {
-                // printf("%i => ", block->tag);
-                t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
+            if (block != NULL) {
+                // printf("Block => ");
+                if (block->tag == VIDE) {
+                    // printf("%i => ", block->tag);
+                    t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
 
-                en_queue(entites);
-                ajout_droit(entites, (t_entite*)monstre);
+                    en_queue(entites);
+                    ajout_droit(entites, (t_entite*)monstre);
+                }
             }
         }
     }

@@ -17,7 +17,6 @@
 
 
 #include "entite.h"
-#include "statistiques.h"
 
 
 
@@ -79,15 +78,11 @@ typedef enum {
  * Un mob est une entité mobile (mob correspond à l'abreviation)
  */
 typedef struct s_mob {
-    struct s_entite;                        /**< inclue les bases d'une entité */
+    struct s_entiteVivante;                 /**< inclue les bases d'une entité */
 
     // 
     boolean aggressif;                      /**< Si le mob est aggressif */
     t_entite *cible;                        /**< La cible du mob */
-
-    // Statistiques
-    t_statistiques statistiques;            /**< Les statistiques du Mob */
-    t_baseStatistiques baseStatistiques;    /**< Les statistiques de base du MoMob */
 
 
     // Deplacement 
