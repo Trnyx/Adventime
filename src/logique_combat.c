@@ -47,15 +47,19 @@
 /* -------------------------------------------------------------------------- */
 
 
-boolean toucheLaCible(const t_vecteur2 mob, const t_vecteur2 cible) {
+#define OUVERTURE 20
+boolean toucheLaCible(const t_vecteur2 source, const t_vecteur2 cible, const float angleAttaque) {
     // Calcul la distance
-    const float distance = calculDistanceEntrePoints(mob, cible);
-    if (distance > 1.2)
+    const float distance = calculDistanceEntrePoints(source, cible);
+    // printf("\n\nDISTANCE : %1.2f\n", distance);
+    if (distance > 1.3)
         return FAUX;
 
     // Calcul l'angle
-    // const float angle = calculAngleEntrePoints(mob, cible);
-    // if (angle)
+    const float angleFinale = revolution(calculAngleEntrePoints(source, cible));
+    // printf("ANGLE ATTAQUE : %1.2f\nANGLE ENTRE SOURCE ET CIBLE : %1.2f \nMIN : %1.2f\nMAX : %1.2f\nMIN REVO : %1.2f\nMAX REVO : %1.2f\n\n", angleAttaque, angleFinale, angleAttaque + OUVERTURE / 2, angleAttaque - OUVERTURE / 2, revolution(angleAttaque + OUVERTURE / 2), revolution(angleAttaque - OUVERTURE / 2));
+    if (revolution(angleAttaque + OUVERTURE / 2) < angleFinale || revolution(angleAttaque - OUVERTURE / 2) > angleFinale)
+        return FAUX;
     
     return VRAI;
 }
@@ -95,9 +99,10 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
  * @param entite 
  * @param cible 
  */
-void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible) {
-    if (toucheLaCible(cible->position)) {
-        const float degat = calculDegat(mob->statistiques.attaque, cible->statistiques.defense, mob->statistiques.niveau, cible->statistiques.niveau);
+void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque) {
+    if (toucheLaCible(entite->position, cible->position, angleAttaque)) {
+        printf("CIBLE TOUCHE\n");
+        const float degat = calculDegat(entite->statistiques.attaque, cible->statistiques.defense, entite->statistiques.niveau, cible->statistiques.niveau);
         const boolean cibleEstMorte = appliquerDegat(cible, degat);
 
         if (cibleEstMorte) {
@@ -107,6 +112,8 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible) {
             mort((t_entite*)cible);
         }
     }
+    else
+        printf("CIBLE NON TOUCHE\n");
 }
 
 

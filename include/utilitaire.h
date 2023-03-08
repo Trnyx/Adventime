@@ -72,6 +72,7 @@ int getNombreAleatoire(const int min, const int max);
 
 float calculDistanceEntrePoints(const t_vecteur2 source, const t_vecteur2 cible);
 float calculAngleEntrePoints(const t_vecteur2 source, const t_vecteur2 cible);
+float revolution(const float angle);
 t_vecteur2 choisirPointDansRayon(const int rayon);
 
 

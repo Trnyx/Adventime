@@ -50,20 +50,37 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
  */
 boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 positionSuivante) {
     t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_OBJETS, map);
-    if (block == NULL) return FAUX;
+    if (block == NULL) 
+        return FAUX;
 
     // Check si le block est bien vide
-    if (block->tag != VIDE) return FAUX;
+    if (block->tag != VIDE) 
+        return FAUX;
 
-    block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_SOL, map);
+
     // Check si le block est un block profondeur
-    if (block->tag == SOL_EAU_PROFONDE) return FAUX;
+    block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_SOL, map);
+    if (block->tag == SOL_EAU_PROFONDE) 
+        return FAUX;
 
-    t_block* blockPositionActuelle = getBlockDansMap(entite->position.x, entite->position.y, COUCHE_SOL, map);
-    // printf("Position Actuelle : %i => ", blockPositionActuelle->tag);
 
     // Check si plus de 1 de hauteur 
-    if (abs(block->tag - blockPositionActuelle->tag) > 1) return FAUX;
+    t_block* blockPositionActuelle = getBlockDansMap(entite->position.x, entite->position.y, COUCHE_SOL, map);
+    if (abs(block->tag - blockPositionActuelle->tag) > 1) 
+        return FAUX;
+
+    
+    t_entite *entiteTempo = NULL;
+    // en_tete(map->entites);
+    // while (!hors_liste(map->entites)) {
+    //     valeur_elt(map->entites, &entiteTempo);
+
+    //     const float distance = calculDistanceEntreEntites(entite, entiteTempo);
+    //     if (distance <= 0.5)
+    //         return FAUX;
+
+    //     suivant(map->entites);
+    // }
 
 
     return VRAI;

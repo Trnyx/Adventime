@@ -22,7 +22,7 @@
 
 
 
-int updateMonstre(t_monstre *monstre, float distance, t_entite *cible) {
+int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
     // printf("Update Monstre => ");
 
     // Si le joueur est dans le rayon de détection du monstre
@@ -38,7 +38,7 @@ int updateMonstre(t_monstre *monstre, float distance, t_entite *cible) {
     
 
     if (monstre->deplacementType == DEPLACEMENT_COMBAT)
-        distance = calculDistanceEntreEntites((t_entite*)monstre, monstre->cible);
+        distance = calculDistanceEntreEntites((t_entite*)monstre, (t_entite*)monstre->cible);
 
     
     updateMob((t_mob*)monstre, distance);

@@ -45,6 +45,20 @@ int getNombreAvecProbabilite() {
 /**
  * @brief 
  * 
+ * @param angle 
+ * @return float 
+ */
+float revolution(const float angle) {
+    return angle - floor(angle / 360.0) * 360.0;
+}
+
+
+
+
+
+/**
+ * @brief 
+ * 
  * @param source 
  * @param cible 
  * @return float 
@@ -68,7 +82,7 @@ float calculAngleEntrePoints(const t_vecteur2 source, const t_vecteur2 cible) {
     float angle = atan2(source.y - cible.y, source.x - cible.x) * (180 / M_PI);
 
     if (angle < 0) 
-        angle = 360 - (-angle);
+        angle = revolution(angle);
 
     return angle;
 }
