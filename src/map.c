@@ -165,8 +165,8 @@ void dessinerSol(t_map *map) {
 
     for (float x = camera->origine.x - 1; x <= camera->position.x + TAILLE_CAMERA_DEMI_LARGEUR + 1; x++) {
         for (float y = camera->origine.y - 1; y <= camera->position.y + TAILLE_CAMERA_DEMI_HAUTEUR + 1; y++) {
-            rendu.x = positionRelativeEnPositionSurEcran(x, camera->offset.x, camera->origine.x, rendu.w) + rendu.w;
-            rendu.y = positionRelativeEnPositionSurEcran(y, camera->offset.y, camera->origine.y, rendu.h) + rendu.h;
+            rendu.x = positionRelativeEnPositionSurEcran(x, camera->offset.x, camera->origine.x, rendu.w);
+            rendu.y = positionRelativeEnPositionSurEcran(y, camera->offset.y, camera->origine.y, rendu.h);
 
 
             t_block *block = getBlockDansMap(x, y, COUCHE_SOL, map);

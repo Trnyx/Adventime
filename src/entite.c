@@ -172,8 +172,11 @@ void dessinerEntite(t_entite *entite) {
     rendu.w = moteur->camera->tailleRendu.x;
     rendu.h = moteur->camera->tailleRendu.y;
 
-    rendu.x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w); // positionnementEnPixel.x - offset.x;
-    rendu.y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h); // positionnementEnPixel.y - offset.y;
+    rendu.x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w) - rendu.w / 2;
+    rendu.y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h) - rendu.h / 2;
+
+    // SDL_SetRenderDrawColor(moteur->renderer, 255, 0, 0, 255);
+    // SDL_RenderFillRect(moteur->renderer, &rendu);
 
 
     switch (entite->entiteType) {
@@ -203,6 +206,9 @@ void dessinerEntite(t_entite *entite) {
 
 
     SDL_RenderCopy(moteur->renderer, texture, &sprite, &rendu);
+    // SDL_Rect point = {positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w), positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h), 4,4};
+    // SDL_SetRenderDrawColor(moteur->renderer, 0, 0, 0, 255);
+    // SDL_RenderFillRect(moteur->renderer, &point);
 }
 
 
