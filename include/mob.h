@@ -82,7 +82,7 @@ typedef struct s_mob {
 
     // 
     boolean aggressif;                      /**< Si le mob est aggressif */
-    t_entite *cible;                        /**< La cible du mob */
+    t_entiteVivante *cible;                 /**< La cible du mob */
 
 
     // Deplacement 

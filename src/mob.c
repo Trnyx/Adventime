@@ -38,26 +38,24 @@
 
 #include "../include/physique.h"
 #include "../include/utilitaire.h"
+#include "../include/moteur.h"
 #include "../include/mob.h"
 #include "../include/deplacement.h"
-#include "../include/moteur.h"
+#include "../include/combat.h"
 
 
 
-
-
-
-#define ATTAQUE_MODIFICATEUR 1.6
 
 
 void attaquer(t_mob *mob, const float distanceFinale) {
-    deplacerVers(mob, mob->statistiques.vitesse * ATTAQUE_MODIFICATEUR, mob->positionDeplacement);
+    deplacerVers(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_ATTAQUE, mob->positionDeplacement);
     
     if (distanceFinale < 1.0) {
         printf("COMBAT : TOUCHE\n");
+        metUnCoup((t_entiteVivante*)mob, (t_entiteVivante*)mob->cible);
 
         mob->timestampAttaque = moteur->frame;
-        mob->delaiAttenteAttaque = getNombreAleatoire(3, 8);
+        mob->delaiAttenteAttaque = getNombreAleatoire(2, 5);
         mob->operation = ATTENTE;
     }
 }

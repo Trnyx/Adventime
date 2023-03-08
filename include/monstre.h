@@ -89,12 +89,8 @@ typedef struct s_baseStatistiquesIntervales {
  */
 typedef struct s_boss_flags {
     unsigned int lundi;
-    unsigned int mardi;
     unsigned int mercredi;
-    unsigned int jeudi;
     unsigned int vendredi;
-    unsigned int samedi;
-    unsigned int dimanche;
 } t_boss_flags;
 
 

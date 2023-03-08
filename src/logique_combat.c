@@ -19,6 +19,7 @@
 #include "../include/moteur.h"
 #include "../include/mob.h"
 #include "../include/deplacement.h"
+#include "../include/combat.h"
 
 
 
@@ -48,7 +49,14 @@
 
 boolean toucheLaCible(const t_vecteur2 mob, const t_vecteur2 cible) {
     // Calcul la distance
+    const float distance = calculDistanceEntrePoints(mob, cible);
+    if (distance > 1.2)
+        return FAUX;
+
     // Calcul l'angle
+    // const float angle = calculAngleEntrePoints(mob, cible);
+    // if (angle)
+    
     return VRAI;
 }
 
@@ -67,32 +75,36 @@ float calculDegat(const int pointAttaque, const int pointDefense, const int nive
 /**
  * @brief 
  * 
- * @param mob Le mob qui subbit les dégats
- * @param degat Les dégats à infliger au mob
- * @return VRAI si le mob est mort
+ * @param entite L'entité qui subbit les dégats
+ * @param degat Les dégats à infliger
+ * @return VRAI si l'entité est mort
  */
-boolean appliquerDegat(t_mob *mob, const float degat) {
-    mob->statistiques.pv -= degat;
+boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
+    entite->statistiques.pv -= degat;
 
-    return mob->statistiques.pv <= 0;
+    return entite->statistiques.pv <= 0;
 }
+
+
 
 
 
 /**
  * @brief 
  * 
- * @param mob 
+ * @param entite 
  * @param cible 
  */
-void metUncoup(t_mob *mob, t_mob *cible) {
+void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible) {
     if (toucheLaCible(cible->position)) {
         const float degat = calculDegat(mob->statistiques.attaque, cible->statistiques.defense, mob->statistiques.niveau, cible->statistiques.niveau);
         const boolean cibleEstMorte = appliquerDegat(cible, degat);
 
         if (cibleEstMorte) {
-            //
-            cible->detruire(&cible);
+            // Calcul experience
+            // distribution experience
+            // drops items
+            mort((t_entite*)cible);
         }
     }
 }

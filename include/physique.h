@@ -101,7 +101,7 @@
 //
 #define MOB_VITESSE_MODIFICATEUR_ELOIGNEMENT 0.8
 //
-#define MOB_VITESSE_MODIFICATEUR_ATTAQUE 1.1
+#define MOB_VITESSE_MODIFICATEUR_ATTAQUE 1.6
 
 
 // La durée maximale de déplacement d'un mob [en seconde]
