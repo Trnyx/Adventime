@@ -53,56 +53,56 @@ const t_baseBiome basesBiomes[] = {
     { 
         BIOME_LAC, 0, 
         // Sol
-        { SOL_EAU, SOL_SABLE }, { 70, 30 },
+        { SOL_EAU, SOL_SABLE }, { 70, 100 },
         // Vegetations
         { PALMIER }, { 100 }, 0.0,
         // Monstres
-        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_EAU }, { 15, 85 },
+        { MONSTRE_TYPE_NORMAL }, { 100 },
     },
   
   
     { 
         BIOME_PLAINE, 1, 
         // Sol
-        { SOL_HERBE_1, SOL_HERBE_2 }, { 55, 45 }, 
+        { SOL_HERBE_1, SOL_HERBE_2 }, { 55, 100 }, 
         // Vegetations
-        { CHAINE }, { 30 }, 1.0,
+        { CHAINE }, { 100 }, 1.0,
         // Monstres
-        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 90, 10 },
+        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 90, 100 },
     },
   
   
     { 
         BIOME_FORET, 1, 
         // Sol
-        { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 20, 55, 35 }, 
+        { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 20, 65, 100 }, 
         // Vegetations
-        { CHAINE }, { 100 }, 3.0,
+        { CHAINE, SAPIN }, { 80, 100 }, 3.0,
         // Monstres
-        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 30, 70 },
+        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 10, 100 },
     },
   
   
     { 
         BIOME_MONTAGNE, 2, 
         // Sol
-        { SOL_MONTAGNE_1, SOL_MONTAGNE_2 }, { 50, 50 }, 
+        { SOL_MONTAGNE_1, SOL_MONTAGNE_2 }, { 50, 100 }, 
         // Vegetations
         { SAPIN }, { 100 }, 0.7,
         // Monstres
-        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_MONTAGNARD }, { 15, 85 },
+        { MONSTRE_TYPE_MONTAGNARD }, { 100 },
     },
   
   
-    { 
-        BIOME_DESERT, 1, 
-        // Sol
-        { SOL_SABLE, SOL_HERBE_1 }, { 90, 10 }, 
-        // Vegetations
-        { PALMIER }, { 100 }, 0.7,
-        // Monstres
-        { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_DESERTIQUE }, { 10, 90 },
-    },
+    // { 
+    //     BIOME_DESERT, 1, 
+    //     // Sol
+    //     { SOL_SABLE, SOL_HERBE_1 }, { 90, 10 }, 
+    //     // Vegetations
+    //     { PALMIER }, { 100 }, 0.7,
+    //     // Monstres
+    //     { MONSTRE_TYPE_DESERTIQUE }, { 100 },
+    // },
 };
 
 
@@ -145,7 +145,7 @@ const t_baseVegetal basesVegetaux[] = {
 const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONSTRE_TYPES] = {
     { { 60, 70 }, { 60, 70 }, { 10, 10 }, 80, { 0 } }, // NORMAL
     { { 65, 75 }, { 55, 65 }, { 15, 15 }, 80, { 0 } }, // PLANTE
-    { { 55, 65 }, { 60, 70 }, { 10, 10 }, 90, { 0 } }, // EAU
+    // { { 55, 65 }, { 60, 70 }, { 10, 10 }, 90, { 0 } }, // EAU
     { { 55, 65 }, { 75, 85 }, { 15, 15 }, 80, { 0 } }, // MONTAGNARD
-    { { 70, 75 }, { 70, 75 }, { 10, 10 }, 90, { 0 } }, // DESERTIQUE
+    // { { 70, 75 }, { 70, 75 }, { 10, 10 }, 90, { 0 } }, // DESERTIQUE
 };

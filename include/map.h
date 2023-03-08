@@ -79,7 +79,7 @@ typedef enum {
     BIOME_PLAINE,
     BIOME_FORET,
     BIOME_MONTAGNE,
-    BIOME_DESERT,
+    // BIOME_DESERT,
     NB_BIOMES
 } e_biome;
 
@@ -91,9 +91,9 @@ typedef enum {
     PROBA_BIOME_PROFONDEUR = 0,
     PROBA_BIOME_LAC = 15,
     PROBA_BIOME_PLAINE = 45,
-    PROBA_BIOME_FORET = 65,
-    PROBA_BIOME_MONTAGNE = 80,
-    PROBA_BIOME_DESERT = 100,
+    PROBA_BIOME_FORET = 70,
+    PROBA_BIOME_MONTAGNE = 100,
+    // PROBA_BIOME_DESERT = 100,
 } e_biomeProba;
 
 
