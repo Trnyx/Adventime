@@ -35,6 +35,7 @@ void initAll(t_moteur **moteur, t_audio **audio) {
     const t_vecteur2 positionCamera = { 0, 0 };
     (*moteur)->camera = creerCamera(positionCamera);
     (*moteur)->textures = initTextures((*moteur)->renderer);
+    (*moteur)->cache = initCache();
     (*moteur)->temps = initTemps(time(NULL));
 
 
@@ -63,13 +64,14 @@ void initAll(t_moteur **moteur, t_audio **audio) {
 
 void detruireAll(t_moteur *moteur, t_audio *audio) {
     nk_sdl_shutdown();
+    t_cache *cache = moteur->cache;
 
-    if (moteur->monde != NULL) {
+    if (cache->monde != NULL) {
         
-        if (moteur->monde->joueur != NULL) 
-            detruireJoueur(&moteur->monde->joueur);
+        if (cache->monde->joueur != NULL) 
+            detruireJoueur(&cache->monde->joueur);
 
-        detruireMonde(&moteur->monde);
+        detruireCache(&cache);
         detruireTemps(&moteur->temps);
     }
     

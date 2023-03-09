@@ -80,9 +80,9 @@ t_moteur* initMoteur() {
     m->textures = NULL;
     initControles(&m->controles);
     
-    m->monde = NULL;
     m->temps = NULL;
 
+    m->cache = NULL;
     m->frame = SDL_GetTicks();
 
 

@@ -109,7 +109,7 @@ boolean deplacerEntite(t_entite *entite, const float vitesse) {
     // printf("(distance : %1.2f, normale : %1.2f) ", distance, normale);
     // printf("Position suivante : %1.2f:%1.2f => ", positionSuivante.x, positionSuivante.y);
     
-    boolean peutSeDeplacer = peutDeplacerEntite(moteur->monde->map, entite, positionSuivante);
+    boolean peutSeDeplacer = peutDeplacerEntite(moteur->cache->map, entite, positionSuivante);
     // printf("Peut se deplacer ? %i => ", peutSeDeplacer);
 
 

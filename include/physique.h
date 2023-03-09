@@ -15,7 +15,6 @@
 #include "map.h"
 #include "joueur.h"
 #include "temps.h"
-#include "liste.h"
 
 
 
@@ -143,5 +142,5 @@
 /* -------------------------------------------------------------------------- */
 
 
-void update(t_map *map, t_joueur *joueur, t_liste *entitesCache);
+void update(t_map *map, t_joueur *joueur);
 

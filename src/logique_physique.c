@@ -92,7 +92,7 @@ static void suppressionEntite(t_liste *entites, t_entite *entite) {
  * 
  * Elle gère toute la physique et logique du jeu
  */
-void update(t_map *map, t_joueur *joueur, t_liste *entitesCache) {
+void update(t_map *map, t_joueur *joueur) {
     // regulerFPS();
     // // printf("Update (%li)\n", u++);
     // t_monde *monde = moteur->monde;
@@ -106,7 +106,7 @@ void update(t_map *map, t_joueur *joueur, t_liste *entitesCache) {
     // }
 
 
-    t_liste *entites = map->entites;
+    t_liste *entites = moteur->cache->entites;
     t_entite *entite = NULL;
 
     unsigned int nombreEntites = 0;

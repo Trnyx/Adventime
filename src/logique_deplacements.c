@@ -250,7 +250,7 @@ int deplacementCombat(t_mob *mob, const float distanceJoueur) {
     //  Le monstre recul
 
 
-    t_joueur *joueur = moteur->monde->joueur;
+    t_joueur *joueur = moteur->cache->monde->joueur;
 
 
 

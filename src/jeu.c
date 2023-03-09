@@ -91,10 +91,11 @@ static int adventime(t_monde *monde) {
     t_map *map = loadMap(monde, mapType);
     updateCamera(joueur->position);
 
-    t_liste *entitesCache = malloc(sizeof(t_liste));
-    init_liste(entitesCache);
 
-    chargerEntitesDansCache(entitesCache, map->entites);
+
+    /* ---------------------------------- Cache --------------------------------- */
+    moteur->cache->map = map;
+    chargerEntitesDansCache(moteur->cache->entites, map->entites);
 
 
     int continuer = 1;
@@ -102,7 +103,7 @@ static int adventime(t_monde *monde) {
         regulerFPS();
 
         continuer = inputManager(joueur);
-        update(map, joueur, entitesCache);
+        update(map, joueur);
 
 
         // Dès qu'on change de zone (map)
@@ -120,7 +121,7 @@ static int adventime(t_monde *monde) {
 
 
     // Sauvegarde du monde complete ici
-    viderEntitesDeListe(entitesCache);
+    viderEntitesDeListe(moteur->cache->entites);
     viderEntitesDeListe(map->entites);
     return continuer;
 }
@@ -135,11 +136,12 @@ static int adventime(t_monde *monde) {
 static int nouveauMonde() {
     int seed = -1;
     t_monde *monde = creerMonde(seed);
-    moteur->monde = monde;
 
-    const t_vecteur2 positionJoueur = getPointApparitionJoueur(monde->map);
+    const t_vecteur2 positionJoueur = getPointApparitionJoueur(monde->overworld);
     monde->joueur = creerJoueur(positionJoueur);
 
+    /* ---------------------------------- Cache --------------------------------- */
+    moteur->cache->monde = monde;
 
     return adventime(monde);
 }

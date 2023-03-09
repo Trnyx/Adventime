@@ -21,7 +21,7 @@
 #include "utilitaire.h"
 #include "textures.h"
 #include "camera.h"
-#include "monde.h"
+#include "cache.h"
 
 
 
@@ -75,13 +75,13 @@ typedef struct s_moteur {
     int window_height;              /**< Hauteur de la fenêtre */
     t_vecteur2 positionSouris;      /**< La position de la souris sur l'écran*/
 
-
-    t_monde *monde;                 /**< Le monde chargé */
     
     t_camera *camera;               /**< La caméra */
     t_textures *textures;           /**< Toutes les textures du jeu */
     t_controles controles;          /**< Les contrôles du jeu */
     
+
+    t_cache *cache;                 /**< Cache du jeu */
     t_temps *temps;                 /**< Le temps dans le jeu */
     unsigned int frame;             /**< Le timestamp (tick) de la drame actuelle */
 
