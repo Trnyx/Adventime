@@ -18,6 +18,7 @@
 #include "../include/utilitaire.h"
 #include "../include/moteur.h"
 #include "../include/audio.h"
+#include "../include/menus.h"
 
 
 
@@ -322,6 +323,8 @@ void update() {
 
     /* ------------------------ Affichage à l'utilisateur ----------------------- */
 
+    updateHUD(ctx, joueur);
+	
     SDL_RenderPresent(moteur->renderer);
     SDL_RenderClear(moteur->renderer);
     

@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
 
 	// moteur = NULL;
 	// audio = NULL;
-	struct nk_context *ctx = NULL;
+
 	
 	state_main state = 1;
 	

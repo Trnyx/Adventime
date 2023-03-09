@@ -32,6 +32,8 @@
  * @return     void
  */
 
+struct nk_context *ctx = NULL;
+
 state_main main_menu(struct nk_context *ctx) {
 
   /* set_style(ctx, THEME_BLUE); */
@@ -319,3 +321,33 @@ state_main menu_options(struct nk_context *ctx) {
   }
   return click;
 }
+
+
+void updateHUD(struct nk_context *ctx, t_joueur * joueur) {
+
+  ctx->style.window.background = nk_rgba(0, 0, 0, 0);
+  ctx->style.window.fixed_background = nk_style_item_color(nk_rgba(0, 0, 0, 0));
+  ctx->style.window.border_color = nk_rgba(0, 0, 0, 0);
+  ctx->style.window.border = 1;
+
+  ctx->style.progress.cursor_normal = nk_style_item_color(nk_rgba(223, 46, 56, 255));
+
+  nk_size current = 50;
+  nk_size max = 100;
+
+  if (nk_begin(ctx, "HUD",
+	       nk_rect(0, 0, 350,40),
+                 (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
+
+    nk_layout_space_begin(ctx, NK_STATIC, 0, 1);
+          nk_layout_space_push(ctx, nk_rect(5,5, 350, 30));
+    nk_progress(ctx, &current, max, NK_FIXED);
+    nk_layout_space_end(ctx);
+  }
+
+  nk_end(ctx);
+  
+  nk_sdl_render(NK_ANTI_ALIASING_ON);
+  
+}
+
