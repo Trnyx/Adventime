@@ -18,7 +18,6 @@
 #include "../include/utilitaire.h"
 #include "../include/moteur.h"
 #include "../include/audio.h"
-#include "../include/entite.h"
 #include "../include/mob.h"
 
 
@@ -93,18 +92,18 @@ static void suppressionEntite(t_liste *entites, t_entite *entite) {
  * 
  * Elle gère toute la physique et logique du jeu
  */
-void update() {
-    regulerFPS();
-    // printf("Update (%li)\n", u++);
-    t_monde *monde = moteur->monde;
-    t_joueur *joueur = monde->joueur;
+void update(t_map *map, t_joueur *joueur, t_liste *entitesCache) {
+    // regulerFPS();
+    // // printf("Update (%li)\n", u++);
+    // t_monde *monde = moteur->monde;
+    // t_joueur *joueur = monde->joueur;
 
 
-    t_map *map = NULL;
-    switch (joueur->map) {
-        case MAP_OVERWORLD: map = monde->map; break;
-        case MAP_CAVE: map = monde->map; break;
-    }
+    // t_map *map = NULL;
+    // switch (joueur->map) {
+    //     case MAP_OVERWORLD: map = monde->map; break;
+    //     case MAP_CAVE: map = monde->map; break;
+    // }
 
 
     t_liste *entites = map->entites;
