@@ -33,18 +33,20 @@
 
 
 static void chargerEntitesDansCache(t_liste *cache, t_liste *entitesActuelles) {
-    en_tete(entitesActuelles);
-    en_tete(cache);
+    if (!liste_vide(entitesActuelles)) {
+        en_tete(entitesActuelles);
+        en_tete(cache);
 
-    t_entite *entite = NULL;
+        t_entite *entite = NULL;
 
-    while (!hors_liste(entitesActuelles)) {
-        valeur_elt(entitesActuelles, &entite);
+        while (!hors_liste(entitesActuelles)) {
+            valeur_elt(entitesActuelles, &entite);
 
-        ajout_droit(cache, entite);
-        
-        suivant(entitesActuelles);
-        suivant(cache);
+            ajout_droit(cache, entite);
+            
+            suivant(entitesActuelles);
+            suivant(cache);
+        }
     }
 }
 
@@ -68,16 +70,29 @@ static void viderEntitesDeListe(t_liste *liste) {
 
 
 static t_map* loadMap(t_monde *monde, e_mapType type) {
+    t_map *map = NULL;
+
+    
     switch (type) {
         case MAP_OVERWORLD: 
-            return monde->overworld;
+            map = monde->overworld;
+            break;
         case MAP_CAVE: 
-            return monde->overworld;
+            map = monde->overworld;
+            break;
         // case MAP_BOSS_TEMPLE: 
-        //    return getTempleBoss();
+        //    map = getTempleBoss();
+        //    break;
         default: 
-            return NULL;
+            break;
     }
+
+
+    /* ---------------------------------- Cache --------------------------------- */
+    chargerEntitesDansCache(moteur->cache->entites, map->entites);
+    moteur->cache->map = map;
+
+    return map;
 }
 
 
@@ -85,17 +100,12 @@ static t_map* loadMap(t_monde *monde, e_mapType type) {
 
 
 static int adventime(t_monde *monde) {
+    t_cache *cache = moteur->cache;
     t_joueur *joueur = monde->joueur;
 
     e_mapType mapType = joueur->map;
-    t_map *map = loadMap(monde, mapType);
+    loadMap(monde, mapType);
     updateCamera(joueur->position);
-
-
-
-    /* ---------------------------------- Cache --------------------------------- */
-    moteur->cache->map = map;
-    chargerEntitesDansCache(moteur->cache->entites, map->entites);
 
 
     int continuer = 1;
@@ -103,7 +113,7 @@ static int adventime(t_monde *monde) {
         regulerFPS();
 
         continuer = inputManager(joueur);
-        update(map, joueur);
+        update(cache->map, joueur);
 
 
         // Dès qu'on change de zone (map)
@@ -115,14 +125,18 @@ static int adventime(t_monde *monde) {
         if (mapType != joueur->map) {
             mapType = joueur->map;
             // sauvegarde
-            map = loadMap(monde, mapType);
+
+            viderEntitesDeListe(cache->entites);
+            loadMap(monde, mapType);
         }
     }
 
 
-    // Sauvegarde du monde complete ici
-    viderEntitesDeListe(moteur->cache->entites);
-    viderEntitesDeListe(map->entites);
+    // Sauvegarde du monde complet ici
+
+    viderEntitesDeListe(cache->entites);
+    viderEntitesDeListe(cache->map->entites);
+
     return continuer;
 }
 

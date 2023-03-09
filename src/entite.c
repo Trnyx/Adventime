@@ -259,6 +259,8 @@ t_entite* creerEntite(const t_vecteur2 position) {
         return NULL;
     }
 
+    entite->id = 0;
+
 
     entite->position.x = position.x;
     entite->position.y = position.y;
