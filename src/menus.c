@@ -332,11 +332,11 @@ void updateHUD(struct nk_context *ctx, t_joueur * joueur) {
 
   ctx->style.progress.cursor_normal = nk_style_item_color(nk_rgba(223, 46, 56, 255));
 
-  nk_size current = 50;
-  nk_size max = 100;
+  nk_size current = joueur->statistiques.pv;
+  nk_size max = joueur->statistiques.pvMax;
 
   if (nk_begin(ctx, "HUD",
-	       nk_rect(0, 0, 350,40),
+	       nk_rect(0, 0, 370,50),
                  (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
 
     nk_layout_space_begin(ctx, NK_STATIC, 0, 1);
