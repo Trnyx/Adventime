@@ -70,7 +70,7 @@ boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 
         return FAUX;
 
     
-    t_entite *entiteTempo = NULL;
+    // t_entite *entiteTempo = NULL;
     // en_tete(map->entites);
     // while (!hors_liste(map->entites)) {
     //     valeur_elt(map->entites, &entiteTempo);

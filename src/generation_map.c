@@ -679,11 +679,8 @@ t_map* genererMap(e_mapType type) {
         return NULL;
     }
 
-    map->entites = malloc(sizeof(t_liste));
-    init_liste(map->entites);
 
-    map->type = type;
-    
+    map->type = type;     
 
     switch (type) {
         case MAP_OVERWORLD: genererOverworld(map); break;
@@ -691,6 +688,12 @@ t_map* genererMap(e_mapType type) {
         default:
             break;
     }
+
+
+    // map->nombreEntites = 0;
+    // map->entites = NULL;
+    map->entites = malloc(sizeof(t_liste));
+    init_liste(map->entites);
     
 
     printf("Succes\n");

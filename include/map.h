@@ -155,6 +155,8 @@ typedef struct s_map {
     e_mapType type;             /**< */
     t_chunk *chunks;            /**< */
 
+    // int nombreEntites;          /**< */
+    // t_entite **entites;         /**< */
     t_liste *entites;           /**< */
 
     t_monstre *boss;            /**< */

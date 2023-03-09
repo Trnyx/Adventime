@@ -199,7 +199,7 @@ void genererVegetations(t_map *map) {
             if (chunk == NULL) continue;
             if (chunk->biome == BIOME_PROFONDEUR) continue;
 
-            const t_baseBiome baseBiome = basesBiomes[chunk->biome];
+            // const t_baseBiome baseBiome = basesBiomes[chunk->biome];
             t_diskSampling vegetaux = genererDiskSampling(chunk);
           
             for (int i = 0; i < vegetaux.nbVegetaux; i++) {
