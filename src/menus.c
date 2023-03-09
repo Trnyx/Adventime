@@ -8,6 +8,7 @@
  * @version 	1.0
  */
 
+#include <stdio.h>
 #define NK_IMPLEMENTATION
 #define NK_INCLUDE_FIXED_TYPES
 #define NK_INCLUDE_DEFAULT_ALLOCATOR
@@ -18,8 +19,8 @@
 // #define NK_INCLUDE_STANDARD_VARARGS
 #define NK_SDL_RENDERER_IMPLEMENTATION
 
-#include "../include/moteur.h"
 #include "../include/menus.h"
+#include "../include/moteur.h"
 
 /**
  * @brief      Fait le menu principal du jeu
@@ -93,7 +94,10 @@ state_main main_menu(struct nk_context *ctx) {
         click = JEU_QUITTER;
       }
       nk_sdl_handle_event(&evt);
-      if((evt.type==SDL_MOUSEBUTTONUP)||(evt.type==SDL_MOUSEBUTTONDOWN)||(evt.type==SDL_KEYUP)||(evt.type==SDL_KEYDOWN)) break;
+      if ((evt.type == SDL_MOUSEBUTTONUP) ||
+          (evt.type == SDL_MOUSEBUTTONDOWN) || (evt.type == SDL_KEYUP) ||
+          (evt.type == SDL_KEYDOWN))
+        break;
     }
     nk_input_end(ctx);
 
@@ -109,7 +113,7 @@ state_main main_menu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.6), 300, 50));
       if (nk_button_label(ctx, "Jouer")) {
-	SDL_DestroyTexture(texture);
+        SDL_DestroyTexture(texture);
         SDL_FreeSurface(bg_img);
         click = M_JOUER;
       }
@@ -176,10 +180,14 @@ state_main menu_options(struct nk_context *ctx) {
 
   int hovered = 1;
   int screen_size = 0;
-  static float value = 50.f;
+  int previous_size = screen_size;
+  
+  static float value_general = 50.f;
+  static float value_musiques = 50.f;
+  static float value_bruitages = 50.f;
   static int check = 1;
 
-  static const char *size[] = {"1920x1080","1280x720"};
+  static const char *size[] = {"1920x1080", "1280x720"};
 
   while (click == 0) {
     SDL_RenderClear(moteur->renderer);
@@ -190,7 +198,10 @@ state_main menu_options(struct nk_context *ctx) {
         click = JEU_QUITTER;
       }
       nk_sdl_handle_event(&evt);
-      if((evt.type==SDL_MOUSEBUTTONUP)||(evt.type==SDL_MOUSEBUTTONDOWN)||(evt.type==SDL_KEYUP)||(evt.type==SDL_KEYDOWN)) break;
+      if ((evt.type == SDL_MOUSEBUTTONUP) ||
+          (evt.type == SDL_MOUSEBUTTONDOWN) || (evt.type == SDL_KEYUP) ||
+          (evt.type == SDL_KEYDOWN))
+        break;
     }
     nk_input_end(ctx);
 
@@ -198,44 +209,88 @@ state_main menu_options(struct nk_context *ctx) {
                  nk_rect(0, 0, moteur->window_width, moteur->window_height),
                  (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
 
-      nk_layout_space_begin(ctx, NK_STATIC, 0, 5);
+      nk_layout_space_begin(ctx, NK_STATIC, 0, 8);
 
       nk_layout_space_push(
-          ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
+          ctx, nk_rect(((float)moteur->window_width * 0.25) - 300.0 / 2,
                        (moteur->window_height * 0.1), 300, 50));
 
-      nk_label(ctx, "Volume", NK_TEXT_CENTERED);
+      nk_label(ctx, "Volume général", NK_TEXT_CENTERED);
 
       nk_layout_space_push(
-          ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
-                       (moteur->window_height * 0.13), 300, 50));
+          ctx, nk_rect(((float)moteur->window_width * 0.25) - 300.0 / 2,
+                       (moteur->window_height * 0.15), 300, 50));
 
-      nk_slider_float(ctx, 0, &value, 100.0f, 1.0f);
-
-      nk_layout_space_push(
-			   ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
-					(moteur->window_height * 0.2), 300, 50));
-
-      screen_size = nk_combo(ctx, size, NK_LEN(size), screen_size, 25, nk_vec2(200, 200)); 
+      nk_slider_float(ctx, 0, &value_general, 100.0f, 1.0f);
 
       nk_layout_space_push(
-			   ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
-					(moteur->window_height * 0.3), 300, 50));
-      
+          ctx, nk_rect(((float)moteur->window_width * 0.25) - 300.0 / 2,
+                       (moteur->window_height * 0.2), 300, 50));
+
+      nk_label(ctx, "Musiques", NK_TEXT_CENTERED);
+
+      nk_layout_space_push(
+          ctx, nk_rect(((float)moteur->window_width * 0.25) - 300.0 / 2,
+                       (moteur->window_height * 0.25), 300, 50));
+
+      nk_slider_float(ctx, 0, &value_musiques, 100.0f, 1.0f);
+
+      nk_layout_space_push(
+          ctx, nk_rect(((float)moteur->window_width * 0.25) - 300.0 / 2,
+                       (moteur->window_height * 0.3), 300, 50));
+
+      nk_label(ctx, "Bruitages", NK_TEXT_CENTERED);
+
+      nk_layout_space_push(
+          ctx, nk_rect(((float)moteur->window_width * 0.25) - 300.0 / 2,
+                       (moteur->window_height * 0.35), 300, 50));
+
+      nk_slider_float(ctx, 0, &value_bruitages, 100.0f, 1.0f);
+
+      nk_layout_space_push(
+          ctx, nk_rect(((float)moteur->window_width * 0.7) - 300.0 / 2,
+                       (moteur->window_height * 0.2), 300, 50));
+
+      nk_label(ctx, "Résolution", NK_TEXT_CENTERED);
+
+      nk_layout_space_push(
+          ctx, nk_rect(((float)moteur->window_width * 0.7) - 300.0 / 2,
+                       (moteur->window_height * 0.28), 300, 40));
+
+      screen_size = nk_combo(ctx, size, NK_LEN(size), screen_size, 25,nk_vec2(200, 200));
+
+      if(screen_size != previous_size) {
+	
+	switch (screen_size) {
+	case 0: moteur->window_width = 1920; moteur->window_height = 1080; break;
+	case 1: moteur->window_width = 1280; moteur->window_height = 720;  break;
+	}
+	
+	previous_size = screen_size;
+	SDL_SetWindowSize(moteur->window, moteur->window_width, moteur->window_height);
+	updateEchelle(moteur);
+      }
+
+      nk_layout_space_push(
+          ctx, nk_rect(((float)moteur->window_width * 0.7) - 300.0 / 2,
+                       (moteur->window_height * 0.30), 300, 50));
+
       nk_label(ctx, "Plein écran", NK_TEXT_LEFT);
 
-            nk_layout_space_push(
-			   ctx, nk_rect(((float)moteur->window_width / 2) + 300.0 / 2,
-					(moteur->window_height * 0.3), 300, 50));
-	    
-      if(nk_checkbox_label(ctx, "", &check)) {
-	if (check) {
-	  SDL_SetWindowFullscreen(moteur->window, 0);
-	  updateEchelle(moteur);
-	} else {
-	  SDL_SetWindowFullscreen(moteur->window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-	  updateEchelle(moteur);
-	}
+      nk_layout_space_push(
+          ctx, nk_rect(((float)moteur->window_width * 0.7) + 270.0 / 2,
+                       (moteur->window_height * 0.30), 300, 50));
+
+      if (nk_checkbox_label(ctx, "", &check)) {
+        if (check) {
+          SDL_SetWindowFullscreen(moteur->window, 0);
+	  SDL_SetWindowSize(moteur->window, moteur->window_width, moteur->window_height);
+          updateEchelle(moteur);
+        } else {
+          SDL_SetWindowFullscreen(moteur->window,
+                                  SDL_WINDOW_FULLSCREEN_DESKTOP);
+          updateEchelle(moteur);
+        }
       }
 
       nk_layout_space_push(
