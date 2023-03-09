@@ -34,8 +34,6 @@ typedef struct s_monde {
 
     t_map *map;             /**< */
     t_joueur *joueur;       /**< */
-
-    t_temps *temps;         /**< Le temps dans le jeu */
 } t_monde;
 
 

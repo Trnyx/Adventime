@@ -120,7 +120,7 @@ void update() {
     // printf("TIME => ");
 
     unsigned int timestampFrame = SDL_GetTicks();
-    t_temps *temps = monde->temps;
+    t_temps *temps = moteur->temps;
     // printf("%i : %i\n", temps->heures, temps->minutes);
 
     gestionnaireTempsEvenements(temps, time(NULL));

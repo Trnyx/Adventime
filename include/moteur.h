@@ -82,6 +82,7 @@ typedef struct s_moteur {
     t_textures *textures;           /**< Toutes les textures du jeu */
     t_controles controles;          /**< Les contrôles du jeu */
     
+    t_temps *temps;                 /**< Le temps dans le jeu */
     unsigned int frame;             /**< Le timestamp (tick) de la drame actuelle */
 
 } t_moteur;

@@ -35,9 +35,14 @@ void initAll(t_moteur **moteur, t_audio **audio) {
     const t_vecteur2 positionCamera = { 0, 0 };
     (*moteur)->camera = creerCamera(positionCamera);
     (*moteur)->textures = initTextures((*moteur)->renderer);
+    (*moteur)->temps = initTemps(time(NULL));
 
+
+    // Methode d'affichage
+    // Pour le filtre de l'ambiance
     SDL_SetRenderDrawBlendMode((*moteur)->renderer, SDL_BLENDMODE_BLEND);
 
+    // Pour afficher le logo en tant qu'icon dans la barre des tâches lorsque le jeu est allumé
     SDL_Surface *logo = NULL;
     logo = IMG_Load("assets/images/logo.png");
     SDL_SetWindowIcon((*moteur)->window, logo);
@@ -65,6 +70,7 @@ void detruireAll(t_moteur *moteur, t_audio *audio) {
             detruireJoueur(&moteur->monde->joueur);
 
         detruireMonde(&moteur->monde);
+        detruireTemps(&moteur->temps);
     }
     
     detruireCamera(&moteur->camera);
