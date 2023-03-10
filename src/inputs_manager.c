@@ -124,7 +124,11 @@ int inputManager(t_joueur *joueur) {
                 switch (event.button.button) {
                     // Attaque
                     case SDL_BUTTON_LEFT:
-                        joueur->actionFlags->attack = 1;
+                        // Si le clique de la souris reste enfoncé on ignore en mettant à -1
+                        if (joueur->actionFlags->attack == 0)
+                            joueur->actionFlags->attack = 1;
+                        else
+                            joueur->actionFlags->attack = -1;
                         break;
 
                 }
@@ -140,6 +144,23 @@ int inputManager(t_joueur *joueur) {
                         break;
 
                 }
+                break;
+
+
+
+            /* --------------------------- Scroll de la souris -------------------------- */
+
+
+            case SDL_MOUSEWHEEL:
+                // Scroll vers le haut
+                if (event.wheel.y > 0) {
+
+                }
+                // Scroll vers le bas
+                else if (event.wheel.y < 0) {
+
+                }
+                
                 break;
 
 
