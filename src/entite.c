@@ -25,6 +25,43 @@
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                                     Get                                    */
+/* -------------------------------------------------------------------------- */
+
+
+t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range) {
+    t_liste *entitesActuelles = moteur->cache->entites;
+    t_liste entitesAlentours;
+    init_liste(&entitesAlentours);
+
+    t_entite *entite = NULL;
+
+
+    en_tete_cache(entitesActuelles);
+    while (!hors_liste_cache(entitesActuelles)) {
+        valeur_elt_cache(entitesActuelles, &entite);
+        const float distance = calculDistanceEntreEntites(centre, entite);
+
+        if (entite->entiteType == type && distance <= range)
+            ajout_droit(&entitesAlentours, entite);
+
+        suivant_cache(entitesActuelles);
+    }
+    
+
+    return entitesAlentours;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Calcul                                   */
+/* -------------------------------------------------------------------------- */
+
+
 /**
  * @brief 
  * 
@@ -38,6 +75,11 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
 
 
 
+
+
+/* -------------------------------------------------------------------------- */
+/*                          Deplacement & Orientation                         */
+/* -------------------------------------------------------------------------- */
 
 
 /**

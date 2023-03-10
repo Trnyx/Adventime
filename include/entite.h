@@ -23,6 +23,7 @@
 
 #include "utilitaire.h"
 #include "statistiques.h"
+#include "liste.h"
 
 
 
@@ -131,6 +132,8 @@ typedef struct s_entiteVivante {
 /*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
 
+
+t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range);
 
 t_entite* creerEntite(const t_vecteur2 position);
 void detruireEntite(t_entite **entite);

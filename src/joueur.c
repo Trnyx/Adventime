@@ -38,7 +38,7 @@
  * @return boolean 
  */
 boolean peutAttaquer(t_joueur *joueur) {
-    return moteur->frame - joueur->timestampActualisation >= joueur->cooldownAttaque;
+    return moteur->frame - joueur->timestampAttaque >= joueur->cooldownAttaque;
 }
 
 
@@ -50,7 +50,7 @@ boolean peutAttaquer(t_joueur *joueur) {
  * @return boolean 
  */
 boolean doitAttaquer(t_action_flags *flags) {
-    return flags->attack;
+    return flags->attack == 1;
 }
 
 
@@ -123,6 +123,32 @@ float getOrientationJoueur(t_joueur *joueur) {
 /* -------------------------------------------------------------------------- */
 
 
+void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
+    printf("JOUEUR ATTAQUE (angle : %1.2f)\n", angleAttaque);
+    joueur->timestampAttaque = moteur->frame;
+    t_liste mobsAlentour = getEntitesAlentour((t_entite*)joueur, ENTITE_MOB, 2.0);
+
+    if (!liste_vide(&mobsAlentour)) {
+        printf("ENTITE PROCHE\n");
+        en_tete(&mobsAlentour);
+        t_mob *mob = NULL;
+
+        while (!hors_liste(&mobsAlentour)) {
+            valeur_elt(&mobsAlentour, (t_entite**)&mob);
+            metUnCoup((t_entiteVivante*)joueur, (t_entiteVivante*)mob, angleAttaque, 1.8);
+
+            suivant(&mobsAlentour);
+        }
+    }
+    else {
+        printf("AUCUNE ENTITE PROCHE\n");
+    }
+}
+
+
+
+
+
 /**
  * @brief 
  * 
@@ -139,8 +165,8 @@ int updateJoueur(t_joueur *joueur) {
     orienterEntite(angle, (t_entite*)joueur);
 
 
-    if (doitAttaquer(jouer->actionFlags) && peutAttaquer(joueur)) {
-        // joueurAttaque(joueur, angle);
+    if (doitAttaquer(joueur->actionFlags) && peutAttaquer(joueur)) {
+        joueurAttaque(joueur, angle);
     }
 
 
@@ -246,6 +272,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->update = (int(*)(t_entite*, const float, t_entite*)) updateJoueur;
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
+    joueur->cooldownAttaque = 0.7;
     joueur->destructionInactif = FAUX;
 
 

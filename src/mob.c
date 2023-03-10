@@ -46,13 +46,25 @@
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                                     Get                                    */
+/* -------------------------------------------------------------------------- */
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Combat                                   */
+/* -------------------------------------------------------------------------- */
+
 
 void attaquer(t_mob *mob, const float distanceFinale) {
     deplacerVers(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_ATTAQUE, mob->positionDeplacement);
     
     if (distanceFinale < 1.0) {
         printf("COMBAT => ");
-        metUnCoup((t_entiteVivante*)mob, mob->cible, calculAngleEntrePoints(mob->position, mob->positionDeplacement));
+        metUnCoup((t_entiteVivante*)mob, mob->cible, calculAngleEntrePoints(mob->position, mob->positionDeplacement), 1.4);
 
         mob->timestampAttaque = moteur->frame;
         mob->delaiAttenteAttaque = getNombreAleatoire(2, 5);
