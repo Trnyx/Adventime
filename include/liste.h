@@ -53,6 +53,7 @@ typedef struct s_liste t_liste;
 struct s_liste {
     t_element *drapeau;         /**< Drapeau de la liste */
     t_element *ec;              /**< L'element courant */
+    t_element *cacheFlag;       /**< Element permettant de parcourir en parallèle la liste */
 } ;
 
 
@@ -70,13 +71,19 @@ void detruire_liste(t_liste **liste);
 
 boolean liste_vide(t_liste *liste);
 boolean hors_liste(t_liste *liste);
+boolean hors_liste_cache(t_liste *liste);
 
 void en_tete(t_liste *liste);
+void en_tete_cache(t_liste *liste);
 void en_queue(t_liste *liste);
+void en_queue_cache(t_liste *liste);
 void precedent(t_liste *liste);
+void precedent_cache(t_liste *liste);
 void suivant(t_liste *liste);
+void suivant_cache(t_liste *liste);
 
 void valeur_elt(t_liste *liste, t_entite **entite);
+void valeur_elt_cache(t_liste *liste, t_entite **entite);
 void modif_elt(t_liste *liste, t_entite **entite);
 void oter_elt(t_liste *liste);
 
