@@ -23,6 +23,7 @@
 
 #include "utilitaire.h"
 #include "statistiques.h"
+#include "animation.h"
 #include "liste.h"
 
 
@@ -115,6 +116,7 @@ struct s_entite {
     e_entiteTag tag;                                                    /**< Le tag de l'entité */
 
     SDL_Rect hitbox;                                                    /**< La hitbox de l'entité */
+    t_animation *animation;
 
 
     unsigned int timestampCreation;                                     /**< Le timestamp à laquelle l'entité à été créé */

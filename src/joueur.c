@@ -157,8 +157,11 @@ void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
  */
 int updateJoueur(t_joueur *joueur) {
     if (doitSeDeplacer(joueur->actionFlags)) {
+        joueur->operation = SE_DEPLACE_VERS;
         getDirectionJoueur(joueur);
         deplacerEntite((t_entite*)joueur, joueur->statistiques.vitesse);
+    } else {
+        joueur->operation = ATTENTE;
     }
 
     const float angle = getOrientationJoueur(joueur);
@@ -166,7 +169,10 @@ int updateJoueur(t_joueur *joueur) {
 
 
     if (doitAttaquer(joueur->actionFlags) && peutAttaquer(joueur)) {
+        joueur->operation = ATTAQUE;
         joueurAttaque(joueur, angle);
+    } else if (joueur->operation != SE_DEPLACE_VERS) {
+        joueur->operation = ATTENTE;
     }
 
 
@@ -258,6 +264,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->entiteType = ENTITE_JOUEUR;
     joueur->map = MAP_OVERWORLD;
 
+    // Statistiques
     joueur->statistiques.vitesse = JOUEUR_VITESSE_DEFAUT;
     joueur->statistiques.attaque = JOUEUR_ATTAQUE_DEFAUT;
     joueur->statistiques.defense = JOUEUR_DEFENSE_DEFAUT;
@@ -267,11 +274,17 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->statistiques.experience = 0;
     joueur->statistiques.niveau = 1;
 
+    // Actions
     joueur->actionFlags = initialiserActionFlags();
 
+    // Animation
+    joueur->animation = creerAnimation(100, 4);
+
+    // Fonctions
     joueur->update = (int(*)(t_entite*, const float, t_entite*)) updateJoueur;
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
+    // Timer
     joueur->cooldownAttaque = 0.7;
     joueur->destructionInactif = FAUX;
 

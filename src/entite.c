@@ -245,6 +245,26 @@ void dessinerEntite(t_entite *entite) {
     }
 
 
+    // Animation
+    if (entite->animation != NULL) {
+        updateAnimation(entite->animation, moteur->frame);
+        sprite.x += TAILLE_TILE * entite->animation->frameCourante;
+        
+        // Deplacement
+        switch (((t_entiteVivante*)entite)->operation) {
+            case SE_DEPLACE_VERS:
+            case SE_DEPLACE_AUTOUR:
+                sprite.y += TAILLE_TILE * 4;
+                break;
+            case ATTAQUE:
+                // sprite.y += TAILLE_TILE * 4 * 2;
+                break;
+            default:
+                break;
+        }
+    }
+
+
 
 
     SDL_RenderCopy(moteur->renderer, texture, &sprite, &rendu);
@@ -317,6 +337,8 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->hitbox.y = 0;
     entite->hitbox.h = 16;
     entite->hitbox.w = 16;
+
+    entite->animation = NULL;
 
     
     entite->update = NULL;
