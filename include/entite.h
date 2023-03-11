@@ -72,6 +72,20 @@ typedef enum {
 
 
 
+/**
+ * @brief 
+ * 
+ */
+typedef enum {
+    ATTENTE,
+    SE_DEPLACE_VERS,
+    SE_DEPLACE_AUTOUR,
+    S_ELOIGNE_DE,
+    ATTAQUE,
+} e_operation;
+
+
+
 
 
 /* -------------------------------------------------------------------------- */
@@ -117,10 +131,12 @@ struct s_entite {
 
 typedef struct s_entiteVivante {
     struct s_entite;
+
+    e_operation operation;                  /**< Ce que fait l'entité */
     
     // Statistiques
-    t_statistiques statistiques;            /**< Les statistiques du Mob */
-    t_baseStatistiques baseStatistiques;    /**< Les statistiques de base du MoMob */
+    t_statistiques statistiques;            /**< Les statistiques de l'entité */
+    t_baseStatistiques baseStatistiques;    /**< Les statistiques de base de l'entité */
 
 } t_entiteVivante;
 
