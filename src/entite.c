@@ -257,7 +257,7 @@ void dessinerEntite(t_entite *entite) {
                 sprite.y += TAILLE_TILE * 4;
                 break;
             case ATTAQUE:
-                // sprite.y += TAILLE_TILE * 4 * 2;
+                sprite.y += TAILLE_TILE * 4 * 2;
                 break;
             default:
                 break;
