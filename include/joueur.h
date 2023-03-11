@@ -32,7 +32,7 @@
 #define JOUEUR_DEFENSE_DEFAUT 20
 #define JOUEUR_PV_DEFAUT 40
 
-#define JOUEUR_COOLDOWN_ATTAQUE 1
+#define JOUEUR_COOLDOWN_ATTAQUE 10
 
 
 
@@ -77,7 +77,7 @@ typedef struct s_joueur {
     e_mapType map;                  /**< */
 
     int timestampAttaque;           /**< */
-    float cooldownAttaque;          /**< */
+    unsigned int cooldownAttaque;   /**< */
 
     // Progression
     t_boss_flags bossFlags;         /**< */

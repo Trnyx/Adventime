@@ -47,7 +47,7 @@
 /* -------------------------------------------------------------------------- */
 
 
-#define OUVERTURE 20
+#define OUVERTURE 30
 boolean toucheLaCible(const t_vecteur2 source, const t_vecteur2 cible, const float angleAttaque, const float range) {
     // Calcul la distance
     const float distance = calculDistanceEntrePoints(source, cible);
@@ -125,6 +125,7 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
 
         // mort(cible);
         if (cibleEstMorte) {
+            
             // Calcul experience
             // distribution experience
             // drops items

@@ -38,7 +38,7 @@
  * @return boolean 
  */
 boolean peutAttaquer(t_joueur *joueur) {
-    return moteur->frame - joueur->timestampAttaque >= joueur->cooldownAttaque;
+    return !(joueur->cooldownAttaque);
 }
 
 
@@ -125,7 +125,7 @@ float getOrientationJoueur(t_joueur *joueur) {
 
 void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
     printf("JOUEUR ATTAQUE (angle : %1.2f)\n", angleAttaque);
-    joueur->timestampAttaque = moteur->frame;
+    joueur->cooldownAttaque = JOUEUR_COOLDOWN_ATTAQUE;
     t_liste mobsAlentour = getEntitesAlentour((t_entite*)joueur, ENTITE_MOB, 2.0);
 
     if (!liste_vide(&mobsAlentour)) {
@@ -135,7 +135,7 @@ void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
 
         while (!hors_liste(&mobsAlentour)) {
             valeur_elt(&mobsAlentour, (t_entite**)&mob);
-            metUnCoup((t_entiteVivante*)joueur, (t_entiteVivante*)mob, angleAttaque, 1.8);
+            metUnCoup((t_entiteVivante*)joueur, (t_entiteVivante*)mob, angleAttaque, 2.0);
 
             suivant(&mobsAlentour);
         }
@@ -156,6 +156,12 @@ void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
  * @return int 
  */
 int updateJoueur(t_joueur *joueur) {
+    if (joueur->cooldownAttaque > 0) {
+        (joueur->cooldownAttaque)--;
+        printf("COOLDOWN : %i\n", joueur->cooldownAttaque);
+    }
+
+
     if (doitSeDeplacer(joueur->actionFlags)) {
         joueur->operation = SE_DEPLACE_VERS;
         getDirectionJoueur(joueur);
@@ -285,7 +291,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
     // Timer
-    joueur->cooldownAttaque = 0.7;
+    joueur->cooldownAttaque = 0;
     joueur->destructionInactif = FAUX;
 
 
