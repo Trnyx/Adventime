@@ -214,11 +214,12 @@ void update(t_map *map, t_joueur *joueur) {
                             // Si le mob est mort 
                             if (((t_mob*)entite)->statistiques.pv <= 0) {
                                 suppressionEntite(entites, entite);
+                                // play_bruitage(audio->bruitages->monstre_mort, 4);
                                 continue;
                             }
                             // Si le mob est en DEPLACEMENT_COMBAT
                             // On update alors la position cible
-                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT) {
+                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && ((t_mob*)entite)->cible->entiteType == ENTITE_JOUEUR) {
                                 nombreMobsCombat++;
 
                                 // Update de la position cible 
@@ -267,7 +268,7 @@ void update(t_map *map, t_joueur *joueur) {
         }
 
         // printf("Fin Update Entites\n");
-        printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", nombreEntites, nombreMobs, nombreMobsPassifs, nombreMobsAggressifs);
+        // printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", nombreEntites, nombreMobs, nombreMobsPassifs, nombreMobsAggressifs);
     }
 
 
