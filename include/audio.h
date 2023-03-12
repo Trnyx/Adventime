@@ -58,19 +58,17 @@ typedef enum {
  */
 typedef struct s_musiques {
     // Menu Principal
-    Mix_Music *menu_principal;      /**< */
+    Mix_Music *menu_principal;              /**< */
 
     // Ambiance
-    Mix_Music *ambiance_jour_leve_soleil;       /**< */
-    Mix_Music *ambiance_jour_matin;       /**< */
-    Mix_Music *ambiance_jour_apres_midi;       /**< */
-    Mix_Music *ambiance_jour_couche_soleil;       /**< */
-    Mix_Music *ambiance_nuit;       /**< */
+    Mix_Music *ambiance_jour_matin;         /**< */
+    Mix_Music *ambiance_jour_apres_midi;    /**< */
+    Mix_Music *ambiance_nuit;               /**< */
 
     // Combat
-    Mix_Music *combat;              /**< */
+    Mix_Music *combat;                      /**< */
     // Mix_Music *combat_nuit;
-    Mix_Music *boss;
+    Mix_Music *boss;                        /**< */
     
 } t_musiques;
 

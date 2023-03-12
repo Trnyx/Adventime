@@ -87,20 +87,16 @@ void selectionMusique(t_temps *temps) {
                 case PERIODE_NUIT:
                     musique = musiques->ambiance_nuit;
                     break;
-                case PERIODE_JOUR_LEVE_SOLEIL:
-                    musique = musiques->ambiance_jour_leve_soleil;
-                    break;
+
                 case PERIODE_JOUR_MATIN:
                     musique = musiques->ambiance_jour_matin;
                     break;
                 case PERIODE_JOUR_APRES_MIDI:
                     musique = musiques->ambiance_jour_apres_midi;
                     break;
-                case PERIODE_JOUR_COUCHE_SOLEIL:
-                    musique = musiques->ambiance_jour_couche_soleil;
-                    break;
+
                 default:
-                    musique = musiques->ambiance_jour_leve_soleil;
+                    musique = musiques->ambiance_jour_matin;
                     break;
             }
             break;
