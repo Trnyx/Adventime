@@ -10,14 +10,23 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ */
 typedef enum {
     PORTE,
-    MAISON_MUR,
-    MAISON_MUR_GAUCHE,
-    MAISON_MUR_DROIT,
-    MAISON_TOITURE_2X5,
-    MAISON_TOITURE_2X6,
     TEMPLE_ENTREE,
+
+    MUR_HAUT_GAUCHE,
+    MUR_HAUT_CENTRE,
+    MUR_HAUT_DROIT,
+    MUR_GAUCHE,
+    MUR_CENTRE,
+    MUR_DROIT,
+
+    FACADE,
+    TOIT,
 } e_blockTag;
 
 

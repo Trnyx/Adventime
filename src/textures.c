@@ -208,6 +208,13 @@ t_textures* initTextures(SDL_Renderer *renderer) {
 
     /* --------------------------------- Animaux -------------------------------- */
 
+    surface = IMG_Load("assets/images/animaux_tileset.png");
+    textures->animaux = SDL_CreateTextureFromSurface(renderer, surface);
+    if (surface == NULL) {
+        printf("Erreur Chargement Texture : Impossible de charger animaux_tileset.png\n%s\n", SDL_GetError());
+    }
+    SDL_FreeSurface(surface);
+
 
     /* --------------------------------- Autres --------------------------------- */
 
