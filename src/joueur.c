@@ -158,7 +158,6 @@ void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
 int updateJoueur(t_joueur *joueur) {
     if (joueur->cooldownAttaque > 0) {
         (joueur->cooldownAttaque)--;
-        printf("COOLDOWN : %i\n", joueur->cooldownAttaque);
     }
 
 

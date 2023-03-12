@@ -48,20 +48,63 @@
 
 
 #define OUVERTURE 30
-boolean toucheLaCible(const t_vecteur2 source, const t_vecteur2 cible, const float angleAttaque, const float range) {
+boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float angleAttaque, const float range) {
     // Calcul la distance
-    const float distance = calculDistanceEntrePoints(source, cible);
+    const float distance = calculDistanceEntreEntites(source, cible);
     // printf("\n\nDISTANCE : %1.2f\n", distance);
     if (distance > range)
         return FAUX;
 
-    // Calcul l'angle
-    const float angleFinale = revolution(calculAngleEntrePoints(source, cible));
-    // printf("ANGLE ATTAQUE : %1.2f\nANGLE ENTRE SOURCE ET CIBLE : %1.2f \nMIN : %1.2f\nMAX : %1.2f\nMIN REVO : %1.2f\nMAX REVO : %1.2f\n\n", angleAttaque, angleFinale, angleAttaque + OUVERTURE / 2, angleAttaque - OUVERTURE / 2, revolution(angleAttaque + OUVERTURE / 2), revolution(angleAttaque - OUVERTURE / 2));
-    if (revolution(angleAttaque + OUVERTURE / 2) < angleFinale || revolution(angleAttaque - OUVERTURE / 2) > angleFinale)
-        return FAUX;
+    /* ------------------------------ Calcul Angle ------------------------------ */
+
+    const float angleMinimum = revolution(angleAttaque - OUVERTURE / 2);
+    const float angleMaximum = revolution(angleAttaque + OUVERTURE / 2);
     
-    return VRAI;
+    t_vecteur2 pointHitbox;
+    float anglePointHitbox;
+
+    const t_vecteur2 tailleDemiHitbox = {
+        cible->hitbox.w / 2,
+        cible->hitbox.h / 2,
+    };
+
+    // Point HItbox Haut Gauche
+    pointHitbox.x = cible->position.x - tailleDemiHitbox.x;
+    pointHitbox.y = cible->position.y - tailleDemiHitbox.y;
+    anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
+
+    if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
+        return VRAI;
+
+
+    // Point HItbox Haut Droit
+    pointHitbox.x = cible->position.x + tailleDemiHitbox.x;
+    pointHitbox.y = cible->position.y - tailleDemiHitbox.y;
+    anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
+
+    if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
+        return VRAI;
+
+    // Point HItbox Bas Gauche
+    pointHitbox.x = cible->position.x - tailleDemiHitbox.x;
+    pointHitbox.y = cible->position.y + tailleDemiHitbox.y;
+    anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
+
+    if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
+        return VRAI;
+
+    // Point HItbox Bas Droit
+    pointHitbox.x = cible->position.x + tailleDemiHitbox.x;
+    pointHitbox.y = cible->position.y + tailleDemiHitbox.y;
+    anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
+
+    if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
+        return VRAI;
+
+    // printf("ANGLE ATTAQUE : %1.2f\nANGLE ENTRE SOURCE ET CIBLE : %1.2f \nMIN : %1.2f\nMAX : %1.2f\nMIN REVO : %1.2f\nMAX REVO : %1.2f\n\n", angleAttaque, angleFinale, angleAttaque + OUVERTURE / 2, angleAttaque - OUVERTURE / 2, revolution(angleAttaque + OUVERTURE / 2), revolution(angleAttaque - OUVERTURE / 2));
+    
+    return FAUX;
+
 }
 
 
@@ -113,7 +156,7 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
  * @param cible 
  */
 void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque, const float range) {
-    if (toucheLaCible(entite->position, cible->position, angleAttaque, range)) {
+    if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
         printf("CIBLE TOUCHE\n");
 
         float degat = calculDegat(entite->statistiques.niveau, entite->statistiques.attaque, cible->statistiques.defense, FAUX, FAUX);
