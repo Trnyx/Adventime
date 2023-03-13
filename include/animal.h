@@ -47,8 +47,6 @@ typedef struct s_animal {
     struct s_mob;
     
     char* name;                             /**< Le nom de l'animal */
-
-    int rayonDetection;                     /**< Le rayon dans lequel le joueur sera détecté */
 } t_animal;
 
 
@@ -69,9 +67,9 @@ typedef struct s_animal {
 #include "map.h"
 typedef struct s_map t_map;
 
-t_animal* genererAnimal(t_animal *animal, const e_biome biome);
-t_animal* creerAnimal(const t_vecteur2 position, const e_biome biome);
-void apparitionAnimal(t_liste *entites, t_map *map, const t_vecteur2 positionJoueur);
+t_animal* genererAnimal(t_animal *animal, const e_biome biome, const int niveauJoueur);
+t_animal* creerAnimal(const t_vecteur2 position, const e_biome biome, const e_entiteTag tag);
+void apparitionAnimal(const t_vecteur2 positionTroupeau, t_liste *entites, t_map *map);
 
 void detruireAnimal(t_animal **animal);
 
