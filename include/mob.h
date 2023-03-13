@@ -79,13 +79,11 @@ typedef struct s_mob {
     
 
     unsigned int timestampDebutDeplacement; /**< Timestamp de départ de déplacement */
-    unsigned int timestampFinDeplacement;   /**< Timestamp de fin de déplacement */
-    unsigned int delaiAttenteDeplacement;   /**< Temps d'attente entre deux déplacements (en seconde) */
+    unsigned int cooldownDeplacement;       /**< Cooldown entre deux déplacements (en ticks) */
     
 
     // Attaque
-    unsigned int timestampAttaque;          /**< Timestamp de la dernière attaque */
-    unsigned int delaiAttenteAttaque;       /**< Temps d'attente entre deux attaque (en seconde) */
+    unsigned int cooldownAttaque;       /**< Cooldown entre deux attaque (en seconde) */
 } t_mob;
 
 

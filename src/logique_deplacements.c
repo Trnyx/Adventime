@@ -38,8 +38,7 @@
 void finDeplacement(t_mob *mob) {
     printf("FIN DEPLACEMENT\n");
     mob->positionDeplacement = mob->position;
-    mob->timestampFinDeplacement = mob->timestampActualisation;
-    mob->delaiAttenteDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
+    mob->cooldownDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
 }
 
 
@@ -120,7 +119,7 @@ int deplacementNormal(t_mob *mob) {
     // Si le mob n'a pas atteint la position qu'il doit atteindre
     //  on le fait se déplacer en direction de son point
     // Sinon cela signifie qu'il peut se déplacer à nouveau
-    if (mob->timestampActualisation - mob->timestampFinDeplacement > mob->delaiAttenteDeplacement * 1000) {
+    if (mob->cooldownDeplacement == 0) {
 
         if (mob->position.x != mob->positionDeplacement.x || mob->position.y != mob->positionDeplacement.y) {
             // mob->direction.x = (mob->positionDeplacement.x - mob->position.x);
@@ -138,7 +137,7 @@ int deplacementNormal(t_mob *mob) {
             }
             else {
                 // finDeplacement(mob);
-                // mob->delaiAttenteDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
+                // mob->cooldownDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
             }
         }
         else {
@@ -176,7 +175,7 @@ int deplacementNormal(t_mob *mob) {
 
                     printf("Position target : %1.2f:%1.2f\n", mob->positionDeplacement.x, mob->positionDeplacement.y);
 
-                    mob->timestampDebutDeplacement = mob->timestampActualisation;
+                    mob->timestampDebutDeplacement = MOB_DUREE_DEPLACEMENT;
                 }
             }
         }
@@ -210,12 +209,13 @@ int deplacementAttaque(t_mob* mob, t_joueur *joueur, const int timestamp) {
     mob->direction.y = (joueur->position.x - mob->position.x);
 
 
-    if (timestamp - mob->timestampActualisation >= mob->delaiAttenteAttaque * 1000) {
+    if (mob->cooldownAttaque == 0) {
         vitesse = 5.0;
     }
     else {
         vitesse = 2.0;
     }
+
 
     deplacerEntite((t_entite*)mob, vitesse);
 
@@ -223,7 +223,6 @@ int deplacementAttaque(t_mob* mob, t_joueur *joueur, const int timestamp) {
     orienterEntite(angle, (t_entite*) mob);
 
 
-    
     return 0;
 }
 
