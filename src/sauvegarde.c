@@ -187,6 +187,29 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
     return SUCCESS;
 }
 
+err_sauv charger_map(t_map* map, char* chemin_monde)
+{
+    // Explicite le chemin du fichier de sauvegarde des données map.
+    strcat(chemin_monde, "/map.txt");
+
+    FILE* fichier = fopen(chemin_monde, "r");
+
+    if (fichier == NULL)
+    {
+        return FOPEN_FAIL;
+    }
+
+    // Type de map
+    e_mapType type = NULL;
+
+    fscanf(fichier, "%i ", &type);
+    map->type = type;
+    fscanf(fichier, "\n");
+
+
+
+}
+
 /**
  * \brief Sauvegarde les paramètres globaux du monde.
  *
@@ -280,7 +303,12 @@ err_sauv sauvegarder_monde(t_monde* monde, char* nom_monde)
     sauvegarder_global(monde->seed, monde->temps, chemin_monde);
 }
 
-
+/**
+ * \brief Charge la sauvegarde d'un monde.
+ *
+ * \param nom_monde Le nom du monde à charger
+ * \return err_sauv, un code d'erreur (0 si succès).
+ */
 err_sauv charger_monde(char* nom_monde)
 {
     // Définit le chemin d'accès aux fichiers.
@@ -296,6 +324,9 @@ err_sauv charger_monde(char* nom_monde)
 
     charger_global(&seed, temps, chemin_monde);
 
+
+    t_map* map = malloc(sizeof(t_map));
+    charger_map(map, chemin_monde);
 
 
 }
