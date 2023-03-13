@@ -139,7 +139,7 @@ int updateJoueur(t_joueur *joueur) {
     orienterEntite(angle, (t_entite*)joueur);
 
 
-    if (doitAttaquer(jouer->actionFlags) && peutAttaquer(joueur)) {
+    if (doitAttaquer(joueur->actionFlags) && peutAttaquer(joueur)) {
         // joueurAttaque(joueur, angle);
     }
 
