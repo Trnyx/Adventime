@@ -26,6 +26,7 @@ extern struct nk_context * ctx;
 
 state_main main_menu(struct nk_context * ctx);
 state_main menu_options(struct nk_context *ctx);
-void updateHUD(struct nk_context *ctx, t_joueur * joueur);
+void updateHUD(struct nk_context *ctx, t_joueur *joueur);
+int pauseMenu(struct nk_context *ctx);
 
 #endif

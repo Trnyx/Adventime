@@ -16,6 +16,7 @@
 #include <SDL2/SDL.h>
 
 #include "../include/input_manager.h"
+#include "../include/menus.h"
 
 
 
@@ -76,7 +77,7 @@ int inputManager(t_joueur *joueur) {
 
                 // Echap
                 else if (controles.escape == event.key.keysym.scancode) {
-                    return -1;
+		  return pauseMenu(ctx);
                 }
 
                 break;

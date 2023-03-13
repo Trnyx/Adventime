@@ -183,7 +183,7 @@ state_main menu_options(struct nk_context *ctx) {
   int hovered = 1;
   int screen_size = 0;
   int previous_size = screen_size;
-  
+
   static float value_general = 50.f;
   static float value_musiques = 50.f;
   static float value_bruitages = 50.f;
@@ -259,18 +259,26 @@ state_main menu_options(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width * 0.7) - 300.0 / 2,
                        (moteur->window_height * 0.28), 300, 40));
 
-      screen_size = nk_combo(ctx, size, NK_LEN(size), screen_size, 25,nk_vec2(200, 200));
+      screen_size =
+          nk_combo(ctx, size, NK_LEN(size), screen_size, 25, nk_vec2(200, 200));
 
-      if(screen_size != previous_size) {
-	
-	switch (screen_size) {
-	case 0: moteur->window_width = 1920; moteur->window_height = 1080; break;
-	case 1: moteur->window_width = 1280; moteur->window_height = 720;  break;
-	}
-	
-	previous_size = screen_size;
-	SDL_SetWindowSize(moteur->window, moteur->window_width, moteur->window_height);
-	updateEchelle(moteur);
+      if (screen_size != previous_size) {
+
+        switch (screen_size) {
+        case 0:
+          moteur->window_width = 1920;
+          moteur->window_height = 1080;
+          break;
+        case 1:
+          moteur->window_width = 1280;
+          moteur->window_height = 720;
+          break;
+        }
+
+        previous_size = screen_size;
+        SDL_SetWindowSize(moteur->window, moteur->window_width,
+                          moteur->window_height);
+        updateEchelle(moteur);
       }
 
       nk_layout_space_push(
@@ -286,7 +294,8 @@ state_main menu_options(struct nk_context *ctx) {
       if (nk_checkbox_label(ctx, "", &check)) {
         if (check) {
           SDL_SetWindowFullscreen(moteur->window, 0);
-	  SDL_SetWindowSize(moteur->window, moteur->window_width, moteur->window_height);
+          SDL_SetWindowSize(moteur->window, moteur->window_width,
+                            moteur->window_height);
           updateEchelle(moteur);
         } else {
           SDL_SetWindowFullscreen(moteur->window,
@@ -322,32 +331,75 @@ state_main menu_options(struct nk_context *ctx) {
   return click;
 }
 
-
-void updateHUD(struct nk_context *ctx, t_joueur * joueur) {
+void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
 
   ctx->style.window.background = nk_rgba(0, 0, 0, 0);
   ctx->style.window.fixed_background = nk_style_item_color(nk_rgba(0, 0, 0, 0));
   ctx->style.window.border_color = nk_rgba(0, 0, 0, 0);
   ctx->style.window.border = 1;
 
-  ctx->style.progress.cursor_normal = nk_style_item_color(nk_rgba(223, 46, 56, 255));
+  ctx->style.progress.cursor_normal =
+      nk_style_item_color(nk_rgba(223, 46, 56, 255));
 
   nk_size current = joueur->statistiques.pv;
   nk_size max = joueur->statistiques.pvMax;
 
-  if (nk_begin(ctx, "HUD",
-	       nk_rect(0, 0, 370,50),
-                 (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
+  if (nk_begin(ctx, "HUD", nk_rect(0, 0, 370, 50),
+               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
 
     nk_layout_space_begin(ctx, NK_STATIC, 0, 1);
-          nk_layout_space_push(ctx, nk_rect(5,5, 350, 30));
+    nk_layout_space_push(ctx, nk_rect(5, 5, 350, 30));
     nk_progress(ctx, &current, max, NK_FIXED);
     nk_layout_space_end(ctx);
   }
 
   nk_end(ctx);
-  
+
   nk_sdl_render(NK_ANTI_ALIASING_ON);
-  
 }
 
+int pauseMenu(struct nk_context *ctx) {
+
+  set_style(ctx, THEME_BLACK);
+
+  int click = 0;
+
+    SDL_Event evt;
+    nk_input_begin(ctx);
+    while (SDL_PollEvent(&evt)) {
+      if (evt.type == SDL_QUIT) {
+        click = JEU_QUITTER;
+      }
+      nk_sdl_handle_event(&evt);
+      if ((evt.type == SDL_MOUSEBUTTONUP) ||
+          (evt.type == SDL_MOUSEBUTTONDOWN) || (evt.type == SDL_KEYUP) ||
+          (evt.type == SDL_KEYDOWN))
+        break;
+    }
+    nk_input_end(ctx);
+
+  while (click == 0) {
+
+    SDL_Log("Jui dans le menu");
+
+    if (nk_begin(ctx, "Pause",
+                 nk_rect(0, 0, moteur->window_width, moteur->window_height),
+                 (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
+
+      nk_layout_space_begin(ctx, NK_STATIC, 0, 1);
+
+      nk_layout_space_push(
+          ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
+                       (moteur->window_height * 0.6), 300, 50));
+      if (nk_button_label(ctx, "Jouer")) {
+	click = 1;
+      }
+      nk_layout_space_end(ctx);
+    }
+    nk_end(ctx);
+    nk_sdl_render(NK_ANTI_ALIASING_ON);
+  }
+
+  return click;
+  
+}
