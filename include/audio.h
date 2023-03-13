@@ -20,6 +20,7 @@
 #include <SDL2/SDL_mixer.h>
 
 #include "utilitaire.h"
+#include "temps.h"
 
 
 
@@ -60,13 +61,16 @@ typedef struct s_musiques {
     Mix_Music *menu_principal;      /**< */
 
     // Ambiance
-    Mix_Music *ambiance_jour;       /**< */
+    Mix_Music *ambiance_jour_leve_soleil;       /**< */
+    Mix_Music *ambiance_jour_matin;       /**< */
+    Mix_Music *ambiance_jour_apres_midi;       /**< */
+    Mix_Music *ambiance_jour_couche_soleil;       /**< */
     Mix_Music *ambiance_nuit;       /**< */
 
     // Combat
     Mix_Music *combat;              /**< */
     // Mix_Music *combat_nuit;
-    // Mix_Music *combat_boss;
+    Mix_Music *boss;
     
 } t_musiques;
 
@@ -102,6 +106,8 @@ typedef struct s_audio {
     t_bruitages *bruitages;         /**< */
 
     e_musiques_type musiqueType;    /**< */
+    int timestampDebutMusique;      /**< */
+    int tempsEcoulee;               /**< */
 } t_audio;
 
 
@@ -124,7 +130,7 @@ void detruireAudio(t_audio **audio);
 void changerVolume(int nouveauVolume);
 void play_music(Mix_Music *music, boolean repeat);
 void play_bruitage(Mix_Chunk *sound, int channel);
-void selectionMusique();
+void selectionMusique(t_temps *temps);
 
 
 

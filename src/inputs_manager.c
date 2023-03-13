@@ -124,6 +124,19 @@ int inputManager(t_joueur *joueur) {
                 switch (event.button.button) {
                     // Attaque
                     case SDL_BUTTON_LEFT:
+                        joueur->actionFlags->attack = 1;
+                        break;
+
+                }
+                break;
+
+
+
+            case SDL_MOUSEBUTTONUP:
+                switch (event.button.button) {
+                    // Attaque
+                    case SDL_BUTTON_LEFT:
+                        joueur->actionFlags->attack = 0;
                         break;
 
                 }

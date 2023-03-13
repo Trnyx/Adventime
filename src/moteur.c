@@ -81,8 +81,9 @@ t_moteur* initMoteur() {
     m->state = 1;
     initControles(&m->controles);
     
-    m->monde = NULL;
+    m->temps = NULL;
 
+    m->cache = NULL;
     m->frame = SDL_GetTicks();
 
 

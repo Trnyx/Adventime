@@ -16,7 +16,7 @@
  * 
  * @author Clément Hibon
  * @date 21 janvier
- * @version 1.1
+ * @version 1.4
  */
 
 
@@ -46,7 +46,8 @@ const int probabilitesBiomes[NB_BIOMES] = {
     PROBA_BIOME_LAC, 
     PROBA_BIOME_PLAINE, 
     PROBA_BIOME_FORET, 
-    PROBA_BIOME_MONTAGNE 
+    PROBA_BIOME_MONTAGNE,
+    // PROBA_BIOME_DESERT,
 };
 
 
@@ -174,23 +175,26 @@ e_biome selectionBiome(const int xChunk, const int yChunk) {
  * @param biome Le biome dans lequel le block se situe
  * @return Le tag du block sélectionné
  * 
- * @version 1.1
+ * @version 1.2
  */
 e_solTag selectionBlock(const e_biome biome) {
     e_solTag solTag = VIDE;
     const t_baseBiome baseBiome = basesBiomes[biome];
     const int nombreBlockPossible = sizeof(baseBiome.typesDeSol) / sizeof(baseBiome.typesDeSol[0]);
 
-
-    while (solTag == VIDE) {
-        const int index =  getNombreAleatoire(0, nombreBlockPossible - 1);
-        const int probabilite =  getNombreAleatoire(1, 100);
     
-        const int probabiliteBlock = baseBiome.probabiliteDesBlocks[index];
-        if (probabiliteBlock >= probabilite) {
-            return baseBiome.typesDeSol[index];
+    const int probabilite =  getNombreAleatoire(1, 100);
+    for (int i = 0; i < nombreBlockPossible; i++) {
+        if (baseBiome.probabiliteDesBlocks[i] >= probabilite) {
+            return baseBiome.typesDeSol[i];
         }
     }
+
+    // while (solTag == VIDE) {
+    //     const int index =  getNombreAleatoire(0, nombreBlockPossible - 1);
+    
+    //     const int probabiliteBlock = baseBiome.probabiliteDesBlocks[index];
+    // }
   
   
     return solTag;
@@ -224,6 +228,9 @@ e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) {
   
   
     switch (biomePredominant.tag) {
+        // case BIOME_DESERT: 
+        //     if (biomePredominant.occurence >= 1 && biomePredominant.occurence <= 2) changement = 1;
+        //     break;
         case BIOME_MONTAGNE: 
             if (biomePredominant.occurence >= 1 && biomePredominant.occurence <= 3) changement = 1;
             break;
@@ -672,11 +679,8 @@ t_map* genererMap(e_mapType type) {
         return NULL;
     }
 
-    map->entites = malloc(sizeof(t_liste));
-    init_liste(map->entites);
 
-    map->type = type;
-    
+    map->type = type;     
 
     switch (type) {
         case MAP_OVERWORLD: genererOverworld(map); break;
@@ -684,6 +688,12 @@ t_map* genererMap(e_mapType type) {
         default:
             break;
     }
+
+
+    // map->nombreEntites = 0;
+    // map->entites = NULL;
+    map->entites = malloc(sizeof(t_liste));
+    init_liste(map->entites);
     
 
     printf("Succes\n");

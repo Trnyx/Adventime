@@ -32,12 +32,18 @@ void initAll(t_moteur **moteur, t_audio **audio) {
     // Moteur
     *moteur = initMoteur();
     
-    t_vecteur2 positionCamera = { 0, 0 };
+    const t_vecteur2 positionCamera = { 0, 0 };
     (*moteur)->camera = creerCamera(positionCamera);
     (*moteur)->textures = initTextures((*moteur)->renderer);
+    (*moteur)->cache = initCache();
+    (*moteur)->temps = initTemps(time(NULL));
 
+
+    // Methode d'affichage
+    // Pour le filtre de l'ambiance
     SDL_SetRenderDrawBlendMode((*moteur)->renderer, SDL_BLENDMODE_BLEND);
 
+    // Pour afficher le logo en tant qu'icon dans la barre des tâches lorsque le jeu est allumé
     SDL_Surface *logo = NULL;
     logo = IMG_Load("assets/images/logo.png");
     SDL_SetWindowIcon((*moteur)->window, logo);
@@ -57,32 +63,24 @@ void initAll(t_moteur **moteur, t_audio **audio) {
 
 
 void detruireAll(t_moteur *moteur, t_audio *audio) {
-printf("Nuklear => ");
     nk_sdl_shutdown();
+    t_cache *cache = moteur->cache;
 
-    if (moteur->monde != NULL) {
+    if (cache->monde != NULL) {
         
-        printf("detruireJoueur => ");
-        if (moteur->monde->joueur != NULL) 
-            detruireJoueur(&moteur->monde->joueur);
+        if (cache->monde->joueur != NULL) 
+            detruireJoueur(&cache->monde->joueur);
 
-        printf("detruireMonde => ");
-        detruireMonde(&moteur->monde);
+        detruireCache(&cache);
+        detruireTemps(&moteur->temps);
     }
     
-    printf("detruireCamera => ");
     detruireCamera(&moteur->camera);
-    printf("detruireTextures => ");
     detruireTextures(&moteur->textures);
 
-    printf("SDL_DestroyRenderer => ");
     SDL_DestroyRenderer(moteur->renderer);
-    printf("SDL_DestroyWindow => ");
     SDL_DestroyWindow(moteur->window);
-    printf("detruireMoteur => ");
     detruireMoteur(&moteur);
 
-    printf("detruireAudio => ");
     detruireAudio(&audio);
-    printf("FIN\n");
 }

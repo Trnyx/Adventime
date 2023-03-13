@@ -1,0 +1,199 @@
+Génération des structures :
+
+    Génération du temple des boss :
+
+        Pour tous les chunks de la map
+        Si le biome du chunk est un biome montagne
+            On compte les biomes montagnes alentour à la montagne actuelle
+            Si la montagne actuelle à le plus de montagne alentour
+                On retient le chunk
+
+            On génère le temple au centre du chunk montagne retenu
+        
+
+
+
+
+    Génération d'un village :
+
+        Pour tous les chunks de la map
+        Si le biome du chunk est un biome plaine
+            On compte les biomes plaines alentour à la plaine actuelle
+            Si la plaine actuelle à le plus de plaines alentour
+                On retient le chunk
+            
+            Génération d'un Poisson Disc Sampling avec pour centre le chunk retenu
+              [ Nombre de points : aléatoire entre 4 et 8
+                Rayon : maison la plus grande + 3 blocs
+                Type de bâtiment : biome correspondant ]
+            Pour chaque points générés
+                Choix aléatoire des structures
+                Génération de la structure
+
+
+
+
+
+
+
+
+
+
+Gestion des entités présentes :
+
+
+    A chaque frame
+
+    Pour chaque entité
+        On compare la distance entre le joueur et l'entité
+
+        Si l'entité est inactive
+            Si il doit être détruit
+                On supprime l'entité
+
+
+        On update le temps de vie
+
+        Si l'entité est semi active
+            On check le temps de vie
+            Si le temps de vie est supérieur ou égale à son temps de vie maximum
+                On supprime l'entité
+            
+
+        SI l'entité est active
+            Si l'entité est un mob
+                Si le mob est en DEPLACEMENT_COMBAT
+                    update de la position cible
+                    
+
+                Si l'opération du mob est SE_DEPLACE_AUTOUR
+                    On calcul la position du mob en fonction de la position de la cible
+                    On choisis aléatoirement une direction de déplacement (droite ou gauche)[EST ou OUEST]
+                    On déplace l'entité dans la direction choisis
+
+
+                Sinon Si l'opération du mob est SE_DEPLACE_VERS
+                    On calcul la position du mob en fonction de la position de la cible
+                    On déplace l'entité en direction de la cible
+
+
+                Sinon Si l'opération du mob est ATTENTE
+                    On check si le mob est à sa position cible
+                    Si il ne l'est pas
+                        Si le temps de déplacement maximum est dépassé
+                            On met fin au déplacement
+                        Sinon
+                            On déplace l'entité vers sa position cible
+
+                    Sinon
+                        On vérifie que le temps d'attente est dépassé
+                        Si le temps d'attente est dépassé
+                            On calcul la probabilité qu'il bouge
+                            Si le mouvement est un déplacement
+                                On choisis une nouvelle position
+                                Si la position est valide
+                                    On set l'opération en SE_DEPLACE_VERS
+                                    On set la position cible du mob avec la nouvlle position
+                            Sinon si le mouvement est une rotation
+                                On choisis une nouvelle orientation
+                                On oriente l'entité
+                            Sinon 
+                                On set le temps d'attente
+
+
+
+
+
+
+
+
+
+
+Gestion de l'apparition des entités :
+
+    Si le nombre d'entité maximum n'est pas atteint
+        Si le mob cap n'est pas atteint
+            Si le nombre maximum de monstres n'est pas atteint
+                On calcul la probabilité de l'apparition d'un monstre
+                Si un monstre peut apparaitre
+                    On choisit une position dans le disque semiactif
+                    Si la position est valide
+                        On créer le monstre
+
+
+            Si le nombre maximum d'animaux n'est pas atteint
+                On calcul la probabilité de l'apparition d'un animal
+                Si un animal peut apparaitre
+                    On choisit une position dans le disque semiactif
+                    Si la position est valide
+                        On créer l'animal
+
+            Sinon si le nombre minimum d'animaux est atteint
+                On choisit une position dans le disque semiactif
+                Si la position est valide
+                    On créer l'animal
+
+
+    Sinon si c'est une entité prioritaire
+        On supprime un monstre aggressif dans le disque semiactif
+
+
+
+
+
+
+
+
+
+
+Gestion attaque des mobs :
+
+    On attend avant de faire une action
+    Une fois le temps d'attente terminé 
+        Le mob se déplace en direction du joueur rapidement
+        On check distance et ouverture
+        Si le joueur est assez proche et dans l'ouverture 
+            On calcul les dégâts infligés au joueur (attaque / défense)
+            On applique les dégâts
+            On vérifie si le joueur est mort
+            Si le joueur est mort
+                gestion des drops
+                gestion de l'expérience
+                                        
+        Choix aléatoire du temps d'attente avant prochaine attaque 
+
+
+
+
+
+
+
+
+
+
+Gestion des drops (inventaire / items) :
+
+    Si l'entité mourante est un mob
+        On récupère les informations dans la table des items potentiels, le nombre et les probabilités de drops
+        On calcul les probabilité et les drops
+        On pose les items sur le lieux
+
+    Si c'est le joueur
+        L'inventaire du joueur se trouve entièrement sur le lieux de la mort du joueur
+
+
+
+
+
+Gestion expérience :
+    Mort d'une entité :
+
+
+    Mort du joueur :
+
+
+    Distribution : (ici le joueur est un mob)
+        A chaque fois qu'un mob reçoit de l'expérience
+        On vérifie si il change de niveau
+        Si le mob passe au niveau supérieur
+            On calcul les nouvelles statistiques du mob

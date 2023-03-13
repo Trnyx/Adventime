@@ -13,6 +13,8 @@
 
 
 #include "map.h"
+#include "joueur.h"
+#include "temps.h"
 
 
 
@@ -75,18 +77,33 @@
 /* ----------------------------- Mobs Et Entités ---------------------------- */
 
 // Le nombre d'entité total possible
-#define MOB_CAP 256
+#define ENTITE_CAP 256
+// Le nombre de mob total possible
+#define MOB_CAP 128
 // Le nombre maximum de montstre aggressif
 #define MONSTRE_AGGRESSIF_CAP 16
 // Le nombre maximum d'animaux
 #define MONSTRE_PASSIF_CAP 24
 
 
-//
-#define MONSTRE_RAYON_COMBAT_DETECTION 4.0
+// Rayon dans lequel un monstre détecte un joueur pour se mettre en combat
+#define MONSTRE_RAYON_COMBAT_DETECTION 4.5
+// Rayon dans lequel les mobs se positionne (suivent leur cible) pour combattre
 #define MOB_RAYON_COMBAT_POSITIONNEMENT 8.0
-#define MOB_RAYON_COMBAT_RETRAIT 1.5
-#define MOB_RAYON_COMBAT_ATTAQUE 1.8
+// Rayon dans lequel les mobs recul face à leur cible
+#define MOB_RAYON_COMBAT_RETRAIT 1.8
+// Rayon dans lequel les mobs sont suffisamment proche pour attaquer
+#define MOB_RAYON_COMBAT_ATTAQUE 2.2
+
+
+//
+#define MOB_VITESSE_MODIFICATEUR_POSITIONNEMENT
+//
+#define MOB_VITESSE_MODIFICATEUR_AUTOUR 0.5
+//
+#define MOB_VITESSE_MODIFICATEUR_ELOIGNEMENT 0.8
+//
+#define MOB_VITESSE_MODIFICATEUR_ATTAQUE 1.6
 
 
 // La durée maximale de déplacement d'un mob [en seconde]
@@ -104,12 +121,12 @@
 
 
 
-// La probabimité que l'entité ne se déplace pas
-#define PROBABILITE_DEPLACEMENT_AUCUN 40 
-// La probabimité que l'entité se déplace 
-#define PROBABILITE_DEPLACEMENT_POTENTIEL 75 
-// La probabimité que l'entité se déplace obligatoirement 
-#define PROBABILITE_DEPLACEMENT_OBLIGATOIRE 100
+// La probabimité que le mob ne face rien
+#define PROBABILITE_MOUVEMENT_AUCUN 20
+// La probabimité que le mob se tourne
+#define PROBABILITE_MOUVEMENT_ROTATION 55
+// La probabimité que le mob se déplace 
+#define PROBABILITE_MOUVEMENT_DEPLACEMENT 100
 
 //
 #define PROBABILITE_APPARITION_MONSTRE 30
@@ -125,5 +142,5 @@
 /* -------------------------------------------------------------------------- */
 
 
-void update();
+void update(t_map *map, t_joueur *joueur);
 

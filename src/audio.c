@@ -16,7 +16,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../include/physique.h"
 #include "../include/audio.h"
+#include "../include/moteur.h"
 
 
 
@@ -54,6 +56,7 @@ void changerVolume(int nouveauVolume) {
  */
 void play_music(Mix_Music *music, boolean repeat) {
     Mix_PlayMusic(music, repeat ? -1 : 0);
+    // Mix_SetMusicPosition(audio->tempsEcoulee / 1000);
 }
 
 
@@ -71,23 +74,46 @@ void play_bruitage(Mix_Chunk *sound, int channel) {
 
 
 
-void selectionMusique() {
+void selectionMusique(t_temps *temps) {
     t_musiques *musiques = audio->musiques;
     Mix_Music *musique = NULL;
 
+    audio->tempsEcoulee = moteur->frame - audio->timestampDebutMusique;
+
 
     switch (audio->musiqueType) {
-        case MUSIC_MENU:
-            musique = musiques->menu_principal;
-            break;
-
         case MUSIC_AMBIANCE:
-            musique = musiques->ambiance_nuit;
+            switch (temps->periode) {
+                case PERIODE_NUIT:
+                    musique = musiques->ambiance_nuit;
+                    break;
+                case PERIODE_JOUR_LEVE_SOLEIL:
+                    musique = musiques->ambiance_jour_leve_soleil;
+                    break;
+                case PERIODE_JOUR_MATIN:
+                    musique = musiques->ambiance_jour_matin;
+                    break;
+                case PERIODE_JOUR_APRES_MIDI:
+                    musique = musiques->ambiance_jour_apres_midi;
+                    break;
+                case PERIODE_JOUR_COUCHE_SOLEIL:
+                    musique = musiques->ambiance_jour_couche_soleil;
+                    break;
+                default:
+                    musique = musiques->ambiance_jour_leve_soleil;
+                    break;
+            }
             break;
             
+
         case MUSIC_COMBAT:
             musique = musiques->combat;
             break;
+
+        case MUSIC_BOSS:
+            musique = musiques->boss;
+            break;
+        
         
         default:
             musique = musiques->menu_principal;
@@ -95,7 +121,7 @@ void selectionMusique() {
     }
 
 
-    play_music(musique, FAUX);
+    play_music(musique, VRAI);
 }
 
 
@@ -105,6 +131,19 @@ void selectionMusique() {
 /* -------------------------------------------------------------------------- */
 /*                                 Chargement                                 */
 /* -------------------------------------------------------------------------- */
+
+
+void loadMusiqueBoss(t_musiques *musiques, e_jour jour) {
+    char buffer[64];
+    sprintf(buffer, "assets/audio/musiques/boss/boss_%i.mp3", jour);
+
+    if (musiques->boss != NULL) 
+        Mix_FreeMusic(musiques->boss);
+
+    musiques->boss = Mix_LoadMUS(buffer);
+    if (musiques->boss == NULL) printf("ERROR");
+    else printf("Succes\n");
+}
 
 
 /**
@@ -138,12 +177,17 @@ int chargerAudio(const int volume, t_musiques **musiques, t_bruitages **bruitage
     m->menu_principal = Mix_LoadMUS("assets/audio/musiques/menu.mp3");
 
     // Ambiance
-    m->ambiance_jour = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    m->ambiance_jour_leve_soleil = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_leve_soleil.ogg");
+    m->ambiance_jour_matin = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_matin.ogg");
+    m->ambiance_jour_apres_midi = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_apres_midi.ogg");
+    m->ambiance_jour_couche_soleil = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_couche_soleil.ogg");
     m->ambiance_nuit = Mix_LoadMUS("assets/audio/musiques/ambiance_nuit.mp3");
 
     // Combat
     m->combat = Mix_LoadMUS("assets/audio/musiques/combat.mp3");
     // m->combat_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
+    m->boss = NULL;
+    loadMusiqueBoss(m, getJourDeLaSemaine(time(NULL)));
     // m->combat_boss = Mix_LoadMUS("assets/audio/musiques/.mp3");
     
     
@@ -196,6 +240,7 @@ t_audio* initAudio() {
 
     chargerAudio(MIX_MAX_VOLUME, &a->musiques, &a->bruitages);
     a->musiqueType = MUSIC_MENU;
+    a->timestampDebutMusique = 0;
 
 
     return a;
@@ -231,9 +276,13 @@ void detruireAudio(t_audio **audio) {
             printf("Destruction musiques => ");
             // Mix_FreeMusic((*musiques)->);
 
-            Mix_FreeMusic((*audio)->musiques->ambiance_jour);
+            Mix_FreeMusic((*audio)->musiques->ambiance_jour_leve_soleil);
+            Mix_FreeMusic((*audio)->musiques->ambiance_jour_matin);
+            Mix_FreeMusic((*audio)->musiques->ambiance_jour_apres_midi);
+            Mix_FreeMusic((*audio)->musiques->ambiance_jour_couche_soleil);
             Mix_FreeMusic((*audio)->musiques->ambiance_nuit);
             Mix_FreeMusic((*audio)->musiques->combat);
+            Mix_FreeMusic((*audio)->musiques->boss);
             Mix_FreeMusic((*audio)->musiques->menu_principal);
 
             free(musiques);

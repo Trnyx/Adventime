@@ -50,20 +50,37 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
  */
 boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 positionSuivante) {
     t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_OBJETS, map);
-    if (block == NULL) return FAUX;
+    if (block == NULL) 
+        return FAUX;
 
     // Check si le block est bien vide
-    if (block->tag != VIDE) return FAUX;
+    if (block->tag != VIDE) 
+        return FAUX;
 
-    block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_SOL, map);
+
     // Check si le block est un block profondeur
-    if (block->tag == SOL_EAU_PROFONDE) return FAUX;
+    block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_SOL, map);
+    if (block->tag == SOL_EAU_PROFONDE) 
+        return FAUX;
 
-    t_block* blockPositionActuelle = getBlockDansMap(entite->position.x, entite->position.y, COUCHE_SOL, map);
-    // printf("Position Actuelle : %i => ", blockPositionActuelle->tag);
 
     // Check si plus de 1 de hauteur 
-    if (abs(block->tag - blockPositionActuelle->tag) > 1) return FAUX;
+    t_block* blockPositionActuelle = getBlockDansMap(entite->position.x, entite->position.y, COUCHE_SOL, map);
+    if (abs(block->tag - blockPositionActuelle->tag) > 1) 
+        return FAUX;
+
+    
+    // t_entite *entiteTempo = NULL;
+    // en_tete(map->entites);
+    // while (!hors_liste(map->entites)) {
+    //     valeur_elt(map->entites, &entiteTempo);
+
+    //     const float distance = calculDistanceEntreEntites(entite, entiteTempo);
+    //     if (distance <= 0.5)
+    //         return FAUX;
+
+    //     suivant(map->entites);
+    // }
 
 
     return VRAI;
@@ -92,7 +109,7 @@ boolean deplacerEntite(t_entite *entite, const float vitesse) {
     // printf("(distance : %1.2f, normale : %1.2f) ", distance, normale);
     // printf("Position suivante : %1.2f:%1.2f => ", positionSuivante.x, positionSuivante.y);
     
-    boolean peutSeDeplacer = peutDeplacerEntite(moteur->monde->map, entite, positionSuivante);
+    boolean peutSeDeplacer = peutDeplacerEntite(moteur->cache->map, entite, positionSuivante);
     // printf("Peut se deplacer ? %i => ", peutSeDeplacer);
 
 
@@ -137,6 +154,7 @@ void orienterEntite(const float angle, t_entite *entite) {
 /* -------------------------------------------------------------------------- */
 
 
+#define TAILLE_SET (8 * TAILLE_TILE)
 /**
  * @brief 
  * 
@@ -146,13 +164,19 @@ void dessinerEntite(t_entite *entite) {
     SDL_Texture *texture = NULL;
     SDL_Rect sprite;
     sprite.h = sprite.w = TAILLE_TILE;
+    sprite.x = 0;
+    sprite.y = entite->orientation * TAILLE_TILE;
+
 
     SDL_Rect rendu;
     rendu.w = moteur->camera->tailleRendu.x;
     rendu.h = moteur->camera->tailleRendu.y;
 
-    rendu.x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w); // positionnementEnPixel.x - offset.x;
-    rendu.y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h); // positionnementEnPixel.y - offset.y;
+    rendu.x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w) - rendu.w / 2;
+    rendu.y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h) - rendu.h / 2;
+
+    // SDL_SetRenderDrawColor(moteur->renderer, 255, 0, 0, 255);
+    // SDL_RenderFillRect(moteur->renderer, &rendu);
 
 
     switch (entite->entiteType) {
@@ -160,8 +184,18 @@ void dessinerEntite(t_entite *entite) {
             texture = moteur->textures->joueur; 
             break;
 
-        case ENTITE_MONSTRE_AGGRESSIF:
-            texture = moteur->textures->monstres;
+        case ENTITE_MOB:
+            switch (entite->tag) {
+                case TAG_ANIMAL_VACHE: 
+                    texture = moteur->textures->animaux; 
+                    sprite.x = 0;
+                    break;
+                case TAG_MONSTRE_BASIC: 
+                    texture = moteur->textures->monstres; 
+                    sprite.x = (((t_monstre*)entite)->estNocturne ? NB_MONSTRE_TYPES * TAILLE_SET : ((t_monstre*)entite)->type) * (TAILLE_SET);
+                    break;
+                default: break;
+            }
             break;
 
         default:
@@ -169,11 +203,12 @@ void dessinerEntite(t_entite *entite) {
     }
 
 
-    sprite.x = 0;
-    sprite.y = entite->orientation * TAILLE_TILE;
 
 
     SDL_RenderCopy(moteur->renderer, texture, &sprite, &rendu);
+    // SDL_Rect point = {positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w), positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h), 4,4};
+    // SDL_SetRenderDrawColor(moteur->renderer, 0, 0, 0, 255);
+    // SDL_RenderFillRect(moteur->renderer, &point);
 }
 
 
@@ -202,22 +237,6 @@ void detruireEntite(t_entite **entite) {
 
 
 
-/**
- * @brief 
- * 
- * @param mob 
- */
-void detruireMob(t_mob **mob) {
-    printf("Destruction Mob => ");
-    if (mob != NULL && *mob != NULL) {
-
-        detruireEntite((t_entite**)mob);
-
-    }
-}
-
-
-
 
 
 /* -------------------------------------------------------------------------- */
@@ -240,6 +259,8 @@ t_entite* creerEntite(const t_vecteur2 position) {
         return NULL;
     }
 
+    entite->id = 0;
+
 
     entite->position.x = position.x;
     entite->position.y = position.y;
@@ -248,6 +269,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->orientation = SUD;
 
     entite->entiteType = ENTITE_RIEN;
+    entite->tag = TAG_AUCUN;
 
     entite->hitbox.x = 0;
     entite->hitbox.y = 0;
@@ -262,43 +284,9 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->timestampCreation = SDL_GetTicks();
     entite->timestampActualisation = entite->timestampCreation;
 
+    entite->destructionInactif = VRAI;
+
 
     return entite;
 }
 
-
-
-/**
- * @brief 
- * 
- * @param position 
- * @return t_mob* 
- */
-t_mob* creerMob(const t_vecteur2 position) {
-    t_entite *entite = creerEntite(position);
-    t_mob *mob = realloc(entite, sizeof(t_mob));
-    const int t = SDL_GetTicks();
-
-    // Déplacement
-    mob->rayonDeplacement = 0;
-
-    mob->positionDeplacement.x = position.x;
-    mob->positionDeplacement.y = position.y;
-    mob->timestampDebutDeplacement = t;
-    mob->timestampFinDeplacement = t;
-    mob->delaiAttenteDeplacement = 10;
-
-    mob->deplacementType = DEPLACEMENT_STATIQUE;
-
-
-    // Attaque
-    mob->timestampAttaque = t;
-    mob->delaiAttenteAttaque = 5;
-
-
-    mob->detruire = (void (*)(t_entite**)) detruireMob;
-
-
-    entite = NULL;
-    return mob;
-}

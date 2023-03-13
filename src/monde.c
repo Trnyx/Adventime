@@ -67,7 +67,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
  */
 t_monde* creerMonde(int seed) {
     t_monde *monde = malloc(sizeof(t_monde));
-    const time_t timestamp = time(NULL);
+
 
     if (monde == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le monde\n");
@@ -77,7 +77,7 @@ t_monde* creerMonde(int seed) {
 
 
     if (seed == -1) {
-        seed = setGenerationSeed(timestamp);
+        seed = setGenerationSeed(time(NULL));
     }
     else {
         seed = setGenerationSeed(seed);
@@ -85,9 +85,7 @@ t_monde* creerMonde(int seed) {
 
 
     monde->seed = seed;
-    monde->map = genererMap(MAP_OVERWORLD);
-
-    monde->temps = initTemps(timestamp);
+    monde->overworld = genererMap(MAP_OVERWORLD);
 
     // t_vecteur2 position = getPointApparitionJoueur(map);
     // t_joueur *joueur = creerJoueur(position.x, position.y);
@@ -113,8 +111,7 @@ t_monde* creerMonde(int seed) {
 void detruireMonde(t_monde **monde) {
     printf("Destruction Monde => ");
     if (monde != NULL && *monde != NULL) {
-        detruireMap(&(*monde)->map);
-        detruireTemps(&(*monde)->temps);
+        detruireMap(&(*monde)->overworld);
 
     
         free(*monde);
