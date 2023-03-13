@@ -22,6 +22,7 @@
 #include "textures.h"
 #include "camera.h"
 #include "monde.h"
+#include "main.h"
 
 
 
@@ -83,6 +84,8 @@ typedef struct s_moteur {
     t_controles controles;          /**< Les contrôles du jeu */
     
     unsigned int frame;             /**< Le timestamp (tick) de la drame actuelle */
+  state_main state;
+    
 
 } t_moteur;
 

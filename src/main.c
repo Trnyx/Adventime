@@ -32,9 +32,6 @@ int main(int argc, char* argv[]) {
 
 	// moteur = NULL;
 	// audio = NULL;
-
-	
-	state_main state = 1;
 	
 
 	initAll(&moteur, &audio);
@@ -43,17 +40,17 @@ int main(int argc, char* argv[]) {
 	
 	play_music(audio->musiques->menu_principal, VRAI);
 
-	while (state != JEU_QUITTER) {
+	while (moteur->state != JEU_QUITTER) {
 		
-		switch (state) {
-			case M_MENU: state = main_menu(ctx); break;
+		switch (moteur->state) {
+			case M_MENU: moteur->state = main_menu(ctx); break;
 			case M_JOUER: 
-				state = jouer(MONDE_CREER); 
-				if (state != JEU_QUITTER) 
+				moteur->state = jouer(MONDE_CREER); 
+				if (moteur->state != JEU_QUITTER) 
 					play_music(audio->musiques->menu_principal, VRAI);
 				break;
-			case M_OPTIONS: state = menu_options(ctx); break;
-			default: state = JEU_QUITTER; break;
+			case M_OPTIONS: moteur->state = menu_options(ctx); break;
+			default: moteur->state = JEU_QUITTER; break;
 		}
 
 	}

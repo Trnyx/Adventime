@@ -78,6 +78,7 @@ t_moteur* initMoteur() {
 
     m->camera = NULL;
     m->textures = NULL;
+    m->state = 1;
     initControles(&m->controles);
     
     m->monde = NULL;
