@@ -5,7 +5,7 @@
  *
  * @author Clément Hibon
  * @date 23 janvier
- * @version 1.1
+ * @version 1.3
  */
 
 
@@ -17,6 +17,11 @@
 
 
 
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Structures                                 */
+/* -------------------------------------------------------------------------- */
 
 
 /**
@@ -42,6 +47,19 @@ typedef struct s_baseStatistiques {
     
     unsigned int experience_courbe;
 } t_baseStatistiques;
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Fonctions                                 */
+/* -------------------------------------------------------------------------- */
+
+
+int calculStatistique(const int base, const int niveau);
+int calculPv(const int attaque, const int defense, const int basePv);
+t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau);
 
 
 

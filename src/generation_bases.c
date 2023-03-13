@@ -142,10 +142,31 @@ const t_baseVegetal basesVegetaux[] = {
  * - pv
  * - courbeExp
  */
-const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONSTRE_TYPES] = {
+const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONSTRE_TYPES] = {
     { { 60, 70 }, { 60, 70 }, { 10, 10 }, 80, { 0 } }, // NORMAL
     { { 65, 75 }, { 55, 65 }, { 15, 15 }, 80, { 0 } }, // PLANTE
     // { { 55, 65 }, { 60, 70 }, { 10, 10 }, 90, { 0 } }, // EAU
     { { 55, 65 }, { 75, 85 }, { 15, 15 }, 80, { 0 } }, // MONTAGNARD
     // { { 70, 75 }, { 70, 75 }, { 10, 10 }, 90, { 0 } }, // DESERTIQUE
+};
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Animaux                                  */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief Tableau regroupant les statistiques de bases en fonction de l'animal
+ * 
+ * - attaque
+ * - defense
+ * - vitesse
+ * - pv
+ * - courbeExp
+ */
+const t_baseStatistiquesIntervales baseStatistiquesAnimaux[] = {
+    { { 40, 50 }, { 50, 60 }, { 10, 10 }, 60, { 0 } }, // VACHE
 };

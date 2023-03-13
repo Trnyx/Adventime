@@ -114,16 +114,6 @@ int updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
 /* -------------------------------------------------------------------------- */
 
 
-t_animal* genererAnimal(t_animal *animal, const int niveauJoueur) {
-    animal->statistiques.pv = 20;
-    
-    animal->statistiques.experience = 0;
-    animal->statistiques.niveau = niveauJoueur;
-    
-    return animal;
-}
-
-
 
 
 
@@ -159,11 +149,9 @@ t_animal *creerAnimal(const t_vecteur2 position, const e_entiteTag tag) {
     }
 
 
-    animal->tag = tag;
-
     // Statistiques
     animal->aggressif = FAUX;
-    genererAnimal(animal, 1);
+    genererAnimal(animal, tag);
 
     // 
     animal->rayonDeplacement = 4;

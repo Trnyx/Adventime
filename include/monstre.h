@@ -101,7 +101,7 @@ typedef struct s_boss_flags {
 /* -------------------------------------------------------------------------- */
 
 
-extern const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONSTRE_TYPES];
+extern const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONSTRE_TYPES];
 
 
 
@@ -112,6 +112,9 @@ extern const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONST
 /* -------------------------------------------------------------------------- */
 #include "map.h"
 typedef struct s_map t_map;
+
+
+t_baseStatistiques genererStatistiquesDeBaseMonstre(const e_monstreType type);
 
 t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome, const int niveauJoueur);
 t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const int niveauJoueur);

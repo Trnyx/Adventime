@@ -58,6 +58,9 @@ typedef struct s_animal {
 /* -------------------------------------------------------------------------- */
 
 
+extern const t_baseStatistiques baseStatistiquesAnimaux[];
+
+
 
 
 
@@ -67,7 +70,10 @@ typedef struct s_animal {
 // #include "map.h"
 typedef struct s_map t_map;
 
-t_animal* genererAnimal(t_animal *animal, const int niveauJoueur);
+
+t_baseStatistiques genererStatistiquesDeBaseAnimal(const e_entiteTag tag);
+
+t_animal* genererAnimal(t_animal *animal, const e_entiteTag tag);
 t_animal* creerAnimal(const t_vecteur2 position, const e_entiteTag tag);
 void apparitionAnimal(const t_vecteur2 positionTroupeau, t_liste *entites, t_map *map);
 void apparitionTroupeau(t_liste *entites, t_map *map);
