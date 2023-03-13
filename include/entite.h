@@ -23,6 +23,14 @@
 
 #include "utilitaire.h"
 #include "statistiques.h"
+#include "animation.h"
+#include "liste.h"
+
+
+
+
+
+#define LONGUEUR_ID 8
 
 
 
@@ -71,6 +79,20 @@ typedef enum {
 
 
 
+/**
+ * @brief 
+ * 
+ */
+typedef enum {
+    ATTENTE,
+    SE_DEPLACE_VERS,
+    SE_DEPLACE_AUTOUR,
+    S_ELOIGNE_DE,
+    ATTAQUE,
+} e_operation;
+
+
+
 
 
 /* -------------------------------------------------------------------------- */
@@ -91,7 +113,7 @@ typedef struct s_moteur t_moteur;
 typedef struct s_entite t_entite;
 struct s_entite {
     // #include "attributs_entite.h"
-    unsigned int id;
+    char *id;
     t_vecteur2 position;                                                /**< La position actuelle de l'entité */
     t_vecteur2 direction;                                               /**< La direction (déplacement) actuelle de l'entité */
     e_orientation orientation;                                          /**< L'orientation (regard) actuelle de l'entité */
@@ -99,7 +121,9 @@ struct s_entite {
     e_entiteType entiteType;                                            /**< Le type de l'entité */
     e_entiteTag tag;                                                    /**< Le tag de l'entité */
 
-    SDL_Rect hitbox;                                                    /**< La hitbox de l'entité */
+    float taille;
+    SDL_FRect hitbox;                                                    /**< La hitbox de l'entité */
+    t_animation *animation;
 
 
     unsigned int timestampCreation;                                     /**< Le timestamp à laquelle l'entité à été créé */
@@ -108,7 +132,7 @@ struct s_entite {
     boolean destructionInactif;                                         /**< Doit être détruite lorsqu'elle est inactive */
 
 
-    int  (*update)(t_entite*, float, t_entite *cible);      /**< Fonction d'actualisation de l'entité */
+    int  (*update)(t_entite*, float, t_entite* cible);      /**< Fonction d'actualisation de l'entité */
     void (*detruire)(t_entite**);                                       /**< Fonction de suppression de l'entité */
 };
 
@@ -116,10 +140,12 @@ struct s_entite {
 
 typedef struct s_entiteVivante {
     struct s_entite;
+
+    e_operation operation;                  /**< Ce que fait l'entité */
     
     // Statistiques
-    t_statistiques statistiques;            /**< Les statistiques du Mob */
-    t_baseStatistiques baseStatistiques;    /**< Les statistiques de base du MoMob */
+    t_statistiques statistiques;            /**< Les statistiques de l'entité */
+    t_baseStatistiques baseStatistiques;    /**< Les statistiques de base de l'entité */
 
 } t_entiteVivante;
 
@@ -131,6 +157,8 @@ typedef struct s_entiteVivante {
 /*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
 
+
+t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range);
 
 t_entite* creerEntite(const t_vecteur2 position);
 void detruireEntite(t_entite **entite);

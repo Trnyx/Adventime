@@ -37,6 +37,22 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ */
+typedef enum {
+    CHANNEL_MASTER,
+    CHANNEL_MUSIQUE,
+    CHANNEL_BRUITAGE,
+} e_audio_channel;
+
+
+
+/**
+ * @brief 
+ * 
+ */
 typedef enum {
     MUSIC_MENU,
     MUSIC_AMBIANCE,
@@ -58,19 +74,17 @@ typedef enum {
  */
 typedef struct s_musiques {
     // Menu Principal
-    Mix_Music *menu_principal;      /**< */
+    Mix_Music *menu_principal;              /**< */
 
     // Ambiance
-    Mix_Music *ambiance_jour_leve_soleil;       /**< */
-    Mix_Music *ambiance_jour_matin;       /**< */
-    Mix_Music *ambiance_jour_apres_midi;       /**< */
-    Mix_Music *ambiance_jour_couche_soleil;       /**< */
-    Mix_Music *ambiance_nuit;       /**< */
+    Mix_Music *ambiance_jour_matin;         /**< */
+    Mix_Music *ambiance_jour_apres_midi;    /**< */
+    Mix_Music *ambiance_nuit;               /**< */
 
     // Combat
-    Mix_Music *combat;              /**< */
+    Mix_Music *combat;                      /**< */
     // Mix_Music *combat_nuit;
-    Mix_Music *boss;
+    Mix_Music *boss;                        /**< */
     
 } t_musiques;
 
@@ -108,6 +122,10 @@ typedef struct s_audio {
     e_musiques_type musiqueType;    /**< */
     int timestampDebutMusique;      /**< */
     int tempsEcoulee;               /**< */
+
+    float masterVolume;
+    float musiqueVolume;
+    float bruitageVolume;
 } t_audio;
 
 
@@ -124,10 +142,10 @@ extern t_audio *audio;
 
 
 t_audio *initAudio(void);
-int chargerAudio(int volume, t_musiques **musiques, t_bruitages **bruitages);
+int chargerAudio(const float volume, t_musiques **musiques, t_bruitages **bruitages);
 void detruireAudio(t_audio **audio);
 
-void changerVolume(int nouveauVolume);
+void changerVolume(const e_audio_channel channel, const float nouveauVolume);
 void play_music(Mix_Music *music, boolean repeat);
 void play_bruitage(Mix_Chunk *sound, int channel);
 void selectionMusique(t_temps *temps);

@@ -89,8 +89,8 @@ static t_map* loadMap(t_monde *monde, e_mapType type) {
 
 
     /* ---------------------------------- Cache --------------------------------- */
-    chargerEntitesDansCache(moteur->cache->entites, map->entites);
     moteur->cache->map = map;
+    moteur->cache->entites = map->entites;
 
     return map;
 }

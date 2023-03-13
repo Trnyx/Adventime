@@ -51,20 +51,6 @@ typedef enum {
 
 
 
-/**
- * @brief 
- * 
- */
-typedef enum {
-    ATTENTE,
-    SE_DEPLACE_VERS,
-    SE_DEPLACE_AUTOUR,
-    S_ELOIGNE_DE,
-    ATTAQUE,
-} e_operation;
-
-
-
 
 
 /* -------------------------------------------------------------------------- */
@@ -86,7 +72,6 @@ typedef struct s_mob {
 
 
     // Deplacement 
-    e_operation operation;                  /**< Ce que fait le mob */
     unsigned int rayonDeplacement;          /**< Le rayon dans lequel le mob peut se déplacer */
     t_vecteur2 positionDeplacement;               /**< La position à laquelle le mob veut se déplacer */
     e_deplacementType deplacementType;      /**< Le type de déplacement du mob */
@@ -115,7 +100,7 @@ typedef struct s_mob {
 t_mob* creerMob(const t_vecteur2 position);
 void detruireMob(t_mob **mob);
 
-void updateMob(t_mob *mob, const float distance);
+void updateMob(t_mob *mob, float distance);
 
 
 

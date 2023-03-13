@@ -46,13 +46,25 @@
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                                     Get                                    */
+/* -------------------------------------------------------------------------- */
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Combat                                   */
+/* -------------------------------------------------------------------------- */
+
 
 void attaquer(t_mob *mob, const float distanceFinale) {
     deplacerVers(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_ATTAQUE, mob->positionDeplacement);
     
     if (distanceFinale < 1.0) {
         printf("COMBAT => ");
-        metUnCoup((t_entiteVivante*)mob, mob->cible, calculAngleEntrePoints(mob->position, mob->positionDeplacement));
+        metUnCoup((t_entiteVivante*)mob, mob->cible, calculAngleEntrePoints(mob->position, mob->positionDeplacement), 1.4);
 
         mob->timestampAttaque = moteur->frame;
         mob->delaiAttenteAttaque = getNombreAleatoire(2, 5);
@@ -109,8 +121,16 @@ void combatMob(t_mob *mob, float distance) {
  * @param mob 
  * @param distance 
  */
-void updateMob(t_mob* mob, const float distance) {
+void updateMob(t_mob* mob, float distance) {
+    if (mob->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
+        mob->deplacementType = DEPLACEMENT_NORMAL;
+        mob->cible = NULL;
+        mob->operation = ATTENTE;
+    }
+
+
     if (mob->deplacementType == DEPLACEMENT_COMBAT) {
+        distance = calculDistanceEntreEntites((t_entite*)mob, (t_entite*)mob->cible);
         combatMob(mob, distance);
     } 
 

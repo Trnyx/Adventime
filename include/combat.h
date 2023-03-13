@@ -28,11 +28,11 @@
 /* -------------------------------------------------------------------------- */
 
 
-boolean toucheLaCible(const t_vecteur2 mob, const t_vecteur2 cible, const float angleAttaque);
-float calculDegat(const int pointAttaque, const int pointDefense, const int niveauAttaquant, const int niveauDefenseur);
+boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float angleAttaque, const float range);
+float calculDegat(const int niveauAttaquant, int pointAttaque, int pointDefense, const boolean attaquantEstNocture, const boolean defenseurEstNocturne);
 boolean appliquerDegat(t_entiteVivante *entite, const float degat);
-void metUnCoup(t_entiteVivante *entie, t_entiteVivante *cible, const float angleAttaque);
-void mort(t_entite *entite);
+void metUnCoup(t_entiteVivante *entie, t_entiteVivante *cible, const float angleAttaque, const float range);
+void mort(t_entiteVivante *entite);
 
 
 

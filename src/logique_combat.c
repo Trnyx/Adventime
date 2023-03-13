@@ -47,29 +47,85 @@
 /* -------------------------------------------------------------------------- */
 
 
-#define OUVERTURE 20
-boolean toucheLaCible(const t_vecteur2 source, const t_vecteur2 cible, const float angleAttaque) {
+#define OUVERTURE 30
+boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float angleAttaque, const float range) {
     // Calcul la distance
-    const float distance = calculDistanceEntrePoints(source, cible);
+    const float distance = calculDistanceEntreEntites(source, cible);
     // printf("\n\nDISTANCE : %1.2f\n", distance);
-    if (distance > 1.3)
+    if (distance > range)
         return FAUX;
 
-    // Calcul l'angle
-    const float angleFinale = revolution(calculAngleEntrePoints(source, cible));
-    // printf("ANGLE ATTAQUE : %1.2f\nANGLE ENTRE SOURCE ET CIBLE : %1.2f \nMIN : %1.2f\nMAX : %1.2f\nMIN REVO : %1.2f\nMAX REVO : %1.2f\n\n", angleAttaque, angleFinale, angleAttaque + OUVERTURE / 2, angleAttaque - OUVERTURE / 2, revolution(angleAttaque + OUVERTURE / 2), revolution(angleAttaque - OUVERTURE / 2));
-    if (revolution(angleAttaque + OUVERTURE / 2) < angleFinale || revolution(angleAttaque - OUVERTURE / 2) > angleFinale)
-        return FAUX;
+    /* ------------------------------ Calcul Angle ------------------------------ */
+
+    const float angleMinimum = revolution(angleAttaque - OUVERTURE / 2);
+    const float angleMaximum = revolution(angleAttaque + OUVERTURE / 2);
     
-    return VRAI;
+    t_vecteur2 pointHitbox;
+    float anglePointHitbox;
+
+    const t_vecteur2 tailleDemiHitbox = {
+        cible->hitbox.w / 2,
+        cible->hitbox.h / 2,
+    };
+
+    // Point HItbox Haut Gauche
+    pointHitbox.x = cible->position.x - tailleDemiHitbox.x;
+    pointHitbox.y = cible->position.y - tailleDemiHitbox.y;
+    anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
+
+    if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
+        return VRAI;
+
+
+    // Point HItbox Haut Droit
+    pointHitbox.x = cible->position.x + tailleDemiHitbox.x;
+    pointHitbox.y = cible->position.y - tailleDemiHitbox.y;
+    anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
+
+    if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
+        return VRAI;
+
+    // Point HItbox Bas Gauche
+    pointHitbox.x = cible->position.x - tailleDemiHitbox.x;
+    pointHitbox.y = cible->position.y + tailleDemiHitbox.y;
+    anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
+
+    if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
+        return VRAI;
+
+    // Point HItbox Bas Droit
+    pointHitbox.x = cible->position.x + tailleDemiHitbox.x;
+    pointHitbox.y = cible->position.y + tailleDemiHitbox.y;
+    anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
+
+    if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
+        return VRAI;
+
+    // printf("ANGLE ATTAQUE : %1.2f\nANGLE ENTRE SOURCE ET CIBLE : %1.2f \nMIN : %1.2f\nMAX : %1.2f\nMIN REVO : %1.2f\nMAX REVO : %1.2f\n\n", angleAttaque, angleFinale, angleAttaque + OUVERTURE / 2, angleAttaque - OUVERTURE / 2, revolution(angleAttaque + OUVERTURE / 2), revolution(angleAttaque - OUVERTURE / 2));
+    
+    return FAUX;
+
 }
 
 
 
 
 
-float calculDegat(const int pointAttaque, const int pointDefense, const int niveauAttaquant, const int niveauDefenseur) {
-    return 0;
+float calculDegat(const int niveauAttaquant, int pointAttaque, int pointDefense, const boolean attaquantEstNocture, const boolean defenseurEstNocturne) {
+    if (defenseurEstNocturne) {
+        pointDefense += (((pointDefense / 2.5) + pointDefense + 2));
+    }
+
+
+    int degat = (((niveauAttaquant * 0.6 + 2) * pointAttaque) / pointDefense) + 10;
+
+
+    if (attaquantEstNocture) {
+        degat += (((niveauAttaquant / 4.7) + niveauAttaquant + 2));
+    }
+
+
+    return degat;
 }
 
 
@@ -99,17 +155,23 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
  * @param entite 
  * @param cible 
  */
-void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque) {
-    if (toucheLaCible(entite->position, cible->position, angleAttaque)) {
+void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque, const float range) {
+    if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
         printf("CIBLE TOUCHE\n");
-        const float degat = calculDegat(entite->statistiques.attaque, cible->statistiques.defense, entite->statistiques.niveau, cible->statistiques.niveau);
+
+        float degat = calculDegat(entite->statistiques.niveau, entite->statistiques.attaque, cible->statistiques.defense, FAUX, FAUX);
+        // Modificateur si il y a armes
+        // Modificateur si il y a armure
+
         const boolean cibleEstMorte = appliquerDegat(cible, degat);
 
+
+        // mort(cible);
         if (cibleEstMorte) {
+            
             // Calcul experience
             // distribution experience
             // drops items
-            mort((t_entite*)cible);
         }
     }
     else
@@ -158,14 +220,15 @@ void dropItems() {
 
 
 
-void mort(t_entite *entite) {
+void mort(t_entiteVivante *entite) {
     switch (entite->entiteType) {
         case ENTITE_JOUEUR:
             // reapparitionJoueur();
             break;
 
         default:
-            entite->detruire(&entite);
+            entite->statistiques.pv = 0;
+            // entite->detruire(&entite);
             break;
     }
 }

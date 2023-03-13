@@ -14,10 +14,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <SDL2/SDL_image.h>
 
 #include "../include/initialiseur.h"
 #include "../include/menus.h"
-#include "SDL2/SDL_image.h"
 // #include image.h
 // #include ttf.h
 

@@ -35,19 +35,41 @@ t_audio *audio = NULL;
 /* -------------------------------------------------------------------------- */
 
 
+/* --------------------------------- Volume --------------------------------- */
+
 /**
- * @brief 
+ * @brief Fonction permettant de changer le volume du channel spécifié
  * 
- * @param nouveauVolume 
+ * La channel ici n'est pas une piste audio mais plus une catégorie
+ * 
+ * @param channel Le channel où le volume sera modifié
+ * @param nouveauVolume Le nouveau volume (en %)
  */
-void changerVolume(int nouveauVolume) {
-    Mix_VolumeMusic(3 * nouveauVolume / 4);
-    Mix_Volume(-1, nouveauVolume);
+void changerVolume(const e_audio_channel channel, const float nouveauVolume) {
+    printf("CHANNEL : %i / VOLUME : %1.2f\n", channel, nouveauVolume);
+    switch (channel) {
+        case CHANNEL_MASTER: 
+            printf("MASTER\n");
+            audio->masterVolume = nouveauVolume; 
+            printf("VOUME SET\n");
+            break;
+        case CHANNEL_MUSIQUE: audio->musiqueVolume = nouveauVolume; break;
+        case CHANNEL_BRUITAGE: audio->bruitageVolume = nouveauVolume; break;
+    }
+    printf("BONJOUR");
+    
+
+    Mix_Volume(-1, audio->bruitageVolume * audio->masterVolume * MIX_MAX_VOLUME);
+    Mix_VolumeMusic(audio->musiqueVolume * audio->masterVolume * MIX_MAX_VOLUME * 0.75);
+    Mix_MasterVolume(audio->masterVolume * MIX_MAX_VOLUME);
+    
 }
 
 
 
 
+
+/* ---------------------------------- Play ---------------------------------- */
 
 /**
  * @brief 
@@ -74,6 +96,11 @@ void play_bruitage(Mix_Chunk *sound, int channel) {
 
 
 
+/**
+ * @brief 
+ * 
+ * @param temps 
+ */
 void selectionMusique(t_temps *temps) {
     t_musiques *musiques = audio->musiques;
     Mix_Music *musique = NULL;
@@ -84,40 +111,22 @@ void selectionMusique(t_temps *temps) {
     switch (audio->musiqueType) {
         case MUSIC_AMBIANCE:
             switch (temps->periode) {
-                case PERIODE_NUIT:
-                    musique = musiques->ambiance_nuit;
-                    break;
-                case PERIODE_JOUR_LEVE_SOLEIL:
-                    musique = musiques->ambiance_jour_leve_soleil;
-                    break;
-                case PERIODE_JOUR_MATIN:
-                    musique = musiques->ambiance_jour_matin;
-                    break;
-                case PERIODE_JOUR_APRES_MIDI:
-                    musique = musiques->ambiance_jour_apres_midi;
-                    break;
-                case PERIODE_JOUR_COUCHE_SOLEIL:
-                    musique = musiques->ambiance_jour_couche_soleil;
-                    break;
-                default:
-                    musique = musiques->ambiance_jour_leve_soleil;
-                    break;
+                case PERIODE_NUIT: musique = musiques->ambiance_nuit; break;
+
+                case PERIODE_JOUR_MATIN: musique = musiques->ambiance_jour_matin; break;
+                case PERIODE_JOUR_APRES_MIDI: musique = musiques->ambiance_jour_apres_midi; break;
+
+                default: musique = musiques->ambiance_jour_matin; break;
             }
             break;
             
 
-        case MUSIC_COMBAT:
-            musique = musiques->combat;
-            break;
+        case MUSIC_COMBAT: musique = musiques->combat; break;
 
-        case MUSIC_BOSS:
-            musique = musiques->boss;
-            break;
+        case MUSIC_BOSS: musique = musiques->boss; break;
         
         
-        default:
-            musique = musiques->menu_principal;
-            break;
+        default: musique = musiques->menu_principal; break;
     }
 
 
@@ -154,7 +163,7 @@ void loadMusiqueBoss(t_musiques *musiques, e_jour jour) {
  * @param bruitages 
  * @return int 
  */
-int chargerAudio(const int volume, t_musiques **musiques, t_bruitages **bruitages) {
+int chargerAudio(const float volume, t_musiques **musiques, t_bruitages **bruitages) {
     t_musiques *m = malloc(sizeof(t_musiques));
     if (m == NULL) {
         printf("Impossible d'allouer la mémoire pour les musiques");
@@ -177,10 +186,8 @@ int chargerAudio(const int volume, t_musiques **musiques, t_bruitages **bruitage
     m->menu_principal = Mix_LoadMUS("assets/audio/musiques/menu.mp3");
 
     // Ambiance
-    m->ambiance_jour_leve_soleil = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_leve_soleil.ogg");
     m->ambiance_jour_matin = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_matin.ogg");
     m->ambiance_jour_apres_midi = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_apres_midi.ogg");
-    m->ambiance_jour_couche_soleil = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_couche_soleil.ogg");
     m->ambiance_nuit = Mix_LoadMUS("assets/audio/musiques/ambiance_nuit.mp3");
 
     // Combat
@@ -210,7 +217,7 @@ int chargerAudio(const int volume, t_musiques **musiques, t_bruitages **bruitage
 
 
 
-    changerVolume(volume);
+    // changerVolume(CHANNEL_MASTER, volume);
 
 
     *musiques = m;
@@ -237,10 +244,15 @@ t_audio* initAudio() {
         printf("WARNING : Erreur d'initialisation de SDL MIXER : %s\n", Mix_GetError());
     }
 
+    a->masterVolume = 1.0;
+    a->musiqueVolume = 1.0;
+    a->bruitageVolume = 1.0;
 
-    chargerAudio(MIX_MAX_VOLUME, &a->musiques, &a->bruitages);
+
+    chargerAudio(a->masterVolume, &a->musiques, &a->bruitages);
     a->musiqueType = MUSIC_MENU;
     a->timestampDebutMusique = 0;
+
 
 
     return a;
@@ -276,14 +288,12 @@ void detruireAudio(t_audio **audio) {
             printf("Destruction musiques => ");
             // Mix_FreeMusic((*musiques)->);
 
-            Mix_FreeMusic((*audio)->musiques->ambiance_jour_leve_soleil);
+            Mix_FreeMusic((*audio)->musiques->menu_principal);
             Mix_FreeMusic((*audio)->musiques->ambiance_jour_matin);
             Mix_FreeMusic((*audio)->musiques->ambiance_jour_apres_midi);
-            Mix_FreeMusic((*audio)->musiques->ambiance_jour_couche_soleil);
             Mix_FreeMusic((*audio)->musiques->ambiance_nuit);
             Mix_FreeMusic((*audio)->musiques->combat);
             Mix_FreeMusic((*audio)->musiques->boss);
-            Mix_FreeMusic((*audio)->musiques->menu_principal);
 
             free(musiques);
             musiques = NULL;

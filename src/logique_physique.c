@@ -112,6 +112,7 @@ void update(t_map *map, t_joueur *joueur) {
 
     unsigned int nombreEntites = 0;
     unsigned int nombreMobs = 0;
+    unsigned int nombreAnimaux = 0;
     unsigned int nombreMobsCombat = 0;
     unsigned int nombreMobsAggressifs = 0;
     unsigned int nombreMobsPassifs = 0;
@@ -159,7 +160,7 @@ void update(t_map *map, t_joueur *joueur) {
 
     en_tete(entites);
     if (!liste_vide(entites)) {
-        printf("Update Entites => ");
+        // printf("Update Entites => ");
 
         while (!hors_liste(entites)) {
             valeur_elt(entites, &entite);
@@ -178,7 +179,7 @@ void update(t_map *map, t_joueur *joueur) {
                     // Si l'entité doit être supprimé
                     // Alors on la détruit
                     if (entite->destructionInactif) {
-                        suppressionEntite(entites, (t_entite*)entite);
+                        suppressionEntite(entites, entite);
                         continue;
                     }
                 }
@@ -197,7 +198,7 @@ void update(t_map *map, t_joueur *joueur) {
                     // Si l'entité à atteint la durée de vie maximale d'une entité alors elle est supprimé
                     if (entite->destructionInactif) {
                         if (entite->timestampActualisation - entite->timestampCreation >= (ENTITE_DUREE_VIE_MAX * 1000)) {
-                            suppressionEntite(entites, (t_entite*)entite);
+                            suppressionEntite(entites, entite);
                             continue;
                         }
                     }
@@ -212,9 +213,15 @@ void update(t_map *map, t_joueur *joueur) {
                     switch (entite->entiteType) {
                         // Si l'entité est un mob 
                         case ENTITE_MOB:
+                            // Si le mob est mort 
+                            if (((t_mob*)entite)->statistiques.pv <= 0) {
+                                suppressionEntite(entites, entite);
+                                // play_bruitage(audio->bruitages->monstre_mort, 4);
+                                continue;
+                            }
                             // Si le mob est en DEPLACEMENT_COMBAT
                             // On update alors la position cible
-                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT) {
+                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && ((t_mob*)entite)->cible->entiteType == ENTITE_JOUEUR) {
                                 nombreMobsCombat++;
 
                                 // Update de la position cible 
@@ -249,6 +256,7 @@ void update(t_map *map, t_joueur *joueur) {
 
                 if (entite->entiteType == ENTITE_MOB) {
                     nombreMobs++;
+
                     if (((t_mob*)entite)->aggressif) 
                         nombreMobsAggressifs++;
                     else
@@ -262,8 +270,8 @@ void update(t_map *map, t_joueur *joueur) {
             suivant(entites);
         }
 
-        printf("Fin Update Entites\n");
-        printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", nombreEntites, nombreMobs, nombreMobsPassifs, nombreMobsAggressifs);
+        // printf("Fin Update Entites\n");
+        // printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", nombreEntites, nombreMobs, nombreMobsPassifs, nombreMobsAggressifs);
     }
 
 
@@ -288,6 +296,8 @@ void update(t_map *map, t_joueur *joueur) {
             //          Calcul la probabilité d'apparition d'un monstre
             //          Si apparition possible
             //              Apparition du monste dans le rayon semi actif
+
+
             //      Si le nombre d'animaux max n'est pas atteint
             //          Calcul la probabilité d'apparition d'un animal
             //          Si apparition possible

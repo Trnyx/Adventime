@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "../include/NanoId/nanoid.h"
+
 #include "../include/physique.h"
 #include "../include/moteur.h"
 #include "../include/monde.h"
@@ -23,6 +25,98 @@
 
 
 
+
+
+/* -------------------------------------------------------------------------- */
+/*                                Verification                                */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
+ * @param position 
+ * @param map 
+ * @return boolean 
+ */
+boolean peutApparaitre(const t_vecteur2 position, t_map *map) {
+    t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
+
+    if (chunk == NULL) 
+        return FAUX;
+
+    const e_biome biome = chunk->biome;
+    if (biome == BIOME_PROFONDEUR)
+        return FAUX;
+
+    t_block *block = getBlockDansMap(position.x, position.y, COUCHE_SOL, map);
+    if (block->tag == SOL_EAU)
+        return FAUX;
+
+    block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
+    if (block == NULL)
+        return FAUX;
+    
+    if (block->tag != VIDE)
+        return FAUX;
+            
+    return VRAI;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                     Get                                    */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief Get the Entites Alentour object
+ * 
+ * @param centre 
+ * @param type 
+ * @param range 
+ * @return t_liste 
+ */
+t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range) {
+    t_liste *entitesActuelles = moteur->cache->entites;
+    t_liste entitesAlentours;
+    init_liste(&entitesAlentours);
+
+    t_entite *entite = NULL;
+
+
+    en_tete_cache(entitesActuelles);
+    while (!hors_liste_cache(entitesActuelles)) {
+        valeur_elt_cache(entitesActuelles, &entite);
+
+        if (!strcmp(centre->id, entite->id)) {
+            suivant_cache(entitesActuelles);
+            continue;
+        }
+
+
+        const float distance = calculDistanceEntreEntites(centre, entite);
+
+        if (entite->entiteType == type && distance <= range)
+            ajout_droit(&entitesAlentours, entite);
+
+        suivant_cache(entitesActuelles);
+    }
+    
+
+    return entitesAlentours;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Calcul                                   */
+/* -------------------------------------------------------------------------- */
 
 
 /**
@@ -40,6 +134,11 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                          Deplacement & Orientation                         */
+/* -------------------------------------------------------------------------- */
+
+
 /**
  * @brief 
  * 
@@ -48,7 +147,7 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
  * @param positionSuivante 
  * @return boolean 
  */
-boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 positionSuivante) {
+boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positionSuivante) {
     t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_OBJETS, map);
     if (block == NULL) 
         return FAUX;
@@ -60,6 +159,9 @@ boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 
 
     // Check si le block est un block profondeur
     block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_SOL, map);
+    if (block == NULL)
+        return FAUX;
+
     if (block->tag == SOL_EAU_PROFONDE) 
         return FAUX;
 
@@ -69,18 +171,33 @@ boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 
     if (abs(block->tag - blockPositionActuelle->tag) > 1) 
         return FAUX;
 
-    
-    // t_entite *entiteTempo = NULL;
-    // en_tete(map->entites);
-    // while (!hors_liste(map->entites)) {
-    //     valeur_elt(map->entites, &entiteTempo);
 
-    //     const float distance = calculDistanceEntreEntites(entite, entiteTempo);
-    //     if (distance <= 0.5)
-    //         return FAUX;
+    // Check si collision
+    t_liste entitesAlentours = getEntitesAlentour(entite, ENTITE_MOB, (entite->hitbox.w * entite->taille) / 2);
 
-    //     suivant(map->entites);
-    // }
+    if (!liste_vide(&entitesAlentours)) {
+        t_entite *entiteTempo = NULL;
+
+        SDL_FRect hitbox;
+        hitbox.x = positionSuivante.x; 
+        hitbox.y = positionSuivante.y; 
+        hitbox.w = entite->hitbox.w * entite->taille;
+        hitbox.h = entite->hitbox.h * entite->taille;
+
+        en_tete(&entitesAlentours);
+        while (!hors_liste(&entitesAlentours)) {
+            valeur_elt(&entitesAlentours, &entiteTempo);
+
+
+            if (SDL_HasIntersectionF(&hitbox, &entiteTempo->hitbox)){
+                printf("COLLISION : \n");
+                return FAUX;
+            }
+                    
+
+            suivant(&entitesAlentours);
+        }
+    }
 
 
     return VRAI;
@@ -116,6 +233,9 @@ boolean deplacerEntite(t_entite *entite, const float vitesse) {
     if (peutSeDeplacer == VRAI) {
         // printf("Precedente : %1.2f:%1.2f | Nouvelle : %1.2f:%1.2f\n", entite->position.x, entite->position.y, positionSuivante.x, positionSuivante.y);
         entite->position = positionSuivante;
+        
+        entite->hitbox.x = entite->position.x - (entite->taille / 2);
+        entite->hitbox.y = entite->position.y - (entite->taille / 2);
     }
 
 
@@ -203,10 +323,35 @@ void dessinerEntite(t_entite *entite) {
     }
 
 
+    // Animation
+    if (entite->animation != NULL) {
+        updateAnimation(entite->animation, moteur->frame);
+        sprite.x += TAILLE_TILE * entite->animation->frameCourante;
+        
+        // Deplacement
+        switch (((t_entiteVivante*)entite)->operation) {
+            case SE_DEPLACE_VERS:
+            case SE_DEPLACE_AUTOUR:
+            case ATTAQUE:
+                sprite.y += TAILLE_TILE * 4;
+                break;
+                // sprite.y += TAILLE_TILE * 4 * 2;
+                // break;
+            default:
+                break;
+        }
+    }
+
+
 
 
     SDL_RenderCopy(moteur->renderer, texture, &sprite, &rendu);
-    // SDL_Rect point = {positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w), positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h), 4,4};
+    // SDL_Rect point = {
+    //     positionRelativeEnPositionSurEcran(entite->hitbox.x, 0.0, moteur->camera->origine.x, rendu.w), 
+    //     positionRelativeEnPositionSurEcran(entite->hitbox.y, 0.0, moteur->camera->origine.y, rendu.h), 
+    //     moteur->camera->tailleRendu.x,
+    //     moteur->camera->tailleRendu.y,
+    // };
     // SDL_SetRenderDrawColor(moteur->renderer, 0, 0, 0, 255);
     // SDL_RenderFillRect(moteur->renderer, &point);
 }
@@ -228,7 +373,11 @@ void dessinerEntite(t_entite *entite) {
 void detruireEntite(t_entite **entite) {
     printf("Destruction Entite => ");
     if (entite != NULL && *entite != NULL) {
-
+        if ((*entite)->id != NULL) {
+            free((*entite)->id);
+            (*entite)->id = NULL;
+        }
+        
         free(*entite);
         *entite = NULL;
 
@@ -259,7 +408,8 @@ t_entite* creerEntite(const t_vecteur2 position) {
         return NULL;
     }
 
-    entite->id = 0;
+    entite->id = generate(LONGUEUR_ID);
+    printf("ID : %s\n", entite->id);
 
 
     entite->position.x = position.x;
@@ -271,10 +421,14 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->entiteType = ENTITE_RIEN;
     entite->tag = TAG_AUCUN;
 
-    entite->hitbox.x = 0;
-    entite->hitbox.y = 0;
-    entite->hitbox.h = 16;
-    entite->hitbox.w = 16;
+    entite->taille = 1;
+
+    entite->hitbox.x = position.x - (entite->taille / 2);
+    entite->hitbox.y = position.y - (entite->taille / 2);
+    entite->hitbox.h = 1;
+    entite->hitbox.w = 1;
+
+    entite->animation = NULL;
 
     
     entite->update = NULL;
