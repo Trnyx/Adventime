@@ -51,6 +51,7 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
         return NULL;
 
 
+    t_entite *entiteTempo = NULL;
     t_entite *entite = NULL;
     float distance = 0.0;
 
@@ -60,15 +61,17 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
 
         if (entite->tag == animal->tag) {
             distance = calculDistanceEntreEntites((t_entite*)animal, entite);
-            if (distance > 5.0)
-                return entite;
+            if (distance <= 5.0)
+                return NULL;
+            else 
+                entite = entiteTempo;
         }
 
         suivant(&entitesAlentours);
     }
     
     
-    return NULL;
+    return entite;
 }
 
 
@@ -82,24 +85,24 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
 
 int updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
 
-    // t_entite *animalDuTroupeauLePlusProche = estTropLoinDuTroupeau(animal);
+    t_entite *animalDuTroupeauLePlusProche = estTropLoinDuTroupeau(animal);
     
-    // if (animalDuTroupeauLePlusProche != NULL) {
-    //     printf("UPDATE VACHE TROP LOIN\n");
-    //     const float distance = calculDistanceEntreEntites((t_entite*)animal, animalDuTroupeauLePlusProche);
-    //     animal->operation = SE_DEPLACE_VERS;
+    if (animalDuTroupeauLePlusProche != NULL) {
+        // printf("UPDATE VACHE TROP LOIN\n");
+        const float distance = calculDistanceEntreEntites((t_entite*)animal, animalDuTroupeauLePlusProche);
+        animal->operation = SE_DEPLACE_VERS;
 
-    //     animal->positionDeplacement.x = animal->position.x - (distance * 0.75);
-    //     animal->positionDeplacement.y = animal->position.y - (distance * 0.75);
+        animal->positionDeplacement.x += animalDuTroupeauLePlusProche->position.x * 0.6;
+        animal->positionDeplacement.y += animalDuTroupeauLePlusProche->position.y * 0.6;
 
-    //     // updateMob((t_mob*)animal, 0.0);
-    // } else {
-    //     printf("UPDATE VACHE\n");
-    //     updateMob((t_mob*)animal, distance);
-    // }
-
-    printf("ANIMAL (%s) => déplacement : %i / opération : %i \n", animal->id, animal->deplacementType, animal->operation);
+        // updateMob((t_mob*)animal, 0.0);
+    } else {
+        // printf("UPDATE VACHE\n");
         updateMob((t_mob*)animal, distance);
+    }
+
+    // printf("ANIMAL (%s) => déplacement : %i / opération : %i \n", animal->id, animal->deplacementType, animal->operation);
+    //     updateMob((t_mob*)animal, distance);
 
     
     return 0;
@@ -158,7 +161,7 @@ t_animal *creerAnimal(const t_vecteur2 position, const e_entiteTag tag) {
     animal->deplacementType = DEPLACEMENT_NORMAL;
 
     // Animation
-    animal->animation = creerAnimation(150, 2);
+    animal->animation = creerAnimation(200, 2);
 
     // Fonctions
     animal->update = (int (*)(t_entite*, float, t_entite*)) updateAnimal;

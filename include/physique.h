@@ -107,11 +107,15 @@
 
 
 // La durée maximale de déplacement d'un mob [en seconde]
-#define MOB_DUREE_DEPLACEMENT 5
+#define MOB_DUREE_DEPLACEMENT (5 * FPS)
 // La durée minimale d'attente entre deux déplacements [en seconde]
-#define MOB_DELAI_MIN_ENTRE_DEPLACEMENT 3
+#define MOB_DELAI_MIN_ENTRE_DEPLACEMENT (3 * FPS)
 // La durée maximale d'attente entre deux déplacements [en seconde]
-#define MOB_DELAI_MAX_ENTRE_DEPLACEMENT 8
+#define MOB_DELAI_MAX_ENTRE_DEPLACEMENT (8 * FPS)
+// La durée minimale d'attente entre deux attaques [en seconde]
+#define MOB_DELAI_MIN_ENTRE_ATTAQUE (2 * FPS)
+// La durée maximale d'attente entre deux attaques [en seconde]
+#define MOB_DELAI_MAX_ENTRE_ATTAQUE (5 * FPS)
 
 
 // La durée de vie minimum d'une entité

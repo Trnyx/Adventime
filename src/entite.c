@@ -173,7 +173,7 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
 
 
     // Check si collision
-    t_liste entitesAlentours = getEntitesAlentour(entite, ENTITE_MOB, (entite->hitbox.w * entite->taille) / 2);
+    t_liste entitesAlentours = getEntitesAlentour(entite, ENTITE_MOB, (entite->hitbox.w * entite->taille) * 0.8);
 
     if (!liste_vide(&entitesAlentours)) {
         t_entite *entiteTempo = NULL;
