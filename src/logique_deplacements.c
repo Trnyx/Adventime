@@ -62,7 +62,7 @@ static void orienterVersCible(t_mob *mob) {
  * @param cible 
  */
 void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
-    printf("Deplacer vers => %1.2f:%1.2f\n", cible.x, cible.y);
+    printf("Deplacer vers => %1.2f:%1.2f (%i : %s)\n", cible.x, cible.y, mob->tag, mob->id);
     mob->direction.x = (cible.x - mob->position.x);
     mob->direction.y = (cible.y - mob->position.y);
 

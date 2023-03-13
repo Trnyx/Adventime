@@ -122,6 +122,8 @@ int calculPv(const int attaque, const int defense, const int basePv) {
 t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau) {
     t_statistiques statistiques;
 
+    statistiques.experience = 0;
+    statistiques.niveau = niveau;
     statistiques.attaque = calculStatistique(baseStatistiques.attaque, niveau);
     statistiques.defense = calculStatistique(baseStatistiques.defense, niveau);
     statistiques.vitesse = 4.0; // calculStatistique(baseStatistiques.vitesse, niveau);
@@ -153,9 +155,8 @@ t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome, const int niv
     monstre->tag = TAG_MONSTRE_BASIC;
     monstre->type = choisirTypeMonstre(basesBiomes[biome]);
 
-    monstre->statistiques.niveau = niveauJoueur;
     monstre->baseStatistiques = genererStatistiquesDeBase(monstre->type);
-    monstre->statistiques = genererStatistiques(monstre->baseStatistiques, monstre->statistiques.niveau);
+    monstre->statistiques = genererStatistiques(monstre->baseStatistiques, niveauJoueur);
 
     monstre->estNocturne = FAUX;
     

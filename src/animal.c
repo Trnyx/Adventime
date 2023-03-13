@@ -45,10 +45,10 @@ e_entiteTag choisirTag() {
  * @return t_entite* 
  */
 t_entite* estTropLoinDuTroupeau(t_animal *animal) {
-    t_liste entitesAlentours = getEntitesAlentour((t_entite*)animal, ENTITE_MOB, 6.0);
+    t_liste entitesAlentours = getEntitesAlentour((t_entite*)animal, ENTITE_MOB, 8.0);
     
     if (liste_vide(&entitesAlentours))
-        return FAUX;
+        return NULL;
 
 
     t_entite *entite = NULL;
@@ -60,7 +60,7 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
 
         if (entite->tag == animal->tag) {
             distance = calculDistanceEntreEntites((t_entite*)animal, entite);
-            if (distance > 3.0)
+            if (distance > 5.0)
                 return entite;
         }
 
@@ -81,19 +81,25 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
 
 
 int updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
-    updateMob((t_mob*)animal, distance);
 
+    // t_entite *animalDuTroupeauLePlusProche = estTropLoinDuTroupeau(animal);
+    
+    // if (animalDuTroupeauLePlusProche != NULL) {
+    //     printf("UPDATE VACHE TROP LOIN\n");
+    //     const float distance = calculDistanceEntreEntites((t_entite*)animal, animalDuTroupeauLePlusProche);
+    //     animal->operation = SE_DEPLACE_VERS;
 
-    t_entite *animalDuTroupeauLePlusProche = estTropLoinDuTroupeau(animal);
-    if (animalDuTroupeauLePlusProche != NULL) {
-        const float distance = calculDistanceEntreEntites((t_entite*)animal, animalDuTroupeauLePlusProche);
-        animal->operation = SE_DEPLACE_VERS;
+    //     animal->positionDeplacement.x = animal->position.x - (distance * 0.75);
+    //     animal->positionDeplacement.y = animal->position.y - (distance * 0.75);
 
-        animal->positionDeplacement.x = animal->position.x - (distance * 0.75);
-        animal->positionDeplacement.y = animal->position.y - (distance * 0.75);
+    //     // updateMob((t_mob*)animal, 0.0);
+    // } else {
+    //     printf("UPDATE VACHE\n");
+    //     updateMob((t_mob*)animal, distance);
+    // }
 
-        updateMob((t_mob*)animal, 0.0);
-    }
+    printf("ANIMAL (%s) => déplacement : %i / opération : %i \n", animal->id, animal->deplacementType, animal->operation);
+        updateMob((t_mob*)animal, distance);
 
     
     return 0;
@@ -108,7 +114,12 @@ int updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
 /* -------------------------------------------------------------------------- */
 
 
-t_animal* genererAnimal(t_animal *animal, const e_biome biome, const int niveauJoueur) {
+t_animal* genererAnimal(t_animal *animal, const int niveauJoueur) {
+    animal->statistiques.pv = 20;
+    
+    animal->statistiques.experience = 0;
+    animal->statistiques.niveau = niveauJoueur;
+    
     return animal;
 }
 
@@ -138,7 +149,7 @@ void detruireAnimal(t_animal **animal) {
 /* -------------------------------------------------------------------------- */
 
 
-t_animal *creerAnimal(const t_vecteur2 position, const e_biome biome, const e_entiteTag tag) {
+t_animal *creerAnimal(const t_vecteur2 position, const e_entiteTag tag) {
     t_mob *mob = creerMob(position);
     t_animal *animal = realloc(mob, sizeof(t_animal))    ;
 
@@ -152,7 +163,7 @@ t_animal *creerAnimal(const t_vecteur2 position, const e_biome biome, const e_en
 
     // Statistiques
     animal->aggressif = FAUX;
-    genererAnimal(animal, biome, 1);
+    genererAnimal(animal, 1);
 
     // 
     animal->rayonDeplacement = 4;
@@ -183,25 +194,48 @@ t_animal *creerAnimal(const t_vecteur2 position, const e_biome biome, const e_en
 
 
 void apparitionAnimal(const t_vecteur2 positionTroupeau, t_liste *entites, t_map *map) {
+    printf("APPARITION ANIMAL => ");
     t_vecteur2 position = choisirPointDansRayon(5);
     position.x += positionTroupeau.x;
     position.y += positionTroupeau.y;
 
 
+    if (peutApparaitre(position, map)) {
+        printf("APPARAIT ");
+        const e_entiteTag tag = choisirTag();
+        t_animal *animal = creerAnimal(position, tag);
+
+        en_queue(entites);
+        ajout_droit(entites, (t_entite*)animal);
+    }
+    else {
+        printf("PEUT PAS APPARAITRE ");
+    }
 }
 
 
 
 void apparitionTroupeau(t_liste *entites, t_map *map) {
-    const float rayon = JOUEUR_RAYON_INACTIF - JOUEUR_RAYON_SEMIACTIF;
-    t_vecteur2 positionTroupeau = choisirPointDansRayon(rayon);
-    const int nombreAnimaux = getNombreAleatoire(4, 8);
+    printf("APPARTITION TROUPEAU => ");
+
+    const int nombreTroupeau = getNombreAleatoire(8, 12);
+
+    for (int t = 0; t < nombreTroupeau; t++) {
+        const int nombreAnimaux = getNombreAleatoire(4, 8);
+        printf("NOMBRE ANIMAUX %i => ", nombreAnimaux);
+
+        t_vecteur2 positionTroupeau = {
+            getNombreAleatoire(TAILLE_CHUNK, (TAILLE_MAP - 1) * TAILLE_CHUNK),
+            getNombreAleatoire(TAILLE_CHUNK, (TAILLE_MAP - 1) * TAILLE_CHUNK),
+        };
+        printf("TROUPEAU %i => ", t);
+        printf("POSITION TROUPEAU %1.2f:%1.2f => ", positionTroupeau.x, positionTroupeau.y);
 
 
-    for (int i = 0; i < nombreAnimaux; i++) {
-        apparitionAnimal(positionTroupeau, entites, map);
+        for (int i = 0; i < nombreAnimaux; i++) {
+            apparitionAnimal(positionTroupeau, entites, map);
+        }
+        
+        printf("\n");
     }
-
-
-
 }

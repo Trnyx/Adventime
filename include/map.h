@@ -62,7 +62,6 @@ typedef enum {
 typedef enum {
     COUCHE_SOL,
     COUCHE_OBJETS,
-    COUCHE_ENTITE,
     NB_COUCHE,
 } e_coucheMap;
 

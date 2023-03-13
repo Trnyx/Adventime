@@ -156,8 +156,10 @@ typedef struct s_entiteVivante {
 /* -------------------------------------------------------------------------- */
 /*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
+typedef struct s_map t_map;
 
 
+boolean peutApparaitre(const t_vecteur2 position, t_map *map);
 t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range);
 
 t_entite* creerEntite(const t_vecteur2 position);

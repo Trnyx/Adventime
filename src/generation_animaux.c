@@ -21,5 +21,6 @@
 
 
 void genererAnimaux(t_map *map) {
-
+    printf("GENERATION ANIMAUX => ");
+    apparitionTroupeau(map->entites, map);
 }

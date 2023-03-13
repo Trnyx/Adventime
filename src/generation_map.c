@@ -24,8 +24,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../include/map.h"
 #include "../include/physique.h"
+#include "../include/map.h"
+#include "../include/animal.h"
 
 
 
@@ -650,7 +651,6 @@ t_map* genererOverworld(t_map *map) {
 
 
     genererVegetations(map);
-
     genererAnimaux(map);
 
 
@@ -680,7 +680,11 @@ t_map* genererMap(e_mapType type) {
     }
 
 
-    map->type = type;     
+    map->type = type;
+    // map->nombreEntites = 0;
+    // map->entites = NULL;
+    map->entites = malloc(sizeof(t_liste));
+    init_liste(map->entites);
 
     switch (type) {
         case MAP_OVERWORLD: genererOverworld(map); break;
@@ -689,11 +693,6 @@ t_map* genererMap(e_mapType type) {
             break;
     }
 
-
-    // map->nombreEntites = 0;
-    // map->entites = NULL;
-    map->entites = malloc(sizeof(t_liste));
-    init_liste(map->entites);
     
 
     printf("Succes\n");

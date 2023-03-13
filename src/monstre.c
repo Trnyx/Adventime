@@ -195,24 +195,34 @@ void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJo
     // position.y += positionJoueur.y;
 
 
-    t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
+    if (peutApparaitre(position, map)) {
+        t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_SOL, map);
+        if (chunk != NULL) {
+            const e_biome biome = chunk->biome;
+            t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
 
-    if (chunk != NULL) {
-        // printf("Chunk => ");
-        const e_biome biome = chunk->biome;
-        if (biome != BIOME_PROFONDEUR){
-            t_block *block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
-
-            if (block != NULL) {
-                // printf("Block => ");
-                if (block->tag == VIDE) {
-                    // printf("%i => ", block->tag);
-                    t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
-
-                    en_queue(entites);
-                    ajout_droit(entites, (t_entite*)monstre);
-                }
-            }
+            en_queue(entites);
+            ajout_droit(entites, (t_entite*)monstre);
         }
     }
+    // t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
+
+    // if (chunk != NULL) {
+    //     // printf("Chunk => ");
+    //     const e_biome biome = chunk->biome;
+    //     if (biome != BIOME_PROFONDEUR){
+    //         t_block *block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
+
+    //         if (block != NULL) {
+    //             // printf("Block => ");
+    //             if (block->tag == VIDE) {
+    //                 // printf("%i => ", block->tag);
+    //                 t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
+
+    //                 en_queue(entites);
+    //                 ajout_droit(entites, (t_entite*)monstre);
+    //             }
+    //         }
+    //     }
+    // }
 }

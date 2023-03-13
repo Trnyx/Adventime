@@ -64,12 +64,13 @@ typedef struct s_animal {
 /* -------------------------------------------------------------------------- */
 /*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
-#include "map.h"
+// #include "map.h"
 typedef struct s_map t_map;
 
-t_animal* genererAnimal(t_animal *animal, const e_biome biome, const int niveauJoueur);
-t_animal* creerAnimal(const t_vecteur2 position, const e_biome biome, const e_entiteTag tag);
+t_animal* genererAnimal(t_animal *animal, const int niveauJoueur);
+t_animal* creerAnimal(const t_vecteur2 position, const e_entiteTag tag);
 void apparitionAnimal(const t_vecteur2 positionTroupeau, t_liste *entites, t_map *map);
+void apparitionTroupeau(t_liste *entites, t_map *map);
 
 void detruireAnimal(t_animal **animal);
 

@@ -47,7 +47,7 @@
 /* -------------------------------------------------------------------------- */
 
 
-#define OUVERTURE 30
+#define OUVERTURE 40
 boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float angleAttaque, const float range) {
     // Calcul la distance
     const float distance = calculDistanceEntreEntites(source, cible);
