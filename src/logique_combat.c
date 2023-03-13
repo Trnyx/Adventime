@@ -112,6 +112,7 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
 
 
 float calculDegat(const int niveauAttaquant, int pointAttaque, int pointDefense, const boolean attaquantEstNocture, const boolean defenseurEstNocturne) {
+  printf("%d", niveauAttaquant);
     if (defenseurEstNocturne) {
         pointDefense += (((pointDefense / 2.5) + pointDefense + 2));
     }
@@ -158,6 +159,7 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
 void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque, const float range) {
     if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
         printf("CIBLE TOUCHE\n");
+
 
         float degat = calculDegat(entite->statistiques.niveau, entite->statistiques.attaque, cible->statistiques.defense, FAUX, FAUX);
         // Modificateur si il y a armes

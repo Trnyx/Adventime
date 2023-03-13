@@ -10,6 +10,7 @@
 
 
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "../include/monstre.h"
 #include "../include/map.h"
@@ -122,6 +123,8 @@ int calculPv(const int attaque, const int defense, const int basePv) {
 t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau) {
     t_statistiques statistiques;
 
+    statistiques.experience = 0;
+    statistiques.niveau = niveau;
     statistiques.attaque = calculStatistique(baseStatistiques.attaque, niveau);
     statistiques.defense = calculStatistique(baseStatistiques.defense, niveau);
     statistiques.vitesse = 4.0; // calculStatistique(baseStatistiques.vitesse, niveau);
