@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
 
 	initAll(&moteur, &audio);
 	ctx = nk_sdl_init(moteur->window, moteur->renderer);
-	
+	moteur->state = M_MENU;
 	
 	play_music(audio->musiques->menu_principal, VRAI);
 

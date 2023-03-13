@@ -224,6 +224,7 @@ state_main menu_options(struct nk_context *ctx) {
                        (moteur->window_height * 0.15), 300, 50));
 
       nk_slider_float(ctx, 0, &value_general, 100.0f, 1.0f);
+      changerVolume(CHANNEL_MASTER, value_general/100);
 
       nk_layout_space_push(
           ctx, nk_rect(((float)moteur->window_width * 0.25) - 300.0 / 2,
@@ -236,6 +237,7 @@ state_main menu_options(struct nk_context *ctx) {
                        (moteur->window_height * 0.25), 300, 50));
 
       nk_slider_float(ctx, 0, &value_musiques, 100.0f, 1.0f);
+      changerVolume(CHANNEL_MUSIQUE, value_musiques/100);
 
       nk_layout_space_push(
           ctx, nk_rect(((float)moteur->window_width * 0.25) - 300.0 / 2,
@@ -248,6 +250,7 @@ state_main menu_options(struct nk_context *ctx) {
                        (moteur->window_height * 0.35), 300, 50));
 
       nk_slider_float(ctx, 0, &value_bruitages, 100.0f, 1.0f);
+      changerVolume(CHANNEL_BRUITAGE, value_bruitages/100);
 
       nk_layout_space_push(
           ctx, nk_rect(((float)moteur->window_width * 0.7) - 300.0 / 2,
@@ -308,7 +311,11 @@ state_main menu_options(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.8), 300, 50));
       if (nk_button_label(ctx, "Retour")) {
-        click = M_MENU;
+	if (moteur->state == M_PAUSE) {
+	  click = M_PAUSE;
+	} else {
+	  click = M_MENU;
+	}
       }
 
       if (nk_widget_is_hovered(ctx)) {
@@ -358,12 +365,15 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
   nk_sdl_render(NK_ANTI_ALIASING_ON);
 }
 
-int pauseMenu(struct nk_context *ctx) {
+state_main pauseMenu(struct nk_context *ctx) {
 
   set_style(ctx, THEME_BLACK);
+  
+  int hovered = 1;
+  state_main click = 0;
 
-  int click = 0;
-
+  while (click == 0) {
+    SDL_RenderClear(moteur->renderer);
     SDL_Event evt;
     nk_input_begin(ctx);
     while (SDL_PollEvent(&evt)) {
@@ -378,26 +388,55 @@ int pauseMenu(struct nk_context *ctx) {
     }
     nk_input_end(ctx);
 
-  while (click == 0) {
-
-    SDL_Log("Jui dans le menu");
-
     if (nk_begin(ctx, "Pause",
                  nk_rect(0, 0, moteur->window_width, moteur->window_height),
                  (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
 
-      nk_layout_space_begin(ctx, NK_STATIC, 0, 1);
+
+      nk_layout_space_begin(ctx, NK_STATIC, 0, 3);
 
       nk_layout_space_push(
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
-                       (moteur->window_height * 0.6), 300, 50));
-      if (nk_button_label(ctx, "Jouer")) {
-	click = 1;
+                       (moteur->window_height * 0.3), 300, 50));
+      if (nk_button_label(ctx, "Continuer")) {
+	moteur->state = M_JOUER;
+        click = M_JOUER;
+      }
+
+      if (nk_widget_is_hovered(ctx)) {
+        if (!hovered) {
+          hovered = 1;
+        } else {
+          hovered = 0;
+        }
+      }
+
+      nk_layout_space_push(
+          ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
+                       (moteur->window_height * 0.5), 300, 50));
+      if (nk_button_label(ctx, "Options")) {
+	click = M_OPTIONS;
+      }
+
+      if (nk_widget_is_hovered(ctx)) {
+        if (!hovered) {
+          hovered = 1;
+        } else {
+          hovered = 0;
+        }
+      }
+
+      nk_layout_space_push(
+          ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
+                       (moteur->window_height * 0.7), 300, 50));
+      if (nk_button_label(ctx, "Quitter")) {
+        click = M_MENU;
       }
       nk_layout_space_end(ctx);
     }
     nk_end(ctx);
     nk_sdl_render(NK_ANTI_ALIASING_ON);
+    SDL_RenderPresent(moteur->renderer);
   }
 
   return click;

@@ -21,7 +21,7 @@
 
 
 typedef enum {
-  JEU_QUITTER = -1, M_MENU = 1, M_OPTIONS, M_JOUER, M_PAUSE
+  JEU_QUITTER = -1, M_JOUER = 1, M_MENU, M_OPTIONS, M_PAUSE
 } state_main;
 
 

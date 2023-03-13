@@ -39,7 +39,7 @@ int inputManager(t_joueur *joueur) {
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
             case SDL_QUIT:
-                return -1;
+                return M_MENU;
                 break;
             
             
@@ -77,7 +77,8 @@ int inputManager(t_joueur *joueur) {
 
                 // Echap
                 else if (controles.escape == event.key.keysym.scancode) {
-		  return pauseMenu(ctx);
+		  moteur->state = M_PAUSE;
+		  return M_PAUSE;
                 }
 
                 break;
