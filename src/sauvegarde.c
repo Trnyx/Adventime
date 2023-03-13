@@ -115,17 +115,18 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
     fprintf(fichier, "%i ", map->type);
     fprintf(fichier, "\n");
 
+    // Chunks
     t_chunk* chunk = NULL;
     t_block* bloc = NULL;
 
-    for (int x = 0; x < TAILLE_MAP;x++)
+    for (int x = 0; x < TAILLE_MAP; x++)
     {
-        for (int y = 0; y < TAILLE_MAP;y++)
+        for (int y = 0; y < TAILLE_MAP; y++)
         {
             for (int z = 0; z < NB_COUCHE; z++)
             {
                 chunk = getChunk(x, y, z, map);
-                // Chunks
+
                 fprintf(fichier, "%i ", chunk->biome);
                 fprintf(fichier, "\n");
                 // Position d'un chunk
@@ -206,6 +207,8 @@ err_sauv charger_map(t_map* map, char* chemin_monde)
     map->type = type;
     fscanf(fichier, "\n");
 
+    // Chunks
+    
 
 
 }
