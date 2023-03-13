@@ -7,9 +7,9 @@
 
 #include "../include/sauvegarde.h"
 
-/* -------------------------------------------------------------------------- */
-/*                            Variables locales                               */
-/* -------------------------------------------------------------------------- */
+ /* -------------------------------------------------------------------------- */
+ /*                            Variables locales                               */
+ /* -------------------------------------------------------------------------- */
 
 
 #define chemin_param "./sauvegarde/config.txt"
@@ -94,9 +94,9 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde)
 
 /**
  * \brief Sauvegarde les données de la map.
- * 
+ *
  * \param map La map à sauvegarder.
- * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde. 
+ * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
  * \return err_sauv, un code d'erreur (0 si succès).
  */
 err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
@@ -115,21 +115,47 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
     fprintf(fichier, "%i ", map->type);
     fprintf(fichier, "\n");
 
-    // Chunks
-    fprintf(fichier, "%i ", map->chunks->biome);
-    fprintf(fichier, "\n");
-    // Position d'un chunk
-    fprintf(fichier, "%f ", map->chunks->position.x);
-    fprintf(fichier, "%f ", map->chunks->position.y);
-    fprintf(fichier, "%f ", map->chunks->position.z);
-    fprintf(fichier, "\n");
-    // Blocs composant un chunk
-    fprintf(fichier, "%f ", map->chunks->blocks->position.x);
-    fprintf(fichier, "%f ", map->chunks->blocks->position.y);
-    fprintf(fichier, "%f ", map->chunks->blocks->positionDansChunk.x);
-    fprintf(fichier, "%f ", map->chunks->blocks->positionDansChunk.y);
-    fprintf(fichier, "%i ", map->chunks->blocks->tag);
-    fprintf(fichier, "\n");
+    t_chunk* chunk = NULL;
+    t_block* bloc = NULL;
+
+    for (int x = 0; x < TAILLE_MAP;x++)
+    {
+        for (int y = 0; y < TAILLE_MAP;y++)
+        {
+            for (int z = 0; z < NB_COUCHE; z++)
+            {
+                chunk = getChunk(x, y, z, map);
+                // Chunks
+                fprintf(fichier, "%i ", chunk->biome);
+                fprintf(fichier, "\n");
+                // Position d'un chunk
+                fprintf(fichier, "%f ", chunk->position.x);
+                fprintf(fichier, "%f ", chunk->position.y);
+                fprintf(fichier, "%f ", chunk->position.z);
+                fprintf(fichier, "\n");
+
+                for (int x_bloc = 0; x_bloc < TAILLE_CHUNK; x_bloc++)
+                {
+                    for (int y_bloc = 0; y_bloc < TAILLE_CHUNK; y_bloc++)
+                    {
+                        bloc = getBlockDansChunk(x_bloc, y_bloc, chunk);
+
+                        // Blocs composant un chunk
+                        fprintf(fichier, "%f ", chunk->blocks->position.x);
+                        fprintf(fichier, "%f ", chunk->blocks->position.y);
+                        fprintf(fichier, "%f ", chunk->blocks->positionDansChunk.x);
+                        fprintf(fichier, "%f ", chunk->blocks->positionDansChunk.y);
+                        fprintf(fichier, "%i ", chunk->blocks->tag);
+                        fprintf(fichier, "\n");
+                    }
+                    fprintf(fichier, "\n");
+                }
+                fprintf(fichier, "\n");
+            }
+            fprintf(fichier, "\n");
+        }
+        fprintf(fichier, "\n");
+    }
 
     // Entités
     t_entite* entite = NULL;
@@ -151,6 +177,7 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
                 fprintf(fichier, "%i ", entite->hitbox.w);
                 fprintf(fichier, "%i ", entite->hitbox.x);
                 fprintf(fichier, "%i ", entite->hitbox.y);
+                fprintf(fichier, "%i ", entite->timestampCreation);
             }
             suivant(map->entites);
         }
@@ -161,7 +188,7 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
 }
 
 /**
- * \brief Sauvegarde les données globales de la map.
+ * \brief Sauvegarde les paramètres globaux du monde.
  *
  * \param seed Le nombre permettant de générer la map.
  * \param temps Le temps du jeu.
@@ -197,6 +224,42 @@ err_sauv sauvegarder_global(unsigned int seed, t_temps* temps, char* chemin_mond
 }
 
 /**
+ * \brief Charge les paramètres globaux du monde.
+ *
+ * \param seed Le nombre permettant de générer la map.
+ * \param temps Le temps du jeu.
+ * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
+ * \return err_sauv, un code d'erreur (0 si succès).
+ */
+err_sauv charger_global(unsigned int* seed, t_temps* temps, char* chemin_monde)
+{
+    // Explicite le chemin du fichier de sauvegarde des données globales.
+    strcat(chemin_monde, "/global.txt");
+
+    FILE* fichier = fopen(chemin_monde, "r");
+
+    if (fichier == NULL)
+    {
+        return FOPEN_FAIL;
+    }
+
+    // Seed
+    fscanf(fichier, "%i ", seed);
+
+    // Temps du jeu
+    fscanf(fichier, "%i ", temps->heures);
+    fscanf(fichier, "%i ", temps->minutes);
+    fscanf(fichier, "%i ", temps->timestampJeu);
+    fscanf(fichier, "%i ", temps->timestamp);
+    fscanf(fichier, "%i ", temps->cycleJeu);
+    fscanf(fichier, "%i ", temps->cycleVrai);
+
+    fclose(fichier);
+    return SUCCESS;
+}
+
+
+/**
  * \brief Sauvegarde le monde du jeu, c'est-à-dire les données du joueur, de la map et des données globales.
  *
  * \param monde Le monde à sauvegarder.
@@ -215,4 +278,24 @@ err_sauv sauvegarder_monde(t_monde* monde, char* nom_monde)
     sauvegarder_joueur(monde->joueur, chemin_monde);
     sauvegarder_map(monde->map, chemin_monde);
     sauvegarder_global(monde->seed, monde->temps, chemin_monde);
+}
+
+
+err_sauv charger_monde(char* nom_monde)
+{
+    // Définit le chemin d'accès aux fichiers.
+    char chemin_monde[50] = "./sauvegarde/";
+    strcat(chemin_monde, nom_monde);
+
+
+    t_monde* monde = malloc(sizeof(t_monde));
+
+
+    unsigned int seed;
+    t_temps* temps = malloc(sizeof(t_temps));
+
+    charger_global(&seed, temps, chemin_monde);
+
+
+
 }
