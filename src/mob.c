@@ -121,8 +121,16 @@ void combatMob(t_mob *mob, float distance) {
  * @param mob 
  * @param distance 
  */
-void updateMob(t_mob* mob, const float distance) {
+void updateMob(t_mob* mob, float distance) {
+    if (mob->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
+        mob->deplacementType = DEPLACEMENT_NORMAL;
+        mob->cible = NULL;
+        mob->operation = ATTENTE;
+    }
+
+
     if (mob->deplacementType == DEPLACEMENT_COMBAT) {
+        distance = calculDistanceEntreEntites((t_entite*)mob, (t_entite*)mob->cible);
         combatMob(mob, distance);
     } 
 

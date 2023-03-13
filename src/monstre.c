@@ -30,16 +30,7 @@ int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
         monstre->deplacementType = DEPLACEMENT_COMBAT;
         monstre->cible = cible;
     }
-    else if (monstre->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
-        monstre->deplacementType = DEPLACEMENT_NORMAL;
-        monstre->cible = NULL;
-        monstre->operation = ATTENTE;
-    }
     
-
-    if (monstre->deplacementType == DEPLACEMENT_COMBAT)
-        distance = calculDistanceEntreEntites((t_entite*)monstre, (t_entite*)monstre->cible);
-
     
     updateMob((t_mob*)monstre, distance);
 

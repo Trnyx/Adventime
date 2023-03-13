@@ -111,6 +111,7 @@ void update(t_map *map, t_joueur *joueur) {
 
     unsigned int nombreEntites = 0;
     unsigned int nombreMobs = 0;
+    unsigned int nombreAnimaux = 0;
     unsigned int nombreMobsCombat = 0;
     unsigned int nombreMobsAggressifs = 0;
     unsigned int nombreMobsPassifs = 0;
@@ -254,6 +255,7 @@ void update(t_map *map, t_joueur *joueur) {
 
                 if (entite->entiteType == ENTITE_MOB) {
                     nombreMobs++;
+
                     if (((t_mob*)entite)->aggressif) 
                         nombreMobsAggressifs++;
                     else
@@ -293,6 +295,8 @@ void update(t_map *map, t_joueur *joueur) {
             //          Calcul la probabilité d'apparition d'un monstre
             //          Si apparition possible
             //              Apparition du monste dans le rayon semi actif
+
+
             //      Si le nombre d'animaux max n'est pas atteint
             //          Calcul la probabilité d'apparition d'un animal
             //          Si apparition possible

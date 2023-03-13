@@ -28,10 +28,58 @@
 
 
 /* -------------------------------------------------------------------------- */
+/*                                Verification                                */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
+ * @param position 
+ * @param map 
+ * @return boolean 
+ */
+boolean peutApparaitre(const t_vecteur2 position, t_map *map) {
+    t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
+
+    if (chunk == NULL) 
+        return FAUX;
+
+    const e_biome biome = chunk->biome;
+    if (biome == BIOME_PROFONDEUR)
+        return FAUX;
+
+    t_block *block = getBlockDansMap(position.x, position.y, COUCHE_SOL, map);
+    if (block->tag == SOL_EAU)
+        return FAUX;
+
+    block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
+    if (block == NULL)
+        return FAUX;
+    
+    if (block->tag != VIDE)
+        return FAUX;
+            
+    return VRAI;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                     Get                                    */
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Get the Entites Alentour object
+ * 
+ * @param centre 
+ * @param type 
+ * @param range 
+ * @return t_liste 
+ */
 t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range) {
     t_liste *entitesActuelles = moteur->cache->entites;
     t_liste entitesAlentours;
@@ -284,11 +332,11 @@ void dessinerEntite(t_entite *entite) {
         switch (((t_entiteVivante*)entite)->operation) {
             case SE_DEPLACE_VERS:
             case SE_DEPLACE_AUTOUR:
+            case ATTAQUE:
                 sprite.y += TAILLE_TILE * 4;
                 break;
-            case ATTAQUE:
-                sprite.y += TAILLE_TILE * 4 * 2;
-                break;
+                // sprite.y += TAILLE_TILE * 4 * 2;
+                // break;
             default:
                 break;
         }

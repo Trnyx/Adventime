@@ -100,7 +100,7 @@ typedef struct s_mob {
 t_mob* creerMob(const t_vecteur2 position);
 void detruireMob(t_mob **mob);
 
-void updateMob(t_mob *mob, const float distance);
+void updateMob(t_mob *mob, float distance);
 
 
 

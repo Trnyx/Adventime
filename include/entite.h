@@ -30,7 +30,7 @@
 
 
 
-#define LONGUEUR_ID 16
+#define LONGUEUR_ID 8
 
 
 
