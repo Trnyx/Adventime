@@ -158,6 +158,11 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
 void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque, const float range) {
     if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
         printf("CIBLE TOUCHE\n");
+        if (cible->entiteType == ENTITE_MOB) {
+            ((t_mob*)cible)->deplacementType = DEPLACEMENT_COMBAT;
+            ((t_mob*)cible)->cible = entite;
+        }
+
 
         float degat = calculDegat(entite->statistiques.niveau, entite->statistiques.attaque, cible->statistiques.defense, FAUX, FAUX);
         // Modificateur si il y a armes
