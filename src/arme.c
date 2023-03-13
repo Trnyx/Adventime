@@ -38,13 +38,14 @@ extern t_booleen arme_existe(t_arme* const arme)
  */
 static t_err arme_afficher(t_arme* arme)
 {
-    printf("{\n");
+    printf("\n");
+    item_afficher((t_item*)arme);
     if (arme_existe(arme))
     {
 
         printf("%d\n", arme->degat);
     }
-    printf("}");
+    printf("\n");
     return(OK);
 }
 
@@ -54,8 +55,11 @@ static t_err arme_afficher(t_arme* arme)
  */
 static t_err arme_detruire(t_arme** arme)
 {
+    item_detruire((t_item**)arme);
+
     free(*arme);
     *arme = NULL;
+
     arme_cpt--;
     return(OK);
 }
@@ -64,17 +68,17 @@ static t_err arme_detruire(t_arme** arme)
  * \brief Crée une arme.
  * \param degat Entier spécifiant le nombre de dégats infligées par l'arme.
  */
-extern t_arme* arme_creer(t_item* item, int degat)
+extern t_arme* arme_creer(char* categorie, char* tag, char* nom, int degat)
 {
-    t_arme* arme = NULL;
-    arme = malloc(sizeof(t_arme));
+    t_item* item = item_creer(categorie, tag, nom);
+    t_arme* arme = realloc(item, sizeof(t_arme));
 
     arme->degat = degat;
 
-
-    arme->afficher = (t_err (*)(t_arme*)) arme_afficher;
-    arme->detruire = (t_err (*)(t_arme**)) arme_detruire;
+    arme->afficher_arme = (t_err(*)(t_arme*)) arme_afficher;
+    arme->detruire_arme = (t_err(*)(t_arme**)) arme_detruire;
 
     arme_cpt++;
+    item = NULL;
     return(arme);
 }

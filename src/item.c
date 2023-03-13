@@ -37,16 +37,15 @@ extern t_booleen item_existe(t_item* const item)
  * \brief Affiche les caractéristiques d'un item.
  * \param item
  */
-static t_err item_afficher(t_item* item)
+extern t_err item_afficher(t_item* item)
 {
-    printf("{\n");
     if (item_existe(item))
     {
         printf("%s\n", item->categorie);
         printf("%s\n", item->tag);
         printf("%s\n", item->nom);
     }
-    printf("}");
+    printf("\n");
     return(OK);
 }
 
@@ -54,7 +53,7 @@ static t_err item_afficher(t_item* item)
  * \brief Détruis un item.
  * \param item L'addresse de l'item.
  */
-static t_err item_detruire(t_item** item)
+extern t_err item_detruire(t_item** item)
 {
     free((*item)->categorie);
     (*item)->categorie = NULL;
@@ -86,8 +85,8 @@ extern t_item* item_creer(char* categorie, char* tag, char* nom)
     item->nom = malloc(sizeof(char) * strlen(nom) + 1);
     strcpy(item->nom, nom);
 
-    item->afficher = (void (*)(t_item*)) item_afficher;
-    item->detruire = (void (*)(t_item**)) item_detruire;
+    item->afficher_item = (t_err (*)(t_item*)) item_afficher;
+    item->detruire_item = (t_err (*)(t_item**)) item_detruire;
 
     item_cpt++;
     return(item);

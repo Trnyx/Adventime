@@ -18,9 +18,11 @@
   */
 typedef struct s_arme  t_arme;
 struct  s_arme {
-#include "attributs_arme.h"
-    t_err(*afficher)(t_arme* const);
-    t_err(*detruire)(t_arme**);
+    struct s_item;
+    
+    #include "attributs_arme.h"
+    t_err(*afficher_arme)(t_arme* const);
+    t_err(*detruire_arme)(t_arme**);
 };
 
 /**
@@ -45,6 +47,6 @@ extern t_booleen arme_existe(t_arme* const arme);
  * \brief Crée une arme.
  * \param degat Entier spécifiant le nombre de dégats infligées par l'arme.
  */
-extern t_arme* arme_creer(t_item* item, int degat);
+extern t_arme* arme_creer(char* categorie, char* tag, char* nom, int degat);
 
 #endif

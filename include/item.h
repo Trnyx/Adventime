@@ -18,8 +18,8 @@
 typedef struct s_item t_item;
 struct s_item {
 #include "attributs_item.h"
-  t_err(*afficher)(t_item* const);
-  t_err(*detruire)(t_item**);
+  t_err(*afficher_item)(t_item* const);
+  t_err(*detruire_item)(t_item**);
 };
 
 /**
@@ -47,5 +47,17 @@ extern t_booleen item_existe(t_item* const item);
  * \param nom String spécifiant le nom de l'item.
  */
 extern t_item* item_creer(char* categorie, char* tag, char* nom);
+
+/**
+ * \brief Affiche les caractéristiques d'un item.
+ * \param item
+ */
+extern t_err item_afficher(t_item* item);
+
+/**
+ * \brief Détruis un item.
+ * \param item L'addresse de l'item.
+ */
+extern t_err item_detruire(t_item** item);
 
 #endif
