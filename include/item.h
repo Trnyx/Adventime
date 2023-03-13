@@ -1,7 +1,7 @@
 /**
  * \file item.h
  * \brief Librairie pour la gestion des items.
- * \author Julien Houget
+ * \author Julien Houget & Clément Hibon
  * \date 27/01/22
  */
 
@@ -9,6 +9,21 @@
 
 #ifndef _JEU_ITEM_
 #define _JEU_ITEM_
+
+
+
+typedef enum {
+  CATEGORIE_MATERIEL,
+  CATEGORIE_ARME,
+  CATEGORIE_OUTIL,
+} e_itemCategorie;
+
+
+typedef enum {
+  ITEM_MATERIEL_BATON,
+  ITEM_OUTIL_PIOCHE,
+  ITEM_ARME_EPEE,
+} e_itemTag;
 
 
  /**
@@ -46,7 +61,7 @@ extern t_booleen item_existe(t_item* const item);
  * \param tag String spécifiant le type de l'item (épée en pierre, pioche, etc.).
  * \param nom String spécifiant le nom de l'item.
  */
-extern t_item* item_creer(char* categorie, char* tag, char* nom);
+extern t_item* item_creer(e_itemCategorie categorie, e_itemTag tag, char* nom);
 
 /**
  * \brief Affiche les caractéristiques d'un item.

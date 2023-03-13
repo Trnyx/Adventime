@@ -1,7 +1,7 @@
 /**
  * \file item.c
  * \brief Module de gestion des items.
- * \author Julien Houget
+ * \author Julien Houget & Clément Hibon
  * \date 27/01/22
  */
 
@@ -55,10 +55,6 @@ extern t_err item_afficher(t_item* item)
  */
 extern t_err item_detruire(t_item** item)
 {
-    free((*item)->categorie);
-    (*item)->categorie = NULL;
-    free((*item)->tag);
-    (*item)->tag = NULL;
     free((*item)->nom);
     (*item)->nom = NULL;
     free(*item);
@@ -73,15 +69,14 @@ extern t_err item_detruire(t_item** item)
  * \param tag String spécifiant le type de l'item (épée en pierre, pioche, etc.).
  * \param nom String spécifiant le nom de l'item.
  */
-extern t_item* item_creer(char* categorie, char* tag, char* nom)
+extern t_item* item_creer(e_itemCategorie categorie, e_itemTag tag, char* nom)
 {
     t_item* item = NULL;
     item = malloc(sizeof(t_item));
 
-    item->categorie = malloc(sizeof(char) * strlen(categorie) + 1);
-    strcpy(item->categorie, categorie);
-    item->tag = malloc(sizeof(char) * strlen(tag) + 1);
-    strcpy(item->tag, tag);
+    item->categorie = categorie;
+    item->tag = tag;
+
     item->nom = malloc(sizeof(char) * strlen(nom) + 1);
     strcpy(item->nom, nom);
 
