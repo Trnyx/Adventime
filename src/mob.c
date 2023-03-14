@@ -293,8 +293,7 @@ void detruireMob(t_mob **mob) {
 t_mob* creerMob(const t_vecteur2 position) {
     t_entite *entite = creerEntite(position);
     t_mob *mob = realloc(entite, sizeof(t_mob));
-    const int t = SDL_GetTicks();
-
+    
 
     mob->entiteType = ENTITE_MOB;
     mob->aggressif = FAUX;

@@ -300,9 +300,7 @@ boolean deplacerEntite(t_entite *entite, const float vitesse) {
  * @param entite 
  */
 void orienterEntite(const float angle, t_entite *entite) {
-    if (!angle);
-
-    else if (angle >= 45 && angle < 135)
+    if (angle >= 45 && angle < 135)
         entite->orientation = NORD;
     else if (angle >= 135 && angle < 225)
         entite->orientation = EST;

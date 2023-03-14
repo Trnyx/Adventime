@@ -14,6 +14,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 #include "../include/utilitaire.h"
 #include "../include/physique.h"
@@ -45,8 +46,15 @@ void finDeplacement(t_mob *mob) {
 
 
 
-static void orienterVersCible(t_mob *mob) {
+static void orienterVersPosition(t_mob *mob) {
     const float angle = calculAngleEntrePoints(mob->position, mob->positionDeplacement);
+    orienterEntite(angle, (t_entite*)mob);
+}
+
+
+
+static void orienterVersCible(t_mob *mob) {
+    const float angle = calculAngleEntrePoints(mob->position, mob->cible->position);
     orienterEntite(angle, (t_entite*)mob);
 }
 
@@ -66,7 +74,7 @@ void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
     mob->direction.y = (cible.y - mob->position.y);
 
     deplacerEntite((t_entite*)mob, vitesse);
-    orienterVersCible(mob);
+    orienterVersPosition(mob);
 }
 
 
@@ -78,7 +86,44 @@ void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
  * @param cible 
  */
 void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
-    // deplacerEntite((t_entite*)mob, mob->statistiques.vitesse / 3);
+    printf("Deplacer autour => %1.2f:%1.2f ", cible.x, cible.y);
+
+    const e_rotation rotation = ROTATION_HORAIRE; // getNombreAleatoire(ROTATION_HORAIRE, ROTATION_ANTI_HORAIRE);
+    printf("Rotation : %i \n", rotation);
+
+    t_vecteur2 vec;
+    vec.x = mob->position.x > cible.x ? mob->position.x : cible.x;
+    vec.y = mob->position.y > cible.y ? mob->position.y : cible.y;
+
+    vec.x *= 0.2;
+    vec.y *= 0.2;
+
+    // const float angle = calculAngleEntrePoints(mob->position, cible);
+    // t_vecteur2 vec = {
+    //     cos(angle) - sin(angle),
+    //     sin(angle) + cos(angle),
+    // };
+    // printf("VEC : %.2f:%.2f\n", vec.x, vec.y);
+
+
+    switch (rotation) {
+        case ROTATION_HORAIRE: 
+            mob->positionDeplacement.x += vec.x;
+            mob->positionDeplacement.y += vec.y;
+            break;
+
+        case ROTATION_ANTI_HORAIRE: 
+            mob->positionDeplacement.x -= vec.y;
+            mob->positionDeplacement.y -= vec.x;
+            break;
+        
+        default:
+            break;
+    }
+    
+
+    deplacerEntite((t_entite*)mob, vitesse);
+    orienterVersCible(mob);
 }
 
 
@@ -95,7 +140,7 @@ void seloigneDe(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
     mob->direction.y = (mob->position.y - cible.y);
 
     deplacerEntite((t_entite*)mob, vitesse);
-    orienterVersCible(mob);
+    orienterVersPosition(mob);
 }
 
 

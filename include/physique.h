@@ -134,8 +134,11 @@
 
 //
 #define PROBABILITE_APPARITION_MONSTRE 30
-//
-#define PROBABILITE_APPARITION_ANIMAL 
+
+// Rayon dans lequel un animal détecte un troupeau
+#define ANIMAL_RAYON_DETECTION_TROUPEAU 12
+// Rayon dans lequel un animal se concidère comme trop loin du troupeau
+#define ANIMAL_RAYON_TROP_LOIN_TROUPEAU 5
 
 
 

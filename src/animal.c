@@ -45,7 +45,7 @@ e_entiteTag choisirTag() {
  * @return t_entite* 
  */
 t_entite* estTropLoinDuTroupeau(t_animal *animal) {
-    t_liste entitesAlentours = getEntitesAlentour((t_entite*)animal, ENTITE_MOB, 8.0);
+    t_liste entitesAlentours = getEntitesAlentour((t_entite*)animal, ENTITE_MOB, ANIMAL_RAYON_DETECTION_TROUPEAU);
     
     if (liste_vide(&entitesAlentours))
         return NULL;
@@ -61,7 +61,7 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
 
         if (entite->tag == animal->tag) {
             distance = calculDistanceEntreEntites((t_entite*)animal, entite);
-            if (distance <= 5.0)
+            if (distance <= ANIMAL_RAYON_TROP_LOIN_TROUPEAU)
                 return NULL;
             else 
                 entite = entiteTempo;
@@ -157,7 +157,7 @@ t_animal *creerAnimal(const t_vecteur2 position, const e_entiteTag tag) {
     genererAnimal(animal, tag);
 
     // 
-    animal->rayonDeplacement = 4;
+    animal->rayonDeplacement = 2;
     animal->deplacementType = DEPLACEMENT_NORMAL;
 
     // Animation
