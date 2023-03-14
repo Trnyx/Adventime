@@ -175,7 +175,7 @@ int deplacementNormal(t_mob *mob) {
 
                     printf("Position target : %1.2f:%1.2f\n", mob->positionDeplacement.x, mob->positionDeplacement.y);
 
-                    mob->timestampDebutDeplacement = MOB_DUREE_DEPLACEMENT;
+                    mob->timerDeplacement = MOB_DUREE_DEPLACEMENT;
                 }
             }
         }

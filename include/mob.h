@@ -78,7 +78,7 @@ typedef struct s_mob {
 
     
 
-    unsigned int timestampDebutDeplacement; /**< Timestamp de départ de déplacement */
+    unsigned int timerDeplacement;          /**< Timer à partir duquel on calcul le temps de déplacement (en ticks) */
     unsigned int cooldownDeplacement;       /**< Cooldown entre deux déplacements (en ticks) */
     
 

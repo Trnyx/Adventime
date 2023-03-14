@@ -183,16 +183,26 @@ void updateMob(t_mob* mob, float distance) {
         if (mob->position.x != mob->positionDeplacement.x || mob->position.y != mob->positionDeplacement.y) {
             const float distanceRestante = calculDistanceEntrePoints(mob->position, mob->positionDeplacement);
 
-            if (mob->timestampDebutDeplacement == 0 || distanceRestante <= 0.1) {
-                finDeplacement(mob);
+            if (distanceRestante > 0.1) {
+                deplacerVers(mob, mob->statistiques.vitesse, mob->positionDeplacement);
+                --(mob->timerDeplacement);
             }
             else {
-                deplacerVers(mob, mob->statistiques.vitesse, mob->positionDeplacement);
-                --(mob->timestampDebutDeplacement);
+                finDeplacement(mob);
+            }
+
+
+            if (mob->timerDeplacement == 0) {
+                finDeplacement(mob);
             }
         }
 
         else {
+            // if (mob->timerDeplacement > 0) {
+            //     --(mob->timerDeplacement);
+            // }
+
+
             if (mob->cooldownDeplacement) {
                 --(mob->cooldownDeplacement);
                 // printf("%i\n",mob->cooldownDeplacement);
@@ -232,7 +242,7 @@ void updateMob(t_mob* mob, float distance) {
                         mob->positionDeplacement.y = positionFinale.y;
 
                         printf("Position target : %1.2f:%1.2f\n", mob->positionDeplacement.x, mob->positionDeplacement.y);
-                        mob->timestampDebutDeplacement = MOB_DUREE_DEPLACEMENT;
+                        mob->timerDeplacement = MOB_DUREE_DEPLACEMENT;
                     }
                 }
             }
@@ -296,7 +306,7 @@ t_mob* creerMob(const t_vecteur2 position) {
 
     mob->positionDeplacement.x = position.x;
     mob->positionDeplacement.y = position.y;
-    mob->timestampDebutDeplacement = 0;
+    mob->timerDeplacement = 0;
     mob->cooldownDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
 
     mob->deplacementType = DEPLACEMENT_STATIQUE;

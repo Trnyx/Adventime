@@ -134,6 +134,50 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
 
 
 
+/**
+ * @brief 
+ * 
+ * @param source 
+ * @param cible 
+ */
+void pousseEntite(t_entite *source, t_entite *cible) {
+    t_vecteur2 deltaMouvement = {
+        cible->position.x - source->position.x,
+        cible->position.y - source->position.y,
+    };
+
+
+    float force = deltaMouvement.x >= deltaMouvement.y ? deltaMouvement.x : deltaMouvement.y;
+    force = abs(force);
+
+
+    if (force >= 0.01) {
+        force = sqrt(force);
+        deltaMouvement.x /= force;
+        deltaMouvement.y /= force;
+
+        float modifieur = 1.0 / force;
+        if (modifieur > 1.0) {
+            modifieur = 1.0;
+        }
+
+        deltaMouvement.x *= modifieur;
+        deltaMouvement.y *= modifieur;
+        deltaMouvement.x *= 0.05f;
+        deltaMouvement.y *= 0.05f;
+    }
+
+    
+    // Applique la force à l'entité cible
+    ((t_mob*)cible)->positionDeplacement.x += deltaMouvement.x;
+    ((t_mob*)cible)->positionDeplacement.y += deltaMouvement.y;
+
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                          Deplacement & Orientation                         */
 /* -------------------------------------------------------------------------- */
@@ -172,7 +216,7 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
         return FAUX;
 
 
-    // Check si collision
+    // Check si il y a une collision avec les entités autour
     t_liste entitesAlentours = getEntitesAlentour(entite, ENTITE_MOB, (entite->hitbox.w * entite->taille) * 0.8);
 
     if (!liste_vide(&entitesAlentours)) {
@@ -189,8 +233,11 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
             valeur_elt(&entitesAlentours, &entiteTempo);
 
 
-            if (SDL_HasIntersectionF(&hitbox, &entiteTempo->hitbox)){
-                printf("COLLISION : \n");
+            if (SDL_HasIntersectionF(&hitbox, &entiteTempo->hitbox)) {
+                pousseEntite(entite, entiteTempo);
+                // entiteTempo->position.x;
+                // entiteTempo->position.y;
+
                 return FAUX;
             }
                     
