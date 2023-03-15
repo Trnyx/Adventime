@@ -114,26 +114,26 @@ typedef struct s_entite t_entite;
 struct s_entite {
     // #include "attributs_entite.h"
     char *id;
-    t_vecteur2 position;                                                /**< La position actuelle de l'entité */
-    t_vecteur2 direction;                                               /**< La direction (déplacement) actuelle de l'entité */
-    e_orientation orientation;                                          /**< L'orientation (regard) actuelle de l'entité */
+    t_vecteur2 position;                                    /**< La position actuelle de l'entité */
+    t_vecteur2 direction;                                   /**< La direction (déplacement) actuelle de l'entité */
+    e_orientation orientation;                              /**< L'orientation (regard) actuelle de l'entité */
 
-    e_entiteType entiteType;                                            /**< Le type de l'entité */
-    e_entiteTag tag;                                                    /**< Le tag de l'entité */
+    e_entiteType entiteType;                                /**< Le type de l'entité */
+    e_entiteTag tag;                                        /**< Le tag de l'entité */
 
     float taille;
-    SDL_FRect hitbox;                                                    /**< La hitbox de l'entité */
+    SDL_FRect hitbox;                                        /**< La hitbox de l'entité */
     t_animation *animation;
 
 
-    unsigned int timestampCreation;                                     /**< Le timestamp à laquelle l'entité à été créé */
-    unsigned int timestampActualisation;                                /**< Le dernier timestamp à laquelle l'entité à été actualisé */
+    unsigned int timestampCreation;                         /**< Le timestamp à laquelle l'entité à été créé */
+    unsigned int timestampActualisation;                    /**< Le dernier timestamp à laquelle l'entité à été actualisé */
 
-    boolean destructionInactif;                                         /**< Doit être détruite lorsqu'elle est inactive */
+    boolean destructionInactif;                             /**< Doit être détruite lorsqu'elle est inactive */
 
 
     int  (*update)(t_entite*, float, t_entite* cible);      /**< Fonction d'actualisation de l'entité */
-    void (*detruire)(t_entite**);                                       /**< Fonction de suppression de l'entité */
+    void (*detruire)(t_entite**);                           /**< Fonction de suppression de l'entité */
 };
 
 
