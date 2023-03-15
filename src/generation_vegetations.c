@@ -24,6 +24,7 @@
 
 #include "../include/vegetations.h"
 #include "../include/map.h"
+#include "../include/disc_sampling.h"
 
 
 
@@ -76,7 +77,8 @@ e_vegetalTag selectionVegetation(e_solTag sol) {
             return SAPIN;
 
         default:
-            return -1;
+            printf("ERREUR SOL : %i\n", sol);
+            return HERBE;
     }
 }
 
@@ -85,99 +87,8 @@ e_vegetalTag selectionVegetation(e_solTag sol) {
 
 
 /* -------------------------------------------------------------------------- */
-/*                                    Tests                                   */
+/*                                 Generation                                 */
 /* -------------------------------------------------------------------------- */
-
-
-/**
- * @brief Vérifie que le végétal peut être placé
- * 
- * @param positionVegetal La position du végétal  à placer
- * @param grid Le tableau regroupant les positions des végétaux déjà placés
- * @param rayon Le rayon minimum pour 
- * @return Vrai si le végétal peut être placé aux coordonnées données, faux sinon
- * 
- * @version 1.2
- */
-boolean peutPlacerVegetal(const t_vecteur2 positionVegetal, const t_diskSampling grid, const float rayon) {
-    int peutEtrePlace = 0;
-    int i = 0;
-
-
-    while (!peutEtrePlace && i < grid.nbVegetaux) {
-        const t_vecteur2 vegetalDejaPlace = grid.vegetauxPositions[i];      
-        const float norme = calculDistanceEntrePoints(positionVegetal, vegetalDejaPlace);
-
-        if (norme >= rayon && norme <= rayon * 2.0) 
-            peutEtrePlace = VRAI;
-        
-        i++;
-    }
-
-  
-    return FAUX;
-}
-
-
-
-
-
-/* -------------------------------------------------------------------------- */
-/*                                 Generations                                */
-/* -------------------------------------------------------------------------- */
-
-
-/**
- * @brief Génère une grille en se basant sur la technique du "Poisson Disk Sampling"
- * 
- * @param chunk Un pointeur sur le chunk de la couche du sol
- * @param baseBiome Les informations de base du biome
- * @return La grille de placement des végétaux
- * 
- * @version 1.3
- */
-t_diskSampling genererDiskSampling(t_chunk *chunk) {
-    t_diskSampling vegetation;
-    const int nbVegetaux = getNombreAleatoire((TAILLE_CHUNK) / 2, (2 * TAILLE_CHUNK) / 3);
-
-    vegetation.nbVegetaux = 0;
-    vegetation.vegetauxPositions = calloc(nbVegetaux, sizeof(t_vecteur2));
-    vegetation.vegetauxTags = calloc(nbVegetaux, sizeof(e_vegetalTag));
-
-    const t_baseBiome baseBiome = basesBiomes[chunk->biome];
-    // const e_vegetalTag vegetalTag = selectionVegetation(baseBiome);
-    // printf("VEGETAL TAG : %i => ", vegetalTag);
-    // printf("DENSITE : %1.2f => ", baseBiome.vegetationDensite);
-
-  
-    if (baseBiome.vegetationDensite > 0) {
-        const float rayon = (TAILLE_CHUNK / 4) / baseBiome.vegetationDensite;
-        // const float rayon = baseVegetal.radius / baseBiome.vegetationDensite;
-      
-      
-        for (int n = 0; n < nbVegetaux; n++) {
-            t_vecteur2 nouveauPoint = {
-                getNombreAleatoire(0, (TAILLE_CHUNK) - 1),
-                getNombreAleatoire(0, (TAILLE_CHUNK) - 1),
-            };
-    
-    
-            if (!n || peutPlacerVegetal(nouveauPoint, vegetation, rayon)) {
-                vegetation.vegetauxPositions[n] = nouveauPoint;
-                // vegetation.vegetauxTags[n] = vegetalTag;
-                vegetation.nbVegetaux++;
-            }
-        }
-    }
-
-  
-    vegetation.vegetauxPositions = realloc(vegetation.vegetauxPositions, sizeof(t_vecteur2) * vegetation.nbVegetaux);
-    vegetation.vegetauxTags = realloc(vegetation.vegetauxTags, sizeof(e_vegetalTag) * vegetation.nbVegetaux);
-    return vegetation;
-}
-
-
-
 
 
 /**
@@ -199,26 +110,43 @@ void genererVegetations(t_map *map) {
             if (chunk == NULL) continue;
             if (chunk->biome == BIOME_PROFONDEUR) continue;
 
-            // const t_baseBiome baseBiome = basesBiomes[chunk->biome];
-            t_diskSampling vegetaux = genererDiskSampling(chunk);
-          
-            for (int i = 0; i < vegetaux.nbVegetaux; i++) {
-                const t_vecteur2 positionVegetal = vegetaux.vegetauxPositions[i];
+
+            const t_baseBiome baseBiome = basesBiomes[chunk->biome];
+            if (baseBiome.vegetationDensite <= 0) continue;
+
+
+            const t_vecteur2 min = { 0, 0 };
+            const t_vecteur2 max = { TAILLE_CHUNK, TAILLE_CHUNK };
+
+            const int nbVegetaux = (TAILLE_CHUNK / 3) * baseBiome.vegetationDensite;
+            float rayon = (TAILLE_CHUNK * 0.6) / baseBiome.vegetationDensite;
+            if (rayon < 3.0)
+                rayon = 3.0;
+
+
+            t_discSampling grille = genererGrilleDiscSampling(min, max, nbVegetaux, rayon);
+            if (grille.nbElements == 0) continue;
+
+
+            for (int i = 0; i < grille.nbElements; i++) {
+                const t_vecteur2 point = grille.elementPositions[i];
                 
-                block = getBlockDansChunk((int)positionVegetal.x % TAILLE_CHUNK, (int)positionVegetal.y % TAILLE_CHUNK, chunk);
+                block = getBlockDansChunk((int)point.x % TAILLE_CHUNK, (int)point.y % TAILLE_CHUNK, chunk);
                 if (block == NULL) continue;
                 if (block->tag <= SOL_EAU) continue;
 
                 const e_vegetalTag vegetalTag = selectionVegetation(block->tag);
                 // const e_vegetalTag vegetalTag = selectionVegetation(baseBiome);
         
-                chunk = getChunk(x, y, COUCHE_OBJETS, map);
-                block = getBlockDansChunk((int)positionVegetal.x % TAILLE_CHUNK, (int)positionVegetal.y % TAILLE_CHUNK, chunk);
+                t_chunk *chunkObjets = getChunk(x, y, COUCHE_OBJETS, map);
+                // chunk = getChunk(x, y, COUCHE_OBJETS, map);
+                block = getBlockDansChunk((int)point.x % TAILLE_CHUNK, (int)point.y % TAILLE_CHUNK, chunkObjets);
+
                 block->tag = vegetalTag;
             }
 
-            free(vegetaux.vegetauxPositions);
-            free(vegetaux.vegetauxTags);
+
+            free(grille.elementPositions);
         }
     }
 }

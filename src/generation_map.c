@@ -580,7 +580,7 @@ t_block generationBlock(const int x, const int y, const t_chunk *chunk, const bo
  * @param estVide Si le chunk à générer doit être vide
  * @return Un pointeur sur le chunk généré
  * 
- * @version 1.3
+ * @version 1.4
  */
 t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
     for (int x = 0, i = 0; x < TAILLE_CHUNK; x++) {
@@ -600,6 +600,7 @@ t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
         lissageDuChunk(chunk, map, 7 - i);
     }
 
+    lissageDuChunk(chunk, map, 3);
     lissageDuChunk(chunk, map, 5);
 
 
