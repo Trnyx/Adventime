@@ -85,42 +85,78 @@ void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
  * @param mob 
  * @param cible 
  */
+// double gamma = 0;
 void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
-    printf("Deplacer autour => %1.2f:%1.2f ", cible.x, cible.y);
+    // printf("Deplacer autour => %1.2f:%1.2f ", cible.x, cible.y);
 
     const e_rotation rotation = ROTATION_HORAIRE; // getNombreAleatoire(ROTATION_HORAIRE, ROTATION_ANTI_HORAIRE);
-    printf("Rotation : %i \n", rotation);
-
-    t_vecteur2 vec;
-    vec.x = mob->position.x > cible.x ? mob->position.x : cible.x;
-    vec.y = mob->position.y > cible.y ? mob->position.y : cible.y;
-
-    vec.x *= 0.2;
-    vec.y *= 0.2;
-
-    // const float angle = calculAngleEntrePoints(mob->position, cible);
-    // t_vecteur2 vec = {
-    //     cos(angle) - sin(angle),
-    //     sin(angle) + cos(angle),
-    // };
-    // printf("VEC : %.2f:%.2f\n", vec.x, vec.y);
 
 
-    switch (rotation) {
-        case ROTATION_HORAIRE: 
-            mob->positionDeplacement.x += vec.x;
-            mob->positionDeplacement.y += vec.y;
-            break;
+    const float distance = calculDistanceEntrePoints(mob->position, cible);
 
-        case ROTATION_ANTI_HORAIRE: 
-            mob->positionDeplacement.x -= vec.y;
-            mob->positionDeplacement.y -= vec.x;
-            break;
-        
-        default:
-            break;
-    }
+    const double tanAlpha = (mob->position.y - cible.y) / (mob->position.x - cible.x);
+    double alpha = atan(tanAlpha);
+
+
+    // printf("POSITION JOUEUR : %1.2f:%1.2f => ", cible.x, cible.y);
+    // printf("POSITION MONSTRE : %1.2f:%1.2f => ", mob->position.x, mob->position.y);
+    // printf("DISTANCE : %1.2f => ", distance);
     
+    
+    mob->gamma = mob->gamma + 0.02;
+
+    // printf("GAMMA : %1.2f \n", gamma);
+    // printf("COS SIN : %1.2f / %1.2f \n", cos(gamma), sin(gamma));
+
+    const t_vecteur2 position = {
+        cos(mob->gamma) * distance,
+        sin(mob->gamma) * distance,
+    };
+
+
+    mob->positionDeplacement.x = position.x + cible.x;
+    mob->positionDeplacement.y = position.y + cible.y;
+    // printf("NOUVELLE POSITION : %1.2f:%1.2f", mob->positionDeplacement.x, mob->positionDeplacement.y);
+
+
+    mob->direction.x = (mob->positionDeplacement.x - mob->position.x);
+    mob->direction.y = (mob->positionDeplacement.y - mob->position.y);
+    
+
+    // const double tanAlpha = (mob->position.y - cible.y) / (mob->position.x - cible.x);
+    // double alpha = (atan(tanAlpha) * (180 / M_PI));
+    // printf("ANGLE %1.2f => ", alpha);
+
+    // const double gamma = 10 + alpha;
+
+    // const t_vecteur2 position = {
+    //     cos(gamma),
+    //     sin(gamma),
+    // };
+
+
+    // printf("POSITION : %.2f:%.2f\n", position.x, position.y);
+
+
+    // switch (rotation) {
+    //     case ROTATION_HORAIRE: 
+    //         mob->positionDeplacement.x += position.x;
+    //         mob->positionDeplacement.y += position.y;
+    //         break;
+
+    //     case ROTATION_ANTI_HORAIRE: 
+    //         mob->positionDeplacement.x -= position.y;
+    //         mob->positionDeplacement.y -= position.x;
+    //         break;
+        
+    //     default:
+    //         break;
+    // }
+
+
+    // mob->direction.x = (mob->positionDeplacement.x - mob->position.x);
+    // mob->direction.y = (mob->positionDeplacement.y - mob->position.y);
+
 
     deplacerEntite((t_entite*)mob, vitesse);
     orienterVersCible(mob);
