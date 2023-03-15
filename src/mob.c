@@ -85,6 +85,9 @@ void combatMob(t_mob *mob, float distance) {
         // Si la cible est trop loin
         if (distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
             mob->deplacementType = DEPLACEMENT_NORMAL;
+            mob->operation = ATTENTE;
+            mob->cible = NULL;
+            mob->gamma = 0;            
         }
 
         // Sinon Si la cible est dans le rayon de positionnement
@@ -123,26 +126,16 @@ void combatMob(t_mob *mob, float distance) {
  * @param distance 
  */
 void updateMob(t_mob* mob, float distance) {
-    if (mob->deplacementType == DEPLACEMENT_COMBAT) {
-
-        if (distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
-            mob->deplacementType = DEPLACEMENT_NORMAL;
-            mob->cible = NULL;
-            mob->operation = ATTENTE;
-        }
-        
-        else {
-            distance = calculDistanceEntreEntites((t_entite*)mob, (t_entite*)mob->cible);
-            combatMob(mob, distance);
-        }
-
+    if (mob->deplacementType == DEPLACEMENT_COMBAT) {        
+        distance = calculDistanceEntreEntites((t_entite*)mob, (t_entite*)mob->cible);
+        combatMob(mob, distance);
     } 
 
 
 
     if (mob->operation == SE_DEPLACE_AUTOUR) {
         // Deplacement autour de la cible
-        deplacerAutour(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_AUTOUR, mob->positionDeplacement);
+        deplacerAutour(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_AUTOUR, mob->cible->position);
     }
 
     else if (mob->operation == SE_DEPLACE_VERS) {
@@ -310,6 +303,7 @@ t_mob* creerMob(const t_vecteur2 position) {
 
     mob->deplacementType = DEPLACEMENT_STATIQUE;
     mob->operation = ATTENTE;
+    mob->gamma = 0.0;
 
 
     // Attaque

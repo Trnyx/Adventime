@@ -89,7 +89,7 @@
 // Rayon dans lequel un monstre détecte un joueur pour se mettre en combat
 #define MONSTRE_RAYON_COMBAT_DETECTION 4.5
 // Rayon dans lequel les mobs se positionne (suivent leur cible) pour combattre
-#define MOB_RAYON_COMBAT_POSITIONNEMENT 8.0
+#define MOB_RAYON_COMBAT_POSITIONNEMENT 6.0
 // Rayon dans lequel les mobs recul face à leur cible
 #define MOB_RAYON_COMBAT_RETRAIT 1.8
 // Rayon dans lequel les mobs sont suffisamment proche pour attaquer
