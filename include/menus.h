@@ -15,12 +15,18 @@
 #include "Nuklear/nuklear_sdl_renderer.h"
 #include "Nuklear/style.c"
 #include "main.h"
+#include "audio.h"
+#include "joueur.h"
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL.h>
 #include "../include/main.h"
 
+extern struct nk_context * ctx;
+
 
 state_main main_menu(struct nk_context * ctx);
 state_main menu_options(struct nk_context *ctx);
+void updateHUD(struct nk_context *ctx, t_joueur *joueur);
+state_main pauseMenu(struct nk_context *ctx);
 
 #endif

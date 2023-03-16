@@ -77,11 +77,12 @@ t_moteur* initMoteur() {
     initSDL(m);
 
     m->camera = NULL;
-    m->textures = NULL;
+    m->textures = NULL;;
     initControles(&m->controles);
     
-    m->monde = NULL;
+    m->temps = NULL;
 
+    m->cache = NULL;
     m->frame = SDL_GetTicks();
 
 

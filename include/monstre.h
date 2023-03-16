@@ -5,7 +5,7 @@
  *
  * @author Clément Hibon
  * @date 23 janvier
- * @version 1.1
+ * @version 1.3
  */
 
 
@@ -19,8 +19,7 @@
 
 
 
-#include "statistiques.h"
-#include "entite.h"
+#include "mob.h"
 
 
 
@@ -29,17 +28,6 @@
 /* -------------------------------------------------------------------------- */
 /*                                 Enumeration                                */
 /* -------------------------------------------------------------------------- */
-
-
-/**
- * @brief Enumérateur regroupant les différents tags des monstres
- * 
- * Un compteur du nombre de tags est également initialisé à la fin de l'énumérateur
- */
-typedef enum {
-    MONSTRE_OISEAU,
-    NB_MONSTRE_TAGS
-} e_monstreTag;
 
 
 
@@ -51,8 +39,8 @@ typedef enum {
 typedef enum {
     MONSTRE_TYPE_NORMAL,
     MONSTRE_TYPE_PLANTE,
-    MONSTRE_TYPE_EAU,
     MONSTRE_TYPE_MONTAGNARD,
+    // MONSTRE_TYPE_DESERTIQUE,
     NB_MONSTRE_TYPES,
 } e_monstreType;
 
@@ -73,14 +61,9 @@ typedef struct s_monstre {
     struct s_mob;
     
     char* name;                             /**< Le nom d'un Monstre */
-
     int rayonDetection;                     /**< Le rayon dans lequel le joueur sera détecté ù*/
-
-    e_monstreTag tag;                       /**< Le tag du Monstre */
     e_monstreType type;                     /**< Le type du Monstre */
-
-    t_statistiques statistiques;            /**< Les statistiques du Monstre */
-    t_baseStatistiques baseStatistiques;    /**< Les statistiques de base du Monster */
+    boolean estNocturne;
 } t_monstre;
 
 
@@ -106,12 +89,8 @@ typedef struct s_baseStatistiquesIntervales {
  */
 typedef struct s_boss_flags {
     unsigned int lundi;
-    unsigned int mardi;
     unsigned int mercredi;
-    unsigned int jeudi;
     unsigned int vendredi;
-    unsigned int samedi;
-    unsigned int dimanche;
 } t_boss_flags;
 
 

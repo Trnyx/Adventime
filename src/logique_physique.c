@@ -18,6 +18,8 @@
 #include "../include/utilitaire.h"
 #include "../include/moteur.h"
 #include "../include/audio.h"
+#include "../include/menus.h"
+#include "../include/mob.h"
 
 
 
@@ -71,37 +73,55 @@
 
 
 
+static void suppressionEntite(t_liste *entites, t_entite *entite) {
+    oter_elt(entites);
+    entite->detruire((t_entite**) &entite);
+    suivant(entites);
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Update                                   */
+/* -------------------------------------------------------------------------- */
+
+
 /**
  * @brief Fonction appelé à chaque frame du jeu
  * 
  * Elle gère toute la physique et logique du jeu
  */
-void update() {
-    regulerFPS();
-    // printf("Update (%li)\n", u++);
-    t_monde *monde = moteur->monde;
-    t_joueur *joueur = monde->joueur;
+void update(t_map *map, t_joueur *joueur) {
+    // regulerFPS();
+    // // printf("Update (%li)\n", u++);
+    // t_monde *monde = moteur->monde;
+    // t_joueur *joueur = monde->joueur;
 
 
-    t_map *map = NULL;
-    switch (joueur->map) {
-        case MAP_OVERWORLD: map = monde->map; break;
-        case MAP_CAVE: map = monde->map; break;
-    }
+    // t_map *map = NULL;
+    // switch (joueur->map) {
+    //     case MAP_OVERWORLD: map = monde->map; break;
+    //     case MAP_CAVE: map = monde->map; break;
+    // }
 
 
-    t_liste *entites = map->entites;
+    t_liste *entites = moteur->cache->entites;
     t_entite *entite = NULL;
 
+    unsigned int nombreEntites = 0;
     unsigned int nombreMobs = 0;
+    unsigned int nombreAnimaux = 0;
     unsigned int nombreMobsCombat = 0;
-    unsigned int nombreMonstresAggressifs = 0;
+    unsigned int nombreMobsAggressifs = 0;
+    unsigned int nombreMobsPassifs = 0;
 
 
     // printf("TIME => ");
 
     unsigned int timestampFrame = SDL_GetTicks();
-    t_temps *temps = monde->temps;
+    t_temps *temps = moteur->temps;
     // printf("%i : %i\n", temps->heures, temps->minutes);
 
     gestionnaireTempsEvenements(temps, time(NULL));
@@ -124,7 +144,7 @@ void update() {
     /*                                   Joueur                                   */
     /* -------------------------------------------------------------------------- */
 
-    joueur->update((t_entite*) joueur, 0.0);
+    joueur->update((t_entite*) joueur, 0.0, NULL);
     dessinerEntite((t_entite*) joueur);
 
     
@@ -151,41 +171,80 @@ void update() {
                 const float distance = calculDistanceEntreEntites(entite, (t_entite*)joueur);
                 // printf("distance : %1.2f ", distance);
 
+
+                // Lorsque l'entité se trouve au delà des deux disques précédents
+                // L'entité est concidéré dans un disque inactif
+                if (distance > JOUEUR_RAYON_SEMIACTIF) {
+                    // printf("(Inactif) => ");
+                    // Si l'entité doit être supprimé
+                    // Alors on la détruit
+                    if (entite->destructionInactif) {
+                        suppressionEntite(entites, entite);
+                        continue;
+                    }
+                }
+
+
+                
                 // Actualisation des temps d'actualisation
                 entite->timestampActualisation = timestampFrame;
 
 
+                // Lorsque l'entité se trouve dans le disque semi actif par rapport au joueur
+                if (distance > JOUEUR_RAYON_ACTIF && distance <= JOUEUR_RAYON_SEMIACTIF) {
+                    // printf("(Semi Actif) => ");
+
+                    // Gestion de la durée de vie de l'entité
+                    // Si l'entité à atteint la durée de vie maximale d'une entité alors elle est supprimé
+                    if (entite->destructionInactif) {
+                        if (entite->timestampActualisation - entite->timestampCreation >= (ENTITE_DUREE_VIE_MAX * 1000)) {
+                            suppressionEntite(entites, entite);
+                            continue;
+                        }
+                    }
+                }
+
+
                 // Lorsque l'entité se trouve dans le disque actif par rapport au joueur
-                if (distance <= JOUEUR_RAYON_ACTIF) {
+                else if (distance <= JOUEUR_RAYON_ACTIF) {
                     // printf("(Actif) => ");
                     
                     // En fonction du type de l'entité
                     switch (entite->entiteType) {
-                        // Si l'entité est un monstre 
-                        case ENTITE_MONSTRE_AGGRESSIF:
-                            // Si le joueur est dans le rayon de détection du monstre
-                            // Le monstre est alors en mode combat
-                            if (((t_mob*)entite)->deplacementType != DEPLACEMENT_COMBAT && distance <= MONSTRE_RAYON_COMBAT_DETECTION) {
-                                ((t_mob*)entite)->deplacementType = DEPLACEMENT_COMBAT;
+                        // Si l'entité est un mob 
+                        case ENTITE_MOB:
+                            // Si le mob est mort 
+                            if (((t_mob*)entite)->statistiques.pv <= 0) {
+                                suppressionEntite(entites, entite);
+                                // play_bruitage(audio->bruitages->monstre_mort, 4);
+                                continue;
                             }
+                            // Si le mob est en DEPLACEMENT_COMBAT
+                            // On update alors la position cible
+                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && ((t_mob*)entite)->cible->entiteType == ENTITE_JOUEUR) {
+                                nombreMobsCombat++;
+
+                                // Update de la position cible 
+                                if (((t_mob*)entite)->operation != ATTAQUE)
+                                    ((t_mob*)entite)->positionDeplacement = ((t_mob*)entite)->cible->position;
+                            }
+
+                            break;
 
 
                         // Sur toutes les entités
                         default:
-                            // Si le joueur est 
-                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
-                                ((t_mob*)entite)->deplacementType = DEPLACEMENT_NORMAL;
-                            }
+                            // // Si le joueur est 
+                            // if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
+                            //     ((t_mob*)entite)->deplacementType = DEPLACEMENT_NORMAL;
+                            // }
 
-                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT) {
-                                nombreMobsCombat++;
-                            }
                             break;
                     }
                     
 
                     // Deplacement
-                    entite->update((t_entite*)entite, distance);
+                    entite->update((t_entite*)entite, distance, (t_entite*)joueur);
 
                     // combat
                     // entite->update((t_entite*)entite);
@@ -194,83 +253,56 @@ void update() {
                 }
 
 
-                // Lorsque l'entité se trouve dans le disque semi actif par rapport au joueur
-                else if (distance > JOUEUR_RAYON_ACTIF && distance <= JOUEUR_RAYON_SEMIACTIF) {
-                    // printf("(Semi Actif) => ");
 
-                    // Gestion de la durée de vie de l'entité
-                    // Si l'entité à atteint la durée de vie maximale d'une entité alors elle est supprimé
-                    if (entite->timestampActualisation - entite->timestampCreation >= (ENTITE_DUREE_VIE_MAX * 1000)) {
-                        oter_elt(entites);
-                        entite->detruire((t_entite**) &entite);
-                        suivant(entites);
-                        continue;
-                    }
-                    
+                if (entite->entiteType == ENTITE_MOB) {
+                    nombreMobs++;
+
+                    if (((t_mob*)entite)->aggressif) 
+                        nombreMobsAggressifs++;
+                    else
+                        nombreMobsPassifs++;
                 }
 
-
-                // Lorsque l'entité se trouve au delà des deux disques précédents
-                // L'entité est concidéré dans un disque inactif
-                else if (distance > JOUEUR_RAYON_SEMIACTIF) {
-                    // printf("(Inactif) => ");
-                    // Si le monstre est aggressif
-                    // Suppression du monstre
-                    if (entite->entiteType == ENTITE_MONSTRE_AGGRESSIF) {
-                        oter_elt(entites);
-                        entite->detruire((t_entite**) &entite);
-                        suivant(entites);
-                        continue;
-                    }
-                }
-
-
-
-                switch (entite->entiteType) {
-                    case ENTITE_MONSTRE_AGGRESSIF:
-                        nombreMonstresAggressifs++;
-                        break;
-
-                    default:
-                        break;
-                }
-
-                nombreMobs++;
+                nombreEntites++;
             }
 
             
             suivant(entites);
         }
 
-        // printf("Mobs Total : %i  /  Monstre Agressif : %i\n", nombreMobs, nombreMonstresAggressifs);
         // printf("Fin Update Entites\n");
+        // printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", nombreEntites, nombreMobs, nombreMobsPassifs, nombreMobsAggressifs);
     }
 
 
     // /* -------------------------- Apparition d'entites -------------------------- */
 
     en_tete(entites);
-    if (nombreMobs < MOB_CAP) {
-        int proba = getNombreAleatoire(1, 100);
+    if (nombreEntites < ENTITE_CAP) {
+        if (nombreMobs < MOB_CAP) {
+            int proba = getNombreAleatoire(1, 100);
 
-        //      Si le nombre de monstres aggressifs max n'est pas atteint
-        //          Calcul la probabilité d'apparition d'un monstre
-        //          Si apparition possible
-        //              Apparition du monste dans le rayon semi actif
-        if (nombreMonstresAggressifs < MONSTRE_AGGRESSIF_CAP) {
-            if (proba <= PROBABILITE_APPARITION_MONSTRE) {
-                apparitionMonstre(entites, map, joueur->position, joueur->statistiques.niveau);
+            //      Si le nombre de monstres aggressifs max n'est pas atteint
+            //          Calcul la probabilité d'apparition d'un monstre
+            //          Si apparition possible
+            //              Apparition du monste dans le rayon semi actif
+            if (nombreMobsAggressifs < MONSTRE_AGGRESSIF_CAP) {
+                if (proba <= PROBABILITE_APPARITION_MONSTRE) {
+                    apparitionMonstre(entites, map, joueur->position, joueur->statistiques.niveau);
+                }
             }
-        }
 
-        //      Si le nombre de monstres passif max n'est pas atteint
-        //          Calcul la probabilité d'apparition d'un monstre
-        //          Si apparition possible
-        //              Apparition du monste dans le rayon semi actif
-        //      Si le nombre d'animaux max n'est pas atteint
-        //          Calcul la probabilité d'apparition d'un animal
-        //          Si apparition possible
-        //              Apparition de l'animal dans le rayon actif ou semi actif
+            //      Si le nombre de monstres passif max n'est pas atteint
+            //          Calcul la probabilité d'apparition d'un monstre
+            //          Si apparition possible
+            //              Apparition du monste dans le rayon semi actif
+
+
+            //      Si le nombre d'animaux max n'est pas atteint
+            //          Calcul la probabilité d'apparition d'un animal
+            //          Si apparition possible
+            //              Apparition de l'animal dans le rayon actif ou semi actif
+        }
     }
 
 
@@ -294,7 +326,7 @@ void update() {
 
     if (audio->musiqueType != musiqueType) {
         audio->musiqueType = musiqueType;
-        selectionMusique(audio);
+        selectionMusique(temps);
     }
 
 
@@ -322,6 +354,8 @@ void update() {
 
     /* ------------------------ Affichage à l'utilisateur ----------------------- */
 
+    updateHUD(ctx, joueur);
+	
     SDL_RenderPresent(moteur->renderer);
     SDL_RenderClear(moteur->renderer);
     

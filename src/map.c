@@ -163,10 +163,10 @@ void dessinerSol(t_map *map) {
     rendu.w = camera->tailleRendu.x;
     rendu.h = camera->tailleRendu.y;
 
-    for (float x = camera->origine.x - 1; x <= camera->position.x + TAILLE_CAMERA_DEMI_LARGEUR + 1; x++) {
-        for (float y = camera->origine.y - 1; y <= camera->position.y + TAILLE_CAMERA_DEMI_HAUTEUR + 1; y++) {
-            rendu.x = positionRelativeEnPositionSurEcran(x, camera->offset.x, camera->origine.x, rendu.w) + rendu.w;
-            rendu.y = positionRelativeEnPositionSurEcran(y, camera->offset.y, camera->origine.y, rendu.h) + rendu.h;
+    for (float x = camera->origine.x - 1; x <= camera->position.x + TAILLE_CAMERA_DEMI_LARGEUR + 2; x++) {
+        for (float y = camera->origine.y - 1; y <= camera->position.y + TAILLE_CAMERA_DEMI_HAUTEUR + 2; y++) {
+            rendu.x = positionRelativeEnPositionSurEcran(x, camera->offset.x, camera->origine.x, rendu.w);
+            rendu.y = positionRelativeEnPositionSurEcran(y, camera->offset.y, camera->origine.y, rendu.h);
 
 
             t_block *block = getBlockDansMap(x, y, COUCHE_SOL, map);
@@ -195,6 +195,8 @@ void dessinerSol(t_map *map) {
 /* ------------------------------- Vegetations ------------------------------ */
 
 
+#define LARGEUR_ARBRE (3 * TAILLE_TILE)
+#define HAUTEUR_ARBRE (2 * TAILLE_TILE)
 int dessinerVegetal(const int tag, SDL_Rect *rendu) {
     SDL_Rect source;
     SDL_Rect renduVegetaux;
@@ -204,8 +206,11 @@ int dessinerVegetal(const int tag, SDL_Rect *rendu) {
         case HERBE:
             splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
             break;
+            
         case CHAINE:
-            splitTexture(&source, (2 * TAILLE_TILE * (tag % HERBE)),0, 3*TAILLE_TILE,2*TAILLE_TILE);
+        case PALMIER:
+        case SAPIN:
+            splitTexture(&source, (LARGEUR_ARBRE * (tag % HERBE)),0, LARGEUR_ARBRE,HAUTEUR_ARBRE);
             break;
 
 
@@ -237,10 +242,10 @@ void dessinerVegetation(t_map *map) {
     rendu.w = camera->tailleRendu.x;
     rendu.h = camera->tailleRendu.y;
 
-    for (float x = camera->origine.x - 1; x <= camera->position.x + TAILLE_CAMERA_DEMI_LARGEUR + 1; x++) {
-        for (float y = camera->origine.y - 1; y <= camera->position.y + TAILLE_CAMERA_DEMI_HAUTEUR + 1; y++) {
-            rendu.x = positionRelativeEnPositionSurEcran(x, camera->offset.x, camera->origine.x, rendu.w) + rendu.w;
-            rendu.y = positionRelativeEnPositionSurEcran(y, camera->offset.y, camera->origine.y, rendu.h) + rendu.h;
+    for (float x = camera->origine.x - 1; x <= camera->position.x + TAILLE_CAMERA_DEMI_LARGEUR + 2; x++) {
+        for (float y = camera->origine.y - 1; y <= camera->position.y + TAILLE_CAMERA_DEMI_HAUTEUR + 2; y++) {
+            rendu.x = positionRelativeEnPositionSurEcran(x, camera->offset.x, camera->origine.x, rendu.w);
+            rendu.y = positionRelativeEnPositionSurEcran(y, camera->offset.y, camera->origine.y, rendu.h);
 
 
             t_block *block = getBlockDansMap(x, y, COUCHE_OBJETS, map);

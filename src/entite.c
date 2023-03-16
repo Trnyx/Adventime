@@ -15,6 +15,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "../include/NanoId/nanoid.h"
+
 #include "../include/physique.h"
 #include "../include/moteur.h"
 #include "../include/monde.h"
@@ -23,6 +25,98 @@
 
 
 
+
+
+/* -------------------------------------------------------------------------- */
+/*                                Verification                                */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
+ * @param position 
+ * @param map 
+ * @return boolean 
+ */
+boolean peutApparaitre(const t_vecteur2 position, t_map *map) {
+    t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
+
+    if (chunk == NULL) 
+        return FAUX;
+
+    const e_biome biome = chunk->biome;
+    if (biome == BIOME_PROFONDEUR)
+        return FAUX;
+
+    t_block *block = getBlockDansMap(position.x, position.y, COUCHE_SOL, map);
+    if (block->tag == SOL_EAU)
+        return FAUX;
+
+    block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
+    if (block == NULL)
+        return FAUX;
+    
+    if (block->tag != VIDE)
+        return FAUX;
+            
+    return VRAI;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                     Get                                    */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief Get the Entites Alentour object
+ * 
+ * @param centre 
+ * @param type 
+ * @param range 
+ * @return t_liste 
+ */
+t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range) {
+    t_liste *entitesActuelles = moteur->cache->entites;
+    t_liste entitesAlentours;
+    init_liste(&entitesAlentours);
+
+    t_entite *entite = NULL;
+
+
+    en_tete_cache(entitesActuelles);
+    while (!hors_liste_cache(entitesActuelles)) {
+        valeur_elt_cache(entitesActuelles, &entite);
+
+        if (!strcmp(centre->id, entite->id)) {
+            suivant_cache(entitesActuelles);
+            continue;
+        }
+
+
+        const float distance = calculDistanceEntreEntites(centre, entite);
+
+        if (entite->entiteType == type && distance <= range)
+            ajout_droit(&entitesAlentours, entite);
+
+        suivant_cache(entitesActuelles);
+    }
+    
+
+    return entitesAlentours;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Calcul                                   */
+/* -------------------------------------------------------------------------- */
 
 
 /**
@@ -40,6 +134,11 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                          Deplacement & Orientation                         */
+/* -------------------------------------------------------------------------- */
+
+
 /**
  * @brief 
  * 
@@ -48,22 +147,57 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
  * @param positionSuivante 
  * @return boolean 
  */
-boolean peutDeplacerEntite(t_map *map, const t_entite *entite, const t_vecteur2 positionSuivante) {
+boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positionSuivante) {
     t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_OBJETS, map);
-    if (block == NULL) return FAUX;
+    if (block == NULL) 
+        return FAUX;
 
     // Check si le block est bien vide
-    if (block->tag != VIDE) return FAUX;
+    if (block->tag != VIDE) 
+        return FAUX;
 
-    block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_SOL, map);
+
     // Check si le block est un block profondeur
-    if (block->tag == SOL_EAU_PROFONDE) return FAUX;
+    block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_SOL, map);
+    if (block == NULL)
+        return FAUX;
 
-    t_block* blockPositionActuelle = getBlockDansMap(entite->position.x, entite->position.y, COUCHE_SOL, map);
-    // printf("Position Actuelle : %i => ", blockPositionActuelle->tag);
+    if (block->tag == SOL_EAU_PROFONDE) 
+        return FAUX;
+
 
     // Check si plus de 1 de hauteur 
-    if (abs(block->tag - blockPositionActuelle->tag) > 1) return FAUX;
+    t_block* blockPositionActuelle = getBlockDansMap(entite->position.x, entite->position.y, COUCHE_SOL, map);
+    if (abs(block->tag - blockPositionActuelle->tag) > 1) 
+        return FAUX;
+
+
+    // Check si collision
+    t_liste entitesAlentours = getEntitesAlentour(entite, ENTITE_MOB, (entite->hitbox.w * entite->taille) / 2);
+
+    if (!liste_vide(&entitesAlentours)) {
+        t_entite *entiteTempo = NULL;
+
+        SDL_FRect hitbox;
+        hitbox.x = positionSuivante.x; 
+        hitbox.y = positionSuivante.y; 
+        hitbox.w = entite->hitbox.w * entite->taille;
+        hitbox.h = entite->hitbox.h * entite->taille;
+
+        en_tete(&entitesAlentours);
+        while (!hors_liste(&entitesAlentours)) {
+            valeur_elt(&entitesAlentours, &entiteTempo);
+
+
+            if (SDL_HasIntersectionF(&hitbox, &entiteTempo->hitbox)){
+                printf("COLLISION : \n");
+                return FAUX;
+            }
+                    
+
+            suivant(&entitesAlentours);
+        }
+    }
 
 
     return VRAI;
@@ -92,13 +226,16 @@ boolean deplacerEntite(t_entite *entite, const float vitesse) {
     // printf("(distance : %1.2f, normale : %1.2f) ", distance, normale);
     // printf("Position suivante : %1.2f:%1.2f => ", positionSuivante.x, positionSuivante.y);
     
-    boolean peutSeDeplacer = peutDeplacerEntite(moteur->monde->map, entite, positionSuivante);
+    boolean peutSeDeplacer = peutDeplacerEntite(moteur->cache->map, entite, positionSuivante);
     // printf("Peut se deplacer ? %i => ", peutSeDeplacer);
 
 
     if (peutSeDeplacer == VRAI) {
         // printf("Precedente : %1.2f:%1.2f | Nouvelle : %1.2f:%1.2f\n", entite->position.x, entite->position.y, positionSuivante.x, positionSuivante.y);
         entite->position = positionSuivante;
+        
+        entite->hitbox.x = entite->position.x - (entite->taille / 2);
+        entite->hitbox.y = entite->position.y - (entite->taille / 2);
     }
 
 
@@ -137,6 +274,7 @@ void orienterEntite(const float angle, t_entite *entite) {
 /* -------------------------------------------------------------------------- */
 
 
+#define TAILLE_SET (8 * TAILLE_TILE)
 /**
  * @brief 
  * 
@@ -146,13 +284,19 @@ void dessinerEntite(t_entite *entite) {
     SDL_Texture *texture = NULL;
     SDL_Rect sprite;
     sprite.h = sprite.w = TAILLE_TILE;
+    sprite.x = 0;
+    sprite.y = entite->orientation * TAILLE_TILE;
+
 
     SDL_Rect rendu;
     rendu.w = moteur->camera->tailleRendu.x;
     rendu.h = moteur->camera->tailleRendu.y;
 
-    rendu.x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w); // positionnementEnPixel.x - offset.x;
-    rendu.y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h); // positionnementEnPixel.y - offset.y;
+    rendu.x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w) - rendu.w / 2;
+    rendu.y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h) - rendu.h / 2;
+
+    // SDL_SetRenderDrawColor(moteur->renderer, 255, 0, 0, 255);
+    // SDL_RenderFillRect(moteur->renderer, &rendu);
 
 
     switch (entite->entiteType) {
@@ -160,8 +304,18 @@ void dessinerEntite(t_entite *entite) {
             texture = moteur->textures->joueur; 
             break;
 
-        case ENTITE_MONSTRE_AGGRESSIF:
-            texture = moteur->textures->monstres;
+        case ENTITE_MOB:
+            switch (entite->tag) {
+                case TAG_ANIMAL_VACHE: 
+                    texture = moteur->textures->animaux; 
+                    sprite.x = 0;
+                    break;
+                case TAG_MONSTRE_BASIC: 
+                    texture = moteur->textures->monstres; 
+                    sprite.x = (((t_monstre*)entite)->estNocturne ? NB_MONSTRE_TYPES * TAILLE_SET : ((t_monstre*)entite)->type) * (TAILLE_SET);
+                    break;
+                default: break;
+            }
             break;
 
         default:
@@ -169,11 +323,37 @@ void dessinerEntite(t_entite *entite) {
     }
 
 
-    sprite.x = 0;
-    sprite.y = entite->orientation * TAILLE_TILE;
+    // Animation
+    if (entite->animation != NULL) {
+        updateAnimation(entite->animation, moteur->frame);
+        sprite.x += TAILLE_TILE * entite->animation->frameCourante;
+        
+        // Deplacement
+        switch (((t_entiteVivante*)entite)->operation) {
+            case SE_DEPLACE_VERS:
+            case SE_DEPLACE_AUTOUR:
+            case ATTAQUE:
+                sprite.y += TAILLE_TILE * 4;
+                break;
+                // sprite.y += TAILLE_TILE * 4 * 2;
+                // break;
+            default:
+                break;
+        }
+    }
+
+
 
 
     SDL_RenderCopy(moteur->renderer, texture, &sprite, &rendu);
+    // SDL_Rect point = {
+    //     positionRelativeEnPositionSurEcran(entite->hitbox.x, 0.0, moteur->camera->origine.x, rendu.w), 
+    //     positionRelativeEnPositionSurEcran(entite->hitbox.y, 0.0, moteur->camera->origine.y, rendu.h), 
+    //     moteur->camera->tailleRendu.x,
+    //     moteur->camera->tailleRendu.y,
+    // };
+    // SDL_SetRenderDrawColor(moteur->renderer, 0, 0, 0, 255);
+    // SDL_RenderFillRect(moteur->renderer, &point);
 }
 
 
@@ -193,25 +373,13 @@ void dessinerEntite(t_entite *entite) {
 void detruireEntite(t_entite **entite) {
     printf("Destruction Entite => ");
     if (entite != NULL && *entite != NULL) {
-
+        if ((*entite)->id != NULL) {
+            free((*entite)->id);
+            (*entite)->id = NULL;
+        }
+        
         free(*entite);
         *entite = NULL;
-
-    }
-}
-
-
-
-/**
- * @brief 
- * 
- * @param mob 
- */
-void detruireMob(t_mob **mob) {
-    printf("Destruction Mob => ");
-    if (mob != NULL && *mob != NULL) {
-
-        detruireEntite((t_entite**)mob);
 
     }
 }
@@ -240,6 +408,9 @@ t_entite* creerEntite(const t_vecteur2 position) {
         return NULL;
     }
 
+    entite->id = generate(LONGUEUR_ID);
+    printf("ID : %s\n", entite->id);
+
 
     entite->position.x = position.x;
     entite->position.y = position.y;
@@ -248,11 +419,16 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->orientation = SUD;
 
     entite->entiteType = ENTITE_RIEN;
+    entite->tag = TAG_AUCUN;
 
-    entite->hitbox.x = 0;
-    entite->hitbox.y = 0;
-    entite->hitbox.h = 16;
-    entite->hitbox.w = 16;
+    entite->taille = 1;
+
+    entite->hitbox.x = position.x - (entite->taille / 2);
+    entite->hitbox.y = position.y - (entite->taille / 2);
+    entite->hitbox.h = 1;
+    entite->hitbox.w = 1;
+
+    entite->animation = NULL;
 
     
     entite->update = NULL;
@@ -262,43 +438,9 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->timestampCreation = SDL_GetTicks();
     entite->timestampActualisation = entite->timestampCreation;
 
+    entite->destructionInactif = VRAI;
+
 
     return entite;
 }
 
-
-
-/**
- * @brief 
- * 
- * @param position 
- * @return t_mob* 
- */
-t_mob* creerMob(const t_vecteur2 position) {
-    t_entite *entite = creerEntite(position);
-    t_mob *mob = realloc(entite, sizeof(t_mob));
-    const int t = SDL_GetTicks();
-
-    // Déplacement
-    mob->rayonDeplacement = 0;
-
-    mob->positionDeplacement.x = position.x;
-    mob->positionDeplacement.y = position.y;
-    mob->timestampDebutDeplacement = t;
-    mob->timestampFinDeplacement = t;
-    mob->delaiAttenteDeplacement = 10;
-
-    mob->deplacementType = DEPLACEMENT_STATIQUE;
-
-
-    // Attaque
-    mob->timestampAttaque = t;
-    mob->delaiAttenteAttaque = 5;
-
-
-    mob->detruire = (void (*)(t_entite**)) detruireMob;
-
-
-    entite = NULL;
-    return mob;
-}

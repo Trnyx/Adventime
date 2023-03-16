@@ -28,9 +28,11 @@
 
 
 #define JOUEUR_VITESSE_DEFAUT 6
-#define JOUEUR_ATTAQUE_DEFAUT 10
-#define JOUEUR_DEFENSE_DEFAUT 10
-#define JOUEUR_PV_DEFAUT 20
+#define JOUEUR_ATTAQUE_DEFAUT 20
+#define JOUEUR_DEFENSE_DEFAUT 20
+#define JOUEUR_PV_DEFAUT 40
+
+#define JOUEUR_COOLDOWN_ATTAQUE 10
 
 
 
@@ -54,6 +56,9 @@ typedef struct s_action_flags {
     // Intéractions
     int interaction;
 
+    // Attaque
+    int attack;
+
     // Autres
     int miniMap;
 } t_action_flags;
@@ -66,14 +71,15 @@ typedef struct s_action_flags {
  */
 typedef struct s_joueur {
     // #include "attributs_entite.h"
-    struct s_entite;
-
-    t_statistiques statistiques;    /**< Les statistiques du joueur */
-    // t_inventaire *inventaire;        /**< L'inventaire du joueur */   
+    struct s_entiteVivante;
 
     t_action_flags *actionFlags;    /**< */
     e_mapType map;                  /**< */
 
+    int timestampAttaque;           /**< */
+    unsigned int cooldownAttaque;   /**< */
+
+    // Progression
     t_boss_flags bossFlags;         /**< */
     
 } t_joueur;

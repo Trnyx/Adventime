@@ -32,22 +32,25 @@ int main(int argc, char* argv[]) {
 
 	// moteur = NULL;
 	// audio = NULL;
-	struct nk_context *ctx = NULL;
-	
-	state_main state = 1;
 	
 
 	initAll(&moteur, &audio);
 	ctx = nk_sdl_init(moteur->window, moteur->renderer);
+	moteur->state = M_MENU;
 	
-	
-	while (state != JEU_QUITTER) {
+	play_music(audio->musiques->menu_principal, VRAI);
+
+	while (moteur->state != JEU_QUITTER) {
 		
-		switch (state) {
-			case M_MENU: state = main_menu(ctx); break;
-			case M_JOUER: state = jouer(MONDE_CREER); break;
-			case M_OPTIONS: state = menu_options(ctx); break;
-			default: state = JEU_QUITTER; break;
+		switch (moteur->state) {
+			case M_MENU: moteur->state = main_menu(ctx); break;
+			case M_JOUER: 
+				moteur->state = jouer(MONDE_CREER); 
+				if (moteur->state != JEU_QUITTER) 
+					play_music(audio->musiques->menu_principal, VRAI);
+				break;
+			case M_OPTIONS: moteur->state = menu_options(ctx); break;
+			default: moteur->state = JEU_QUITTER; break;
 		}
 
 	}

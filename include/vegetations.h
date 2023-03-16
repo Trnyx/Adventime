@@ -39,8 +39,6 @@
  */
 typedef enum {
     HERBE = 100,
-    // ROSE,
-    // TULIPE,
     CHAINE,
     PALMIER,
     SAPIN,

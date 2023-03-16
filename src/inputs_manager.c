@@ -16,6 +16,7 @@
 #include <SDL2/SDL.h>
 
 #include "../include/input_manager.h"
+#include "../include/menus.h"
 
 
 
@@ -38,7 +39,7 @@ int inputManager(t_joueur *joueur) {
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
             case SDL_QUIT:
-                return -1;
+                return M_MENU;
                 break;
             
             
@@ -76,7 +77,8 @@ int inputManager(t_joueur *joueur) {
 
                 // Echap
                 else if (controles.escape == event.key.keysym.scancode) {
-                    return -1;
+		  moteur->state = M_PAUSE;
+		  return M_PAUSE;
                 }
 
                 break;
@@ -124,9 +126,43 @@ int inputManager(t_joueur *joueur) {
                 switch (event.button.button) {
                     // Attaque
                     case SDL_BUTTON_LEFT:
+                        // Si le clique de la souris reste enfoncé on ignore en mettant à -1
+                        if (joueur->actionFlags->attack == 0)
+                            joueur->actionFlags->attack = 1;
+                        else
+                            joueur->actionFlags->attack = -1;
                         break;
 
                 }
+                break;
+
+
+
+            case SDL_MOUSEBUTTONUP:
+                switch (event.button.button) {
+                    // Attaque
+                    case SDL_BUTTON_LEFT:
+                        joueur->actionFlags->attack = 0;
+                        break;
+
+                }
+                break;
+
+
+
+            /* --------------------------- Scroll de la souris -------------------------- */
+
+
+            case SDL_MOUSEWHEEL:
+                // Scroll vers le haut
+                if (event.wheel.y > 0) {
+
+                }
+                // Scroll vers le bas
+                else if (event.wheel.y < 0) {
+
+                }
+                
                 break;
 
 

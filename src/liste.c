@@ -79,6 +79,7 @@ boolean liste_vide(t_liste *liste){
 }
 
 
+
 /**
  * @brief Booleen, l'element courant est hors liste
  * 
@@ -88,6 +89,18 @@ boolean liste_vide(t_liste *liste){
  */
 boolean hors_liste(t_liste *liste){
     return (liste->ec == liste->drapeau) ;
+}
+
+
+/**
+ * @brief Booleen, l'element courant est hors liste
+ * 
+ * @param liste une liste
+ * 
+ * @return int booleen 1 : vrai, 0 : faux
+ */
+boolean hors_liste_cache(t_liste *liste){
+    return (liste->cacheFlag == liste->drapeau) ;
 }
 
 
@@ -111,6 +124,18 @@ void en_tete(t_liste *liste){
 
 
 /**
+ * @brief Met l'element courant au premier element de la liste
+ * 
+ * @param liste une liste
+ */
+void en_tete_cache(t_liste *liste){
+    if (!liste_vide(liste))
+        liste->cacheFlag = liste->drapeau->succ;
+}
+
+
+
+/**
  * @brief Met l'element courant au dernier element de la liste
  * 
  * @param liste une liste
@@ -119,6 +144,18 @@ void en_queue(t_liste *liste){
     if (!liste_vide(liste))
         liste->ec = liste->drapeau->pred ;
 }
+
+
+/**
+ * @brief Met l'element courant au dernier element de la liste
+ * 
+ * @param liste une liste
+ */
+void en_queue_cache(t_liste *liste){
+    if (!liste_vide(liste))
+        liste->cacheFlag = liste->drapeau->pred ;
+}
+
 
 
 /**
@@ -133,6 +170,18 @@ void precedent(t_liste *liste){
 
 
 /**
+ * @brief Met l'element courant a l'element juste avant l'element courant
+ * 
+ * @param liste une liste
+ */
+void precedent_cache(t_liste *liste){
+    if (!hors_liste(liste))
+        liste->cacheFlag = liste->cacheFlag->pred;
+}
+
+
+
+/**
  * @brief Met l'element courant a l'element juste apres l'element courant
  * 
  * @param liste une liste
@@ -140,6 +189,17 @@ void precedent(t_liste *liste){
 void suivant(t_liste *liste) {
     if (!hors_liste(liste))
         liste->ec = liste->ec->succ;
+}
+
+
+/**
+ * @brief Met l'element courant a l'element juste apres l'element courant
+ * 
+ * @param liste une liste
+ */
+void suivant_cache(t_liste *liste) {
+    if (!hors_liste(liste))
+        liste->cacheFlag = liste->cacheFlag->succ;
 }
 
 
@@ -157,6 +217,15 @@ void suivant(t_liste *liste) {
 void valeur_elt(t_liste *liste, t_entite **entite) {
     if (!hors_liste(liste))
         *entite = liste->ec->entite;
+}
+
+
+/**
+ * @brief Recupere la valeur de l'element de la liste et _entite *
+ */
+void valeur_elt_cache(t_liste *liste, t_entite **entite) {
+    if (!hors_liste(liste))
+        *entite = liste->cacheFlag->entite;
 }
 
 

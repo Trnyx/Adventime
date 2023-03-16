@@ -10,6 +10,7 @@
 
 
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "../include/monstre.h"
 #include "../include/map.h"
@@ -30,17 +31,20 @@
  * @return Le type du monstre
  */
 e_monstreType choisirTypeMonstre(const t_baseBiome baseBiome) {
-    e_monstreType type = -1;
-    int nombreTypesPossible = sizeof(baseBiome.typesMonstre) / sizeof(baseBiome.typesMonstre[0]);
+    e_monstreType type = MONSTRE_TYPE_NORMAL;
+    const int nombreTypesPossible = sizeof(baseBiome.typesMonstre) / sizeof(baseBiome.typesMonstre[0]);
+
+
+    if (baseBiome.probabilitesTypesMonstre[0] == 100) {
+        return baseBiome.typesMonstre[0];
+    }
 
   
-    while (type == -1) {
-        int index = getNombreAleatoire(0, nombreTypesPossible - 1);
-        int probabilite = getNombreAleatoire(0, 100);
-        
-        int probabiliteType = baseBiome.probabilitesTypesMonstre[index];
-        if (probabiliteType >= probabilite) {
-            return baseBiome.typesMonstre[index];
+    // const int index = getNombreAleatoire(0, nombreTypesPossible - 1);
+    const int probabilite = getNombreAleatoire(1, 100);
+    for (int i = 0; i < nombreTypesPossible; i++) {
+        if (baseBiome.probabilitesTypesMonstre[i] >= probabilite) {
+            return baseBiome.typesMonstre[i];
         }
     }
 
@@ -119,10 +123,13 @@ int calculPv(const int attaque, const int defense, const int basePv) {
 t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau) {
     t_statistiques statistiques;
 
+    statistiques.experience = 0;
+    statistiques.niveau = niveau;
     statistiques.attaque = calculStatistique(baseStatistiques.attaque, niveau);
     statistiques.defense = calculStatistique(baseStatistiques.defense, niveau);
-    statistiques.vitesse = calculStatistique(baseStatistiques.vitesse, niveau);
+    statistiques.vitesse = 4.0; // calculStatistique(baseStatistiques.vitesse, niveau);
     statistiques.pv = calculPv(statistiques.attaque, statistiques.defense, baseStatistiques.pv);
+    statistiques.pvMax = statistiques.pv;
 
     return statistiques;
 }
@@ -146,12 +153,14 @@ t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, co
  */
 t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome, const int niveauJoueur) {
     // monstre->tag = choisirMonstreTag();
-    monstre->tag = MONSTRE_OISEAU;
+    monstre->tag = TAG_MONSTRE_BASIC;
     monstre->type = choisirTypeMonstre(basesBiomes[biome]);
 
     monstre->statistiques.niveau = niveauJoueur;
     monstre->baseStatistiques = genererStatistiquesDeBase(monstre->type);
     monstre->statistiques = genererStatistiques(monstre->baseStatistiques, monstre->statistiques.niveau);
+
+    monstre->estNocturne = FAUX;
     
     return monstre;
 }
