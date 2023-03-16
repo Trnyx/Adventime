@@ -13,6 +13,11 @@
 
 
 #define chemin_param "./sauvegarde/config.txt"
+char * nomFichiersMap[2] =
+{
+    "overworld.txt",
+    "caverne.txt"
+};
 
 
 /* -------------------------------------------------------------------------- */
@@ -60,6 +65,8 @@ err_sauv charger_config()
     }
 
 
+    fclose(fichier);
+    return SUCCESS;
 
 }
 
@@ -175,11 +182,11 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
                         bloc = getBlockDansChunk(x_bloc, y_bloc, chunk);
 
                         // Blocs composant un chunk
-                        fprintf(fichier, "%f ", chunk->blocks->position.x);
-                        fprintf(fichier, "%f ", chunk->blocks->position.y);
-                        fprintf(fichier, "%f ", chunk->blocks->positionDansChunk.x);
-                        fprintf(fichier, "%f ", chunk->blocks->positionDansChunk.y);
-                        fprintf(fichier, "%i ", chunk->blocks->tag);
+                        fprintf(fichier, "%f ", bloc->position.x);
+                        fprintf(fichier, "%f ", bloc->position.y);
+                        fprintf(fichier, "%f ", bloc->positionDansChunk.x);
+                        fprintf(fichier, "%f ", bloc->positionDansChunk.y);
+                        fprintf(fichier, "%i ", bloc->tag);
                         fprintf(fichier, "\n");
                     }
                     fprintf(fichier, "\n");
@@ -208,11 +215,11 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
                 fprintf(fichier, "%f ", entite->direction.y);
                 fprintf(fichier, "%i ", entite->orientation);
                 fprintf(fichier, "%i ", entite->entiteType);
-                fprintf(fichier, "%i ", entite->hitbox.h);
-                fprintf(fichier, "%i ", entite->hitbox.w);
-                fprintf(fichier, "%i ", entite->hitbox.x);
-                fprintf(fichier, "%i ", entite->hitbox.y);
-                fprintf(fichier, "%i ", entite->timestampCreation);
+                fprintf(fichier, "%f ", entite->hitbox.h);
+                fprintf(fichier, "%f ", entite->hitbox.w);
+                fprintf(fichier, "%f ", entite->hitbox.x);
+                fprintf(fichier, "%f ", entite->hitbox.y);
+                fprintf(fichier, "%u ", entite->timestampCreation);
             }
             suivant(map->entites);
         }
@@ -222,10 +229,11 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
     return SUCCESS;
 }
 
-err_sauv charger_map(t_map* map, char* chemin_monde)
+err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
 {
     // Explicite le chemin du fichier de sauvegarde des données map.
-    strcat(chemin_monde, "/map.txt");
+    char *nomFichier = nomFichiersMap[type];
+    strcat(chemin_monde, nomFichier);
 
     FILE* fichier = fopen(chemin_monde, "r");
 
@@ -234,16 +242,12 @@ err_sauv charger_map(t_map* map, char* chemin_monde)
         return FOPEN_FAIL;
     }
 
-    // Type de map
-    e_mapType type = NULL;
-
-    fscanf(fichier, "%i ", &type);
-    map->type = type;
-    fscanf(fichier, "\n");
 
     // Chunks
 
 
+    fclose(fichier);
+    return SUCCESS;
 
 }
 
@@ -255,7 +259,7 @@ err_sauv charger_map(t_map* map, char* chemin_monde)
  * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
  * \return err_sauv, un code d'erreur (0 si succès).
  */
-err_sauv sauvegarder_global(unsigned int seed, char* chemin_monde)
+err_sauv sauvegarder_global(t_monde* monde, char* chemin_monde)
 {
     // Explicite le chemin du fichier de sauvegarde des données globales.
     strcat(chemin_monde, "/global.txt");
@@ -268,7 +272,7 @@ err_sauv sauvegarder_global(unsigned int seed, char* chemin_monde)
     }
 
     // Seed
-    fprintf(fichier, "%i ", seed);
+    fprintf(fichier, "%u ", monde->seed);
 
 
     fclose(fichier);
@@ -282,7 +286,7 @@ err_sauv sauvegarder_global(unsigned int seed, char* chemin_monde)
  * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
  * \return err_sauv, un code d'erreur (0 si succès).
  */
-err_sauv charger_global(unsigned int* seed, char* chemin_monde)
+err_sauv charger_global(t_monde* monde, char* chemin_monde)
 {
     // Explicite le chemin du fichier de sauvegarde des données globales.
     strcat(chemin_monde, "/global.txt");
@@ -295,7 +299,7 @@ err_sauv charger_global(unsigned int* seed, char* chemin_monde)
     }
 
     // Seed
-    fscanf(fichier, "%i ", seed);
+    fscanf(fichier, "%u ", &(monde->seed));
 
     fclose(fichier);
     return SUCCESS;
@@ -320,7 +324,8 @@ err_sauv sauvegarder_monde(t_monde* monde, char* nom_monde)
 
     sauvegarder_joueur(monde->joueur, chemin_monde);
     sauvegarder_map(monde->overworld, chemin_monde);
-    sauvegarder_global(monde->seed, chemin_monde);
+    sauvegarder_global(monde, chemin_monde);
+    return SUCCESS;
 }
 
 /**
@@ -339,14 +344,11 @@ err_sauv charger_monde(char* nom_monde)
     t_monde* monde = malloc(sizeof(t_monde));
 
 
-    unsigned int seed;
-    t_temps* temps = malloc(sizeof(t_temps));
-
-    charger_global(&seed, chemin_monde);
+    charger_global(monde, chemin_monde);
 
 
-    t_map* map = malloc(sizeof(t_map));
-    charger_map(map, chemin_monde);
+    t_map* overworld = malloc(sizeof(t_map));
+    charger_map(overworld, chemin_monde, MAP_OVERWORLD);
 
-
+    return SUCCESS;
 }

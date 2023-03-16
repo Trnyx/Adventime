@@ -68,7 +68,7 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde);
  * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
  * \return err_sauv, un code d'erreur (0 si succès).
  */
-err_sauv sauvegarder_global(unsigned int seed, char* chemin_monde);
+err_sauv sauvegarder_monde(t_monde* monde, char* nom_monde);
 
 /**
  * \brief Sauvegarde le monde du jeu, c'est-à-dire les données du joueur, de la map et des données globales.
