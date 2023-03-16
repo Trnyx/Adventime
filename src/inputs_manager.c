@@ -33,8 +33,11 @@ int inputManager(t_joueur *joueur) {
 
     moteur->positionSouris.x = x;
     moteur->positionSouris.y = y;
-
-
+    
+    if(joueur->statistiques.pv <= 0) {
+      moteur->state = J_MORT;
+      return J_MORT;
+    }
 
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
@@ -80,6 +83,10 @@ int inputManager(t_joueur *joueur) {
 		  moteur->state = M_PAUSE;
 		  return M_PAUSE;
                 }
+
+		else if (event.key.keysym.scancode == SDL_SCANCODE_K) {
+		  joueur->statistiques.pv = 0;
+		}
 
                 break;
 

@@ -17,6 +17,7 @@
 
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 
 #include "utilitaire.h"
 #include "textures.h"
@@ -87,6 +88,7 @@ typedef struct s_moteur {
     t_temps *temps;                 /**< Le temps dans le jeu */
     unsigned int frame;             /**< Le timestamp (tick) de la drame actuelle */
   state_main state;
+  TTF_Font * font;
     
 
 } t_moteur;
