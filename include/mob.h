@@ -73,19 +73,16 @@ typedef struct s_mob {
 
     // Deplacement 
     unsigned int rayonDeplacement;          /**< Le rayon dans lequel le mob peut se déplacer */
-    t_vecteur2 positionDeplacement;               /**< La position à laquelle le mob veut se déplacer */
+    t_vecteur2 positionDeplacement;         /**< La position à laquelle le mob veut se déplacer */
     e_deplacementType deplacementType;      /**< Le type de déplacement du mob */
+    double gamma;
 
-    
-
-    unsigned int timestampDebutDeplacement; /**< Timestamp de départ de déplacement */
-    unsigned int timestampFinDeplacement;   /**< Timestamp de fin de déplacement */
-    unsigned int delaiAttenteDeplacement;   /**< Temps d'attente entre deux déplacements (en seconde) */
+    unsigned int timerDeplacement;          /**< Timer à partir duquel on calcul le temps de déplacement (en ticks) */
+    unsigned int cooldownDeplacement;       /**< Cooldown entre deux déplacements (en ticks) */
     
 
     // Attaque
-    unsigned int timestampAttaque;          /**< Timestamp de la dernière attaque */
-    unsigned int delaiAttenteAttaque;       /**< Temps d'attente entre deux attaque (en seconde) */
+    unsigned int cooldownAttaque;       /**< Cooldown entre deux attaque (en seconde) */
 } t_mob;
 
 

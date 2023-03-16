@@ -24,8 +24,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../include/map.h"
 #include "../include/physique.h"
+#include "../include/map.h"
+#include "../include/animal.h"
 
 
 
@@ -579,7 +580,7 @@ t_block generationBlock(const int x, const int y, const t_chunk *chunk, const bo
  * @param estVide Si le chunk à générer doit être vide
  * @return Un pointeur sur le chunk généré
  * 
- * @version 1.3
+ * @version 1.4
  */
 t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
     for (int x = 0, i = 0; x < TAILLE_CHUNK; x++) {
@@ -599,6 +600,7 @@ t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
         lissageDuChunk(chunk, map, 7 - i);
     }
 
+    lissageDuChunk(chunk, map, 3);
     lissageDuChunk(chunk, map, 5);
 
 
@@ -650,7 +652,6 @@ t_map* genererOverworld(t_map *map) {
 
 
     genererVegetations(map);
-
     genererAnimaux(map);
 
 
@@ -680,7 +681,11 @@ t_map* genererMap(e_mapType type) {
     }
 
 
-    map->type = type;     
+    map->type = type;
+    // map->nombreEntites = 0;
+    // map->entites = NULL;
+    map->entites = malloc(sizeof(t_liste));
+    init_liste(map->entites);
 
     switch (type) {
         case MAP_OVERWORLD: genererOverworld(map); break;
@@ -689,11 +694,6 @@ t_map* genererMap(e_mapType type) {
             break;
     }
 
-
-    // map->nombreEntites = 0;
-    // map->entites = NULL;
-    map->entites = malloc(sizeof(t_liste));
-    init_liste(map->entites);
     
 
     printf("Succes\n");

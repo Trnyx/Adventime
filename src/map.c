@@ -205,12 +205,20 @@ int dessinerVegetal(const int tag, SDL_Rect *rendu) {
     switch (tag) {
         case HERBE:
             splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
+            renduVegetaux.x = rendu->x;
+            renduVegetaux.y = rendu->y;
+            renduVegetaux.w = rendu->w;
+            renduVegetaux.h = rendu->h;
             break;
             
         case CHAINE:
         case PALMIER:
         case SAPIN:
             splitTexture(&source, (LARGEUR_ARBRE * (tag % HERBE)),0, LARGEUR_ARBRE,HAUTEUR_ARBRE);
+            renduVegetaux.x = rendu->x - rendu->w;
+            renduVegetaux.y = rendu->y - rendu->h;
+            renduVegetaux.w = 3 * rendu->w;
+            renduVegetaux.h = 2 * rendu->h;
             break;
 
 
@@ -219,10 +227,6 @@ int dessinerVegetal(const int tag, SDL_Rect *rendu) {
     }
 
 
-    renduVegetaux.x = rendu->x - rendu->w;
-    renduVegetaux.y = rendu->y - rendu->h;
-    renduVegetaux.w = 3 * rendu->w;
-    renduVegetaux.h = 2 * rendu->h;
     
     return SDL_RenderCopy(moteur->renderer, moteur->textures->vegetaux, &source, &renduVegetaux);
 }

@@ -219,10 +219,13 @@ void update(t_map *map, t_joueur *joueur) {
                                 // play_bruitage(audio->bruitages->monstre_mort, 4);
                                 continue;
                             }
+
                             // Si le mob est en DEPLACEMENT_COMBAT
                             // On update alors la position cible
-                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && ((t_mob*)entite)->cible->entiteType == ENTITE_JOUEUR) {
-                                nombreMobsCombat++;
+                            if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT) {
+                                if (((t_mob*)entite)->cible->entiteType == ENTITE_JOUEUR) {
+                                    nombreMobsCombat++;
+                                }
 
                                 // Update de la position cible 
                                 if (((t_mob*)entite)->operation != ATTAQUE)

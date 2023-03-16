@@ -77,7 +77,7 @@ const t_baseBiome basesBiomes[] = {
         // Sol
         { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 20, 65, 100 }, 
         // Vegetations
-        { CHAINE, SAPIN }, { 80, 100 }, 3.0,
+        { CHAINE, SAPIN }, { 80, 100 }, 1.5,
         // Monstres
         { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 10, 100 },
     },
@@ -142,10 +142,31 @@ const t_baseVegetal basesVegetaux[] = {
  * - pv
  * - courbeExp
  */
-const t_baseStatistiquesIntervales statistiquesDeBasesIntervales[NB_MONSTRE_TYPES] = {
+const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONSTRE_TYPES] = {
     { { 60, 70 }, { 60, 70 }, { 10, 10 }, 80, { 0 } }, // NORMAL
     { { 65, 75 }, { 55, 65 }, { 15, 15 }, 80, { 0 } }, // PLANTE
     // { { 55, 65 }, { 60, 70 }, { 10, 10 }, 90, { 0 } }, // EAU
     { { 55, 65 }, { 75, 85 }, { 15, 15 }, 80, { 0 } }, // MONTAGNARD
     // { { 70, 75 }, { 70, 75 }, { 10, 10 }, 90, { 0 } }, // DESERTIQUE
+};
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Animaux                                  */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief Tableau regroupant les statistiques de bases en fonction de l'animal
+ * 
+ * - attaque
+ * - defense
+ * - vitesse
+ * - pv
+ * - courbeExp
+ */
+const t_baseStatistiquesIntervales baseStatistiquesAnimaux[] = {
+    { { 40, 50 }, { 50, 60 }, { 10, 10 }, 60, { 0 } }, // VACHE
 };

@@ -89,7 +89,7 @@
 // Rayon dans lequel un monstre détecte un joueur pour se mettre en combat
 #define MONSTRE_RAYON_COMBAT_DETECTION 4.5
 // Rayon dans lequel les mobs se positionne (suivent leur cible) pour combattre
-#define MOB_RAYON_COMBAT_POSITIONNEMENT 8.0
+#define MOB_RAYON_COMBAT_POSITIONNEMENT 6.0
 // Rayon dans lequel les mobs recul face à leur cible
 #define MOB_RAYON_COMBAT_RETRAIT 1.8
 // Rayon dans lequel les mobs sont suffisamment proche pour attaquer
@@ -107,11 +107,15 @@
 
 
 // La durée maximale de déplacement d'un mob [en seconde]
-#define MOB_DUREE_DEPLACEMENT 5
+#define MOB_DUREE_DEPLACEMENT (5 * FPS)
 // La durée minimale d'attente entre deux déplacements [en seconde]
-#define MOB_DELAI_MIN_ENTRE_DEPLACEMENT 3
+#define MOB_DELAI_MIN_ENTRE_DEPLACEMENT (3 * FPS)
 // La durée maximale d'attente entre deux déplacements [en seconde]
-#define MOB_DELAI_MAX_ENTRE_DEPLACEMENT 8
+#define MOB_DELAI_MAX_ENTRE_DEPLACEMENT (8 * FPS)
+// La durée minimale d'attente entre deux attaques [en seconde]
+#define MOB_DELAI_MIN_ENTRE_ATTAQUE (2 * FPS)
+// La durée maximale d'attente entre deux attaques [en seconde]
+#define MOB_DELAI_MAX_ENTRE_ATTAQUE (5 * FPS)
 
 
 // La durée de vie minimum d'une entité
@@ -130,8 +134,11 @@
 
 //
 #define PROBABILITE_APPARITION_MONSTRE 30
-//
-#define PROBABILITE_APPARITION_ANIMAL 
+
+// Rayon dans lequel un animal détecte un troupeau
+#define ANIMAL_RAYON_DETECTION_TROUPEAU 12
+// Rayon dans lequel un animal se concidère comme trop loin du troupeau
+#define ANIMAL_RAYON_TROP_LOIN_TROUPEAU 5
 
 
 

@@ -250,6 +250,9 @@ void detruireTextures(t_textures **textures) {
         if ((*textures)->joueur != NULL) 
             SDL_DestroyTexture((*textures)->joueur);
 
+        if ((*textures)->animaux != NULL) 
+            SDL_DestroyTexture((*textures)->animaux);
+
         // Monstres
         if ((*textures)->monstres != NULL) 
             SDL_DestroyTexture((*textures)->monstres);

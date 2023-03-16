@@ -75,19 +75,6 @@ typedef struct s_baseVegetation {
 
 
 
-/**
- * @brief Modélise un "Disk Sampling"
- */
-typedef struct s_diskSampling {
-    int nbVegetaux;
-    t_vecteur2 *vegetauxPositions;
-    e_vegetalTag *vegetauxTags;
-} t_diskSampling;
-
-
-
-
-
 /* -------------------------------------------------------------------------- */
 /*                                 Constantes                                 */
 /* -------------------------------------------------------------------------- */

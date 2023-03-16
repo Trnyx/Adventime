@@ -35,45 +35,6 @@ int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
     updateMob((t_mob*)monstre, distance);
 
 
-    // // printf("Deplacement : %i => ", monstre->deplacementType);
-    // int (*deplacement)(t_mob*, const float) = getDeplacement(monstre->deplacementType);
-    // // printf("Fonction : %p => ", deplacement);
-    // if (deplacement != NULL) deplacement((t_mob*)monstre, distance);
-
-
-    // // Si le monstre n'a pas atteint la position qu'il doit atteindre
-    // //  on le fait se déplacer en direction de son point
-    // // Sinon cela signifie qu'il peut se déplacer à nouveau
-    // if (difftime(monstre->timestampActualisation, monstre->timestampFinDeplacement) > monstre->delaiAttenteDeplacement) {
-    //     if (monstre->position.x != monstre->positionDeplacement.x || monstre->position.y != monstre->positionDeplacement.y) {
-    //         monstre->direction.x = (monstre->positionDeplacement.x - monstre->position.x);
-    //         monstre->direction.y = (monstre->positionDeplacement.y - monstre->position.y);
-
-    //         const float distanceRestante = calculDistanceEntrePoints(monstre->position, monstre->positionDeplacement);
-
-    //         printf("Orientation (%1.2f:%1.2f) ", monstre->direction.x, monstre->direction.y);
-    //         printf("Position Actuelle : %1.2f:%1.2f ", monstre->position.x, monstre->position.y);
-    //         printf("Position target : %1.2f:%1.2f => ", monstre->positionDeplacement.x, monstre->positionDeplacement.y);
-
-    //         if (difftime(monstre->timestampActualisation, monstre->timestampDebutDeplacement) <= MOB_DUREE_DEPLACEMENT && distanceRestante > 0.1) {
-    //             deplacerEntite(moteur, (t_entite*)monstre, 4.0);
-    //         }
-    //         else {
-    //             monstre->positionDeplacement = monstre->position;
-    //             monstre->timestampFinDeplacement = monstre->timestampActualisation;
-    //             monstre->delaiAttenteDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
-    //         }
-    //     }
-    //     else {
-    //         printf("Choix nouvelle position => ");
-
-    //         getDeplacement(monstre->deplacementType)(moteur, (t_mob*)monstre, distance);
-    //         monstre->timestampDebutDeplacement = monstre->timestampActualisation;
-    //     }
-    // }
-
-
-
     // printf("Fin Update Monstre\n");
     return 1;
 }
@@ -195,24 +156,34 @@ void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJo
     // position.y += positionJoueur.y;
 
 
-    t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
+    if (peutApparaitre(position, map)) {
+        t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_SOL, map);
+        if (chunk != NULL) {
+            const e_biome biome = chunk->biome;
+            t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
 
-    if (chunk != NULL) {
-        // printf("Chunk => ");
-        const e_biome biome = chunk->biome;
-        if (biome != BIOME_PROFONDEUR){
-            t_block *block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
-
-            if (block != NULL) {
-                // printf("Block => ");
-                if (block->tag == VIDE) {
-                    // printf("%i => ", block->tag);
-                    t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
-
-                    en_queue(entites);
-                    ajout_droit(entites, (t_entite*)monstre);
-                }
-            }
+            en_queue(entites);
+            ajout_droit(entites, (t_entite*)monstre);
         }
     }
+    // t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
+
+    // if (chunk != NULL) {
+    //     // printf("Chunk => ");
+    //     const e_biome biome = chunk->biome;
+    //     if (biome != BIOME_PROFONDEUR){
+    //         t_block *block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
+
+    //         if (block != NULL) {
+    //             // printf("Block => ");
+    //             if (block->tag == VIDE) {
+    //                 // printf("%i => ", block->tag);
+    //                 t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
+
+    //                 en_queue(entites);
+    //                 ajout_droit(entites, (t_entite*)monstre);
+    //             }
+    //         }
+    //     }
+    // }
 }

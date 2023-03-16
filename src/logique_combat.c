@@ -47,7 +47,17 @@
 /* -------------------------------------------------------------------------- */
 
 
-#define OUVERTURE 30
+#define OUVERTURE 40
+
+/**
+ * @brief 
+ * 
+ * @param source 
+ * @param cible 
+ * @param angleAttaque 
+ * @param range 
+ * @return boolean 
+ */
 boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float angleAttaque, const float range) {
     // Calcul la distance
     const float distance = calculDistanceEntreEntites(source, cible);
@@ -111,6 +121,16 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
 
 
 
+/**
+ * @brief 
+ * 
+ * @param niveauAttaquant 
+ * @param pointAttaque 
+ * @param pointDefense 
+ * @param attaquantEstNocture 
+ * @param defenseurEstNocturne 
+ * @return float 
+ */
 float calculDegat(const int niveauAttaquant, int pointAttaque, int pointDefense, const boolean attaquantEstNocture, const boolean defenseurEstNocturne) {
   printf("%d", niveauAttaquant);
     if (defenseurEstNocturne) {
@@ -160,17 +180,27 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
     if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
         printf("CIBLE TOUCHE\n");
 
+        // Lorsque le mob cible est touché, le mob cible se met en mode combat
+        // et il prend pour cible le mob attaquant
+        if (cible->entiteType == ENTITE_MOB) {
+            ((t_mob*)cible)->deplacementType = DEPLACEMENT_COMBAT;
+            ((t_mob*)cible)->cible = entite;
+        }
+
 
         float degat = calculDegat(entite->statistiques.niveau, entite->statistiques.attaque, cible->statistiques.defense, FAUX, FAUX);
         // Modificateur si il y a armes
         // Modificateur si il y a armure
-
         const boolean cibleEstMorte = appliquerDegat(cible, degat);
+
+
+        // Knockback
+        
+
 
 
         // mort(cible);
         if (cibleEstMorte) {
-            
             // Calcul experience
             // distribution experience
             // drops items
