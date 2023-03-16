@@ -13,7 +13,7 @@
 
 
 #define chemin_param "./sauvegarde/config.txt"
-char * nomFichiersMap[2] =
+char* nomFichiersMap[2] =
 {
     "overworld.txt",
     "caverne.txt"
@@ -89,15 +89,28 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde)
         return FOPEN_FAIL;
     }
 
+
+    // Id
+    fprintf(fichier, "%s ", joueur->id);
+    fprintf(fichier, "\n");
+
     // Position
     fprintf(fichier, "%f ", joueur->position.x);
     fprintf(fichier, "%f ", joueur->position.y);
+    fprintf(fichier, "\n");
 
     // Taille
     fprintf(fichier, "%f ", joueur->taille);
+    fprintf(fichier, "\n");
 
     // Timestamp de la création du joueur
     fprintf(fichier, "%u ", joueur->timestampCreation);
+    fprintf(fichier, "\n");
+
+
+    // Map (dans quel map le joueur se trouve)
+    fprintf(fichier, "%i ", joueur->map);
+    fprintf(fichier, "\n");
 
     // Statistiques
     fprintf(fichier, "%f ", joueur->statistiques.pv);
@@ -114,19 +127,126 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde)
     fprintf(fichier, "%f ", joueur->baseStatistiques.attaque);
     fprintf(fichier, "%f ", joueur->baseStatistiques.defense);
     fprintf(fichier, "%f ", joueur->baseStatistiques.vitesse);
+    fprintf(fichier, "\n");
+
 
     // Courbe d'expérience
     fprintf(fichier, "%u ", joueur->baseStatistiques.experience_courbe);
-
-
-    // Map (dans quel map le joueur se trouve)
-    fprintf(fichier, "%i ", joueur->map);
     fprintf(fichier, "\n");
+
 
     // Flags des bosses
     fprintf(fichier, "%u ", joueur->bossFlags.lundi);
     fprintf(fichier, "%u ", joueur->bossFlags.mercredi);
     fprintf(fichier, "%u ", joueur->bossFlags.vendredi);
+    fprintf(fichier, "\n");
+
+
+    fclose(fichier);
+    return SUCCESS;
+}
+
+err_sauv charger_joueur(t_joueur* joueur, char* chemin_monde)
+{
+    // Explicite le chemin du fichier de sauvegarde des données joueur.
+    strcat(chemin_monde, "/joueur.txt");
+
+    FILE* fichier = fopen(chemin_monde, "r");
+
+    if (fichier == NULL)
+    {
+        return FOPEN_FAIL;
+    }
+
+
+    // Chargement de l'entité
+    t_entite* entite = malloc(sizeof(t_entite));
+
+    if (entite == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer une entite\n");
+        free(entite);
+        return LOAD_FAIL;
+    }
+
+    // Id
+    fscanf(fichier, "%s", entite->id);
+
+    // Position
+    fscanf(fichier, "%f ", &(entite->position.x));
+    fscanf(fichier, "%f ", &(entite->position.y));
+
+    // Direction
+    entite->direction.x = 0;
+    entite->direction.y = 0;
+
+    //Orientation
+    entite->orientation = SUD;
+
+    // Tag
+    entite->tag = TAG_AUCUN;
+
+    // Taille
+    fscanf(fichier, "%f ", &(entite->taille));
+
+    // Hitbox
+    entite->hitbox.x = entite->position.x - (entite->taille / 2);
+    entite->hitbox.y = entite->position.y - (entite->taille / 2);
+    entite->hitbox.h = 1;
+    entite->hitbox.w = 1;
+
+    // Timestamp de la création du joueur
+    fscanf(fichier, "%u ", &(entite->timestampCreation));
+
+
+
+    // Chargement du joueur
+    joueur = realloc(entite, sizeof(t_joueur));
+    joueur->entiteType = ENTITE_JOUEUR;
+
+    // Map (dans quel map le joueur se trouve)
+    fscanf(fichier, "%i ", (int*)&(joueur->map));
+    fscanf(fichier, "\n");
+
+    // Statistiques
+    fscanf(fichier, "%f ", &(joueur->statistiques.pv));
+    fscanf(fichier, "%f ", &(joueur->statistiques.attaque));
+    fscanf(fichier, "%f ", &(joueur->statistiques.defense));
+    fscanf(fichier, "%f ", &(joueur->statistiques.vitesse));
+    fscanf(fichier, "%u ", &(joueur->statistiques.pvMax));
+    fscanf(fichier, "%u ", &(joueur->statistiques.experience));
+    fscanf(fichier, "%u ", &(joueur->statistiques.niveau));
+    fscanf(fichier, "\n");
+
+
+    // Actions
+    joueur->actionFlags = initialiserActionFlags();
+
+    // Animation
+    joueur->animation = creerAnimation(100, 4);
+
+    // Fonctions
+    joueur->update = (int(*)(t_entite*, const float, t_entite*)) updateJoueur;
+    joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
+
+    // Timer
+    joueur->cooldownAttaque = 0;
+    joueur->destructionInactif = FAUX;
+
+
+    // Statistiques de base
+    fscanf(fichier, "%f ", &(joueur->baseStatistiques.pv));
+    fscanf(fichier, "%f ", &(joueur->baseStatistiques.attaque));
+    fscanf(fichier, "%f ", &(joueur->baseStatistiques.defense));
+    fscanf(fichier, "%f ", &(joueur->baseStatistiques.vitesse));
+    fscanf(fichier, "\n");
+
+    // Courbe d'expérience
+    fscanf(fichier, "%u ", &(joueur->baseStatistiques.experience_courbe));
+    fscanf(fichier, "\n");
+
+
+    entite = NULL;
+
 
     fclose(fichier);
     return SUCCESS;
@@ -220,10 +340,14 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
                 fprintf(fichier, "%f ", entite->hitbox.x);
                 fprintf(fichier, "%f ", entite->hitbox.y);
                 fprintf(fichier, "%u ", entite->timestampCreation);
+                fprintf(fichier, "\n");
+
             }
             suivant(map->entites);
         }
     }
+    fprintf(fichier, "\n");
+
 
     fclose(fichier);
     return SUCCESS;
@@ -232,7 +356,7 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
 err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
 {
     // Explicite le chemin du fichier de sauvegarde des données map.
-    char *nomFichier = nomFichiersMap[type];
+    char* nomFichier = nomFichiersMap[type];
     strcat(chemin_monde, nomFichier);
 
     FILE* fichier = fopen(chemin_monde, "r");
@@ -273,6 +397,7 @@ err_sauv sauvegarder_global(t_monde* monde, char* chemin_monde)
 
     // Seed
     fprintf(fichier, "%u ", monde->seed);
+    fprintf(fichier, "\n");
 
 
     fclose(fichier);

@@ -15,30 +15,31 @@
 #include "../include/moteur.h"
 #include "../include/monde.h"
 
-/* -------------------------------------------------------------------------- */
-/*                                 Fonctions                                  */
-/* -------------------------------------------------------------------------- */
+ /* -------------------------------------------------------------------------- */
+ /*                                 Fonctions                                  */
+ /* -------------------------------------------------------------------------- */
 
-/**
- * \enum err_sauv
- * \brief Définit les erreurs possibles durant la sauvegarde.
-*/
+ /**
+  * \enum err_sauv
+  * \brief Définit les erreurs possibles durant la sauvegarde.
+ */
 typedef enum
 {
     SUCCESS = 0,
-    FOPEN_FAIL = 1,
+    FOPEN_FAIL,
+    LOAD_FAIL,
 } err_sauv;
 
 
-   /**
-    * \brief Sauvegarde les paramètres d'options globaux au jeu.
-    *
-    * \param largeur_fenetre Largeur de la fenêtre.
-    * \param hauteur_fenetre Hauteur de la fenêtre.
-    * \param volume Volume sonore général (musique, effets sonores).
-    * \param flag_plein_ecran Stipule si la fenêtre doit être en plein écran.
-    * \return err_sauv, un code d'erreur (0 si succès).
-    */
+/**
+ * \brief Sauvegarde les paramètres d'options globaux au jeu.
+ *
+ * \param largeur_fenetre Largeur de la fenêtre.
+ * \param hauteur_fenetre Hauteur de la fenêtre.
+ * \param volume Volume sonore général (musique, effets sonores).
+ * \param flag_plein_ecran Stipule si la fenêtre doit être en plein écran.
+ * \return err_sauv, un code d'erreur (0 si succès).
+ */
 err_sauv sauvegarder_config(int largeur_fenetre, int hauteur_fenetre, float volume_general,
     float volume_musique, float volume_bruitage, int flag_plein_ecran);
 
@@ -53,9 +54,9 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde);
 
 /**
  * \brief Sauvegarde les données de la map.
- * 
+ *
  * \param map La map à sauvegarder.
- * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde. 
+ * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
  * \return err_sauv, un code d'erreur (0 si succès).
  */
 err_sauv sauvegarder_map(t_map* map, char* chemin_monde);
