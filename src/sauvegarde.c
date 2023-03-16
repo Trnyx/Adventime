@@ -82,6 +82,13 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde)
         return FOPEN_FAIL;
     }
 
+    // Position du joueur
+    fprintf(fichier, "%i ", joueur->position.x);
+    fprintf(fichier, "%i ", joueur->position.y);
+
+    
+
+
     // Statistiques du joueur
     fprintf(fichier, "%i ", joueur->statistiques.pvMax);
     fprintf(fichier, "%i ", joueur->statistiques.experience);
@@ -94,12 +101,8 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde)
 
     // Flags des bosses
     fprintf(fichier, "%i ", joueur->bossFlags.lundi);
-    fprintf(fichier, "%i ", joueur->bossFlags.mardi);
     fprintf(fichier, "%i ", joueur->bossFlags.mercredi);
-    fprintf(fichier, "%i ", joueur->bossFlags.jeudi);
     fprintf(fichier, "%i ", joueur->bossFlags.vendredi);
-    fprintf(fichier, "%i ", joueur->bossFlags.samedi);
-    fprintf(fichier, "%i ", joueur->bossFlags.dimanche);
 
     fclose(fichier);
     return SUCCESS;
@@ -178,7 +181,8 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
         while (!hors_liste(map->entites))
         {
             valeur_elt(map->entites, &entite);
-            if (entite != NULL && entite->entiteType != ENTITE_MONSTRE_AGGRESSIF)
+            // On ne sauvegarde pas les entités aggressives
+            if (entite != NULL && entite->entiteType != ENTITE_MOB && ((t_mob*)entite)->aggressif != VRAI)
             {
                 fprintf(fichier, "%i ", entite->id);
                 fprintf(fichier, "%f ", entite->position.x);
@@ -234,7 +238,7 @@ err_sauv charger_map(t_map* map, char* chemin_monde)
  * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
  * \return err_sauv, un code d'erreur (0 si succès).
  */
-err_sauv sauvegarder_global(unsigned int seed, t_temps* temps, char* chemin_monde)
+err_sauv sauvegarder_global(unsigned int seed, char* chemin_monde)
 {
     // Explicite le chemin du fichier de sauvegarde des données globales.
     strcat(chemin_monde, "/global.txt");
@@ -249,14 +253,6 @@ err_sauv sauvegarder_global(unsigned int seed, t_temps* temps, char* chemin_mond
     // Seed
     fprintf(fichier, "%i ", seed);
 
-    // Temps du jeu
-    fprintf(fichier, "%i ", temps->heures);
-    fprintf(fichier, "%i ", temps->minutes);
-    fprintf(fichier, "%i ", temps->timestampJeu);
-    fprintf(fichier, "%i ", temps->timestamp);
-    fprintf(fichier, "%i ", temps->cycleJeu);
-    fprintf(fichier, "%i ", temps->cycleVrai);
-
 
     fclose(fichier);
     return SUCCESS;
@@ -266,11 +262,10 @@ err_sauv sauvegarder_global(unsigned int seed, t_temps* temps, char* chemin_mond
  * \brief Charge les paramètres globaux du monde.
  *
  * \param seed Le nombre permettant de générer la map.
- * \param temps Le temps du jeu.
  * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
  * \return err_sauv, un code d'erreur (0 si succès).
  */
-err_sauv charger_global(unsigned int* seed, t_temps* temps, char* chemin_monde)
+err_sauv charger_global(unsigned int* seed, char* chemin_monde)
 {
     // Explicite le chemin du fichier de sauvegarde des données globales.
     strcat(chemin_monde, "/global.txt");
@@ -284,14 +279,6 @@ err_sauv charger_global(unsigned int* seed, t_temps* temps, char* chemin_monde)
 
     // Seed
     fscanf(fichier, "%i ", seed);
-
-    // Temps du jeu
-    fscanf(fichier, "%i ", temps->heures);
-    fscanf(fichier, "%i ", temps->minutes);
-    fscanf(fichier, "%i ", temps->timestampJeu);
-    fscanf(fichier, "%i ", temps->timestamp);
-    fscanf(fichier, "%i ", temps->cycleJeu);
-    fscanf(fichier, "%i ", temps->cycleVrai);
 
     fclose(fichier);
     return SUCCESS;
@@ -315,8 +302,8 @@ err_sauv sauvegarder_monde(t_monde* monde, char* nom_monde)
     mkdir(chemin_monde, S_IRWXU);
 
     sauvegarder_joueur(monde->joueur, chemin_monde);
-    sauvegarder_map(monde->map, chemin_monde);
-    sauvegarder_global(monde->seed, monde->temps, chemin_monde);
+    sauvegarder_map(monde->overworld, chemin_monde);
+    sauvegarder_global(monde->seed, chemin_monde);
 }
 
 /**
@@ -338,7 +325,7 @@ err_sauv charger_monde(char* nom_monde)
     unsigned int seed;
     t_temps* temps = malloc(sizeof(t_temps));
 
-    charger_global(&seed, temps, chemin_monde);
+    charger_global(&seed, chemin_monde);
 
 
     t_map* map = malloc(sizeof(t_map));

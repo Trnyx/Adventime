@@ -39,7 +39,8 @@ typedef enum
     * \param flag_plein_ecran Stipule si la fenêtre doit être en plein écran.
     * \return err_sauv, un code d'erreur (0 si succès).
     */
-err_sauv sauvegarder_config(int largeur_fenetre, int hauteur_fenetre, float volume, int flag_plein_ecran);
+err_sauv sauvegarder_config(int largeur_fenetre, int hauteur_fenetre, float volume_general,
+    float volume_musique, float volume_bruitage, int flag_plein_ecran);
 
 /**
  * \brief Sauvegarde les données du joueur.
@@ -67,7 +68,7 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde);
  * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
  * \return err_sauv, un code d'erreur (0 si succès).
  */
-err_sauv sauvegarder_global(unsigned int seed, t_temps* temps, char* chemin_monde);
+err_sauv sauvegarder_global(unsigned int seed, char* chemin_monde);
 
 /**
  * \brief Sauvegarde le monde du jeu, c'est-à-dire les données du joueur, de la map et des données globales.
