@@ -651,7 +651,10 @@ t_map* genererOverworld(t_map *map) {
     }
 
 
+    // Generer Village
     genererVegetations(map);
+    
+    // Genrerer Entree Caverne
     genererAnimaux(map);
 
 

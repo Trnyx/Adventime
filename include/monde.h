@@ -30,10 +30,20 @@
  * @brief
  */
 typedef struct s_monde {
-    unsigned int seed;      /**< */
+    unsigned int seed;                      /**< */
 
-    t_map *overworld;       /**< */
-    t_joueur *joueur;       /**< */
+    // Maps
+    t_map *overworld;                       /**< */
+    t_map *caverne;                         /**< */
+
+    // Joueur
+    t_joueur *joueur;                       /**< */
+
+    // Progression
+    t_boss_flags bossFlags;                 /**< */
+
+    // Information
+    time_t timestampRenouvellement;         /**< */
 } t_monde;
 
 

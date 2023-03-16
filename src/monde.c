@@ -87,6 +87,7 @@ t_monde* creerMonde(int seed) {
     monde->seed = seed;
     monde->overworld = genererMap(MAP_OVERWORLD);
 
+    // monde->bossFlags = initialiserBossFlags();
     // t_vecteur2 position = getPointApparitionJoueur(map);
     // t_joueur *joueur = creerJoueur(position.x, position.y);
 

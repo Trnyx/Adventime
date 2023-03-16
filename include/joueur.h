@@ -78,9 +78,6 @@ typedef struct s_joueur {
 
     int timestampAttaque;           /**< */
     unsigned int cooldownAttaque;   /**< */
-
-    // Progression
-    t_boss_flags bossFlags;         /**< */
     
 } t_joueur;
 
@@ -94,6 +91,7 @@ typedef struct s_joueur {
 
 
 t_joueur* creerJoueur(const t_vecteur2 position);
+int updateJoueur(t_joueur *joueur);
 void detruireJoueur(t_joueur **joueur);
 
 

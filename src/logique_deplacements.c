@@ -94,8 +94,8 @@ void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
 
     const float distance = calculDistanceEntrePoints(mob->position, cible);
 
-    const double tanAlpha = (mob->position.y - cible.y) / (mob->position.x - cible.x);
-    double alpha = atan(tanAlpha);
+    // const double tanAlpha = (mob->position.y - cible.y) / (mob->position.x - cible.x);
+    // double alpha = atan(tanAlpha);
 
 
     // printf("POSITION JOUEUR : %1.2f:%1.2f => ", cible.x, cible.y);

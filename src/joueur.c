@@ -188,6 +188,28 @@ int updateJoueur(t_joueur *joueur) {
 
 
 
+void mortJoueur(t_joueur *joueur) {
+    // bruitage    
+    
+    joueur->statistiques.pv = 0;
+
+}
+
+
+
+
+
+void reapparitionJoueur(t_joueur *joueur, const t_vecteur2 position) {
+    joueur->statistiques.pv = joueur->statistiques.pvMax;
+    joueur->position = position;
+
+    joueur->map = MAP_OVERWORLD;
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Destruction                                */
 /* -------------------------------------------------------------------------- */
@@ -252,6 +274,24 @@ t_action_flags* initialiserActionFlags() {
 
 
 
+/**
+ * @brief 
+ * 
+ * @return t_boss_flags 
+ */
+t_boss_flags initialiserBossFlags() {
+    t_boss_flags flags;
+
+    flags.lundi = 0;
+    flags.mercredi = 0;
+    flags.vendredi = 0;
+
+
+    return flags;
+}
+
+
+
 
 
 /**
@@ -292,6 +332,8 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     // Timer
     joueur->cooldownAttaque = 0;
     joueur->destructionInactif = FAUX;
+
+    // Avancement
 
 
     printf("Succes\n");

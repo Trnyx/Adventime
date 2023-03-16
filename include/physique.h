@@ -54,8 +54,8 @@
 #define HEURE_VRAI_JOUR 6
 // Heure (vrai) à laquelle il est concidéré qu'il fait nuit
 #define HEURE_VRAI_NUIT 20
-// Heure (vrai) à laquelle on change de journée (pour l'actualisation dans le jeu)
-#define HEURE_VRAI_ACTUALISATION 4
+// Heure (vrai) à laquelle on change de journée (pour le renouvellement des ressources dans le jeu)
+#define HEURE_VRAI_RENOUVELLEMENT 4
 
 
 
