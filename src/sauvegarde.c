@@ -82,27 +82,44 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde)
         return FOPEN_FAIL;
     }
 
-    // Position du joueur
-    fprintf(fichier, "%i ", joueur->position.x);
-    fprintf(fichier, "%i ", joueur->position.y);
+    // Position
+    fprintf(fichier, "%f ", joueur->position.x);
+    fprintf(fichier, "%f ", joueur->position.y);
 
-    
+    // Taille
+    fprintf(fichier, "%f ", joueur->taille);
 
+    // Timestamp de la création du joueur
+    fprintf(fichier, "%u ", joueur->timestampCreation);
 
-    // Statistiques du joueur
-    fprintf(fichier, "%i ", joueur->statistiques.pvMax);
-    fprintf(fichier, "%i ", joueur->statistiques.experience);
-    fprintf(fichier, "%i ", joueur->statistiques.niveau);
+    // Statistiques
+    fprintf(fichier, "%f ", joueur->statistiques.pv);
+    fprintf(fichier, "%f ", joueur->statistiques.attaque);
+    fprintf(fichier, "%f ", joueur->statistiques.defense);
+    fprintf(fichier, "%f ", joueur->statistiques.vitesse);
+    fprintf(fichier, "%u ", joueur->statistiques.pvMax);
+    fprintf(fichier, "%u ", joueur->statistiques.experience);
+    fprintf(fichier, "%u ", joueur->statistiques.niveau);
     fprintf(fichier, "\n");
+
+    // Statistiques de base
+    fprintf(fichier, "%f ", joueur->baseStatistiques.pv);
+    fprintf(fichier, "%f ", joueur->baseStatistiques.attaque);
+    fprintf(fichier, "%f ", joueur->baseStatistiques.defense);
+    fprintf(fichier, "%f ", joueur->baseStatistiques.vitesse);
+
+    // Courbe d'expérience
+    fprintf(fichier, "%u ", joueur->baseStatistiques.experience_courbe);
+
 
     // Map (dans quel map le joueur se trouve)
     fprintf(fichier, "%i ", joueur->map);
     fprintf(fichier, "\n");
 
     // Flags des bosses
-    fprintf(fichier, "%i ", joueur->bossFlags.lundi);
-    fprintf(fichier, "%i ", joueur->bossFlags.mercredi);
-    fprintf(fichier, "%i ", joueur->bossFlags.vendredi);
+    fprintf(fichier, "%u ", joueur->bossFlags.lundi);
+    fprintf(fichier, "%u ", joueur->bossFlags.mercredi);
+    fprintf(fichier, "%u ", joueur->bossFlags.vendredi);
 
     fclose(fichier);
     return SUCCESS;
@@ -184,7 +201,7 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
             // On ne sauvegarde pas les entités aggressives
             if (entite != NULL && entite->entiteType != ENTITE_MOB && ((t_mob*)entite)->aggressif != VRAI)
             {
-                fprintf(fichier, "%i ", entite->id);
+                fprintf(fichier, "%s ", entite->id);
                 fprintf(fichier, "%f ", entite->position.x);
                 fprintf(fichier, "%f ", entite->position.y);
                 fprintf(fichier, "%f ", entite->direction.x);

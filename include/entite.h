@@ -58,7 +58,7 @@ typedef enum {
  * Un compteur du nombre de tags est également initialisé à la fin de l'énumérateur
  */
 typedef enum {
-    TAG_AUCUN,
+    TAG_AUCUN, // Tag par défaut du joueur
     TAG_ANIMAL_VACHE,
     TAG_ANIMAL_COCHON,
     TAG_MONSTRE_BASIC,
