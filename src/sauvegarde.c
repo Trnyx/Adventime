@@ -25,11 +25,14 @@
     *
     * \param largeur_fenetre Largeur de la fenêtre.
     * \param hauteur_fenetre Hauteur de la fenêtre.
-    * \param volume Volume sonore général (musique, effets sonores).
+    * \param volume_general Volume sonore général.
+    * \param volume_musique Volume sonore musique.
+    * \param volume_bruitage Volume effets sonores.
     * \param flag_plein_ecran Stipule si la fenêtre doit être en plein écran.
     * \return err_sauv, un code d'erreur (0 si succès).
     */
-err_sauv sauvegarder_config(int largeur_fenetre, int hauteur_fenetre, float volume, int flag_plein_ecran)
+err_sauv sauvegarder_config(int largeur_fenetre, int hauteur_fenetre, float volume_general,
+    float volume_musique, float volume_bruitage, int flag_plein_ecran)
 {
     FILE* fichier = fopen(chemin_param, "w");
 
@@ -37,17 +40,27 @@ err_sauv sauvegarder_config(int largeur_fenetre, int hauteur_fenetre, float volu
     {
         return FOPEN_FAIL;
     }
-    // fprintf(fichier, "largeur = %i\n", largeur_fenetre);
-    // fprintf(fichier, "hauteur = %i\n", hauteur_fenetre);
-    // fprintf(fichier, "volume = %f\n", volume);
-    // fprintf(fichier, "fullscreen = %i\n", flag_plein_ecran);
     fprintf(fichier, "%i ", largeur_fenetre);
     fprintf(fichier, "%i ", hauteur_fenetre);
-    fprintf(fichier, "%f ", volume);
+    fprintf(fichier, "%f ", volume_general);
+    fprintf(fichier, "%f ", volume_musique);
+    fprintf(fichier, "%f ", volume_bruitage);
     fprintf(fichier, "%i ", flag_plein_ecran);
 
     fclose(fichier);
     return SUCCESS;
+}
+
+err_sauv charger_config()
+{
+    FILE* fichier = fopen(chemin_param, "r");
+    if (fichier == NULL)
+    {
+        return FOPEN_FAIL;
+    }
+
+
+
 }
 
 /**
@@ -208,7 +221,7 @@ err_sauv charger_map(t_map* map, char* chemin_monde)
     fscanf(fichier, "\n");
 
     // Chunks
-    
+
 
 
 }
