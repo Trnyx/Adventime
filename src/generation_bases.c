@@ -168,5 +168,6 @@ const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONS
  * - courbeExp
  */
 const t_baseStatistiquesIntervales baseStatistiquesAnimaux[] = {
-    { { 40, 50 }, { 50, 60 }, { 10, 10 }, 60, { 0 } }, // VACHE
+    { { 40, 50 }, { 50, 60 }, { 8, 10 }, 60, { 0 } }, // VACHE
+    { { 50, 50 }, { 50, 50 }, { 9, 11 }, 50, { 0 } }, // COCHON
 };

@@ -17,7 +17,6 @@
 
 #include "../include/physique.h"
 #include "../include/moteur.h"
-#include "../include/mob.h"
 #include "../include/deplacement.h"
 #include "../include/combat.h"
 
@@ -37,6 +36,17 @@
 //             gestion des drops
 //             gestion de l'expérience
 //     Choix aléatoire du temps d'attente avant prochaine attaque 
+
+
+
+
+
+void finCombat(t_mob *mob) {
+    mob->deplacementType = DEPLACEMENT_NORMAL;
+    mob->operation = ATTENTE;
+    mob->cible = NULL;
+    mob->gamma = 0;     
+}
 
 
 
@@ -200,6 +210,7 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
 
         // mort(cible);
         if (cibleEstMorte) {
+            finCombat((t_mob*)entite);
             // Calcul experience
             // distribution experience
             // drops items
@@ -259,7 +270,6 @@ void mort(t_entiteVivante *entite) {
 
         default:
             entite->statistiques.pv = 0;
-            // entite->detruire(&entite);
             break;
     }
 }

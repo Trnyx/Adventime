@@ -352,8 +352,9 @@ void dessinerEntite(t_entite *entite) {
         case ENTITE_MOB:
             switch (entite->tag) {
                 case TAG_ANIMAL_VACHE: 
+                case TAG_ANIMAL_COCHON: 
                     texture = moteur->textures->animaux; 
-                    sprite.x = 0;
+                    sprite.x = (entite->tag - TAG_ANIMAL_VACHE) * (TAILLE_SET / 2);
                     break;
                 case TAG_MONSTRE_BASIC: 
                     texture = moteur->textures->monstres; 

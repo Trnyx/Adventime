@@ -39,9 +39,11 @@
 #include "../include/physique.h"
 #include "../include/utilitaire.h"
 #include "../include/moteur.h"
-#include "../include/mob.h"
+#include "../include/audio.h"
 #include "../include/deplacement.h"
 #include "../include/combat.h"
+
+#include "../include/mob.h"
 
 
 
@@ -84,10 +86,7 @@ void combatMob(t_mob *mob, float distance) {
     else {
         // Si la cible est trop loin
         if (distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
-            mob->deplacementType = DEPLACEMENT_NORMAL;
-            mob->operation = ATTENTE;
-            mob->cible = NULL;
-            mob->gamma = 0;            
+            finCombat(mob);       
         }
 
         // Sinon Si la cible est dans le rayon de positionnement
@@ -208,11 +207,6 @@ void updateMob(t_mob* mob, float distance) {
         }
 
         else {
-            // if (mob->timerDeplacement > 0) {
-            //     --(mob->timerDeplacement);
-            // }
-
-
             if (mob->cooldownDeplacement) {
                 --(mob->cooldownDeplacement);
                 // printf("%i\n",mob->cooldownDeplacement);
@@ -243,7 +237,6 @@ void updateMob(t_mob* mob, float distance) {
                         mob->position.y + pointARejoindre.y,
                     };
 
-                    // printf("Point : %1.2f:%1.2f => ", pointARejoindre.x, pointARejoindre.y);
                     
                     // Si le point choisit et un point valide
                     if (blockEstDansLaMap(positionFinale.x, positionFinale.y)) {
@@ -257,6 +250,7 @@ void updateMob(t_mob* mob, float distance) {
                 }
             }
         }
+
 
     }
 }
@@ -323,8 +317,8 @@ t_mob* creerMob(const t_vecteur2 position) {
     mob->gamma = 0.0;
 
 
-    mob->cooldownAttaque = 0;
     // cooldown
+    mob->cooldownAttaque = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_ATTAQUE, MOB_DELAI_MAX_ENTRE_ATTAQUE);
     mob->cooldownBruitage = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_BRUIT, MOB_DELAI_MAX_ENTRE_BRUIT);
 
 

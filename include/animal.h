@@ -75,7 +75,7 @@ t_baseStatistiques genererStatistiquesDeBaseAnimal(const e_entiteTag tag);
 
 t_animal* genererAnimal(t_animal *animal, const e_entiteTag tag);
 t_animal* creerAnimal(const t_vecteur2 position, const e_entiteTag tag);
-void apparitionAnimal(const t_vecteur2 positionTroupeau, t_liste *entites, t_map *map);
+void apparitionAnimal(const t_vecteur2 positionTroupeau, t_liste *entites, t_map *map, const e_entiteTag tag);
 void apparitionTroupeau(t_liste *entites, t_map *map);
 
 void detruireAnimal(t_animal **animal);
