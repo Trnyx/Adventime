@@ -19,6 +19,7 @@
 #include "../include/physique.h"
 #include "../include/audio.h"
 #include "../include/moteur.h"
+#include "../include/entite.h"
 
 
 
@@ -46,17 +47,13 @@ t_audio *audio = NULL;
  * @param nouveauVolume Le nouveau volume (en %)
  */
 void changerVolume(const e_audio_channel channel, const float nouveauVolume) {
-    printf("CHANNEL : %i / VOLUME : %1.2f\n", channel, nouveauVolume);
     switch (channel) {
         case CHANNEL_MASTER: 
-            printf("MASTER\n");
             audio->masterVolume = nouveauVolume; 
-            printf("VOUME SET\n");
             break;
         case CHANNEL_MUSIQUE: audio->musiqueVolume = nouveauVolume; break;
         case CHANNEL_BRUITAGE: audio->bruitageVolume = nouveauVolume; break;
     }
-    printf("BONJOUR");
     
 
     Mix_Volume(-1, audio->bruitageVolume * audio->masterVolume * MIX_MAX_VOLUME);
@@ -76,9 +73,15 @@ void changerVolume(const e_audio_channel channel, const float nouveauVolume) {
  * 
  * @param music 
  */
-void play_music(Mix_Music *music, boolean repeat) {
+void play_music(Mix_Music *music, boolean repeat, boolean estLaSuite) {
     Mix_PlayMusic(music, repeat ? -1 : 0);
-    // Mix_SetMusicPosition(audio->tempsEcoulee / 1000);
+    double tempsEcoule = 0.0;
+
+    if (estLaSuite) 
+        tempsEcoule = (moteur->frame - audio->timestampDebutMusique) / 1000;
+
+    Mix_SetMusicPosition(tempsEcoule);
+    audio->timestampDebutMusique = moteur->frame;
 }
 
 
@@ -94,6 +97,48 @@ void play_bruitage(Mix_Chunk *sound, int channel) {
 
 
 
+/**
+ * @brief 
+ * 
+ * @param tag 
+ * @param angle 
+ * @param distance 
+ */
+void play_sonAmbiance(e_entiteTag tag, float angle, float distance) {
+    Mix_Chunk *bruitage = NULL;
+    int channel = -1;
+
+
+    switch (tag) {
+        case TAG_ANIMAL_VACHE: bruitage = audio->bruitages->vache; break;
+        case TAG_ANIMAL_COCHON: bruitage = audio->bruitages->cochon; break;
+        
+        default: break;
+    }
+
+
+
+    if (bruitage != NULL) {
+        printf("BRUIT => ");
+        // On ajuste l'angle
+        angle = revolution(angle - 90);
+
+        // On converti la distance entre 0 et 255
+        distance = (distance * 255) / 16;
+        if (distance > 255)
+            distance = 255;
+
+        // Récupère le premier channel libre
+        channel = Mix_PlayChannel(channel, bruitage, 1);
+
+        
+        Mix_UnregisterAllEffects(channel);
+        Mix_SetPosition(channel, angle, distance);
+    }
+}
+
+
+
 
 
 /**
@@ -104,6 +149,7 @@ void play_bruitage(Mix_Chunk *sound, int channel) {
 void selectionMusique(t_temps *temps) {
     t_musiques *musiques = audio->musiques;
     Mix_Music *musique = NULL;
+    boolean estLaSuite = FAUX;
 
     audio->tempsEcoulee = moteur->frame - audio->timestampDebutMusique;
 
@@ -113,8 +159,16 @@ void selectionMusique(t_temps *temps) {
             switch (temps->periode) {
                 case PERIODE_NUIT: musique = musiques->ambiance_nuit; break;
 
-                case PERIODE_JOUR_MATIN: musique = musiques->ambiance_jour_matin; break;
-                case PERIODE_JOUR_APRES_MIDI: musique = musiques->ambiance_jour_apres_midi; break;
+                case PERIODE_JOUR_MATIN: 
+                    musique = musiques->ambiance_jour_matin; 
+                    break;
+                case PERIODE_JOUR_APRES_MIDI: 
+                    musique = musiques->ambiance_jour_apres_midi; 
+                    break;
+                case PERIODE_JOUR_COUCHE_SOLEIL: 
+                    musique = musiques->ambiance_jour_couche_soleil; 
+                    estLaSuite = VRAI; 
+                    break;
 
                 default: musique = musiques->ambiance_jour_matin; break;
             }
@@ -130,7 +184,7 @@ void selectionMusique(t_temps *temps) {
     }
 
 
-    play_music(musique, VRAI);
+    play_music(musique, VRAI, estLaSuite);
 }
 
 
@@ -188,6 +242,7 @@ int chargerAudio(const float volume, t_musiques **musiques, t_bruitages **bruita
     // Ambiance
     m->ambiance_jour_matin = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_matin.ogg");
     m->ambiance_jour_apres_midi = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_apres_midi.ogg");
+    m->ambiance_jour_couche_soleil = Mix_LoadMUS("assets/audio/musiques/ambiance_jour_couche_soleil.ogg");
     m->ambiance_nuit = Mix_LoadMUS("assets/audio/musiques/ambiance_nuit.mp3");
 
     // Combat
@@ -200,7 +255,7 @@ int chargerAudio(const float volume, t_musiques **musiques, t_bruitages **bruita
     
     /* -------------------------------- Bruitages ------------------------------- */
     // Menu
-    // b->menu_selection = Mix_LoadWAV("assets/audio/bruitages/.wav");
+    b->menu_selection = Mix_LoadWAV("assets/audio/bruitages/menu_selection.wav");
 
     // Joueur
     // b->joueur_attaque = Mix_LoadWAV("assets/audio/bruitages/.wav");
@@ -212,8 +267,12 @@ int chargerAudio(const float volume, t_musiques **musiques, t_bruitages **bruita
     // b->monstre_degat = Mix_LoadWAV("assets/audio/bruitages/.wav");
     // b->monstre_mort = Mix_LoadWAV("assets/audio/bruitages/.wav");
 
+    // Animaux
+    b->vache = Mix_LoadWAV("assets/audio/bruitages/vache.wav");
+    b->cochon = Mix_LoadWAV("assets/audio/bruitages/cochon.wav");
+
     // Autres
-    // b->item_recuperation = Mix_LoadWAV("assets/audio/bruitages/.wav");
+    // b->item_recuperation = Mix_LoadMUS("assets/audio/bruitages/.wav");
 
 
 
@@ -252,6 +311,7 @@ t_audio* initAudio() {
     chargerAudio(a->masterVolume, &a->musiques, &a->bruitages);
     a->musiqueType = MUSIC_MENU;
     a->timestampDebutMusique = 0;
+    a->tempsEcoulee = 0.0;
 
 
 

@@ -74,17 +74,18 @@ typedef enum {
  */
 typedef struct s_musiques {
     // Menu Principal
-    Mix_Music *menu_principal;              /**< */
+    Mix_Music *menu_principal;                  /**< */
 
     // Ambiance
-    Mix_Music *ambiance_jour_matin;         /**< */
-    Mix_Music *ambiance_jour_apres_midi;    /**< */
-    Mix_Music *ambiance_nuit;               /**< */
+    Mix_Music *ambiance_jour_matin;             /**< */
+    Mix_Music *ambiance_jour_apres_midi;        /**< */
+    Mix_Music *ambiance_jour_couche_soleil;     /**< */
+    Mix_Music *ambiance_nuit;                   /**< */
 
     // Combat
-    Mix_Music *combat;                      /**< */
+    Mix_Music *combat;                          /**< */
     // Mix_Music *combat_nuit;
-    Mix_Music *boss;                        /**< */
+    Mix_Music *boss;                            /**< */
     
 } t_musiques;
 
@@ -106,6 +107,10 @@ typedef struct s_bruitages {
     Mix_Chunk *monstre_degat;           /**< */
     Mix_Chunk *monstre_mort;            /**< */
 
+    // Animaux
+    Mix_Chunk *vache;                   /**< */
+    Mix_Chunk *cochon;                  /**< */
+
     // Autres :
     Mix_Chunk *item_recuperation;       /**< */
 } t_bruitages;
@@ -120,12 +125,13 @@ typedef struct s_audio {
     t_bruitages *bruitages;         /**< */
 
     e_musiques_type musiqueType;    /**< */
+
     int timestampDebutMusique;      /**< */
     int tempsEcoulee;               /**< */
 
-    float masterVolume;
-    float musiqueVolume;
-    float bruitageVolume;
+    float masterVolume;             /**< */
+    float musiqueVolume;            /**< */
+    float bruitageVolume;           /**< */
 } t_audio;
 
 
@@ -146,8 +152,9 @@ int chargerAudio(const float volume, t_musiques **musiques, t_bruitages **bruita
 void detruireAudio(t_audio **audio);
 
 void changerVolume(const e_audio_channel channel, const float nouveauVolume);
-void play_music(Mix_Music *music, boolean repeat);
+void play_music(Mix_Music *music, boolean repeat, boolean estLaSuite);
 void play_bruitage(Mix_Chunk *sound, int channel);
+void play_sonAmbiance(e_entiteTag tag, float angle, float distance);
 void selectionMusique(t_temps *temps);
 
 

@@ -117,6 +117,11 @@
 // La durée maximale d'attente entre deux attaques [en seconde]
 #define MOB_DELAI_MAX_ENTRE_ATTAQUE (5 * FPS)
 
+// La durée minimale d'attente entre deux bruitages [en seconde]
+#define MOB_DELAI_MIN_ENTRE_BRUIT (10 * FPS)
+// La durée maximale d'attente entre deux bruitages [en seconde]
+#define MOB_DELAI_MAX_ENTRE_BRUIT (15 * FPS)
+
 
 // La durée de vie minimum d'une entité
 #define ENTITE_DUREE_VIE_MIN TEMPS_JOUR / 4

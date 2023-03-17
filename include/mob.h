@@ -77,12 +77,13 @@ typedef struct s_mob {
     e_deplacementType deplacementType;      /**< Le type de déplacement du mob */
     double gamma;
 
+    // Cooldown
     unsigned int timerDeplacement;          /**< Timer à partir duquel on calcul le temps de déplacement (en ticks) */
     unsigned int cooldownDeplacement;       /**< Cooldown entre deux déplacements (en ticks) */
+    unsigned int cooldownAttaque;           /**< Cooldown entre deux attaque (en seconde) */
+    unsigned int cooldownBruitage;          /**< Cooldown entre deux bruits (en seconde) */
     
 
-    // Attaque
-    unsigned int cooldownAttaque;       /**< Cooldown entre deux attaque (en seconde) */
 } t_mob;
 
 

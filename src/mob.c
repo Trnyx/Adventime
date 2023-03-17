@@ -126,12 +126,29 @@ void combatMob(t_mob *mob, float distance) {
  * @param distance 
  */
 void updateMob(t_mob* mob, float distance) {
+    /* -------------------------------- Bruitage -------------------------------- */
+
+    if (mob->cooldownBruitage > 0) {
+        --(mob->cooldownBruitage);
+    }
+    else {
+        const float angle = calculAngleEntrePoints(moteur->cache->monde->joueur->position, mob->position);
+        play_sonAmbiance(mob->tag, angle, distance);
+        mob->cooldownBruitage = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_BRUIT, MOB_DELAI_MAX_ENTRE_BRUIT);
+    }
+
+
+
+    /* --------------------------------- Combat --------------------------------- */
+
     if (mob->deplacementType == DEPLACEMENT_COMBAT) {        
         distance = calculDistanceEntreEntites((t_entite*)mob, (t_entite*)mob->cible);
         combatMob(mob, distance);
     } 
 
 
+
+    /* ------------------------------- Déplacement ------------------------------ */
 
     if (mob->operation == SE_DEPLACE_AUTOUR) {
         // Deplacement autour de la cible
@@ -306,8 +323,9 @@ t_mob* creerMob(const t_vecteur2 position) {
     mob->gamma = 0.0;
 
 
-    // Attaque
     mob->cooldownAttaque = 0;
+    // cooldown
+    mob->cooldownBruitage = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_BRUIT, MOB_DELAI_MAX_ENTRE_BRUIT);
 
 
     mob->detruire = (void (*)(t_entite**)) detruireMob;
