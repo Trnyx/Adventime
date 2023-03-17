@@ -150,9 +150,7 @@ static int adventime(t_monde *monde) {
 static int nouveauMonde() {
     int seed = -1;
     t_monde *monde = creerMonde(seed);
-
-    const t_vecteur2 positionJoueur = getPointApparitionJoueur(monde->overworld);
-    monde->joueur = creerJoueur(positionJoueur);
+    monde->joueur = creerJoueur(monde->pointApparitionDefaut);
 
     /* ---------------------------------- Cache --------------------------------- */
     moteur->cache->monde = monde;

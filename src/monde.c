@@ -40,13 +40,60 @@ unsigned int setGenerationSeed(unsigned int seed) {
  * @return t_vecteur2 
  */
 t_vecteur2 getPointApparitionJoueur(t_map *map) {
-    const int centre = (TAILLE_MAP * TAILLE_CHUNK) / 2;
-    
-    
-    const float x = centre, y = centre;
+    const int centre = (TAILLE_CHUNK) / 2;
+
+    t_chunk *chunk = NULL;
+    t_block *block = NULL;
+
+    while (chunk == NULL) {
+        t_vecteur2 chunkPosition = {
+            getNombreAleatoire(1, TAILLE_MAP - 2),
+            getNombreAleatoire(1, TAILLE_MAP - 2),
+        };
 
 
-    t_vecteur2 position = { x, y };
+        chunk = getChunk(chunkPosition.x, chunkPosition.y, COUCHE_SOL, map);
+
+
+        if (chunk == NULL)
+            continue;
+
+        if (chunk->biome == BIOME_PROFONDEUR || chunk->biome == BIOME_LAC) {
+            chunk = NULL;
+        }
+    }
+
+
+    while (block == NULL) {
+        t_vecteur2 blockPosition = {
+            getNombreAleatoire(0, TAILLE_CHUNK - 1),
+            getNombreAleatoire(0, TAILLE_CHUNK - 1),
+        };
+
+
+        block = getBlockDansChunk(blockPosition.x, blockPosition.y, chunk);
+
+
+        if (block == NULL)
+            continue;
+
+        if (block->tag == SOL_EAU_PROFONDE || block->tag == SOL_EAU) {
+            block = NULL;
+            continue;
+        }
+
+
+        chunk = getChunk(chunk->position.x, chunk->position.y, COUCHE_OBJETS, map);
+        block = getBlockDansChunk(blockPosition.x, blockPosition.y, chunk);
+
+        if (block->tag != VIDE) {
+            block = NULL;
+            continue;
+        }
+    }
+    
+
+    t_vecteur2 position = { block->position.x, block->position.y };
     return position;
 }
 
@@ -89,8 +136,10 @@ t_monde* creerMonde(int seed) {
     monde->timestampRenouvellement = time(NULL);
 
     // monde->bossFlags = initialiserBossFlags();
-    // t_vecteur2 position = getPointApparitionJoueur(map);
-    // t_joueur *joueur = creerJoueur(position.x, position.y);
+    t_vecteur2 position = getPointApparitionJoueur(monde->overworld);
+    monde->pointApparitionDefaut = position;
+    monde->pointApparition.x = -1.0;
+    monde->pointApparition.y = -1.0;
 
 
     return monde;

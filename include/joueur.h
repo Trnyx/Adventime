@@ -94,6 +94,9 @@ t_joueur* creerJoueur(const t_vecteur2 position);
 int updateJoueur(t_joueur *joueur);
 void detruireJoueur(t_joueur **joueur);
 
+void mortJoueur(t_joueur *joueur);
+void reapparitionJoueur(t_joueur *joueur, const t_vecteur2 position);
+
 
 
 

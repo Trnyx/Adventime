@@ -38,6 +38,8 @@ typedef struct s_monde {
 
     // Joueur
     t_joueur *joueur;                       /**< */
+    t_vecteur2 pointApparitionDefaut;       /**< */
+    t_vecteur2 pointApparition;             /**< */
 
     // Progression
     t_boss_flags bossFlags;                 /**< */
