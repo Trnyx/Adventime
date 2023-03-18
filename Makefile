@@ -15,7 +15,10 @@ EXEC = Adventime
 LIBS = -lm
 
 
-# SDL
+
+# ------------------------------------ SDL ----------------------------------- #
+
+
 SDL_LIB_DIR=${PWD}/lib
 SDL_INC_DIR=${PWD}/include
 SDL_FLAGS = -lSDL2main -lSDL2 -lSDL2_mixer -lSDL2_image -lSDL2_ttf
@@ -30,6 +33,9 @@ endif
 
 
 
+# ------------------------------- Arborescence ------------------------------- #
+
+
 # Nom des dossiers contenant les ressources du programme
 BINDIR = bin
 INCDIR = include
@@ -39,6 +45,10 @@ OBJDIR = obj
 SRCDIR = src
 
 DIRS = $(BINDIR) $(OBJDIR) 
+
+
+
+# ---------------------------------- Sources --------------------------------- #
 
 
 # Sélectionne tous les fichiers sources et les en-têtes
@@ -52,11 +62,17 @@ OBJECTS = $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 
 
+# ----------------------------------- Phony ---------------------------------- #
+
+
 # Spécifie au make que ces noms de fonction ne sont pas des fichiers,
 # cela permet de pouvoir exécuter ces fonctions même si un fichier 
 # du même nom est présent dans le dossier.
 .PHONY = all clean mrproper DIRS
 
+
+
+# ---------------------------- Compilation Projet ---------------------------- #
 
 # Exécute toutes les règles du makefile
 all: $(DIRS) $(BINDIR)/$(EXEC)
@@ -83,6 +99,12 @@ $(OBJECTS): $(OBJDIR)/%.o: $(SRCDIR)/%.c
 $(BINDIR)/$(EXEC): $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) -o $@ $(LIBS) $(SDL_LIBS)
 	@echo "Édition des liens effectuée."
+
+
+
+# ----------------------------------- Logo ----------------------------------- #
+
+
 ifeq ($(SYS),Darwin)
 	sips -i "assets/images/logo.png";
 	DeRez -only icns "assets/images/logo.png" > tmpicns.rsrc;
@@ -92,7 +114,17 @@ ifeq ($(SYS),Darwin)
 endif
 
 
-# À faire : la génération de la doc.
+
+# ------------------------------- Documentation ------------------------------ #
+
+
+doc:
+	doxygen doxyfile
+	@echo "Documentation générée"
+
+
+
+# --------------------------------- Nettoyage -------------------------------- #
 
 
 # Supprime les fichiers objets
