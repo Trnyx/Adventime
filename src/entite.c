@@ -15,8 +15,6 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "../include/NanoId/nanoid.h"
-
 #include "../include/physique.h"
 #include "../include/moteur.h"
 #include "../include/monde.h"
@@ -462,7 +460,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
         return NULL;
     }
 
-    entite->id = generate(LONGUEUR_ID);
+    entite->id = genererId();
     printf("ID : %s\n", entite->id);
 
 
