@@ -16,7 +16,22 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "../include/NanoId/nanoid.h"
+
 #include "../include/utilitaire.h"
+
+
+
+
+
+/**
+ * @brief 
+ * 
+ * @return char* 
+ */
+char* genererId() {
+    return generate(LONGUEUR_ID);
+}
 
 
 

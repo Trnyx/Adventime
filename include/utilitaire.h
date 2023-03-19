@@ -74,6 +74,8 @@ typedef struct s_vecteur3 {
 /* -------------------------------------------------------------------------- */
 
 
+char* genererId();
+
 int getNombreAleatoire(const int min, const int max);
 // int getNombreAvecProbabilite();
 

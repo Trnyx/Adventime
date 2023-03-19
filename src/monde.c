@@ -137,8 +137,8 @@ t_monde* creerMonde(int seed) {
     }
 
 
-    // monde->id = generate(LONGUEUR_ID);
-    // printf("ID : %s\n", monde->id);
+    monde->id = genererId();
+    printf("ID : %s\n", monde->id);
 
 
     if (seed == -1) {
