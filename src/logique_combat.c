@@ -275,7 +275,7 @@ void dropItems() {
 void mort(t_entiteVivante *entite) {
     switch (entite->entiteType) {
         case ENTITE_JOUEUR:
-            reapparitionJoueur();
+            // reapparitionJoueur();
             break;
 
         default:

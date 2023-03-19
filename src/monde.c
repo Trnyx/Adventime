@@ -12,7 +12,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "../include/NanoId/nanoid.h"
+// #include "../include/NanoId/nanoid.h"
 
 #include "../include/monde.h"
 #include "../include/boss.h"
@@ -137,8 +137,8 @@ t_monde* creerMonde(int seed) {
     }
 
 
-    monde->id = generate(LONGUEUR_ID);
-    printf("ID : %s\n", monde->id);
+    // monde->id = generate(LONGUEUR_ID);
+    // printf("ID : %s\n", monde->id);
 
 
     if (seed == -1) {

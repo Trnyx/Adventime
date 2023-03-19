@@ -37,6 +37,8 @@ void initAll(t_moteur **moteur, t_audio **audio) {
     
     const t_vecteur2 positionCamera = { 0, 0 };
     (*moteur)->camera = creerCamera(positionCamera);
+    updateEchelle();
+    
     (*moteur)->textures = initTextures((*moteur)->renderer);
     (*moteur)->cache = initCache();
     (*moteur)->temps = initTemps(time(NULL));

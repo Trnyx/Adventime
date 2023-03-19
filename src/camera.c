@@ -215,28 +215,13 @@ void afficherCamera(t_map *map) {
 void updateCamera(const t_vecteur2 position) {
     // printf("Update Camera => ");
     t_camera *camera = moteur->camera;
-    int tailleRendu = 0;
-    int tailleLargeur = moteur->window_width / TAILLE_CAMERA_LARGEUR;
-    int tailleHauteur = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
-
-    if (tailleLargeur > tailleHauteur) {
-        tailleRendu = tailleHauteur;
-    }
-    else {
-        tailleRendu = tailleLargeur;
-    }
-
-    camera->tailleRendu.x = tailleRendu; 
-    camera->tailleRendu.y = tailleRendu; 
-
-    // const float origineX = (camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
-    // const float origineY = (camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
+    
+    camera->position = position;
     camera->origine.x = (camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
     camera->origine.y = (camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
     camera->offset.x = (camera->position.x - (int)camera->position.x);
     camera->offset.y = (camera->position.y - (int)camera->position.y);
 
-    camera->position = position;
     // printf("%1.2f:%1.2f => ", position.x, position.y);
     // printf("Fin Update Camera\n");
 }
