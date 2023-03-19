@@ -33,6 +33,7 @@
  * @param x La cooronnée x (relative au chunk) du block
  * @param y La cooronnée y (relative au chunk) du block
  * @param chunk Un pointeur sur le chunk où sera récupérer le block
+ * 
  * @return Un pointeur sur le block trouvé, NULL sinon
  * 
  * @version 1.3
@@ -57,6 +58,7 @@ t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk) {
  * @param y La cooronnée y (relative à la map) du block
  * @param z La couche où se situe du block
  * @param map Un pointeur sur la map où sera récupérer le block
+ * 
  * @return Un pointeur sur le block trouvé, NULL sinon
  * 
  * @version 1.2
@@ -79,6 +81,7 @@ t_block* getBlockDansMap(const int x, const int y, const int z, t_map *map) {
  * @param y La coordonnée y du chunk
  * @param couche La couche du chunk 
  * @param map Un pointeur sur la map où sera récupéré le chunk
+ * 
  * @return Un pointeur sur le chunk trouvé, NULL sinon
  * 
  * @version 1.3
@@ -103,6 +106,7 @@ t_chunk* getChunk(const int x, const int y, const int couche, t_map *map) {
  * @param y La coordonnée y (relative à la map) d'un block
  * @param couche La couche du chunk 
  * @param map Un pointeur sur la map où sera récupéré le chunk
+ * 
  * @return Un pointeur sur le chunk trouvé, NULL sinon
  * 
  * @version 1.1
@@ -125,6 +129,14 @@ t_chunk* getChunkGraceABlock(const int x, const int y, const int couche, t_map *
 /* ----------------------------------- Sol ---------------------------------- */
 
 
+/**
+ * @brief Dessine un block au sol
+ * 
+ * @param tag Le tag du block qui doit être dessiné
+ * @param rendu Les informations sur le rendu 
+ * 
+ * @return 0 si tout s'est bien passé, un nombre négatif sinon
+ */
 int dessinerBlockSol(const int tag, SDL_Rect *rendu) {
     SDL_Rect source;
 
@@ -151,11 +163,9 @@ int dessinerBlockSol(const int tag, SDL_Rect *rendu) {
 
 
 /**
- * @brief 
+ * @brief Affiche le sol de la map en fonction de la taille de la caméra
  * 
- * @param origine 
- * @param offset 
- * @param rendu 
+ * @param map Un pointeur sur la map qui doit être affiché
  */
 void dessinerSol(t_map *map) {
     t_camera *camera = moteur->camera;
@@ -197,6 +207,15 @@ void dessinerSol(t_map *map) {
 
 #define LARGEUR_ARBRE (3 * TAILLE_TILE)
 #define HAUTEUR_ARBRE (2 * TAILLE_TILE)
+
+/**
+ * @brief Affiche un végétal complet
+ * 
+ * @param tag Le tag du végétal à afficher
+ * @param rendu Les informations sur le rendu 
+ * 
+ * @return 0 si tout s'est bien passé, un nombre négatif sinon
+ */
 int dessinerVegetal(const int tag, SDL_Rect *rendu) {
     SDL_Rect source;
     SDL_Rect renduVegetaux;
@@ -234,11 +253,9 @@ int dessinerVegetal(const int tag, SDL_Rect *rendu) {
 
 
 /**
- * @brief 
+ * @brief Affiche la végétation d'une map
  * 
- * @param origine 
- * @param offset 
- * @param rendu 
+ * @param map Un pointeur sur la map dans laquelle se trouve les végétaux
  */
 void dessinerVegetation(t_map *map) {
     t_camera *camera = moteur->camera;

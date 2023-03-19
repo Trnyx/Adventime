@@ -1,7 +1,7 @@
 /**
  * @file combat.h
  * 
- * @brief 
+ * @brief Module de manipulation pour les combats
  * 
  * @author Clément Hibon
  * @date 10 février

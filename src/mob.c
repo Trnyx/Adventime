@@ -61,6 +61,12 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ * @param mob 
+ * @param distanceFinale 
+ */
 void attaquer(t_mob *mob, const float distanceFinale) {
     deplacerVers(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_ATTAQUE, mob->positionDeplacement);
     
@@ -77,6 +83,12 @@ void attaquer(t_mob *mob, const float distanceFinale) {
 
 
 
+/**
+ * @brief 
+ * 
+ * @param mob Un pointeur sur le mob qui combat
+ * @param distance La distance entre le mob et sa cible
+ */
 void combatMob(t_mob *mob, float distance) {
     if (mob->operation == ATTAQUE) {
         distance = calculDistanceEntrePoints(mob->position, mob->positionDeplacement);
@@ -119,10 +131,12 @@ void combatMob(t_mob *mob, float distance) {
 
 
 /**
- * @brief 
+ * @brief Actualise un mob
  * 
- * @param mob 
- * @param distance 
+ * Toute la logique propre aux mobs est gérer dans cette fonction
+ * 
+ * @param mob Un pointeur sur le mob qui doit être actualisé
+ * @param distance La distance entre le mob est le joueur
  */
 void updateMob(t_mob* mob, float distance) {
     /* -------------------------------- Bruitage -------------------------------- */
@@ -265,9 +279,9 @@ void updateMob(t_mob* mob, float distance) {
 
 
 /**
- * @brief 
+ * @brief Detruit un mob est libère la mémoire allouée pour ce dernier
  * 
- * @param mob 
+ * @param mob L'adrese du pointeur du mob à détruire
  */
 void detruireMob(t_mob **mob) {
     printf("Destruction Mob => ");
@@ -289,10 +303,11 @@ void detruireMob(t_mob **mob) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour un mob et le créé
  * 
- * @param position 
- * @return t_mob* 
+ * @param position La position à laquelle le mob doit apparaitre
+ * 
+ * @return Un pointeur sur le mob, NULL en cas d'echec
  */
 t_mob* creerMob(const t_vecteur2 position) {
     t_entite *entite = creerEntite(position);

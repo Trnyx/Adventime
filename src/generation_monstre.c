@@ -27,6 +27,7 @@
  * @brief Choisis le type d'un monstre en fonction du biome où il apparait
  * 
  * @param baseBiome La base du biome dans lequel le monstre apparait
+ * 
  * @return Le type du monstre
  */
 e_monstreType choisirTypeMonstre(const t_baseBiome baseBiome) {
@@ -66,6 +67,7 @@ e_monstreType choisirTypeMonstre(const t_baseBiome baseBiome) {
  * @param monstre Pointeur sur le monstre à générer
  * @param biome Le biome dans lequel le monstre apparait
  * @param niveauJoueur Le niveau du joueur
+ * 
  * @return Un pointeur sur le monstre généré
  */
 t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome, const int niveauJoueur) {

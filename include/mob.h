@@ -28,7 +28,8 @@
 
 
 /**
- * @brief 
+ * @enum e_deplacementType
+ * @brief Les différents types de déplacement
  * 
  */
 typedef enum {
@@ -40,12 +41,18 @@ typedef enum {
 
 
 /**
- * @brief 
+ * @enum e_rotation
+ * @brief Les sens de rotations
+ * 
+ * Principalement utilisé par les mobs pendant les phases de combat  
  * 
  */
 typedef enum {
+    /*! Aucune rotation */
     ROTATION_AUCUNE,
+    /*! Rotation dans le sens horaire */
     ROTATION_HORAIRE,
+    /*! Rotation dans le sens anti horaire */
     ROTATION_ANTI_HORAIRE
 } e_rotation;
 
@@ -64,7 +71,7 @@ typedef enum {
  * Un mob est une entité mobile (mob correspond à l'abreviation)
  */
 typedef struct s_mob {
-    struct s_entiteVivante;                 /**< inclue les bases d'une entité */
+    struct s_entiteVivante;                 /**< On "étend" la structure "entiteVivante" */
 
     // 
     boolean aggressif;                      /**< Si le mob est aggressif */

@@ -27,10 +27,17 @@
 
 // #define TAILLE_MAP 8
 // #define TAILLE_CHUNK 5
+
+// La taille de la map (Le nombre de chunk)
+// La map est carré
 #define TAILLE_MAP 14
+// La taille d'un chunk (le nombre de block)
+// Le chunk est carré
 #define TAILLE_CHUNK 16
 
+// Le nombre de fois que la map est normalisé
 #define NOMBRE_DE_NORMALISATION_MAP 1
+// Le nombre de fois qu'un chunk est normalisé
 #define NOMBRE_DE_NORMALISATION_CHUNK 2
 
 
@@ -43,13 +50,18 @@
 
 
 /**
- * @brief 
+ * @enum e_mapType
+ * @brief Le type de la map
  * 
  */
 typedef enum {
+    /*! La map principale */
     MAP_OVERWORLD,
+    /*! La caverne */
     MAP_CAVE,
+    /*! Le temple des boss */
     MAP_BOSS_TEMPLE,
+    /*! L'intérieur des maisons */
     MAP_MAISON,
 } e_mapType;
 
@@ -60,8 +72,11 @@ typedef enum {
  * Un compteur du nombre de couche est également initialisé à la fin de l'énumérateur
  */
 typedef enum {
+    /*! La couche où sont stockés les blocks pour le sol */
     COUCHE_SOL,
+    /*! La couche où sont stockés les blocks de décoration */
     COUCHE_OBJETS,
+    /*! Le nombre de couche */
     NB_COUCHE,
 } e_coucheMap;
 
@@ -128,57 +143,61 @@ typedef enum {
 
 
 /**
+ * @struct t_block
  * @brief Modélise un block
  */
 typedef struct s_block {
-    t_vecteur2 position;                /**< */
-    t_vecteur2 positionDansChunk;       /**< */
-    int tag;                            /**< */
+    t_vecteur2 position;                /**< La position du block dans la map */
+    t_vecteur2 positionDansChunk;       /**< La position du block dans le chunk */
+    int tag;                            /**< Le tag du block */
 } t_block;
 
 
 /**
+ * @struct t_chunk
  * @brief Modélise un chunk
  */
 typedef struct s_chunk {
-    e_biome biome;              /**< */
-    t_vecteur3 position;        /**< */
-    t_block *blocks;            /**< */
+    e_biome biome;              /**< Le biome du chunk */
+    t_vecteur3 position;        /**< La position du chunk dans la map */
+    t_block *blocks;            /**< Les blocks contenue dans le chunk */
 } t_chunk;
 
 
 /**
- * @brief MOdélise une map
+ * @struct t_map
+ * @brief Modélise une map
  */
 typedef struct s_map {
-    e_mapType type;             /**< */
-    t_chunk *chunks;            /**< */
+    e_mapType type;             /**< Le type de la map */
+    t_chunk *chunks;            /**< Les chunks contenue dans la map */
 
     // int nombreEntites;          /**< */
     // t_entite **entites;         /**< */
-    t_liste *entites;           /**< */
+    t_liste *entites;           /**< Les entités contenue dans la map */
 
-    t_monstre *boss;            /**< */
+    t_monstre *boss;            /**< Le boss qui est actuellement présent */
 } t_map;
 
 
 
 /**
+ * @struct t_baseBiome
  * @brief Modélise la base d'un biome
  */
 typedef struct s_baseBiome {
-    e_biome biome;                          /**< */
-    int altitude;                           /**< */
+    e_biome biome;                          /**< Le biome concerné */
+    int altitude;                           /**< L'altitude du biome */
 
-    e_solTag typesDeSol[3];                 /**< */
-    int probabiliteDesBlocks[3];            /**< */
+    e_solTag typesDeSol[3];                 /**< Les différents type de blocks qui peuvent être générés dans le biome */
+    int probabiliteDesBlocks[3];            /**< Les probabilités d'apparition des blocks */
 
-    e_vegetalTag tagVegetations[2];         /**< */
-    int probabilitesVegetations[2];         /**< */
-    float vegetationDensite;                /**< */
+    e_vegetalTag tagVegetations[2];         /**< Les différents tags de végétations qui peuvent être générées dans le biome */
+    int probabilitesVegetations[2];         /**< Les probabilités d'apparition des végétaux */
+    float vegetationDensite;                /**< La densité végétale du biome */
 
-    e_monstreType typesMonstre[2];          /**< */
-    int probabilitesTypesMonstre[2];        /**< */
+    e_monstreType typesMonstre[2];          /**< Les différents types de monstre qui peuvent apparaitre dans le biome */
+    int probabilitesTypesMonstre[2];        /**< Les probabilités d'apparition des types de monstre */
 } t_baseBiome;
 
 
@@ -186,8 +205,8 @@ typedef struct s_baseBiome {
  * @brief Modélise un objet prédominant
  */
 typedef struct s_predominance {
-    int tag;                /**< */
-    int occurence;          /**< */
+    int tag;                /**< Le tag de l'objet prédominant */
+    int occurence;          /**< Le nombre de fois où on a compté cet objet */
 } t_predominance;
 
 

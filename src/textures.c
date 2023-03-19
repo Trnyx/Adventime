@@ -10,6 +10,8 @@
 
 
 
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL_image.h>
@@ -21,6 +23,15 @@
 
 
 
+/**
+ * @brief 
+ * 
+ * @param source 
+ * @param x 
+ * @param y 
+ * @param tailleX 
+ * @param tailleY 
+ */
 void splitTexture(SDL_Rect *source, const int x, const int y, const int tailleX, const int tailleY) {
     source->x = x;
     source->y = y;
@@ -36,8 +47,9 @@ void splitTexture(SDL_Rect *source, const int x, const int y, const int tailleX,
  * @brief 
  * 
  * @param tag Le tag de la texture à afficher
- * @param textures 
- * @return SDL_Texture* 
+ * @param textures Un pointeur sur la structure stoccant les textures
+ * 
+ * @return La te
  */
 SDL_Texture* getTexture(const int tag, t_textures *textures) {    
     switch (tag) {
@@ -65,10 +77,11 @@ SDL_Texture* getTexture(const int tag, t_textures *textures) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour les textures et les chargent
  * 
- * @param renderer 
- * @return t_textures* 
+ * @param renderer Le renderer SDL nécessaire pour le rendu du jeu
+ * 
+ * @return Un pointeur sur les textures, NULL en cas d'echec
  */
 t_textures* initTextures(SDL_Renderer *renderer) {
     t_textures *textures = malloc(sizeof(t_textures));
@@ -231,6 +244,11 @@ t_textures* initTextures(SDL_Renderer *renderer) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Detruit les textures est libère la mémoire allouée pour ces dernières
+ * 
+ * @param textures L'adresse du pointeur sur les textures 
+ */
 void detruireTextures(t_textures **textures) {
     printf("Destruction Textures => ");
     if (textures != NULL && *textures != NULL) {

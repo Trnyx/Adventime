@@ -32,6 +32,7 @@
 
 
 /**
+ * @enum e_monstreType
  * @brief Enumérateur regroupant les différents types des monstres
  * 
  * Un compteur du nombre de types est également initialisé à la fin de l'énumérateur
@@ -54,44 +55,32 @@ typedef enum {
 
 
 /**
+ * @struct t_monstre
  * @brief Modélise un monstre
  */
 typedef struct s_monstre {
-    // #include "attributs_entite.h"
-    struct s_mob;
+    struct s_mob;                   /**< On "étend" la structure "mob" */
     
-    char* name;                             /**< Le nom d'un Monstre */
-    int rayonDetection;                     /**< Le rayon dans lequel le joueur sera détecté ù*/
-    e_monstreType type;                     /**< Le type du Monstre */
-    boolean estNocturne;
+    char* name;                     /**< Le nom du Monstre */
+    int rayonDetection;             /**< Le rayon dans lequel le joueur sera détecté ù*/
+    e_monstreType type;             /**< Le type du Monstre */
+    boolean estNocturne;            /**< Si le monstre est de type nocturne */
 } t_monstre;
 
 
 
 /**
+ * @struct t_baseStatistiquesIntervales
  * @brief Modélise les intervales des statistiques de base d'un monstre
  */
 typedef struct s_baseStatistiquesIntervales {
-    int attaque[2];         /**< */
-    int defense[2];         /**< */
-    int vitesse[2];         /**< */
-    int pv;                 /**< */
-    int courbeExp[2];       /**< */
+    int attaque[2];         /**< L'intervale pour les statistiques d'attaque */
+    int defense[2];         /**< L'intervale pour les statistiques de défense */
+    int vitesse[2];         /**< L'intervale pour les statistiques de vitesse */
+    int pv;                 /**< L'intervale pour les statistiques des pv */
+    int courbeExp[2];       /**< L'intervale pour la courbe de gain de niveau */
 } t_baseStatistiquesIntervales;
 
-
-
-
-
-/**
- * @brief 
- * 
- */
-typedef struct s_boss_flags {
-    unsigned int lundi;
-    unsigned int mercredi;
-    unsigned int vendredi;
-} t_boss_flags;
 
 
 

@@ -12,12 +12,26 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "../include/NanoId/nanoid.h"
+
 #include "../include/monde.h"
+#include "../include/boss.h"
 
 
 
 
 
+/**
+ * srand(unsigned int seed) permet de définir le "seed" utilisé par la fonction rand()
+ * grâce au "seed", la fonction rand() donnera toujours les mêmes valeurs
+ * 
+ * Prenons par exemple les 5 premières génération du seed 123 :
+ *  seed        : 123
+ *  résultats   : 128959393 / 1692901013 / 436085873 / 748533630 / 776550279
+ * 
+ *  => Pour le seed "123", les 5 premières au début de l'execution du code 
+ *     suivra toujours cet ordre
+ */
 /**
  * @brief Set the Generation Seed object
  * 
@@ -40,7 +54,7 @@ unsigned int setGenerationSeed(unsigned int seed) {
  * @return t_vecteur2 
  */
 t_vecteur2 getPointApparitionJoueur(t_map *map) {
-    const int centre = (TAILLE_CHUNK) / 2;
+    // const int centre = (TAILLE_CHUNK) / 2;
 
     t_chunk *chunk = NULL;
     t_block *block = NULL;
@@ -123,6 +137,10 @@ t_monde* creerMonde(int seed) {
     }
 
 
+    monde->id = generate(LONGUEUR_ID);
+    printf("ID : %s\n", monde->id);
+
+
     if (seed == -1) {
         seed = setGenerationSeed(time(NULL));
     }
@@ -131,16 +149,24 @@ t_monde* creerMonde(int seed) {
     }
 
 
+    // Seed
     monde->seed = seed;
+
+    // Maps
     monde->overworld = genererMap(MAP_OVERWORLD);
+    // monde->caverne = genererMap(MAP_CAVE);
+
+    // Timestampoverworld
     monde->timestampRenouvellement = time(NULL);
 
-    // monde->bossFlags = initialiserBossFlags();
+
+    // Joueur
     t_vecteur2 position = getPointApparitionJoueur(monde->overworld);
     monde->pointApparitionDefaut = position;
     monde->pointApparition.x = -1.0;
     monde->pointApparition.y = -1.0;
 
+    monde->bossFlags = initialiserBossFlags();
 
     return monde;
 }
@@ -155,9 +181,9 @@ t_monde* creerMonde(int seed) {
 
 
 /**
- * @brief 
+ * @brief Detruit un monde est libère la mémoire allouée pour ce dernier
  * 
- * @param monde 
+ * @param monde L'adrese du pointeur du monde à détruire
  */
 void detruireMonde(t_monde **monde) {
     printf("Destruction Monde => ");

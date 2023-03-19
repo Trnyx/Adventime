@@ -10,10 +10,12 @@
 
 
 
-#include <SDL2/SDL.h>
-// #include <SDL2/SDL_ttf.h>
+
+
 #include <stdio.h>
 #include <stdlib.h>
+
+#include <SDL2/SDL.h>
 
 #include "../include/temps.h"
 #include "../include/physique.h"
@@ -31,10 +33,10 @@
 
 
 /**
- * @brief Get the Jour De La Semaine object
+ * @brief Récupère le jour de la semaine
  * 
- * @param timestamp 
- * @return e_jour 
+ * @param timestamp Le timestamp actuel
+ * @return e_jour, le jour de la semaine 
  */
 e_jour getJourDeLaSemaine(const time_t timestamp) {
     struct tm *temps = localtime(&timestamp);
@@ -44,10 +46,10 @@ e_jour getJourDeLaSemaine(const time_t timestamp) {
 
 
 /**
- * @brief Get the Cycle Jeu object
+ * @brief Récupère le cycle jour/nuit du jeu
  * 
- * @param temps 
- * @return e_cycle 
+ * @param temps Un pointeur sur la structure temps du jeu
+ * @return e_cycle, si il fait jour ou nuit
  */
 e_cycle getCycleJeu(t_temps *temps) {
     if (temps->heures >= HEURE_JEU_LEVE_SOLEIL && temps->heures < HEURE_JEU_NUIT) return CYCLE_JOUR;
@@ -56,10 +58,10 @@ e_cycle getCycleJeu(t_temps *temps) {
 
 
 /**
- * @brief Get the Cycle Vrai object
+ * @brief Récupère le cycle jour/nuit réel
  * 
- * @param timestamp
- * @return e_cycle 
+ * @param timestamp Le timestamp actuel 
+ * @return e_cycle, si il fait jour ou nuit
  */
 e_cycle getCycleVrai(const time_t timestamp) {
     struct tm *temps = localtime(&timestamp);
@@ -70,6 +72,12 @@ e_cycle getCycleVrai(const time_t timestamp) {
 
 
 
+/**
+ * @brief Récupère la période de la journée
+ * 
+ * @param temps 
+ * @return e_periode, la periode de la journée
+ */
 e_periode getPeriode(t_temps *temps) {
     e_periode periode = temps->periode;
 
@@ -96,10 +104,12 @@ e_periode getPeriode(t_temps *temps) {
 
 
 /**
- * @brief Get the Temps object
+ * @brief Obtient et actualise le temps du jeu en fonction du temps réel
  * 
- * @param t 
- * @return t_temps 
+ * @param temps Un pointeur sur la structure temps du jeu
+ * @param timestamp Le timestamp réel permettant d'actualiser le temps du jeu
+ * 
+ * @return La structure de temps donnée en paramètre
  */
 t_temps* getTemps(t_temps *temps, const time_t timestamp) {
     // 1 heure réelle écoulée représente NOMBRE_JOUR écoulée dans le jeu
@@ -139,6 +149,14 @@ t_temps* getTemps(t_temps *temps, const time_t timestamp) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Gère tous les évènements temporels du jeu
+ * 
+ * Ces évènements se basent sur le temps réel tout comme le temps en jeu
+ * 
+ * @param temps Un pointeur sur le temps
+ * @param timestamp Le timestamp réel 
+ */
 void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
     t_cache *cache = moteur->cache;
 
@@ -186,10 +204,11 @@ void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour le temps et le créé
  * 
- * @param timestamp 
- * @return t_temps 
+ * @param timestamp Le timestamp réel permettant d'intialiser le temps du jeu
+ * 
+ * @return Un pointeur sur le temps, NULL en cas d'echec
  */
 t_temps* initTemps(const time_t timestamp) {
     t_temps *temps = malloc(sizeof(t_temps));
@@ -216,9 +235,9 @@ t_temps* initTemps(const time_t timestamp) {
 
 
 /**
- * @brief 
+ * @brief Detruit le temps est libère la mémoire allouée pour ce dernier
  * 
- * @param temps 
+ * @param temps L'adresse du pointeur sur le temps 
  */
 void detruireTemps(t_temps **temps) {
     if (temps != NULL && *temps != NULL) {

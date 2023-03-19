@@ -1,7 +1,7 @@
 /**
  * @file animal.c
  *
- * @brief
+ * @brief Module de manipulation des animaux
  *
  * @author Clément Hibon
  * @date 28 février
@@ -25,6 +25,11 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Choisit aléatoirement le tag d'un animal 
+ * 
+ * @return Le tag d'un animal
+ */
 e_entiteTag choisirTag() {
     return getNombreAleatoire(TAG_ANIMAL_VACHE, TAG_ANIMAL_COCHON);
 }
@@ -39,10 +44,11 @@ e_entiteTag choisirTag() {
 
 
 /**
- * @brief 
+ * @brief Vérifie si l'animal se situe trop loin d'un troupeau
  * 
- * @param animal 
- * @return t_entite* 
+ * @param animal Pointeur sur l'animal que l'on vérifie 
+ * 
+ * @return un pointeur sur l'entité d'un animal se situant dans le troupeau lorque l'animal que l'on vérifie se situe trop loin du troupeau
  */
 t_entite* estTropLoinDuTroupeau(t_animal *animal) {
     t_liste entitesAlentours = getEntitesAlentour((t_entite*)animal, ENTITE_MOB, ANIMAL_RAYON_DETECTION_TROUPEAU);
@@ -83,17 +89,30 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Actualise un animal
+ * 
+ * Toute la logique propre à un animal est gérer dans cette fonction
+ * 
+ * @param animal Pointeur sur l'animal à actualiser
+ * @param distance La distance entre l'animal est le joueur
+ * @param cible 
+ * 
+ * @return int 
+ */
 int updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
 
     t_entite *animalDuTroupeauLePlusProche = estTropLoinDuTroupeau(animal);
     
     if (animalDuTroupeauLePlusProche != NULL) {
         // printf("UPDATE VACHE TROP LOIN\n");
-        const float distance = calculDistanceEntreEntites((t_entite*)animal, animalDuTroupeauLePlusProche);
+        // const float distance = calculDistanceEntreEntites((t_entite*)animal, animalDuTroupeauLePlusProche);
         animal->operation = SE_DEPLACE_VERS;
 
-        animal->positionDeplacement.x += (animalDuTroupeauLePlusProche->position.x - animal->position.x);
-        animal->positionDeplacement.y += (animalDuTroupeauLePlusProche->position.y - animal->position.y);
+        // animal->positionDeplacement.x += (animalDuTroupeauLePlusProche->position.x - animal->position.x);
+        // animal->positionDeplacement.y += (animalDuTroupeauLePlusProche->position.y - animal->position.y);
+        animal->positionDeplacement.x = (animalDuTroupeauLePlusProche->position.x - animal->position.x);
+        animal->positionDeplacement.y = (animalDuTroupeauLePlusProche->position.y - animal->position.y);
 
         updateMob((t_mob*)animal, 0.0);
     } else {
@@ -125,6 +144,11 @@ int updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Detruit un animal est libère la mémoire allouée pour ce dernier
+ * 
+ * @param animal L'adrese du pointeur de l'animal à détruire
+ */
 void detruireAnimal(t_animal **animal) {
     if (animal != NULL && *animal != NULL) {
         
@@ -142,12 +166,20 @@ void detruireAnimal(t_animal **animal) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Alloue l'espace nécessaire pour un animal et le crée 
+ * 
+ * @param position La position à laquelle l'animal apparait
+ * @param tag Le tag de l'animal qui apparait
+ * 
+ * @return Le pointeur sur l'animal, NULL si echec
+ */
 t_animal *creerAnimal(const t_vecteur2 position, const e_entiteTag tag) {
     t_mob *mob = creerMob(position);
     t_animal *animal = realloc(mob, sizeof(t_animal))    ;
 
     if (animal == NULL) {
-        printf("Erreur mémoire : \n");
+        printf("Erreur mémoire : Impossible d'allouer la mémoire nécessaire pour un animal\n");
         return NULL;
     }
 
@@ -184,6 +216,14 @@ t_animal *creerAnimal(const t_vecteur2 position, const e_entiteTag tag) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Génère / fait apparaitre un animal au sein d'un troupeau
+ * 
+ * @param positionTroupeau La position du troupeau dans lequel l'animal apparait
+ * @param entites Le pointeur sur la liste d'entité dans laquelle sera ajouté l'animal
+ * @param map La map dans laquelle l'animal apparait
+ * @param tag Le tag de l'animal qui apparait
+ */
 void apparitionAnimal(const t_vecteur2 positionTroupeau, t_liste *entites, t_map *map, const e_entiteTag tag) {
     printf("APPARITION ANIMAL => ");
     t_vecteur2 position = choisirPointDansRayon(5);
@@ -205,6 +245,12 @@ void apparitionAnimal(const t_vecteur2 positionTroupeau, t_liste *entites, t_map
 
 
 
+/**
+ * @brief Génère / fait apparaitre un troupeau d'animaux
+ * 
+ * @param entites Pointeur sur la liste des entités dans laquelle les animaux seront stockés
+ * @param map La map dans laquelle le troupeau apparait
+ */
 void apparitionTroupeau(t_liste *entites, t_map *map) {
     printf("APPARTITION TROUPEAU => ");
 

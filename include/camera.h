@@ -1,7 +1,7 @@
 /**
  * @file camera.h
  *
- * @brief
+ * @brief Module de manipulation de la caméra
  *
  * @author Clément Hibon
  * @date 5 février
@@ -52,17 +52,18 @@
 
 
 /**
- * @brief 
+ * @struct t_camera
+ * @brief Structure modélisant une caméra
  * 
  */
 typedef struct s_camera {
-    t_vecteur2 position;            /**< */
-    t_vecteur2 futurePosition;      /**< */
+    t_vecteur2 position;            /**< La position actuelle de la caméra */
+    t_vecteur2 futurePosition;      /**< La future position de la caméra */
 
-    t_vecteur2 origine;             /**< */
-    t_vecteur2 offset;              /**< */
+    t_vecteur2 origine;             /**< Les coordonnées de l'origine de l'écran */
+    t_vecteur2 offset;              /**< Les coordonnées de décalage de bloc */
 
-    t_vecteur2 tailleRendu;         /**< */
+    t_vecteur2 tailleRendu;         /**< Les dimensions (en pixel) de la taille des rendus */
 } t_camera;
 
 

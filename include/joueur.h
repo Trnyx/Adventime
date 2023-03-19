@@ -17,9 +17,7 @@
 
 
 
-#include "statistiques.h"
 #include "inventaire.h"
-#include "monstre.h"
 #include "entite.h"
 #include "map.h"
 
@@ -31,6 +29,15 @@
 #define JOUEUR_ATTAQUE_DEFAUT 20
 #define JOUEUR_DEFENSE_DEFAUT 20
 #define JOUEUR_PV_DEFAUT 40
+
+// La statistique "attaque" de base du joueur
+#define JOUEUR_BASE_ATTAQUE 20
+// La statistique "defense" de base du joueur
+#define JOUEUR_BASE_DEFENSE 20
+// La statistique "vitesse" de base du joueur
+#define JOUEUR_BASE_VITESSE 5
+// La statistique "pv" de base du joueur
+#define JOUEUR_BASE_PV 40
 
 #define JOUEUR_COOLDOWN_ATTAQUE 10
 
@@ -44,7 +51,8 @@
 
 
 /**
- * @brief 
+ * @struct t_action_flags
+ * @brief Structure de stockage des inputs du joueur 
  */
 typedef struct s_action_flags {
     // Déplacements
@@ -70,8 +78,7 @@ typedef struct s_action_flags {
  * @brief Structure modélisant un joueur
  */
 typedef struct s_joueur {
-    // #include "attributs_entite.h"
-    struct s_entiteVivante;
+    struct s_entiteVivante;         /**< On "étend" la structure "entiteVivante" */
 
     t_action_flags *actionFlags;    /**< */
     e_mapType map;                  /**< */

@@ -20,9 +20,15 @@
 #include "map.h"
 #include "joueur.h"
 #include "temps.h"
+#include "boss.h"
 
 
 
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Structures                                 */
+/* -------------------------------------------------------------------------- */
 
 
 /**
@@ -30,39 +36,34 @@
  * @brief
  */
 typedef struct s_monde {
-    unsigned int seed;                      /**< */
+    char *id;                               /**< L'ID du monde */
+    unsigned int seed;                      /**< La seed de génération du monde */
 
     // Maps
-    t_map *overworld;                       /**< */
-    t_map *caverne;                         /**< */
+    t_map *overworld;                       /**< La map overworld */
+    t_map *caverne;                         /**< la map caverne */
 
     // Joueur
-    t_joueur *joueur;                       /**< */
-    t_vecteur2 pointApparitionDefaut;       /**< */
-    t_vecteur2 pointApparition;             /**< */
+    t_joueur *joueur;                       /**< Les informations du joueur dans le monde */
+    t_vecteur2 pointApparitionDefaut;       /**< Le point d'apparition par défaut pour le joueur */
+    t_vecteur2 pointApparition;             /**< Le point d'apparition du joueur si il le modifie */
 
     // Progression
-    t_boss_flags bossFlags;                 /**< */
+    t_boss_flags bossFlags;                 /**< Les différent boss battue par le joueur */
 
     // Information
-    time_t timestampRenouvellement;         /**< */
+    time_t timestampRenouvellement;         /**< Le timestamp lors du dernier renouvellement du monde */
 } t_monde;
 
 
 
 
 
-/**
- * srand(unsigned int seed) permet de définir le "seed" utilisé par la fonction rand()
- * grâce au "seed", la fonction rand() donnera toujours les mêmes valeurs
- * 
- * Prenons par exemple les 5 premières génération du seed 123 :
- *  seed        : 123
- *  résultats   : 128959393 / 1692901013 / 436085873 / 748533630 / 776550279
- * 
- *  => Pour le seed "123", les 5 premières au début de l'execution du code 
- *     suivra toujours cet ordre
- */
+/* -------------------------------------------------------------------------- */
+/*                                  Fonctions                                 */
+/* -------------------------------------------------------------------------- */
+
+
 unsigned int setGenerationSeed(unsigned int seed);
 
 

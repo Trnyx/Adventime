@@ -1,27 +1,19 @@
 /**
- * @file cache.h
- *
- * @brief Module de manipulation du cache
- *
+ * @file boss.h
+ * 
+ * @brief 
+ * 
  * @author Clément Hibon
- * @date 9 mars
+ * @date 18 mars
  * @version 1.1
  */
 
 
 
+#ifndef _JEU_BOSS_
+#define _JEU_BOSS_
 
 
-#ifndef _JEU_CACHE_
-#define _JEU_CACHE_
-
-
-
-
-
-#include "joueur.h"
-#include "monde.h"
-#include "liste.h"
 
 
 
@@ -31,15 +23,15 @@
 
 
 /**
- * @struct t_cache
- * @brief Structure contenant les informations que l'on stock dans le cache
+ * @struct t_boss_flags
+ * @brief 
+ * 
  */
-typedef struct s_cache {
-    t_monde *monde;                 /**< Le monde chargé */
-    t_map *map;                     /**< La map chargée */
-
-    t_liste *entites;               /**< Les entités chargées */
-} t_cache;
+typedef struct s_boss_flags {
+    unsigned int lundi;
+    unsigned int mercredi;
+    unsigned int vendredi;
+} t_boss_flags;
 
 
 
@@ -50,8 +42,7 @@ typedef struct s_cache {
 /* -------------------------------------------------------------------------- */
 
 
-t_cache* initCache();
-void detruireCache(t_cache **cache);
+t_boss_flags initialiserBossFlags();
 
 
 

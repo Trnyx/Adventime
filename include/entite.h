@@ -30,12 +30,6 @@
 
 
 
-#define LONGUEUR_ID 8
-
-
-
-
-
 /* -------------------------------------------------------------------------- */
 /*                                 Enumeration                                */
 /* -------------------------------------------------------------------------- */
@@ -113,7 +107,7 @@ typedef struct s_moteur t_moteur;
 typedef struct s_entite t_entite;
 struct s_entite {
     // #include "attributs_entite.h"
-    char *id;
+    char *id;                                               /**< L'ID de l'entité */
     t_vecteur2 position;                                    /**< La position actuelle de l'entité */
     t_vecteur2 direction;                                   /**< La direction (déplacement) actuelle de l'entité */
     e_orientation orientation;                              /**< L'orientation (regard) actuelle de l'entité */
@@ -139,7 +133,7 @@ struct s_entite {
 
 
 typedef struct s_entiteVivante {
-    struct s_entite;
+    struct s_entite;                        /**< On "étend" la structure "entite" */
 
     e_operation operation;                  /**< Ce que fait l'entité */
     

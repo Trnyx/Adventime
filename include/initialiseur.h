@@ -1,7 +1,7 @@
 /**
  * @file initialiseur.h
  * 
- * @brief 
+ * @brief Module pour les initisalisations et destructions générales
  * 
  * @author Eliott Remars & Clément Hibon
  * @date 3 février

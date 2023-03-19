@@ -1,14 +1,12 @@
 /**
  * @file animal.h
  *
- * @brief
+ * @brief Module de manipulation des animaux
  *
  * @author Clément Hibon
  * @date 28 février
  * @version 1.1
  */
-
-
 
 
 
@@ -40,13 +38,13 @@
 
 
 /**
+ * @struct t_animal
  * @brief Modélise un animal
  */
 typedef struct s_animal {
-    // #include "attributs_entite.h"
-    struct s_mob;
+    struct s_mob;           /**< On "étend" la structure "mob" */
     
-    char* name;                             /**< Le nom de l'animal */
+    char* name;             /**< Le nom de l'animal */
 } t_animal;
 
 
@@ -67,7 +65,7 @@ extern const t_baseStatistiques baseStatistiquesAnimaux[];
 /* -------------------------------------------------------------------------- */
 /*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
-// #include "map.h"
+
 typedef struct s_map t_map;
 
 

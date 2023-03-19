@@ -1,7 +1,12 @@
 /**
  * @file generation_bases.c
  *
- * @brief 
+ * @brief Toutes les informations de bases utiles aux générations et autres
+ * 
+ * - Les informations de bases des biomes
+ * - Les informations de bases des végétaux
+ * - Les informations de bases concernant les monstres
+ * - Les informations de bases concernant les animaux
  * 
  *
  * @author Clément Hibon

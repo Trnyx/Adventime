@@ -72,6 +72,12 @@
 
 
 
+/**
+ * @brief Détruit une entité et la supprime de la liste 
+ * 
+ * @param entites La liste d'entité dans laquelle est supprimé l'entité
+ * @param entite L'entité à supprimer
+ */
 static void suppressionEntite(t_liste *entites, t_entite *entite) {
     oter_elt(entites);
     entite->detruire((t_entite**) &entite);
@@ -91,21 +97,11 @@ static void suppressionEntite(t_liste *entites, t_entite *entite) {
  * @brief Fonction appelé à chaque frame du jeu
  * 
  * Elle gère toute la physique et logique du jeu
+ * 
+ * @param map Un pointeur sur la map dans laquelle le joueur
+ * @param joueur Un pointeur sur le joueur
  */
 void update(t_map *map, t_joueur *joueur) {
-    // regulerFPS();
-    // // printf("Update (%li)\n", u++);
-    // t_monde *monde = moteur->monde;
-    // t_joueur *joueur = monde->joueur;
-
-
-    // t_map *map = NULL;
-    // switch (joueur->map) {
-    //     case MAP_OVERWORLD: map = monde->map; break;
-    //     case MAP_CAVE: map = monde->map; break;
-    // }
-
-
     t_liste *entites = moteur->cache->entites;
     t_entite *entite = NULL;
 

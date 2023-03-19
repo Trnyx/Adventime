@@ -69,9 +69,11 @@ void changerVolume(const e_audio_channel channel, const float nouveauVolume) {
 /* ---------------------------------- Play ---------------------------------- */
 
 /**
- * @brief 
+ * @brief Joue une musique donnée en paramètre
  * 
- * @param music 
+ * @param music La musique qui sera joué
+ * @param repeat Si la musique doit être répété
+ * @param estLaSuite [Musique évolutive] Si la musique donnée est une autre version de la musique actuellement jouée
  */
 void play_music(Mix_Music *music, boolean repeat, boolean estLaSuite) {
     Mix_PlayMusic(music, repeat ? -1 : 0);
@@ -85,24 +87,25 @@ void play_music(Mix_Music *music, boolean repeat, boolean estLaSuite) {
 }
 
 
+
 /**
- * @brief 
+ * @brief Joue un bruitage
  * 
- * @param sound 
- * @param channel 
+ * @param sound Le bruitage à joué
+ * @param channel Le channel dans lequel sera joué le bruitage, -1 si on veut utilisé le premier channel disponible 
  */
 void play_bruitage(Mix_Chunk *sound, int channel) {
-    Mix_PlayChannel(channel, sound, 0);
+    Mix_PlayChannel(channel, sound, 1);
 }
 
 
 
 /**
- * @brief 
+ * @brief Joue le bruit d'une entité
  * 
- * @param tag 
- * @param angle 
- * @param distance 
+ * @param tag Le tag de l'entité originelle du bruit
+ * @param angle L'angle entre l'entité est le joueur
+ * @param distance La distance séparant l'entité du joueur
  */
 void play_sonAmbiance(e_entiteTag tag, float angle, float distance) {
     Mix_Chunk *bruitage = NULL;
@@ -142,16 +145,14 @@ void play_sonAmbiance(e_entiteTag tag, float angle, float distance) {
 
 
 /**
- * @brief 
+ * @brief Sélectionne la musique à jouer en fonction du temps dans le jeu
  * 
- * @param temps 
+ * @param temps Le temps actuel du jeu
  */
 void selectionMusique(t_temps *temps) {
     t_musiques *musiques = audio->musiques;
     Mix_Music *musique = NULL;
     boolean estLaSuite = FAUX;
-
-    audio->tempsEcoulee = moteur->frame - audio->timestampDebutMusique;
 
 
     switch (audio->musiqueType) {
@@ -196,6 +197,12 @@ void selectionMusique(t_temps *temps) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Charge dans la structure musique la musique du boss correspondant au jour de la semaine
+ * 
+ * @param musiques Un pointeur sur la structure musique dans laquelle sera chargé la musique 
+ * @param jour Le jour actuel de la semaine
+ */
 void loadMusiqueBoss(t_musiques *musiques, e_jour jour) {
     char buffer[64];
     sprintf(buffer, "assets/audio/musiques/boss/boss_%i.mp3", jour);
@@ -210,26 +217,24 @@ void loadMusiqueBoss(t_musiques *musiques, e_jour jour) {
 
 
 /**
- * @brief 
+ * @brief Charge tous les fichiers audio au sein des structures de musiques et de bruitages
+ *
+ * @param musiques L'adresse du pointeur de la structure de musique dans laquelle seront chargées les musiques
+ * @param bruitages L'adresse du pointeur de la structure de bruitages dans laquelle seront chargées les bruitages
  * 
- * @param volume 
- * @param musiques 
- * @param bruitages 
- * @return int 
+ * @return 0 Si tout se passe bien, -1 si echec
  */
-int chargerAudio(const float volume, t_musiques **musiques, t_bruitages **bruitages) {
+int chargerAudio(t_musiques **musiques, t_bruitages **bruitages) {
     t_musiques *m = malloc(sizeof(t_musiques));
     if (m == NULL) {
-        printf("Impossible d'allouer la mémoire pour les musiques");
-        free(m);
+        printf("Erreur mémoire : Impossible d'allouer la mémoire nécessaire pour les musiques");
         return -1;
     }
 
 
     t_bruitages *b = malloc(sizeof(t_bruitages));
     if (b == NULL) {
-        printf("Impossible d'allouer la mémoire pour les bruitages");
-        free(b);
+        printf("Erreur mémoire : Impossible d'allouer la mémoire nécessaire pour les bruitages");
         return -1;
     }
 
@@ -276,9 +281,6 @@ int chargerAudio(const float volume, t_musiques **musiques, t_bruitages **bruita
 
 
 
-    // changerVolume(CHANNEL_MASTER, volume);
-
-
     *musiques = m;
     *bruitages = b;
 
@@ -295,24 +297,35 @@ int chargerAudio(const float volume, t_musiques **musiques, t_bruitages **bruita
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Initialise, crée et alloue la mémoire pour l'audio du jeu
+ * 
+ * @return Un pointeur sur la structure gérant l'audio, NULL si echec
+ */
 t_audio* initAudio() {
     t_audio *a = malloc(sizeof(t_audio));
 
 
+    if (a == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la mémoire nécessaire pour l'audio\n");
+        return NULL;
+    }
+
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) {
         printf("WARNING : Erreur d'initialisation de SDL MIXER : %s\n", Mix_GetError());
+        free(a);
+        return NULL;
     }
+
 
     a->masterVolume = 1.0;
     a->musiqueVolume = 1.0;
     a->bruitageVolume = 1.0;
 
 
-    chargerAudio(a->masterVolume, &a->musiques, &a->bruitages);
+    chargerAudio(&a->musiques, &a->bruitages);
     a->musiqueType = MUSIC_MENU;
     a->timestampDebutMusique = 0;
-    a->tempsEcoulee = 0.0;
-
 
 
     return a;

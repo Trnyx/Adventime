@@ -1,3 +1,26 @@
+/**
+ * @file structures.c
+ *
+ * @brief 
+ *
+ * @author Clément Hibon
+ * @date 10 mars
+ * @version 1.1
+ */
+
+
+
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "../include/structures.h"
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                   Village                                  */
 /* -------------------------------------------------------------------------- */

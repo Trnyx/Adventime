@@ -3,13 +3,8 @@
  *
  * @brief Génération de la végétation 
  * 
- * La génération de la végétation suit le principe du "Poisson Disk Sampling"
- * 
- * Poisson Disk Sampling est une technique permettant de sélectionner de manière aléatoire des points serrés de façon à ce qu'ils respectent une distance minimale 
- * Comme les points sont choisis de façon aléatoire, le résultat a un aspect plus organique
- * 
- * L'algorithme suit donc les étapes suivantes
- * 
+ * La génération de la végétation suit le principe du "Poisson Disc Sampling"
+ * Cf. disc_sampling.c pour plus d'information
  * 
  *
  * @author Clément Hibon
