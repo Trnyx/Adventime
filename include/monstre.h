@@ -19,6 +19,7 @@
 
 
 
+#include "statistiques.h"
 #include "mob.h"
 
 
@@ -66,20 +67,6 @@ typedef struct s_monstre {
     e_monstreType type;             /**< Le type du Monstre */
     boolean estNocturne;            /**< Si le monstre est de type nocturne */
 } t_monstre;
-
-
-
-/**
- * @struct t_baseStatistiquesIntervales
- * @brief Modélise les intervales des statistiques de base d'un monstre
- */
-typedef struct s_baseStatistiquesIntervales {
-    int attaque[2];         /**< L'intervale pour les statistiques d'attaque */
-    int defense[2];         /**< L'intervale pour les statistiques de défense */
-    int vitesse[2];         /**< L'intervale pour les statistiques de vitesse */
-    int pv;                 /**< L'intervale pour les statistiques des pv */
-    int courbeExp[2];       /**< L'intervale pour la courbe de gain de niveau */
-} t_baseStatistiquesIntervales;
 
 
 

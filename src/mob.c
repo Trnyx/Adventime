@@ -11,26 +11,6 @@
 
 
 
-#include <stdlib.h>
-#include <stdio.h>
-
-#include "../include/mob.h"
-
-
-
-
-/**
- * @file entite.c
- * 
- * @brief 
- * 
- * @author Clément Hibon
- * @date 3 février
- * @version 1.1
- */
-
-
-
 
 #include <stdio.h>
 #include <stdlib.h>
