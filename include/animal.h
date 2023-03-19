@@ -56,7 +56,7 @@ typedef struct s_animal {
 /* -------------------------------------------------------------------------- */
 
 
-extern const t_baseStatistiques baseStatistiquesAnimaux[];
+extern const t_baseStatistiquesIntervales baseStatistiquesAnimaux[];
 
 
 
