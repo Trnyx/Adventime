@@ -11,6 +11,9 @@
 
 
 #include <stdlib.h>
+
+#include "../include/physique.h"
+#include "../include/moteur.h"
 #include "../include/monstre.h"
 #include "../include/map.h"
 
@@ -56,6 +59,20 @@ e_monstreType choisirTypeMonstre(const t_baseBiome baseBiome) {
 
 
 
+boolean estNocturne() {
+    t_temps *temps = moteur->temps;
+
+    if (temps->cycleJeu == CYCLE_JOUR || temps->cycleVrai == CYCLE_JOUR)
+        return FAUX;
+
+
+    return FAUX;
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Generation                                 */
 /* -------------------------------------------------------------------------- */
@@ -80,7 +97,7 @@ t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome, const int niv
     monstre->baseStatistiques = genererStatistiquesDeBaseMonstre(monstre->type);
     monstre->statistiques = genererStatistiques(monstre->baseStatistiques, niveau);
 
-    monstre->estNocturne = FAUX;
+    monstre->estNocturne = estNocturne();
     
     return monstre;
 }
