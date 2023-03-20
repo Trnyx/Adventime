@@ -126,9 +126,8 @@ static int adventime(t_monde *monde) {
 	update(cache->map, joueur);
 
 	if(continuer == J_MORT) {
-	  continuer = gameOver(ctx);
+	  continuer = gameOver(ctx, joueur);
 	}
-	SDL_Log("jui là");
 
 
         // Dès qu'on change de zone (map)

@@ -458,7 +458,7 @@ state_main pauseMenu(struct nk_context *ctx) {
   return click;
 }
 
-state_main gameOver(struct nk_context *ctx) {
+state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
 
   state_main click;
   SDL_Color color;
@@ -479,8 +479,6 @@ state_main gameOver(struct nk_context *ctx) {
   Message_rect.y = (moteur->window_height)*0.3 - Message_rect.h/2;
 
   while (moteur->state == J_MORT) {
-
-    SDL_Log("jui dans le game over uwu bbou aled");
 
     SDL_RenderClear(moteur->renderer);
     SDL_RenderCopy(moteur->renderer, texture, NULL, &Message_rect);
@@ -512,7 +510,10 @@ state_main gameOver(struct nk_context *ctx) {
 					(moteur->window_height * 0.6), 300, 50));
       
       if (nk_button_label(ctx, "Réapparaitre")) {
-      }
+        reapparitionJoueur(joueur, moteur->cache->monde->pointApparitionDefaut);
+	moteur->state = M_JOUER;
+	click = M_JOUER;
+        }
 
       nk_layout_space_push(
 			   ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
