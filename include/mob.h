@@ -82,7 +82,9 @@ typedef struct s_mob {
     unsigned int rayonDeplacement;          /**< Le rayon dans lequel le mob peut se déplacer */
     t_vecteur2 positionDeplacement;         /**< La position à laquelle le mob veut se déplacer */
     e_deplacementType deplacementType;      /**< Le type de déplacement du mob */
+
     double gamma;
+    e_rotation rotation;
 
     // Cooldown
     unsigned int timerDeplacement;          /**< Timer à partir duquel on calcul le temps de déplacement (en ticks) */

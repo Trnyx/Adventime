@@ -429,10 +429,14 @@ void detruireEntite(t_entite **entite) {
             free((*entite)->id);
             (*entite)->id = NULL;
         }
+
+        if ((*entite)->animation != NULL) {
+            detruireAnimation(&(*entite)->animation);
+        }
         
+
         free(*entite);
         *entite = NULL;
-
     }
 }
 

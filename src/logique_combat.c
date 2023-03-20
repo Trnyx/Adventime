@@ -219,7 +219,7 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
 
 
         // mort(cible);
-        if (cibleEstMorte) {
+        if (cibleEstMorte && entite->entiteType != ENTITE_JOUEUR) {
             finCombat((t_mob*)entite);
             // Calcul experience
             // distribution experience
