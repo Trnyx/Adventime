@@ -18,7 +18,7 @@
 typedef enum {
     DEBUT_BLOCK_STRUCTURE = 999,
 
-    // PUIT
+    /* ---------------------------------- PUIT ---------------------------------- */
     BLOCK_PUIT_HAUT_GAUCHE,
     BLOCK_PUIT_HAUT_CENTRE,
     BLOCK_PUIT_HAUT_DROIT,
@@ -29,11 +29,13 @@ typedef enum {
     BLOCK_PUIT_BAS_CENTRE,
     BLOCK_PUIT_BAS_DROIT,
 
+
+
+    /* ---------------------------------- PORTE --------------------------------- */
     BLOCK_PORTE,
-    BLOCK_TEMPLE_ENTREE,
 
 
-    /* ----------------------------------- MUR ---------------------------------- */
+    /* -------------------------------- MUR HAUT -------------------------------- */
     // Variant 1
     BLOCK_MUR_HAUT_GAUCHE_STANDARD,
     BLOCK_MUR_HAUT_CENTRE_STANDARD,
@@ -178,7 +180,16 @@ typedef enum {
     BLOCK_TOIT_PETIT_LAYER_5_5_BLEU,
     BLOCK_TOIT_PETIT_LAYER_5_6_BLEU,
 
-    BLOCK_,
+
+
+    /* --------------------------------- TEMPLE --------------------------------- */
+    BLOCK_TEMPLE_ENTREE_HAUT_GAUCHE,
+    BLOCK_TEMPLE_ENTREE_HAUT_CENTRE,
+    BLOCK_TEMPLE_ENTREE_HAUT_DROIT,
+    BLOCK_TEMPLE_ENTREE_BAS_GAUCHE,
+    BLOCK_TEMPLE_ENTREE_BAS_CENTRE,
+    BLOCK_TEMPLE_ENTREE_BAS_DROIT,
+    
 
     FIN_BLOCK_STRUCTURE,
 } e_blockTag;

@@ -253,21 +253,27 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
 
 
         // printf("AFFICHE STRUCTURE %i ", tag);
+
+        /* ---------------------------------- PUIT ---------------------------------- */
+
         if (tag >= BLOCK_PUIT_HAUT_GAUCHE && tag <= BLOCK_PUIT_BAS_DROIT) {
             tag = (tag % BLOCK_PUIT_HAUT_GAUCHE);
             
-            decalage.x = (tag % 3) * TAILLE_TILE;
-            decalage.y = (tag / 3) * TAILLE_TILE;
+            decalage.x = (tag % 3);
+            decalage.y = (tag / 3);
         } 
         
+
+
+        /* --------------------------------- MAISONS -------------------------------- */
 
         else if (tag >= BLOCK_MUR_HAUT_GAUCHE_STANDARD && tag <= BLOCK_MUR_DROIT_BLEU) {
             tag = (tag % BLOCK_MUR_HAUT_GAUCHE_STANDARD);
 
             // Le décalage se fait en fonction du nombre de bloc possible composant un mur
             // ainsi que le nombre de variants de mur possible
-            decalage.x = (tag % (3 * 3)) * TAILLE_TILE;
-            decalage.y = ((tag / (3 * 3)) + 14) * TAILLE_TILE;
+            decalage.x = (tag % (3 * 3));
+            decalage.y = ((tag / (3 * 3)) + 14);
         } 
         
 
@@ -276,17 +282,28 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
 
             // Le décalage se fait en fonction du nombre de bloc possible composant un toit
             // ainsi que le nombre de variants de toit possible
-            decalage.x = (tag % (6 * 3)) * TAILLE_TILE;
-            decalage.y = ((tag / (6 * 3)) + 3) * TAILLE_TILE;
+            decalage.x = (tag % (6 * 3));
+            decalage.y = ((tag / (6 * 3)) + 3);
         } 
         
 
-        else {
-            tag = (tag % DEBUT_BLOCK_STRUCTURE) + 1;
+        else if (tag == BLOCK_PORTE) {
+            decalage.x = 0;
+            decalage.y = (16);
         }
 
 
-        splitTexture(&source, decalage.x,decalage.y, TAILLE_TILE,TAILLE_TILE);
+        /* --------------------------------- TEMPLE --------------------------------- */
+
+        else if (tag >= BLOCK_TEMPLE_ENTREE_HAUT_GAUCHE && tag <= BLOCK_TEMPLE_ENTREE_BAS_DROIT) {
+            tag = tag % BLOCK_TEMPLE_ENTREE_HAUT_GAUCHE;
+
+            decalage.x = (tag % 3) + 3;
+            decalage.y = tag / 3;
+        }
+
+
+        splitTexture(&source, decalage.x*TAILLE_TILE,decalage.y*TAILLE_TILE, TAILLE_TILE,TAILLE_TILE);
         // splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
 
         renduObjet.x = rendu->x;
