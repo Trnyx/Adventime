@@ -27,6 +27,7 @@
 #include "../include/physique.h"
 #include "../include/map.h"
 #include "../include/animal.h"
+#include "../include/structures.h"
 
 
 
@@ -665,7 +666,7 @@ t_map* genererOverworld(t_map *map) {
     }
 
 
-    // Generer Village
+    genererVillage(map);
     genererVegetations(map);
     
     // Genrerer Entree Caverne

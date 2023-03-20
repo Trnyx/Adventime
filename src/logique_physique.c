@@ -342,7 +342,7 @@ void update(t_map *map, t_joueur *joueur) {
     // afficherCamera(map);
 
     if (map->type == MAP_OVERWORLD) {
-        dessinerVegetation(map);
+        dessinerObjets(map);
         dessinerCalqueAmbiance(temps);
     }
 

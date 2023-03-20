@@ -136,6 +136,7 @@ void genererVegetations(t_map *map) {
                 t_chunk *chunkObjets = getChunk(x, y, COUCHE_OBJETS, map);
                 // chunk = getChunk(x, y, COUCHE_OBJETS, map);
                 block = getBlockDansChunk((int)point.x % TAILLE_CHUNK, (int)point.y % TAILLE_CHUNK, chunkObjets);
+                if (block->tag != VIDE) continue;
 
                 block->tag = vegetalTag;
             }
