@@ -1,6 +1,9 @@
 /**
  * @file inputs_manager.c
- * @brief
+ * 
+ * @brief Module qui gère tous les inputs du joueur
+ * 
+ * Clavier et souris
  *
  * @author Clément Hibon
  * @date 6 février
@@ -22,12 +25,20 @@
 
 
 
+/**
+ * @brief Regarde l'état du clavier et de la souris et met à jour les états des inputs dans le joueur
+ * 
+ * @param joueur Un pointeur sur le joueur où sont stockés les différentes informations sur l'état actuel des inputs du joueur
+ * 
+ * @return L'état du jeu (J_MORT, M_PAUSE, M_QUIT)
+ */
 int inputManager(t_joueur *joueur) {
     t_controles controles = moteur->controles;
     SDL_Event event;
 
 
     /* ----------------------------- Position Souris ---------------------------- */
+    // Les positions x et y de la souris sur l'écran
     int x, y;
     SDL_GetMouseState(&x, &y);
 
@@ -147,7 +158,7 @@ int inputManager(t_joueur *joueur) {
 
             case SDL_MOUSEBUTTONUP:
                 switch (event.button.button) {
-                    // Attaque
+                    // 
                     case SDL_BUTTON_LEFT:
                         joueur->actionFlags->attack = 0;
                         break;

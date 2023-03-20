@@ -17,7 +17,6 @@
 
 #include "../include/physique.h"
 #include "../include/moteur.h"
-#include "../include/mob.h"
 #include "../include/deplacement.h"
 #include "../include/combat.h"
 
@@ -42,12 +41,39 @@
 
 
 
+/**
+ * @brief Remet un mob en normal
+ * 
+ * @param mob Un pointeur sur le mob qui n'est plus en combat
+ */
+void finCombat(t_mob *mob) {
+    mob->deplacementType = DEPLACEMENT_NORMAL;
+    mob->operation = ATTENTE;
+    mob->cible = NULL;
+    mob->gamma = 0;     
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                   Degats                                   */
 /* -------------------------------------------------------------------------- */
 
 
-#define OUVERTURE 30
+#define OUVERTURE 40
+
+/**
+ * @brief Vérifie si la cible est touché par la source qui attaque
+ * 
+ * @param source Un pointeur sur l'entité attaquante
+ * @param cible Un pointeur sur l'entité cible attaqué
+ * @param angleAttaque L'angle dans lequel l'entité attaquant arrive par rapport à la cible
+ * @param range Le rayon dans lequel l'entité attaquante peut touché la cible
+ * 
+ * @return VRAI si la cible est touchée, FAUX sinon
+ */
 boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float angleAttaque, const float range) {
     // Calcul la distance
     const float distance = calculDistanceEntreEntites(source, cible);
@@ -111,6 +137,17 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
 
 
 
+/**
+ * @brief Calcul les dégâts
+ * 
+ * @param niveauAttaquant Le niveau de l'attaquant
+ * @param pointAttaque Les points d'attaque de l'attaquant
+ * @param pointDefense Les points de défense de l'attaqué
+ * @param attaquantEstNocture Si l'attaquant est de type nocturne
+ * @param defenseurEstNocturne Si le défenseur est de type nocturne
+ * 
+ * @return Les dégâts affliger à l'adversaire
+ */
 float calculDegat(const int niveauAttaquant, int pointAttaque, int pointDefense, const boolean attaquantEstNocture, const boolean defenseurEstNocturne) {
   printf("%d", niveauAttaquant);
     if (defenseurEstNocturne) {
@@ -134,11 +171,12 @@ float calculDegat(const int niveauAttaquant, int pointAttaque, int pointDefense,
 
 
 /**
- * @brief 
+ * @brief Applique les dégâts à l'entité
  * 
- * @param entite L'entité qui subbit les dégats
+ * @param entite Un pointeur sur l'entité qui subbit les dégats
  * @param degat Les dégats à infliger
- * @return VRAI si l'entité est mort
+ * 
+ * @return VRAI si l'entité est morte, FAUX sinon
  */
 boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
     entite->statistiques.pv -= degat;
@@ -151,26 +189,42 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
 
 
 /**
- * @brief 
+ * @brief Met un coup à l'entité cible
  * 
- * @param entite 
- * @param cible 
+ * @param entite Un pointeur sur l'entité mettant le coup
+ * @param cible Un pointeur sur l'entité recevant le coup
+ * @param angleAttaque L'angle dans lequel l'entité attaque
+ * @param range Le rayon dans lequel l'entité attaquante peut touché sa cible
  */
 void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque, const float range) {
     if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
         printf("CIBLE TOUCHE\n");
 
+<<<<<<< HEAD
+=======
+        // Lorsque le mob cible est touché, le mob cible se met en mode combat
+        // et il prend pour cible le mob attaquant
+        if (cible->entiteType == ENTITE_MOB) {
+            ((t_mob*)cible)->deplacementType = DEPLACEMENT_COMBAT;
+            ((t_mob*)cible)->cible = entite;
+        }
+
+>>>>>>> entite
 
         float degat = calculDegat(entite->statistiques.niveau, entite->statistiques.attaque, cible->statistiques.defense, FAUX, FAUX);
         // Modificateur si il y a armes
         // Modificateur si il y a armure
-
         const boolean cibleEstMorte = appliquerDegat(cible, degat);
+
+
+        // Knockback
+        
+
 
 
         // mort(cible);
         if (cibleEstMorte) {
-            
+            finCombat((t_mob*)entite);
             // Calcul experience
             // distribution experience
             // drops items
@@ -230,7 +284,6 @@ void mort(t_entiteVivante *entite) {
 
         default:
             entite->statistiques.pv = 0;
-            // entite->detruire(&entite);
             break;
     }
 }

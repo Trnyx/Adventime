@@ -29,13 +29,14 @@
 
 
 /**
- * @brief 
+ * @brief Convertie la position relative en position pixel par rapport à l'écran
  * 
- * @param coordonnee 
- * @param offset 
- * @param origine 
- * @param tailleRendu 
- * @return int 
+ * @param coordonnee La cooronnée originale en jeu
+ * @param offset Le décalage de bloc [0; 1[ 
+ * @param origine L'origine à laquelle sera rapporté les coordonnée relative en jeu
+ * @param tailleRendu La taille (en pixel) du rendu
+ * 
+ * @return La position relative en jeu converti en pixel sur écran
  */
 int positionRelativeEnPositionSurEcran(const float coordonnee, const float offset, const float origine, const float tailleRendu) {
     return (((coordonnee * tailleRendu) - (origine * tailleRendu)) - (offset * tailleRendu));
@@ -63,6 +64,13 @@ int positionRelativeEnPositionSurEcran(const float coordonnee, const float offse
 
 
 
+/**
+ * @brief Dessine le calque dit ambiance
+ * 
+ * Le calque d'ambiance permet d'indiquer au joueur la période de la journée dans laquelle il se trouve
+ * 
+ * @param temps Un pointeur sur le temps en jeu
+ */
 void dessinerCalqueAmbiance(t_temps *temps) {
     SDL_Rect calque;
     calque.x = calque.y = 0;
@@ -108,7 +116,7 @@ void dessinerCalqueAmbiance(t_temps *temps) {
  * @param map 
  */
 void afficherCamera(t_map *map) {
-    t_camera *camera = moteur->camera;
+    // t_camera *camera = moteur->camera;
     // camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
     // camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
 
@@ -200,24 +208,20 @@ void afficherCamera(t_map *map) {
 
 
 /**
- * @brief 
+ * @brief Actualise toutes les informations de la caméra
  * 
- * @param position 
+ * @param position La position à laquelle la caméra doit être placé
  */
 void updateCamera(const t_vecteur2 position) {
     // printf("Update Camera => ");
     t_camera *camera = moteur->camera;
-    camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
-    camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
-
-    // const float origineX = (camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
-    // const float origineY = (camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
+    
+    camera->position = position;
     camera->origine.x = (camera->position.x - TAILLE_CAMERA_DEMI_LARGEUR);
     camera->origine.y = (camera->position.y - TAILLE_CAMERA_DEMI_HAUTEUR);
     camera->offset.x = (camera->position.x - (int)camera->position.x);
     camera->offset.y = (camera->position.y - (int)camera->position.y);
 
-    camera->position = position;
     // printf("%1.2f:%1.2f => ", position.x, position.y);
     // printf("Fin Update Camera\n");
 }
@@ -232,10 +236,11 @@ void updateCamera(const t_vecteur2 position) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour une caméra et la créée
  * 
- * @param position 
- * @return t_camera* 
+ * @param position La position à laquelle la caméra doit être créée
+ * 
+ * @return Un pointeur sur la caméra créée, NULL si echec
  */
 t_camera* creerCamera(const t_vecteur2 position) {
     printf("Creation camera => ");
@@ -243,7 +248,6 @@ t_camera* creerCamera(const t_vecteur2 position) {
 
     if (camera == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour la caméra\n");
-        free(camera);
         return NULL;
     }
 
@@ -268,9 +272,9 @@ t_camera* creerCamera(const t_vecteur2 position) {
 
 
 /**
- * @brief 
+ * @brief Detruit une camera est libère la mémoire allouée pour cette dernière
  * 
- * @param camera 
+ * @param camera L'adrese du pointeur de la camera à détruire
  */
 void detruireCamera(t_camera **camera) {
     printf("Destruction Camera => ");

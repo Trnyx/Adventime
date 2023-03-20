@@ -39,9 +39,11 @@
 #include "../include/physique.h"
 #include "../include/utilitaire.h"
 #include "../include/moteur.h"
-#include "../include/mob.h"
+#include "../include/audio.h"
 #include "../include/deplacement.h"
 #include "../include/combat.h"
+
+#include "../include/mob.h"
 
 
 
@@ -59,6 +61,12 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ * @param mob 
+ * @param distanceFinale 
+ */
 void attaquer(t_mob *mob, const float distanceFinale) {
     deplacerVers(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_ATTAQUE, mob->positionDeplacement);
     
@@ -66,8 +74,7 @@ void attaquer(t_mob *mob, const float distanceFinale) {
         printf("COMBAT => ");
         metUnCoup((t_entiteVivante*)mob, mob->cible, calculAngleEntrePoints(mob->position, mob->positionDeplacement), 1.4);
 
-        mob->timestampAttaque = moteur->frame;
-        mob->delaiAttenteAttaque = getNombreAleatoire(2, 5);
+        mob->cooldownAttaque = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_ATTAQUE, MOB_DELAI_MAX_ENTRE_ATTAQUE);
         mob->operation = ATTENTE;
     }
 }
@@ -76,6 +83,12 @@ void attaquer(t_mob *mob, const float distanceFinale) {
 
 
 
+/**
+ * @brief 
+ * 
+ * @param mob Un pointeur sur le mob qui combat
+ * @param distance La distance entre le mob et sa cible
+ */
 void combatMob(t_mob *mob, float distance) {
     if (mob->operation == ATTAQUE) {
         distance = calculDistanceEntrePoints(mob->position, mob->positionDeplacement);
@@ -85,7 +98,7 @@ void combatMob(t_mob *mob, float distance) {
     else {
         // Si la cible est trop loin
         if (distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
-            mob->deplacementType = DEPLACEMENT_NORMAL;
+            finCombat(mob);       
         }
 
         // Sinon Si la cible est dans le rayon de positionnement
@@ -95,11 +108,13 @@ void combatMob(t_mob *mob, float distance) {
 
         // Sinon Si la cible est dans le rayon d'attaque
         else if (distance <= MOB_RAYON_COMBAT_ATTAQUE && distance > MOB_RAYON_COMBAT_RETRAIT) {
-            if (mob->timestampActualisation - mob->timestampAttaque > mob->delaiAttenteAttaque * 1000) {
+            if (mob->cooldownAttaque == 0) {
                 mob->operation = ATTAQUE;
             }
-            else
+            else {
+                --(mob->cooldownAttaque);
                 mob->operation = SE_DEPLACE_AUTOUR;
+            }
         }
 
         // Sinon Si la cible est trop proche 
@@ -116,29 +131,41 @@ void combatMob(t_mob *mob, float distance) {
 
 
 /**
- * @brief 
+ * @brief Actualise un mob
  * 
- * @param mob 
- * @param distance 
+ * Toute la logique propre aux mobs est gérer dans cette fonction
+ * 
+ * @param mob Un pointeur sur le mob qui doit être actualisé
+ * @param distance La distance entre le mob est le joueur
  */
 void updateMob(t_mob* mob, float distance) {
-    if (mob->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
-        mob->deplacementType = DEPLACEMENT_NORMAL;
-        mob->cible = NULL;
-        mob->operation = ATTENTE;
+    /* -------------------------------- Bruitage -------------------------------- */
+
+    if (mob->cooldownBruitage > 0) {
+        --(mob->cooldownBruitage);
+    }
+    else {
+        const float angle = calculAngleEntrePoints(moteur->cache->monde->joueur->position, mob->position);
+        play_sonAmbiance(mob->tag, angle, distance);
+        mob->cooldownBruitage = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_BRUIT, MOB_DELAI_MAX_ENTRE_BRUIT);
     }
 
 
-    if (mob->deplacementType == DEPLACEMENT_COMBAT) {
+
+    /* --------------------------------- Combat --------------------------------- */
+
+    if (mob->deplacementType == DEPLACEMENT_COMBAT) {        
         distance = calculDistanceEntreEntites((t_entite*)mob, (t_entite*)mob->cible);
         combatMob(mob, distance);
     } 
 
 
 
+    /* ------------------------------- Déplacement ------------------------------ */
+
     if (mob->operation == SE_DEPLACE_AUTOUR) {
         // Deplacement autour de la cible
-        deplacerAutour(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_AUTOUR, mob->positionDeplacement);
+        deplacerAutour(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_AUTOUR, mob->cible->position);
     }
 
     else if (mob->operation == SE_DEPLACE_VERS) {
@@ -179,22 +206,31 @@ void updateMob(t_mob* mob, float distance) {
         if (mob->position.x != mob->positionDeplacement.x || mob->position.y != mob->positionDeplacement.y) {
             const float distanceRestante = calculDistanceEntrePoints(mob->position, mob->positionDeplacement);
 
-            // if ((mob->timestampActualisation - mob->timestampDebutDeplacement <= (MOB_DUREE_DEPLACEMENT * 1000)) && distanceRestante > 0.1) {
-            if ((mob->timestampActualisation - mob->timestampDebutDeplacement > (MOB_DUREE_DEPLACEMENT * 1000)) || distanceRestante <= 0.1) {
-                finDeplacement(mob);
+            if (distanceRestante > 0.1) {
+                deplacerVers(mob, mob->statistiques.vitesse, mob->positionDeplacement);
+                --(mob->timerDeplacement);
             }
             else {
-                deplacerVers(mob, mob->statistiques.vitesse, mob->positionDeplacement);
+                finDeplacement(mob);
+            }
+
+
+            if (mob->timerDeplacement == 0) {
+                finDeplacement(mob);
             }
         }
 
         else {
-            if (mob->timestampActualisation - mob->timestampFinDeplacement > mob->delaiAttenteDeplacement * 1000) {
+            if (mob->cooldownDeplacement) {
+                --(mob->cooldownDeplacement);
+                // printf("%i\n",mob->cooldownDeplacement);
+            }
+            else {
                 const int probabilite = getNombreAleatoire(1, 100);
 
 
                 if (probabilite <= PROBABILITE_MOUVEMENT_AUCUN) {
-                    mob->delaiAttenteDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
+                    mob->cooldownDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
                 }
 
                 else if (probabilite <= PROBABILITE_MOUVEMENT_ROTATION) {
@@ -203,7 +239,7 @@ void updateMob(t_mob* mob, float distance) {
                     const float angle = getNombreAleatoire(0, 360);
                     orienterEntite(angle, (t_entite*)mob);
 
-                    mob->delaiAttenteDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
+                    mob->cooldownDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
                 }
 
                 else if (probabilite <= PROBABILITE_MOUVEMENT_DEPLACEMENT) {
@@ -215,7 +251,6 @@ void updateMob(t_mob* mob, float distance) {
                         mob->position.y + pointARejoindre.y,
                     };
 
-                    // printf("Point : %1.2f:%1.2f => ", pointARejoindre.x, pointARejoindre.y);
                     
                     // Si le point choisit et un point valide
                     if (blockEstDansLaMap(positionFinale.x, positionFinale.y)) {
@@ -224,11 +259,12 @@ void updateMob(t_mob* mob, float distance) {
                         mob->positionDeplacement.y = positionFinale.y;
 
                         printf("Position target : %1.2f:%1.2f\n", mob->positionDeplacement.x, mob->positionDeplacement.y);
-                        mob->timestampDebutDeplacement = mob->timestampActualisation;
+                        mob->timerDeplacement = MOB_DUREE_DEPLACEMENT;
                     }
                 }
             }
         }
+
 
     }
 }
@@ -243,9 +279,9 @@ void updateMob(t_mob* mob, float distance) {
 
 
 /**
- * @brief 
+ * @brief Detruit un mob est libère la mémoire allouée pour ce dernier
  * 
- * @param mob 
+ * @param mob L'adrese du pointeur du mob à détruire
  */
 void detruireMob(t_mob **mob) {
     printf("Destruction Mob => ");
@@ -267,16 +303,16 @@ void detruireMob(t_mob **mob) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour un mob et le créé
  * 
- * @param position 
- * @return t_mob* 
+ * @param position La position à laquelle le mob doit apparaitre
+ * 
+ * @return Un pointeur sur le mob, NULL en cas d'echec
  */
 t_mob* creerMob(const t_vecteur2 position) {
     t_entite *entite = creerEntite(position);
     t_mob *mob = realloc(entite, sizeof(t_mob));
-    const int t = SDL_GetTicks();
-
+    
 
     mob->entiteType = ENTITE_MOB;
     mob->aggressif = FAUX;
@@ -288,17 +324,17 @@ t_mob* creerMob(const t_vecteur2 position) {
 
     mob->positionDeplacement.x = position.x;
     mob->positionDeplacement.y = position.y;
-    mob->timestampDebutDeplacement = t;
-    mob->timestampFinDeplacement = t;
-    mob->delaiAttenteDeplacement = 10;
+    mob->timerDeplacement = 0;
+    mob->cooldownDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
 
     mob->deplacementType = DEPLACEMENT_STATIQUE;
     mob->operation = ATTENTE;
+    mob->gamma = 0.0;
 
 
-    // Attaque
-    mob->timestampAttaque = t;
-    mob->delaiAttenteAttaque = 0;
+    // cooldown
+    mob->cooldownAttaque = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_ATTAQUE, MOB_DELAI_MAX_ENTRE_ATTAQUE);
+    mob->cooldownBruitage = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_BRUIT, MOB_DELAI_MAX_ENTRE_BRUIT);
 
 
     mob->detruire = (void (*)(t_entite**)) detruireMob;

@@ -12,12 +12,26 @@
 #include <stdlib.h>
 #include <time.h>
 
+// #include "../include/NanoId/nanoid.h"
+
 #include "../include/monde.h"
+#include "../include/boss.h"
 
 
 
 
 
+/**
+ * srand(unsigned int seed) permet de définir le "seed" utilisé par la fonction rand()
+ * grâce au "seed", la fonction rand() donnera toujours les mêmes valeurs
+ * 
+ * Prenons par exemple les 5 premières génération du seed 123 :
+ *  seed        : 123
+ *  résultats   : 128959393 / 1692901013 / 436085873 / 748533630 / 776550279
+ * 
+ *  => Pour le seed "123", les 5 premières au début de l'execution du code 
+ *     suivra toujours cet ordre
+ */
 /**
  * @brief Set the Generation Seed object
  * 
@@ -40,13 +54,60 @@ unsigned int setGenerationSeed(unsigned int seed) {
  * @return t_vecteur2 
  */
 t_vecteur2 getPointApparitionJoueur(t_map *map) {
-    const int centre = (TAILLE_MAP * TAILLE_CHUNK) / 2;
-    
-    
-    const float x = centre, y = centre;
+    // const int centre = (TAILLE_CHUNK) / 2;
+
+    t_chunk *chunk = NULL;
+    t_block *block = NULL;
+
+    while (chunk == NULL) {
+        t_vecteur2 chunkPosition = {
+            getNombreAleatoire(1, TAILLE_MAP - 2),
+            getNombreAleatoire(1, TAILLE_MAP - 2),
+        };
 
 
-    t_vecteur2 position = { x, y };
+        chunk = getChunk(chunkPosition.x, chunkPosition.y, COUCHE_SOL, map);
+
+
+        if (chunk == NULL)
+            continue;
+
+        if (chunk->biome == BIOME_PROFONDEUR || chunk->biome == BIOME_LAC) {
+            chunk = NULL;
+        }
+    }
+
+
+    while (block == NULL) {
+        t_vecteur2 blockPosition = {
+            getNombreAleatoire(0, TAILLE_CHUNK - 1),
+            getNombreAleatoire(0, TAILLE_CHUNK - 1),
+        };
+
+
+        block = getBlockDansChunk(blockPosition.x, blockPosition.y, chunk);
+
+
+        if (block == NULL)
+            continue;
+
+        if (block->tag == SOL_EAU_PROFONDE || block->tag == SOL_EAU) {
+            block = NULL;
+            continue;
+        }
+
+
+        chunk = getChunk(chunk->position.x, chunk->position.y, COUCHE_OBJETS, map);
+        block = getBlockDansChunk(blockPosition.x, blockPosition.y, chunk);
+
+        if (block->tag != VIDE) {
+            block = NULL;
+            continue;
+        }
+    }
+    
+
+    t_vecteur2 position = { block->position.x, block->position.y };
     return position;
 }
 
@@ -76,6 +137,10 @@ t_monde* creerMonde(int seed) {
     }
 
 
+    // monde->id = generate(LONGUEUR_ID);
+    // printf("ID : %s\n", monde->id);
+
+
     if (seed == -1) {
         seed = setGenerationSeed(time(NULL));
     }
@@ -84,12 +149,24 @@ t_monde* creerMonde(int seed) {
     }
 
 
+    // Seed
     monde->seed = seed;
+
+    // Maps
     monde->overworld = genererMap(MAP_OVERWORLD);
+    // monde->caverne = genererMap(MAP_CAVE);
 
-    // t_vecteur2 position = getPointApparitionJoueur(map);
-    // t_joueur *joueur = creerJoueur(position.x, position.y);
+    // Timestampoverworld
+    monde->timestampRenouvellement = time(NULL);
 
+
+    // Joueur
+    t_vecteur2 position = getPointApparitionJoueur(monde->overworld);
+    monde->pointApparitionDefaut = position;
+    monde->pointApparition.x = -1.0;
+    monde->pointApparition.y = -1.0;
+
+    monde->bossFlags = initialiserBossFlags();
 
     return monde;
 }
@@ -104,9 +181,9 @@ t_monde* creerMonde(int seed) {
 
 
 /**
- * @brief 
+ * @brief Detruit un monde est libère la mémoire allouée pour ce dernier
  * 
- * @param monde 
+ * @param monde L'adrese du pointeur du monde à détruire
  */
 void detruireMonde(t_monde **monde) {
     printf("Destruction Monde => ");

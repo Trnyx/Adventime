@@ -24,8 +24,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../include/map.h"
 #include "../include/physique.h"
+#include "../include/map.h"
+#include "../include/animal.h"
 
 
 
@@ -64,6 +65,7 @@ const int probabilitesBiomes[NB_BIOMES] = {
  * 
  * @param x La coordonnée x du block (coordonnée relative au chunk)
  * @param y La coordonnée y du block (coordonnée relative au chunk)
+ * 
  * @return Vrai si le block se situe bien dans un chunk, faux sinon
  * 
  * @version 1.1
@@ -78,6 +80,7 @@ int blockEstDansLeChunk(const int x, const int y) {
  * 
  * @param x La coordonnée x du block (cordonnée relative à la map)
  * @param y La coordonnée y du block (cordonnée relative à la map)
+ * 
  * @return Vrai si le block se situe bien dans la map, faux sinon
  * 
  * @version 1.1
@@ -93,6 +96,7 @@ int blockEstDansLaMap(const int x, const int y) {
  * @param x La coordonnée x du chunk
  * @param y La coordonnée y du chunk
  * @param z La coordonnée z du chunk (correspond à la couche du chunk)
+ * 
  * @return Vrai si le chunk se situe bien dans la map, faux sinon
  * 
  * @version 1.1
@@ -113,6 +117,7 @@ int chunkEstDansLaMap(const int x, const int y, const int z) {
  * 
  * @param alentours Un tableau regroupant la quantité des éléments se situant autour de l'objet initialement observé
  * @param nbElementsAlentours Le nombre d'éléments contenue dans le tableau alentours
+ * 
  * @return Une structure composé du tag de l'objet prédominant ainsi que le nombre de fois où il est apparue
  * 
  * @version 1.2
@@ -148,6 +153,7 @@ t_predominance getPredominance(int alentours[], const int nbElementsAlentours) {
  * 
  * @param xChunk La coordonnée x du chunk
  * @param yChunk La coordonnée y du chunk
+ * 
  * @return Le tag du biome sélectionné
  * 
  * @version 1.1
@@ -173,6 +179,7 @@ e_biome selectionBiome(const int xChunk, const int yChunk) {
  * @brief Selectionne le tag d'un block (sol)
  * 
  * @param biome Le biome dans lequel le block se situe
+ * 
  * @return Le tag du block sélectionné
  * 
  * @version 1.2
@@ -214,6 +221,7 @@ e_solTag selectionBlock(const e_biome biome) {
  * 
  * @param biomePredominant Le biome prédominant autour du chunk
  * @param biomeActuel Le biome du chunk à modifier
+ * 
  * @return Le nouveau biome
  * 
  * @version 1.2
@@ -272,6 +280,7 @@ e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) {
  * 
  * @param blockPredominant Le tag du block prédominant autour du block
  * @param blockActuel Le tag du block à modifier
+ * 
  * @return Le nouveau tag du block
  * 
  * @version 1.2
@@ -298,6 +307,7 @@ e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
  * 
  * @param chunk Le chunk central
  * @param map La map dans laquelle se situent les différents chunks
+ * 
  * @return Un tableau contenant le nombre d'occurence des biomes alentours
  * 
  * @version 1.2
@@ -332,6 +342,7 @@ int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
  * @param xBlock La coordonnée x (relative à la map) du block central
  * @param yBlock La coordonnée y (relative à la map) du block central
  * @param map La map dans laquelle se situent les différents blocks
+ * 
  * @return Un tableau contenant le nombre d'occurence des tags des blocks alentours
  * 
  * @version 1.1
@@ -513,6 +524,7 @@ void normalisationDeLaMap(t_map* map) {
  * @param x La coordonnée x du chunk
  * @param y La coordonnée y du chunk
  * @param z La coordonnée z du chunk
+ * 
  * @return Le chunk initialisé 
  * 
  * @version 1.2
@@ -549,6 +561,7 @@ t_chunk initialisationChunk(const int x, const int y, const int z) {
  * @param y La coordonnée y du block (relative au chunk)
  * @param chunk Le chunk dans lequel le block se situe
  * @param estVide Si le bloc à initialisé doit être vide
+ * 
  * @return Le block généré
  * 
  * @version 1.2
@@ -577,9 +590,10 @@ t_block generationBlock(const int x, const int y, const t_chunk *chunk, const bo
  * @param chunk Un pointeur sur le chunk qui a été préalablement initialisé
  * @param map Un pointeur sur la map dans laquelle le chunk se situe
  * @param estVide Si le chunk à générer doit être vide
+ * 
  * @return Un pointeur sur le chunk généré
  * 
- * @version 1.3
+ * @version 1.4
  */
 t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
     for (int x = 0, i = 0; x < TAILLE_CHUNK; x++) {
@@ -599,6 +613,7 @@ t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
         lissageDuChunk(chunk, map, 7 - i);
     }
 
+    lissageDuChunk(chunk, map, 3);
     lissageDuChunk(chunk, map, 5);
 
 
@@ -612,6 +627,7 @@ t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
  * @brief 
  * 
  * @param map 
+ * 
  * @return t_map* 
  */
 t_map* genererOverworld(t_map *map) {
@@ -649,8 +665,10 @@ t_map* genererOverworld(t_map *map) {
     }
 
 
+    // Generer Village
     genererVegetations(map);
-
+    
+    // Genrerer Entree Caverne
     genererAnimaux(map);
 
 
@@ -680,7 +698,11 @@ t_map* genererMap(e_mapType type) {
     }
 
 
-    map->type = type;     
+    map->type = type;
+    // map->nombreEntites = 0;
+    // map->entites = NULL;
+    map->entites = malloc(sizeof(t_liste));
+    init_liste(map->entites);
 
     switch (type) {
         case MAP_OVERWORLD: genererOverworld(map); break;
@@ -689,11 +711,6 @@ t_map* genererMap(e_mapType type) {
             break;
     }
 
-
-    // map->nombreEntites = 0;
-    // map->entites = NULL;
-    map->entites = malloc(sizeof(t_liste));
-    init_liste(map->entites);
     
 
     printf("Succes\n");
@@ -713,8 +730,7 @@ t_map* genererMap(e_mapType type) {
  * @brief 
  * 
  * @param block 
- * @return int 
- * 
+ *  
  * @version 1.1
  */
 int detruireBlock(t_block **block) {
@@ -731,7 +747,6 @@ int detruireBlock(t_block **block) {
  * @brief 
  * 
  * @param chunk 
- * @return int 
  * 
  * @version 1.2
  */
@@ -751,7 +766,6 @@ int detruireChunk(t_chunk **chunk) {
  * @brief 
  * 
  * @param map 
- * @return int 
  * 
  * @version 1.2
  */

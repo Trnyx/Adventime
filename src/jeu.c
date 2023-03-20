@@ -18,10 +18,9 @@
 #include "../include/jeu.h"
 #include "../include/physique.h"
 #include "../include/initialiseur.h"
-#include "../include/textures.h"
 #include "../include/moteur.h"
 #include "../include/audio.h"
-#include "../include/main.h"
+#include "../include/textures.h"
 #include "../include/monde.h"
 #include "../include/joueur.h"
 #include "../include/input_manager.h"
@@ -33,28 +32,14 @@
 
 
 
-static void chargerEntitesDansCache(t_liste *cache, t_liste *entitesActuelles) {
-    if (!liste_vide(entitesActuelles)) {
-        en_tete(entitesActuelles);
-        en_tete(cache);
-
-        t_entite *entite = NULL;
-
-        while (!hors_liste(entitesActuelles)) {
-            valeur_elt(entitesActuelles, &entite);
-
-            ajout_droit(cache, entite);
-            
-            suivant(entitesActuelles);
-            suivant(cache);
-        }
-    }
-}
 
 
 
-
-
+/**
+ * @brief Vide toutes les entités de la liste donné
+ * 
+ * @param liste Pointeur sur la liste 
+ */
 static void viderEntitesDeListe(t_liste *liste) {
     t_entite *entite = NULL;
 
@@ -70,6 +55,14 @@ static void viderEntitesDeListe(t_liste *liste) {
 
 
 
+/**
+ * @brief Charge une map dans le cache
+ * 
+ * @param monde Le monde dans lequel est récupéré la map à charger
+ * @param type Le type de la map à charger
+ * 
+ * @return Un pointeur sur la map chargée
+ */
 static t_map* loadMap(t_monde *monde, e_mapType type) {
     t_map *map = NULL;
 
@@ -79,7 +72,7 @@ static t_map* loadMap(t_monde *monde, e_mapType type) {
             map = monde->overworld;
             break;
         case MAP_CAVE: 
-            map = monde->overworld;
+            map = monde->caverne;
             break;
         // case MAP_BOSS_TEMPLE: 
         //    map = getTempleBoss();
@@ -100,10 +93,18 @@ static t_map* loadMap(t_monde *monde, e_mapType type) {
 
 
 
+/**
+ * @brief Gère tout le fonctionnement d'une partie
+ * 
+ * @param monde Le monde dans lequel le joueur est entrain de jouer
+ * 
+ * @return int 
+ */
 static int adventime(t_monde *monde) {
     t_cache *cache = moteur->cache;
     t_joueur *joueur = monde->joueur;
 
+    // La map dans laquelle se situe au début de la partie
     e_mapType mapType = joueur->map;
     loadMap(monde, mapType);
     updateCamera(joueur->position);
@@ -156,17 +157,30 @@ static int adventime(t_monde *monde) {
 
 
 
+
+
 /**
- * @brief 
+ * @brief Création d'un nouveau monde 
  * 
  * @return int 
  */
 static int nouveauMonde() {
     int seed = -1;
     t_monde *monde = creerMonde(seed);
+    monde->joueur = creerJoueur(monde->pointApparitionDefaut);
 
-    const t_vecteur2 positionJoueur = getPointApparitionJoueur(monde->overworld);
-    monde->joueur = creerJoueur(positionJoueur);
+    /* ---------------------------------- Cache --------------------------------- */
+    moteur->cache->monde = monde;
+
+    return adventime(monde);
+}
+
+
+
+static int chargerMonde() {
+    t_monde *monde = NULL;
+
+    // Charger le monde depuis la sauvegarde
 
     /* ---------------------------------- Cache --------------------------------- */
     moteur->cache->monde = monde;
@@ -179,15 +193,21 @@ static int nouveauMonde() {
 
 
 /**
- * @brief 
+ * @brief Lance une partie dans un monde en fonction de l'action
  * 
- * @param action 
- * @return state_main 
+ * @param action Le choix si on créer un nouveau monde où si on charge un monde exustant
+ * 
+ * @return L'état indiquant le fait qu'il faut retourner au menu principal
  */
 state_main jouer(e_actionMonde action) {
     switch (action) {
         default:
+        case MONDE_CREER:
             nouveauMonde();
+            break;
+            
+        case MONDE_CHARGER:
+            chargerMonde();
             break;
     }
 

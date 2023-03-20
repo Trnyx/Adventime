@@ -1,3 +1,17 @@
+/**
+ * @file structures.h
+ *
+ * @brief 
+ *
+ * @author Clément Hibon
+ * @date 10 mars
+ * @version 1.1
+ */
+
+
+
+
+
 #ifndef _JEU_STRUCTURES_
 #define _JEU_STRUCTURES_
 

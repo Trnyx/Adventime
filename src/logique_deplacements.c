@@ -14,6 +14,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 #include "../include/utilitaire.h"
 #include "../include/physique.h"
@@ -31,23 +32,39 @@
 
 
 /**
- * @brief 
+ * @brief Termine les déplacement du mob
  * 
- * @param mob 
+ * @param mob Un pointeur sur le mob qui se déplace
  */
 void finDeplacement(t_mob *mob) {
     printf("FIN DEPLACEMENT\n");
     mob->positionDeplacement = mob->position;
-    mob->timestampFinDeplacement = mob->timestampActualisation;
-    mob->delaiAttenteDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
+    mob->cooldownDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
 }
 
 
 
 
 
-static void orienterVersCible(t_mob *mob) {
+/**
+ * @brief Oriente le mob vers une position
+ * 
+ * @param mob Un pointeur sur le mob qui doit être orienté
+ */
+static void orienterVersPosition(t_mob *mob) {
     const float angle = calculAngleEntrePoints(mob->position, mob->positionDeplacement);
+    orienterEntite(angle, (t_entite*)mob);
+}
+
+
+
+/**
+ * @brief Oriente le mob vers sa cible
+ * 
+ * @param mob Un pointeur sur le mob qui doit être orienté
+ */
+static void orienterVersCible(t_mob *mob) {
+    const float angle = calculAngleEntrePoints(mob->position, mob->cible->position);
     orienterEntite(angle, (t_entite*)mob);
 }
 
@@ -56,47 +73,122 @@ static void orienterVersCible(t_mob *mob) {
 
 
 /**
- * @brief 
+ * @brief Déplace un mob vers une position cible
  * 
- * @param mob 
- * @param cible 
+ * @param mob Un pointeur sur le mob qui doit se déplacer
+ * @param vitesse La vitesse de déplacement du mob
+ * @param cible La position cible que doit rejoindre le mob
  */
 void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
-    printf("Deplacer vers => %1.2f:%1.2f\n", cible.x, cible.y);
+    printf("Deplacer vers => %1.2f:%1.2f (%i : %s)\n", cible.x, cible.y, mob->tag, mob->id);
     mob->direction.x = (cible.x - mob->position.x);
     mob->direction.y = (cible.y - mob->position.y);
 
     deplacerEntite((t_entite*)mob, vitesse);
+    orienterVersPosition(mob);
+}
+
+
+
+/**
+ * @brief Deplace un mob autour d'une position cible
+ * 
+ * @param mob Un pointeur sur le mob qui doit se déplacer
+ * @param vitesse La vitesse de déplacement
+ * @param cible La position cible autour de laquelle se déplace le mob
+ */
+void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
+    // printf("Deplacer autour => %1.2f:%1.2f ", cible.x, cible.y);
+
+    const e_rotation rotation = ROTATION_HORAIRE; // getNombreAleatoire(ROTATION_HORAIRE, ROTATION_ANTI_HORAIRE);
+
+
+    const float distance = calculDistanceEntrePoints(mob->position, cible);
+
+    // const double tanAlpha = (mob->position.y - cible.y) / (mob->position.x - cible.x);
+    // double alpha = atan(tanAlpha);
+
+
+    // printf("POSITION JOUEUR : %1.2f:%1.2f => ", cible.x, cible.y);
+    // printf("POSITION MONSTRE : %1.2f:%1.2f => ", mob->position.x, mob->position.y);
+    // printf("DISTANCE : %1.2f => ", distance);
+    
+    
+    mob->gamma = mob->gamma + 0.02;
+
+    // printf("GAMMA : %1.2f \n", gamma);
+    // printf("COS SIN : %1.2f / %1.2f \n", cos(gamma), sin(gamma));
+
+    const t_vecteur2 position = {
+        cos(mob->gamma) * distance,
+        sin(mob->gamma) * distance,
+    };
+
+
+    mob->positionDeplacement.x = position.x + cible.x;
+    mob->positionDeplacement.y = position.y + cible.y;
+    // printf("NOUVELLE POSITION : %1.2f:%1.2f", mob->positionDeplacement.x, mob->positionDeplacement.y);
+
+
+    mob->direction.x = (mob->positionDeplacement.x - mob->position.x);
+    mob->direction.y = (mob->positionDeplacement.y - mob->position.y);
+    
+
+    // const double tanAlpha = (mob->position.y - cible.y) / (mob->position.x - cible.x);
+    // double alpha = (atan(tanAlpha) * (180 / M_PI));
+    // printf("ANGLE %1.2f => ", alpha);
+
+    // const double gamma = 10 + alpha;
+
+    // const t_vecteur2 position = {
+    //     cos(gamma),
+    //     sin(gamma),
+    // };
+
+
+    // printf("POSITION : %.2f:%.2f\n", position.x, position.y);
+
+
+    // switch (rotation) {
+    //     case ROTATION_HORAIRE: 
+    //         mob->positionDeplacement.x += position.x;
+    //         mob->positionDeplacement.y += position.y;
+    //         break;
+
+    //     case ROTATION_ANTI_HORAIRE: 
+    //         mob->positionDeplacement.x -= position.y;
+    //         mob->positionDeplacement.y -= position.x;
+    //         break;
+        
+    //     default:
+    //         break;
+    // }
+
+
+    // mob->direction.x = (mob->positionDeplacement.x - mob->position.x);
+    // mob->direction.y = (mob->positionDeplacement.y - mob->position.y);
+
+
+    deplacerEntite((t_entite*)mob, vitesse);
     orienterVersCible(mob);
 }
 
 
 
 /**
- * @brief 
+ * @brief Deplace le mob en direction opposé à la cible
  * 
- * @param mob 
- * @param cible 
- */
-void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
-    // deplacerEntite((t_entite*)mob, mob->statistiques.vitesse / 3);
-}
-
-
-
-/**
- * @brief 
- * 
- * @param mob 
- * @param cible 
+ * @param mob Un pointeur sur le mob qui doit se déplacer
+ * @param vitesse La vitesse de déplacement
+ * @param cible La position de la cible de laquelle le mob s'éloigne
  */
 void seloigneDe(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
-    printf("Deplacer vers => %1.2f:%1.2f\n", cible.x, cible.y);
+    printf("S'eloigne de => %1.2f:%1.2f\n", cible.x, cible.y);
     mob->direction.x = (mob->position.x - cible.x);
     mob->direction.y = (mob->position.y - cible.y);
 
     deplacerEntite((t_entite*)mob, vitesse);
-    orienterVersCible(mob);
+    orienterVersPosition(mob);
 }
 
 
@@ -120,7 +212,7 @@ int deplacementNormal(t_mob *mob) {
     // Si le mob n'a pas atteint la position qu'il doit atteindre
     //  on le fait se déplacer en direction de son point
     // Sinon cela signifie qu'il peut se déplacer à nouveau
-    if (mob->timestampActualisation - mob->timestampFinDeplacement > mob->delaiAttenteDeplacement * 1000) {
+    if (mob->cooldownDeplacement == 0) {
 
         if (mob->position.x != mob->positionDeplacement.x || mob->position.y != mob->positionDeplacement.y) {
             // mob->direction.x = (mob->positionDeplacement.x - mob->position.x);
@@ -138,7 +230,7 @@ int deplacementNormal(t_mob *mob) {
             }
             else {
                 // finDeplacement(mob);
-                // mob->delaiAttenteDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
+                // mob->cooldownDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
             }
         }
         else {
@@ -176,7 +268,7 @@ int deplacementNormal(t_mob *mob) {
 
                     printf("Position target : %1.2f:%1.2f\n", mob->positionDeplacement.x, mob->positionDeplacement.y);
 
-                    mob->timestampDebutDeplacement = mob->timestampActualisation;
+                    mob->timerDeplacement = MOB_DUREE_DEPLACEMENT;
                 }
             }
         }
@@ -210,12 +302,13 @@ int deplacementAttaque(t_mob* mob, t_joueur *joueur, const int timestamp) {
     mob->direction.y = (joueur->position.x - mob->position.x);
 
 
-    if (timestamp - mob->timestampActualisation >= mob->delaiAttenteAttaque * 1000) {
+    if (mob->cooldownAttaque == 0) {
         vitesse = 5.0;
     }
     else {
         vitesse = 2.0;
     }
+
 
     deplacerEntite((t_entite*)mob, vitesse);
 
@@ -223,7 +316,6 @@ int deplacementAttaque(t_mob* mob, t_joueur *joueur, const int timestamp) {
     orienterEntite(angle, (t_entite*) mob);
 
 
-    
     return 0;
 }
 

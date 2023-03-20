@@ -1,7 +1,7 @@
 /**
  * @file deplacement.h
  * 
- * @brief 
+ * @brief Module de manipulation pour les déplacements
  * 
  * @author Clément Hibon
  * @date 3 mars

@@ -24,6 +24,11 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ * @param cache 
+ */
 void detruireCache(t_cache **cache) {
     if (cache != NULL && *cache != NULL) {
 
@@ -43,12 +48,16 @@ void detruireCache(t_cache **cache) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ * @return t_cache* 
+ */
 t_cache *initCache() {
     t_cache *cache = malloc(sizeof(t_cache));
 
     if (cache == NULL) {
-        free(cache);
-        
+        printf("Erreur mémoire ; Impossible d'allouer la mémoire nécessaire pour le cache\n");
         return NULL;
     }
 

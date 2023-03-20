@@ -33,11 +33,12 @@
 
 
 /**
- * @brief 
+ * @brief Vérifie si l'entité peut apparaître
  * 
- * @param position 
- * @param map 
- * @return boolean 
+ * @param position La position à laquelle l'entité doit apparaître
+ * @param map La map dans laquelle l'entité apparait
+ * 
+ * @return VRAI si l'entité peut apparaitre, FAUX sinon
  */
 boolean peutApparaitre(const t_vecteur2 position, t_map *map) {
     t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
@@ -73,12 +74,13 @@ boolean peutApparaitre(const t_vecteur2 position, t_map *map) {
 
 
 /**
- * @brief Get the Entites Alentour object
+ * @brief Obtient toutes les entités souhaités dans un rayon aux alentours d'une entité 
  * 
- * @param centre 
- * @param type 
- * @param range 
- * @return t_liste 
+ * @param centre L'entité centrale
+ * @param type Le type de l'entité à regarder
+ * @param range Le rayon dans lequel les entités seront "détecté"
+ * 
+ * @return Une liste contenant toutes les entités detectées aux alentours de l'entité centrale
  */
 t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range) {
     t_liste *entitesActuelles = moteur->cache->entites;
@@ -120,14 +122,59 @@ t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const floa
 
 
 /**
- * @brief 
+ * @brief Calcul la distance entre deux entités
  * 
- * @param entiteSource 
- * @param entiteCible 
- * @return float 
+ * @param entiteSource L'entité source
+ * @param entiteCible L'entité cible
+ * 
+ * @return La distance entre les deux entités
  */
 float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *entiteCible) {
     return calculDistanceEntrePoints(entiteSource->position, entiteCible->position);
+}
+
+
+
+
+
+/**
+ * @brief Pousse l'entité cible
+ * 
+ * @param source L'entité qui pousse
+ * @param cible L'entité poussé
+ */
+void pousseEntite(t_entite *source, t_entite *cible) {
+    t_vecteur2 deltaMouvement = {
+        cible->position.x - source->position.x,
+        cible->position.y - source->position.y,
+    };
+
+
+    float force = deltaMouvement.x >= deltaMouvement.y ? deltaMouvement.x : deltaMouvement.y;
+    force = abs(force);
+
+
+    if (force >= 0.01) {
+        force = sqrt(force);
+        deltaMouvement.x /= force;
+        deltaMouvement.y /= force;
+
+        float modifieur = 1.0 / force;
+        if (modifieur > 1.0) {
+            modifieur = 1.0;
+        }
+
+        deltaMouvement.x *= modifieur;
+        deltaMouvement.y *= modifieur;
+        deltaMouvement.x *= 0.05f;
+        deltaMouvement.y *= 0.05f;
+    }
+
+    
+    // Applique la force à l'entité cible
+    ((t_mob*)cible)->positionDeplacement.x += deltaMouvement.x;
+    ((t_mob*)cible)->positionDeplacement.y += deltaMouvement.y;
+
 }
 
 
@@ -140,12 +187,13 @@ float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *e
 
 
 /**
- * @brief 
+ * @brief Vérifie si l'entité peut se déplacer à la position suivante donnée
  * 
- * @param map 
- * @param entite 
- * @param positionSuivante 
- * @return boolean 
+ * @param map La map dans laqeulle l'entité se déplace
+ * @param entite L'entité se déplaçant
+ * @param positionSuivante La position suivante à laquelle l'entité doit se déplacer
+ * 
+ * @return VRAI si l'entité peut se déplacer, FAUX sinon
  */
 boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positionSuivante) {
     t_block *block = getBlockDansMap(positionSuivante.x, positionSuivante.y, COUCHE_OBJETS, map);
@@ -172,8 +220,8 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
         return FAUX;
 
 
-    // Check si collision
-    t_liste entitesAlentours = getEntitesAlentour(entite, ENTITE_MOB, (entite->hitbox.w * entite->taille) / 2);
+    // Check si il y a une collision avec les entités autour
+    t_liste entitesAlentours = getEntitesAlentour(entite, ENTITE_MOB, (entite->hitbox.w * entite->taille) * 0.8);
 
     if (!liste_vide(&entitesAlentours)) {
         t_entite *entiteTempo = NULL;
@@ -189,8 +237,11 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
             valeur_elt(&entitesAlentours, &entiteTempo);
 
 
-            if (SDL_HasIntersectionF(&hitbox, &entiteTempo->hitbox)){
-                printf("COLLISION : \n");
+            if (SDL_HasIntersectionF(&hitbox, &entiteTempo->hitbox)) {
+                pousseEntite(entite, entiteTempo);
+                // entiteTempo->position.x;
+                // entiteTempo->position.y;
+
                 return FAUX;
             }
                     
@@ -206,11 +257,12 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
 
 
 /**
- * @brief 
+ * @brief Déplace une entité
  * 
- * @param entite 
- * @param vitesse 
- * @return boolean 
+ * @param entite Un pointeur sur l'entité à déplacer
+ * @param vitesse La vitesse à laquelle l'entité doit se déplacer 
+ * 
+ * @return VRAI si l'entié à pu se déplacer, FAUX sinon
  */
 boolean deplacerEntite(t_entite *entite, const float vitesse) {
     const float distance = vitesse * TPS / 1000.0;
@@ -247,15 +299,15 @@ boolean deplacerEntite(t_entite *entite, const float vitesse) {
 
 
 /**
- * @brief 
+ * @brief Oriente l'entité
  * 
- * @param angle 
- * @param entite 
+ * Il y a quatre orientations : NORD, EST, OUEST et SUD
+ * 
+ * @param angle L'angle dans lequel l'entité regarde [0; 360[
+ * @param entite Pointeur sur l'entité à orienter
  */
 void orienterEntite(const float angle, t_entite *entite) {
-    if (!angle);
-
-    else if (angle >= 45 && angle < 135)
+    if (angle >= 45 && angle < 135)
         entite->orientation = NORD;
     else if (angle >= 135 && angle < 225)
         entite->orientation = EST;
@@ -275,10 +327,11 @@ void orienterEntite(const float angle, t_entite *entite) {
 
 
 #define TAILLE_SET (8 * TAILLE_TILE)
+
 /**
- * @brief 
+ * @brief Dessine l'entité sur l'écran
  * 
- * @param entite 
+ * @param entite Pointeur sur l'entite à afficher
  */
 void dessinerEntite(t_entite *entite) {
     SDL_Texture *texture = NULL;
@@ -307,8 +360,9 @@ void dessinerEntite(t_entite *entite) {
         case ENTITE_MOB:
             switch (entite->tag) {
                 case TAG_ANIMAL_VACHE: 
+                case TAG_ANIMAL_COCHON: 
                     texture = moteur->textures->animaux; 
-                    sprite.x = 0;
+                    sprite.x = (entite->tag - TAG_ANIMAL_VACHE) * (TAILLE_SET / 2);
                     break;
                 case TAG_MONSTRE_BASIC: 
                     texture = moteur->textures->monstres; 
@@ -366,9 +420,9 @@ void dessinerEntite(t_entite *entite) {
 
 
 /**
- * @brief 
+ * @brief Detruit une entité est libère la mémoire allouée pour cette dernière
  * 
- * @param entite 
+ * @param entite L'adrese du pointeur de l'entité à détruire
  */
 void detruireEntite(t_entite **entite) {
     printf("Destruction Entite => ");
@@ -394,17 +448,17 @@ void detruireEntite(t_entite **entite) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour une entité et la créée
  * 
- * @param position 
- * @return t_entite* 
+ * @param position La position à laquelle l'entité doit être créée
+ * 
+ * @return Un pointeur sur l'entité créée, NULL si echec
  */
 t_entite* creerEntite(const t_vecteur2 position) {
     t_entite *entite = malloc(sizeof(t_entite));
 
     if (entite == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer une entite\n");
-        free(entite);
         return NULL;
     }
 

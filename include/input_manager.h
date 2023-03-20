@@ -1,5 +1,6 @@
 /**
  * @file inputs_manager.h
+ * 
  * @brief
  *
  * @author Clément Hibon
