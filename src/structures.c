@@ -160,7 +160,7 @@ void genererVillage(t_map *map) {
 
         printf("GENERATION GRILLE => ");
         const t_discSampling grille = genererGrilleDiscSampling(min, max, nombreBatiment, 18, DISC_ALEATOIRE);
-        // grille.elementPositions[0] = centre;
+        grille.elementPositions[0] = centre;
 
 
         printf("%i => ", grille.nbElements);

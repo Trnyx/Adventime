@@ -159,12 +159,12 @@ t_temps* getTemps(t_temps *temps, const time_t timestamp) {
  */
 void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
     t_cache *cache = moteur->cache;
+    e_cycle cyclePrecedent = temps->cycleJeu;
+    e_periode periodePrecedente = temps->periode;
 
 
     /* ------------------------------ Actualisation ----------------------------- */
 
-    e_cycle cyclePrecedent = temps->cycleJeu;
-    e_periode periodePrecedente = temps->periode;
     getTemps(temps, timestamp);
     
 
@@ -173,7 +173,6 @@ void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
     // La musique du jeu dépend du moment de la journée dans le jeu
     // Lorsque l'on change de période, on change la musique
     if (periodePrecedente != temps->periode) {
-        audio->timestampDebutMusique = moteur->frame;
         selectionMusique(temps);
     }
 

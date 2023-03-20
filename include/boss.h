@@ -17,6 +17,13 @@
 
 
 
+#include "mob.h"
+#include "statistiques.h"
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */
 /* -------------------------------------------------------------------------- */
@@ -32,6 +39,21 @@ typedef struct s_boss_flags {
     unsigned int mercredi;
     unsigned int vendredi;
 } t_boss_flags;
+
+
+
+
+
+/**
+ * @struct t_boss
+ * @brief 
+ * 
+ */
+typedef struct s_boss {
+    struct s_mob;
+
+    
+} t_boss;
 
 
 
