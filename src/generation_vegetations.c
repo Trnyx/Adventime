@@ -72,7 +72,6 @@ e_vegetalTag selectionVegetation(e_solTag sol) {
             return SAPIN;
 
         default:
-            printf("ERREUR SOL : %i\n", sol);
             return HERBE;
     }
 }

@@ -161,23 +161,30 @@ void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
     t_cache *cache = moteur->cache;
 
 
+    /* ------------------------------ Actualisation ----------------------------- */
+
     e_cycle cyclePrecedent = temps->cycleJeu;
     e_periode periodePrecedente = temps->periode;
     getTemps(temps, timestamp);
     
 
+    /* --------------------------------- Musique -------------------------------- */
+
+    // La musique du jeu dépend du moment de la journée dans le jeu
+    // Lorsque l'on change de période, on change la musique
     if (periodePrecedente != temps->periode) {
-        if (cyclePrecedent != temps->cycleJeu) {
-            audio->timestampDebutMusique = moteur->frame;
-            selectionMusique(temps);
-        }
+        audio->timestampDebutMusique = moteur->frame;
+        selectionMusique(temps);
     }
 
 
+    /* ------------------------------- Evenements ------------------------------- */
 
     struct tm *tempsActuel = localtime(&timestamp);
     struct tm *dernierRenouvellement = localtime(&cache->monde->timestampRenouvellement);
 
+
+    // Renouvellement
     if (tempsActuel->tm_wday != dernierRenouvellement->tm_wday && tempsActuel->tm_hour >= HEURE_VRAI_RENOUVELLEMENT) {
         cache->monde->timestampRenouvellement = timestamp;
 

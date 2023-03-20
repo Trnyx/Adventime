@@ -20,6 +20,7 @@
 #include <SDL2/SDL_mixer.h>
 
 #include "utilitaire.h"
+#include "entite.h"
 #include "temps.h"
 
 
