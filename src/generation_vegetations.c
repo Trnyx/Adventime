@@ -118,7 +118,7 @@ void genererVegetations(t_map *map) {
                 rayon = 3.0;
 
 
-            t_discSampling grille = genererGrilleDiscSampling(min, max, nbVegetaux, rayon);
+            t_discSampling grille = genererGrilleDiscSampling(min, max, nbVegetaux, rayon, DISC_ALEATOIRE);
             if (grille.nbElements == 0) continue;
 
 

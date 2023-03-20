@@ -114,7 +114,7 @@ void ajouterPoint(t_discSampling *grille, const t_vecteur2 nouveauPoint, const i
  * 
  * @return La grille de points
  */
-t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vecteur2 maxGrille, int nbElementsObjectif, float rayon) {
+t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vecteur2 maxGrille, int nbElementsObjectif, float rayon, const e_disc_methode_gen methode) {
     t_discSampling grille;
 
     grille.minGrille = minGrille;
@@ -123,11 +123,20 @@ t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vec
     grille.nbElements = 0;
 
 
-    // t_vecteur2 nouveauPoint = { 
-    //     (minGrille.x + maxGrille.x) / 2,
-    //     (minGrille.y + maxGrille.y) / 2,
-    // };
-    t_vecteur2 nouveauPoint = creerNouveauPoint(minGrille, maxGrille);
+    t_vecteur2 nouveauPoint;
+    switch (methode) {
+        case DISC_CENTRE:
+            nbElementsObjectif *= 2;
+            nouveauPoint.x = (minGrille.x + maxGrille.x) / 2;
+            nouveauPoint.y = (minGrille.y + maxGrille.y) / 2;
+            break;
+        
+        default:
+        case DISC_ALEATOIRE:
+            nouveauPoint = creerNouveauPoint(minGrille, maxGrille);    
+            break;
+    }
+
     ajouterPoint(&grille, nouveauPoint, 0);
 
     

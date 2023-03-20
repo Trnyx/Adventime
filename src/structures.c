@@ -154,11 +154,13 @@ void genererVillage(t_map *map) {
         
         const t_vecteur2 min = { centre.x - (TAILLE_CHUNK), centre.y - (TAILLE_CHUNK) };
         const t_vecteur2 max = { centre.x + (TAILLE_CHUNK), centre.y + (TAILLE_CHUNK) };
+
+        const int nombreBatiment = getNombreAleatoire(6, 8);
         
 
         printf("GENERATION GRILLE => ");
-        const t_discSampling grille = genererGrilleDiscSampling(min, max, 6, 18);
-        grille.elementPositions[0] = centre;
+        const t_discSampling grille = genererGrilleDiscSampling(min, max, nombreBatiment, 18, DISC_ALEATOIRE);
+        // grille.elementPositions[0] = centre;
 
 
         printf("%i => ", grille.nbElements);
@@ -166,20 +168,23 @@ void genererVillage(t_map *map) {
             t_vecteur2 position = grille.elementPositions[i];
             e_structureTag tag = selectionMaisonTag();
 
-            if (!i) {
-                printf("GENERATION PUIT %1.2f:%1.2f => ", centre.x, centre.y);
+            if (!i && grille.nbElements > 1) {
+                printf("GENERATION PUIT %1.2f:%1.2f => ", position.x, position.y);
                 genererStructure(position, STRUCTURE_PUIT, map);
             }
             else {
-                printf("GENERATION BATIMENT %i => ", i);
+                printf("GENERATION BATIMENT %i (%1.2f:%1.2f) => ", i, position.x, position.y);
                 genererStructure(position, tag, map);
             }
 
         }
 
+
+        free(grille.elementPositions);
+
     }
 
-    printf("\n");
+    printf("\n\n");
 }
 
 
@@ -207,6 +212,7 @@ void genererEntreeTemple(t_map *map) {
             (plusGrandeMontagne->position.y * TAILLE_CHUNK) + TAILLE_CHUNK / 2,
         };
 
+        printf("%1.2f:%1.2f => ", centre.x, centre.y);
         genererStructure(centre, STRUCTURE_ENTREE_TEMPLE, map);
     }
     printf("\n");
