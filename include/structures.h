@@ -18,7 +18,12 @@
 
 
 
+#include <SDL2/SDL.h>
+
+#include "utilitaire.h"
 #include "blocks_tag.h"
+#include "map.h"
+
 
 
 
@@ -30,11 +35,11 @@
 
 
 typedef enum {
-    MAISON_1,
-    MAISON_2,
-    MAISON_3,
-    PUIT,
-    TEMPLE,
+    STRUCTURE_PUIT,
+    STRUCTURE_MAISON_1,
+    STRUCTURE_MAISON_2,
+    STRUCTURE_MAISON_3,
+    STRUCTURE_TEMPLE,
 } e_structureTag;
 
 
@@ -46,10 +51,20 @@ typedef enum {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @struct t_structure
+ * @brief 
+ * 
+ */
 typedef struct s_structure {
-    e_structureTag tag;
-    e_blockTag *blocks;
+    e_structureTag tag;         /**< */
+
+    unsigned int hauteur;       /**< */
+    unsigned int largeur;       /**< */
+
+    e_blockTag blocks[7][6];    /**< */
 } t_structure;
+
 
 
 
@@ -57,6 +72,9 @@ typedef struct s_structure {
 /* -------------------------------------------------------------------------- */
 /*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
+
+
+void genererVillage(t_map *map);
 
 
 

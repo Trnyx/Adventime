@@ -16,6 +16,7 @@
 #include "../include/moteur.h"
 #include "../include/map.h"
 #include "../include/vegetations.h"
+#include "../include/structures.h"
 #include "../include/camera.h"
 
 
@@ -209,55 +210,97 @@ void dessinerSol(t_map *map) {
 #define HAUTEUR_ARBRE (2 * TAILLE_TILE)
 
 /**
- * @brief Affiche un végétal complet
+ * @brief Affiche un Objet complet
  * 
- * @param tag Le tag du végétal à afficher
+ * @param tag Le tag de l'objet à afficher
  * @param rendu Les informations sur le rendu 
  * 
  * @return 0 si tout s'est bien passé, un nombre négatif sinon
  */
-int dessinerVegetal(const int tag, SDL_Rect *rendu) {
+int dessinerObjet(int tag, SDL_Rect *rendu) {
+    SDL_Texture *texture = NULL;
     SDL_Rect source;
-    SDL_Rect renduVegetaux;
+    SDL_Rect renduObjet;
+
+    if (tag > DEBUT_VEGETAL && tag < FIN_VEGETAL) {
+        texture = moteur->textures->vegetaux;
+
+        switch (tag) {
+            case HERBE:
+                splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
+                renduObjet.x = rendu->x;
+                renduObjet.y = rendu->y;
+                renduObjet.w = rendu->w;
+                renduObjet.h = rendu->h;
+                break;
+                
+            case CHAINE:
+            case PALMIER:
+            case SAPIN:
+                splitTexture(&source, (LARGEUR_ARBRE * (tag % HERBE)),0, LARGEUR_ARBRE,HAUTEUR_ARBRE);
+                renduObjet.x = rendu->x - rendu->w;
+                renduObjet.y = rendu->y - rendu->h;
+                renduObjet.w = 3 * rendu->w;
+                renduObjet.h = 2 * rendu->h;
+                
+                break;
+        }
+    }
+    else if (tag > DEBUT_BLOCK_STRUCTURE && tag < FIN_BLOCK_STRUCTURE) {
+        texture = moteur->textures->structures;
+        t_vecteur2 decalage = { 0, 0 };
 
 
-    switch (tag) {
-        case HERBE:
-            splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
-            renduVegetaux.x = rendu->x;
-            renduVegetaux.y = rendu->y;
-            renduVegetaux.w = rendu->w;
-            renduVegetaux.h = rendu->h;
-            break;
+        // printf("AFFICHE STRUCTURE %i ", tag);
+        if (tag >= BLOCK_PUIT_HAUT_GAUCHE && tag <= BLOCK_PUIT_BAS_DROIT) {
             
-        case CHAINE:
-        case PALMIER:
-        case SAPIN:
-            splitTexture(&source, (LARGEUR_ARBRE * (tag % HERBE)),0, LARGEUR_ARBRE,HAUTEUR_ARBRE);
-            renduVegetaux.x = rendu->x - rendu->w;
-            renduVegetaux.y = rendu->y - rendu->h;
-            renduVegetaux.w = 3 * rendu->w;
-            renduVegetaux.h = 2 * rendu->h;
-            break;
+            tag = (tag % BLOCK_PUIT_HAUT_GAUCHE);
+            
+            decalage.x = (tag % 3) * TAILLE_TILE;
+            decalage.y = (tag / 3) * TAILLE_TILE;
+            
+        } else if (tag >= BLOCK_MUR_HAUT_GAUCHE && tag <= BLOCK_MUR_DROIT) {
 
+            tag = (tag % BLOCK_MUR_HAUT_GAUCHE);
 
-        default:
-            break;
+            decalage.x = (tag % 3) * TAILLE_TILE;
+            decalage.y = ((tag / 3) + 14) * TAILLE_TILE;
+            
+        } else if (tag >= BLOCK_TOIT_PETIT_LAYER_1_1 && tag <= BLOCK_TOIT_PETIT_LAYER_5_6) {
+
+            tag = (tag % BLOCK_TOIT_PETIT_LAYER_1_1);
+
+            decalage.x = (tag % 6) * TAILLE_TILE;
+            decalage.y = ((tag / 6) + 3) * TAILLE_TILE;
+            
+        } else {
+
+            tag = (tag % DEBUT_BLOCK_STRUCTURE) + 1;
+
+        }
+
+        splitTexture(&source, decalage.x,decalage.y, TAILLE_TILE,TAILLE_TILE);
+        // splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
+
+        renduObjet.x = rendu->x;
+        renduObjet.y = rendu->y;
+        renduObjet.w = rendu->w;
+        renduObjet.h = rendu->h;
     }
 
 
     
-    return SDL_RenderCopy(moteur->renderer, moteur->textures->vegetaux, &source, &renduVegetaux);
+    return SDL_RenderCopy(moteur->renderer, texture, &source, &renduObjet);
 }
 
 
 
 /**
- * @brief Affiche la végétation d'une map
+ * @brief Affiche les objets d'une map
  * 
- * @param map Un pointeur sur la map dans laquelle se trouve les végétaux
+ * @param map Un pointeur sur la map dans laquelle se trouve les objets
  */
-void dessinerVegetation(t_map *map) {
+void dessinerObjets(t_map *map) {
     t_camera *camera = moteur->camera;
     SDL_Rect rendu;
     rendu.w = camera->tailleRendu.x;
@@ -274,7 +317,7 @@ void dessinerVegetation(t_map *map) {
             if (block->tag == VIDE) continue;
 
 
-            dessinerVegetal(block->tag, &rendu);
+            dessinerObjet(block->tag, &rendu);
         }
     }
 }
