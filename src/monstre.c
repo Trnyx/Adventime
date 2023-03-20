@@ -176,9 +176,6 @@ void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJo
             ajout_droit(entites, (t_entite*)monstre);
         }
     }
-<<<<<<< HEAD
-}
-=======
     // t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
 
     // if (chunk != NULL) {
@@ -200,4 +197,3 @@ void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJo
     //     }
     // }
 }
->>>>>>> entite

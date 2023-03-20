@@ -21,7 +21,7 @@
 
 #include "utilitaire.h"
 #include "temps.h"
-
+#include "entite.h"
 
 
 

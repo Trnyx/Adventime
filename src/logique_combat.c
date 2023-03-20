@@ -200,8 +200,6 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
     if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
         printf("CIBLE TOUCHE\n");
 
-<<<<<<< HEAD
-=======
         // Lorsque le mob cible est touché, le mob cible se met en mode combat
         // et il prend pour cible le mob attaquant
         if (cible->entiteType == ENTITE_MOB) {
@@ -209,7 +207,6 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
             ((t_mob*)cible)->cible = entite;
         }
 
->>>>>>> entite
 
         float degat = calculDegat(entite->statistiques.niveau, entite->statistiques.attaque, cible->statistiques.defense, FAUX, FAUX);
         // Modificateur si il y a armes
