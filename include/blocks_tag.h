@@ -32,25 +32,31 @@ typedef enum {
     BLOCK_PORTE,
     BLOCK_TEMPLE_ENTREE,
 
+
     /* ----------------------------------- MUR ---------------------------------- */
     // Variant 1
     BLOCK_MUR_HAUT_GAUCHE_STANDARD,
     BLOCK_MUR_HAUT_CENTRE_STANDARD,
     BLOCK_MUR_HAUT_DROIT_STANDARD,
-    BLOCK_MUR_GAUCHE_STANDARD,
-    BLOCK_MUR_CENTRE_STANDARD,
-    BLOCK_MUR_DROIT_STANDARD,
     // Variant 2
     BLOCK_MUR_HAUT_GAUCHE_ROUGE,
     BLOCK_MUR_HAUT_CENTRE_ROUGE,
     BLOCK_MUR_HAUT_DROIT_ROUGE,
-    BLOCK_MUR_GAUCHE_ROUGE,
-    BLOCK_MUR_CENTRE_ROUGE,
-    BLOCK_MUR_DROIT_ROUGE,
     // Variant 3
     BLOCK_MUR_HAUT_GAUCHE_BLEU,
     BLOCK_MUR_HAUT_CENTRE_BLEU,
     BLOCK_MUR_HAUT_DROIT_BLEU,
+
+    /* ----------------------------------- MUR ---------------------------------- */
+    // Variant 1
+    BLOCK_MUR_GAUCHE_STANDARD,
+    BLOCK_MUR_CENTRE_STANDARD,
+    BLOCK_MUR_DROIT_STANDARD,
+    // Variant 2
+    BLOCK_MUR_GAUCHE_ROUGE,
+    BLOCK_MUR_CENTRE_ROUGE,
+    BLOCK_MUR_DROIT_ROUGE,
+    // Variant 3
     BLOCK_MUR_GAUCHE_BLEU,
     BLOCK_MUR_CENTRE_BLEU,
     BLOCK_MUR_DROIT_BLEU,

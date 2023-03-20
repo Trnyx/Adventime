@@ -222,6 +222,7 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
     SDL_Rect source;
     SDL_Rect renduObjet;
 
+
     if (tag > DEBUT_VEGETAL && tag < FIN_VEGETAL) {
         texture = moteur->textures->vegetaux;
 

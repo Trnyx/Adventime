@@ -83,6 +83,7 @@ t_chunk* getChunkCentralBiome(const e_biome biome, t_map *map, int (*validation)
             if (chunk->biome == biome) {
                 for (int xChunk = chunk->position.x - 1; xChunk <= chunk->position.x + 1; xChunk++) {
                     for (int yChunk = chunk->position.y - 1; yChunk <= chunk->position.y + 1; yChunk++) {
+                        if (xChunk == chunk->position.x && yChunk == chunk->position.y) continue;
                         t_chunk *chunkTempo = getChunk(xChunk, yChunk, COUCHE_SOL, map);
 
                         int valide = validation(chunkTempo);
@@ -97,11 +98,11 @@ t_chunk* getChunkCentralBiome(const e_biome biome, t_map *map, int (*validation)
                     }
                 }
 
+
                 if (compteur >= max) {
                     max = compteur;
                     chunkFinal = chunk;
                 }
-
 
                 compteur = 0;
             }
@@ -109,6 +110,7 @@ t_chunk* getChunkCentralBiome(const e_biome biome, t_map *map, int (*validation)
     }
     
 
+    printf("CHUNK FINAL : %.2f:%.2f (%i)\n", chunkFinal->position.x, chunkFinal->position.y, chunkFinal->biome);
     return chunkFinal;
 }
 
@@ -141,14 +143,13 @@ e_structureTag selectionMaisonTag() {
  */
 void genererVillage(t_map *map) {
     printf("GENERATION VILLAGE => ");
-    printf("GET PLAINE => ");
     t_chunk *plusGrandePlaine = getChunkCentralBiome(BIOME_PLAINE, map, biomeValidationPourVillage);
 
 
     if (plusGrandePlaine != NULL) {
         const t_vecteur2 centre = {
-            (plusGrandePlaine->position.x * TAILLE_CHUNK) / 2,
-            (plusGrandePlaine->position.y * TAILLE_CHUNK) / 2,
+            (plusGrandePlaine->position.x * TAILLE_CHUNK) + TAILLE_CHUNK / 2,
+            (plusGrandePlaine->position.y * TAILLE_CHUNK) + TAILLE_CHUNK / 2,
         };
         
         const t_vecteur2 min = { centre.x - (TAILLE_CHUNK), centre.y - (TAILLE_CHUNK) };
@@ -156,7 +157,8 @@ void genererVillage(t_map *map) {
         
 
         printf("GENERATION GRILLE => ");
-        const t_discSampling grille = genererGrilleDiscSampling(min, max, 6, 14);
+        const t_discSampling grille = genererGrilleDiscSampling(min, max, 6, 18);
+        grille.elementPositions[0] = centre;
 
 
         printf("%i => ", grille.nbElements);
@@ -201,12 +203,13 @@ void genererEntreeTemple(t_map *map) {
 
     if (plusGrandeMontagne != NULL) {
         const t_vecteur2 centre = {
-            (plusGrandeMontagne->position.x * TAILLE_CHUNK) / 2,
-            (plusGrandeMontagne->position.y * TAILLE_CHUNK) / 2,
+            (plusGrandeMontagne->position.x * TAILLE_CHUNK) + TAILLE_CHUNK / 2,
+            (plusGrandeMontagne->position.y * TAILLE_CHUNK) + TAILLE_CHUNK / 2,
         };
 
         genererStructure(centre, STRUCTURE_ENTREE_TEMPLE, map);
     }
+    printf("\n");
 }
 
 
@@ -227,6 +230,6 @@ void genererEntreeCaverne(t_map *map) {
     printf("GENERATION ENTREE Caverne => ");
 
     
-    
+    printf("\n");
 }
 
