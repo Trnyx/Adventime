@@ -666,10 +666,15 @@ t_map* genererOverworld(t_map *map) {
     }
 
 
+    // Structures
+    genererEntreeTemple(map);
     genererVillage(map);
+
+    // Nature
     genererVegetations(map);
+    genererEntreeCaverne(map);
     
-    // Genrerer Entree Caverne
+    // Animaux
     genererAnimaux(map);
 
 

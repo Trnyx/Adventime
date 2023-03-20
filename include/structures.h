@@ -36,10 +36,13 @@
 
 typedef enum {
     STRUCTURE_PUIT,
-    STRUCTURE_MAISON_1,
-    STRUCTURE_MAISON_2,
-    STRUCTURE_MAISON_3,
-    STRUCTURE_TEMPLE,
+    STRUCTURE_PETITE_MAISON_1,
+    STRUCTURE_PETITE_MAISON_2,
+    STRUCTURE_PETITE_MAISON_3,
+    STRUCTURE_GRANDE_MAISON_1,
+    STRUCTURE_GRANDE_MAISON_2,
+    STRUCTURE_GRANDE_MAISON_3,
+    STRUCTURE_ENTREE_TEMPLE,
 } e_structureTag;
 
 
@@ -74,7 +77,10 @@ typedef struct s_structure {
 /* -------------------------------------------------------------------------- */
 
 
+void genererStructure(const t_vecteur2 position, const e_structureTag tag, t_map *map);
+void genererEntreeTemple(t_map *map);
 void genererVillage(t_map *map);
+void genererEntreeCaverne(t_map *map);
 
 
 

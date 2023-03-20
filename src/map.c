@@ -253,31 +253,37 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
 
         // printf("AFFICHE STRUCTURE %i ", tag);
         if (tag >= BLOCK_PUIT_HAUT_GAUCHE && tag <= BLOCK_PUIT_BAS_DROIT) {
-            
             tag = (tag % BLOCK_PUIT_HAUT_GAUCHE);
             
             decalage.x = (tag % 3) * TAILLE_TILE;
             decalage.y = (tag / 3) * TAILLE_TILE;
-            
-        } else if (tag >= BLOCK_MUR_HAUT_GAUCHE && tag <= BLOCK_MUR_DROIT) {
+        } 
+        
 
-            tag = (tag % BLOCK_MUR_HAUT_GAUCHE);
+        else if (tag >= BLOCK_MUR_HAUT_GAUCHE_STANDARD && tag <= BLOCK_MUR_DROIT_BLEU) {
+            tag = (tag % BLOCK_MUR_HAUT_GAUCHE_STANDARD);
 
-            decalage.x = (tag % 3) * TAILLE_TILE;
-            decalage.y = ((tag / 3) + 14) * TAILLE_TILE;
-            
-        } else if (tag >= BLOCK_TOIT_PETIT_LAYER_1_1 && tag <= BLOCK_TOIT_PETIT_LAYER_5_6) {
+            // Le décalage se fait en fonction du nombre de bloc possible composant un mur
+            // ainsi que le nombre de variants de mur possible
+            decalage.x = (tag % (3 * 3)) * TAILLE_TILE;
+            decalage.y = ((tag / (3 * 3)) + 14) * TAILLE_TILE;
+        } 
+        
 
-            tag = (tag % BLOCK_TOIT_PETIT_LAYER_1_1);
+        else if (tag >= BLOCK_TOIT_PETIT_LAYER_1_1_STANDARD && tag <= BLOCK_TOIT_PETIT_LAYER_5_6_BLEU) {
+            tag = (tag % BLOCK_TOIT_PETIT_LAYER_1_1_STANDARD);
 
-            decalage.x = (tag % 6) * TAILLE_TILE;
-            decalage.y = ((tag / 6) + 3) * TAILLE_TILE;
-            
-        } else {
+            // Le décalage se fait en fonction du nombre de bloc possible composant un toit
+            // ainsi que le nombre de variants de toit possible
+            decalage.x = (tag % (6 * 3)) * TAILLE_TILE;
+            decalage.y = ((tag / (6 * 3)) + 3) * TAILLE_TILE;
+        } 
+        
 
+        else {
             tag = (tag % DEBUT_BLOCK_STRUCTURE) + 1;
-
         }
+
 
         splitTexture(&source, decalage.x,decalage.y, TAILLE_TILE,TAILLE_TILE);
         // splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
