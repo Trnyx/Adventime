@@ -123,7 +123,7 @@ int chunkEstDansLaMap(const int x, const int y, const int z) {
  * 
  * @version 1.2
  */
-t_predominance getPredominance(int alentours[], const int nbElementsAlentours) {
+static t_predominance getPredominance(int alentours[], const int nbElementsAlentours) {
     t_predominance predominance = { 0, 0 };  
 
   
@@ -159,7 +159,7 @@ t_predominance getPredominance(int alentours[], const int nbElementsAlentours) {
  * 
  * @version 1.1
  */
-e_biome selectionBiome(const int xChunk, const int yChunk) {
+static e_biome selectionBiome(const int xChunk, const int yChunk) {
     // Si le chunk se situe en bordure de map Dans ce cas on force le biome à PROFONDEUR
     if (xChunk == 0 || yChunk == 0 || xChunk == TAILLE_MAP - 1 || yChunk == TAILLE_MAP - 1) return BIOME_PROFONDEUR;
 
@@ -185,7 +185,7 @@ e_biome selectionBiome(const int xChunk, const int yChunk) {
  * 
  * @version 1.2
  */
-e_solTag selectionBlock(const e_biome biome) {
+static e_solTag selectionBlock(const e_biome biome) {
     e_solTag solTag = VIDE;
     const t_baseBiome baseBiome = basesBiomes[biome];
     const int nombreBlockPossible = sizeof(baseBiome.typesDeSol) / sizeof(baseBiome.typesDeSol[0]);
@@ -227,7 +227,7 @@ e_solTag selectionBlock(const e_biome biome) {
  * 
  * @version 1.2
  */
-e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) { 
+static e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) { 
     // Si le biome prédominant est le même que le biome central
     // on renvoie ce dernier car aucune modification de sera apporté
     if (biomePredominant.tag == biomeActuel) return biomeActuel;
@@ -286,7 +286,7 @@ e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) {
  * 
  * @version 1.2
  */
-e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
+static e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
     // Si le block prédominant est le même que le block central alors on renvoie ce dernier
     // Sinon on ajoute à la hauteur du block principale la différence entre 
     // la hauteur du block principal et celle du block prédominant
@@ -313,7 +313,7 @@ e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
  * 
  * @version 1.2
  */
-int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
+static int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
     static int biomesAlentours[NB_BIOMES] = { 0 };
     t_chunk *chunkCourrant = NULL;
   
@@ -348,7 +348,7 @@ int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
  * 
  * @version 1.1
  */
-int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
+static int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
     static int blocksAlentours[NB_TYPES_SOL] = { 0 };
     t_chunk *chunk = NULL;
     t_block *block = NULL;
@@ -392,7 +392,7 @@ int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
  * 
  * @version 1.3
  */
-void normalisationDuChunk(t_chunk* chunk, t_map *map) {
+static void normalisationDuChunk(t_chunk* chunk, t_map *map) {
     e_solTag blockVoisins[TAILLE_CHUNK][TAILLE_CHUNK] = { SOL_EAU_PROFONDE };
     t_block *block = NULL;
 
@@ -433,7 +433,7 @@ void normalisationDuChunk(t_chunk* chunk, t_map *map) {
  * 
  * @version 1.2
  */
-void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
+static void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
     e_solTag hauteurVoisins[TAILLE_CHUNK][TAILLE_CHUNK] = { 0 };
     t_block *block = NULL;
 
@@ -479,7 +479,7 @@ void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
  * 
  * @version 1.1
  */
-void normalisationDeLaMap(t_map* map) {  
+static void normalisationDeLaMap(t_map* map) {  
     e_biome nouveauxBiomes[TAILLE_MAP][TAILLE_MAP] = { BIOME_PROFONDEUR };
     t_chunk *chunk = NULL;
 
@@ -530,7 +530,7 @@ void normalisationDeLaMap(t_map* map) {
  * 
  * @version 1.2
  */
-t_chunk initialisationChunk(const int x, const int y, const int z) {
+static t_chunk initialisationChunk(const int x, const int y, const int z) {
     t_chunk chunk;
 
 
@@ -567,7 +567,7 @@ t_chunk initialisationChunk(const int x, const int y, const int z) {
  * 
  * @version 1.2
  */
-t_block generationBlock(const int x, const int y, const t_chunk *chunk, const boolean estVide) {
+static t_block generationBlock(const int x, const int y, const t_chunk *chunk, const boolean estVide) {
     t_block block;
 
 
@@ -596,7 +596,7 @@ t_block generationBlock(const int x, const int y, const t_chunk *chunk, const bo
  * 
  * @version 1.4
  */
-t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
+static t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
     for (int x = 0, i = 0; x < TAILLE_CHUNK; x++) {
         for (int y = 0; y < TAILLE_CHUNK; y++) {
             chunk->blocks[i++] = generationBlock(x, y, chunk, estVide);
@@ -631,7 +631,7 @@ t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
  * 
  * @return t_map* 
  */
-t_map* genererOverworld(t_map *map) {
+static t_map* genererOverworld(t_map *map) {
     t_chunk* chunkTempo = NULL;
 
 
@@ -686,7 +686,7 @@ t_map* genererOverworld(t_map *map) {
 
 
 /**
- * @brief Génère une map compplète
+ * @brief Génère une map complète
  * 
  * @return Un pointeur sur la map générée
  * 
@@ -705,10 +705,11 @@ t_map* genererMap(e_mapType type) {
 
 
     map->type = type;
-    // map->nombreEntites = 0;
-    // map->entites = NULL;
     map->entites = malloc(sizeof(t_liste));
     init_liste(map->entites);
+
+    map->boss = NULL;
+
 
     switch (type) {
         case MAP_OVERWORLD: genererOverworld(map); break;
@@ -722,85 +723,6 @@ t_map* genererMap(e_mapType type) {
     printf("Succes\n");
     return map;
 }
-
-
-
-
-
-/* -------------------------------------------------------------------------- */
-/*                                 Destruction                                */
-/* -------------------------------------------------------------------------- */
-
-
-/**
- * @brief 
- * 
- * @param block 
- *  
- * @version 1.1
- */
-int detruireBlock(t_block **block) {
-    if (block == NULL || *block == NULL) return 0;
-
-    free(*block);
-    *block = NULL;
-
-    return 0;
-}
-
-
-/**
- * @brief 
- * 
- * @param chunk 
- * 
- * @version 1.2
- */
-int detruireChunk(t_chunk **chunk) {
-    if (chunk == NULL || *chunk == NULL) return 0;
-
-
-    free((*chunk)->blocks);
-    (*chunk)->blocks = NULL;
-
-  
-    return 0;
-}
-
-
-/**
- * @brief 
- * 
- * @param map 
- * 
- * @version 1.2
- */
-int detruireMap(t_map **map) {
-    printf("Destruction Map => ");
-    if (map == NULL || *map == NULL) return 0;
-    t_chunk *chunk = NULL;
-  
-
-    for (int x = 0; x < TAILLE_MAP; x++) {
-        for (int y = 0; y < TAILLE_MAP; y++) {
-            for (int z = 0; z < NB_COUCHE; z++) {
-                chunk = getChunk(x, y, z, *map);
-                detruireChunk(&chunk);
-            }
-        }
-    }
-
-
-    free((*map)->chunks);
-    (*map)->chunks = NULL;
-  
-    free(*map);
-    *map = NULL;
-
-  
-    return 0;
-}
-
 
 
 

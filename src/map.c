@@ -138,23 +138,15 @@ t_chunk* getChunkGraceABlock(const int x, const int y, const int couche, t_map *
  * 
  * @return 0 si tout s'est bien passé, un nombre négatif sinon
  */
-int dessinerBlockSol(const int tag, SDL_Rect *rendu) {
+int dessinerBlockSol(int tag, SDL_Rect *rendu) {
     SDL_Rect source;
 
 
-    switch (tag) {
-        case SOL_EAU_PROFONDE:
-        case SOL_EAU:
-        case SOL_SABLE:
-        case SOL_HERBE_1:
-        case SOL_HERBE_2:
-        case SOL_HERBE_3:
-        case SOL_MONTAGNE_1:
-        case SOL_MONTAGNE_2:
-            splitTexture(&source, (8 + 2 * TAILLE_TILE * tag),8, TAILLE_TILE,TAILLE_TILE);
-            break;
-        default:
-            return SDL_RenderCopy(moteur->renderer, moteur->textures->null, NULL, rendu);
+    if (tag >= SOL_EAU_PROFONDE && tag <= SOL_MONTAGNE_2) {
+        splitTexture(&source, (8 + 2 * TAILLE_TILE * tag),8, TAILLE_TILE,TAILLE_TILE);
+    }
+    else {
+        return SDL_RenderCopy(moteur->renderer, moteur->textures->null, NULL, rendu);
     }
 
 
@@ -345,3 +337,82 @@ void dessinerObjets(t_map *map) {
         }
     }
 }
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Destruction                                */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
+ * @param block 
+ *  
+ * @version 1.1
+ */
+int detruireBlock(t_block **block) {
+    if (block == NULL || *block == NULL) return 0;
+
+    free(*block);
+    *block = NULL;
+
+    return 0;
+}
+
+
+/**
+ * @brief 
+ * 
+ * @param chunk 
+ * 
+ * @version 1.2
+ */
+int detruireChunk(t_chunk **chunk) {
+    if (chunk == NULL || *chunk == NULL) return 0;
+
+
+    free((*chunk)->blocks);
+    (*chunk)->blocks = NULL;
+
+  
+    return 0;
+}
+
+
+/**
+ * @brief 
+ * 
+ * @param map 
+ * 
+ * @version 1.2
+ */
+int detruireMap(t_map **map) {
+    printf("Destruction Map => ");
+    if (map == NULL || *map == NULL) return 0;
+    t_chunk *chunk = NULL;
+  
+
+    for (int x = 0; x < TAILLE_MAP; x++) {
+        for (int y = 0; y < TAILLE_MAP; y++) {
+            for (int z = 0; z < NB_COUCHE; z++) {
+                chunk = getChunk(x, y, z, *map);
+                detruireChunk(&chunk);
+            }
+        }
+    }
+
+
+    free((*map)->chunks);
+    (*map)->chunks = NULL;
+  
+    free(*map);
+    *map = NULL;
+
+  
+    return 0;
+}
+

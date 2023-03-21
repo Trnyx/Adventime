@@ -41,7 +41,7 @@ typedef struct s_monde {
 
     // Maps
     t_map *overworld;                       /**< La map overworld */
-    t_map *caverne;                         /**< la map caverne */
+    t_map *caverne;                         /**< La map caverne */
 
     // Joueur
     t_joueur *joueur;                       /**< Les informations du joueur dans le monde */

@@ -366,7 +366,8 @@ void dessinerEntite(t_entite *entite) {
                     texture = moteur->textures->monstres; 
                     sprite.x = (((t_monstre*)entite)->estNocturne ? NB_MONSTRE_TYPES * TAILLE_SET : ((t_monstre*)entite)->type) * (TAILLE_SET);
                     break;
-                default: break;
+                default: 
+                    break;
             }
             break;
 
@@ -432,6 +433,7 @@ void detruireEntite(t_entite **entite) {
 
         if ((*entite)->animation != NULL) {
             detruireAnimation(&(*entite)->animation);
+            (*entite)->animation = NULL;
         }
         
 

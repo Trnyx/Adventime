@@ -115,8 +115,8 @@ struct s_entite {
     e_entiteType entiteType;                                /**< Le type de l'entité */
     e_entiteTag tag;                                        /**< Le tag de l'entité */
 
+    SDL_FRect hitbox;                                       /**< La hitbox de l'entité */
     float taille;
-    SDL_FRect hitbox;                                        /**< La hitbox de l'entité */
     t_animation *animation;
 
 

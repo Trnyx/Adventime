@@ -154,6 +154,7 @@ t_monde* creerMonde(int seed) {
 
     // Maps
     monde->overworld = genererMap(MAP_OVERWORLD);
+    monde->caverne = NULL;
     // monde->caverne = genererMap(MAP_CAVE);
 
     // Timestampoverworld
@@ -163,8 +164,7 @@ t_monde* creerMonde(int seed) {
     // Joueur
     t_vecteur2 position = getPointApparitionJoueur(monde->overworld);
     monde->pointApparitionDefaut = position;
-    monde->pointApparition.x = -1.0;
-    monde->pointApparition.y = -1.0;
+    monde->pointApparition = position;
 
     monde->bossFlags = initialiserBossFlags();
 
@@ -188,7 +188,10 @@ t_monde* creerMonde(int seed) {
 void detruireMonde(t_monde **monde) {
     printf("Destruction Monde => ");
     if (monde != NULL && *monde != NULL) {
-        detruireMap(&(*monde)->overworld);
+        if ((*monde)->overworld != NULL)
+            detruireMap(&(*monde)->overworld);
+        if ((*monde)->caverne != NULL)
+            detruireMap(&(*monde)->caverne);
 
     
         free(*monde);

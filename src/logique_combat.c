@@ -49,8 +49,11 @@
 void finCombat(t_mob *mob) {
     mob->deplacementType = DEPLACEMENT_NORMAL;
     mob->operation = ATTENTE;
+
     mob->cible = NULL;
+    
     mob->gamma = 0;     
+    mob->rotation = ROTATION_AUCUNE;
 }
 
 
