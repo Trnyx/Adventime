@@ -121,6 +121,7 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
 
     // Timer
     monstre->destructionInactif = monstre->aggressif;
+    monstre->destructionDelai = VRAI;
 
     mob = NULL;
     return monstre;

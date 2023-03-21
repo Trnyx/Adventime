@@ -95,6 +95,11 @@
 // Rayon dans lequel les mobs sont suffisamment proche pour attaquer
 #define MOB_RAYON_COMBAT_ATTAQUE 2.2
 
+// Rayon dans lequel le boss détecte le joueur
+#define BOSS_RAYON_COMBAT_DETECTION 6.0
+// Rayon dans lequel le boss se positionne
+#define BOSS_RAYON_COMBAT_POSITIONNEMENT 8.0
+
 
 //
 #define MOB_VITESSE_MODIFICATEUR_POSITIONNEMENT

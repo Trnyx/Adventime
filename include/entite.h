@@ -56,6 +56,7 @@ typedef enum {
     TAG_ANIMAL_VACHE,
     TAG_ANIMAL_COCHON,
     TAG_MONSTRE_BASIC,
+    TAG_BOSS,
     NB_TAGS
 } e_entiteTag;
 
@@ -124,6 +125,7 @@ struct s_entite {
     unsigned int timestampActualisation;                    /**< Le dernier timestamp à laquelle l'entité à été actualisé */
 
     boolean destructionInactif;                             /**< Doit être détruite lorsqu'elle est inactive */
+    boolean destructionDelai;                               /**< Doit être détruite lorsqu'elle est inactive */
 
 
     int  (*update)(t_entite*, float, t_entite* cible);      /**< Fonction d'actualisation de l'entité */

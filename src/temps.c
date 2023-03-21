@@ -159,7 +159,6 @@ t_temps* getTemps(t_temps *temps, const time_t timestamp) {
  */
 void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
     t_cache *cache = moteur->cache;
-    e_cycle cyclePrecedent = temps->cycleJeu;
     e_periode periodePrecedente = temps->periode;
 
 
@@ -187,8 +186,8 @@ void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
     if (tempsActuel->tm_wday != dernierRenouvellement->tm_wday && tempsActuel->tm_hour >= HEURE_VRAI_RENOUVELLEMENT) {
         cache->monde->timestampRenouvellement = timestamp;
 
-
         apparitionTroupeau(cache->entites, cache->map);
+        chargerBoss();
     }
 }
 

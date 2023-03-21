@@ -122,7 +122,7 @@ void update(t_map *map, t_joueur *joueur) {
     gestionnaireTempsEvenements(temps, time(NULL));
 
 
-    e_musiques_type musiqueType;
+    e_musiques_type musiqueType = MUSIC_AUCUNE;
 
 
 
@@ -166,7 +166,6 @@ void update(t_map *map, t_joueur *joueur) {
                 const float distance = calculDistanceEntreEntites(entite, (t_entite*)joueur);
                 // printf("distance : %1.2f ", distance);
 
-
                 // Lorsque l'entité se trouve au delà des deux disques précédents
                 // L'entité est concidéré dans un disque inactif
                 if (distance > JOUEUR_RAYON_SEMIACTIF) {
@@ -191,7 +190,7 @@ void update(t_map *map, t_joueur *joueur) {
 
                     // Gestion de la durée de vie de l'entité
                     // Si l'entité à atteint la durée de vie maximale d'une entité alors elle est supprimé
-                    if (entite->destructionInactif) {
+                    if (entite->destructionDelai) {
                         if (entite->timestampActualisation - entite->timestampCreation >= (ENTITE_DUREE_VIE_MAX * 1000)) {
                             suppressionEntite(entites, entite);
                             continue;
@@ -227,16 +226,16 @@ void update(t_map *map, t_joueur *joueur) {
                                     ((t_mob*)entite)->positionDeplacement = ((t_mob*)entite)->cible->position;
                             }
 
+                            if (entite->tag == TAG_BOSS) {
+                                musiqueType = MUSIC_BOSS;
+                            }
+
                             break;
 
 
                         // Sur toutes les entités
                         default:
-                            // // Si le joueur est 
-                            // if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
-                            //     ((t_mob*)entite)->deplacementType = DEPLACEMENT_NORMAL;
-                            // }
-
+                            
                             break;
                     }
                     
@@ -318,9 +317,10 @@ void update(t_map *map, t_joueur *joueur) {
     /*                                   Musique                                  */
     /* -------------------------------------------------------------------------- */
 
-
-    if (nombreMobsCombat) musiqueType = MUSIC_COMBAT;
-    else musiqueType = MUSIC_AMBIANCE;
+    if (musiqueType == MUSIC_AUCUNE) {
+        if (nombreMobsCombat) musiqueType = MUSIC_COMBAT;
+        else musiqueType = MUSIC_AMBIANCE;
+    }
 
     if (audio->musiqueType != musiqueType) {
         audio->musiqueType = musiqueType;

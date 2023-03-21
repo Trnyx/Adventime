@@ -708,8 +708,6 @@ t_map* genererMap(e_mapType type) {
     map->entites = malloc(sizeof(t_liste));
     init_liste(map->entites);
 
-    map->boss = NULL;
-
 
     switch (type) {
         case MAP_OVERWORLD: genererOverworld(map); break;

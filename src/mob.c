@@ -77,7 +77,7 @@ void combatMob(t_mob *mob, float distance) {
 
     else {
         // Si la cible est trop loin
-        if (distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
+        if (distance > BOSS_RAYON_COMBAT_POSITIONNEMENT) {
             finCombat(mob);       
         }
 
@@ -295,6 +295,9 @@ t_mob* creerMob(const t_vecteur2 position) {
     t_mob *mob = realloc(entite, sizeof(t_mob));
     
 
+    mob->orientation = getNombreAleatoire(SUD, NORD);
+    
+
     mob->entiteType = ENTITE_MOB;
     mob->aggressif = FAUX;
 
@@ -323,6 +326,7 @@ t_mob* creerMob(const t_vecteur2 position) {
     mob->detruire = (void (*)(t_entite**)) detruireMob;
 
     mob->destructionInactif = FAUX;
+    mob->destructionDelai = FAUX;
 
 
     entite = NULL;

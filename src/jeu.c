@@ -69,19 +69,18 @@ static t_map* loadMap(t_monde *monde, e_mapType type) {
     switch (type) {
         case MAP_OVERWORLD: 
             map = monde->overworld;
+            // printf("\nAPPARITION BOSS : %.2f:%1.2f / BOSS : %.2f:%1.2f / ID => %s \n\n", monde->positionApparitionBoss.x, monde->positionApparitionBoss.y, monde->boss->position.x, monde->boss->position.y, monde->boss->id);
             break;
         case MAP_CAVE: 
             map = monde->caverne;
             break;
-        // case MAP_BOSS_TEMPLE: 
-        //    map = getTempleBoss();
-        //    break;
         default: 
             break;
     }
 
 
     /* ---------------------------------- Cache --------------------------------- */
+
     moteur->cache->map = map;
     moteur->cache->entites = map->entites;
 
@@ -102,6 +101,8 @@ static t_map* loadMap(t_monde *monde, e_mapType type) {
 static int adventime(t_monde *monde) {
     t_cache *cache = moteur->cache;
     t_joueur *joueur = monde->joueur;
+
+    monde->boss = chargerBoss(monde);
 
     // La map dans laquelle se situe au début de la partie
     e_mapType mapType = joueur->map;
@@ -158,6 +159,7 @@ static int nouveauMonde() {
     /* ---------------------------------- Cache --------------------------------- */
     moteur->cache->monde = monde;
 
+
     return adventime(monde);
 }
 
@@ -169,6 +171,7 @@ static int chargerMonde() {
     // Charger le monde depuis la sauvegarde
 
     /* ---------------------------------- Cache --------------------------------- */
+
     moteur->cache->monde = monde;
 
     return adventime(monde);

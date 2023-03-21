@@ -43,6 +43,10 @@ typedef struct s_monde {
     t_map *overworld;                       /**< La map overworld */
     t_map *caverne;                         /**< La map caverne */
 
+    t_vecteur2 positionApparitionBoss;      /**< */
+    t_boss *boss;                           /**< Le boss qui est actuellement présent dans le monde */
+
+
     // Joueur
     t_joueur *joueur;                       /**< Les informations du joueur dans le monde */
     t_vecteur2 pointApparitionDefaut;       /**< Le point d'apparition par défaut pour le joueur */

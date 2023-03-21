@@ -17,7 +17,8 @@
 
 
 
-#include "mob.h"
+#include "temps.h"
+#include "monstre.h"
 #include "statistiques.h"
 
 
@@ -52,7 +53,7 @@ typedef struct s_boss_flags {
 typedef struct s_boss {
     struct s_mob;
 
-    
+    e_jour jour;
 } t_boss;
 
 
@@ -65,6 +66,11 @@ typedef struct s_boss {
 
 
 t_boss_flags initialiserBossFlags();
+
+t_vecteur2 getPointApparitionBoss(t_map *map);
+t_boss* chargerBoss();
+t_boss* creerBoss(const t_vecteur2 position, const e_jour jour);
+
 
 
 

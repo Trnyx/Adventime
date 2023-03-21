@@ -14,8 +14,8 @@
 
 // #include "../include/NanoId/nanoid.h"
 
+#include "../include/moteur.h"
 #include "../include/monde.h"
-#include "../include/boss.h"
 
 
 
@@ -128,6 +128,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
  */
 t_monde* creerMonde(int seed) {
     t_monde *monde = malloc(sizeof(t_monde));
+    const time_t timestamp = time(NULL);
 
 
     if (monde == NULL) {
@@ -142,7 +143,7 @@ t_monde* creerMonde(int seed) {
 
 
     if (seed == -1) {
-        seed = setGenerationSeed(time(NULL));
+        seed = setGenerationSeed(timestamp);
     }
     else {
         seed = setGenerationSeed(seed);
@@ -154,11 +155,15 @@ t_monde* creerMonde(int seed) {
 
     // Maps
     monde->overworld = genererMap(MAP_OVERWORLD);
-    monde->caverne = NULL;
-    // monde->caverne = genererMap(MAP_CAVE);
+    monde->caverne = NULL; // genererMap(MAP_CAVE);
 
-    // Timestampoverworld
-    monde->timestampRenouvellement = time(NULL);
+    // Boss
+    monde->positionApparitionBoss = getPointApparitionBoss(monde->overworld);
+    monde->boss = NULL;
+
+
+    // Timestamp
+    monde->timestampRenouvellement = timestamp;
 
 
     // Joueur

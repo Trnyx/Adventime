@@ -175,8 +175,6 @@ typedef struct s_map {
     // int nombreEntites;          /**< */
     // t_entite **entites;         /**< */
     t_liste *entites;           /**< Les entités contenue dans la map */
-
-    t_monstre *boss;            /**< Le boss qui est actuellement présent */
 } t_map;
 
 
