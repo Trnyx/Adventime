@@ -180,6 +180,7 @@ t_animal *creerAnimal(const t_vecteur2 position, const e_entiteTag tag) {
 
     if (animal == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la mémoire nécessaire pour un animal\n");
+        detruireMob(&mob);
         return NULL;
     }
 

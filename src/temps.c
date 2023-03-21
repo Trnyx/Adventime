@@ -220,7 +220,6 @@ t_temps* initTemps(const time_t timestamp) {
 
     if (temps == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le temps\n");
-        free(temps);
         return NULL;
     }
 

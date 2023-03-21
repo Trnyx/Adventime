@@ -205,8 +205,7 @@ void selectionMusique(t_temps *temps) {
  */
 void loadMusiqueBoss(t_musiques *musiques, e_jour jour) {
     char buffer[64];
-    // sprintf(buffer, "assets/audio/musiques/boss/boss_%i.mp3", jour);
-    sprintf(buffer, "assets/audio/musiques/boss/boss_1.mp3");
+    sprintf(buffer, "assets/audio/musiques/boss/boss_%i.mp3", jour);
 
     if (musiques->boss != NULL) 
         Mix_FreeMusic(musiques->boss);

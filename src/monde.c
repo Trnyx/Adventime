@@ -133,7 +133,6 @@ t_monde* creerMonde(int seed) {
 
     if (monde == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le monde\n");
-        free(monde);
         return NULL;
     }
 

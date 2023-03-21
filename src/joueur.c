@@ -316,6 +316,13 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     t_joueur *joueur = realloc(entite, sizeof(t_joueur));
 
 
+    if (joueur == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer une joueur\n");
+        detruireEntite(&entite);
+        return NULL;
+    }
+
+
     joueur->entiteType = ENTITE_JOUEUR;
     joueur->map = MAP_OVERWORLD;
 

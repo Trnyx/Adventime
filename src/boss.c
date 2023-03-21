@@ -197,7 +197,7 @@ t_boss* creerBoss(const t_vecteur2 position, const e_jour jour) {
     t_boss *boss = realloc(mob, sizeof(t_boss));
 
     if (boss == NULL) {
-        printf("Erreur mémoire : \n");
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer un boss\n");
         detruireMob(&mob);
         return NULL;
     }

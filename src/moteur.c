@@ -84,7 +84,6 @@ t_moteur* initMoteur() {
 
     if (m == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le moteur\n");
-        free(m);
         return NULL;
     }
 
