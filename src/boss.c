@@ -205,9 +205,8 @@ t_boss* creerBoss(const t_vecteur2 position, const e_jour jour) {
 
     boss->jour = jour;
 
-    // genererBossStatistique(boss);
-    boss->statistiques.vitesse = 5.0;
-    boss->statistiques.pv = 20;
+    boss->baseStatistiques = genererStatistiquesDeBaseBoss(boss->jour);
+    boss->statistiques = genererStatistiques(boss->baseStatistiques, 10);
 
 
     // Entite

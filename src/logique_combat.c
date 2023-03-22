@@ -47,13 +47,15 @@
  * @param mob Un pointeur sur le mob qui n'est plus en combat
  */
 void finCombat(t_mob *mob) {
+    finDeplacement(mob);
+
     mob->deplacementType = DEPLACEMENT_NORMAL;
     mob->operation = ATTENTE;
 
     mob->cible = NULL;
     
     mob->gamma = 0;     
-    mob->rotation = ROTATION_AUCUNE;
+    mob->rotation = ROTATION_HORAIRE;
 }
 
 

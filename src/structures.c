@@ -159,17 +159,17 @@ void genererVillage(t_map *map) {
         
 
         printf("GENERATION GRILLE => ");
-        const t_discSampling grille = genererGrilleDiscSampling(min, max, nombreBatiment, 18, DISC_ALEATOIRE);
-        grille.elementPositions[0] = centre;
+        const t_discSampling grille = genererGrilleDiscSampling(min, max, nombreBatiment, 12, &centre);
+        // grille.elementPositions[0] = centre;
 
 
-        printf("%i => ", grille.nbElements);
+        printf("NOMBRE STRUCTURE %i => ", grille.nbElements);
         for (int i = 0; i < grille.nbElements; i++) {
             t_vecteur2 position = grille.elementPositions[i];
             e_structureTag tag = selectionMaisonTag();
 
             if (!i && grille.nbElements > 1) {
-                printf("GENERATION PUIT %1.2f:%1.2f => ", position.x, position.y);
+                printf("GENERATION PUIT %i (%1.2f:%1.2f) => ", i, position.x, position.y);
                 genererStructure(position, STRUCTURE_PUIT, map);
             }
             else {
