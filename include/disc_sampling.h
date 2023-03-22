@@ -66,7 +66,7 @@ typedef struct s_discSampling {
 /* -------------------------------------------------------------------------- */
 
 
-t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vecteur2 maxGrille, int nbElementsObjectif, float rayon, const e_disc_methode_gen methode);
+t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vecteur2 maxGrille, int nbElementsObjectif, float rayon, const t_vecteur2 *centre);
 
 
 

@@ -82,7 +82,7 @@ const t_baseBiome basesBiomes[] = {
         // Sol
         { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 20, 65, 100 }, 
         // Vegetations
-        { CHAINE, SAPIN }, { 80, 100 }, 1.5,
+        { CHAINE, SAPIN }, { 80, 100 }, 3.0,
         // Monstres
         { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 10, 100 },
     },

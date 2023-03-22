@@ -148,7 +148,6 @@ t_structure structuresPresets[] = {
 
 
 void genererStructure(const t_vecteur2 position, const e_structureTag tag, t_map *map) {
-    t_chunk *chunk = NULL;
     t_block *block = NULL;
 
     t_structure structure = structuresPresets[tag];

@@ -136,9 +136,25 @@ void updateEchelle() {
 
     SDL_GetWindowSize(moteur->window, &moteur->window_width, &moteur->window_height);
 
-    moteur->camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
-    moteur->camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
+    // moteur->camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    // moteur->camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
   
+    int tailleRendu;
+
+    int tailleLARGEUR = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    int tailleHAUTEUR = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
+
+
+    if (tailleHAUTEUR > tailleLARGEUR) {
+        tailleRendu = tailleHAUTEUR;
+    }
+    else {
+        tailleRendu = tailleLARGEUR;
+    }
+
+
+    moteur->camera->tailleRendu.x = tailleRendu;
+    moteur->camera->tailleRendu.y = tailleRendu;
 }
 
 
