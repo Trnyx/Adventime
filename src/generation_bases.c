@@ -18,6 +18,8 @@
 
 #include "../include/vegetations.h"
 #include "../include/monstre.h"
+#include "../include/animal.h"
+#include "../include/boss.h"
 #include "../include/map.h"
 
 
@@ -172,7 +174,35 @@ const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONS
  * - pv
  * - courbeExp
  */
-const t_baseStatistiquesIntervales baseStatistiquesAnimaux[] = {
+const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesAnimaux[] = {
     { { 40, 50 }, { 50, 60 }, { 8, 10 }, 60, { 0 } }, // VACHE
     { { 50, 50 }, { 50, 50 }, { 9, 11 }, 50, { 0 } }, // COCHON
+};
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                    Boss                                    */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief Tableau regroupant les statistiques de bases en fonction de l'animal
+ * 
+ * - attaque
+ * - defense
+ * - vitesse
+ * - pv
+ * - courbeExp
+ */
+const t_baseStatistiques statistiquesDeBasesBoss[] = {
+    { 0, 0, 0, 0, 0 },          // DIMANCHE
+    { 50, 50, 8, 60, 0 },       // LUNDI
+    { 0, 0, 0, 0, 0 },          // MARDI
+    { 50, 50, 9, 50, 0 },       // MERCREDI
+    { 0, 0, 0, 0, 0 },          // JEUDI
+    { 50, 50, 9, 50, 0 },       // VENDREDI
+    { 0, 0, 0, 0, 0 },          // SAMEDI
 };

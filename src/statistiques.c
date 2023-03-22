@@ -18,6 +18,7 @@
 #include "../include/statistiques.h"
 #include "../include/monstre.h"
 #include "../include/animal.h"
+#include "../include/boss.h"
 
 
 
@@ -65,7 +66,7 @@ t_baseStatistiques genererStatistiquesDeBaseMonstre(const e_monstreType type) {
  */
 t_baseStatistiques genererStatistiquesDeBaseAnimal(const e_entiteTag tag) {
     t_baseStatistiques baseStatistiques;
-    t_baseStatistiquesIntervales baseStatistiquesIntervale = statistiquesDeBasesIntervalesMonstres[tag % TAG_ANIMAL_VACHE];
+    t_baseStatistiquesIntervales baseStatistiquesIntervale = statistiquesDeBasesIntervalesAnimaux[tag - TAG_ANIMAL_VACHE];
   
 
     baseStatistiques.attaque = getNombreAleatoire(baseStatistiquesIntervale.attaque[0], baseStatistiquesIntervale.attaque[1]);
@@ -74,6 +75,23 @@ t_baseStatistiques genererStatistiquesDeBaseAnimal(const e_entiteTag tag) {
     baseStatistiques.pv = baseStatistiquesIntervale.pv;
     baseStatistiques.experience_courbe = getNombreAleatoire(baseStatistiquesIntervale.courbeExp[0], baseStatistiquesIntervale.courbeExp[1]);
 
+      
+    return baseStatistiques;
+}
+
+
+
+/**
+ * @brief Génère les statistiques de base d'un boss
+ * 
+ * Elles sont déterminées de façon aléatoire dans un intervalle définit dans les informations de base d'un boss
+ * Les statistiques de base sont utilisés à chaque fois que les statistiques ont besoins d'être calculées
+ * 
+ * @param jour Le jour du boss
+ * @return Les statistiques de base du boss
+ */
+t_baseStatistiques genererStatistiquesDeBaseBoss(const e_jour jour) {
+    t_baseStatistiques baseStatistiques = statistiquesDeBasesBoss[jour];  
       
     return baseStatistiques;
 }
@@ -124,8 +142,8 @@ int calculPv(const int attaque, const int defense, const int basePv) {
  * @brief Génère les statistiques d'un mob en fonction des statistiques de base
  * 
  * @param baseStatistiques Les statistiques de base d'un mob
- * @param niveau Le niveau d'un mob
- * @return Les statistiques d'un mob
+ * @param niveau Le niveau du mob
+ * @return Les statistiques du mob
  */
 t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau) {
     t_statistiques statistiques;
