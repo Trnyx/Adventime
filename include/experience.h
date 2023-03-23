@@ -43,7 +43,7 @@
 int (*getExperienceCourbe(const e_courbeExperience courbe))(const unsigned int);
 
 int calculExperience(t_entiteVivante *cible);
-void donnerExperience(t_entiteVivante *entite, const unsigned int experience);
+void donnerExperience(t_entiteVivante *entite, const int experience);
 
 
 

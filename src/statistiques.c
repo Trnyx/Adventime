@@ -183,12 +183,24 @@ t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, co
  * 
  * @param entite L'entité que l'on vérifie
  */
-void checkNiveau(t_entiteVivante *entite) {
-    const int experienceRequis = getExperienceCourbe(entite->baseStatistiques.experience_courbe)(entite->statistiques.niveau + 1);
+void checkNiveau(t_entiteVivante *entite, const boolean gagne) {
+    int ceuil;
+    
+    if (gagne) {
+        ceuil = getExperienceCourbe(entite->baseStatistiques.experience_courbe)(entite->statistiques.niveau + 1);
 
-    if (entite->statistiques.experience >= experienceRequis){
-        entite->statistiques.niveau += 1;
-        entite->statistiques = genererStatistiques(entite->baseStatistiques, entite->statistiques.niveau);
+        if (entite->statistiques.experience >= ceuil){
+            entite->statistiques.niveau += 1;
+            entite->statistiques = genererStatistiques(entite->baseStatistiques, entite->statistiques.niveau);
+        }
+    }
+    else {
+        ceuil = getExperienceCourbe(entite->baseStatistiques.experience_courbe)(entite->statistiques.niveau - 1);
+
+        if (entite->statistiques.experience <= ceuil){
+            entite->statistiques.niveau -= 1;
+            entite->statistiques = genererStatistiques(entite->baseStatistiques, entite->statistiques.niveau);
+        }
     }
 }
 
@@ -204,9 +216,15 @@ void checkNiveau(t_entiteVivante *entite) {
  * @param entite L'entité à laquelle les points d'expèrience sont donnée
  * @param experience Les points d'expèrience qu'il faut donner
  */
-void donnerExperience(t_entiteVivante *entite, const unsigned int experience) {
-    entite->statistiques.experience += experience;
-    checkNiveau(entite);
+void donnerExperience(t_entiteVivante *entite, const int experience) {
+    if (experience) {
+        entite->statistiques.experience += experience;
+
+        if (entite->statistiques.experience < 0)
+            entite->statistiques.experience = 0;
+        else
+            checkNiveau(entite, experience > 0);
+    }
 }
 
 
