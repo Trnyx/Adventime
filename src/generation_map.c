@@ -57,58 +57,6 @@ const int probabilitesBiomes[NB_BIOMES] = {
 
 
 /* -------------------------------------------------------------------------- */
-/*                               Test Existence                               */
-/* -------------------------------------------------------------------------- */
-
-
-/**
- * @brief Vérifie si un block se situe bien à l'intérieur d'un chunk
- * 
- * @param x La coordonnée x du block (coordonnée relative au chunk)
- * @param y La coordonnée y du block (coordonnée relative au chunk)
- * 
- * @return Vrai si le block se situe bien dans un chunk, faux sinon
- * 
- * @version 1.1
- */
-int blockEstDansLeChunk(const int x, const int y) {
-    return x >= 0 && y >= 0 && x < TAILLE_CHUNK && y < TAILLE_CHUNK;
-}
-
-
-/**
- * @brief Vérifie si un block se situe bien à l'intérieur de la map
- * 
- * @param x La coordonnée x du block (cordonnée relative à la map)
- * @param y La coordonnée y du block (cordonnée relative à la map)
- * 
- * @return Vrai si le block se situe bien dans la map, faux sinon
- * 
- * @version 1.1
- */
-int blockEstDansLaMap(const int x, const int y) {
-    return x >= 0 && y >= 0 && x < (TAILLE_MAP * TAILLE_CHUNK) && y < (TAILLE_MAP * TAILLE_CHUNK);
-}
-
-
-/**
- * @brief Vérifie que un chunk est bien à l'intérieur de la map
- * 
- * @param x La coordonnée x du chunk
- * @param y La coordonnée y du chunk
- * @param z La coordonnée z du chunk (correspond à la couche du chunk)
- * 
- * @return Vrai si le chunk se situe bien dans la map, faux sinon
- * 
- * @version 1.1
- */ 
-int chunkEstDansLaMap(const int x, const int y, const int z) {
-    return x >= 0 && y >= 0 && z >= 0 && x < TAILLE_MAP && y < TAILLE_MAP && z < NB_COUCHE;
-}
-
-
-
-/* -------------------------------------------------------------------------- */
 /*                                     Get                                    */
 /* -------------------------------------------------------------------------- */
 
@@ -397,8 +345,8 @@ static void normalisationDuChunk(t_chunk* chunk, t_map *map) {
     t_block *block = NULL;
 
 
-    for (int y = 0; y < TAILLE_CHUNK; y++) {
-        for (int x = 0; x < TAILLE_CHUNK; x++) {
+    for (int x = 0; x < TAILLE_CHUNK; x++) {
+        for (int y = 0; y < TAILLE_CHUNK; y++) {
             block = getBlockDansChunk(x, y, chunk);
 
             int *blocksAlentours = getBlocksAlentours(block->position.x, block->position.y, map);
@@ -710,7 +658,7 @@ t_map* genererMap(e_mapType type) {
 
     switch (type) {
         case MAP_OVERWORLD: genererOverworld(map); break;
-        // case MAP_CAVE: genererCave(map); break;
+        case MAP_CAVE: genererCave(map); break;
         default:
             break;
     }

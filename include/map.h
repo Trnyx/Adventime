@@ -239,7 +239,12 @@ t_chunk* getChunk(const int x, const int y, const int z, t_map *map);
 t_chunk* getChunkGraceABlock(const int x, const int y, const int z, t_map *map);
 
 
+void normalisationDuChunk(t_chunk* chunk, t_map *map);
+
+
 t_map* genererMap(e_mapType type);
+
+void genererCave(t_map *map);
 void genererVegetations(t_map *map);
 void genererAnimaux(t_map *map);
 
