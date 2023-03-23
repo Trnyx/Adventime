@@ -150,10 +150,10 @@ const t_baseVegetal basesVegetaux[] = {
  * - courbeExp
  */
 const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONSTRE_TYPES] = {
-    { { 60, 70 }, { 60, 70 }, { 10, 10 }, 80, { 0 } }, // NORMAL
-    { { 65, 75 }, { 55, 65 }, { 15, 15 }, 80, { 0 } }, // PLANTE
+    { { 20, 30 }, { 20, 30 }, { 10, 10 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_MOYEN } }, // NORMAL
+    { { 25, 35 }, { 15, 25 }, { 15, 15 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_RAPIDE } }, // PLANTE
+    { { 15, 25 }, { 35, 45 }, { 15, 15 }, 40, { EXPERIENCE_LENT, EXPERIENCE_RAPIDE } }, // MONTAGNARD
     // { { 55, 65 }, { 60, 70 }, { 10, 10 }, 90, { 0 } }, // EAU
-    { { 55, 65 }, { 75, 85 }, { 15, 15 }, 80, { 0 } }, // MONTAGNARD
     // { { 70, 75 }, { 70, 75 }, { 10, 10 }, 90, { 0 } }, // DESERTIQUE
 };
 

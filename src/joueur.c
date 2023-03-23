@@ -211,7 +211,6 @@ int updateJoueur(t_joueur *joueur) {
  */
 void mortJoueur(t_joueur *joueur) {
     // bruitage
-    
     joueur->statistiques.pv = 0;
 
 }
@@ -335,6 +334,8 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
     joueur->statistiques.experience = 0;
     joueur->statistiques.niveau = 1;
+
+    joueur->baseStatistiques.experience_courbe = EXPERIENCE_LENT;
 
     // Actions
     joueur->actionFlags = initialiserActionFlags();

@@ -14,8 +14,10 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
 #include "../include/statistiques.h"
+#include "../include/experience.h"
 #include "../include/monstre.h"
 #include "../include/animal.h"
 #include "../include/boss.h"
@@ -162,3 +164,111 @@ t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, co
 
     return statistiques;
 }
+
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Experiences                                */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
+ * @param entite 
+ */
+void checkNiveau(t_entiteVivante *entite) {
+    const int experienceRequis = getExperienceCourbe(entite->baseStatistiques.experience_courbe)(entite->statistiques.niveau + 1);
+
+    if (entite->statistiques.experience >= experienceRequis){
+        entite->statistiques.niveau += 1;
+        genererStatistiques(entite->baseStatistiques, entite->statistiques.niveau);
+    }
+}
+
+
+
+
+
+/**
+ * @brief 
+ * 
+ * @param entite 
+ * @param experience 
+ */
+void donnerExperience(t_entiteVivante *entite, const unsigned int experience) {
+    entite->statistiques.experience += experience;
+    checkNiveau(entite);
+}
+
+
+
+
+
+/**
+ * @brief 
+ * 
+ * @param cible 
+ * @return int 
+ */
+int calculExperience(t_entiteVivante *cible) {
+    int exp = cible->statistiques.niveau * cible->statistiques.attaque / 7;
+    return exp;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                             Courbes Experience                             */
+/* -------------------------------------------------------------------------- */
+
+
+int lent(const unsigned int niveau) {
+    return (pow(niveau, 3) * 5 / 2) * 2; 
+}
+
+
+
+int moyen(const unsigned int niveau) {
+    return pow(niveau, 3) * 4;
+}
+
+
+
+int rapide(const unsigned int niveau) {
+    return pow(niveau, 3) * 1.5 * 2;
+}
+
+
+
+
+
+/**
+ * @brief Get the Experience Courbe object
+ * 
+ * @param courbe 
+ * @return int(*)(const unsigned int) 
+ */
+int (*getExperienceCourbe(const e_courbeExperience courbe))(const unsigned int) {
+    switch (courbe) {
+        case EXPERIENCE_LENT:
+            return lent;
+
+        case EXPERIENCE_MOYEN:
+            return moyen;
+            
+        case EXPERIENCE_RAPIDE:
+            return rapide;
+        
+        default:
+            return NULL;
+    }
+}
+
+
+

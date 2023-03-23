@@ -19,6 +19,7 @@
 #include "../include/moteur.h"
 #include "../include/deplacement.h"
 #include "../include/combat.h"
+#include "../include/experience.h"
 
 
 
@@ -56,6 +57,22 @@ void finCombat(t_mob *mob) {
     
     mob->gamma = 0;     
     mob->rotation = ROTATION_HORAIRE;
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Experience                                 */
+/* -------------------------------------------------------------------------- */
+
+
+void gestionExeperience(t_entiteVivante *entite, t_entiteVivante *cible) {
+    const unsigned int experience = calculExperience(cible);
+
+    donnerExperience(cible, -experience);
+    donnerExperience(entite, experience);   
 }
 
 
@@ -224,29 +241,20 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
 
 
         // mort(cible);
-        if (cibleEstMorte && entite->entiteType != ENTITE_JOUEUR) {
-            finCombat((t_mob*)entite);
+        if (cibleEstMorte) {
+            if (entite->entiteType != ENTITE_JOUEUR)
+                finCombat((t_mob*)entite);
+
             // Calcul experience
             // distribution experience
+            gestionExeperience(entite, cible);
+            printf("EXPERIENCE => %i / %i\n", entite->statistiques.niveau, entite->statistiques.experience);
+
             // drops items
         }
     }
     else
         printf("CIBLE NON TOUCHE\n");
-}
-
-
-
-
-
-/* -------------------------------------------------------------------------- */
-/*                                 Experiences                                */
-/* -------------------------------------------------------------------------- */
-
-
-int calculExperience(t_mob *mob) {
-    int exp = mob->statistiques.experience;
-    return exp;
 }
 
 

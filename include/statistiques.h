@@ -26,6 +26,21 @@
 
 
 /* -------------------------------------------------------------------------- */
+/*                                 Enumeration                                */
+/* -------------------------------------------------------------------------- */
+
+
+typedef enum {
+    EXPERIENCE_LENT,
+    EXPERIENCE_MOYEN,
+    EXPERIENCE_RAPIDE,
+} e_courbeExperience;
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -51,7 +66,7 @@ typedef struct s_statistiques {
 typedef struct s_baseStatistiques {
     #include "attributs_statistiques.h"
     
-    unsigned int experience_courbe;
+    e_courbeExperience experience_courbe;
 } t_baseStatistiques;
 
 
@@ -81,6 +96,7 @@ typedef struct s_baseStatistiquesIntervales {
 
 int calculStatistique(const int base, const int niveau);
 int calculPv(const int attaque, const int defense, const int basePv);
+
 t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau);
 t_baseStatistiques genererStatistiquesDeBaseBoss(const e_jour jour);
 
