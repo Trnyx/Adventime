@@ -30,6 +30,10 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @enum e_courbeExperience
+ * @brief Enumération regroupant les différentes type de courbe d'expérience
+ */
 typedef enum {
     EXPERIENCE_LENT,
     EXPERIENCE_MOYEN,
@@ -47,26 +51,26 @@ typedef enum {
 
 /**
  * @struct t_statistiques
- * @brief 
+ * @brief Structure regroupant les différentes statistiques
  */
 typedef struct s_statistiques {
     #include "attributs_statistiques.h"
 
-    unsigned int pvMax;
-    unsigned int experience;
-    unsigned int niveau;
+    unsigned int pvMax;         /**< Le nombre de point de vie maximum */
+    unsigned int experience;    /**< Le nombre de point d'expèrience */
+    unsigned int niveau;        /**< Le nombre de niveau */
 } t_statistiques;
 
 
 
 /**
  * @struct t_baseStatistiques
- * @brief 
+ * @brief Structure regroupant les différentes statistiques de base
  */
 typedef struct s_baseStatistiques {
     #include "attributs_statistiques.h"
     
-    e_courbeExperience experience_courbe;
+    e_courbeExperience experience_courbe;   /**< Le type de courbe d'expèrience */
 } t_baseStatistiques;
 
 

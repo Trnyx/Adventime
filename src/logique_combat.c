@@ -68,6 +68,12 @@ void finCombat(t_mob *mob) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief On calcul l'expèrience à donner au gagnant et retirer au perdant du combat
+ * 
+ * @param entite L'entité gagnante
+ * @param cible L'entité perdante
+ */
 void gestionExeperience(t_entiteVivante *entite, t_entiteVivante *cible) {
     const unsigned int experience = calculExperience(cible);
 

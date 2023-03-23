@@ -176,16 +176,19 @@ t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, co
 
 
 /**
- * @brief 
+ * @brief On vérifie si l'entité change de niveau, si c'est le cas alors on met les statistiques de l'entité à jour
  * 
- * @param entite 
+ * Cette vérification se fait via l'utilisation de formule mathématique calculant le nombre de point d'expérience
+ * requis pour obtenir le niveau supérieur
+ * 
+ * @param entite L'entité que l'on vérifie
  */
 void checkNiveau(t_entiteVivante *entite) {
     const int experienceRequis = getExperienceCourbe(entite->baseStatistiques.experience_courbe)(entite->statistiques.niveau + 1);
 
     if (entite->statistiques.experience >= experienceRequis){
         entite->statistiques.niveau += 1;
-        genererStatistiques(entite->baseStatistiques, entite->statistiques.niveau);
+        entite->statistiques = genererStatistiques(entite->baseStatistiques, entite->statistiques.niveau);
     }
 }
 
@@ -194,10 +197,12 @@ void checkNiveau(t_entiteVivante *entite) {
 
 
 /**
- * @brief 
+ * @brief On donne les points d'expèrience à l'entité
  * 
- * @param entite 
- * @param experience 
+ * Donner une valeur d'experience négative pour retiré de l'expèrience
+ * 
+ * @param entite L'entité à laquelle les points d'expèrience sont donnée
+ * @param experience Les points d'expèrience qu'il faut donner
  */
 void donnerExperience(t_entiteVivante *entite, const unsigned int experience) {
     entite->statistiques.experience += experience;
@@ -209,10 +214,10 @@ void donnerExperience(t_entiteVivante *entite, const unsigned int experience) {
 
 
 /**
- * @brief 
+ * @brief Calcul le nombre de point d'expèrience qui sera donner/retirer
  * 
- * @param cible 
- * @return int 
+ * @param cible L'entité qui a été vaincu
+ * @return Le nombre de point d'expèrience
  */
 int calculExperience(t_entiteVivante *cible) {
     int exp = cible->statistiques.niveau * cible->statistiques.attaque / 7;
@@ -228,18 +233,36 @@ int calculExperience(t_entiteVivante *cible) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ * @param niveau 
+ * @return int 
+ */
 int lent(const unsigned int niveau) {
     return (pow(niveau, 3) * 5 / 2) * 2; 
 }
 
 
 
+/**
+ * @brief 
+ * 
+ * @param niveau 
+ * @return int 
+ */
 int moyen(const unsigned int niveau) {
     return pow(niveau, 3) * 4;
 }
 
 
 
+/**
+ * @brief 
+ * 
+ * @param niveau 
+ * @return int 
+ */
 int rapide(const unsigned int niveau) {
     return pow(niveau, 3) * 1.5 * 2;
 }
@@ -249,10 +272,10 @@ int rapide(const unsigned int niveau) {
 
 
 /**
- * @brief Get the Experience Courbe object
+ * @brief Obtient la formule correspondant à la courbe d'expérience
  * 
- * @param courbe 
- * @return int(*)(const unsigned int) 
+ * @param courbe Le type de courbe d'expèrience que suit l'entité
+ * @return Un pointeur sur la fonction calculant la courbe choisit int(*)(const unsigned int) 
  */
 int (*getExperienceCourbe(const e_courbeExperience courbe))(const unsigned int) {
     switch (courbe) {
