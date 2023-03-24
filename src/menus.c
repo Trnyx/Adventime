@@ -564,6 +564,7 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
       
     }
     nk_end(ctx);
+    menu_inventaire(ctx);
     nk_sdl_render(NK_ANTI_ALIASING_ON);
     SDL_RenderPresent(moteur->renderer);
     
@@ -573,4 +574,41 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
   SDL_DestroyTexture(texture);
 
   return click;
+}
+
+state_main menu_inventaire(struct nk_context *ctx) {
+
+  set_style(ctx, THEME_BLACK);
+
+  if (nk_begin(ctx, "inv_menu",
+               nk_rect(0, 0, moteur->window_width, moteur->window_height),
+               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
+    
+  }
+  nk_end(ctx);
+  inv_stats(ctx);
+  inventaire(ctx);
+  
+  nk_sdl_render(NK_ANTI_ALIASING_ON);
+}
+
+void inv_stats (struct nk_context * ctx) {
+  
+    if (nk_begin(ctx, "Stats",
+               nk_rect(moteur->window_width*0.03, moteur->window_height*0.15, moteur->window_width*0.2, moteur->window_height*0.7),
+               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
+    
+  }
+  nk_end(ctx);
+}
+
+void inventaire (struct nk_context * ctx) {
+
+      if (nk_begin(ctx, "Inventaire",
+               nk_rect(moteur->window_width*0.25, moteur->window_height*0.15, moteur->window_width*0.72, moteur->window_height*0.7),
+               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
+    
+  }
+  nk_end(ctx);
+  
 }
