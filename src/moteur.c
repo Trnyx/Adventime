@@ -144,7 +144,7 @@ void updateEchelle() {
     int tailleHauteur = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
 
 
-    if (tailleHauteur > tailleLargeur) {
+    if (tailleHauteur < tailleLargeur) {
         tailleRendu = tailleHauteur;
     }
     else {
