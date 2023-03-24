@@ -269,6 +269,7 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
     SDL_Rect source;
     SDL_Rect renduObjet;
 
+
     if (tag > DEBUT_VEGETAL && tag < FIN_VEGETAL) {
         texture = moteur->textures->vegetaux;
 
@@ -310,7 +311,6 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
         } 
         
 
-            tag = (tag % BLOCK_MUR_HAUT_GAUCHE);
 
         /* --------------------------------- MAISONS -------------------------------- */
 
@@ -470,4 +470,3 @@ int detruireMap(t_map **map) {
   
     return 0;
 }
-
