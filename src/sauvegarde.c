@@ -135,11 +135,6 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde)
     fprintf(fichier, "\n");
 
 
-    // Flags des bosses
-    fprintf(fichier, "%u ", joueur->bossFlags.lundi);
-    fprintf(fichier, "%u ", joueur->bossFlags.mercredi);
-    fprintf(fichier, "%u ", joueur->bossFlags.vendredi);
-    fprintf(fichier, "\n");
 
 
     fclose(fichier);
@@ -366,8 +361,22 @@ err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
         return FOPEN_FAIL;
     }
 
+    if (map == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour la map\n");
+        return LOAD_FAIL;
+    }
+
+    // Type
+    map->type = type;
 
     // Chunks
+    switch (type) {
+        case MAP_OVERWORLD: charger_overworld(map, fichier); break;
+        case MAP_CAVE: charger_cave(map, fichier); break;
+        default:
+            break;
+    }
+
 
 
     fclose(fichier);
@@ -395,10 +404,34 @@ err_sauv sauvegarder_global(t_monde* monde, char* chemin_monde)
         return FOPEN_FAIL;
     }
 
+    // ID
+    fprintf(fichier, "%s ", monde->id);
+    fprintf(fichier, "\n");
+
     // Seed
     fprintf(fichier, "%u ", monde->seed);
     fprintf(fichier, "\n");
 
+    // Points d'appararition
+    fprintf(fichier, "%f ", monde->positionApparitionBoss.x);
+    fprintf(fichier, "%f ", monde->positionApparitionBoss.y);
+    
+    fprintf(fichier, "%f ", monde->pointApparitionDefaut.x);
+    fprintf(fichier, "%f ", monde->pointApparitionDefaut.y);
+
+    fprintf(fichier, "%f ", monde->pointApparition.x);
+    fprintf(fichier, "%f ", monde->pointApparition.y);
+    fprintf(fichier, "\n");
+
+    // Flags des bosses
+    fprintf(fichier, "%u ", monde->bossFlags.lundi);
+    fprintf(fichier, "%u ", monde->bossFlags.mercredi);
+    fprintf(fichier, "%u ", monde->bossFlags.vendredi);
+    fprintf(fichier, "\n");
+
+    // Timestamp renouvellement
+    fprintf(fichier, "%li ", monde->timestampRenouvellement);
+    
 
     fclose(fichier);
     return SUCCESS;
@@ -423,8 +456,36 @@ err_sauv charger_global(t_monde* monde, char* chemin_monde)
         return FOPEN_FAIL;
     }
 
+
+    // ID
+    fscanf(fichier, "%s ", monde->id);
+    fscanf(fichier, "\n");
+
     // Seed
     fscanf(fichier, "%u ", &(monde->seed));
+    fscanf(fichier, "\n");
+
+    // Points d'appararition
+    fscanf(fichier, "%f ", &(monde->positionApparitionBoss.x));
+    fscanf(fichier, "%f ", &(monde->positionApparitionBoss.y));
+    
+    fscanf(fichier, "%f ", &(monde->pointApparitionDefaut.x));
+    fscanf(fichier, "%f ", &(monde->pointApparitionDefaut.y));
+
+    fscanf(fichier, "%f ", &(monde->pointApparition.x));
+    fscanf(fichier, "%f ", &(monde->pointApparition.y));
+    fscanf(fichier, "\n");
+
+    // Flags des bosses
+    fscanf(fichier, "%u ", &(monde->bossFlags.lundi));
+    fscanf(fichier, "%u ", &(monde->bossFlags.mercredi));
+    fscanf(fichier, "%u ", &(monde->bossFlags.vendredi));
+    fscanf(fichier, "\n");
+
+    // Timestamp renouvellement
+    fscanf(fichier, "%li ", &(monde->timestampRenouvellement));
+    
+
 
     fclose(fichier);
     return SUCCESS;
@@ -469,11 +530,24 @@ err_sauv charger_monde(char* nom_monde)
     t_monde* monde = malloc(sizeof(t_monde));
 
 
+    if (monde == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le monde\n");
+        return LOAD_FAIL;
+    }
+
+
     charger_global(monde, chemin_monde);
 
 
     t_map* overworld = malloc(sizeof(t_map));
     charger_map(overworld, chemin_monde, MAP_OVERWORLD);
+
+    t_map* caverne = malloc(sizeof(t_map));
+    charger_map(caverne, chemin_monde, MAP_CAVE);
+
+
+    t_joueur * joueur = NULL;
+    charger_joueur(joueur, chemin_monde);
 
     return SUCCESS;
 }
