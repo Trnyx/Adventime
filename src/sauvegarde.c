@@ -25,6 +25,12 @@ char* nomFichiersMap[2] =
 /* -------------------------------------------------------------------------- */
 
 
+
+/***********************************************************************************************
+ *                                           Config                                            *
+ ***********************************************************************************************/
+
+
    /**
     * \brief Sauvegarde les paramètres d'options globaux au jeu.
     *
@@ -69,6 +75,13 @@ err_sauv charger_config()
     return SUCCESS;
 
 }
+
+
+
+/***********************************************************************************************
+ *                                           Joueur                                            *
+ ***********************************************************************************************/
+
 
 /**
  * \brief Sauvegarde les données du joueur.
@@ -141,6 +154,13 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde)
     return SUCCESS;
 }
 
+/**
+ * \brief Charge le joueur.
+ * 
+ * \param joueur Stocke le joueur à charger.
+ * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
+ * \return err_sauv, un code d'erreur (0 si succès).
+ */
 err_sauv charger_joueur(t_joueur* joueur, char* chemin_monde)
 {
     // Explicite le chemin du fichier de sauvegarde des données joueur.
@@ -247,6 +267,13 @@ err_sauv charger_joueur(t_joueur* joueur, char* chemin_monde)
     return SUCCESS;
 }
 
+
+
+/***********************************************************************************************
+ *                                             Map                                             *
+ ***********************************************************************************************/
+
+
 /**
  * \brief Sauvegarde les données de la map.
  *
@@ -351,6 +378,13 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
     return SUCCESS;
 }
 
+/**
+ * \brief Charge l'overworld (la map de base).
+ * 
+ * \param map Stocke la map à charger.
+ * \param fichier Le fichier de sauvegarde d'où provient les données.
+ * \return err_sauv, un code d'erreur (0 si succès).
+ */
 err_sauv charger_overworld(t_map* map, FILE* fichier)
 {
     // Initialisation chunks
@@ -402,6 +436,14 @@ err_sauv charger_overworld(t_map* map, FILE* fichier)
     return SUCCESS;
 }
 
+/**
+ * \brief Charge la map.
+ * 
+ * \param map Stocke la map à charger.
+ * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
+ * \param type Le type de map (pour choisir entre l'overworld, les cavernes, ...).
+ * \return err_sauv, un code d'erreur (0 si succès).
+ */
 err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
 {
     // Explicite le chemin du fichier de sauvegarde des données map.
@@ -426,7 +468,8 @@ err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
     // Chunks
     switch (type) {
     case MAP_OVERWORLD: charger_overworld(map, fichier); break;
-    case MAP_CAVE: charger_cave(map, fichier); break;
+    // case MAP_CAVE: charger_cave(map, fichier); break;
+    // Les cavernes ne sont pas encore en place.
     default:
         break;
     }
@@ -437,11 +480,15 @@ err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
 
 }
 
+
+
+/***********************************************************************************************
+ *                                     Paramètres globaux                                      *
+ ***********************************************************************************************/
+
 /**
  * \brief Sauvegarde les paramètres globaux du monde.
  *
- * \param seed Le nombre permettant de générer la map.
- * \param temps Le temps du jeu.
  * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
  * \return err_sauv, un code d'erreur (0 si succès).
  */
@@ -545,6 +592,12 @@ err_sauv charger_global(t_monde* monde, char* chemin_monde)
 }
 
 
+
+/***********************************************************************************************
+ *                                            Monde                                            *
+ ***********************************************************************************************/
+
+
 /**
  * \brief Sauvegarde le monde du jeu, c'est-à-dire les données du joueur, de la map et des données globales.
  *
@@ -594,13 +647,15 @@ err_sauv charger_monde(char* nom_monde)
 
     t_map* overworld = malloc(sizeof(t_map));
     charger_map(overworld, chemin_monde, MAP_OVERWORLD);
+    monde->overworld = overworld;
 
     t_map* caverne = malloc(sizeof(t_map));
     charger_map(caverne, chemin_monde, MAP_CAVE);
-
+    monde->caverne = caverne;
 
     t_joueur* joueur = NULL;
     charger_joueur(joueur, chemin_monde);
+    monde->joueur = joueur;
 
     return SUCCESS;
 }
