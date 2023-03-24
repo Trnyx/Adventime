@@ -32,9 +32,9 @@
 
 
 /**
- * @brief 
+ * @brief Termine les déplacement du mob
  * 
- * @param mob 
+ * @param mob Un pointeur sur le mob qui se déplace
  */
 void finDeplacement(t_mob *mob) {
     printf("FIN DEPLACEMENT\n");
@@ -46,6 +46,11 @@ void finDeplacement(t_mob *mob) {
 
 
 
+/**
+ * @brief Oriente le mob vers une position
+ * 
+ * @param mob Un pointeur sur le mob qui doit être orienté
+ */
 static void orienterVersPosition(t_mob *mob) {
     const float angle = calculAngleEntrePoints(mob->position, mob->positionDeplacement);
     orienterEntite(angle, (t_entite*)mob);
@@ -53,6 +58,11 @@ static void orienterVersPosition(t_mob *mob) {
 
 
 
+/**
+ * @brief Oriente le mob vers sa cible
+ * 
+ * @param mob Un pointeur sur le mob qui doit être orienté
+ */
 static void orienterVersCible(t_mob *mob) {
     const float angle = calculAngleEntrePoints(mob->position, mob->cible->position);
     orienterEntite(angle, (t_entite*)mob);
@@ -63,10 +73,11 @@ static void orienterVersCible(t_mob *mob) {
 
 
 /**
- * @brief 
+ * @brief Déplace un mob vers une position cible
  * 
- * @param mob 
- * @param cible 
+ * @param mob Un pointeur sur le mob qui doit se déplacer
+ * @param vitesse La vitesse de déplacement du mob
+ * @param cible La position cible que doit rejoindre le mob
  */
 void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
     printf("Deplacer vers => %1.2f:%1.2f (%i : %s)\n", cible.x, cible.y, mob->tag, mob->id);
@@ -80,30 +91,38 @@ void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
 
 
 /**
- * @brief 
+ * @brief Deplace un mob autour d'une position cible
  * 
- * @param mob 
- * @param cible 
+ * @param mob Un pointeur sur le mob qui doit se déplacer
+ * @param vitesse La vitesse de déplacement
+ * @param cible La position cible autour de laquelle se déplace le mob
  */
-// double gamma = 0;
 void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
     // printf("Deplacer autour => %1.2f:%1.2f ", cible.x, cible.y);
-
-    const e_rotation rotation = ROTATION_HORAIRE; // getNombreAleatoire(ROTATION_HORAIRE, ROTATION_ANTI_HORAIRE);
 
 
     const float distance = calculDistanceEntrePoints(mob->position, cible);
 
-    const double tanAlpha = (mob->position.y - cible.y) / (mob->position.x - cible.x);
-    double alpha = atan(tanAlpha);
+    // const double tanAlpha = (mob->position.y - cible.y) / (mob->position.x - cible.x);
+    // double alpha = atan(tanAlpha);
 
 
     // printf("POSITION JOUEUR : %1.2f:%1.2f => ", cible.x, cible.y);
     // printf("POSITION MONSTRE : %1.2f:%1.2f => ", mob->position.x, mob->position.y);
     // printf("DISTANCE : %1.2f => ", distance);
     
-    
-    mob->gamma = mob->gamma + 0.02;
+    switch (mob->rotation) {
+        case ROTATION_HORAIRE:
+            mob->gamma += 0.02;
+            break;
+        
+        case ROTATION_ANTI_HORAIRE:
+            mob->gamma -= 0.02;
+            break;
+        
+        default:
+            break;
+    }
 
     // printf("GAMMA : %1.2f \n", gamma);
     // printf("COS SIN : %1.2f / %1.2f \n", cos(gamma), sin(gamma));
@@ -165,13 +184,14 @@ void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
 
 
 /**
- * @brief 
+ * @brief Deplace le mob en direction opposé à la cible
  * 
- * @param mob 
- * @param cible 
+ * @param mob Un pointeur sur le mob qui doit se déplacer
+ * @param vitesse La vitesse de déplacement
+ * @param cible La position de la cible de laquelle le mob s'éloigne
  */
 void seloigneDe(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
-    printf("Deplacer vers => %1.2f:%1.2f\n", cible.x, cible.y);
+    printf("S'eloigne de => %1.2f:%1.2f\n", cible.x, cible.y);
     mob->direction.x = (mob->position.x - cible.x);
     mob->direction.y = (mob->position.y - cible.y);
 

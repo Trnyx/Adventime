@@ -52,6 +52,7 @@ typedef struct s_textures {
 
     // Végétaux
     SDL_Texture *vegetaux;
+    SDL_Texture *structures;
 
 
     // Entités

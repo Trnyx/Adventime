@@ -3,13 +3,8 @@
  *
  * @brief Génération de la végétation 
  * 
- * La génération de la végétation suit le principe du "Poisson Disk Sampling"
- * 
- * Poisson Disk Sampling est une technique permettant de sélectionner de manière aléatoire des points serrés de façon à ce qu'ils respectent une distance minimale 
- * Comme les points sont choisis de façon aléatoire, le résultat a un aspect plus organique
- * 
- * L'algorithme suit donc les étapes suivantes
- * 
+ * La génération de la végétation suit le principe du "Poisson Disc Sampling"
+ * Cf. disc_sampling.c pour plus d'information
  * 
  *
  * @author Clément Hibon
@@ -77,7 +72,6 @@ e_vegetalTag selectionVegetation(e_solTag sol) {
             return SAPIN;
 
         default:
-            printf("ERREUR SOL : %i\n", sol);
             return HERBE;
     }
 }
@@ -118,13 +112,13 @@ void genererVegetations(t_map *map) {
             const t_vecteur2 min = { 0, 0 };
             const t_vecteur2 max = { TAILLE_CHUNK, TAILLE_CHUNK };
 
-            const int nbVegetaux = (TAILLE_CHUNK / 3) * baseBiome.vegetationDensite;
-            float rayon = (TAILLE_CHUNK * 0.6) / baseBiome.vegetationDensite;
-            if (rayon < 3.0)
-                rayon = 3.0;
+            const int nbVegetaux = TAILLE_CHUNK; // (TAILLE_CHUNK / 3) * baseBiome.vegetationDensite;
+            float rayon = (TAILLE_CHUNK * 0.5) / baseBiome.vegetationDensite;
+            if (rayon < 1.0)
+                rayon = 1.0;
 
 
-            t_discSampling grille = genererGrilleDiscSampling(min, max, nbVegetaux, rayon);
+            t_discSampling grille = genererGrilleDiscSampling(min, max, nbVegetaux, rayon, NULL);
             if (grille.nbElements == 0) continue;
 
 
@@ -141,6 +135,7 @@ void genererVegetations(t_map *map) {
                 t_chunk *chunkObjets = getChunk(x, y, COUCHE_OBJETS, map);
                 // chunk = getChunk(x, y, COUCHE_OBJETS, map);
                 block = getBlockDansChunk((int)point.x % TAILLE_CHUNK, (int)point.y % TAILLE_CHUNK, chunkObjets);
+                if (block->tag != VIDE) continue;
 
                 block->tag = vegetalTag;
             }

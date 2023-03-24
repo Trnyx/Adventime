@@ -1,7 +1,7 @@
 /**
  * @file camera.h
  *
- * @brief
+ * @brief Module de manipulation de la caméra
  *
  * @author Clément Hibon
  * @date 5 février
@@ -27,12 +27,14 @@
 
 
 
-#define TAILLE_CAMERA_LARGEUR 24
-#define TAILLE_CAMERA_HAUTEUR 12
+#define TAILLE_CAMERA_LARGEUR 32
+#define TAILLE_CAMERA_HAUTEUR 16
+
 // #define TAILLE_CAMERA_LARGEUR 64
 // #define TAILLE_CAMERA_HAUTEUR 32
-// #define TAILLE_CAMERA_LARGEUR 128
-// #define TAILLE_CAMERA_HAUTEUR 64
+
+// #define TAILLE_CAMERA_LARGEUR (TAILLE_MAP * TAILLE_CHUNK)
+// #define TAILLE_CAMERA_HAUTEUR (TAILLE_MAP * TAILLE_CHUNK)
 
 #define TAILLE_CAMERA_DEMI_LARGEUR TAILLE_CAMERA_LARGEUR / 2
 #define TAILLE_CAMERA_DEMI_HAUTEUR TAILLE_CAMERA_HAUTEUR / 2
@@ -52,17 +54,18 @@
 
 
 /**
- * @brief 
+ * @struct t_camera
+ * @brief Structure modélisant une caméra
  * 
  */
 typedef struct s_camera {
-    t_vecteur2 position;            /**< */
-    t_vecteur2 futurePosition;      /**< */
+    t_vecteur2 position;            /**< La position actuelle de la caméra */
+    t_vecteur2 futurePosition;      /**< La future position de la caméra */
 
-    t_vecteur2 origine;             /**< */
-    t_vecteur2 offset;              /**< */
+    t_vecteur2 origine;             /**< Les coordonnées de l'origine de l'écran */
+    t_vecteur2 offset;              /**< Les coordonnées de décalage de bloc */
 
-    t_vecteur2 tailleRendu;         /**< */
+    t_vecteur2 tailleRendu;         /**< Les dimensions (en pixel) de la taille des rendus */
 } t_camera;
 
 

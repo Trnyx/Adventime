@@ -1,7 +1,7 @@
 /**
  * @file liste.h
  * 
- * @brief 
+ * @brief Module de manipulation des listes
  * 
  * @author Clément Hibon
  * @date 10 février

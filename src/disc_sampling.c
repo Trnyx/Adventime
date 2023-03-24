@@ -1,8 +1,15 @@
 /**
  * @file disc_sampling.c
  *
- * @brief
- *
+ * @brief Génération de "Poisson Disc Sampling"
+ * 
+ * Poisson Disc Sampling est une technique permettant de sélectionner de manière aléatoire des points serrés de façon à ce qu'ils respectent une distance minimale 
+ * Comme les points sont choisis de façon aléatoire, le résultat a un aspect plus organique
+ * 
+ * 1. Un premier point est généré aléatoirement et est stocké dans un tableau
+ * 2. 
+ * 
+ * 
  * @author Clément Hibon
  * @date 15 mars
  * @version 1.1
@@ -22,16 +29,18 @@
 
 
 /**
- * @brief 
+ * @brief Vérifie si le point à placer est un point valide
  * 
- * @param elementsExistant 
- * @param nombreElementsExistant 
- * @param nouveauPoint 
- * @param rayon 
- * @return int 
+ * @param elementsExistant Tableau des éléments déjà existant
+ * @param nombreElementsExistant Le nombre d'élément déjà existant
+ * @param nouveauPoint Le point à créer 
+ * @param rayon Le rayon minimum autorisé 
+ * 
+ * @return VRAI si le point peut être placé, FAUX sinon
  */
 boolean pointValide(t_vecteur2 elementsExistant[], const int nombreElementsExistant, const t_vecteur2 nouveauPoint, const float rayon) {
     int k = 20;
+    boolean estValide = VRAI;
 
 
     for (int i = 0; i < nombreElementsExistant; i++) {
@@ -40,19 +49,19 @@ boolean pointValide(t_vecteur2 elementsExistant[], const int nombreElementsExist
         
         // printf("DISTANCE : %.2f  |  RAYON : %.2f / %.2f", distance, rayon, rayon * 2);
     
-        if (distance >= rayon && distance <= rayon * 2) {
-            // printf(" => OK\n");
-            return VRAI;      
+        if (distance < rayon || distance > rayon * 2) {
+            // printf("DISTANCE : %.2f \n", distance);
+            estValide = FAUX;      
         }
-        // else
-            // printf("\n");
+        
+        
         --k;
         if (!k)
             return FAUX;
     }
 
     
-    return FAUX;
+    return estValide;
 }
 
 
@@ -60,11 +69,12 @@ boolean pointValide(t_vecteur2 elementsExistant[], const int nombreElementsExist
 
 
 /**
- * @brief 
+ * @brief Créer un nouveau point aléatoire entre les coordonnées min et max données
  * 
- * @param min 
- * @param max 
- * @return t_vecteur2 
+ * @param min Les coordonnées x et y minimum
+ * @param max Les coordonnées x et y maximum
+ * 
+ * @return La position du nouveau point
  */
 t_vecteur2 creerNouveauPoint(t_vecteur2 min, t_vecteur2 max) {
     t_vecteur2 nouveauPoint = {
@@ -78,10 +88,10 @@ t_vecteur2 creerNouveauPoint(t_vecteur2 min, t_vecteur2 max) {
 
 
 /**
- * @brief 
+ * @brief Ajouter un nouveau point dans la grille
  * 
- * @param grille 
- * @param nouveauPoint 
+ * @param grille La grille contenant tous les points
+ * @param nouveauPoint Le point à ajouter
  * @param i 
  */
 void ajouterPoint(t_discSampling *grille, const t_vecteur2 nouveauPoint, const int i) {
@@ -94,15 +104,18 @@ void ajouterPoint(t_discSampling *grille, const t_vecteur2 nouveauPoint, const i
 
 
 /**
- * @brief 
+ * @brief Génère une grille / un tableau de point
  * 
- * @param minGrille 
- * @param maxGrille 
- * @param nbElementsObjectif 
- * @param rayon 
- * @return t_discSampling 
+ * Ces points sont généré de sorte à ce qu'ils suivent l'algorithme "Poisson Disc Sampling"
+ * 
+ * @param minGrille Les coordonnées x et y minimum de la grille
+ * @param maxGrille Les coordonnées x et y maximum de la grille
+ * @param nbElementsObjectif Le nombre d'éléments souhaité (ils ne seront pas tous créés)
+ * @param rayon Le rayon minimum de placement
+ * 
+ * @return La grille de points
  */
-t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vecteur2 maxGrille, int nbElementsObjectif, float rayon) {
+t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vecteur2 maxGrille, int nbElementsObjectif, float rayon, const t_vecteur2 *centre) {
     t_discSampling grille;
 
     grille.minGrille = minGrille;
@@ -111,11 +124,15 @@ t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vec
     grille.nbElements = 0;
 
 
-    // t_vecteur2 nouveauPoint = { 
-    //     (minGrille.x + maxGrille.x) / 2,
-    //     (minGrille.y + maxGrille.y) / 2,
-    // };
-    t_vecteur2 nouveauPoint = creerNouveauPoint(minGrille, maxGrille);
+    t_vecteur2 nouveauPoint;
+    if (centre != NULL) {
+        nouveauPoint = *centre;
+    }
+    else {
+        nouveauPoint = creerNouveauPoint(minGrille, maxGrille);    
+    }
+
+
     ajouterPoint(&grille, nouveauPoint, 0);
 
     
@@ -123,7 +140,7 @@ t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vec
         nouveauPoint = creerNouveauPoint(minGrille, maxGrille);
 
         if (pointValide(grille.elementPositions, grille.nbElements, nouveauPoint, rayon)) {
-            ajouterPoint(&grille, nouveauPoint, i);
+            ajouterPoint(&grille, nouveauPoint, grille.nbElements);
         }
         else {
             // --i;

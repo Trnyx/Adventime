@@ -38,10 +38,12 @@
  * @brief Tag permettant de reconnaitre les végétaux
  */
 typedef enum {
-    HERBE = 100,
+    DEBUT_VEGETAL = 99,
+    HERBE,
     CHAINE,
     PALMIER,
     SAPIN,
+    FIN_VEGETAL,
 } e_vegetalTag;
 
 

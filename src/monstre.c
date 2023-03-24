@@ -22,6 +22,22 @@
 
 
 
+/* -------------------------------------------------------------------------- */
+/*                                   Update                                   */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief Actualise un monstre
+ * 
+ * Toute la logique propre à un monstre est gérer dans cette fonction
+ * 
+ * @param monstre Un pointeur sur le monstre à actualiser
+ * @param distance La distance entre le monstre et le joueur
+ * @param cible Un pointeur sur la cible du monstre 
+ * 
+ * @return 
+ */
 int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
     // printf("Update Monstre => ");
 
@@ -41,13 +57,6 @@ int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
 
 
 
-// Deplacement
-// Deplacement
-
-// Deplacement 
-
-
-
 
 
 /* -------------------------------------------------------------------------- */
@@ -56,10 +65,9 @@ int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
 
 
 /**
- * @brief 
+ * @brief Detruit un monstre est libère la mémoire allouée pour ce dernier
  * 
- * @param monstre 
- * @return int 
+ * @param monstre L'adrese du pointeur du monstre à détruire
  */
 void detruireMonstre(t_monstre **monstre) {
     printf("Destruction Monstre => ");
@@ -82,15 +90,24 @@ void detruireMonstre(t_monstre **monstre) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour un monstre et le créé
  * 
- * @param position 
- * @param biome 
- * @return t_monstre* 
+ * @param position La position à laquelle le monstre doit apparaitre
+ * @param biome Le biome dans lequel le monstre apparait
+ * @param niveauJoueur Le niveau actuel du joueur
+ * 
+ * @return Un pointeur sur le monstre créé, NULL en cas d'echec
  */
 t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const int niveauJoueur) {
     t_mob *mob = creerMob(position);
     t_monstre *monstre = realloc(mob, sizeof(t_monstre));
+
+
+    if (monstre == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer un monstre\n");
+        detruireMob(&mob);
+        return NULL;
+    }
 
 
     // Statistiques
@@ -111,6 +128,7 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
 
     // Timer
     monstre->destructionInactif = monstre->aggressif;
+    monstre->destructionDelai = VRAI;
 
     mob = NULL;
     return monstre;

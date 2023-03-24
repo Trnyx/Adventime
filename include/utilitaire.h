@@ -17,12 +17,19 @@
 
 
 
+#define LONGUEUR_ID 8
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Enumeration                                */
 /* -------------------------------------------------------------------------- */
 
 
 /**
+ * @enum booleen
  * @brief 
  */
 typedef enum {
@@ -38,24 +45,24 @@ typedef enum {
 
 
 /**
- * @struct
- * @brief
+ * @struct t_vecteur2
+ * @brief Structure modélisant un vecteur à deux dimensions
  */
 typedef struct s_vecteur2 {
-    float x;
-    float y;
+    float x;    /**< La coordonnée x du vecteur */
+    float y;    /**< La coordonnée y du vecteur */
 } t_vecteur2;
 
 
 
 /**
- * @struct
- * @brief
+ * @struct t_vecteur3
+ * @brief Structure modélisant un vecteur à trois dimensions
  */
 typedef struct s_vecteur3 {
-    float x;
-    float y;
-    float z;
+    float x;    /** La coordonnée x du vecteur */
+    float y;    /** La coordonnée y du vecteur */
+    float z;    /** La coordonnée z du vecteur */
 } t_vecteur3;
 
 
@@ -66,6 +73,8 @@ typedef struct s_vecteur3 {
 /*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
 
+
+char* genererId();
 
 int getNombreAleatoire(const int min, const int max);
 // int getNombreAvecProbabilite();

@@ -53,6 +53,10 @@ typedef enum {
 } e_jour;
 
 
+/**
+ * @brief 
+ * 
+ */
 typedef enum {
     PERIODE_JOUR_LEVE_SOLEIL,
     PERIODE_JOUR_MATIN,
@@ -74,7 +78,7 @@ typedef struct s_temps {
     unsigned int heures;            /**< */
     unsigned int minutes;           /**< */
     unsigned int timestampJeu;      /**< */
-    unsigned int timestamp;         /**< */
+    time_t timestamp;               /**< */
 
     e_cycle cycleJeu;               /**< */
     e_cycle cycleVrai;              /**< */

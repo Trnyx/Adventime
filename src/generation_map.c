@@ -27,6 +27,7 @@
 #include "../include/physique.h"
 #include "../include/map.h"
 #include "../include/animal.h"
+#include "../include/structures.h"
 
 
 
@@ -56,55 +57,6 @@ const int probabilitesBiomes[NB_BIOMES] = {
 
 
 /* -------------------------------------------------------------------------- */
-/*                               Test Existence                               */
-/* -------------------------------------------------------------------------- */
-
-
-/**
- * @brief Vérifie si un block se situe bien à l'intérieur d'un chunk
- * 
- * @param x La coordonnée x du block (coordonnée relative au chunk)
- * @param y La coordonnée y du block (coordonnée relative au chunk)
- * @return Vrai si le block se situe bien dans un chunk, faux sinon
- * 
- * @version 1.1
- */
-int blockEstDansLeChunk(const int x, const int y) {
-    return x >= 0 && y >= 0 && x < TAILLE_CHUNK && y < TAILLE_CHUNK;
-}
-
-
-/**
- * @brief Vérifie si un block se situe bien à l'intérieur de la map
- * 
- * @param x La coordonnée x du block (cordonnée relative à la map)
- * @param y La coordonnée y du block (cordonnée relative à la map)
- * @return Vrai si le block se situe bien dans la map, faux sinon
- * 
- * @version 1.1
- */
-int blockEstDansLaMap(const int x, const int y) {
-    return x >= 0 && y >= 0 && x < (TAILLE_MAP * TAILLE_CHUNK) && y < (TAILLE_MAP * TAILLE_CHUNK);
-}
-
-
-/**
- * @brief Vérifie que un chunk est bien à l'intérieur de la map
- * 
- * @param x La coordonnée x du chunk
- * @param y La coordonnée y du chunk
- * @param z La coordonnée z du chunk (correspond à la couche du chunk)
- * @return Vrai si le chunk se situe bien dans la map, faux sinon
- * 
- * @version 1.1
- */ 
-int chunkEstDansLaMap(const int x, const int y, const int z) {
-    return x >= 0 && y >= 0 && z >= 0 && x < TAILLE_MAP && y < TAILLE_MAP && z < NB_COUCHE;
-}
-
-
-
-/* -------------------------------------------------------------------------- */
 /*                                     Get                                    */
 /* -------------------------------------------------------------------------- */
 
@@ -114,11 +66,12 @@ int chunkEstDansLaMap(const int x, const int y, const int z) {
  * 
  * @param alentours Un tableau regroupant la quantité des éléments se situant autour de l'objet initialement observé
  * @param nbElementsAlentours Le nombre d'éléments contenue dans le tableau alentours
+ * 
  * @return Une structure composé du tag de l'objet prédominant ainsi que le nombre de fois où il est apparue
  * 
  * @version 1.2
  */
-t_predominance getPredominance(int alentours[], const int nbElementsAlentours) {
+static t_predominance getPredominance(int alentours[], const int nbElementsAlentours) {
     t_predominance predominance = { 0, 0 };  
 
   
@@ -149,11 +102,12 @@ t_predominance getPredominance(int alentours[], const int nbElementsAlentours) {
  * 
  * @param xChunk La coordonnée x du chunk
  * @param yChunk La coordonnée y du chunk
+ * 
  * @return Le tag du biome sélectionné
  * 
  * @version 1.1
  */
-e_biome selectionBiome(const int xChunk, const int yChunk) {
+static e_biome selectionBiome(const int xChunk, const int yChunk) {
     // Si le chunk se situe en bordure de map Dans ce cas on force le biome à PROFONDEUR
     if (xChunk == 0 || yChunk == 0 || xChunk == TAILLE_MAP - 1 || yChunk == TAILLE_MAP - 1) return BIOME_PROFONDEUR;
 
@@ -174,11 +128,12 @@ e_biome selectionBiome(const int xChunk, const int yChunk) {
  * @brief Selectionne le tag d'un block (sol)
  * 
  * @param biome Le biome dans lequel le block se situe
+ * 
  * @return Le tag du block sélectionné
  * 
  * @version 1.2
  */
-e_solTag selectionBlock(const e_biome biome) {
+static e_solTag selectionBlock(const e_biome biome) {
     e_solTag solTag = VIDE;
     const t_baseBiome baseBiome = basesBiomes[biome];
     const int nombreBlockPossible = sizeof(baseBiome.typesDeSol) / sizeof(baseBiome.typesDeSol[0]);
@@ -215,11 +170,12 @@ e_solTag selectionBlock(const e_biome biome) {
  * 
  * @param biomePredominant Le biome prédominant autour du chunk
  * @param biomeActuel Le biome du chunk à modifier
+ * 
  * @return Le nouveau biome
  * 
  * @version 1.2
  */
-e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) { 
+static e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) { 
     // Si le biome prédominant est le même que le biome central
     // on renvoie ce dernier car aucune modification de sera apporté
     if (biomePredominant.tag == biomeActuel) return biomeActuel;
@@ -273,11 +229,12 @@ e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) {
  * 
  * @param blockPredominant Le tag du block prédominant autour du block
  * @param blockActuel Le tag du block à modifier
+ * 
  * @return Le nouveau tag du block
  * 
  * @version 1.2
  */
-e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
+static e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
     // Si le block prédominant est le même que le block central alors on renvoie ce dernier
     // Sinon on ajoute à la hauteur du block principale la différence entre 
     // la hauteur du block principal et celle du block prédominant
@@ -299,11 +256,12 @@ e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
  * 
  * @param chunk Le chunk central
  * @param map La map dans laquelle se situent les différents chunks
+ * 
  * @return Un tableau contenant le nombre d'occurence des biomes alentours
  * 
  * @version 1.2
  */
-int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
+static int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
     static int biomesAlentours[NB_BIOMES] = { 0 };
     t_chunk *chunkCourrant = NULL;
   
@@ -333,11 +291,12 @@ int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
  * @param xBlock La coordonnée x (relative à la map) du block central
  * @param yBlock La coordonnée y (relative à la map) du block central
  * @param map La map dans laquelle se situent les différents blocks
+ * 
  * @return Un tableau contenant le nombre d'occurence des tags des blocks alentours
  * 
  * @version 1.1
  */
-int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
+static int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
     static int blocksAlentours[NB_TYPES_SOL] = { 0 };
     t_chunk *chunk = NULL;
     t_block *block = NULL;
@@ -381,13 +340,13 @@ int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
  * 
  * @version 1.3
  */
-void normalisationDuChunk(t_chunk* chunk, t_map *map) {
+static void normalisationDuChunk(t_chunk* chunk, t_map *map) {
     e_solTag blockVoisins[TAILLE_CHUNK][TAILLE_CHUNK] = { SOL_EAU_PROFONDE };
     t_block *block = NULL;
 
 
-    for (int y = 0; y < TAILLE_CHUNK; y++) {
-        for (int x = 0; x < TAILLE_CHUNK; x++) {
+    for (int x = 0; x < TAILLE_CHUNK; x++) {
+        for (int y = 0; y < TAILLE_CHUNK; y++) {
             block = getBlockDansChunk(x, y, chunk);
 
             int *blocksAlentours = getBlocksAlentours(block->position.x, block->position.y, map);
@@ -422,7 +381,7 @@ void normalisationDuChunk(t_chunk* chunk, t_map *map) {
  * 
  * @version 1.2
  */
-void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
+static void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
     e_solTag hauteurVoisins[TAILLE_CHUNK][TAILLE_CHUNK] = { 0 };
     t_block *block = NULL;
 
@@ -468,7 +427,7 @@ void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
  * 
  * @version 1.1
  */
-void normalisationDeLaMap(t_map* map) {  
+static void normalisationDeLaMap(t_map* map) {  
     e_biome nouveauxBiomes[TAILLE_MAP][TAILLE_MAP] = { BIOME_PROFONDEUR };
     t_chunk *chunk = NULL;
 
@@ -514,11 +473,12 @@ void normalisationDeLaMap(t_map* map) {
  * @param x La coordonnée x du chunk
  * @param y La coordonnée y du chunk
  * @param z La coordonnée z du chunk
+ * 
  * @return Le chunk initialisé 
  * 
  * @version 1.2
  */
-t_chunk initialisationChunk(const int x, const int y, const int z) {
+static t_chunk initialisationChunk(const int x, const int y, const int z) {
     t_chunk chunk;
 
 
@@ -550,11 +510,12 @@ t_chunk initialisationChunk(const int x, const int y, const int z) {
  * @param y La coordonnée y du block (relative au chunk)
  * @param chunk Le chunk dans lequel le block se situe
  * @param estVide Si le bloc à initialisé doit être vide
+ * 
  * @return Le block généré
  * 
  * @version 1.2
  */
-t_block generationBlock(const int x, const int y, const t_chunk *chunk, const boolean estVide) {
+static t_block generationBlock(const int x, const int y, const t_chunk *chunk, const boolean estVide) {
     t_block block;
 
 
@@ -578,11 +539,12 @@ t_block generationBlock(const int x, const int y, const t_chunk *chunk, const bo
  * @param chunk Un pointeur sur le chunk qui a été préalablement initialisé
  * @param map Un pointeur sur la map dans laquelle le chunk se situe
  * @param estVide Si le chunk à générer doit être vide
+ * 
  * @return Un pointeur sur le chunk généré
  * 
  * @version 1.4
  */
-t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
+static t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
     for (int x = 0, i = 0; x < TAILLE_CHUNK; x++) {
         for (int y = 0; y < TAILLE_CHUNK; y++) {
             chunk->blocks[i++] = generationBlock(x, y, chunk, estVide);
@@ -614,9 +576,10 @@ t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
  * @brief 
  * 
  * @param map 
+ * 
  * @return t_map* 
  */
-t_map* genererOverworld(t_map *map) {
+static t_map* genererOverworld(t_map *map) {
     t_chunk* chunkTempo = NULL;
 
 
@@ -651,7 +614,15 @@ t_map* genererOverworld(t_map *map) {
     }
 
 
+    // Structures
+    genererEntreeTemple(map);
+    genererVillage(map);
+
+    // Nature
     genererVegetations(map);
+    genererEntreeCaverne(map);
+    
+    // Animaux
     genererAnimaux(map);
 
 
@@ -663,7 +634,7 @@ t_map* genererOverworld(t_map *map) {
 
 
 /**
- * @brief Génère une map compplète
+ * @brief Génère une map complète
  * 
  * @return Un pointeur sur la map générée
  * 
@@ -676,20 +647,18 @@ t_map* genererMap(e_mapType type) {
 
     if (map == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour la map\n");
-        free(map);
         return NULL;
     }
 
 
     map->type = type;
-    // map->nombreEntites = 0;
-    // map->entites = NULL;
     map->entites = malloc(sizeof(t_liste));
     init_liste(map->entites);
 
+
     switch (type) {
         case MAP_OVERWORLD: genererOverworld(map); break;
-        // case MAP_CAVE: genererCave(map); break;
+        case MAP_CAVE: genererCave(map); break;
         default:
             break;
     }
@@ -699,88 +668,6 @@ t_map* genererMap(e_mapType type) {
     printf("Succes\n");
     return map;
 }
-
-
-
-
-
-/* -------------------------------------------------------------------------- */
-/*                                 Destruction                                */
-/* -------------------------------------------------------------------------- */
-
-
-/**
- * @brief 
- * 
- * @param block 
- * @return int 
- * 
- * @version 1.1
- */
-int detruireBlock(t_block **block) {
-    if (block == NULL || *block == NULL) return 0;
-
-    free(*block);
-    *block = NULL;
-
-    return 0;
-}
-
-
-/**
- * @brief 
- * 
- * @param chunk 
- * @return int 
- * 
- * @version 1.2
- */
-int detruireChunk(t_chunk **chunk) {
-    if (chunk == NULL || *chunk == NULL) return 0;
-
-
-    free((*chunk)->blocks);
-    (*chunk)->blocks = NULL;
-
-  
-    return 0;
-}
-
-
-/**
- * @brief 
- * 
- * @param map 
- * @return int 
- * 
- * @version 1.2
- */
-int detruireMap(t_map **map) {
-    printf("Destruction Map => ");
-    if (map == NULL || *map == NULL) return 0;
-    t_chunk *chunk = NULL;
-  
-
-    for (int x = 0; x < TAILLE_MAP; x++) {
-        for (int y = 0; y < TAILLE_MAP; y++) {
-            for (int z = 0; z < NB_COUCHE; z++) {
-                chunk = getChunk(x, y, z, *map);
-                detruireChunk(&chunk);
-            }
-        }
-    }
-
-
-    free((*map)->chunks);
-    (*map)->chunks = NULL;
-  
-    free(*map);
-    *map = NULL;
-
-  
-    return 0;
-}
-
 
 
 

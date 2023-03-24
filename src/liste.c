@@ -25,15 +25,15 @@
 /**
  * @brief Initialise la liste
  * 
- * @param l la liste à initialiser
+ * @param liste la liste à initialiser
  */
-void init_liste(t_liste *l) {
+void init_liste(t_liste *liste) {
     // Crée la liste constituée du seul drapeau
-    l->drapeau = malloc(sizeof(t_element));
+    liste->drapeau = malloc(sizeof(t_element));
 
-    l->drapeau -> pred = l->drapeau;
-    l->drapeau -> succ = l->drapeau;
-    l->ec = l->drapeau;
+    liste->drapeau -> pred = liste->drapeau;
+    liste->drapeau -> succ = liste->drapeau;
+    liste->ec = liste->drapeau;
 }
 
 
@@ -70,9 +70,9 @@ void detruire_liste(t_liste **liste)
 /**
  * @brief Vérifie si la liste est vide
  * 
- * @param l Lne liste
+ * @param liste Une liste
  * 
- * @return int booleen 1 : vrai, 0 : faux
+ * @return VRAI si la liste est vide, FAUX sinon
  */
 boolean liste_vide(t_liste *liste){
     return (liste->drapeau->succ == liste->drapeau) ;
@@ -81,11 +81,11 @@ boolean liste_vide(t_liste *liste){
 
 
 /**
- * @brief Booleen, l'element courant est hors liste
+ * @brief L'element courant est hors liste
  * 
  * @param liste une liste
  * 
- * @return int booleen 1 : vrai, 0 : faux
+ * @return Vrai si l'élément courant est hors liste, FAUX sinon
  */
 boolean hors_liste(t_liste *liste){
     return (liste->ec == liste->drapeau) ;
@@ -93,11 +93,11 @@ boolean hors_liste(t_liste *liste){
 
 
 /**
- * @brief Booleen, l'element courant est hors liste
+ * @brief L'element courant est hors liste
  * 
  * @param liste une liste
  * 
- * @return int booleen 1 : vrai, 0 : faux
+ * @return Vrai si l'élément courant est hors liste, FAUX sinon
  */
 boolean hors_liste_cache(t_liste *liste){
     return (liste->cacheFlag == liste->drapeau) ;

@@ -42,6 +42,7 @@
 
 
 /**
+ * @struct t_controles
  * @brief 
  * 
  */

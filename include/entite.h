@@ -30,12 +30,6 @@
 
 
 
-#define LONGUEUR_ID 8
-
-
-
-
-
 /* -------------------------------------------------------------------------- */
 /*                                 Enumeration                                */
 /* -------------------------------------------------------------------------- */
@@ -62,6 +56,7 @@ typedef enum {
     TAG_ANIMAL_VACHE,
     TAG_ANIMAL_COCHON,
     TAG_MONSTRE_BASIC,
+    TAG_BOSS,
     NB_TAGS
 } e_entiteTag;
 
@@ -113,7 +108,7 @@ typedef struct s_moteur t_moteur;
 typedef struct s_entite t_entite;
 struct s_entite {
     // #include "attributs_entite.h"
-    char *id;
+    char *id;                                               /**< L'ID de l'entité */
     t_vecteur2 position;                                    /**< La position actuelle de l'entité */
     t_vecteur2 direction;                                   /**< La direction (déplacement) actuelle de l'entité */
     e_orientation orientation;                              /**< L'orientation (regard) actuelle de l'entité */
@@ -121,8 +116,8 @@ struct s_entite {
     e_entiteType entiteType;                                /**< Le type de l'entité */
     e_entiteTag tag;                                        /**< Le tag de l'entité */
 
+    SDL_FRect hitbox;                                       /**< La hitbox de l'entité */
     float taille;
-    SDL_FRect hitbox;                                        /**< La hitbox de l'entité */
     t_animation *animation;
 
 
@@ -130,6 +125,7 @@ struct s_entite {
     unsigned int timestampActualisation;                    /**< Le dernier timestamp à laquelle l'entité à été actualisé */
 
     boolean destructionInactif;                             /**< Doit être détruite lorsqu'elle est inactive */
+    boolean destructionDelai;                               /**< Doit être détruite lorsqu'elle est inactive */
 
 
     int  (*update)(t_entite*, float, t_entite* cible);      /**< Fonction d'actualisation de l'entité */
@@ -139,7 +135,7 @@ struct s_entite {
 
 
 typedef struct s_entiteVivante {
-    struct s_entite;
+    struct s_entite;                        /**< On "étend" la structure "entite" */
 
     e_operation operation;                  /**< Ce que fait l'entité */
     

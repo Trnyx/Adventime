@@ -28,7 +28,8 @@
 
 
 /**
- * @brief 
+ * @enum e_deplacementType
+ * @brief Les différents types de déplacement
  * 
  */
 typedef enum {
@@ -40,12 +41,18 @@ typedef enum {
 
 
 /**
- * @brief 
+ * @enum e_rotation
+ * @brief Les sens de rotations
+ * 
+ * Principalement utilisé par les mobs pendant les phases de combat  
  * 
  */
 typedef enum {
+    /*! Aucune rotation */
     ROTATION_AUCUNE,
+    /*! Rotation dans le sens horaire */
     ROTATION_HORAIRE,
+    /*! Rotation dans le sens anti horaire */
     ROTATION_ANTI_HORAIRE
 } e_rotation;
 
@@ -64,7 +71,7 @@ typedef enum {
  * Un mob est une entité mobile (mob correspond à l'abreviation)
  */
 typedef struct s_mob {
-    struct s_entiteVivante;                 /**< inclue les bases d'une entité */
+    struct s_entiteVivante;                 /**< On "étend" la structure "entiteVivante" */
 
     // 
     boolean aggressif;                      /**< Si le mob est aggressif */
@@ -75,14 +82,17 @@ typedef struct s_mob {
     unsigned int rayonDeplacement;          /**< Le rayon dans lequel le mob peut se déplacer */
     t_vecteur2 positionDeplacement;         /**< La position à laquelle le mob veut se déplacer */
     e_deplacementType deplacementType;      /**< Le type de déplacement du mob */
-    double gamma;
 
+    double gamma;
+    e_rotation rotation;
+
+    // Cooldown
     unsigned int timerDeplacement;          /**< Timer à partir duquel on calcul le temps de déplacement (en ticks) */
     unsigned int cooldownDeplacement;       /**< Cooldown entre deux déplacements (en ticks) */
+    unsigned int cooldownAttaque;           /**< Cooldown entre deux attaque (en seconde) */
+    unsigned int cooldownBruitage;          /**< Cooldown entre deux bruits (en seconde) */
     
 
-    // Attaque
-    unsigned int cooldownAttaque;       /**< Cooldown entre deux attaque (en seconde) */
 } t_mob;
 
 

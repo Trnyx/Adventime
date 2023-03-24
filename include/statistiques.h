@@ -19,6 +19,31 @@
 
 
 
+#include "temps.h"
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Enumeration                                */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @enum e_courbeExperience
+ * @brief Enumération regroupant les différentes type de courbe d'expérience
+ */
+typedef enum {
+    EXPERIENCE_LENT,
+    EXPERIENCE_MOYEN,
+    EXPERIENCE_RAPIDE,
+} e_courbeExperience;
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */
 /* -------------------------------------------------------------------------- */
@@ -26,27 +51,43 @@
 
 /**
  * @struct t_statistiques
- * @brief 
+ * @brief Structure regroupant les différentes statistiques
  */
 typedef struct s_statistiques {
     #include "attributs_statistiques.h"
 
-    unsigned int pvMax;
-    unsigned int experience;
-    unsigned int niveau;
+    unsigned int pvMax;         /**< Le nombre de point de vie maximum */
+    unsigned int experience;    /**< Le nombre de point d'expèrience */
+    unsigned int niveau;        /**< Le nombre de niveau */
 } t_statistiques;
 
 
 
 /**
  * @struct t_baseStatistiques
- * @brief 
+ * @brief Structure regroupant les différentes statistiques de base
  */
 typedef struct s_baseStatistiques {
     #include "attributs_statistiques.h"
     
-    unsigned int experience_courbe;
+    e_courbeExperience experience_courbe;   /**< Le type de courbe d'expèrience */
 } t_baseStatistiques;
+
+
+
+
+
+/**
+ * @struct t_baseStatistiquesIntervales
+ * @brief Modélise les intervales des statistiques de base
+ */
+typedef struct s_baseStatistiquesIntervales {
+    int attaque[2];         /**< L'intervale pour les statistiques d'attaque */
+    int defense[2];         /**< L'intervale pour les statistiques de défense */
+    int vitesse[2];         /**< L'intervale pour les statistiques de vitesse */
+    int pv;                 /**< L'intervale pour les statistiques des pv */
+    int courbeExp[2];       /**< L'intervale pour la courbe de gain de niveau */
+} t_baseStatistiquesIntervales;
 
 
 
@@ -59,7 +100,9 @@ typedef struct s_baseStatistiques {
 
 int calculStatistique(const int base, const int niveau);
 int calculPv(const int attaque, const int defense, const int basePv);
+
 t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau);
+t_baseStatistiques genererStatistiquesDeBaseBoss(const e_jour jour);
 
 
 

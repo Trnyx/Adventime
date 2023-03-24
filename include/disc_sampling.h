@@ -26,20 +26,35 @@
 
 
 /* -------------------------------------------------------------------------- */
+/*                                Enumerateurs                                */
+/* -------------------------------------------------------------------------- */
+
+
+typedef enum {
+    DISC_CENTRE,
+    DISC_ALEATOIRE,
+} e_disc_methode_gen;
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */
 /* -------------------------------------------------------------------------- */
 
 
 /**
- * @brief 
+ * @struct t_discSampling
+ * @brief Structure représentant une grille généré avec l'algorithme Poisson Disc Sampling
  * 
  */
 typedef struct s_discSampling {
-    t_vecteur2 minGrille;
-    t_vecteur2 maxGrille;
+    t_vecteur2 minGrille;           /**< Les coordonnées "minimum" (angle haut gauche) de la grille */
+    t_vecteur2 maxGrille;           /**< Les coordonnées "maximum" (angle bas droit) de la grille */
     
-    int nbElements;
-    t_vecteur2 *elementPositions;
+    int nbElements;                 /**< Le nombre d'éléments contenus dans la grille */
+    t_vecteur2 *elementPositions;   /**< Les positions des éléments dans la grille */
 } t_discSampling;
 
 
@@ -51,7 +66,7 @@ typedef struct s_discSampling {
 /* -------------------------------------------------------------------------- */
 
 
-t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vecteur2 maxGrille, int nbElementsObjectif, float rayon);
+t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vecteur2 maxGrille, int nbElementsObjectif, float rayon, const t_vecteur2 *centre);
 
 
 

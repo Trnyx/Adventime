@@ -34,6 +34,10 @@ t_moteur *moteur = NULL;
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Cette fonction permet de faire en sorte que le jeu soit constamment à 60 images par secondes
+ * 
+ */
 void regulerFPS() {
     int tempsEcoule = SDL_GetTicks() - moteur->frame;
     if (TPS > tempsEcoule) 
@@ -45,6 +49,11 @@ void regulerFPS() {
 
 
 
+/**
+ * @brief Initialise les controles du jeu
+ * 
+ * @param controles Un pointeur sur une structure où sont stocké les controles du jeu
+ */
 void initControles(t_controles *controles) {
     // Deplacements
     controles->key_up = SDL_SCANCODE_W;
@@ -65,12 +74,16 @@ void initControles(t_controles *controles) {
 
 
 
+/**
+ * @brief Alloue l'espace nécessaire pour le moteur et le créé
+ * 
+ * @return Un pointeur sur le moteur, NULL en cas d'echec
+ */
 t_moteur* initMoteur() {
     t_moteur *m = malloc(sizeof(t_moteur));
 
     if (m == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le moteur\n");
-        free(m);
         return NULL;
     }
 
@@ -93,6 +106,11 @@ t_moteur* initMoteur() {
 
 
 
+/**
+ * @brief Detruit le moteur est libère la mémoire allouée pour ce dernier
+ * 
+ * @param moteur L'adresse du pointeur sur le moteur 
+ */
 void detruireMoteur(t_moteur **moteur) {
     printf("Destruction Moteur => ");
     if (moteur != NULL && *moteur != NULL) {
@@ -108,10 +126,34 @@ void detruireMoteur(t_moteur **moteur) {
 
 
 
+/**
+ * @brief Calcule la taille en pixel d'un bloc selon la taille de l'écran et
+ * actualise les informations de la caméra pour le rendu
+ * 
+ */
 void updateEchelle() {
 
     SDL_GetWindowSize(moteur->window, &moteur->window_width, &moteur->window_height);
+
+    // moteur->camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    // moteur->camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
   
+    int tailleRendu;
+
+    int tailleLargeur = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    int tailleHauteur = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
+
+
+    if (tailleHauteur > tailleLargeur) {
+        tailleRendu = tailleHauteur;
+    }
+    else {
+        tailleRendu = tailleLargeur;
+    }
+
+
+    moteur->camera->tailleRendu.x = tailleRendu;
+    moteur->camera->tailleRendu.y = tailleRendu;
 }
 
 

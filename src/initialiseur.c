@@ -1,7 +1,7 @@
 /**
  * @file initialiseur.c
  * 
- * @brief 
+ * @brief Module d'initialisation
  * 
  * @author Eliott Remars & Clément Hibon
  * @date 3 février
@@ -26,7 +26,10 @@
 
 
 /**
- * @brief 
+ * @brief Initialise tout ce qui est nécessaire pour le bon fonctionnement du jeu
+ * 
+ * @param moteur L'adresse du pointeur sur le moteur qui sera intialisé 
+ * @param audio L'adresse du pointeur sur l'audio qui sera intialisé 
  */
 void initAll(t_moteur **moteur, t_audio **audio) {
     // Moteur
@@ -34,14 +37,17 @@ void initAll(t_moteur **moteur, t_audio **audio) {
     
     const t_vecteur2 positionCamera = { 0, 0 };
     (*moteur)->camera = creerCamera(positionCamera);
+    updateEchelle();
+    
     (*moteur)->textures = initTextures((*moteur)->renderer);
     (*moteur)->cache = initCache();
     (*moteur)->temps = initTemps(time(NULL));
 
 
     // Methode d'affichage
-    // Pour le filtre de l'ambiance
+    // Pour le filtre d'ambiance
     SDL_SetRenderDrawBlendMode((*moteur)->renderer, SDL_BLENDMODE_BLEND);
+
 
     // Pour afficher le logo en tant qu'icon dans la barre des tâches lorsque le jeu est allumé
     SDL_Surface *logo = NULL;
@@ -62,6 +68,12 @@ void initAll(t_moteur **moteur, t_audio **audio) {
 
 
 
+/**
+ * @brief Detruit tout ce qui à été initialisé pour le fonctionnement du jeu
+ * 
+ * @param moteur Le pointeur sur le moteur qui sera détruit
+ * @param audio Le pointeur sur l'audio qui sera détruit
+ */
 void detruireAll(t_moteur *moteur, t_audio *audio) {
     nk_sdl_shutdown();
     t_cache *cache = moteur->cache;

@@ -10,6 +10,8 @@
 
 
 
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL_image.h>
@@ -21,6 +23,15 @@
 
 
 
+/**
+ * @brief 
+ * 
+ * @param source 
+ * @param x 
+ * @param y 
+ * @param tailleX 
+ * @param tailleY 
+ */
 void splitTexture(SDL_Rect *source, const int x, const int y, const int tailleX, const int tailleY) {
     source->x = x;
     source->y = y;
@@ -36,8 +47,9 @@ void splitTexture(SDL_Rect *source, const int x, const int y, const int tailleX,
  * @brief 
  * 
  * @param tag Le tag de la texture à afficher
- * @param textures 
- * @return SDL_Texture* 
+ * @param textures Un pointeur sur la structure stoccant les textures
+ * 
+ * @return La te
  */
 SDL_Texture* getTexture(const int tag, t_textures *textures) {    
     switch (tag) {
@@ -65,17 +77,17 @@ SDL_Texture* getTexture(const int tag, t_textures *textures) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour les textures et les chargent
  * 
- * @param renderer 
- * @return t_textures* 
+ * @param renderer Le renderer SDL nécessaire pour le rendu du jeu
+ * 
+ * @return Un pointeur sur les textures, NULL en cas d'echec
  */
 t_textures* initTextures(SDL_Renderer *renderer) {
     t_textures *textures = malloc(sizeof(t_textures));
 
     if (textures == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour les textures\n");
-        free(textures);
         return NULL;
     }
 
@@ -100,80 +112,6 @@ t_textures* initTextures(SDL_Renderer *renderer) {
         printf("Erreur Chargement Texture : Impossible de charger sol_tileset.png\n%s\n", SDL_GetError());
     }
     SDL_FreeSurface(surface);
-
-
-    // surface = IMG_Load("assets/images/sol_profondeur.png");
-    // textures->sol_profondeur = SDL_CreateTextureFromSurface(renderer, surface);
-    // if (surface == NULL) {
-    //     printf("Erreur Chargement Texture : Impossible de charger sol_profondeur.png\n%s\n", SDL_GetError());
-    // }
-    // SDL_FreeSurface(surface);
-
-
-    // surface = IMG_Load("assets/images/sol_eau.png");
-    // textures->sol_eau = SDL_CreateTextureFromSurface(renderer, surface);
-    // if (surface == NULL) {
-    //     printf("Erreur Chargement Texture : Impossible de charger sol_eau.png\n%s\n", SDL_GetError());
-    // }
-    // SDL_FreeSurface(surface);
-
-
-    // surface = IMG_Load("assets/images/sol_sable.png");
-    // textures->sol_sable = SDL_CreateTextureFromSurface(renderer, surface);
-    // if (surface == NULL) {
-    //     printf("Erreur Chargement Texture : Impossible de charger sol_sable.png\n%s\n", SDL_GetError());
-    // }
-    // SDL_FreeSurface(surface);
-
-
-    // surface = IMG_Load("assets/images/sol_herbe_1.png");
-    // textures->sol_herbe_1 = SDL_CreateTextureFromSurface(renderer, surface);
-    // if (surface == NULL) {
-    //     printf("Erreur Chargement Texture : Impossible de charger sol_herbe_1.png\n%s\n", SDL_GetError());
-    // }
-    // SDL_FreeSurface(surface);
-
-
-    // surface = IMG_Load("assets/images/sol_herbe_2.png");
-    // textures->sol_herbe_2 = SDL_CreateTextureFromSurface(renderer, surface);
-    // if (surface == NULL) {
-    //     printf("Erreur Chargement Texture : Impossible de charger sol_herbe_2.png\n%s\n", SDL_GetError());
-    // }
-    // SDL_FreeSurface(surface);
-
-
-    // surface = IMG_Load("assets/images/sol_herbe_3.png");
-    // textures->sol_herbe_3 = SDL_CreateTextureFromSurface(renderer, surface);
-    // if (surface == NULL) {
-    //     printf("Erreur Chargement Texture : Impossible de charger sol_herbe_3.png\n%s\n", SDL_GetError());
-    // }
-    // SDL_FreeSurface(surface);
-
-
-    // surface = IMG_Load("assets/images/sol_montagne_1.png");
-    // textures->sol_montagne_1 = SDL_CreateTextureFromSurface(renderer, surface);
-    // if (surface == NULL) {
-    //     printf("Erreur Chargement Texture : Impossible de charger sol_montagne_1.png\n%s\n", SDL_GetError());
-    // }
-    // SDL_FreeSurface(surface);
-
-
-    // surface = IMG_Load("assets/images/sol_montagne_2.png");
-    // textures->sol_montagne_2 = SDL_CreateTextureFromSurface(renderer, surface);
-    // if (surface == NULL) {
-    //     printf("Erreur Chargement Texture : Impossible de charger sol_montagne_2.png\n%s\n", SDL_GetError());
-    // }
-    // SDL_FreeSurface(surface);
-
-
-    // surface = IMG_Load("assets/images/sol_neige.png");
-    // textures->sol_neige = SDL_CreateTextureFromSurface(renderer, surface);
-    // if (surface == NULL) {
-    //     printf("Erreur Chargement Texture : Impossible de charger sol_neige.png\n%s\n", SDL_GetError());
-    // }
-    // SDL_FreeSurface(surface);
-
-
     
 
     /* -------------------------------- Végétaux -------------------------------- */
@@ -181,7 +119,17 @@ t_textures* initTextures(SDL_Renderer *renderer) {
     surface = IMG_Load("assets/images/vegetaux_tileset.png");
     textures->vegetaux = SDL_CreateTextureFromSurface(renderer, surface);
     if (surface == NULL) {
-        printf("Erreur Chargement Texture : Impossible de charger vegetaux.png\n%s\n", SDL_GetError());
+        printf("Erreur Chargement Texture : Impossible de charger vegetaux_tileset.png\n%s\n", SDL_GetError());
+    }
+    SDL_FreeSurface(surface);
+    
+
+    /* ------------------------------- Structures ------------------------------- */
+
+    surface = IMG_Load("assets/images/structures_tileset.png");
+    textures->structures = SDL_CreateTextureFromSurface(renderer, surface);
+    if (surface == NULL) {
+        printf("Erreur Chargement Texture : Impossible de charger structures_tileset.png\n%s\n", SDL_GetError());
     }
     SDL_FreeSurface(surface);
 
@@ -231,6 +179,11 @@ t_textures* initTextures(SDL_Renderer *renderer) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Detruit les textures est libère la mémoire allouée pour ces dernières
+ * 
+ * @param textures L'adresse du pointeur sur les textures 
+ */
 void detruireTextures(t_textures **textures) {
     printf("Destruction Textures => ");
     if (textures != NULL && *textures != NULL) {
@@ -245,6 +198,10 @@ void detruireTextures(t_textures **textures) {
         // Végétaux
         if ((*textures)->vegetaux != NULL) 
             SDL_DestroyTexture((*textures)->vegetaux);
+
+        // Structures
+        if ((*textures)->structures != NULL) 
+            SDL_DestroyTexture((*textures)->structures);
         
         // Joueur
         if ((*textures)->joueur != NULL) 

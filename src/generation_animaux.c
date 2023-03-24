@@ -1,7 +1,7 @@
 /**
  * @file generation_animaux.c
  *
- * @brief
+ * @brief Module gérant la génération des animaux
  *
  * @author Clément Hibon
  * @date 28 février
@@ -27,11 +27,11 @@
 
 
 /**
- * @brief 
+ * @brief Génère les informations et statistiques d'un animal en fonction de sont tag
  * 
- * @param animal 
- * @param tag 
- * @return t_animal* 
+ * @param animal Un pointeur sur l'animal à générer
+ * @param tag Le tag de l'animal à générer
+ * @return Le pointeur sur l'animal donné en paramètre 
  */
 t_animal* genererAnimal(t_animal *animal, const e_entiteTag tag) {
     animal->tag = tag;
@@ -48,9 +48,9 @@ t_animal* genererAnimal(t_animal *animal, const e_entiteTag tag) {
 
 
 /**
- * @brief 
+ * @brief Génère un troupeau d'animaux
  * 
- * @param map 
+ * @param map Un pointeur sur la map dans laquelle les animaux sont générés
  */
 void genererAnimaux(t_map *map) {
     printf("GENERATION ANIMAUX => ");

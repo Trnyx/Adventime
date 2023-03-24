@@ -16,7 +16,63 @@
 #include "../include/moteur.h"
 #include "../include/map.h"
 #include "../include/vegetations.h"
+#include "../include/structures.h"
 #include "../include/camera.h"
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                               Test Existence                               */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief Vérifie si un block se situe bien à l'intérieur d'un chunk
+ * 
+ * @param x La coordonnée x du block (coordonnée relative au chunk)
+ * @param y La coordonnée y du block (coordonnée relative au chunk)
+ * 
+ * @return Vrai si le block se situe bien dans un chunk, faux sinon
+ * 
+ * @version 1.1
+ */
+int blockEstDansLeChunk(const int x, const int y) {
+    return x >= 0 && y >= 0 && x < TAILLE_CHUNK && y < TAILLE_CHUNK;
+}
+
+
+/**
+ * @brief Vérifie si un block se situe bien à l'intérieur de la map
+ * 
+ * @param x La coordonnée x du block (cordonnée relative à la map)
+ * @param y La coordonnée y du block (cordonnée relative à la map)
+ * 
+ * @return Vrai si le block se situe bien dans la map, faux sinon
+ * 
+ * @version 1.1
+ */
+int blockEstDansLaMap(const int x, const int y) {
+    return x >= 0 && y >= 0 && x < (TAILLE_MAP * TAILLE_CHUNK) && y < (TAILLE_MAP * TAILLE_CHUNK);
+}
+
+
+/**
+ * @brief Vérifie que un chunk est bien à l'intérieur de la map
+ * 
+ * @param x La coordonnée x du chunk
+ * @param y La coordonnée y du chunk
+ * @param z La coordonnée z du chunk (correspond à la couche du chunk)
+ * 
+ * @return Vrai si le chunk se situe bien dans la map, faux sinon
+ * 
+ * @version 1.1
+ */ 
+int chunkEstDansLaMap(const int x, const int y, const int z) {
+    return x >= 0 && y >= 0 && z >= 0 && x < TAILLE_MAP && y < TAILLE_MAP && z < NB_COUCHE;
+}
+
 
 
 
@@ -33,6 +89,7 @@
  * @param x La cooronnée x (relative au chunk) du block
  * @param y La cooronnée y (relative au chunk) du block
  * @param chunk Un pointeur sur le chunk où sera récupérer le block
+ * 
  * @return Un pointeur sur le block trouvé, NULL sinon
  * 
  * @version 1.3
@@ -57,6 +114,7 @@ t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk) {
  * @param y La cooronnée y (relative à la map) du block
  * @param z La couche où se situe du block
  * @param map Un pointeur sur la map où sera récupérer le block
+ * 
  * @return Un pointeur sur le block trouvé, NULL sinon
  * 
  * @version 1.2
@@ -79,6 +137,7 @@ t_block* getBlockDansMap(const int x, const int y, const int z, t_map *map) {
  * @param y La coordonnée y du chunk
  * @param couche La couche du chunk 
  * @param map Un pointeur sur la map où sera récupéré le chunk
+ * 
  * @return Un pointeur sur le chunk trouvé, NULL sinon
  * 
  * @version 1.3
@@ -103,6 +162,7 @@ t_chunk* getChunk(const int x, const int y, const int couche, t_map *map) {
  * @param y La coordonnée y (relative à la map) d'un block
  * @param couche La couche du chunk 
  * @param map Un pointeur sur la map où sera récupéré le chunk
+ * 
  * @return Un pointeur sur le chunk trouvé, NULL sinon
  * 
  * @version 1.1
@@ -125,23 +185,23 @@ t_chunk* getChunkGraceABlock(const int x, const int y, const int couche, t_map *
 /* ----------------------------------- Sol ---------------------------------- */
 
 
-int dessinerBlockSol(const int tag, SDL_Rect *rendu) {
+/**
+ * @brief Dessine un block au sol
+ * 
+ * @param tag Le tag du block qui doit être dessiné
+ * @param rendu Les informations sur le rendu 
+ * 
+ * @return 0 si tout s'est bien passé, un nombre négatif sinon
+ */
+int dessinerBlockSol(int tag, SDL_Rect *rendu) {
     SDL_Rect source;
 
 
-    switch (tag) {
-        case SOL_EAU_PROFONDE:
-        case SOL_EAU:
-        case SOL_SABLE:
-        case SOL_HERBE_1:
-        case SOL_HERBE_2:
-        case SOL_HERBE_3:
-        case SOL_MONTAGNE_1:
-        case SOL_MONTAGNE_2:
-            splitTexture(&source, (8 + 2 * TAILLE_TILE * tag),8, TAILLE_TILE,TAILLE_TILE);
-            break;
-        default:
-            return SDL_RenderCopy(moteur->renderer, moteur->textures->null, NULL, rendu);
+    if (tag >= SOL_EAU_PROFONDE && tag <= SOL_MONTAGNE_2) {
+        splitTexture(&source, (8 + 2 * TAILLE_TILE * tag),8, TAILLE_TILE,TAILLE_TILE);
+    }
+    else {
+        return SDL_RenderCopy(moteur->renderer, moteur->textures->null, NULL, rendu);
     }
 
 
@@ -151,11 +211,9 @@ int dessinerBlockSol(const int tag, SDL_Rect *rendu) {
 
 
 /**
- * @brief 
+ * @brief Affiche le sol de la map en fonction de la taille de la caméra
  * 
- * @param origine 
- * @param offset 
- * @param rendu 
+ * @param map Un pointeur sur la map qui doit être affiché
  */
 void dessinerSol(t_map *map) {
     t_camera *camera = moteur->camera;
@@ -197,50 +255,123 @@ void dessinerSol(t_map *map) {
 
 #define LARGEUR_ARBRE (3 * TAILLE_TILE)
 #define HAUTEUR_ARBRE (2 * TAILLE_TILE)
-int dessinerVegetal(const int tag, SDL_Rect *rendu) {
+
+/**
+ * @brief Affiche un Objet complet
+ * 
+ * @param tag Le tag de l'objet à afficher
+ * @param rendu Les informations sur le rendu 
+ * 
+ * @return 0 si tout s'est bien passé, un nombre négatif sinon
+ */
+int dessinerObjet(int tag, SDL_Rect *rendu) {
+    SDL_Texture *texture = NULL;
     SDL_Rect source;
-    SDL_Rect renduVegetaux;
+    SDL_Rect renduObjet;
 
 
-    switch (tag) {
-        case HERBE:
-            splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
-            renduVegetaux.x = rendu->x;
-            renduVegetaux.y = rendu->y;
-            renduVegetaux.w = rendu->w;
-            renduVegetaux.h = rendu->h;
-            break;
+    if (tag > DEBUT_VEGETAL && tag < FIN_VEGETAL) {
+        texture = moteur->textures->vegetaux;
+
+        switch (tag) {
+            case HERBE:
+                splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
+                renduObjet.x = rendu->x;
+                renduObjet.y = rendu->y;
+                renduObjet.w = rendu->w;
+                renduObjet.h = rendu->h;
+                break;
+                
+            case CHAINE:
+            case PALMIER:
+            case SAPIN:
+                splitTexture(&source, (LARGEUR_ARBRE * (tag % HERBE)),0, LARGEUR_ARBRE,HAUTEUR_ARBRE);
+                renduObjet.x = rendu->x - rendu->w;
+                renduObjet.y = rendu->y - rendu->h;
+                renduObjet.w = 3 * rendu->w;
+                renduObjet.h = 2 * rendu->h;
+                
+                break;
+        }
+    }
+    else if (tag > DEBUT_BLOCK_STRUCTURE && tag < FIN_BLOCK_STRUCTURE) {
+        texture = moteur->textures->structures;
+        t_vecteur2 decalage = { 0, 0 };
+
+
+        // printf("AFFICHE STRUCTURE %i ", tag);
+
+        /* ---------------------------------- PUIT ---------------------------------- */
+
+        if (tag >= BLOCK_PUIT_HAUT_GAUCHE && tag <= BLOCK_PUIT_BAS_DROIT) {
+            tag = (tag % BLOCK_PUIT_HAUT_GAUCHE);
             
-        case CHAINE:
-        case PALMIER:
-        case SAPIN:
-            splitTexture(&source, (LARGEUR_ARBRE * (tag % HERBE)),0, LARGEUR_ARBRE,HAUTEUR_ARBRE);
-            renduVegetaux.x = rendu->x - rendu->w;
-            renduVegetaux.y = rendu->y - rendu->h;
-            renduVegetaux.w = 3 * rendu->w;
-            renduVegetaux.h = 2 * rendu->h;
-            break;
+            decalage.x = (tag % 3);
+            decalage.y = (tag / 3);
+        } 
+        
 
 
-        default:
-            break;
+        /* --------------------------------- MAISONS -------------------------------- */
+
+        else if (tag >= BLOCK_MUR_HAUT_GAUCHE_STANDARD && tag <= BLOCK_MUR_DROIT_BLEU) {
+            tag = (tag % BLOCK_MUR_HAUT_GAUCHE_STANDARD);
+
+            // Le décalage se fait en fonction du nombre de bloc possible composant un mur
+            // ainsi que le nombre de variants de mur possible
+            decalage.x = (tag % (3 * 3));
+            decalage.y = ((tag / (3 * 3)) + 14);
+        } 
+        
+
+        else if (tag >= BLOCK_TOIT_PETIT_LAYER_1_1_STANDARD && tag <= BLOCK_TOIT_PETIT_LAYER_5_6_BLEU) {
+            tag = (tag % BLOCK_TOIT_PETIT_LAYER_1_1_STANDARD);
+
+            // Le décalage se fait en fonction du nombre de bloc possible composant un toit
+            // ainsi que le nombre de variants de toit possible
+            decalage.x = (tag % (6 * 3));
+            decalage.y = ((tag / (6 * 3)) + 3);
+        } 
+        
+
+        else if (tag == BLOCK_PORTE) {
+            decalage.x = 0;
+            decalage.y = (16);
+        }
+
+
+        /* --------------------------------- TEMPLE --------------------------------- */
+
+        else if (tag >= BLOCK_TEMPLE_ENTREE_HAUT_GAUCHE && tag <= BLOCK_TEMPLE_ENTREE_BAS_DROIT) {
+            tag = tag % BLOCK_TEMPLE_ENTREE_HAUT_GAUCHE;
+
+            decalage.x = (tag % 3) + 3;
+            decalage.y = tag / 3;
+        }
+
+
+        splitTexture(&source, decalage.x*TAILLE_TILE,decalage.y*TAILLE_TILE, TAILLE_TILE,TAILLE_TILE);
+        // splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
+
+        renduObjet.x = rendu->x;
+        renduObjet.y = rendu->y;
+        renduObjet.w = rendu->w;
+        renduObjet.h = rendu->h;
     }
 
 
     
-    return SDL_RenderCopy(moteur->renderer, moteur->textures->vegetaux, &source, &renduVegetaux);
+    return SDL_RenderCopy(moteur->renderer, texture, &source, &renduObjet);
 }
 
 
 
 /**
- * @brief 
+ * @brief Affiche les objets d'une map
  * 
- * @param origine 
- * @param offset 
- * @param rendu 
+ * @param map Un pointeur sur la map dans laquelle se trouve les objets
  */
-void dessinerVegetation(t_map *map) {
+void dessinerObjets(t_map *map) {
     t_camera *camera = moteur->camera;
     SDL_Rect rendu;
     rendu.w = camera->tailleRendu.x;
@@ -257,7 +388,86 @@ void dessinerVegetation(t_map *map) {
             if (block->tag == VIDE) continue;
 
 
-            dessinerVegetal(block->tag, &rendu);
+            dessinerObjet(block->tag, &rendu);
         }
     }
 }
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Destruction                                */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
+ * @param block 
+ *  
+ * @version 1.1
+ */
+int detruireBlock(t_block **block) {
+    if (block == NULL || *block == NULL) return 0;
+
+    free(*block);
+    *block = NULL;
+
+    return 0;
+}
+
+
+/**
+ * @brief 
+ * 
+ * @param chunk 
+ * 
+ * @version 1.2
+ */
+int detruireChunk(t_chunk **chunk) {
+    if (chunk == NULL || *chunk == NULL) return 0;
+
+
+    free((*chunk)->blocks);
+    (*chunk)->blocks = NULL;
+
+  
+    return 0;
+}
+
+
+/**
+ * @brief 
+ * 
+ * @param map 
+ * 
+ * @version 1.2
+ */
+int detruireMap(t_map **map) {
+    printf("Destruction Map => ");
+    if (map == NULL || *map == NULL) return 0;
+    t_chunk *chunk = NULL;
+  
+
+    for (int x = 0; x < TAILLE_MAP; x++) {
+        for (int y = 0; y < TAILLE_MAP; y++) {
+            for (int z = 0; z < NB_COUCHE; z++) {
+                chunk = getChunk(x, y, z, *map);
+                detruireChunk(&chunk);
+            }
+        }
+    }
+
+
+    free((*map)->chunks);
+    (*map)->chunks = NULL;
+  
+    free(*map);
+    *map = NULL;
+
+  
+    return 0;
+}
+

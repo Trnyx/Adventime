@@ -73,6 +73,12 @@
 
 
 
+/**
+ * @brief Détruit une entité et la supprime de la liste 
+ * 
+ * @param entites La liste d'entité dans laquelle est supprimé l'entité
+ * @param entite L'entité à supprimer
+ */
 static void suppressionEntite(t_liste *entites, t_entite *entite) {
     oter_elt(entites);
     entite->detruire((t_entite**) &entite);
@@ -92,21 +98,11 @@ static void suppressionEntite(t_liste *entites, t_entite *entite) {
  * @brief Fonction appelé à chaque frame du jeu
  * 
  * Elle gère toute la physique et logique du jeu
+ * 
+ * @param map Un pointeur sur la map dans laquelle le joueur
+ * @param joueur Un pointeur sur le joueur
  */
 void update(t_map *map, t_joueur *joueur) {
-    // regulerFPS();
-    // // printf("Update (%li)\n", u++);
-    // t_monde *monde = moteur->monde;
-    // t_joueur *joueur = monde->joueur;
-
-
-    // t_map *map = NULL;
-    // switch (joueur->map) {
-    //     case MAP_OVERWORLD: map = monde->map; break;
-    //     case MAP_CAVE: map = monde->map; break;
-    // }
-
-
     t_liste *entites = moteur->cache->entites;
     t_entite *entite = NULL;
 
@@ -127,7 +123,7 @@ void update(t_map *map, t_joueur *joueur) {
     gestionnaireTempsEvenements(temps, time(NULL));
 
 
-    e_musiques_type musiqueType;
+    e_musiques_type musiqueType = MUSIC_AUCUNE;
 
 
 
@@ -171,7 +167,6 @@ void update(t_map *map, t_joueur *joueur) {
                 const float distance = calculDistanceEntreEntites(entite, (t_entite*)joueur);
                 // printf("distance : %1.2f ", distance);
 
-
                 // Lorsque l'entité se trouve au delà des deux disques précédents
                 // L'entité est concidéré dans un disque inactif
                 if (distance > JOUEUR_RAYON_SEMIACTIF) {
@@ -196,7 +191,7 @@ void update(t_map *map, t_joueur *joueur) {
 
                     // Gestion de la durée de vie de l'entité
                     // Si l'entité à atteint la durée de vie maximale d'une entité alors elle est supprimé
-                    if (entite->destructionInactif) {
+                    if (entite->destructionDelai) {
                         if (entite->timestampActualisation - entite->timestampCreation >= (ENTITE_DUREE_VIE_MAX * 1000)) {
                             suppressionEntite(entites, entite);
                             continue;
@@ -232,16 +227,16 @@ void update(t_map *map, t_joueur *joueur) {
                                     ((t_mob*)entite)->positionDeplacement = ((t_mob*)entite)->cible->position;
                             }
 
+                            if (entite->tag == TAG_BOSS) {
+                                musiqueType = MUSIC_BOSS;
+                            }
+
                             break;
 
 
                         // Sur toutes les entités
                         default:
-                            // // Si le joueur est 
-                            // if (((t_mob*)entite)->deplacementType == DEPLACEMENT_COMBAT && distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
-                            //     ((t_mob*)entite)->deplacementType = DEPLACEMENT_NORMAL;
-                            // }
-
+                            
                             break;
                     }
                     
@@ -323,9 +318,10 @@ void update(t_map *map, t_joueur *joueur) {
     /*                                   Musique                                  */
     /* -------------------------------------------------------------------------- */
 
-
-    if (nombreMobsCombat) musiqueType = MUSIC_COMBAT;
-    else musiqueType = MUSIC_AMBIANCE;
+    if (musiqueType == MUSIC_AUCUNE) {
+        if (nombreMobsCombat) musiqueType = MUSIC_COMBAT;
+        else musiqueType = MUSIC_AMBIANCE;
+    }
 
     if (audio->musiqueType != musiqueType) {
         audio->musiqueType = musiqueType;
@@ -346,7 +342,7 @@ void update(t_map *map, t_joueur *joueur) {
     // afficherCamera(map);
 
     if (map->type == MAP_OVERWORLD) {
-        dessinerVegetation(map);
+        dessinerObjets(map);
         dessinerCalqueAmbiance(temps);
     }
 

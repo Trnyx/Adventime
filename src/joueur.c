@@ -32,10 +32,11 @@
 
 
 /**
- * @brief 
+ * @brief Vérifie si le joueur peut attaquer
  * 
- * @param joueur 
- * @return boolean 
+ * @param joueur Le joueur que l'on vérifie
+ * 
+ * @return VRAI si le joueur peut attaquer, FAUX sinon
  */
 boolean peutAttaquer(t_joueur *joueur) {
     return !(joueur->cooldownAttaque);
@@ -43,11 +44,14 @@ boolean peutAttaquer(t_joueur *joueur) {
 
 
 
+
+
 /**
- * @brief 
+ * @brief Regarde les inputs et vérifie si le joueur doit attaquer
  * 
- * @param flags 
- * @return boolean 
+ * @param flags Les flags indiquant les inputs du joueur
+ * 
+ * @return VRAI si le joueur doit attaquer, FAUX sinon
  */
 boolean doitAttaquer(t_action_flags *flags) {
     return flags->attack == 1;
@@ -56,10 +60,11 @@ boolean doitAttaquer(t_action_flags *flags) {
 
 
 /**
- * @brief 
+ * @brief Regarde les inputs et vérifie si le joueur doit se déplacer
  * 
- * @param flags 
- * @return boolean 
+ * @param flags Les flags indiquant les inputs du joueur
+ * 
+ * @return VRAI si le joueur doit se déplacer, FAUX sinon
  */
 boolean doitSeDeplacer(t_action_flags *flags) {
     return flags->up || flags->down || flags->left || flags->right;
@@ -75,9 +80,9 @@ boolean doitSeDeplacer(t_action_flags *flags) {
 
 
 /**
- * @brief Get the Direction Joueur object
+ * @brief Met à jour la direction du joueur en fonction de ses inputs
  * 
- * @param joueur 
+ * @param joueur Le joueur dont la direction est mis à jour
  */
 void getDirectionJoueur(t_joueur *joueur) {
     t_vecteur2 direction = { 0, 0 };
@@ -104,8 +109,12 @@ void getDirectionJoueur(t_joueur *joueur) {
 
 
 
-
-float getOrientationJoueur(t_joueur *joueur) {
+/**
+ * @brief Obtient l'angle d'orientation du joueur
+ * 
+ * @return L'angle entre le centre de l'écran et la position de la souris
+ */
+float getOrientationJoueur() {
     const t_vecteur2 centreEcran = {
         moteur->window_width / 2,
         moteur->window_height / 2,
@@ -123,6 +132,12 @@ float getOrientationJoueur(t_joueur *joueur) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Execute une attaque du joueur
+ * 
+ * @param joueur Pointeur sur le joueur qui attaque
+ * @param angleAttaque L'angle dans lequel le joueur attaque
+ */
 void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
     printf("JOUEUR ATTAQUE (angle : %1.2f)\n", angleAttaque);
     joueur->cooldownAttaque = JOUEUR_COOLDOWN_ATTAQUE;
@@ -150,9 +165,9 @@ void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
 
 
 /**
- * @brief 
+ * @brief Actualise le joueur
  * 
- * @param joueur 
+ * @param joueur Pointeur sur le joueur qui doit être actualisé
  * @return int 
  */
 int updateJoueur(t_joueur *joueur) {
@@ -169,7 +184,8 @@ int updateJoueur(t_joueur *joueur) {
         joueur->operation = ATTENTE;
     }
 
-    const float angle = getOrientationJoueur(joueur);
+
+    const float angle = getOrientationJoueur();
     orienterEntite(angle, (t_entite*)joueur);
 
 
@@ -188,15 +204,47 @@ int updateJoueur(t_joueur *joueur) {
 
 
 
+/**
+ * @brief Gère la mort du joueur
+ * 
+ * @param joueur Le joueur qui est mort
+ */
+void mortJoueur(t_joueur *joueur) {
+    // bruitage
+    joueur->statistiques.pv = 0;
+
+}
+
+
+
+
+
+/**
+ * @brief Permet au joueur de réapparaitre
+ * 
+ * @param joueur Pointeur sur le joueur qui réapparait
+ * @param position La position à laquelle le joueur réapparait
+ */
+void reapparitionJoueur(t_joueur *joueur, const t_vecteur2 position) {
+    joueur->statistiques.pv = joueur->statistiques.pvMax;
+    joueur->position = position;
+
+    joueur->map = MAP_OVERWORLD;
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Destruction                                */
 /* -------------------------------------------------------------------------- */
 
 
 /**
- * @brief 
+ * @brief Detruit les inputs du joueur est libère la mémoire allouée pour ces derniers
  * 
- * @param flags 
+ * @param flags L'adresse du pointeur sur les inputs du joueur à détruire
  */
 void detruireActionFlags(t_action_flags **flags) {
     if (flags != NULL && *flags != NULL) {
@@ -208,9 +256,9 @@ void detruireActionFlags(t_action_flags **flags) {
 
 
 /**
- * @brief 
+ * @brief Detruit un joueur est libère la mémoire allouée pour ce dernier
  * 
- * @param joueur 
+ * @param joueur L'adrese du pointeur du joueur à détruire
  */
 void detruireJoueur(t_joueur **joueur) {
     if (joueur != NULL && *joueur != NULL) {
@@ -255,15 +303,23 @@ t_action_flags* initialiserActionFlags() {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour un joueur et le créé
  * 
- * @param position 
- * @return t_joueur* 
+ * @param position La position à laquelle le joueur doit être créé
+ * 
+ * @return Un pointeur sur le joueur créé, NULL si echec
  */
 t_joueur* creerJoueur(const t_vecteur2 position) {
     printf("Creation du joueur (%1.0f:%1.0f) => ", position.x, position.y);
     t_entite *entite = creerEntite(position);
     t_joueur *joueur = realloc(entite, sizeof(t_joueur));
+
+
+    if (joueur == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer une joueur\n");
+        detruireEntite(&entite);
+        return NULL;
+    }
 
 
     joueur->entiteType = ENTITE_JOUEUR;
@@ -279,6 +335,8 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->statistiques.experience = 0;
     joueur->statistiques.niveau = 1;
 
+    joueur->baseStatistiques.experience_courbe = EXPERIENCE_LENT;
+
     // Actions
     joueur->actionFlags = initialiserActionFlags();
 
@@ -292,6 +350,8 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     // Timer
     joueur->cooldownAttaque = 0;
     joueur->destructionInactif = FAUX;
+
+    // Avancement
 
 
     printf("Succes\n");

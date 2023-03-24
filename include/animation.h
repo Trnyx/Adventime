@@ -1,7 +1,7 @@
 /**
  * @file animation.h
  * 
- * @brief 
+ * @brief Module pour manipuler les animations
  * 
  * @author Clément Hibon
  * @date 10 mars
@@ -23,7 +23,8 @@
 
 
 /**
- * @brief 
+ * @struct t_animation
+ * @brief Structure modélisant une animation
  * 
  */
 typedef struct s_animation {
