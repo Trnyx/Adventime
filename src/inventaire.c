@@ -54,15 +54,15 @@ t_itemSlot initItemSlot(int index) {
  * @param nbSlots 
  * @return t_stockage 
  */
-t_stockage initStockage(unsigned int nbSlots) {
-    t_stockage stockage = malloc(sizeof(t_sto));
+t_stockage* creerStockage(unsigned int nbSlots) {
+    t_stockage *stockage = malloc(sizeof(t_stockage));
 
 
-    stockage.nbSlots = nbSlots;
-    stockage.itemSlots = calloc(nbSlots, sizeof(t_itemSlot));
+    stockage->nbSlots = nbSlots;
+    stockage->itemSlots = calloc(nbSlots, sizeof(t_itemSlot));
 
     for (int i = 0; i < nbSlots; i++) {
-        stockage.itemSlots[i] = initItemSlot(i);
+        stockage->itemSlots[i] = initItemSlot(i);
     }
 
 
@@ -74,9 +74,11 @@ t_stockage initStockage(unsigned int nbSlots) {
 
 
 t_inventaire creerInventaire() {
-    t_inventaire inventaire;
+    t_stockage *stockage = creerStockage(NOMBRE_SLOT_INVENTAIRE);
+    t_inventaire *inventaire = realloc(stockage, sizeof(t_inventaire));
 
 
 
+    stockage = NULL;
     return inventaire;
 }
