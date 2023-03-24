@@ -26,7 +26,10 @@
 /* -------------------------------------------------------------------------- */
 
 
-
+/**
+ * @brief 
+ * 
+ */
 t_structure structuresPresets[] = {
     {
         STRUCTURE_PUIT,
@@ -147,6 +150,13 @@ t_structure structuresPresets[] = {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ * @param position 
+ * @param tag 
+ * @param map 
+ */
 void genererStructure(const t_vecteur2 position, const e_structureTag tag, t_map *map) {
     t_block *block = NULL;
 
@@ -162,6 +172,4 @@ void genererStructure(const t_vecteur2 position, const e_structureTag tag, t_map
         }
     }
 }
-
-
 
