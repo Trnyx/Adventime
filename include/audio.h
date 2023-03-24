@@ -20,6 +20,7 @@
 #include <SDL2/SDL_mixer.h>
 
 #include "utilitaire.h"
+#include "entite.h"
 #include "temps.h"
 #include "entite.h"
 
@@ -59,6 +60,8 @@ typedef enum {
  *  
  */
 typedef enum {
+    /*! Indique qu'il n'y a pas de musique */
+    MUSIC_AUCUNE,
     /*! Indique qu'il faut jouer la musique du menu */
     MUSIC_MENU,
     /*! Indique qu'il faut jouer la musique d'ambiance */

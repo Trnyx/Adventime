@@ -95,6 +95,11 @@
 // Rayon dans lequel les mobs sont suffisamment proche pour attaquer
 #define MOB_RAYON_COMBAT_ATTAQUE 2.2
 
+// Rayon dans lequel le boss détecte le joueur
+#define BOSS_RAYON_COMBAT_DETECTION 6.0
+// Rayon dans lequel le boss se positionne
+#define BOSS_RAYON_COMBAT_POSITIONNEMENT 8.0
+
 
 //
 #define MOB_VITESSE_MODIFICATEUR_POSITIONNEMENT
@@ -108,19 +113,21 @@
 
 // La durée maximale de déplacement d'un mob [en seconde]
 #define MOB_DUREE_DEPLACEMENT (5 * FPS)
+
 // La durée minimale d'attente entre deux déplacements [en seconde]
 #define MOB_DELAI_MIN_ENTRE_DEPLACEMENT (3 * FPS)
 // La durée maximale d'attente entre deux déplacements [en seconde]
 #define MOB_DELAI_MAX_ENTRE_DEPLACEMENT (8 * FPS)
+
 // La durée minimale d'attente entre deux attaques [en seconde]
 #define MOB_DELAI_MIN_ENTRE_ATTAQUE (2 * FPS)
 // La durée maximale d'attente entre deux attaques [en seconde]
 #define MOB_DELAI_MAX_ENTRE_ATTAQUE (5 * FPS)
 
 // La durée minimale d'attente entre deux bruitages [en seconde]
-#define MOB_DELAI_MIN_ENTRE_BRUIT (10 * FPS)
+#define MOB_DELAI_MIN_ENTRE_BRUIT (12 * FPS)
 // La durée maximale d'attente entre deux bruitages [en seconde]
-#define MOB_DELAI_MAX_ENTRE_BRUIT (15 * FPS)
+#define MOB_DELAI_MAX_ENTRE_BRUIT (20 * FPS)
 
 
 // La durée de vie minimum d'une entité

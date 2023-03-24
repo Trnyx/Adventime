@@ -12,6 +12,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+#include "../include/physique.h"
+#include "../include/moteur.h"
 #include "../include/monstre.h"
 #include "../include/map.h"
 
@@ -57,6 +62,52 @@ e_monstreType choisirTypeMonstre(const t_baseBiome baseBiome) {
 
 
 
+int calculNiveau(const unsigned int niveauJoueur) {
+    if (niveauJoueur <= 3)
+        return niveauJoueur;
+
+    else if (niveauJoueur <= 7)
+        return getNombreAleatoire(niveauJoueur - 1, niveauJoueur);
+
+    else if (niveauJoueur <= 9)
+        return getNombreAleatoire(niveauJoueur - 1, niveauJoueur + 1);
+    
+    else
+        return 10;
+}
+
+
+
+
+
+/**
+ * @brief 
+ * 
+ * @return boolean 
+ */
+boolean estNocturne() {
+    t_temps *temps = moteur->temps;
+    struct tm *t = localtime(&temps->timestamp);
+
+    if (temps->cycleJeu == CYCLE_NUIT && (t->tm_hour >= 0 || t->tm_hour <= 4)) {
+        const int proba = getNombreAleatoire(1, 100);
+
+        // La probabilité d'apparition d'un monstre nocturne se calcule de la manière suivante :
+        // On fait la racine du nombre de nuit par heure dans l'interval entre minuit et quatre heure
+        const int probabiliteApparition = sqrt(NOMBRE_JOUR * 4);
+
+        if (proba < probabiliteApparition)
+            return VRAI;
+    }
+
+
+    return FAUX;
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Generation                                 */
 /* -------------------------------------------------------------------------- */
@@ -76,12 +127,14 @@ t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome, const int niv
     monstre->tag = TAG_MONSTRE_BASIC;
     monstre->type = choisirTypeMonstre(basesBiomes[biome]);
 
-    const int niveau = niveauJoueur;
+    printf("NIVEAU => ");
+    const int niveau = calculNiveau(niveauJoueur);
+    printf("OK\n");
 
     monstre->baseStatistiques = genererStatistiquesDeBaseMonstre(monstre->type);
     monstre->statistiques = genererStatistiques(monstre->baseStatistiques, niveau);
 
-    monstre->estNocturne = FAUX;
+    monstre->estNocturne = estNocturne();
     
     return monstre;
 }

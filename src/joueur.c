@@ -211,7 +211,6 @@ int updateJoueur(t_joueur *joueur) {
  */
 void mortJoueur(t_joueur *joueur) {
     // bruitage
-    
     joueur->statistiques.pv = 0;
 
 }
@@ -316,6 +315,13 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     t_joueur *joueur = realloc(entite, sizeof(t_joueur));
 
 
+    if (joueur == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer une joueur\n");
+        detruireEntite(&entite);
+        return NULL;
+    }
+
+
     joueur->entiteType = ENTITE_JOUEUR;
     joueur->map = MAP_OVERWORLD;
 
@@ -328,6 +334,8 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
     joueur->statistiques.experience = 0;
     joueur->statistiques.niveau = 1;
+
+    joueur->baseStatistiques.experience_courbe = EXPERIENCE_LENT;
 
     // Actions
     joueur->actionFlags = initialiserActionFlags();

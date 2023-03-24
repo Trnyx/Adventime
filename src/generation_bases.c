@@ -18,6 +18,8 @@
 
 #include "../include/vegetations.h"
 #include "../include/monstre.h"
+#include "../include/animal.h"
+#include "../include/boss.h"
 #include "../include/map.h"
 
 
@@ -82,7 +84,7 @@ const t_baseBiome basesBiomes[] = {
         // Sol
         { SOL_HERBE_1, SOL_HERBE_2, SOL_HERBE_3 }, { 20, 65, 100 }, 
         // Vegetations
-        { CHAINE, SAPIN }, { 80, 100 }, 1.5,
+        { CHAINE, SAPIN }, { 80, 100 }, 3.0,
         // Monstres
         { MONSTRE_TYPE_NORMAL, MONSTRE_TYPE_PLANTE }, { 10, 100 },
     },
@@ -148,10 +150,10 @@ const t_baseVegetal basesVegetaux[] = {
  * - courbeExp
  */
 const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONSTRE_TYPES] = {
-    { { 60, 70 }, { 60, 70 }, { 10, 10 }, 80, { 0 } }, // NORMAL
-    { { 65, 75 }, { 55, 65 }, { 15, 15 }, 80, { 0 } }, // PLANTE
+    { { 20, 30 }, { 20, 30 }, { 10, 10 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_MOYEN } }, // NORMAL
+    { { 25, 35 }, { 15, 25 }, { 15, 15 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_RAPIDE } }, // PLANTE
+    { { 15, 25 }, { 35, 45 }, { 15, 15 }, 40, { EXPERIENCE_LENT, EXPERIENCE_RAPIDE } }, // MONTAGNARD
     // { { 55, 65 }, { 60, 70 }, { 10, 10 }, 90, { 0 } }, // EAU
-    { { 55, 65 }, { 75, 85 }, { 15, 15 }, 80, { 0 } }, // MONTAGNARD
     // { { 70, 75 }, { 70, 75 }, { 10, 10 }, 90, { 0 } }, // DESERTIQUE
 };
 
@@ -172,7 +174,35 @@ const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONS
  * - pv
  * - courbeExp
  */
-const t_baseStatistiquesIntervales baseStatistiquesAnimaux[] = {
+const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesAnimaux[] = {
     { { 40, 50 }, { 50, 60 }, { 8, 10 }, 60, { 0 } }, // VACHE
     { { 50, 50 }, { 50, 50 }, { 9, 11 }, 50, { 0 } }, // COCHON
+};
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                    Boss                                    */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief Tableau regroupant les statistiques de bases en fonction de l'animal
+ * 
+ * - attaque
+ * - defense
+ * - vitesse
+ * - pv
+ * - courbeExp
+ */
+const t_baseStatistiques statistiquesDeBasesBoss[] = {
+    { 0, 0, 0, 0, 0 },          // DIMANCHE
+    { 50, 50, 8, 60, 0 },       // LUNDI
+    { 0, 0, 0, 0, 0 },          // MARDI
+    { 50, 50, 9, 50, 0 },       // MERCREDI
+    { 0, 0, 0, 0, 0 },          // JEUDI
+    { 50, 50, 9, 50, 0 },       // VENDREDI
+    { 0, 0, 0, 0, 0 },          // SAMEDI
 };

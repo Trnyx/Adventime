@@ -100,8 +100,6 @@ void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
 void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
     // printf("Deplacer autour => %1.2f:%1.2f ", cible.x, cible.y);
 
-    const e_rotation rotation = ROTATION_HORAIRE; // getNombreAleatoire(ROTATION_HORAIRE, ROTATION_ANTI_HORAIRE);
-
 
     const float distance = calculDistanceEntrePoints(mob->position, cible);
 
@@ -113,8 +111,18 @@ void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
     // printf("POSITION MONSTRE : %1.2f:%1.2f => ", mob->position.x, mob->position.y);
     // printf("DISTANCE : %1.2f => ", distance);
     
-    
-    mob->gamma = mob->gamma + 0.02;
+    switch (mob->rotation) {
+        case ROTATION_HORAIRE:
+            mob->gamma += 0.02;
+            break;
+        
+        case ROTATION_ANTI_HORAIRE:
+            mob->gamma -= 0.02;
+            break;
+        
+        default:
+            break;
+    }
 
     // printf("GAMMA : %1.2f \n", gamma);
     // printf("COS SIN : %1.2f / %1.2f \n", cos(gamma), sin(gamma));

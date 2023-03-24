@@ -112,13 +112,13 @@ void genererVegetations(t_map *map) {
             const t_vecteur2 min = { 0, 0 };
             const t_vecteur2 max = { TAILLE_CHUNK, TAILLE_CHUNK };
 
-            const int nbVegetaux = (TAILLE_CHUNK / 3) * baseBiome.vegetationDensite;
-            float rayon = (TAILLE_CHUNK * 0.6) / baseBiome.vegetationDensite;
-            if (rayon < 3.0)
-                rayon = 3.0;
+            const int nbVegetaux = TAILLE_CHUNK; // (TAILLE_CHUNK / 3) * baseBiome.vegetationDensite;
+            float rayon = (TAILLE_CHUNK * 0.5) / baseBiome.vegetationDensite;
+            if (rayon < 1.0)
+                rayon = 1.0;
 
 
-            t_discSampling grille = genererGrilleDiscSampling(min, max, nbVegetaux, rayon);
+            t_discSampling grille = genererGrilleDiscSampling(min, max, nbVegetaux, rayon, NULL);
             if (grille.nbElements == 0) continue;
 
 

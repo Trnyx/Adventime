@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <string.h>    
+#include <string.h>
 #include "../include/physique.h"
 #include "../include/moteur.h"
 #include "../include/monde.h"
@@ -227,8 +227,8 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
         SDL_FRect hitbox;
         hitbox.x = positionSuivante.x; 
         hitbox.y = positionSuivante.y; 
-        hitbox.w = entite->hitbox.w * entite->taille;
-        hitbox.h = entite->hitbox.h * entite->taille;
+        hitbox.w = entite->hitbox.w;
+        hitbox.h = entite->hitbox.h;
 
         en_tete(&entitesAlentours);
         while (!hors_liste(&entitesAlentours)) {
@@ -286,6 +286,8 @@ boolean deplacerEntite(t_entite *entite, const float vitesse) {
         
         entite->hitbox.x = entite->position.x - (entite->taille / 2);
         entite->hitbox.y = entite->position.y - (entite->taille / 2);
+        entite->hitbox.w = entite->taille;
+        entite->hitbox.h = entite->taille;
     }
 
 
@@ -356,17 +358,19 @@ void dessinerEntite(t_entite *entite) {
             break;
 
         case ENTITE_MOB:
-            switch (entite->tag) {
-                case TAG_ANIMAL_VACHE: 
-                case TAG_ANIMAL_COCHON: 
-                    texture = moteur->textures->animaux; 
-                    sprite.x = (entite->tag - TAG_ANIMAL_VACHE) * (TAILLE_SET / 2);
-                    break;
-                case TAG_MONSTRE_BASIC: 
-                    texture = moteur->textures->monstres; 
-                    sprite.x = (((t_monstre*)entite)->estNocturne ? NB_MONSTRE_TYPES * TAILLE_SET : ((t_monstre*)entite)->type) * (TAILLE_SET);
-                    break;
-                default: break;
+            if (entite->tag >= TAG_ANIMAL_VACHE && entite->tag <= TAG_ANIMAL_COCHON) {
+                texture = moteur->textures->animaux; 
+                sprite.x = (entite->tag - TAG_ANIMAL_VACHE) * (TAILLE_SET / 2);
+            }
+            else if (entite->tag == TAG_MONSTRE_BASIC) {
+                texture = moteur->textures->monstres; 
+                sprite.x = (((t_monstre*)entite)->estNocturne ? NB_MONSTRE_TYPES * TAILLE_SET : ((t_monstre*)entite)->type) * (TAILLE_SET);
+            }
+            else if (entite->tag == TAG_BOSS) {
+                texture = moteur->textures->monstres;
+                // sprite.x = (((t_boss*)entite)->jour) * (TAILLE_SET);
+                rendu.w *= entite->taille;
+                rendu.h *= entite->taille;
             }
             break;
 
@@ -429,10 +433,15 @@ void detruireEntite(t_entite **entite) {
             free((*entite)->id);
             (*entite)->id = NULL;
         }
+
+        if ((*entite)->animation != NULL) {
+            detruireAnimation(&(*entite)->animation);
+            (*entite)->animation = NULL;
+        }
         
+
         free(*entite);
         *entite = NULL;
-
     }
 }
 
@@ -477,8 +486,8 @@ t_entite* creerEntite(const t_vecteur2 position) {
 
     entite->hitbox.x = position.x - (entite->taille / 2);
     entite->hitbox.y = position.y - (entite->taille / 2);
-    entite->hitbox.h = 1;
-    entite->hitbox.w = 1;
+    entite->hitbox.h = entite->taille;
+    entite->hitbox.w = entite->taille;
 
     entite->animation = NULL;
 
@@ -491,6 +500,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->timestampActualisation = entite->timestampCreation;
 
     entite->destructionInactif = VRAI;
+    entite->destructionDelai = VRAI;
 
 
     return entite;

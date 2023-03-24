@@ -77,7 +77,7 @@ void combatMob(t_mob *mob, float distance) {
 
     else {
         // Si la cible est trop loin
-        if (distance > MOB_RAYON_COMBAT_POSITIONNEMENT) {
+        if (distance > BOSS_RAYON_COMBAT_POSITIONNEMENT) {
             finCombat(mob);       
         }
 
@@ -143,17 +143,18 @@ void updateMob(t_mob* mob, float distance) {
 
     /* ------------------------------- Déplacement ------------------------------ */
 
+    // Deplacement autour de la cible
     if (mob->operation == SE_DEPLACE_AUTOUR) {
-        // Deplacement autour de la cible
         deplacerAutour(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_AUTOUR, mob->cible->position);
     }
 
+    // Deplacement vers la cible
     else if (mob->operation == SE_DEPLACE_VERS) {
-        // Deplacement vers la cible
         deplacerVers(mob, mob->statistiques.vitesse, mob->positionDeplacement);
         mob->operation = ATTENTE;
     }
 
+    // Deplacement s'éloigne de la cible
     else if (mob->operation == S_ELOIGNE_DE) {
         seloigneDe(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_ELOIGNEMENT, mob->positionDeplacement);
         mob->operation = ATTENTE;
@@ -292,6 +293,16 @@ void detruireMob(t_mob **mob) {
 t_mob* creerMob(const t_vecteur2 position) {
     t_entite *entite = creerEntite(position);
     t_mob *mob = realloc(entite, sizeof(t_mob));
+
+
+    if (mob == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer un mob\n");
+        detruireEntite(&entite);
+        return NULL;
+    }
+    
+
+    mob->orientation = getNombreAleatoire(SUD, NORD);
     
 
     mob->entiteType = ENTITE_MOB;
@@ -309,7 +320,9 @@ t_mob* creerMob(const t_vecteur2 position) {
 
     mob->deplacementType = DEPLACEMENT_STATIQUE;
     mob->operation = ATTENTE;
+
     mob->gamma = 0.0;
+    mob->rotation = ROTATION_HORAIRE;
 
 
     // cooldown
@@ -320,6 +333,7 @@ t_mob* creerMob(const t_vecteur2 position) {
     mob->detruire = (void (*)(t_entite**)) detruireMob;
 
     mob->destructionInactif = FAUX;
+    mob->destructionDelai = FAUX;
 
 
     entite = NULL;

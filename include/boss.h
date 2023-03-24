@@ -17,6 +17,14 @@
 
 
 
+#include "temps.h"
+#include "monstre.h"
+#include "statistiques.h"
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */
 /* -------------------------------------------------------------------------- */
@@ -37,12 +45,43 @@ typedef struct s_boss_flags {
 
 
 
+/**
+ * @struct t_boss
+ * @brief 
+ * 
+ */
+typedef struct s_boss {
+    struct s_mob;
+
+    e_jour jour;
+} t_boss;
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Constantes                                 */
+/* -------------------------------------------------------------------------- */
+
+
+extern const t_baseStatistiques statistiquesDeBasesBoss[];
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
 
 
 t_boss_flags initialiserBossFlags();
+
+t_vecteur2 getPointApparitionBoss(t_map *map);
+t_boss* chargerBoss();
+t_boss* creerBoss(const t_vecteur2 position, const e_jour jour);
+
 
 
 

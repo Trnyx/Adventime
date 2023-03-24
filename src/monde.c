@@ -14,8 +14,8 @@
 
 // #include "../include/NanoId/nanoid.h"
 
+#include "../include/moteur.h"
 #include "../include/monde.h"
-#include "../include/boss.h"
 
 
 
@@ -128,11 +128,11 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
  */
 t_monde* creerMonde(int seed) {
     t_monde *monde = malloc(sizeof(t_monde));
+    const time_t timestamp = time(NULL);
 
 
     if (monde == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le monde\n");
-        free(monde);
         return NULL;
     }
 
@@ -142,7 +142,7 @@ t_monde* creerMonde(int seed) {
 
 
     if (seed == -1) {
-        seed = setGenerationSeed(time(NULL));
+        seed = setGenerationSeed(timestamp);
     }
     else {
         seed = setGenerationSeed(seed);
@@ -154,17 +154,21 @@ t_monde* creerMonde(int seed) {
 
     // Maps
     monde->overworld = genererMap(MAP_OVERWORLD);
-    // monde->caverne = genererMap(MAP_CAVE);
+    monde->caverne = NULL; // genererMap(MAP_CAVE);
 
-    // Timestampoverworld
-    monde->timestampRenouvellement = time(NULL);
+    // Boss
+    monde->positionApparitionBoss = getPointApparitionBoss(monde->overworld);
+    monde->boss = NULL;
+
+
+    // Timestamp
+    monde->timestampRenouvellement = timestamp;
 
 
     // Joueur
     t_vecteur2 position = getPointApparitionJoueur(monde->overworld);
     monde->pointApparitionDefaut = position;
-    monde->pointApparition.x = -1.0;
-    monde->pointApparition.y = -1.0;
+    monde->pointApparition = position;
 
     monde->bossFlags = initialiserBossFlags();
 
@@ -188,7 +192,10 @@ t_monde* creerMonde(int seed) {
 void detruireMonde(t_monde **monde) {
     printf("Destruction Monde => ");
     if (monde != NULL && *monde != NULL) {
-        detruireMap(&(*monde)->overworld);
+        if ((*monde)->overworld != NULL)
+            detruireMap(&(*monde)->overworld);
+        if ((*monde)->caverne != NULL)
+            detruireMap(&(*monde)->caverne);
 
     
         free(*monde);

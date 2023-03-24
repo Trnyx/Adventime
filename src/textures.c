@@ -124,7 +124,7 @@ t_textures* initTextures(SDL_Renderer *renderer) {
     SDL_FreeSurface(surface);
     
 
-    /* -------------------------------- Végétaux -------------------------------- */
+    /* ------------------------------- Structures ------------------------------- */
 
     surface = IMG_Load("assets/images/structures_tileset.png");
     textures->structures = SDL_CreateTextureFromSurface(renderer, surface);
@@ -198,6 +198,10 @@ void detruireTextures(t_textures **textures) {
         // Végétaux
         if ((*textures)->vegetaux != NULL) 
             SDL_DestroyTexture((*textures)->vegetaux);
+
+        // Structures
+        if ((*textures)->structures != NULL) 
+            SDL_DestroyTexture((*textures)->structures);
         
         // Joueur
         if ((*textures)->joueur != NULL) 

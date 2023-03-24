@@ -159,30 +159,35 @@ t_temps* getTemps(t_temps *temps, const time_t timestamp) {
  */
 void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
     t_cache *cache = moteur->cache;
-
-
-    e_cycle cyclePrecedent = temps->cycleJeu;
     e_periode periodePrecedente = temps->periode;
+
+
+    /* ------------------------------ Actualisation ----------------------------- */
+
     getTemps(temps, timestamp);
     
 
+    /* --------------------------------- Musique -------------------------------- */
+
+    // La musique du jeu dépend du moment de la journée dans le jeu
+    // Lorsque l'on change de période, on change la musique
     if (periodePrecedente != temps->periode) {
-        if (cyclePrecedent != temps->cycleJeu) {
-            audio->timestampDebutMusique = moteur->frame;
-            selectionMusique(temps);
-        }
+        selectionMusique(temps);
     }
 
 
+    /* ------------------------------- Evenements ------------------------------- */
 
     struct tm *tempsActuel = localtime(&timestamp);
     struct tm *dernierRenouvellement = localtime(&cache->monde->timestampRenouvellement);
 
+
+    // Renouvellement
     if (tempsActuel->tm_wday != dernierRenouvellement->tm_wday && tempsActuel->tm_hour >= HEURE_VRAI_RENOUVELLEMENT) {
         cache->monde->timestampRenouvellement = timestamp;
 
-
         apparitionTroupeau(cache->entites, cache->map);
+        chargerBoss();
     }
 }
 
@@ -215,7 +220,6 @@ t_temps* initTemps(const time_t timestamp) {
 
     if (temps == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le temps\n");
-        free(temps);
         return NULL;
     }
 

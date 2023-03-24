@@ -26,6 +26,20 @@
 
 
 /* -------------------------------------------------------------------------- */
+/*                                Enumerateurs                                */
+/* -------------------------------------------------------------------------- */
+
+
+typedef enum {
+    DISC_CENTRE,
+    DISC_ALEATOIRE,
+} e_disc_methode_gen;
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -52,7 +66,7 @@ typedef struct s_discSampling {
 /* -------------------------------------------------------------------------- */
 
 
-t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vecteur2 maxGrille, int nbElementsObjectif, float rayon);
+t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vecteur2 maxGrille, int nbElementsObjectif, float rayon, const t_vecteur2 *centre);
 
 
 

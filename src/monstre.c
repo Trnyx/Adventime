@@ -103,6 +103,13 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
     t_monstre *monstre = realloc(mob, sizeof(t_monstre));
 
 
+    if (monstre == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour creer un monstre\n");
+        detruireMob(&mob);
+        return NULL;
+    }
+
+
     // Statistiques
     monstre->aggressif = VRAI;
     genererMonstre(monstre, biome, niveauJoueur);
@@ -121,6 +128,7 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
 
     // Timer
     monstre->destructionInactif = monstre->aggressif;
+    monstre->destructionDelai = VRAI;
 
     mob = NULL;
     return monstre;

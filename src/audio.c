@@ -211,8 +211,6 @@ void loadMusiqueBoss(t_musiques *musiques, e_jour jour) {
         Mix_FreeMusic(musiques->boss);
 
     musiques->boss = Mix_LoadMUS(buffer);
-    if (musiques->boss == NULL) printf("ERROR");
-    else printf("Succes\n");
 }
 
 

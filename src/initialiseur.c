@@ -45,8 +45,9 @@ void initAll(t_moteur **moteur, t_audio **audio) {
 
 
     // Methode d'affichage
-    // Pour le filtre de l'ambiance
+    // Pour le filtre d'ambiance
     SDL_SetRenderDrawBlendMode((*moteur)->renderer, SDL_BLENDMODE_BLEND);
+
 
     // Pour afficher le logo en tant qu'icon dans la barre des tâches lorsque le jeu est allumé
     SDL_Surface *logo = NULL;

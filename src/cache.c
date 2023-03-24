@@ -31,8 +31,8 @@
  */
 void detruireCache(t_cache **cache) {
     if (cache != NULL && *cache != NULL) {
-
-        detruireMonde(&(*cache)->monde);
+        if ((*cache)->monde != NULL)
+            detruireMonde(&(*cache)->monde);
 
         free(*cache);
         *cache = NULL;
@@ -64,9 +64,7 @@ t_cache *initCache() {
 
     cache->monde = NULL;
     cache->map = NULL;
-
-    cache->entites = malloc(sizeof(t_liste));
-    init_liste(cache->entites);
+    cache->entites = NULL;
 
 
     return cache;

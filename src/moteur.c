@@ -84,7 +84,6 @@ t_moteur* initMoteur() {
 
     if (m == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le moteur\n");
-        free(m);
         return NULL;
     }
 
@@ -136,20 +135,25 @@ void updateEchelle() {
 
     SDL_GetWindowSize(moteur->window, &moteur->window_width, &moteur->window_height);
 
-    int tailleRendu = 0;
+    // moteur->camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    // moteur->camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
+  
+    int tailleRendu;
+
     int tailleLargeur = moteur->window_width / TAILLE_CAMERA_LARGEUR;
     int tailleHauteur = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
 
-    if (tailleLargeur > tailleHauteur) {
+
+    if (tailleHauteur > tailleLargeur) {
         tailleRendu = tailleHauteur;
     }
     else {
         tailleRendu = tailleLargeur;
     }
 
-    moteur->camera->tailleRendu.x = tailleRendu; 
-    moteur->camera->tailleRendu.y = tailleRendu; 
-  
+
+    moteur->camera->tailleRendu.x = tailleRendu;
+    moteur->camera->tailleRendu.y = tailleRendu;
 }
 
 

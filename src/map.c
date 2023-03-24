@@ -24,6 +24,61 @@
 
 
 /* -------------------------------------------------------------------------- */
+/*                               Test Existence                               */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief Vérifie si un block se situe bien à l'intérieur d'un chunk
+ * 
+ * @param x La coordonnée x du block (coordonnée relative au chunk)
+ * @param y La coordonnée y du block (coordonnée relative au chunk)
+ * 
+ * @return Vrai si le block se situe bien dans un chunk, faux sinon
+ * 
+ * @version 1.1
+ */
+int blockEstDansLeChunk(const int x, const int y) {
+    return x >= 0 && y >= 0 && x < TAILLE_CHUNK && y < TAILLE_CHUNK;
+}
+
+
+/**
+ * @brief Vérifie si un block se situe bien à l'intérieur de la map
+ * 
+ * @param x La coordonnée x du block (cordonnée relative à la map)
+ * @param y La coordonnée y du block (cordonnée relative à la map)
+ * 
+ * @return Vrai si le block se situe bien dans la map, faux sinon
+ * 
+ * @version 1.1
+ */
+int blockEstDansLaMap(const int x, const int y) {
+    return x >= 0 && y >= 0 && x < (TAILLE_MAP * TAILLE_CHUNK) && y < (TAILLE_MAP * TAILLE_CHUNK);
+}
+
+
+/**
+ * @brief Vérifie que un chunk est bien à l'intérieur de la map
+ * 
+ * @param x La coordonnée x du chunk
+ * @param y La coordonnée y du chunk
+ * @param z La coordonnée z du chunk (correspond à la couche du chunk)
+ * 
+ * @return Vrai si le chunk se situe bien dans la map, faux sinon
+ * 
+ * @version 1.1
+ */ 
+int chunkEstDansLaMap(const int x, const int y, const int z) {
+    return x >= 0 && y >= 0 && z >= 0 && x < TAILLE_MAP && y < TAILLE_MAP && z < NB_COUCHE;
+}
+
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                     Get                                    */
 /* -------------------------------------------------------------------------- */
 
@@ -138,23 +193,15 @@ t_chunk* getChunkGraceABlock(const int x, const int y, const int couche, t_map *
  * 
  * @return 0 si tout s'est bien passé, un nombre négatif sinon
  */
-int dessinerBlockSol(const int tag, SDL_Rect *rendu) {
+int dessinerBlockSol(int tag, SDL_Rect *rendu) {
     SDL_Rect source;
 
 
-    switch (tag) {
-        case SOL_EAU_PROFONDE:
-        case SOL_EAU:
-        case SOL_SABLE:
-        case SOL_HERBE_1:
-        case SOL_HERBE_2:
-        case SOL_HERBE_3:
-        case SOL_MONTAGNE_1:
-        case SOL_MONTAGNE_2:
-            splitTexture(&source, (8 + 2 * TAILLE_TILE * tag),8, TAILLE_TILE,TAILLE_TILE);
-            break;
-        default:
-            return SDL_RenderCopy(moteur->renderer, moteur->textures->null, NULL, rendu);
+    if (tag >= SOL_EAU_PROFONDE && tag <= SOL_MONTAGNE_2) {
+        splitTexture(&source, (8 + 2 * TAILLE_TILE * tag),8, TAILLE_TILE,TAILLE_TILE);
+    }
+    else {
+        return SDL_RenderCopy(moteur->renderer, moteur->textures->null, NULL, rendu);
     }
 
 
@@ -252,34 +299,58 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
 
 
         // printf("AFFICHE STRUCTURE %i ", tag);
+
+        /* ---------------------------------- PUIT ---------------------------------- */
+
         if (tag >= BLOCK_PUIT_HAUT_GAUCHE && tag <= BLOCK_PUIT_BAS_DROIT) {
-            
             tag = (tag % BLOCK_PUIT_HAUT_GAUCHE);
             
-            decalage.x = (tag % 3) * TAILLE_TILE;
-            decalage.y = (tag / 3) * TAILLE_TILE;
-            
-        } else if (tag >= BLOCK_MUR_HAUT_GAUCHE && tag <= BLOCK_MUR_DROIT) {
+            decalage.x = (tag % 3);
+            decalage.y = (tag / 3);
+        } 
+        
 
             tag = (tag % BLOCK_MUR_HAUT_GAUCHE);
 
-            decalage.x = (tag % 3) * TAILLE_TILE;
-            decalage.y = ((tag / 3) + 14) * TAILLE_TILE;
-            
-        } else if (tag >= BLOCK_TOIT_PETIT_LAYER_1_1 && tag <= BLOCK_TOIT_PETIT_LAYER_5_6) {
+        /* --------------------------------- MAISONS -------------------------------- */
 
-            tag = (tag % BLOCK_TOIT_PETIT_LAYER_1_1);
+        else if (tag >= BLOCK_MUR_HAUT_GAUCHE_STANDARD && tag <= BLOCK_MUR_DROIT_BLEU) {
+            tag = (tag % BLOCK_MUR_HAUT_GAUCHE_STANDARD);
 
-            decalage.x = (tag % 6) * TAILLE_TILE;
-            decalage.y = ((tag / 6) + 3) * TAILLE_TILE;
-            
-        } else {
+            // Le décalage se fait en fonction du nombre de bloc possible composant un mur
+            // ainsi que le nombre de variants de mur possible
+            decalage.x = (tag % (3 * 3));
+            decalage.y = ((tag / (3 * 3)) + 14);
+        } 
+        
 
-            tag = (tag % DEBUT_BLOCK_STRUCTURE) + 1;
+        else if (tag >= BLOCK_TOIT_PETIT_LAYER_1_1_STANDARD && tag <= BLOCK_TOIT_PETIT_LAYER_5_6_BLEU) {
+            tag = (tag % BLOCK_TOIT_PETIT_LAYER_1_1_STANDARD);
 
+            // Le décalage se fait en fonction du nombre de bloc possible composant un toit
+            // ainsi que le nombre de variants de toit possible
+            decalage.x = (tag % (6 * 3));
+            decalage.y = ((tag / (6 * 3)) + 3);
+        } 
+        
+
+        else if (tag == BLOCK_PORTE) {
+            decalage.x = 0;
+            decalage.y = (16);
         }
 
-        splitTexture(&source, decalage.x,decalage.y, TAILLE_TILE,TAILLE_TILE);
+
+        /* --------------------------------- TEMPLE --------------------------------- */
+
+        else if (tag >= BLOCK_TEMPLE_ENTREE_HAUT_GAUCHE && tag <= BLOCK_TEMPLE_ENTREE_BAS_DROIT) {
+            tag = tag % BLOCK_TEMPLE_ENTREE_HAUT_GAUCHE;
+
+            decalage.x = (tag % 3) + 3;
+            decalage.y = tag / 3;
+        }
+
+
+        splitTexture(&source, decalage.x*TAILLE_TILE,decalage.y*TAILLE_TILE, TAILLE_TILE,TAILLE_TILE);
         // splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
 
         renduObjet.x = rendu->x;
@@ -321,3 +392,82 @@ void dessinerObjets(t_map *map) {
         }
     }
 }
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Destruction                                */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ * 
+ * @param block 
+ *  
+ * @version 1.1
+ */
+int detruireBlock(t_block **block) {
+    if (block == NULL || *block == NULL) return 0;
+
+    free(*block);
+    *block = NULL;
+
+    return 0;
+}
+
+
+/**
+ * @brief 
+ * 
+ * @param chunk 
+ * 
+ * @version 1.2
+ */
+int detruireChunk(t_chunk **chunk) {
+    if (chunk == NULL || *chunk == NULL) return 0;
+
+
+    free((*chunk)->blocks);
+    (*chunk)->blocks = NULL;
+
+  
+    return 0;
+}
+
+
+/**
+ * @brief 
+ * 
+ * @param map 
+ * 
+ * @version 1.2
+ */
+int detruireMap(t_map **map) {
+    printf("Destruction Map => ");
+    if (map == NULL || *map == NULL) return 0;
+    t_chunk *chunk = NULL;
+  
+
+    for (int x = 0; x < TAILLE_MAP; x++) {
+        for (int y = 0; y < TAILLE_MAP; y++) {
+            for (int z = 0; z < NB_COUCHE; z++) {
+                chunk = getChunk(x, y, z, *map);
+                detruireChunk(&chunk);
+            }
+        }
+    }
+
+
+    free((*map)->chunks);
+    (*map)->chunks = NULL;
+  
+    free(*map);
+    *map = NULL;
+
+  
+    return 0;
+}
+
