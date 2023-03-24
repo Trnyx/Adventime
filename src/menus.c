@@ -23,6 +23,8 @@
 
 #include "../include/menus.h"
 #include "../include/moteur.h"
+#include "../include/statistiques.h"
+#include "../include/experience.h"
 
 /**
  * @brief      Fait le menu principal du jeu
@@ -350,10 +352,13 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
   ctx->style.progress.cursor_normal =
       nk_style_item_color(nk_rgba(223, 46, 56, 255));
 
-  unsigned long current = joueur->statistiques.pv <= 0 ? 0 : joueur->statistiques.pv;
-  unsigned long max = joueur->statistiques.pvMax;
+  unsigned long current_hp = joueur->statistiques.pv <= 0 ? 0 : joueur->statistiques.pv;
+  unsigned long max_hp = joueur->statistiques.pvMax;
+
+  unsigned long current_xp = joueur->statistiques.experience;
+  unsigned long max_xp = getExperienceCourbe(joueur->baseStatistiques.experience_courbe)(joueur->statistiques.niveau + 1);
   
-  if (current <= 0) {
+  if (current_hp <= 0) {
 
     SDL_Rect calque;
     calque.x = calque.y = 0;
@@ -386,12 +391,20 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
     Message_rect.x = (moteur->window_width) - 5 - Message_rect.w;
     Message_rect.y = 4;
 
-    if (nk_begin(ctx, "HUD", nk_rect(0, 0, 370, 50),
+    if (nk_begin(ctx, "HUD", nk_rect(0, 0, 370, 300),
                  (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
 
-      nk_layout_space_begin(ctx, NK_STATIC, 0, 1);
+      nk_layout_space_begin(ctx, NK_STATIC, 0, 2);
       nk_layout_space_push(ctx, nk_rect(5, 5, 350, 30));
-      nk_progress(ctx, &current, max, NK_FIXED);
+      nk_progress(ctx, &current_hp, max_hp, NK_FIXED);
+      
+      nk_layout_space_push(ctx, nk_rect(5, 40, 300, 20));
+
+      ctx->style.progress.cursor_normal =
+	nk_style_item_color(nk_rgba(8, 255, 114, 255));
+
+	
+      nk_progress(ctx, &current_xp, max_xp, NK_FIXED);
       nk_layout_space_end(ctx);
     }
 
