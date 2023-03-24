@@ -282,8 +282,10 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
             {
                 chunk = getChunk(x, y, z, map);
 
+                //Biome
                 fprintf(fichier, "%i ", chunk->biome);
                 fprintf(fichier, "\n");
+
                 // Position d'un chunk
                 fprintf(fichier, "%f ", chunk->position.x);
                 fprintf(fichier, "%f ", chunk->position.y);
@@ -301,6 +303,7 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
                         fprintf(fichier, "%f ", bloc->position.y);
                         fprintf(fichier, "%f ", bloc->positionDansChunk.x);
                         fprintf(fichier, "%f ", bloc->positionDansChunk.y);
+                        // Tag
                         fprintf(fichier, "%i ", bloc->tag);
                         fprintf(fichier, "\n");
                     }
@@ -348,6 +351,57 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde)
     return SUCCESS;
 }
 
+err_sauv charger_overworld(t_map* map, FILE* fichier)
+{
+    // Initialisation chunks
+    map->chunks = calloc(TAILLE_MAP * TAILLE_MAP * NB_COUCHE, sizeof(t_chunk));
+
+    for (int i = 0, x = 0; x < TAILLE_MAP; x++)
+    {
+        for (int y = 0; y < TAILLE_MAP; y++)
+        {
+            for (int z = 0; z < NB_COUCHE; z++)
+            {
+                // Blocks
+                map->chunks[i].blocks = calloc(TAILLE_CHUNK * TAILLE_CHUNK, sizeof(t_block));
+
+                // Biome
+                fscanf(fichier, "%i ", (unsigned int *) &(map->chunks[i].biome));
+                fscanf(fichier, "\n");
+
+                // Position d'un chunk
+                fscanf(fichier, "%f ", &(map->chunks[i].position.x));
+                fscanf(fichier, "%f ", &(map->chunks[i].position.y));
+                fscanf(fichier, "%f ", &(map->chunks[i].position.z));
+                fscanf(fichier, "\n");
+
+                for (int i_bloc = 0, x_bloc = 0; x_bloc < TAILLE_CHUNK; x_bloc++)
+                {
+                    for (int y_bloc = 0; y_bloc < TAILLE_CHUNK; y_bloc++)
+                    {
+
+                        // Blocs composant un chunk
+                        fprintf(fichier, "%f ", map->chunks->blocks[i_bloc].position.x);
+                        fprintf(fichier, "%f ", map->chunks->blocks[i_bloc].position.y);
+                        fprintf(fichier, "%f ", map->chunks->blocks[i_bloc].positionDansChunk.x);
+                        fprintf(fichier, "%f ", map->chunks->blocks[i_bloc].positionDansChunk.y);
+                        fprintf(fichier, "%i ", map->chunks->blocks[i_bloc].tag);
+                        fprintf(fichier, "\n");
+                        i_bloc++;
+                    }
+                    fscanf(fichier, "\n");
+                }
+                fscanf(fichier, "\n");
+                i++;
+            }
+            fscanf(fichier, "\n");
+        }
+        fscanf(fichier, "\n");
+    }
+
+    return SUCCESS;
+}
+
 err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
 {
     // Explicite le chemin du fichier de sauvegarde des données map.
@@ -371,12 +425,11 @@ err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
 
     // Chunks
     switch (type) {
-        case MAP_OVERWORLD: charger_overworld(map, fichier); break;
-        case MAP_CAVE: charger_cave(map, fichier); break;
-        default:
-            break;
+    case MAP_OVERWORLD: charger_overworld(map, fichier); break;
+    case MAP_CAVE: charger_cave(map, fichier); break;
+    default:
+        break;
     }
-
 
 
     fclose(fichier);
@@ -412,10 +465,10 @@ err_sauv sauvegarder_global(t_monde* monde, char* chemin_monde)
     fprintf(fichier, "%u ", monde->seed);
     fprintf(fichier, "\n");
 
-    // Points d'appararition
+    // Points d'apparition
     fprintf(fichier, "%f ", monde->positionApparitionBoss.x);
     fprintf(fichier, "%f ", monde->positionApparitionBoss.y);
-    
+
     fprintf(fichier, "%f ", monde->pointApparitionDefaut.x);
     fprintf(fichier, "%f ", monde->pointApparitionDefaut.y);
 
@@ -431,7 +484,7 @@ err_sauv sauvegarder_global(t_monde* monde, char* chemin_monde)
 
     // Timestamp renouvellement
     fprintf(fichier, "%li ", monde->timestampRenouvellement);
-    
+
 
     fclose(fichier);
     return SUCCESS;
@@ -465,10 +518,10 @@ err_sauv charger_global(t_monde* monde, char* chemin_monde)
     fscanf(fichier, "%u ", &(monde->seed));
     fscanf(fichier, "\n");
 
-    // Points d'appararition
+    // Points d'apparition
     fscanf(fichier, "%f ", &(monde->positionApparitionBoss.x));
     fscanf(fichier, "%f ", &(monde->positionApparitionBoss.y));
-    
+
     fscanf(fichier, "%f ", &(monde->pointApparitionDefaut.x));
     fscanf(fichier, "%f ", &(monde->pointApparitionDefaut.y));
 
@@ -484,7 +537,7 @@ err_sauv charger_global(t_monde* monde, char* chemin_monde)
 
     // Timestamp renouvellement
     fscanf(fichier, "%li ", &(monde->timestampRenouvellement));
-    
+
 
 
     fclose(fichier);
@@ -546,7 +599,7 @@ err_sauv charger_monde(char* nom_monde)
     charger_map(caverne, chemin_monde, MAP_CAVE);
 
 
-    t_joueur * joueur = NULL;
+    t_joueur* joueur = NULL;
     charger_joueur(joueur, chemin_monde);
 
     return SUCCESS;
