@@ -64,6 +64,7 @@ void initAll(t_moteur **moteur, t_audio **audio) {
 
     // SDL TTF
     TTF_Init();
+    (*moteur)->font = TTF_OpenFont("assets/font/NewHiScore.ttf", 45);
 }
 
 

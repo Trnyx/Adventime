@@ -366,6 +366,26 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
     
   } else {
 
+    SDL_Color color;
+    color.r = 255;
+    color.b = 255;
+    color.g = 255;
+    color.a = 255;
+    
+    char horloge[6];
+    sprintf(horloge, "%s%d:%s%d", moteur->temps->heures < 10 ? "0" : "" ,moteur->temps->heures, moteur->temps->minutes < 10 ? "0" : "" , moteur->temps->minutes);
+
+    SDL_Surface * surface = TTF_RenderText_Solid(moteur->font, horloge , color);
+	
+    SDL_Texture * texture = SDL_CreateTextureFromSurface(moteur->renderer, surface);
+
+    SDL_Rect Message_rect;
+    Message_rect.w = (moteur->window_width)*0.17;
+    Message_rect.h = (moteur->window_height)*0.09;
+
+    Message_rect.x = (moteur->window_width) - 5 - Message_rect.w;
+    Message_rect.y = 4;
+
     if (nk_begin(ctx, "HUD", nk_rect(0, 0, 370, 50),
                  (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
 
@@ -376,8 +396,11 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
     }
 
     nk_end(ctx);
-
+    SDL_RenderCopy(moteur->renderer, texture, NULL, &Message_rect);
     nk_sdl_render(NK_ANTI_ALIASING_ON);
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
+    
   }
 }
 
@@ -467,7 +490,6 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
   color.g = 255;
   color.a = 255;
   
-  moteur->font = TTF_OpenFont("assets/font/NewHiScore.ttf", 45);
   SDL_Surface * surface = TTF_RenderText_Solid(moteur->font, "GAME OVER", color);
   SDL_Texture * texture = SDL_CreateTextureFromSurface(moteur->renderer, surface);
 
