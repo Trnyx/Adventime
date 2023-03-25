@@ -24,6 +24,7 @@
 #include "../include/monde.h"
 #include "../include/joueur.h"
 #include "../include/input_manager.h"
+#include "../include/menus.h"
 
 
 
@@ -111,11 +112,23 @@ static int adventime(t_monde *monde) {
 
 
     int continuer = 1;
-    while (continuer != -1) {
+    while (continuer != M_MENU) {
         regulerFPS();
+	
+	continuer = inputManager(joueur);
+	
+	while(continuer == M_PAUSE) {
+	  continuer = pauseMenu(ctx);
+	  if (continuer == M_OPTIONS) {
+	    continuer = menu_options(ctx);
+	  }
+	}
+	
+	update(cache->map, joueur);
 
-        continuer = inputManager(joueur);
-        update(cache->map, joueur);
+	if(continuer == J_MORT) {
+	  continuer = gameOver(ctx, joueur);
+	}
 
 
         // Dès qu'on change de zone (map)
@@ -201,5 +214,5 @@ state_main jouer(e_actionMonde action) {
     }
 
 
-    return JEU_QUITTER;
+    return M_MENU;
 }

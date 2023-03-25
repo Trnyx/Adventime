@@ -17,10 +17,13 @@
 
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 
 #include "utilitaire.h"
 #include "textures.h"
 #include "camera.h"
+#include "monde.h"
+#include "main.h"
 #include "cache.h"
 
 
@@ -85,6 +88,9 @@ typedef struct s_moteur {
     t_cache *cache;                 /**< Cache du jeu */
     t_temps *temps;                 /**< Le temps dans le jeu */
     unsigned int frame;             /**< Le timestamp (tick) de la drame actuelle */
+  state_main state;
+  TTF_Font * font;
+    
 
 } t_moteur;
 

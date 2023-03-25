@@ -15,7 +15,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-
 #include "../include/physique.h"
 #include "../include/moteur.h"
 #include "../include/monde.h"

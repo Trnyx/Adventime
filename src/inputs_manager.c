@@ -19,6 +19,7 @@
 #include <SDL2/SDL.h>
 
 #include "../include/input_manager.h"
+#include "../include/menus.h"
 
 
 
@@ -43,13 +44,16 @@ int inputManager(t_joueur *joueur) {
 
     moteur->positionSouris.x = x;
     moteur->positionSouris.y = y;
-
-
+    
+    if(joueur->statistiques.pv <= 0) {
+      moteur->state = J_MORT;
+      return J_MORT;
+    }
 
     while (SDL_PollEvent(&event)) {
         switch (event.type) {
             case SDL_QUIT:
-                return -1;
+                return M_MENU;
                 break;
             
             
@@ -87,8 +91,13 @@ int inputManager(t_joueur *joueur) {
 
                 // Echap
                 else if (controles.escape == event.key.keysym.scancode) {
-                    return -1;
+		  moteur->state = M_PAUSE;
+		  return M_PAUSE;
                 }
+
+		else if (event.key.keysym.scancode == SDL_SCANCODE_K) {
+		  joueur->statistiques.pv = 0;
+		}
 
                 break;
 

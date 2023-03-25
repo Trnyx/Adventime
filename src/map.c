@@ -470,4 +470,3 @@ int detruireMap(t_map **map) {
   
     return 0;
 }
-

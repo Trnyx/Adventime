@@ -177,6 +177,7 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
  * @return Les dégâts affliger à l'adversaire
  */
 float calculDegat(const int niveauAttaquant, int pointAttaque, int pointDefense, const boolean attaquantEstNocture, const boolean defenseurEstNocturne) {
+  printf("%d", niveauAttaquant);
     if (defenseurEstNocturne) {
         pointDefense += (((pointDefense / 2.5) + pointDefense + 2));
     }
