@@ -134,6 +134,10 @@ struct s_entite {
 
 
 
+/**
+ * @brief 
+ * 
+ */
 typedef struct s_entiteVivante {
     struct s_entite;                        /**< On "étend" la structure "entite" */
 
@@ -149,6 +153,19 @@ typedef struct s_entiteVivante {
 
 
 } t_entiteVivante;
+
+
+
+/**
+ * @brief 
+ * 
+ */
+typedef struct s_compteur {
+    int entites;
+    int mobs;
+    int monstreAggressifs;
+    int monstrePassifs;
+} t_compteur;
 
 
 

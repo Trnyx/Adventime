@@ -271,6 +271,8 @@ void detruireMob(t_mob **mob) {
     printf("Destruction Mob => ");
     if (mob != NULL && *mob != NULL) {
 
+        --(moteur->cache->compteurEntites.mobs);
+
         detruireEntite((t_entite**)mob);
 
     }
@@ -340,6 +342,7 @@ t_mob* creerMob(const t_vecteur2 position) {
     mob->destructionDelai = FAUX;
 
 
+    ++(moteur->cache->compteurEntites.mobs);
     entite = NULL;
     return mob;
 }

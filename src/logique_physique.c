@@ -102,15 +102,11 @@ static void suppressionEntite(t_liste *entites, t_entite *entite) {
  * @param joueur Un pointeur sur le joueur
  */
 void update(t_map *map, t_joueur *joueur) {
+    t_compteur compteur = moteur->cache->compteurEntites;
     t_liste *entites = moteur->cache->entites;
     t_entite *entite = NULL;
 
-    unsigned int nombreEntites = 0;
-    unsigned int nombreMobs = 0;
-    unsigned int nombreAnimaux = 0;
     unsigned int nombreMobsCombat = 0;
-    unsigned int nombreMobsAggressifs = 0;
-    unsigned int nombreMobsPassifs = 0;
 
 
     // printf("TIME => ");
@@ -249,18 +245,6 @@ void update(t_map *map, t_joueur *joueur) {
                     dessinerEntite((t_entite*)entite);
                 }
 
-
-
-                if (entite->entiteType == ENTITE_MOB) {
-                    nombreMobs++;
-
-                    if (((t_mob*)entite)->aggressif) 
-                        nombreMobsAggressifs++;
-                    else
-                        nombreMobsPassifs++;
-                }
-
-                nombreEntites++;
             }
 
             
@@ -268,22 +252,22 @@ void update(t_map *map, t_joueur *joueur) {
         }
 
         // printf("Fin Update Entites\n");
-        // printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", nombreEntites, nombreMobs, nombreMobsPassifs, nombreMobsAggressifs);
+        printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", compteur.entites, compteur.mobs, compteur.monstrePassifs, compteur.monstreAggressifs);
     }
 
 
     // /* -------------------------- Apparition d'entites -------------------------- */
 
     en_tete(entites);
-    if (nombreEntites < ENTITE_CAP) {
-        if (nombreMobs < MOB_CAP) {
+    if (compteur.entites < ENTITE_CAP) {
+        if (compteur.mobs < MOB_CAP) {
             int proba = getNombreAleatoire(1, 100);
 
             //      Si le nombre de monstres aggressifs max n'est pas atteint
             //          Calcul la probabilité d'apparition d'un monstre
             //          Si apparition possible
             //              Apparition du monste dans le rayon semi actif
-            if (nombreMobsAggressifs < MONSTRE_AGGRESSIF_CAP) {
+            if (compteur.monstreAggressifs < MONSTRE_AGGRESSIF_CAP) {
                 if (proba <= PROBABILITE_APPARITION_MONSTRE) {
                     apparitionMonstre(entites, map, joueur->position, joueur->statistiques.niveau);
                 }
@@ -339,9 +323,9 @@ void update(t_map *map, t_joueur *joueur) {
 
     updateCamera(joueur->position);
     // afficherCamera(map);
+    dessinerObjets(map);
 
     if (map->type == MAP_OVERWORLD) {
-        dessinerObjets(map);
         dessinerCalqueAmbiance(temps);
     }
 

@@ -456,6 +456,8 @@ void detruireEntite(t_entite **entite) {
 
         free(*entite);
         *entite = NULL;
+
+        --(moteur->cache->compteurEntites.entites);
     }
 }
 
@@ -516,7 +518,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->destructionInactif = VRAI;
     entite->destructionDelai = VRAI;
 
-
+    ++(moteur->cache->compteurEntites.entites);
     return entite;
 }
 
