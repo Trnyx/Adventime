@@ -46,8 +46,10 @@ struct s_item {
     e_itemCategorie categorie;/**<Exemple : arme, outil...*/
     e_itemTag tag;/**<Exemple : épée de pierre, pioche...*/
 
-    int (*afficher_item)(t_item* const);
-    int (*detruire_item)(t_item**);
+    int stackable;
+
+    int (*afficher)(t_item* const);
+    int (*detruire)(t_item**);
 };
 
 
@@ -60,9 +62,6 @@ struct  s_arme {
     struct s_item;
 
     unsigned int degat;
-    
-    int (*afficher_arme)(t_arme* const);
-    int (*detruire_arme)(t_arme**);
 };
 
 

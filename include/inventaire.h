@@ -89,8 +89,17 @@ typedef struct s_inventaire {
 /* -------------------------------------------------------------------------- */
 
 
-void changerSlot();
+// void changerSlot();
 
+
+t_stockage* creerStockage(const unsigned int nbSlots);
+t_inventaire* creerInventaire();
+
+void viderStockage(t_stockage *stockage);
+
+void detruireSlot(t_itemSlot **slot);
+void detruireStockage(t_stockage **stockage);
+void detruireInventaire(t_inventaire **inventaire);
 
 
 

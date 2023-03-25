@@ -84,7 +84,7 @@ typedef struct s_joueur {
     e_mapType map;                  /**< La map dans laquelle le joueur se situe */
 
     // Inventaire
-    t_inventaire inventaire;        /**< L'inventaire du joueur */
+    t_inventaire *inventaire;       /**< L'inventaire du joueur */
     int slotSelectionne;            /**< Le slot selectionne par le joueur */
 
     // Input

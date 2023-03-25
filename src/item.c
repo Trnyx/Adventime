@@ -92,8 +92,8 @@ extern t_item* item_creer(e_itemCategorie categorie, e_itemTag tag)
     // item->nom = malloc(sizeof(char) * strlen(nom) + 1);
     // strcpy(item->nom, nom);
 
-    item->afficher_item = (int (*)(t_item*)) item_afficher;
-    item->detruire_item = (int (*)(t_item**)) item_detruire;
+    item->afficher = (int (*)(t_item*)) item_afficher;
+    item->detruire = (int (*)(t_item**)) item_detruire;
 
     item_cpt++;
     return(item);
@@ -158,10 +158,20 @@ extern t_arme* arme_creer(e_itemTag tag)
 
     arme->degat = 4; // getDegatArme
 
-    arme->afficher_arme = (int(*)(t_arme*)) arme_afficher;
-    arme->detruire_arme = (int(*)(t_arme**)) arme_detruire;
+    arme->afficher = (int(*)(t_item*)) arme_afficher;
+    arme->detruire = (int(*)(t_item**)) arme_detruire;
 
     arme_cpt++;
     item = NULL;
     return(arme);
 }
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                    Drops                                   */
+/* -------------------------------------------------------------------------- */
+
+
