@@ -171,8 +171,10 @@ void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
  * @return int 
  */
 int updateJoueur(t_joueur *joueur) {
+    regenerationEntite((t_entiteVivante*)joueur);
+
     if (joueur->cooldownAttaque > 0) {
-        (joueur->cooldownAttaque)--;
+        --(joueur->cooldownAttaque);
     }
 
 
@@ -334,8 +336,10 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
     joueur->statistiques.experience = 0;
     joueur->statistiques.niveau = 1;
+    joueur->baseStatistiques.experience_courbe = EXPERIENCE_MOYEN;
 
-    joueur->baseStatistiques.experience_courbe = EXPERIENCE_LENT;
+    joueur->inventaire = creerInventaire();
+    joueur->slotSelectionne = 0;
 
     // Actions
     joueur->actionFlags = initialiserActionFlags();
@@ -349,6 +353,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
     // Timer
     joueur->cooldownAttaque = 0;
+    joueur->cooldownRegeneration = 0;
     joueur->destructionInactif = FAUX;
 
     // Avancement

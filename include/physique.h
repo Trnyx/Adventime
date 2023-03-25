@@ -153,6 +153,12 @@
 #define ANIMAL_RAYON_TROP_LOIN_TROUPEAU 5
 
 
+/* -------------------------------- Cooldowns ------------------------------- */
+
+//
+#define COOLDOWN_REGENERATION (10 * FPS)
+
+
 
 
 

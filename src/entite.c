@@ -115,6 +115,19 @@ t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const floa
 
 
 
+void regenerationEntite(t_entiteVivante *entite) {
+    if (entite->cooldownRegeneration > 0) {
+        --(entite->cooldownRegeneration);
+    }
+    else if (entite->cooldownRegeneration == 0 && entite->statistiques.pv < entite->statistiques.pvMax) {
+        (entite->statistiques.pv) += entite->statistiques.pvMax * 0.05;
+    }
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                   Calcul                                   */
 /* -------------------------------------------------------------------------- */
@@ -443,6 +456,8 @@ void detruireEntite(t_entite **entite) {
 
         free(*entite);
         *entite = NULL;
+
+        --(moteur->cache->compteurEntites.entites);
     }
 }
 
@@ -503,7 +518,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->destructionInactif = VRAI;
     entite->destructionDelai = VRAI;
 
-
+    ++(moteur->cache->compteurEntites.entites);
     return entite;
 }
 

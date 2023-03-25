@@ -89,7 +89,6 @@ typedef struct s_mob {
     // Cooldown
     unsigned int timerDeplacement;          /**< Timer à partir duquel on calcul le temps de déplacement (en ticks) */
     unsigned int cooldownDeplacement;       /**< Cooldown entre deux déplacements (en ticks) */
-    unsigned int cooldownAttaque;           /**< Cooldown entre deux attaque (en seconde) */
     unsigned int cooldownBruitage;          /**< Cooldown entre deux bruits (en seconde) */
     
 

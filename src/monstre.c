@@ -16,6 +16,7 @@
 #include <stdio.h>
 
 #include "../include/physique.h"
+#include "../include/moteur.h"
 #include "../include/monstre.h"
 
 
@@ -72,8 +73,11 @@ int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
 void detruireMonstre(t_monstre **monstre) {
     printf("Destruction Monstre => ");
     if (monstre != NULL && *monstre != NULL) {
-        // free(*monstre);
-        // *monstre = NULL;
+        if ((*monstre)->aggressif)
+            --(moteur->cache->compteurEntites.monstreAggressifs);
+        else
+            --(moteur->cache->compteurEntites.monstrePassifs);
+
 
         detruireMob((t_mob**) monstre);
     }
@@ -129,6 +133,12 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
     // Timer
     monstre->destructionInactif = monstre->aggressif;
     monstre->destructionDelai = VRAI;
+
+
+    if (monstre->aggressif)
+        ++(moteur->cache->compteurEntites.monstreAggressifs);
+    else
+        ++(moteur->cache->compteurEntites.monstrePassifs);
 
     mob = NULL;
     return monstre;

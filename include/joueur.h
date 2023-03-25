@@ -80,11 +80,18 @@ typedef struct s_action_flags {
 typedef struct s_joueur {
     struct s_entiteVivante;         /**< On "étend" la structure "entiteVivante" */
 
-    t_action_flags *actionFlags;    /**< */
-    e_mapType map;                  /**< */
+    // Localisation
+    e_mapType map;                  /**< La map dans laquelle le joueur se situe */
 
+    // Inventaire
+    t_inventaire *inventaire;       /**< L'inventaire du joueur */
+    int slotSelectionne;            /**< Le slot selectionne par le joueur */
+
+    // Input
+    t_action_flags *actionFlags;    /**< Les inputs du joueur */
+
+    // Cooldowns
     int timestampAttaque;           /**< */
-    unsigned int cooldownAttaque;   /**< */
     
 } t_joueur;
 
@@ -100,6 +107,8 @@ typedef struct s_joueur {
 t_joueur* creerJoueur(const t_vecteur2 position);
 int updateJoueur(t_joueur *joueur);
 void detruireJoueur(t_joueur **joueur);
+
+t_action_flags* initialiserActionFlags();
 
 void mortJoueur(t_joueur *joueur);
 void reapparitionJoueur(t_joueur *joueur, const t_vecteur2 position);

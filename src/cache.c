@@ -66,6 +66,9 @@ t_cache *initCache() {
     cache->map = NULL;
     cache->entites = NULL;
 
+    t_compteur compteur = { 0, 0, 0, 0 };
+    cache->compteurEntites = compteur;
+
 
     return cache;
 }
