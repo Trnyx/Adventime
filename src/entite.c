@@ -115,6 +115,19 @@ t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const floa
 
 
 
+void regenerationEntite(t_entiteVivante *entite) {
+    if (entite->cooldownRegeneration > 0) {
+        --(entite->cooldownRegeneration);
+    }
+    else if (entite->cooldownRegeneration == 0 && entite->statistiques.pv < entite->statistiques.pvMax) {
+        (entite->statistiques.pv) += entite->statistiques.pvMax * 0.05;
+    }
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                   Calcul                                   */
 /* -------------------------------------------------------------------------- */

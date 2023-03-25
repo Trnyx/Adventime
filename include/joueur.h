@@ -92,7 +92,6 @@ typedef struct s_joueur {
 
     // Cooldowns
     int timestampAttaque;           /**< */
-    unsigned int cooldownAttaque;   /**< Le cooldown pour les attaques du joueur */
     
 } t_joueur;
 

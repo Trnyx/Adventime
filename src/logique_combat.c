@@ -226,6 +226,8 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
 void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque, const float range) {
     if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
         printf("CIBLE TOUCHE\n");
+        cible->cooldownRegeneration = COOLDOWN_REGENERATION;
+        
 
         // Lorsque le mob cible est touché, le mob cible se met en mode combat
         // et il prend pour cible le mob attaquant

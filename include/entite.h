@@ -143,6 +143,11 @@ typedef struct s_entiteVivante {
     t_statistiques statistiques;            /**< Les statistiques de l'entité */
     t_baseStatistiques baseStatistiques;    /**< Les statistiques de base de l'entité */
 
+    // Cooldowns
+    unsigned int cooldownAttaque;           /**< Cooldown entre deux attaque (en seconde) */
+    unsigned int cooldownRegeneration;      /**< Cooldown pour la régénération (en seconde) */
+
+
 } t_entiteVivante;
 
 
@@ -157,6 +162,7 @@ typedef struct s_map t_map;
 
 boolean peutApparaitre(const t_vecteur2 position, t_map *map);
 t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range);
+void regenerationEntite(t_entiteVivante *entite);
 
 t_entite* creerEntite(const t_vecteur2 position);
 void detruireEntite(t_entite **entite);

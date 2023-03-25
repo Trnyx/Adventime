@@ -119,6 +119,9 @@ void combatMob(t_mob *mob, float distance) {
  * @param distance La distance entre le mob est le joueur
  */
 void updateMob(t_mob* mob, float distance) {
+    regenerationEntite((t_entiteVivante*)mob);
+
+
     /* -------------------------------- Bruitage -------------------------------- */
 
     if (mob->cooldownBruitage > 0) {
@@ -328,6 +331,7 @@ t_mob* creerMob(const t_vecteur2 position) {
     // cooldown
     mob->cooldownAttaque = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_ATTAQUE, MOB_DELAI_MAX_ENTRE_ATTAQUE);
     mob->cooldownBruitage = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_BRUIT, MOB_DELAI_MAX_ENTRE_BRUIT);
+    mob->cooldownRegeneration = 0;
 
 
     mob->detruire = (void (*)(t_entite**)) detruireMob;
