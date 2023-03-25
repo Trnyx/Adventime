@@ -215,6 +215,9 @@ void charger_entite(t_entite *entite, FILE *fichier) {
 
         charger_mob((t_mob*)entite, fichier);
     }
+    else if (entite->entiteType == ENTITE_JOUEUR) {
+        charger_entite_vivante((t_entiteVivante*)entite, fichier);
+    }
 }
 
 
@@ -255,10 +258,6 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde)
     fprintf(fichier, "%i ", joueur->map);
     fprintf(fichier, "\n");
 
-    // 
-    fprintf(fichier, "\n");
-
-
 
     printf("SUCCES\n");
     fclose(fichier);
@@ -275,9 +274,11 @@ err_sauv sauvegarder_joueur(t_joueur* joueur, char* chemin_monde)
 err_sauv charger_joueur(t_joueur* joueur, char* chemin_monde)
 {
     // Explicite le chemin du fichier de sauvegarde des données joueur.
-    strcat(chemin_monde, "/joueur.txt");
+    char chemin_joueur[50];
+    strcpy(chemin_joueur, chemin_monde);
+    strcat(chemin_joueur, "/joueur.txt");
 
-    FILE* fichier = fopen(chemin_monde, "r");
+    FILE* fichier = fopen(chemin_joueur, "r");
 
     if (fichier == NULL)
     {
@@ -285,11 +286,11 @@ err_sauv charger_joueur(t_joueur* joueur, char* chemin_monde)
     }
 
 
-    charger_entite_vivante((t_entiteVivante*)joueur, fichier);
+    charger_entite((t_entite*)joueur, fichier);
 
 
     // Map (dans quel map le joueur se trouve)
-    fscanf(fichier, "%i ", (int*)&(joueur->map));
+    fscanf(fichier, "%i ", (int*) &(joueur->map));
     fscanf(fichier, "\n");
 
 
@@ -393,7 +394,7 @@ err_sauv sauvegarder_map(t_map* map, char* chemin_monde, const e_mapType type)
     printf("ENTITES => ");
     // Entités
     // Nombre d'entité sauvegardé
-    fprintf(fichier, "%i ", moteur->cache->compteurEntites.monstrePassifs);
+    fprintf(fichier, "%i ", moteur->cache->compteurEntites.mobs - moteur->cache->compteurEntites.monstreAggressifs);
     fprintf(fichier, "\n");
 
     t_entite* entite = NULL;
@@ -451,10 +452,13 @@ err_sauv charger_overworld(t_map* map, FILE* fichier)
 err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
 {
     // Explicite le chemin du fichier de sauvegarde des données map.
+    char chemin_map[50];
+    strcpy(chemin_map, chemin_monde);
     char* nomFichier = nomFichiersMap[type];
-    strcat(chemin_monde, nomFichier);
+    strcat(chemin_map, nomFichier);
+    printf("PATH : %s => ", chemin_map);
 
-    FILE* fichier = fopen(chemin_monde, "r");
+    FILE* fichier = fopen(chemin_map, "r");
 
     if (fichier == NULL)
     {
@@ -467,11 +471,18 @@ err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
     }
 
     // Type
-    map->type = type;
+    fscanf(fichier, "%i ", (int*) &(map->type));
+    fscanf(fichier, "\n");
 
-    // Chunls & Blocs
+    printf("CHUNKS ET BLOCKS => ");
+    // Chunks & Blocs
     // Initialisation chunks
     map->chunks = calloc(TAILLE_MAP * TAILLE_MAP * NB_COUCHE, sizeof(t_chunk));
+
+    if (map->chunks == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer l'espace nécessaire pour charger les chunks\n");
+    }
+
 
     for (int i = 0, z = 0; z < NB_COUCHE; z++)
     {
@@ -479,37 +490,45 @@ err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
         {
             for (int y = 0; y < TAILLE_MAP; y++)
             {
-                // Blocks
-                map->chunks[i].blocks = calloc(TAILLE_CHUNK * TAILLE_CHUNK, sizeof(t_block));
-
                 // Biome
                 fscanf(fichier, "%i ", (unsigned int *) &(map->chunks[i].biome));
                 fscanf(fichier, "\n");
 
+                printf("CHUNK %i (%i) ", i, map->chunks[i].biome);
                 // Position d'un chunk
                 fscanf(fichier, "%f ", &(map->chunks[i].position.x));
                 fscanf(fichier, "%f ", &(map->chunks[i].position.y));
                 fscanf(fichier, "%f ", &(map->chunks[i].position.z));
                 fscanf(fichier, "\n");
 
+                // Blocks
+                map->chunks[i].blocks = calloc(TAILLE_CHUNK * TAILLE_CHUNK, sizeof(t_block));
+
+                if (map->chunks[i].blocks == NULL) {
+                    printf("Erreur mémoire : Impossible d'allouer l'espace nécessaire pour les blocks du chunk %i\n", i);
+                }
+
+
+                printf("(IB)");
                 for (int i_bloc = 0, x_bloc = 0; x_bloc < TAILLE_CHUNK; x_bloc++)
                 {
                     for (int y_bloc = 0; y_bloc < TAILLE_CHUNK; y_bloc++)
                     {
-
                         // Blocs composant un chunk
-                        fscanf(fichier, "%f ", &(map->chunks->blocks[i_bloc].position.x));
-                        fscanf(fichier, "%f ", &(map->chunks->blocks[i_bloc].position.y));
-                        fscanf(fichier, "%f ", &(map->chunks->blocks[i_bloc].positionDansChunk.x));
-                        fscanf(fichier, "%f ", &(map->chunks->blocks[i_bloc].positionDansChunk.y));
-                        fscanf(fichier, "%i ", &(map->chunks->blocks[i_bloc].tag));
+                        fscanf(fichier, "%f ", &(map->chunks[i].blocks[i_bloc].position.x));
+                        fscanf(fichier, "%f ", &(map->chunks[i].blocks[i_bloc].position.y));
+                        fscanf(fichier, "%f ", &(map->chunks[i].blocks[i_bloc].positionDansChunk.x));
+                        fscanf(fichier, "%f ", &(map->chunks[i].blocks[i_bloc].positionDansChunk.y));
+                        fscanf(fichier, "%i ", &(map->chunks[i].blocks[i_bloc].tag));
                         fscanf(fichier, "\n");
                         i_bloc++;
                     }
                     fscanf(fichier, "\n");
                 }
                 fscanf(fichier, "\n");
+
                 i++;
+                printf("[OK] => ");
             }
             fscanf(fichier, "\n");
         }
@@ -522,12 +541,15 @@ err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
     fscanf(fichier, "%i ", &nombreEntites);
     fscanf(fichier, "\n");
 
+    printf("NOMBRE ENTITE : %i", nombreEntites);
+
     map->entites = malloc(sizeof(t_liste));
     init_liste(map->entites);
 
 
     for (int i = 0; i < nombreEntites; i++)
     {
+        printf("ENTITE %i => ", i);
         t_entite *entite = malloc(sizeof(t_entite));
         charger_entite(entite, fichier);
         ajout_droit(map->entites, entite);
@@ -620,9 +642,11 @@ err_sauv sauvegarder_global(t_monde* monde, char* chemin_monde)
 err_sauv charger_global(t_monde* monde, char* chemin_monde)
 {
     // Explicite le chemin du fichier de sauvegarde des données globales.
-    strcat(chemin_monde, "/global.txt");
+    char chemin_global[50];
+    strcpy(chemin_global, chemin_monde);
+    strcat(chemin_global, "/global.txt");
 
-    FILE* fichier = fopen(chemin_monde, "r");
+    FILE* fichier = fopen(chemin_global, "r");
 
     if (fichier == NULL)
     {
@@ -631,14 +655,17 @@ err_sauv charger_global(t_monde* monde, char* chemin_monde)
 
 
     // ID
+    printf ("ID => ");
     fscanf(fichier, "%s ", monde->id);
     fscanf(fichier, "\n");
 
     // Seed
+    printf ("Seed => ");
     fscanf(fichier, "%u ", &(monde->seed));
     fscanf(fichier, "\n");
 
     // Points d'apparition
+    printf ("Points d'apparition => ");
     fscanf(fichier, "%f ", &(monde->pointApparition.x));
     fscanf(fichier, "%f ", &(monde->pointApparition.y));
 
@@ -651,16 +678,18 @@ err_sauv charger_global(t_monde* monde, char* chemin_monde)
     fscanf(fichier, "\n");
 
     // Flags des bosses
+    printf ("Flags des bosses => ");
     fscanf(fichier, "%u ", &(monde->bossFlags.lundi));
     fscanf(fichier, "%u ", &(monde->bossFlags.mercredi));
     fscanf(fichier, "%u ", &(monde->bossFlags.vendredi));
     fscanf(fichier, "\n");
 
     // Timestamp renouvellement
+    printf ("Timestamp renouvellement => ");
     fscanf(fichier, "%lli ", &(monde->timestampRenouvellement));
 
 
-
+    printf("SUCCES\n");
     fclose(fichier);
     return SUCCESS;
 }
@@ -717,14 +746,12 @@ err_sauv sauvegarder_monde(t_monde* monde, char* nom_monde)
  * \param nom_monde Le nom du monde à charger
  * \return err_sauv, un code d'erreur (0 si succès).
  */
-err_sauv charger_monde(char* nom_monde)
+err_sauv charger_monde(t_monde *monde, char* nom_monde)
 {
+    printf("CHARGER MONDE => ");
     // Définit le chemin d'accès aux fichiers.
-    char chemin_monde[] = "./sauvegarde/";
+    char chemin_monde[50] = "./sauvegarde/";
     strcat(chemin_monde, nom_monde);
-
-
-    t_monde* monde = malloc(sizeof(t_monde));
 
 
     if (monde == NULL) {
@@ -733,17 +760,24 @@ err_sauv charger_monde(char* nom_monde)
     }
 
 
+    printf("CHARGER GLOBAL => ");
     charger_global(monde, chemin_monde);
 
 
+    printf("CHARGER OVERWORLD => ");
     t_map* overworld = malloc(sizeof(t_map));
+    if (overworld == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer l'espace mémoire pour charger l'overworld\n");
+    }
     charger_map(overworld, chemin_monde, MAP_OVERWORLD);
     monde->overworld = overworld;
 
-    t_map* caverne = malloc(sizeof(t_map));
-    charger_map(caverne, chemin_monde, MAP_CAVE);
-    monde->caverne = caverne;
+    // printf("CHARGER CAVERNE => ");
+    // t_map* caverne = malloc(sizeof(t_map));
+    // charger_map(caverne, chemin_monde, MAP_CAVE);
+    monde->caverne = NULL;
 
+    printf("CHARGER JOUEUR => ");
     t_joueur* joueur = malloc(sizeof(t_joueur));
     charger_joueur(joueur, chemin_monde);
     monde->joueur = joueur;

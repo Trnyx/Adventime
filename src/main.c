@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
 		switch (moteur->state) {
 			case M_MENU: moteur->state = main_menu(ctx); break;
 			case M_JOUER: 
-				moteur->state = jouer(MONDE_CREER); 
+				moteur->state = jouer(MONDE_CHARGER); 
 				if (moteur->state != JEU_QUITTER) 
 					play_music(audio->musiques->menu_principal, VRAI, FAUX);
 				break;

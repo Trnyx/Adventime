@@ -179,9 +179,9 @@ static int nouveauMonde() {
 
 
 static int chargerMonde() {
-    t_monde *monde = NULL;
+    t_monde *monde = malloc(sizeof(t_monde));
 
-    // Charger le monde depuis la sauvegarde
+    charger_monde(monde, "test_monde");
 
     /* ---------------------------------- Cache --------------------------------- */
 

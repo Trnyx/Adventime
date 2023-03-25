@@ -78,6 +78,6 @@ err_sauv sauvegarder_monde(t_monde* monde, char* nom_monde);
  * \param nom_monde Le nom du mon de à sauvegarder, pour obtenir le chemin d'accès aux fichiers.
  * \return err_sauv, un code d'erreur (0 si succès).
  */
-err_sauv sauvegarder_monde(t_monde* monde, char* nom_monde);
+err_sauv charger_monde(t_monde* monde, char* nom_monde);
 
 #endif //_JEU_SAUVEGARDE_
