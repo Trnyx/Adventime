@@ -25,6 +25,7 @@
 #include "../include/joueur.h"
 #include "../include/input_manager.h"
 #include "../include/menus.h"
+#include "../include/sauvegarde.h"
 
 
 
@@ -144,6 +145,9 @@ static int adventime(t_monde *monde) {
 
 
     // Sauvegarde du monde complet ici
+    printf("SAUVEGARDE => ");
+    sauvegarder_monde(monde, "test_monde");
+    printf("SAVE SUCCES\n");
 
     viderEntitesDeListe(cache->entites);
     viderEntitesDeListe(cache->map->entites);
