@@ -253,7 +253,7 @@ void update(t_map *map, t_joueur *joueur) {
         }
 
         // printf("Fin Update Entites\n");
-        printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", compteur.entites, compteur.mobs, compteur.monstrePassifs, compteur.monstreAggressifs);
+        // printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", compteur.entites, compteur.mobs, compteur.mobPassifs, compteur.mobAggressifs);
     }
 
 
@@ -268,7 +268,7 @@ void update(t_map *map, t_joueur *joueur) {
             //          Calcul la probabilité d'apparition d'un monstre
             //          Si apparition possible
             //              Apparition du monste dans le rayon semi actif
-            if (compteur.monstreAggressifs < MONSTRE_AGGRESSIF_CAP) {
+            if (compteur.mobAggressifs < MONSTRE_AGGRESSIF_CAP) {
                 if (proba <= PROBABILITE_APPARITION_MONSTRE) {
                     apparitionMonstre(entites, map, joueur->position, joueur->statistiques.niveau);
                 }
