@@ -104,24 +104,25 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
  */
 int updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
 
-    t_entite *animalDuTroupeauLePlusProche = estTropLoinDuTroupeau(animal);
-    
-    if (animalDuTroupeauLePlusProche != NULL) {
-        printf("UPDATE ANIMAL TROP LOIN => ");
-        // const float distance = calculDistanceEntreEntites((t_entite*)animal, animalDuTroupeauLePlusProche);
 
-        // animal->positionDeplacement.x += (animal->position.x - animalDuTroupeauLePlusProche->position.x);
-        // animal->positionDeplacement.y += (animal->position.y - animalDuTroupeauLePlusProche->position.y);
-        animal->positionDeplacement.x = animalDuTroupeauLePlusProche->position.x;
-        animal->positionDeplacement.y = animalDuTroupeauLePlusProche->position.y;
+    if (animal->cible == NULL) {
+        t_entite *animalDuTroupeauLePlusProche = estTropLoinDuTroupeau(animal);
+        
+        if (animalDuTroupeauLePlusProche != NULL) {
+            printf("UPDATE ANIMAL TROP LOIN => ");
+            // const float distance = calculDistanceEntreEntites((t_entite*)animal, animalDuTroupeauLePlusProche);
 
-        animal->operation = SE_DEPLACE_VERS;
+            // animal->positionDeplacement.x += (animal->position.x - animalDuTroupeauLePlusProche->position.x);
+            // animal->positionDeplacement.y += (animal->position.y - animalDuTroupeauLePlusProche->position.y);
+            animal->positionDeplacement.x = animalDuTroupeauLePlusProche->position.x;
+            animal->positionDeplacement.y = animalDuTroupeauLePlusProche->position.y;
 
-        updateMob((t_mob*)animal, distance);
-    } else {
-        // printf("UPDATE ANIMAL\n");
-        updateMob((t_mob*)animal, distance);
+            animal->operation = SE_DEPLACE_VERS;
+        }
     }
+
+    // printf("UPDATE ANIMAL\n");
+    updateMob((t_mob*)animal, distance);
 
     // printf("ANIMAL (%s) => déplacement : %i / opération : %i \n", animal->id, animal->deplacementType, animal->operation);
     //     updateMob((t_mob*)animal, distance);
