@@ -258,7 +258,7 @@ int calculExperience(t_entiteVivante *cible) {
  * @return int 
  */
 int lent(const unsigned int niveau) {
-    return (pow(niveau, 3) * 5 / 2) * 2; 
+    return (pow(niveau, 3) * 5); 
 }
 
 
