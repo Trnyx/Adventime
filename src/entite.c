@@ -216,8 +216,8 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
     if (block == NULL) 
         return FAUX;
 
-    // Check si le block est bien vide
-    if (block->tag != VIDE) 
+    // Check si le block est un bloc avec collision
+    if (block->tag > DEBUT_VEGETAL) 
         return FAUX;
 
 
@@ -371,6 +371,10 @@ void dessinerEntite(t_entite *entite) {
 
 
     switch (entite->entiteType) {
+        case ENTITE_ITEM: 
+            texture = moteur->textures->items; 
+            sprite.x = entite->tag * TAILLE_TILE;
+            break;
         case ENTITE_JOUEUR: 
             texture = moteur->textures->joueur; 
             break;
@@ -387,8 +391,6 @@ void dessinerEntite(t_entite *entite) {
             else if (entite->tag == TAG_BOSS) {
                 texture = moteur->textures->monstres;
                 // sprite.x = (((t_boss*)entite)->jour) * (TAILLE_SET);
-                rendu.w *= entite->taille;
-                rendu.h *= entite->taille;
             }
             break;
 
@@ -396,6 +398,8 @@ void dessinerEntite(t_entite *entite) {
             break;
     }
 
+    rendu.w *= entite->taille;
+    rendu.h *= entite->taille;
 
     // Animation
     if (entite->animation != NULL) {

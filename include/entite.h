@@ -41,6 +41,7 @@
  */
 typedef enum {
     ENTITE_RIEN,
+    ENTITE_ITEM,
     ENTITE_JOUEUR,
     ENTITE_MOB,
 } e_entiteType;

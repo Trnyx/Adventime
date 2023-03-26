@@ -238,7 +238,8 @@ void update(t_map *map, t_joueur *joueur) {
                     
 
                     // Deplacement
-                    entite->update((t_entite*)entite, distance, (t_entite*)joueur);
+                    if (entite->update != NULL)
+                        entite->update((t_entite*)entite, distance, (t_entite*)joueur);
 
                     // combat
                     // entite->update((t_entite*)entite);

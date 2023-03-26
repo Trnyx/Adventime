@@ -166,6 +166,13 @@ t_textures* initTextures(SDL_Renderer *renderer) {
 
     /* --------------------------------- Autres --------------------------------- */
 
+    surface = IMG_Load("assets/images/items_tileset.png");
+    textures->items = SDL_CreateTextureFromSurface(renderer, surface);
+    if (surface == NULL) {
+        printf("Erreur Chargement Texture : Impossible de charger items_tileset.png\n%s\n", SDL_GetError());
+    }
+    SDL_FreeSurface(surface);
+
 
     return textures;
 }
@@ -207,12 +214,17 @@ void detruireTextures(t_textures **textures) {
         if ((*textures)->joueur != NULL) 
             SDL_DestroyTexture((*textures)->joueur);
 
-        if ((*textures)->animaux != NULL) 
-            SDL_DestroyTexture((*textures)->animaux);
-
         // Monstres
         if ((*textures)->monstres != NULL) 
             SDL_DestroyTexture((*textures)->monstres);
+
+        // Animaux
+        if ((*textures)->animaux != NULL) 
+            SDL_DestroyTexture((*textures)->animaux);
+
+        // Autres
+        if ((*textures)->items != NULL) 
+            SDL_DestroyTexture((*textures)->items);
 
 
         free(*textures);

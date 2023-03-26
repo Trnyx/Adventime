@@ -61,6 +61,7 @@ typedef struct s_textures {
     SDL_Texture *animaux;
 
     // Autres
+    SDL_Texture *items;
 
 } t_textures;
 
