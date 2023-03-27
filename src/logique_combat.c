@@ -302,7 +302,10 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
             gestionExeperience(entite, cible);
             printf("EXPERIENCE => %i / %i\n", entite->statistiques.niveau, entite->statistiques.experience);
 
-            dropItems((t_mob*)cible);
+            if (entite->entiteType == ENTITE_JOUEUR)
+                dropInventaire();
+            else
+                dropItems((t_mob*)cible);
         }
     }
     else
