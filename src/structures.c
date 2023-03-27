@@ -143,9 +143,9 @@ e_structureTag selectionMaisonTag() {
  * @param x 
  * @param y 
  */
-void changerBlockEnChemin(t_map *map, const float x, const float y) {
+void changerBlock(t_map *map, const float x, const float y, const int changement) {
     t_block *block = getBlockDansMap(x, y, COUCHE_SOL, map);
-    block->tag = SOL_CHEMIN;
+    block->tag = changement;
 }
 
 
@@ -163,13 +163,13 @@ void tracerCheminVertical(t_map *map, t_vecteur2 depart, t_vecteur2 arrive, int 
     // Maison en haut
     if (depart.y > arrive.y) {
         for (; *y < depart.y; (*y)++)
-            changerBlockEnChemin(map, *x, *y);
+            changerBlock(map, *x, *y, SOL_CHEMIN);
     }
 
     // Maison en bas
     else {
         for (; *y > depart.y + 2; (*y)--)
-            changerBlockEnChemin(map, *x, *y);
+            changerBlock(map, *x, *y, SOL_CHEMIN);
     }
 }
 
@@ -199,14 +199,14 @@ void tracerChemin(t_map *map, t_vecteur2 depart, t_vecteur2 arrive) {
 
         // On trace la moitié du chemin horizontal
         for (; x < arrive.x + (separation.x / 2); x++)
-            changerBlockEnChemin(map, x, y);
+            changerBlock(map, x, y, SOL_CHEMIN);
         
         // On trace la totalité du chemin vertical
         tracerCheminVertical(map, depart, arrive, &x, &y);
         
         // On finit de tracer le chemin vertical
         for (; x < depart.x; x++)
-            changerBlockEnChemin(map, x, y);
+            changerBlock(map, x, y, SOL_CHEMIN);
     } 
 
 
@@ -216,14 +216,18 @@ void tracerChemin(t_map *map, t_vecteur2 depart, t_vecteur2 arrive) {
 
         // On trace la moitié du chemin horizontal
         for (; x > arrive.x + (separation.x / 2); x--)
-            changerBlockEnChemin(map, x, y);
+            changerBlock(map, x, y, SOL_CHEMIN);
         
+        changerBlock(map, x, y, FLAG_LAMPADAIRE_GAUCHE);
+
         // On trace la totalité du chemin vertical
         tracerCheminVertical(map, depart, arrive, &x, &y);
         
         // On finit de tracer le chemin vertical
         for (; x > depart.x + 2; x--)
-            changerBlockEnChemin(map, x, y);
+            changerBlock(map, x, y, SOL_CHEMIN);
+        
+        changerBlock(map, x, y, FLAG_LAMPADAIRE_GAUCHE);
     }
     
 }
@@ -240,10 +244,10 @@ void genererChemins(t_map *map, t_discSampling grille) {
     t_vecteur2 positionPuit = grille.elementPositions[0];
 
 
-    // Entour le puit de dalle
+    // Entoure le puit de dalle
     for (int x = positionPuit.x - 1; x <= positionPuit.x + 3; x++) {
         for (int y = positionPuit.y - 1; y <= positionPuit.y + 3; y++) {
-            changerBlockEnChemin(map, x, y);
+            changerBlock(map, x, y, SOL_CHEMIN);
         }
     }
 
@@ -314,9 +318,72 @@ t_vecteur2 decorationAutourDePoint(t_map *map, const e_blockTag structure, const
 
 
 
+t_vecteur2 trouverChemin(t_map *map) {
+    
+}
+
+
+
+void decorationsAutourDeChemin(t_map *map) {
+    t_vecteur2 premierBlocDeChemin = trouverChemin(map);
+
+
+}
+
+
+
+
+
+void decorationPanneauDirection(t_map *map, const t_vecteur2 positionPuit) {
+    for (int x = positionPuit.x - 1; x <= positionPuit.x + 3; x++) {
+        for (int y = positionPuit.y - 1; y <= positionPuit.y + 3; y++) {
+            
+
+
+        }
+    }
+}
+
+
+
+
+
+void decorationFlags(t_map *map) {
+    for (int x = 0; x < TAILLE_MAP * TAILLE_CHUNK; x++) {
+        for (int y = 0; y < TAILLE_MAP * TAILLE_CHUNK; y++) {
+
+            t_block *block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+
+            switch (block->tag) {
+                case FLAG_LAMPADAIRE_DROIT:
+                    block->tag = BLOCK_LAMPADAIRE_DROIT_BAS;
+                    block = getBlockDansMap(x, y - 1, COUCHE_OBJETS, map);
+                    block->tag = BLOCK_LAMPADAIRE_DROIT_HAUT;
+
+                case FLAG_LAMPADAIRE_GAUCHE:
+                    block->tag = BLOCK_LAMPADAIRE_GAUCHE_BAS;
+                    block = getBlockDansMap(x, y - 1, COUCHE_OBJETS, map);
+                    block->tag = BLOCK_LAMPADAIRE_GAUCHE_HAUT;
+                    break;
+                
+                default:
+                    break;
+            }
+            
+        }
+    }
+}
+
+
+
+
+
 void genererDecorations(t_map *map, t_discSampling grille) {
     printf("DECORATINONS => ");
     const t_vecteur2 positionPuit = grille.elementPositions[0];
+
+    // Panneau direction
+    decorationPanneauDirection(map, positionPuit);
     
     // Panneau d'affichage
     decorationAutourDePoint(map, BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE, positionPuit, 2, 2, 5);
@@ -325,6 +392,13 @@ void genererDecorations(t_map *map, t_discSampling grille) {
     decorationAutourDePoint(map, BLOCK_BROUETTE_HAUT_GAUCHE, positionPuit, 2, 2, 6);
     
     // Decoration autour du chemin
+    decorationsAutourDeChemin(map);
+    // const int nombreDecorationsAutourChemin = getNombreAleatoire(6, 12);
+    // for (int i = 0; i < nombreDecorationsAutourChemin; i++) {
+    // }
+
+    // Flags
+    decorationFlags(map);
     
 
 

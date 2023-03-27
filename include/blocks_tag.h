@@ -12,7 +12,7 @@
 
 /**
  * @struct e_blockTag
- * @brief 
+ * @brief Enumerateur répertoriant tous les "blocs" du jeu à afficher
  * 
  */
 typedef enum {
@@ -221,6 +221,13 @@ typedef enum {
 
     FIN_BLOCK_STRUCTURE,
 } e_blockTag;
+
+
+
+typedef enum {
+    FLAG_LAMPADAIRE_GAUCHE,
+    FLAG_LAMPADAIRE_DROIT,
+} e_decoration_flag;
 
 
 
