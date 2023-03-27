@@ -134,6 +134,8 @@ e_structureTag selectionMaisonTag() {
 
 
 
+/* --------------------------------- Chemins -------------------------------- */
+
 /**
  * @brief 
  * 
@@ -145,8 +147,6 @@ void changerBlockEnChemin(t_map *map, const float x, const float y) {
     t_block *block = getBlockDansMap(x, y, COUCHE_SOL, map);
     block->tag = SOL_CHEMIN;
 }
-
-
 
 
 
@@ -182,7 +182,7 @@ void tracerCheminVertical(t_map *map, t_vecteur2 depart, t_vecteur2 arrive, int 
  * @param depart Le point de départ pour la création du chemin (Le puit)
  * @param arrive Le point d'arrive de la création du chemin (La maison)
  */
-void genererChemin(t_map *map, t_vecteur2 depart, t_vecteur2 arrive) {
+void tracerChemin(t_map *map, t_vecteur2 depart, t_vecteur2 arrive) {
     t_vecteur2 separation = {
         depart.x - arrive.x,
         depart.y - arrive.y,
@@ -230,8 +230,6 @@ void genererChemin(t_map *map, t_vecteur2 depart, t_vecteur2 arrive) {
 
 
 
-
-
 /**
  * @brief 
  * 
@@ -254,9 +252,83 @@ void genererChemins(t_map *map, t_discSampling grille) {
     for (int i = 1; i < grille.nbElements; i++) {
         t_vecteur2 point = grille.elementPositions[i];
 
-        genererChemin(map, positionPuit, point);
+        tracerChemin(map, positionPuit, point);
     }
 
+}
+
+
+
+
+
+/* ------------------------------- Decorations ------------------------------ */
+
+boolean peutEtrePlacer(t_map* map, const t_vecteur2 position, const int tailleX, const int tailleY) {
+    t_block *block = NULL;
+
+    for (int x = position.x; x < position.x + tailleX; x++) {
+        for (int y = position.y; y < position.y + tailleY; y++) {
+            block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+            if (block->tag != VIDE)
+                return FAUX;
+        }
+    }
+
+    return VRAI;
+}
+
+
+
+
+
+t_vecteur2 choisirPositionDecorationAutourDePoint(t_map *map, const t_vecteur2 centre, const int tailleX, const int tailleY, const int rayon) {
+    t_vecteur2 position = choisirPointDansRayon(rayon);
+    position.x += centre.x;
+    position.y += centre.y;
+
+
+    if (peutEtrePlacer(map, position, tailleX, tailleY))
+        return position;
+    else
+        return choisirPositionDecorationAutourDePoint(map, centre, tailleX, tailleY, rayon);
+}
+
+
+
+t_vecteur2 decorationAutourDePoint(t_map *map, const e_blockTag structure, const t_vecteur2 centre, const int tailleX, const int tailleY, const int rayon) {
+    t_vecteur2 positionObjet = choisirPositionDecorationAutourDePoint(map, centre, tailleX, tailleX, rayon);
+    
+    
+    for (int i = 0, y = positionObjet.y; y < positionObjet.y + tailleX; y++) {
+        for (int x = positionObjet.x; x < positionObjet.x + tailleY; x++) {
+            t_block *block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+            block->tag = structure + i++;
+        }
+    }
+
+
+    return positionObjet;
+}
+
+
+
+
+
+void genererDecorations(t_map *map, t_discSampling grille) {
+    printf("DECORATINONS => ");
+    const t_vecteur2 positionPuit = grille.elementPositions[0];
+    
+    // Panneau d'affichage
+    decorationAutourDePoint(map, BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE, positionPuit, 2, 2, 5);
+
+    // Brouette
+    decorationAutourDePoint(map, BLOCK_BROUETTE_HAUT_GAUCHE, positionPuit, 2, 2, 6);
+    
+    // Decoration autour du chemin
+    
+
+
+    printf("\n");
 }
 
 
@@ -306,8 +378,10 @@ void genererVillage(t_map *map) {
         }
 
 
-        if (grille.nbElements > 1)
+        if (grille.nbElements > 1) {
             genererChemins(map, grille);
+            genererDecorations(map, grille);
+        }
 
 
         free(grille.elementPositions);

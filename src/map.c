@@ -380,6 +380,20 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
         }
 
 
+        /* ------------------------------- DECORATIONS ------------------------------ */
+
+        else if (tag >= BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE && tag < FIN_BLOCK_STRUCTURE) {
+            tag = tag % BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE;
+
+            decalage.x = tag;
+            decalage.y = (17);
+        }
+
+
+
+
+        /* ---------------------------------- RENDU --------------------------------- */
+
         splitTexture(&source, decalage.x*TAILLE_TILE,decalage.y*TAILLE_TILE, TAILLE_TILE,TAILLE_TILE);
         // splitTexture(&source, 0,0, TAILLE_TILE,TAILLE_TILE);
 
