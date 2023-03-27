@@ -16,6 +16,9 @@
  * 
  */
 typedef enum {
+    DEBUT_BLOCK_SANS_COLLISION = 49,
+
+
     DEBUT_BLOCK_STRUCTURE = 999,
 
     /* ---------------------------------- PUIT ---------------------------------- */

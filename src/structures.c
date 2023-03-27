@@ -134,6 +134,133 @@ e_structureTag selectionMaisonTag() {
 
 
 
+/**
+ * @brief 
+ * 
+ * @param map 
+ * @param x 
+ * @param y 
+ */
+void changerBlockEnChemin(t_map *map, const float x, const float y) {
+    t_block *block = getBlockDansMap(x, y, COUCHE_SOL, map);
+    block->tag = SOL_CHEMIN;
+}
+
+
+
+
+
+/**
+ * @brief 
+ * 
+ * @param map 
+ * @param depart 
+ * @param arrive 
+ * @param x 
+ * @param y 
+ */
+void tracerCheminVertical(t_map *map, t_vecteur2 depart, t_vecteur2 arrive, int *x, int *y) {
+    // Maison en haut
+    if (depart.y > arrive.y) {
+        for (; *y < depart.y; (*y)++)
+            changerBlockEnChemin(map, *x, *y);
+    }
+
+    // Maison en bas
+    else {
+        for (; *y > depart.y + 2; (*y)--)
+            changerBlockEnChemin(map, *x, *y);
+    }
+}
+
+
+
+/**
+ * @brief 
+ * 
+ * @param map 
+ * @param depart Le point de départ pour la création du chemin (Le puit)
+ * @param arrive Le point d'arrive de la création du chemin (La maison)
+ */
+void genererChemin(t_map *map, t_vecteur2 depart, t_vecteur2 arrive) {
+    t_vecteur2 separation = {
+        depart.x - arrive.x,
+        depart.y - arrive.y,
+    };
+    
+
+    int x = arrive.x;
+    int y = arrive.y + 7;
+    
+
+    // Maison à gauche
+    if (separation.x > 0) { 
+        x += 2;
+
+        // On trace la moitié du chemin horizontal
+        for (; x < arrive.x + (separation.x / 2); x++)
+            changerBlockEnChemin(map, x, y);
+        
+        // On trace la totalité du chemin vertical
+        tracerCheminVertical(map, depart, arrive, &x, &y);
+        
+        // On finit de tracer le chemin vertical
+        for (; x < depart.x; x++)
+            changerBlockEnChemin(map, x, y);
+    } 
+
+
+    // Maison à droite ou alignée horizontalement
+    else { 
+        x += 4;
+
+        // On trace la moitié du chemin horizontal
+        for (; x > arrive.x + (separation.x / 2); x--)
+            changerBlockEnChemin(map, x, y);
+        
+        // On trace la totalité du chemin vertical
+        tracerCheminVertical(map, depart, arrive, &x, &y);
+        
+        // On finit de tracer le chemin vertical
+        for (; x > depart.x + 2; x--)
+            changerBlockEnChemin(map, x, y);
+    }
+    
+}
+
+
+
+
+
+/**
+ * @brief 
+ * 
+ * @param map 
+ * @param grille 
+ */
+void genererChemins(t_map *map, t_discSampling grille) {
+    t_vecteur2 positionPuit = grille.elementPositions[0];
+
+
+    // Entour le puit de dalle
+    for (int x = positionPuit.x - 1; x <= positionPuit.x + 3; x++) {
+        for (int y = positionPuit.y - 1; y <= positionPuit.y + 3; y++) {
+            changerBlockEnChemin(map, x, y);
+        }
+    }
+
+
+    // Relie les maisons au puit
+    for (int i = 1; i < grille.nbElements; i++) {
+        t_vecteur2 point = grille.elementPositions[i];
+
+        genererChemin(map, positionPuit, point);
+    }
+
+}
+
+
+
 
 
 /**
@@ -176,8 +303,11 @@ void genererVillage(t_map *map) {
                 printf("GENERATION BATIMENT %i (%1.2f:%1.2f) => ", i, position.x, position.y);
                 genererStructure(position, tag, map);
             }
-
         }
+
+
+        if (grille.nbElements > 1)
+            genererChemins(map, grille);
 
 
         free(grille.elementPositions);

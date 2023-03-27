@@ -200,6 +200,13 @@ int dessinerBlockSol(int tag, SDL_Rect *rendu) {
     if (tag >= SOL_EAU_PROFONDE && tag <= SOL_MONTAGNE_2) {
         splitTexture(&source, (8 + 2 * TAILLE_TILE * tag),8, TAILLE_TILE,TAILLE_TILE);
     }
+
+    else if (tag >= SOL_CHEMIN && tag < DEBUT_BLOCK_STRUCTURE) {
+        tag = tag % SOL_CHEMIN;
+
+        splitTexture(&source, tag*TAILLE_TILE,2*TAILLE_TILE, TAILLE_TILE,TAILLE_TILE);
+    }
+
     else {
         return SDL_RenderCopy(moteur->renderer, moteur->textures->null, NULL, rendu);
     }
@@ -269,6 +276,8 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
     SDL_Rect source;
     SDL_Rect renduObjet;
 
+    t_vecteur2 decalage = { 0, 0 };
+
 
     if (tag > DEBUT_VEGETAL && tag < FIN_VEGETAL) {
         texture = moteur->textures->vegetaux;
@@ -294,9 +303,30 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
                 break;
         }
     }
+
+
+
+    else if (tag > DEBUT_BLOCK_SANS_COLLISION && tag < DEBUT_BLOCK_STRUCTURE) {
+        texture = moteur->textures->sol;
+
+        tag = tag % (DEBUT_BLOCK_SANS_COLLISION + 1);
+
+        decalage.x = tag;
+        decalage.y = 2;
+
+
+        splitTexture(&source, decalage.x*TAILLE_TILE,decalage.y*TAILLE_TILE, TAILLE_TILE,TAILLE_TILE);
+
+        renduObjet.x = rendu->x;
+        renduObjet.y = rendu->y;
+        renduObjet.w = rendu->w;
+        renduObjet.h = rendu->h;
+    }
+
+
+
     else if (tag > DEBUT_BLOCK_STRUCTURE && tag < FIN_BLOCK_STRUCTURE) {
         texture = moteur->textures->structures;
-        t_vecteur2 decalage = { 0, 0 };
 
 
         // printf("AFFICHE STRUCTURE %i ", tag);

@@ -232,7 +232,10 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
 
     // Check si plus de 1 de hauteur 
     t_block* blockPositionActuelle = getBlockDansMap(entite->position.x, entite->position.y, COUCHE_SOL, map);
-    if (abs(block->tag - blockPositionActuelle->tag) > 1) 
+    if (blockPositionActuelle->tag == SOL_CHEMIN)
+        return VRAI;
+        
+    if (abs(block->tag - blockPositionActuelle->tag) > 1 && (block->tag != SOL_CHEMIN)) 
         return FAUX;
 
 
