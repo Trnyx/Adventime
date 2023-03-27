@@ -103,6 +103,7 @@ int calculPv(const int attaque, const int defense, const int basePv);
 
 t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau);
 t_baseStatistiques genererStatistiquesDeBaseBoss(const e_jour jour);
+t_baseStatistiques genererStatistiquesDeBaseJoueur();
 
 
 

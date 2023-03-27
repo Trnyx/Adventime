@@ -21,6 +21,7 @@
 #include "../include/monstre.h"
 #include "../include/animal.h"
 #include "../include/boss.h"
+#include "../include/joueur.h"
 
 
 
@@ -102,6 +103,22 @@ t_baseStatistiques genererStatistiquesDeBaseBoss(const e_jour jour) {
 
 
 
+t_baseStatistiques genererStatistiquesDeBaseJoueur() {
+    t_baseStatistiques baseStatistiques;
+
+    baseStatistiques.attaque = JOUEUR_ATTAQUE_DEFAUT;
+    baseStatistiques.defense = JOUEUR_DEFENSE_DEFAUT;
+    baseStatistiques.vitesse = JOUEUR_BASE_VITESSE;
+    baseStatistiques.pv = JOUEUR_BASE_PV;
+    baseStatistiques.experience_courbe = EXPERIENCE_MOYEN;
+
+    return baseStatistiques;
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                   Calculs                                  */
 /* -------------------------------------------------------------------------- */
@@ -151,12 +168,12 @@ t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, co
     t_statistiques statistiques;
 
 
-    statistiques.experience = 0;
+    statistiques.experience = getExperienceCourbe(baseStatistiques.experience_courbe)(niveau);
     statistiques.niveau = niveau;
 
     statistiques.attaque = calculStatistique(baseStatistiques.attaque, niveau);
     statistiques.defense = calculStatistique(baseStatistiques.defense, niveau);
-    statistiques.vitesse = 4.0; // calculStatistique(baseStatistiques.vitesse, niveau);
+    statistiques.vitesse = baseStatistiques.vitesse; // 4.0; // calculStatistique(baseStatistiques.vitesse, niveau);
 
     statistiques.pv = calculPv(statistiques.attaque, statistiques.defense, baseStatistiques.pv);
     statistiques.pvMax = statistiques.pv;
@@ -258,6 +275,7 @@ int calculExperience(t_entiteVivante *cible) {
  * @return int 
  */
 int lent(const unsigned int niveau) {
+    if (niveau <= 1) return 0;
     return (pow(niveau, 3) * 5); 
 }
 
@@ -270,6 +288,7 @@ int lent(const unsigned int niveau) {
  * @return int 
  */
 int moyen(const unsigned int niveau) {
+    if (niveau <= 1) return 0;
     return pow(niveau, 3) * 4;
 }
 
@@ -282,6 +301,7 @@ int moyen(const unsigned int niveau) {
  * @return int 
  */
 int rapide(const unsigned int niveau) {
+    if (niveau <= 1) return 0;
     return pow(niveau, 3) * 1.5 * 2;
 }
 

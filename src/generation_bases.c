@@ -171,9 +171,9 @@ const t_baseMob basesMobs[] = {
  * - courbeExp
  */
 const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONSTRE_TYPES] = {
-    { { 20, 30 }, { 20, 30 }, { 10, 10 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_MOYEN } }, // NORMAL
-    { { 25, 35 }, { 15, 25 }, { 15, 15 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_RAPIDE } }, // PLANTE
-    { { 15, 25 }, { 35, 45 }, { 15, 15 }, 40, { EXPERIENCE_LENT, EXPERIENCE_RAPIDE } }, // MONTAGNARD
+    { { 20, 30 }, { 20, 30 }, { 4, 4 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_MOYEN } }, // NORMAL
+    { { 25, 35 }, { 15, 25 }, { 4, 4 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_RAPIDE } }, // PLANTE
+    { { 15, 25 }, { 35, 45 }, { 4, 4 }, 40, { EXPERIENCE_LENT, EXPERIENCE_RAPIDE } }, // MONTAGNARD
     // { { 55, 65 }, { 60, 70 }, { 10, 10 }, 90, { 0 } }, // EAU
     // { { 70, 75 }, { 70, 75 }, { 10, 10 }, 90, { 0 } }, // DESERTIQUE
 };
@@ -196,8 +196,8 @@ const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONS
  * - courbeExp
  */
 const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesAnimaux[] = {
-    { { 15, 20 }, { 15, 20 }, { 8, 10 }, 30, { 0 } }, // VACHE
-    { { 10, 15 }, { 10, 15 }, { 9, 11 }, 30, { 0 } }, // COCHON
+    { { 15, 20 }, { 15, 20 }, { 4, 4 }, 30, { 0 } }, // VACHE
+    { { 10, 15 }, { 10, 15 }, { 4, 4 }, 30, { 0 } }, // COCHON
 };
 
 

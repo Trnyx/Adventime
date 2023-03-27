@@ -137,7 +137,7 @@
 
 
 // Temps d'attente avant de pouvoir récupérer un item (entité) [en seconde]
-#define ENTITE_ITEM_DELAI_RECUPERATION (2 * FPS)
+#define ENTITE_ITEM_DELAI_RECUPERATION (1 * FPS)
 
 
 
