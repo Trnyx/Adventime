@@ -39,6 +39,7 @@ typedef struct s_cache {
     t_map *map;                     /**< La map chargée */
 
     t_liste *entites;               /**< Les entités chargées */
+    t_compteur compteurEntites;     /**< */
 } t_cache;
 
 

@@ -130,10 +130,14 @@
 #define MOB_DELAI_MAX_ENTRE_BRUIT (20 * FPS)
 
 
-// La durée de vie minimum d'une entité
-#define ENTITE_DUREE_VIE_MIN TEMPS_JOUR / 4
-// La durée de vie maximum d'une entité
-#define ENTITE_DUREE_VIE_MAX TEMPS_JOUR / 2
+// La durée de vie minimum d'une entité [en tick]
+#define ENTITE_DUREE_VIE_MIN (TEMPS_JOUR / 4)
+// La durée de vie maximum d'une entité [en tick]
+#define ENTITE_DUREE_VIE_MAX (TEMPS_JOUR / 2)
+
+
+// Temps d'attente avant de pouvoir récupérer un item (entité) [en seconde]
+#define ENTITE_ITEM_DELAI_RECUPERATION (1 * FPS)
 
 
 
@@ -151,6 +155,12 @@
 #define ANIMAL_RAYON_DETECTION_TROUPEAU 12
 // Rayon dans lequel un animal se concidère comme trop loin du troupeau
 #define ANIMAL_RAYON_TROP_LOIN_TROUPEAU 5
+
+
+/* -------------------------------- Cooldowns ------------------------------- */
+
+//
+#define COOLDOWN_REGENERATION (10 * FPS)
 
 
 

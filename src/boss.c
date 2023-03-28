@@ -37,11 +37,11 @@ void updateBoss(t_boss *boss, float distance, t_entiteVivante *cible) {
     
 
     if (eloignementPointBoss > TAILLE_CHUNK) {
-        boss->positionDeplacement = positionApparitionBoss;
-        boss->operation = SE_DEPLACE_VERS;
-
         if (boss->cible != NULL)
             finCombat((t_mob*)boss);
+
+        boss->positionDeplacement = positionApparitionBoss;
+        boss->operation = SE_DEPLACE_VERS;
     }
 
 

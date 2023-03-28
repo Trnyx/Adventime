@@ -136,6 +136,27 @@ const t_baseVegetal basesVegetaux[] = {
 
 
 /* -------------------------------------------------------------------------- */
+/*                                    Mobs                                    */
+/* -------------------------------------------------------------------------- */
+
+
+/**
+ * @brief 
+ */
+const t_baseMob basesMobs[] = {
+    // Animal
+    { TAG_ANIMAL_VACHE, { ITEM_STEAK }, { 100 } },
+    { TAG_ANIMAL_COCHON, { ITEM_STEAK }, { 100 } },
+    
+    // 
+    { TAG_MONSTRE_BASIC, { ITEM_MATERIEL_BATON }, { 100 } },
+};
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                  Monstres                                  */
 /* -------------------------------------------------------------------------- */
 
@@ -150,9 +171,9 @@ const t_baseVegetal basesVegetaux[] = {
  * - courbeExp
  */
 const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONSTRE_TYPES] = {
-    { { 20, 30 }, { 20, 30 }, { 10, 10 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_MOYEN } }, // NORMAL
-    { { 25, 35 }, { 15, 25 }, { 15, 15 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_RAPIDE } }, // PLANTE
-    { { 15, 25 }, { 35, 45 }, { 15, 15 }, 40, { EXPERIENCE_LENT, EXPERIENCE_RAPIDE } }, // MONTAGNARD
+    { { 20, 30 }, { 20, 30 }, { 4, 4 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_MOYEN } }, // NORMAL
+    { { 25, 35 }, { 15, 25 }, { 4, 4 }, 40, { EXPERIENCE_MOYEN, EXPERIENCE_RAPIDE } }, // PLANTE
+    { { 15, 25 }, { 35, 45 }, { 4, 4 }, 40, { EXPERIENCE_LENT, EXPERIENCE_RAPIDE } }, // MONTAGNARD
     // { { 55, 65 }, { 60, 70 }, { 10, 10 }, 90, { 0 } }, // EAU
     // { { 70, 75 }, { 70, 75 }, { 10, 10 }, 90, { 0 } }, // DESERTIQUE
 };
@@ -175,8 +196,8 @@ const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONS
  * - courbeExp
  */
 const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesAnimaux[] = {
-    { { 40, 50 }, { 50, 60 }, { 8, 10 }, 60, { 0 } }, // VACHE
-    { { 50, 50 }, { 50, 50 }, { 9, 11 }, 50, { 0 } }, // COCHON
+    { { 15, 20 }, { 15, 20 }, { 4, 4 }, 30, { 0 } }, // VACHE
+    { { 10, 15 }, { 10, 15 }, { 4, 4 }, 30, { 0 } }, // COCHON
 };
 
 

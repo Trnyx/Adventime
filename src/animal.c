@@ -14,6 +14,7 @@
 #include <stdlib.h>
 
 #include "../include/physique.h"
+#include "../include/moteur.h"
 #include "../include/animal.h"
 
 
@@ -63,10 +64,11 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
 
     en_tete(&entitesAlentours);
     while (!hors_liste(&entitesAlentours)) {
-        valeur_elt(&entitesAlentours, &entite);
+        valeur_elt(&entitesAlentours, &entiteTempo);
 
-        if (entite->tag == animal->tag) {
-            distance = calculDistanceEntreEntites((t_entite*)animal, entite);
+        if (entiteTempo->tag == animal->tag) {
+            distance = calculDistanceEntreEntites((t_entite*)animal, entiteTempo);
+
             if (distance <= ANIMAL_RAYON_TROP_LOIN_TROUPEAU)
                 return NULL;
             else 
@@ -102,23 +104,25 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
  */
 int updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
 
-    t_entite *animalDuTroupeauLePlusProche = estTropLoinDuTroupeau(animal);
-    
-    if (animalDuTroupeauLePlusProche != NULL) {
-        // printf("UPDATE VACHE TROP LOIN\n");
-        // const float distance = calculDistanceEntreEntites((t_entite*)animal, animalDuTroupeauLePlusProche);
-        animal->operation = SE_DEPLACE_VERS;
 
-        // animal->positionDeplacement.x += (animalDuTroupeauLePlusProche->position.x - animal->position.x);
-        // animal->positionDeplacement.y += (animalDuTroupeauLePlusProche->position.y - animal->position.y);
-        animal->positionDeplacement.x = (animalDuTroupeauLePlusProche->position.x - animal->position.x);
-        animal->positionDeplacement.y = (animalDuTroupeauLePlusProche->position.y - animal->position.y);
+    if (animal->cible == NULL) {
+        t_entite *animalDuTroupeauLePlusProche = estTropLoinDuTroupeau(animal);
+        
+        if (animalDuTroupeauLePlusProche != NULL) {
+            printf("UPDATE ANIMAL TROP LOIN => ");
+            // const float distance = calculDistanceEntreEntites((t_entite*)animal, animalDuTroupeauLePlusProche);
 
-        updateMob((t_mob*)animal, 0.0);
-    } else {
-        // printf("UPDATE VACHE\n");
-        updateMob((t_mob*)animal, distance);
+            // animal->positionDeplacement.x += (animal->position.x - animalDuTroupeauLePlusProche->position.x);
+            // animal->positionDeplacement.y += (animal->position.y - animalDuTroupeauLePlusProche->position.y);
+            animal->positionDeplacement.x = animalDuTroupeauLePlusProche->position.x;
+            animal->positionDeplacement.y = animalDuTroupeauLePlusProche->position.y;
+
+            animal->operation = SE_DEPLACE_VERS;
+        }
     }
+
+    // printf("UPDATE ANIMAL\n");
+    updateMob((t_mob*)animal, distance);
 
     // printf("ANIMAL (%s) => déplacement : %i / opération : %i \n", animal->id, animal->deplacementType, animal->operation);
     //     updateMob((t_mob*)animal, distance);
@@ -202,6 +206,12 @@ t_animal *creerAnimal(const t_vecteur2 position, const e_entiteTag tag) {
 
     // Timer
     animal->destructionInactif = animal->aggressif;
+
+
+    if (animal->aggressif)
+        ++(moteur->cache->compteurEntites.mobAggressifs);
+    else
+        ++(moteur->cache->compteurEntites.mobPassifs);
 
 
     mob = NULL;

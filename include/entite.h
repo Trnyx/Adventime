@@ -41,6 +41,7 @@
  */
 typedef enum {
     ENTITE_RIEN,
+    ENTITE_ITEM,
     ENTITE_JOUEUR,
     ENTITE_MOB,
 } e_entiteType;
@@ -134,6 +135,10 @@ struct s_entite {
 
 
 
+/**
+ * @brief 
+ * 
+ */
 typedef struct s_entiteVivante {
     struct s_entite;                        /**< On "étend" la structure "entite" */
 
@@ -143,7 +148,25 @@ typedef struct s_entiteVivante {
     t_statistiques statistiques;            /**< Les statistiques de l'entité */
     t_baseStatistiques baseStatistiques;    /**< Les statistiques de base de l'entité */
 
+    // Cooldowns
+    unsigned int cooldownAttaque;           /**< Cooldown entre deux attaque (en seconde) */
+    unsigned int cooldownRegeneration;      /**< Cooldown pour la régénération (en seconde) */
+
+
 } t_entiteVivante;
+
+
+
+/**
+ * @brief 
+ * 
+ */
+typedef struct s_compteur {
+    int entites;
+    int mobs;
+    int mobAggressifs;
+    int mobPassifs;
+} t_compteur;
 
 
 
@@ -157,6 +180,7 @@ typedef struct s_map t_map;
 
 boolean peutApparaitre(const t_vecteur2 position, t_map *map);
 t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range);
+void regenerationEntite(t_entiteVivante *entite);
 
 t_entite* creerEntite(const t_vecteur2 position);
 void detruireEntite(t_entite **entite);

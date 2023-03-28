@@ -114,6 +114,24 @@ t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const floa
 
 
 
+void regenerationEntite(t_entiteVivante *entite) {
+    if (entite->cooldownRegeneration > 0 && entite->statistiques.pv < entite->statistiques.pvMax) {
+        --(entite->cooldownRegeneration);
+    }
+    else if (entite->cooldownRegeneration == 0 && entite->statistiques.pv < entite->statistiques.pvMax) {
+        entite->statistiques.pv += entite->statistiques.pvMax * 0.05;
+
+        if (entite->statistiques.pv > entite->statistiques.pvMax)
+            entite->statistiques.pv = entite->statistiques.pvMax;
+
+        entite->cooldownRegeneration = COOLDOWN_REGENERATION;
+    }
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                   Calcul                                   */
 /* -------------------------------------------------------------------------- */
@@ -198,8 +216,8 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
     if (block == NULL) 
         return FAUX;
 
-    // Check si le block est bien vide
-    if (block->tag != VIDE) 
+    // Check si le block est un bloc avec collision
+    if (block->tag > DEBUT_VEGETAL) 
         return FAUX;
 
 
@@ -214,7 +232,10 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
 
     // Check si plus de 1 de hauteur 
     t_block* blockPositionActuelle = getBlockDansMap(entite->position.x, entite->position.y, COUCHE_SOL, map);
-    if (abs(block->tag - blockPositionActuelle->tag) > 1) 
+    if (blockPositionActuelle->tag == SOL_CHEMIN)
+        return VRAI;
+        
+    if (abs(block->tag - blockPositionActuelle->tag) > 1 && (block->tag != SOL_CHEMIN)) 
         return FAUX;
 
 
@@ -353,6 +374,10 @@ void dessinerEntite(t_entite *entite) {
 
 
     switch (entite->entiteType) {
+        case ENTITE_ITEM: 
+            texture = moteur->textures->items; 
+            sprite.x = entite->tag * TAILLE_TILE;
+            break;
         case ENTITE_JOUEUR: 
             texture = moteur->textures->joueur; 
             break;
@@ -369,8 +394,6 @@ void dessinerEntite(t_entite *entite) {
             else if (entite->tag == TAG_BOSS) {
                 texture = moteur->textures->monstres;
                 // sprite.x = (((t_boss*)entite)->jour) * (TAILLE_SET);
-                rendu.w *= entite->taille;
-                rendu.h *= entite->taille;
             }
             break;
 
@@ -378,6 +401,8 @@ void dessinerEntite(t_entite *entite) {
             break;
     }
 
+    rendu.w *= entite->taille;
+    rendu.h *= entite->taille;
 
     // Animation
     if (entite->animation != NULL) {
@@ -442,6 +467,8 @@ void detruireEntite(t_entite **entite) {
 
         free(*entite);
         *entite = NULL;
+
+        --(moteur->cache->compteurEntites.entites);
     }
 }
 
@@ -502,7 +529,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->destructionInactif = VRAI;
     entite->destructionDelai = VRAI;
 
-
+    ++(moteur->cache->compteurEntites.entites);
     return entite;
 }
 

@@ -17,6 +17,7 @@
 
 
 #include "entite.h"
+#include "item.h"
 
 
 
@@ -89,11 +90,34 @@ typedef struct s_mob {
     // Cooldown
     unsigned int timerDeplacement;          /**< Timer à partir duquel on calcul le temps de déplacement (en ticks) */
     unsigned int cooldownDeplacement;       /**< Cooldown entre deux déplacements (en ticks) */
-    unsigned int cooldownAttaque;           /**< Cooldown entre deux attaque (en seconde) */
     unsigned int cooldownBruitage;          /**< Cooldown entre deux bruits (en seconde) */
     
 
 } t_mob;
+
+
+
+/**
+ * @brief 
+ * 
+ */
+typedef struct s_baseMob {
+    e_entiteTag tag;
+
+    e_itemTag loots[2];
+    unsigned int lootProbabilite[2];
+} t_baseMob;
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Constantes                                 */
+/* -------------------------------------------------------------------------- */
+
+
+extern const t_baseMob basesMobs[];
 
 
 

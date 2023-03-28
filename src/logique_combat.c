@@ -86,6 +86,51 @@ void gestionExeperience(t_entiteVivante *entite, t_entiteVivante *cible) {
 
 
 /* -------------------------------------------------------------------------- */
+/*                             Items & Inventaires                            */
+/* -------------------------------------------------------------------------- */
+
+
+// Créer à la position de la mort
+// Un truc qui stock l'inventaire du joueur
+void dropInventaire(/*t_stockage inventaire*/) {
+
+}
+
+
+
+
+void dropItems(t_mob *mob) {
+    printf("DROP ITEM => ");
+
+    t_baseMob base = basesMobs[mob->tag - TAG_ANIMAL_VACHE];
+    e_itemTag tag;
+
+
+    if (base.lootProbabilite[0] == 100) {
+        tag = base.loots[0];
+    }
+    else {
+        const int probabilite = getNombreAleatoire(1, 100);
+        for (int i = 0; i < 2; i++) {
+            if (base.lootProbabilite[i] >= probabilite) {
+                tag = base.loots[i];
+            }
+        }
+    }
+
+
+    printf("TAG %i => ", tag);
+    t_itemEntite *itemEntite = creerItemEntite(mob->position, tag);
+    printf("ITEM ENTITE CREE\n");
+    
+    ajout_droit(moteur->cache->entites, (t_entite*)itemEntite);
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                   Degats                                   */
 /* -------------------------------------------------------------------------- */
 
@@ -227,6 +272,8 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
 void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque, const float range) {
     if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
         printf("CIBLE TOUCHE\n");
+        cible->cooldownRegeneration = COOLDOWN_REGENERATION;
+        
 
         // Lorsque le mob cible est touché, le mob cible se met en mode combat
         // et il prend pour cible le mob attaquant
@@ -252,12 +299,13 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
             if (entite->entiteType != ENTITE_JOUEUR)
                 finCombat((t_mob*)entite);
 
-            // Calcul experience
-            // distribution experience
             gestionExeperience(entite, cible);
             printf("EXPERIENCE => %i / %i\n", entite->statistiques.niveau, entite->statistiques.experience);
 
-            // drops items
+            if (entite->entiteType == ENTITE_JOUEUR)
+                dropInventaire();
+            else
+                dropItems((t_mob*)cible);
         }
     }
     else
@@ -268,25 +316,6 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
 
 
 
-/* -------------------------------------------------------------------------- */
-/*                             Items & Inventaires                            */
-/* -------------------------------------------------------------------------- */
-
-
-// Créer à la position de la mort
-// Un truc qui stock l'inventaire du joueur
-void dropInventaire(/*t_stockage inventaire*/) {
-
-}
-
-
-
-
-void dropItems() {
-    // récupère la base du mob
-    // Calcul la probabilité de l'item qui est drop
-    // Aléatoire
-}
 
 
 
