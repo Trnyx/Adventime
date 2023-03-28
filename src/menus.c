@@ -621,9 +621,9 @@ void inv_stats (struct nk_context * ctx, t_joueur *joueur) {
 
 void inventaire(struct nk_context *ctx, t_joueur *joueur) {
 
-  static int selected[50] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  static int selected[NOMBRE_SLOT_INVENTAIRE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+                             0, 0};
 
   char quantite[99];
 
