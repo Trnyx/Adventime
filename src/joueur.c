@@ -294,6 +294,7 @@ t_action_flags* initialiserActionFlags() {
     flags->left = 0;
     flags->right = 0;
     flags->attack = 0;
+    flags->inventory = 0;
     flags->interaction = 0;
     flags->miniMap = 0;
 

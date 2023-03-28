@@ -84,6 +84,11 @@ int inputManager(t_joueur *joueur) {
                     joueur->actionFlags->right = 1;
                 }
 
+                // Inventaire
+                else if (controles.inventory == event.key.keysym.scancode) {
+                    joueur->actionFlags->inventory = !joueur->actionFlags->inventory;
+                }
+
                 // Interaction
                 else if (controles.interaction == event.key.keysym.scancode) {
                     joueur->actionFlags->interaction = 1;
