@@ -663,8 +663,9 @@ void inventaire(struct nk_context *ctx, t_joueur *joueur) {
         SDL_Log("oui je suis dedans %d", i);
         SDL_Log("%f, %f, %f, %f", bounds.x, bounds.y, bounds.w, bounds.h);
       }
+      
       selected[i] = 1;
-      if (nk_selectable_label(ctx, quantite, NK_TEXT_ALIGN_RIGHT,
+      if (nk_selectable_label(ctx, quantite, NK_TEXT_ALIGN_LEFT,
                               &selected[i])) {
       }
     }
