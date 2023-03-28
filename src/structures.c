@@ -147,6 +147,10 @@ boolean peutEtrePlacer(t_map* map, const t_vecteur2 position, const int tailleX,
             block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
             if (block->tag != VIDE)
                 return FAUX;
+
+            block = getBlockDansMap(x, y, COUCHE_SOL, map);
+            if (block->tag <= SOL_EAU || block->tag == SOL_CHEMIN)
+                return FAUX;
         }
     }
 
@@ -248,16 +252,34 @@ void decorationRemplacerFlags(t_map *map) {
 
 void genererDecorations(t_map *map, t_discSampling grille) {
     printf("DECORATINONS => ");
-    const t_vecteur2 positionPuit = grille.elementPositions[0];
-
     // Flags
     decorationRemplacerFlags(map);
 
     
-    // Panneau d'affichage
-    decorationAutourDePoint(map, BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE, positionPuit, 2, 2, 5);
-    // Brouette
-    decorationAutourDePoint(map, BLOCK_BROUETTE_HAUT_GAUCHE, positionPuit, 2, 2, 6);
+    /* ---------------------------------- Puit ---------------------------------- */
+
+    if (grille.nbElements > 1) {
+        const t_vecteur2 positionPuit = grille.elementPositions[0];
+
+        // Panneau d'affichage
+        decorationAutourDePoint(map, BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE, positionPuit, 2, 2, 5);
+        // Brouette
+        decorationAutourDePoint(map, BLOCK_BROUETTE_HAUT_GAUCHE, positionPuit, 2, 2, 6);
+    }
+
+
+    /* ---------------------------------- Ferme --------------------------------- */
+
+    const int numeroMaison = getNombreAleatoire(1, grille.nbElements - 1);
+    t_vecteur2 positionFerme = grille.elementPositions[numeroMaison];
+    positionFerme.y += 6;
+    const int nombreTonneaux = getNombreAleatoire(2, 4);
+
+    const t_vecteur2 tonneau = decorationAutourDePoint(map, BLOCK_TONNEAU, positionFerme, 1, 1, 3);
+    for (int i = 0; i < nombreTonneaux; i++) {
+        decorationAutourDePoint(map, BLOCK_TONNEAU, tonneau, 1, 1, 1);
+    }
+
 
 
     printf("\n");
@@ -481,8 +503,8 @@ void genererVillage(t_map *map) {
 
         if (grille.nbElements > 1) {
             genererChemins(map, grille);
-            genererDecorations(map, grille);
         }
+        genererDecorations(map, grille);
 
 
         printf("NOMBRE STRUCTURE %i => ", grille.nbElements);

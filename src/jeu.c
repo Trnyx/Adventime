@@ -167,7 +167,8 @@ static int adventime(t_monde *monde) {
 static int nouveauMonde() {
     // int seed = -1;
     // int seed = 1679905571;
-    int seed = 1679940582;
+    // int seed = 1679940582;
+    int seed = 1680032110;
     t_monde *monde = creerMonde(seed);
     monde->joueur = creerJoueur(monde->pointApparitionDefaut);
 
