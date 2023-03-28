@@ -619,7 +619,7 @@ void inv_stats (struct nk_context * ctx, t_joueur *joueur) {
   nk_end(ctx);
 }
 
-void inventaire (struct nk_context * ctx, t_joueur *joueur) {
+void inventaire(struct nk_context *ctx, t_joueur *joueur) {
 
   static int selected[50] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -628,6 +628,8 @@ void inventaire (struct nk_context * ctx, t_joueur *joueur) {
   char quantite[99];
 
   struct nk_rect bounds;
+  SDL_Rect rendu;
+  SDL_Rect source;
   const struct nk_input *in = &ctx->input;
 
   if (nk_begin(
@@ -639,17 +641,34 @@ void inventaire (struct nk_context * ctx, t_joueur *joueur) {
     nk_layout_row_static(ctx, 88, 88, 10);
     for (int i = 0; i < NOMBRE_SLOT_INVENTAIRE; i++) {
       bounds = nk_widget_bounds(ctx);
-      
-      sprintf(quantite, "%d", joueur->inventaire->itemSlots[i].quantite);
-      
+
+      rendu.x = bounds.x;
+      rendu.y = bounds.y;
+      rendu.w = bounds.w;
+      rendu.h = bounds.h;
+
+      if (joueur->inventaire->itemSlots[i].quantite != 0) {
+
+        sprintf(quantite, "%d", joueur->inventaire->itemSlots[i].quantite);
+
+        splitTexture(&source,
+                     joueur->inventaire->itemSlots[i].item->tag * TAILLE_TILE,
+                     0, TAILLE_TILE, TAILLE_TILE);
+	SDL_RenderCopy(moteur->renderer, moteur->textures->items, &source,&rendu);
+      } else {
+	sprintf(quantite, " ");
+      }
+
       if (nk_input_is_mouse_hovering_rect(in, bounds)) {
         SDL_Log("oui je suis dedans %d", i);
         SDL_Log("%f, %f, %f, %f", bounds.x, bounds.y, bounds.w, bounds.h);
       }
       selected[i] = 1;
-      if (nk_selectable_label(ctx, quantite, NK_TEXT_ALIGN_RIGHT, &selected[i])) {
+      if (nk_selectable_label(ctx, quantite, NK_TEXT_ALIGN_RIGHT,
+                              &selected[i])) {
       }
     }
   }
   nk_end(ctx);
+  SDL_RenderPresent(moteur->renderer);
 }
