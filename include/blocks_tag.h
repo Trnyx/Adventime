@@ -226,7 +226,10 @@ typedef enum {
 
 typedef enum {
     FLAG_LAMPADAIRE_GAUCHE,
+    FLAG_BANC_GAUCHE,
+    NB_FLAG_DECO,
     FLAG_LAMPADAIRE_DROIT,
+    FLAG_BANC_DROIT,
 } e_decoration_flag;
 
 
