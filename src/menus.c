@@ -581,7 +581,7 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
       
     }
     nk_end(ctx);
-    menu_inventaire(ctx);
+    menu_inventaire(ctx, joueur);
     nk_sdl_render(NK_ANTI_ALIASING_ON);
     SDL_RenderPresent(moteur->renderer);
     
@@ -593,7 +593,7 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
   return click;
 }
 
-state_main menu_inventaire(struct nk_context *ctx) {
+state_main menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
 
   set_style(ctx, THEME_BLACK);
 
@@ -603,13 +603,13 @@ state_main menu_inventaire(struct nk_context *ctx) {
     
   }
   nk_end(ctx);
-  inv_stats(ctx);
-  inventaire(ctx);
+  inv_stats(ctx, joueur);
+  inventaire(ctx, joueur);
   
   nk_sdl_render(NK_ANTI_ALIASING_ON);
 }
 
-void inv_stats (struct nk_context * ctx) {
+void inv_stats (struct nk_context * ctx, t_joueur *joueur) {
   
     if (nk_begin(ctx, "Stats",
                nk_rect(moteur->window_width*0.03, moteur->window_height*0.15, moteur->window_width*0.2, moteur->window_height*0.7),
@@ -619,31 +619,37 @@ void inv_stats (struct nk_context * ctx) {
   nk_end(ctx);
 }
 
-void inventaire (struct nk_context * ctx) {
+void inventaire (struct nk_context * ctx, t_joueur *joueur) {
 
-  static int selected[50] = {0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0,
-			     0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0,
-			     0,0,0,0, 0,0,0,0, 0,0};
+  static int selected[50] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+  char quantite[99];
 
   struct nk_rect bounds;
   const struct nk_input *in = &ctx->input;
 
-      if (nk_begin(ctx, "Inventaire",
-               nk_rect(moteur->window_width*0.25, moteur->window_height*0.15, moteur->window_width*0.72, moteur->window_height*0.7),
-               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
+  if (nk_begin(
+          ctx, "Inventaire",
+          nk_rect(moteur->window_width * 0.25, moteur->window_height * 0.15,
+                  moteur->window_width * 0.72, moteur->window_height * 0.7),
+          (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
 
-	nk_layout_row_static(ctx, 88, 88, 10);
-	for (int i = 0; i < 36; ++i) {
-	  bounds = nk_widget_bounds(ctx);
-	  if (nk_input_is_mouse_hovering_rect(in, bounds)) {
-	    SDL_Log("oui je suis dedans %d", i);
-	    SDL_Log("%f, %f, %f, %f", bounds.x, bounds.y, bounds.w, bounds.h);
-	  }
-	  selected[i] = 1;
-	  if (nk_selectable_label(ctx, " ", NK_TEXT_ALIGN_TOP, &selected[i])) {
-	  }
-	}
-    
+    nk_layout_row_static(ctx, 88, 88, 10);
+    for (int i = 0; i < NOMBRE_SLOT_INVENTAIRE; i++) {
+      bounds = nk_widget_bounds(ctx);
+      
+      sprintf(quantite, "%d", joueur->inventaire->itemSlots[i].quantite);
+      
+      if (nk_input_is_mouse_hovering_rect(in, bounds)) {
+        SDL_Log("oui je suis dedans %d", i);
+        SDL_Log("%f, %f, %f, %f", bounds.x, bounds.y, bounds.w, bounds.h);
+      }
+      selected[i] = 1;
+      if (nk_selectable_label(ctx, quantite, NK_TEXT_ALIGN_RIGHT, &selected[i])) {
+      }
+    }
   }
   nk_end(ctx);
 }
