@@ -17,6 +17,7 @@
 
 
 #include "entite.h"
+#include "item.h"
 
 
 
@@ -93,6 +94,30 @@ typedef struct s_mob {
     
 
 } t_mob;
+
+
+
+/**
+ * @brief 
+ * 
+ */
+typedef struct s_baseMob {
+    e_entiteTag tag;
+
+    e_itemTag loots[2];
+    unsigned int lootProbabilite[2];
+} t_baseMob;
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Constantes                                 */
+/* -------------------------------------------------------------------------- */
+
+
+extern const t_baseMob basesMobs[];
 
 
 

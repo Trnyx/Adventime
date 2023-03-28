@@ -22,7 +22,7 @@
 #include "utilitaire.h"
 #include "entite.h"
 #include "temps.h"
-
+#include "entite.h"
 
 
 

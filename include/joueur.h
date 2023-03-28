@@ -25,19 +25,19 @@
 
 
 
-#define JOUEUR_VITESSE_DEFAUT 5
+#define JOUEUR_VITESSE_DEFAUT 10
 #define JOUEUR_ATTAQUE_DEFAUT 20
 #define JOUEUR_DEFENSE_DEFAUT 20
 #define JOUEUR_PV_DEFAUT 40
 
 // La statistique "attaque" de base du joueur
-#define JOUEUR_BASE_ATTAQUE 20
+#define JOUEUR_BASE_ATTAQUE 25
 // La statistique "defense" de base du joueur
-#define JOUEUR_BASE_DEFENSE 20
+#define JOUEUR_BASE_DEFENSE 25
 // La statistique "vitesse" de base du joueur
 #define JOUEUR_BASE_VITESSE 5
 // La statistique "pv" de base du joueur
-#define JOUEUR_BASE_PV 40
+#define JOUEUR_BASE_PV 45
 
 #define JOUEUR_COOLDOWN_ATTAQUE 10
 

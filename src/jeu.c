@@ -127,6 +127,10 @@ static int adventime(t_monde *monde) {
 	
 	update(cache->map, joueur);
 
+	if(continuer == J_MORT) {
+	  continuer = gameOver(ctx, joueur);
+	}
+
 
         // Dès qu'on change de zone (map)
         // On sauvegarde l'état de la map précédente
@@ -165,7 +169,9 @@ static int adventime(t_monde *monde) {
  * @return int 
  */
 static int nouveauMonde() {
-    int seed = -1;
+    // int seed = -1;
+    // int seed = 1679905571;
+    int seed = 1679940582;
     t_monde *monde = creerMonde(seed);
     monde->joueur = creerJoueur(monde->pointApparitionDefaut);
 

@@ -8,6 +8,8 @@
  * @version 	1.0
  */
 
+#include "SDL2/SDL_render.h"
+#include "SDL2/SDL_ttf.h"
 #include <stdio.h>
 #define NK_IMPLEMENTATION
 #define NK_INCLUDE_FIXED_TYPES
@@ -21,6 +23,8 @@
 
 #include "../include/menus.h"
 #include "../include/moteur.h"
+#include "../include/statistiques.h"
+#include "../include/experience.h"
 
 /**
  * @brief      Fait le menu principal du jeu
@@ -348,21 +352,69 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
   ctx->style.progress.cursor_normal =
       nk_style_item_color(nk_rgba(223, 46, 56, 255));
 
-  nk_size current = joueur->statistiques.pv;
-  nk_size max = joueur->statistiques.pvMax;
+  unsigned long current_hp = joueur->statistiques.pv <= 0 ? 0 : joueur->statistiques.pv;
+  unsigned long max_hp = joueur->statistiques.pvMax;
 
-  if (nk_begin(ctx, "HUD", nk_rect(0, 0, 370, 50),
-               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
+  unsigned long current_xp = joueur->statistiques.experience;
+  unsigned long max_xp = getExperienceCourbe(joueur->baseStatistiques.experience_courbe)(joueur->statistiques.niveau + 1);
+  
+  if (current_hp <= 0) {
 
-    nk_layout_space_begin(ctx, NK_STATIC, 0, 1);
-    nk_layout_space_push(ctx, nk_rect(5, 5, 350, 30));
-    nk_progress(ctx, &current, max, NK_FIXED);
-    nk_layout_space_end(ctx);
+    SDL_Rect calque;
+    calque.x = calque.y = 0;
+    calque.h = moteur->window_height;
+    calque.w = moteur->window_width;
+    
+    SDL_SetRenderDrawColor(moteur->renderer, 180, 30, 40, 10);
+    SDL_RenderFillRect(moteur->renderer, &calque);
+    moteur->state = J_MORT;
+    
+  } else {
+
+    SDL_Color color;
+    color.r = 255;
+    color.b = 255;
+    color.g = 255;
+    color.a = 255;
+    
+    char horloge[6];
+    sprintf(horloge, "%s%d:%s%d", moteur->temps->heures < 10 ? "0" : "" ,moteur->temps->heures, moteur->temps->minutes < 10 ? "0" : "" , moteur->temps->minutes);
+
+    SDL_Surface * surface = TTF_RenderText_Solid(moteur->font, horloge , color);
+	
+    SDL_Texture * texture = SDL_CreateTextureFromSurface(moteur->renderer, surface);
+
+    SDL_Rect Message_rect;
+    Message_rect.w = (moteur->window_width)*0.17;
+    Message_rect.h = (moteur->window_height)*0.09;
+
+    Message_rect.x = (moteur->window_width) - 5 - Message_rect.w;
+    Message_rect.y = 4;
+
+    if (nk_begin(ctx, "HUD", nk_rect(0, 0, 370, 300),
+                 (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
+
+      nk_layout_space_begin(ctx, NK_STATIC, 0, 2);
+      nk_layout_space_push(ctx, nk_rect(5, 5, 350, 30));
+      nk_progress(ctx, &current_hp, max_hp, NK_FIXED);
+      
+      nk_layout_space_push(ctx, nk_rect(5, 40, 300, 20));
+
+      ctx->style.progress.cursor_normal =
+	nk_style_item_color(nk_rgba(8, 255, 114, 255));
+
+	
+      nk_progress(ctx, &current_xp, max_xp, NK_FIXED);
+      nk_layout_space_end(ctx);
+    }
+
+    nk_end(ctx);
+    SDL_RenderCopy(moteur->renderer, texture, NULL, &Message_rect);
+    nk_sdl_render(NK_ANTI_ALIASING_ON);
+    SDL_FreeSurface(surface);
+    SDL_DestroyTexture(texture);
+    
   }
-
-  nk_end(ctx);
-
-  nk_sdl_render(NK_ANTI_ALIASING_ON);
 }
 
 state_main pauseMenu(struct nk_context *ctx) {
@@ -440,5 +492,123 @@ state_main pauseMenu(struct nk_context *ctx) {
   }
 
   return click;
+}
+
+state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
+
+  state_main click;
+  SDL_Color color;
+  color.r = 255;
+  color.b = 255;
+  color.g = 255;
+  color.a = 255;
+  
+  SDL_Surface * surface = TTF_RenderText_Solid(moteur->font, "GAME OVER", color);
+  SDL_Texture * texture = SDL_CreateTextureFromSurface(moteur->renderer, surface);
+
+  SDL_Rect Message_rect;
+  Message_rect.w = (moteur->window_width)*0.5;
+  Message_rect.h = (moteur->window_height)*0.17;
+
+  Message_rect.x = (moteur->window_width)*0.5 - Message_rect.w/2;
+  Message_rect.y = (moteur->window_height)*0.3 - Message_rect.h/2;
+
+  while (moteur->state == J_MORT) {
+
+    SDL_RenderClear(moteur->renderer);
+    SDL_RenderCopy(moteur->renderer, texture, NULL, &Message_rect);
+    
+    SDL_Event evt;
+    nk_input_begin(ctx);
+    while (SDL_PollEvent(&evt)) {
+      if (evt.type == SDL_QUIT) {
+        moteur->state = M_MENU;
+
+	click = M_MENU;
+      }
+      nk_sdl_handle_event(&evt);
+      if ((evt.type == SDL_MOUSEBUTTONUP) ||
+          (evt.type == SDL_MOUSEBUTTONDOWN) || (evt.type == SDL_KEYUP) ||
+          (evt.type == SDL_KEYDOWN))
+        break;
+    }
+    nk_input_end(ctx);
+
+    if (nk_begin(ctx, "GameOver",
+                 nk_rect(0, 0, moteur->window_width, moteur->window_height),
+                 (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
+
+      nk_layout_space_begin(ctx, NK_STATIC, 0, 2);
+
+      nk_layout_space_push(
+			   ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
+					(moteur->window_height * 0.6), 300, 50));
+      
+      if (nk_button_label(ctx, "Réapparaitre")) {
+        reapparitionJoueur(joueur, moteur->cache->monde->pointApparitionDefaut);
+	moteur->state = M_JOUER;
+	click = M_JOUER;
+        }
+
+      nk_layout_space_push(
+			   ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
+					(moteur->window_height * 0.7), 300, 50));
+      
+      if (nk_button_label(ctx, "Quitter")) {
+	moteur->state = M_MENU;
+        click = M_MENU;
+      }
+
+      nk_layout_space_end(ctx);
+      
+      
+    }
+    nk_end(ctx);
+    menu_inventaire(ctx);
+    nk_sdl_render(NK_ANTI_ALIASING_ON);
+    SDL_RenderPresent(moteur->renderer);
+    
+  }
+
+  SDL_FreeSurface(surface);
+  SDL_DestroyTexture(texture);
+
+  return click;
+}
+
+state_main menu_inventaire(struct nk_context *ctx) {
+
+  set_style(ctx, THEME_BLACK);
+
+  if (nk_begin(ctx, "inv_menu",
+               nk_rect(0, 0, moteur->window_width, moteur->window_height),
+               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
+    
+  }
+  nk_end(ctx);
+  inv_stats(ctx);
+  inventaire(ctx);
+  
+  nk_sdl_render(NK_ANTI_ALIASING_ON);
+}
+
+void inv_stats (struct nk_context * ctx) {
+  
+    if (nk_begin(ctx, "Stats",
+               nk_rect(moteur->window_width*0.03, moteur->window_height*0.15, moteur->window_width*0.2, moteur->window_height*0.7),
+               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
+    
+  }
+  nk_end(ctx);
+}
+
+void inventaire (struct nk_context * ctx) {
+
+      if (nk_begin(ctx, "Inventaire",
+               nk_rect(moteur->window_width*0.25, moteur->window_height*0.15, moteur->window_width*0.72, moteur->window_height*0.7),
+               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
+    
+  }
+  nk_end(ctx);
   
 }

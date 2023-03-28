@@ -9,7 +9,11 @@
 #include <string.h>
 #include <stdlib.h>
 
+
+#include "../include/moteur.h"
+#include "../include/physique.h"
 #include "../include/item.h"
+#include "../include/inventaire.h"
 
  /**
   * VARIABLE LOCALE
@@ -80,13 +84,22 @@ extern int item_detruire(t_item** item)
  * \param tag String spécifiant le type de l'item (épée en pierre, pioche, etc.).
  * \param nom String spécifiant le nom de l'item.
  */
-extern t_item* item_creer(e_itemCategorie categorie, e_itemTag tag)
+extern t_item* item_creer(e_itemTag tag)
 {
-    t_item* item = NULL;
-    item = malloc(sizeof(t_item));
+    t_item* item = malloc(sizeof(t_item));
 
-    item->categorie = categorie;
+    if (item == NULL) {
+        printf("Erreur méoire : Impossible d'allouer l'espace nécessaire pour un item");
+        return NULL;
+    }
+
+
+    item->id = genererId();
+
     item->tag = tag;
+
+    t_baseItem base = basesItems[tag];
+    item->categorie = base.categorie;
 
 
     // item->nom = malloc(sizeof(char) * strlen(nom) + 1);
@@ -153,7 +166,7 @@ static int arme_detruire(t_arme** arme)
  */
 extern t_arme* arme_creer(e_itemTag tag)
 {
-    t_item* item = item_creer(CATEGORIE_ARME, tag);
+    t_item* item = item_creer(tag);
     t_arme* arme = realloc(item, sizeof(t_arme));
 
     arme->degat = 4; // getDegatArme
@@ -170,8 +183,103 @@ extern t_arme* arme_creer(e_itemTag tag)
 
 
 
+
+
+
+
+
+void updateItemEntite(t_itemEntite *itemEntite, const float distance, t_joueur *recuperateur) {
+    if (itemEntite->cooldownAvantPrise > 0) {
+        --(itemEntite->cooldownAvantPrise);
+    }
+    else {
+        if (distance <= itemEntite->rayonPrise) {
+            recupererItem(itemEntite, recuperateur);
+            itemEntite->detruire((t_entite**)&itemEntite);
+            oter_elt(moteur->cache->entites);
+        }
+            
+    }
+}
+
+
+
+
+
+void detruireItemEntite(t_itemEntite **itemEntite) {
+    if (itemEntite != NULL && itemEntite != NULL) {
+        printf("Destruction Item Entite => ");
+
+        if ((*itemEntite)->timestampActualisation - (*itemEntite)->timestampCreation >= ENTITE_DUREE_VIE_MAX * 1000) {
+            printf("Destruciton item => ");
+            t_item *item = (*itemEntite)->item;
+            item->detruire(&item);
+        }
+
+        detruireEntite((t_entite**)itemEntite);
+    }
+}
+
+
+
+t_itemEntite *creerItemEntite(const t_vecteur2 position, const e_itemTag tag) {
+    t_item *item = item_creer(tag);
+
+    if (item == NULL)
+        return NULL;
+
+    t_entite *entite = creerEntite(position);
+    t_itemEntite *itemEntite = realloc(entite, sizeof(t_itemEntite));
+
+    if (itemEntite == NULL) {
+        printf("Erreur mémoire : Impossible d'allouer l'espace nécessaire pour une entité");
+        item_detruire(&item);
+        return NULL;
+    }
+
+
+    itemEntite->tag = item->tag;
+    itemEntite->entiteType = ENTITE_ITEM;
+
+    itemEntite->taille = 0.5;
+
+    itemEntite->hitbox.x = position.x - (itemEntite->taille / 2);
+    itemEntite->hitbox.y = position.y - (itemEntite->taille / 2);
+    itemEntite->hitbox.h = itemEntite->taille;
+    itemEntite->hitbox.w = itemEntite->taille;
+
+    itemEntite->rayonPrise = 1.0;
+    itemEntite->item = item;
+
+    itemEntite->cooldownAvantPrise = ENTITE_ITEM_DELAI_RECUPERATION;
+
+
+    itemEntite->update = (int (*)(t_entite*, float, t_entite*)) updateItemEntite;
+    itemEntite->detruire = (void (*)(t_entite**)) detruireItemEntite;
+
+
+    entite = NULL;
+    return itemEntite;
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
-/*                                    Drops                                   */
+/*                                    Bases                                   */
 /* -------------------------------------------------------------------------- */
 
 
+t_baseItem basesItems[] = {
+    { ITEM_STEAK, CATEGORIE_MATERIEL, 16 },
+
+    // MATERIELS
+    { ITEM_MATERIEL_BATON, CATEGORIE_MATERIEL, 16 },
+
+    // ARMES
+    { ITEM_ARME_EPEE, CATEGORIE_ARME, 1 },
+
+    // OUTILS
+    { ITEM_OUTIL_PIOCHE, CATEGORIE_OUTIL, 1 },
+};

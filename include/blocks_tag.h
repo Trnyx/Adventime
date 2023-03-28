@@ -12,10 +12,13 @@
 
 /**
  * @struct e_blockTag
- * @brief 
+ * @brief Enumerateur répertoriant tous les "blocs" du jeu à afficher
  * 
  */
 typedef enum {
+    DEBUT_BLOCK_SANS_COLLISION = 49,
+
+
     DEBUT_BLOCK_STRUCTURE = 999,
 
     /* ---------------------------------- PUIT ---------------------------------- */
@@ -189,10 +192,42 @@ typedef enum {
     BLOCK_TEMPLE_ENTREE_BAS_GAUCHE,
     BLOCK_TEMPLE_ENTREE_BAS_CENTRE,
     BLOCK_TEMPLE_ENTREE_BAS_DROIT,
+
+
+
+    /* ------------------------------- DECORATIONS ------------------------------ */
+    BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE,
+    BLOCK_PANNEAU_AFFICHAGE_HAUT_DROIT,
+    BLOCK_PANNEAU_AFFICHAGE_BAS_GAUCHE,
+    BLOCK_PANNEAU_AFFICHAGE_BAS_DROIT,
+
+    BLOCK_BROUETTE_HAUT_GAUCHE,
+    BLOCK_BROUETTE_HAUT_DROIT,
+    BLOCK_BROUETTE_BAS_GAUCHE,
+    BLOCK_BROUETTE_BAS_DROIT,
+
+    BLOCK_PANNEAU_DIRECTION,
+
+    BLOCK_LAMPADAIRE_GAUCHE_HAUT,
+    BLOCK_LAMPADAIRE_GAUCHE_BAS,
+    BLOCK_LAMPADAIRE_DROIT_HAUT,
+    BLOCK_LAMPADAIRE_DROIT_BAS,
+
+    BLOCK_BANC_GAUCHE_HAUT,
+    BLOCK_BANC_GAUCHE_BAS,
+    BLOCK_BANC_DROIT_HAUT,
+    BLOCK_BANC_DROIT_BAS,
     
 
     FIN_BLOCK_STRUCTURE,
 } e_blockTag;
+
+
+
+typedef enum {
+    FLAG_LAMPADAIRE_GAUCHE,
+    FLAG_LAMPADAIRE_DROIT,
+} e_decoration_flag;
 
 
 

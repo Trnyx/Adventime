@@ -172,4 +172,3 @@ void genererStructure(const t_vecteur2 position, const e_structureTag tag, t_map
         }
     }
 }
-

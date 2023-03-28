@@ -73,13 +73,9 @@ int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
 void detruireMonstre(t_monstre **monstre) {
     printf("Destruction Monstre => ");
     if (monstre != NULL && *monstre != NULL) {
-        if ((*monstre)->aggressif)
-            --(moteur->cache->compteurEntites.monstreAggressifs);
-        else
-            --(moteur->cache->compteurEntites.monstrePassifs);
-
 
         detruireMob((t_mob**) monstre);
+        
     }
     printf("Succes\n");
 }
@@ -136,9 +132,9 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
 
 
     if (monstre->aggressif)
-        ++(moteur->cache->compteurEntites.monstreAggressifs);
+        ++(moteur->cache->compteurEntites.mobAggressifs);
     else
-        ++(moteur->cache->compteurEntites.monstrePassifs);
+        ++(moteur->cache->compteurEntites.mobPassifs);
 
     mob = NULL;
     return monstre;

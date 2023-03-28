@@ -88,12 +88,14 @@ typedef struct s_inventaire {
 /*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
 
-
+typedef struct s_joueur t_joueur;
 // void changerSlot();
 
 
 t_stockage* creerStockage(const unsigned int nbSlots);
 t_inventaire* creerInventaire();
+
+void recupererItem(t_itemEntite *itemEntite, t_joueur *recuperateur);
 
 void viderStockage(t_stockage *stockage);
 
