@@ -621,11 +621,29 @@ void inv_stats (struct nk_context * ctx) {
 
 void inventaire (struct nk_context * ctx) {
 
+  static int selected[50] = {0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0,
+			     0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0,
+			     0,0,0,0, 0,0,0,0, 0,0};
+
+  struct nk_rect bounds;
+  const struct nk_input *in = &ctx->input;
+
       if (nk_begin(ctx, "Inventaire",
                nk_rect(moteur->window_width*0.25, moteur->window_height*0.15, moteur->window_width*0.72, moteur->window_height*0.7),
                (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
+
+	nk_layout_row_static(ctx, 88, 88, 10);
+	for (int i = 0; i < 36; ++i) {
+	  bounds = nk_widget_bounds(ctx);
+	  if (nk_input_is_mouse_hovering_rect(in, bounds)) {
+	    SDL_Log("oui je suis dedans %d", i);
+	    SDL_Log("%f, %f, %f, %f", bounds.x, bounds.y, bounds.w, bounds.h);
+	  }
+	  selected[i] = 1;
+	  if (nk_selectable_label(ctx, " ", NK_TEXT_ALIGN_TOP, &selected[i])) {
+	  }
+	}
     
   }
   nk_end(ctx);
-  
 }
