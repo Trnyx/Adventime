@@ -44,7 +44,15 @@ int inputManager(t_joueur *joueur) {
 
     moteur->positionSouris.x = x;
     moteur->positionSouris.y = y;
+    
+    if(joueur->statistiques.pv <= 0) {
+        moteur->state = J_MORT;
+        return J_MORT;
+    }
 
+    // Si le clique de la souris reste enfoncé on ignore en mettant à -1
+    if (joueur->actionFlags->attack == 1)
+        joueur->actionFlags->attack = -1;
 
 
     while (SDL_PollEvent(&event)) {
@@ -88,8 +96,12 @@ int inputManager(t_joueur *joueur) {
 
                 // Echap
                 else if (controles.escape == event.key.keysym.scancode) {
-		  moteur->state = M_PAUSE;
-		  return M_PAUSE;
+                    moteur->state = M_PAUSE;
+                    return M_PAUSE;
+                }
+
+                else if (event.key.keysym.scancode == SDL_SCANCODE_K) {
+                    joueur->statistiques.pv = 0;
                 }
 
                 break;
@@ -137,11 +149,8 @@ int inputManager(t_joueur *joueur) {
                 switch (event.button.button) {
                     // Attaque
                     case SDL_BUTTON_LEFT:
-                        // Si le clique de la souris reste enfoncé on ignore en mettant à -1
                         if (joueur->actionFlags->attack == 0)
                             joueur->actionFlags->attack = 1;
-                        else
-                            joueur->actionFlags->attack = -1;
                         break;
 
                 }

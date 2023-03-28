@@ -127,7 +127,7 @@ void genererVegetations(t_map *map) {
                 
                 block = getBlockDansChunk((int)point.x % TAILLE_CHUNK, (int)point.y % TAILLE_CHUNK, chunk);
                 if (block == NULL) continue;
-                if (block->tag <= SOL_EAU) continue;
+                if (block->tag <= SOL_EAU || block->tag >= NB_TYPES_SOL) continue;
 
                 const e_vegetalTag vegetalTag = selectionVegetation(block->tag);
                 // const e_vegetalTag vegetalTag = selectionVegetation(baseBiome);

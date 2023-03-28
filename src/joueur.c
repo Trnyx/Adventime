@@ -328,15 +328,8 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->map = MAP_OVERWORLD;
 
     // Statistiques
-    joueur->statistiques.vitesse = JOUEUR_VITESSE_DEFAUT;
-    joueur->statistiques.attaque = JOUEUR_ATTAQUE_DEFAUT;
-    joueur->statistiques.defense = JOUEUR_DEFENSE_DEFAUT;
-    joueur->statistiques.pv = JOUEUR_PV_DEFAUT;
-    joueur->statistiques.pvMax = JOUEUR_PV_DEFAUT;
-
-    joueur->statistiques.experience = 0;
-    joueur->statistiques.niveau = 1;
-    joueur->baseStatistiques.experience_courbe = EXPERIENCE_MOYEN;
+    joueur->baseStatistiques = genererStatistiquesDeBaseJoueur();
+    joueur->statistiques = genererStatistiques(joueur->baseStatistiques, 1);
 
     joueur->inventaire = creerInventaire();
     joueur->slotSelectionne = 0;

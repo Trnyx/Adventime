@@ -127,7 +127,8 @@ typedef enum {
     SOL_MONTAGNE_1, 
     SOL_MONTAGNE_2,
     SOL_NEIGE,
-    NB_TYPES_SOL
+    NB_TYPES_SOL,
+    SOL_CHEMIN,
 } e_solTag;
 
 

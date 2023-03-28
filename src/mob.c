@@ -271,7 +271,13 @@ void detruireMob(t_mob **mob) {
     printf("Destruction Mob => ");
     if (mob != NULL && *mob != NULL) {
 
+        if ((*mob)->aggressif)
+            --(moteur->cache->compteurEntites.mobAggressifs);
+        else
+            --(moteur->cache->compteurEntites.mobPassifs);
+
         --(moteur->cache->compteurEntites.mobs);
+
 
         detruireEntite((t_entite**)mob);
 

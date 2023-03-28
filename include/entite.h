@@ -41,6 +41,7 @@
  */
 typedef enum {
     ENTITE_RIEN,
+    ENTITE_ITEM,
     ENTITE_JOUEUR,
     ENTITE_MOB,
 } e_entiteType;
@@ -163,8 +164,8 @@ typedef struct s_entiteVivante {
 typedef struct s_compteur {
     int entites;
     int mobs;
-    int monstreAggressifs;
-    int monstrePassifs;
+    int mobAggressifs;
+    int mobPassifs;
 } t_compteur;
 
 

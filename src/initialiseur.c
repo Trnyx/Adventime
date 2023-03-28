@@ -15,11 +15,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
 #include "../include/initialiseur.h"
 #include "../include/menus.h"
 // #include image.h
-// #include ttf.h
 
 
 
@@ -64,6 +64,8 @@ void initAll(t_moteur **moteur, t_audio **audio) {
     
 
     // SDL TTF
+    TTF_Init();
+    (*moteur)->font = TTF_OpenFont("assets/font/NewHiScore.ttf", 45);
 }
 
 
@@ -86,7 +88,7 @@ void detruireAll(t_moteur *moteur, t_audio *audio) {
         detruireCache(&cache);
         detruireTemps(&moteur->temps);
     }
-    
+    TTF_Quit();
     detruireCamera(&moteur->camera);
     detruireTextures(&moteur->textures);
 
