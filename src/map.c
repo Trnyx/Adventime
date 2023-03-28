@@ -383,15 +383,22 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
         /* ------------------------------- DECORATIONS ------------------------------ */
 
         else if (tag >= BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE && tag < FIN_BLOCK_STRUCTURE) {
-            if (tag == BLOCK_LAMPADAIRE_GAUCHE_BAS) {
-                printf("BONJOUR");
+            // Allume les lampadaire pendant la nuit
+            switch (tag) {
+                case BLOCK_LAMPADAIRE_GAUCHE_HAUT:
+                case BLOCK_LAMPADAIRE_DROIT_HAUT:
+                    if (moteur->temps->cycleJeu == CYCLE_NUIT)
+                        decalage.y += 1;
+                    break;
+                
+                default:
+                    break;
             }
-            
+
             tag = tag % BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE;
 
             decalage.x = tag;
-            decalage.y = (17);
-
+            decalage.y += (17);
         }
 
 
