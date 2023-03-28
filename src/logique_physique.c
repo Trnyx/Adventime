@@ -169,7 +169,7 @@ void update(t_map *map, t_joueur *joueur) {
                     // printf("(Inactif) => ");
                     // Si l'entité doit être supprimé
                     // Alors on la détruit
-                    if (entite->destructionInactif) {
+                    if (entite->destructionInactif == VRAI) {
                         suppressionEntite(entites, entite);
                         continue;
                     }
@@ -254,7 +254,7 @@ void update(t_map *map, t_joueur *joueur) {
         }
 
         // printf("Fin Update Entites\n");
-        // printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", compteur.entites, compteur.mobs, compteur.mobPassifs, compteur.mobAggressifs);
+        printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", compteur.entites, compteur.mobs, compteur.mobPassifs, compteur.mobAggressifs);
     }
 
 
@@ -342,5 +342,4 @@ void update(t_map *map, t_joueur *joueur) {
 	
     SDL_RenderPresent(moteur->renderer);
     SDL_RenderClear(moteur->renderer);
-    
 }

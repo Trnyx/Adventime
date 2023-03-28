@@ -104,7 +104,7 @@ static int adventime(t_monde *monde) {
     t_cache *cache = moteur->cache;
     t_joueur *joueur = monde->joueur;
 
-    monde->boss = chargerBoss(monde);
+    monde->boss = chargerBoss();
 
     // La map dans laquelle se situe au début de la partie
     e_mapType mapType = joueur->map;
@@ -116,20 +116,21 @@ static int adventime(t_monde *monde) {
     while (continuer != M_MENU) {
         regulerFPS();
 	
-	continuer = inputManager(joueur);
-	
-	while(continuer == M_PAUSE) {
-	  continuer = pauseMenu(ctx);
-	  if (continuer == M_OPTIONS) {
-	    continuer = menu_options(ctx);
-	  }
-	}
-	
-	update(cache->map, joueur);
+        continuer = inputManager(joueur);
+        
+        while(continuer == M_PAUSE) {
+            continuer = pauseMenu(ctx);
+            if (continuer == M_OPTIONS) {
+                continuer = menu_options(ctx);
+            }
+        }
+        
 
-	if(continuer == J_MORT) {
-	  continuer = gameOver(ctx, joueur);
-	}
+        update(cache->map, joueur);
+
+        if(continuer == J_MORT) {
+            continuer = gameOver(ctx, joueur);
+        }
 
 
         // Dès qu'on change de zone (map)
@@ -139,8 +140,8 @@ static int adventime(t_monde *monde) {
         //      - Ignore les monstres aggressifs
         //      - Ignore les entités à suppression après un temps
         if (mapType != joueur->map) {
+            // sauvegarder_map(cache->map, , mapType);
             mapType = joueur->map;
-            // sauvegarde
 
             viderEntitesDeListe(cache->entites);
             loadMap(monde, mapType);
