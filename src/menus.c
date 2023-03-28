@@ -386,10 +386,24 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
 
     SDL_Rect Message_rect;
     Message_rect.w = (moteur->window_width)*0.17;
-    Message_rect.h = (moteur->window_height)*0.09;
+    Message_rect.h = (moteur->window_height)*0.10;
 
     Message_rect.x = (moteur->window_width) - 5 - Message_rect.w;
     Message_rect.y = 4;
+
+    char lvl[8];
+    sprintf(lvl, "%d", joueur->statistiques.niveau);
+
+    SDL_Surface * s_lvl = TTF_RenderText_Solid(moteur->font, lvl , color);
+	
+    SDL_Texture * t_lvl = SDL_CreateTextureFromSurface(moteur->renderer, s_lvl);
+
+    SDL_Rect r_lvl;
+    r_lvl.w = 30;
+    r_lvl.h = 30;
+
+    r_lvl.x = 330;
+    r_lvl.y = 40;
 
     if (nk_begin(ctx, "HUD", nk_rect(0, 0, 370, 300),
                  (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
@@ -403,16 +417,19 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
       ctx->style.progress.cursor_normal =
 	nk_style_item_color(nk_rgba(8, 255, 114, 255));
 
-	
+      
       nk_progress(ctx, &current_xp, max_xp, NK_FIXED);
       nk_layout_space_end(ctx);
     }
 
     nk_end(ctx);
     SDL_RenderCopy(moteur->renderer, texture, NULL, &Message_rect);
+    SDL_RenderCopy(moteur->renderer, t_lvl, NULL, &r_lvl);
     nk_sdl_render(NK_ANTI_ALIASING_ON);
     SDL_FreeSurface(surface);
+    SDL_FreeSurface(s_lvl);
     SDL_DestroyTexture(texture);
+    SDL_DestroyTexture(t_lvl);
     
   }
 }
@@ -430,7 +447,7 @@ state_main pauseMenu(struct nk_context *ctx) {
     nk_input_begin(ctx);
     while (SDL_PollEvent(&evt)) {
       if (evt.type == SDL_QUIT) {
-        click = JEU_QUITTER;
+        click = M_MENU;
       }
       nk_sdl_handle_event(&evt);
       if ((evt.type == SDL_MOUSEBUTTONUP) ||
