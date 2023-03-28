@@ -61,6 +61,9 @@ typedef struct s_action_flags {
     int left;
     int right;
 
+    // Inventaire
+    int inventory;
+
     // Intéractions
     int interaction;
 
