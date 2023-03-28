@@ -73,15 +73,15 @@ int peutPrendreItem(t_joueur *recuperateur, t_itemEntite *itemEntite) {
  * @param slot Le slot dans lequel l'item est ajouté
  */
 void ajouterItemDansStockage(t_item *item, t_stockage *stockage, const int slot) {
-    t_itemSlot itemSlot = stockage->itemSlots[slot];
+    t_itemSlot *itemSlot = &stockage->itemSlots[slot];
 
     // Si l'emplacement ne contient pas d'item
     // Alors on ajoute l'item voulu
-    if (!itemSlot.quantite)
-        itemSlot.item = item;
+    if (!itemSlot->quantite)
+        itemSlot->item = item;
 
     // On change le nombre d'item à l'emplacement indiqué
-    ++(itemSlot.quantite);
+    ++(itemSlot->quantite);
 }
 
 
@@ -102,7 +102,7 @@ void recupererItem(t_itemEntite *itemEntite, t_joueur *recuperateur) {
     if (slot != -1) {
         printf("AJOUT => ");
         ajouterItemDansStockage(item, (t_stockage*)recuperateur->inventaire, slot);
-        printf("RECUPRE ! ");
+        printf("RECUPRE !\n");
     }
     
 }
