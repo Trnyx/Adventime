@@ -226,12 +226,22 @@ typedef enum {
 
 
 
+
+/**
+ * @enum e_decoration_flag
+ * @brief Enumeration repertoriant les différents flags de décoration
+ * 
+ * Les flags de décorations autour des chemins permettent d'indiquer de facon temporelle
+ * qu'une décoration sera placé à l'endroit du flag
+ * 
+ */
 typedef enum {
     FLAG_LAMPADAIRE_GAUCHE,
     FLAG_BANC_GAUCHE,
-    NB_FLAG_DECO,
+    NB_CENTRE_FLAG_DECO,
     FLAG_LAMPADAIRE_DROIT,
     FLAG_BANC_DROIT,
+    NB_FLAG_DECO,
 } e_decoration_flag;
 
 
