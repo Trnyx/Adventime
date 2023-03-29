@@ -12,6 +12,13 @@
 
 
 
+#ifndef _JEU_PHYSIQUE_
+#define _JEU_PHYSIQUE_
+
+
+
+
+
 #include "map.h"
 #include "joueur.h"
 #include "temps.h"
@@ -173,3 +180,8 @@
 
 void update(t_map *map, t_joueur *joueur);
 
+
+
+
+
+#endif

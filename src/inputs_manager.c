@@ -86,7 +86,10 @@ int inputManager(t_joueur *joueur) {
 
                 // Inventaire
                 else if (controles.inventory == event.key.keysym.scancode) {
-                    joueur->actionFlags->inventory = !joueur->actionFlags->inventory;
+                    if (joueur->actionFlags->inventory == 0)
+                        joueur->actionFlags->inventory = 1;
+                    else
+                        joueur->actionFlags->inventory = -1;
                 }
 
                 // Interaction
@@ -128,6 +131,11 @@ int inputManager(t_joueur *joueur) {
                 }
                 else if (controles.key_right == event.key.keysym.scancode) {
                     joueur->actionFlags->right = 0;
+                }
+
+                // Inventaire
+                else if (controles.inventory == event.key.keysym.scancode) {
+                    joueur->actionFlags->inventory = 0;
                 }
 
                 // Interaction

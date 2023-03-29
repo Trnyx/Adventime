@@ -77,7 +77,7 @@ void ajouterItemDansStockage(t_item *item, t_stockage *stockage, const int slot)
 
     // Si l'emplacement ne contient pas d'item
     // Alors on ajoute l'item voulu
-    if (!itemSlot->quantite)
+    if (!itemSlot->quantite || itemSlot->item == NULL)
         itemSlot->item = item;
 
     // On change le nombre d'item à l'emplacement indiqué

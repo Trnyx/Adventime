@@ -217,6 +217,8 @@ typedef enum {
     BLOCK_BANC_GAUCHE_BAS,
     BLOCK_BANC_DROIT_HAUT,
     BLOCK_BANC_DROIT_BAS,
+
+    BLOCK_TONNEAU,
     
 
     FIN_BLOCK_STRUCTURE,
@@ -226,7 +228,10 @@ typedef enum {
 
 typedef enum {
     FLAG_LAMPADAIRE_GAUCHE,
+    FLAG_BANC_GAUCHE,
+    NB_FLAG_DECO,
     FLAG_LAMPADAIRE_DROIT,
+    FLAG_BANC_DROIT,
 } e_decoration_flag;
 
 

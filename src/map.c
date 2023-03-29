@@ -17,6 +17,7 @@
 #include "../include/map.h"
 #include "../include/vegetations.h"
 #include "../include/structures.h"
+#include "../include/particules.h"
 #include "../include/camera.h"
 
 
@@ -172,6 +173,11 @@ t_chunk* getChunkGraceABlock(const int x, const int y, const int couche, t_map *
     const int yChunk = y / TAILLE_CHUNK;
     return getChunk(xChunk, yChunk, couche, map);
 }
+
+
+
+
+
 
 
 
@@ -383,15 +389,24 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
         /* ------------------------------- DECORATIONS ------------------------------ */
 
         else if (tag >= BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE && tag < FIN_BLOCK_STRUCTURE) {
-            if (tag == BLOCK_LAMPADAIRE_GAUCHE_BAS) {
-                printf("BONJOUR");
+            // Allume les lampadaire pendant la nuit
+            switch (tag) {
+                case BLOCK_LAMPADAIRE_GAUCHE_HAUT:
+                case BLOCK_LAMPADAIRE_DROIT_HAUT:
+                    if (moteur->temps->cycleJeu == CYCLE_NUIT) {
+                        decalage.y += 1;
+                        dessinerLumiere(*rendu);
+                    }
+                    break;
+                
+                default:
+                    break;
             }
-            
+
             tag = tag % BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE;
 
             decalage.x = tag;
-            decalage.y = (17);
-
+            decalage.y += (17);
         }
 
 
