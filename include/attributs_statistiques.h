@@ -13,7 +13,8 @@
 
 
 
-float pv;             /**<  */
-float attaque;        /**<  */
-float defense;        /**<  */
-float vitesse;        /**<  */
+
+float attaque;        /**< La statistique d'attaque */
+float defense;        /**< La statistique de défense */
+float vitesse;        /**< La statistique de vitesse */
+float pv;             /**< La statistique des points de vie */
