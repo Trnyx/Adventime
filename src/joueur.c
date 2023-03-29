@@ -182,7 +182,8 @@ int updateJoueur(t_joueur *joueur) {
         joueur->operation = SE_DEPLACE_VERS;
         getDirectionJoueur(joueur);
         deplacerEntite((t_entite*)joueur, joueur->statistiques.vitesse);
-    } else {
+    } 
+    else if (joueur->operation != ATTAQUE) {
         joueur->operation = ATTENTE;
     }
 
@@ -193,10 +194,12 @@ int updateJoueur(t_joueur *joueur) {
 
     if (doitAttaquer(joueur->actionFlags) && peutAttaquer(joueur)) {
         joueur->operation = ATTAQUE;
+        joueur->animation->frameCourante = 1;
         joueurAttaque(joueur, angle);
-    } else if (joueur->operation != SE_DEPLACE_VERS) {
-        joueur->operation = ATTENTE;
-    }
+    } 
+    // else if (joueur->operation != SE_DEPLACE_VERS) {
+    //     joueur->operation = ATTENTE;
+    // }
 
 
     return 0;

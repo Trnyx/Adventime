@@ -406,21 +406,34 @@ void dessinerEntite(t_entite *entite) {
 
     // Animation
     if (entite->animation != NULL) {
+        if (((t_entiteVivante*)entite)->operation == ATTAQUE) {
+            if (entite->animation->frameCourante == 0) {
+                ((t_entiteVivante*)entite)->operation = ATTENTE;
+            }
+        }
+
+        
         updateAnimation(entite->animation, moteur->frame);
         sprite.x += TAILLE_TILE * entite->animation->frameCourante;
+
         
         // Deplacement
         switch (((t_entiteVivante*)entite)->operation) {
             case SE_DEPLACE_VERS:
             case SE_DEPLACE_AUTOUR:
-            case ATTAQUE:
+            case S_ELOIGNE_DE:
                 sprite.y += TAILLE_TILE * 4;
                 break;
-                // sprite.y += TAILLE_TILE * 4 * 2;
-                // break;
+            case ATTAQUE:
+                sprite.y += TAILLE_TILE * 4 * 2;
+                break;
             default:
                 break;
         }
+
+        // if (((t_entiteVivante*)entite)->operation) {
+        //     sprite.y += TAILLE_TILE * 4;
+        // }
     }
 
 
