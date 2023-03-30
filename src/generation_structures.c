@@ -27,7 +27,7 @@
 
 
 /**
- * @brief 
+ * @brief Tableau regroupant toutes les structures
  * 
  */
 t_structure structuresPresets[] = {
@@ -90,7 +90,7 @@ t_structure structuresPresets[] = {
 
     {
         STRUCTURE_GRANDE_MAISON_1,
-        7, 6,
+        8, 6,
         {
             { VIDE, BLOCK_TOIT_PETIT_LAYER_1_2_STANDARD, BLOCK_TOIT_PETIT_LAYER_1_3_STANDARD, BLOCK_TOIT_PETIT_LAYER_1_4_STANDARD, BLOCK_TOIT_PETIT_LAYER_1_5_STANDARD, VIDE },
             { BLOCK_TOIT_PETIT_LAYER_2_1_STANDARD, BLOCK_TOIT_PETIT_LAYER_2_2_STANDARD, BLOCK_TOIT_PETIT_LAYER_2_3_STANDARD, BLOCK_TOIT_PETIT_LAYER_2_4_STANDARD, BLOCK_TOIT_PETIT_LAYER_2_5_STANDARD, BLOCK_TOIT_PETIT_LAYER_2_6_STANDARD },
@@ -103,7 +103,7 @@ t_structure structuresPresets[] = {
     },
     {
         STRUCTURE_GRANDE_MAISON_2,
-        7, 6,
+        8, 6,
         {
             { VIDE, BLOCK_TOIT_PETIT_LAYER_1_2_ROUGE, BLOCK_TOIT_PETIT_LAYER_1_3_ROUGE, BLOCK_TOIT_PETIT_LAYER_1_4_ROUGE, BLOCK_TOIT_PETIT_LAYER_1_5_ROUGE, VIDE },
             { BLOCK_TOIT_PETIT_LAYER_2_1_ROUGE, BLOCK_TOIT_PETIT_LAYER_2_2_ROUGE, BLOCK_TOIT_PETIT_LAYER_2_3_ROUGE, BLOCK_TOIT_PETIT_LAYER_2_4_ROUGE, BLOCK_TOIT_PETIT_LAYER_2_5_ROUGE, BLOCK_TOIT_PETIT_LAYER_2_6_ROUGE },
@@ -116,7 +116,7 @@ t_structure structuresPresets[] = {
     },
     {
         STRUCTURE_GRANDE_MAISON_3,
-        7, 6,
+        8, 6,
         {
             { VIDE, BLOCK_TOIT_PETIT_LAYER_1_2_BLEU, BLOCK_TOIT_PETIT_LAYER_1_3_BLEU, BLOCK_TOIT_PETIT_LAYER_1_4_BLEU, BLOCK_TOIT_PETIT_LAYER_1_5_BLEU, VIDE },
             { BLOCK_TOIT_PETIT_LAYER_2_1_BLEU, BLOCK_TOIT_PETIT_LAYER_2_2_BLEU, BLOCK_TOIT_PETIT_LAYER_2_3_BLEU, BLOCK_TOIT_PETIT_LAYER_2_4_BLEU, BLOCK_TOIT_PETIT_LAYER_2_5_BLEU, BLOCK_TOIT_PETIT_LAYER_2_6_BLEU },
@@ -151,11 +151,11 @@ t_structure structuresPresets[] = {
 
 
 /**
- * @brief 
+ * @brief Permet de génèrer une structure demandé
  * 
- * @param position 
- * @param tag 
- * @param map 
+ * @param position La position où est générée la structure
+ * @param tag Le tag de la structure
+ * @param map La map dans laquelle est générée la structure
  */
 void genererStructure(const t_vecteur2 position, const e_structureTag tag, t_map *map) {
     t_block *block = NULL;

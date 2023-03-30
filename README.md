@@ -4,7 +4,7 @@
 **Jeu de survie :** 
 Adventime est un jeu de survie se basant à la fois sur un cycle jour/nuit ainsi que le temps réel
 Votre aventure se déroule sur une île générée aléatoirement, remplie de monstres que vous devez combattre afin de gagner en expérience et compétences
-Votre objectif est de vous préparer et de vaincre les 3 boss du jeu
+Votre objectif est de vous préparer et de vaincre les 3 boss du jeu qui apparaissent les lundi, mercredi et vendredi
 
 
 ## Contrôles
