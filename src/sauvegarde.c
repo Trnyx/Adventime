@@ -124,8 +124,6 @@ void sauvegarder_mob(t_mob *mob, FILE *fichier)
 {
     sauvegarder_entite_vivante((t_entiteVivante *)mob, fichier);
 
-    mob->detruire = (void (*)(t_entite**)) detruireMob;
-
     fprintf(fichier, "%i ", mob->aggressif);
     fprintf(fichier, "%u ", mob->rayonDeplacement);
 }
@@ -156,6 +154,16 @@ void charger_mob(t_mob *mob, FILE *fichier)
     charger_entite_vivante((t_entiteVivante *)mob, fichier);
 
 
+    fscanf(fichier, "%i ", &mob->aggressif);
+    printf("aggressif %i => ", mob->aggressif);
+    fscanf(fichier, "%u ", &mob->rayonDeplacement);
+    printf("rayonDeplacement %i => ", mob->rayonDeplacement);
+
+
+    mob->update = (int(*)(t_entite*, const float, t_entite*)) updateMob;
+    mob->detruire = (void (*)(t_entite**)) detruireMob;
+
+
     ++(moteur->cache->compteurEntites.mobs);
     
     if (mob->aggressif)
@@ -177,9 +185,8 @@ void charger_entite(t_entite *entite, FILE *fichier)
 
     // Id
     printf("ID => ");
-    entite->id = malloc(sizeof(char) * LONGUEUR_ID);
-    fscanf(fichier, "%[^ \n] ", entite->id);
-    printf("id : %s \n", entite->id);
+    entite->id = malloc(sizeof(char) * (LONGUEUR_ID + 1));
+    fscanf(fichier, "%s ", entite->id);
 
     // Position / Direction / Orientation
     // printf("Position / Direction / Orientation => ");
@@ -211,7 +218,7 @@ void charger_entite(t_entite *entite, FILE *fichier)
     fscanf(fichier, "%i ", (int *)&entite->destructionDelai);
 
     fscanf(fichier, "%u ", &(entite->timestampCreation));
-
+    
     entite->update = NULL;
     entite->detruire = detruireEntite;
 
@@ -232,7 +239,8 @@ void charger_entite(t_entite *entite, FILE *fichier)
     }
 
 
-
+    fscanf(fichier, "\n");
+    printf("\n");
 
     ++(moteur->cache->compteurEntites.entites);
 }
@@ -560,7 +568,6 @@ err_sauv charger_map(t_map *map, char *chemin_monde, const e_mapType type)
         printf("ENTITE %i => ", i);
         t_entite *entite = malloc(sizeof(t_entite));
         charger_entite(entite, fichier);
-        printf("bonjour\n");
         printf("ID : %s \n", entite->id);
         ajout_droit(map->entites, entite);
         fprintf(fichier, "\n");
@@ -661,6 +668,7 @@ err_sauv charger_global(t_monde *monde, char *chemin_monde)
     }
 
     // ID
+    monde->id = malloc(sizeof(char) * (LONGUEUR_ID + 1));
     printf("ID => ");
     fscanf(fichier, "%s ", monde->id);
     fscanf(fichier, "\n");

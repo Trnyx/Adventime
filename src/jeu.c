@@ -46,9 +46,13 @@ static void viderEntitesDeListe(t_liste *liste) {
 
     en_queue(liste);
     while (!liste_vide(liste)) {
+        // printf("BONJOUR");
         valeur_elt(liste, &entite);
-        oter_elt(liste);
+
+        entite->detruire(&entite);
         entite = NULL;
+
+        oter_elt(liste);
     }
 }
 
@@ -155,7 +159,7 @@ static int adventime(t_monde *monde) {
     printf("SAVE SUCCES\n");
 
     viderEntitesDeListe(cache->entites);
-    viderEntitesDeListe(cache->map->entites);
+    // viderEntitesDeListe(cache->map->entites);
 
     return continuer;
 }

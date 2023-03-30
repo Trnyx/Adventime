@@ -30,7 +30,8 @@
  * @return char* 
  */
 char* genererId() {
-    return generate(LONGUEUR_ID);
+    // return generate(LONGUEUR_ID);
+    return custom("0123456789ABCDEF", LONGUEUR_ID);
 }
 
 
