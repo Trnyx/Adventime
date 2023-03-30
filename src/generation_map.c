@@ -165,7 +165,7 @@ static e_solTag selectionBlock(const e_biome biome) {
 /* -------------------------------------------------------------------------- */
 
 
-void ajoutHauteurFlags(t_map *map) {
+void ajoutDenivele(t_map *map) {
     for (int x = 1; x < TAILLE_MAP * TAILLE_CHUNK - 1; x++) {
         for (int y = 1; y < TAILLE_MAP * TAILLE_CHUNK - 1; y++) {
 
@@ -174,42 +174,23 @@ void ajoutHauteurFlags(t_map *map) {
 
             
             t_block *blockAlentour = NULL;
-            unsigned int difference = 0;
+            int difference = 0;
             
-            // Block au dessus
-            blockAlentour = getBlockDansMap(x, y - 1, COUCHE_SOL, map);
-            difference = abs(block->tag - blockAlentour->tag);
-            if (difference > 1) {
-                block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
-                block->tag = BLOCK_TONNEAU;
+            for (int xAlentour = x - 1; xAlentour <= x + 1; xAlentour++) {
+                for (int yAlentour = y - 1; yAlentour <= y + 1; yAlentour++) {
+                    blockAlentour = getBlockDansMap(xAlentour, yAlentour, COUCHE_SOL, map);
+
+                    difference = block->tag - blockAlentour->tag;
+                    // -4 -3 -2
+                    // -1  0  1
+                    //  2  3  4
+                    if (difference > 1) {
+                        block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+                        block->tag = ((xAlentour - x) + (yAlentour - y) * 3) + DENIVELE_CENTRE;
+                    }
+                }
             }
-
-
-            // Block en dessous
-            blockAlentour = getBlockDansMap(x, y + 1, COUCHE_SOL, map);
-            difference = abs(block->tag - blockAlentour->tag);
-            if (difference > 1) {
-                block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
-                block->tag = BLOCK_TONNEAU;
-            }
-
-
-            // Block à gauche
-            blockAlentour = getBlockDansMap(x - 1, y, COUCHE_SOL, map);
-            difference = abs(block->tag - blockAlentour->tag);
-            if (difference > 1) {
-                block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
-                block->tag = BLOCK_TONNEAU;
-            }
-
-
-            // Block à droite
-            blockAlentour = getBlockDansMap(x + 1, y, COUCHE_SOL, map);
-            difference = abs(block->tag - blockAlentour->tag);
-            if (difference > 1) {
-                block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
-                block->tag = BLOCK_TONNEAU;
-            }
+            
 
 
         }
@@ -675,7 +656,7 @@ static t_map* genererOverworld(t_map *map) {
 
 
     // Ajout des blocks pour les différence de hauteur
-    ajoutHauteurFlags(map);
+    ajoutDenivele(map);
 
 
     // Structures

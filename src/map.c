@@ -389,7 +389,7 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
 
         /* ------------------------------- DECORATIONS ------------------------------ */
 
-        else if (tag >= BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE && tag < FIN_BLOCK_STRUCTURE) {
+        else if (tag >= BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE && tag < FIN_BLOCK_DECORATION) {
             // Allume les lampadaire pendant la nuit
             switch (tag) {
                 case BLOCK_LAMPADAIRE_GAUCHE_HAUT:
@@ -408,6 +408,15 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
 
             decalage.x = tag;
             decalage.y += (17);
+        }
+
+
+        else if (tag >= DENIVELE_HAUT_GAUCHE && tag <= DENIVELE_BAS_DROIT) {
+            texture = moteur->textures->sol;
+            tag = tag % DENIVELE_HAUT_GAUCHE;
+
+            decalage.x += tag % 3;
+            decalage.y += (tag / 3) + 3;
         }
 
 
