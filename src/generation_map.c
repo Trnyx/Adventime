@@ -181,7 +181,7 @@ void ajoutHauteurFlags(t_map *map) {
             difference = abs(block->tag - blockAlentour->tag);
             if (difference > 1) {
                 block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
-                block->position.z = VIDE;
+                block->tag = BLOCK_TONNEAU;
             }
 
 
@@ -190,7 +190,7 @@ void ajoutHauteurFlags(t_map *map) {
             difference = abs(block->tag - blockAlentour->tag);
             if (difference > 1) {
                 block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
-                block->position.z = VIDE;
+                block->tag = BLOCK_TONNEAU;
             }
 
 
@@ -199,7 +199,7 @@ void ajoutHauteurFlags(t_map *map) {
             difference = abs(block->tag - blockAlentour->tag);
             if (difference > 1) {
                 block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
-                block->position.z = VIDE;
+                block->tag = BLOCK_TONNEAU;
             }
 
 
@@ -208,7 +208,7 @@ void ajoutHauteurFlags(t_map *map) {
             difference = abs(block->tag - blockAlentour->tag);
             if (difference > 1) {
                 block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
-                block->position.z = VIDE;
+                block->tag = BLOCK_TONNEAU;
             }
 
 
@@ -581,7 +581,7 @@ static t_block generationBlock(const int x, const int y, const t_chunk *chunk, c
 
     block.tag = estVide == VRAI ? VIDE : selectionBlock(chunk->biome);
 
-    t_vecteur3 position = { (TAILLE_CHUNK * chunk->position.x) + x, (TAILLE_CHUNK * chunk->position.y) + y, 0 };
+    t_vecteur2 position = { (TAILLE_CHUNK * chunk->position.x) + x, (TAILLE_CHUNK * chunk->position.y) + y };
     t_vecteur2 positionDansChunk = { x, y };
   
     block.position = position;
