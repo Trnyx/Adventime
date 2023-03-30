@@ -203,6 +203,8 @@ int dessinerBlockSol(int tag, SDL_Rect *rendu) {
     SDL_Rect source;
 
 
+    // TODO : AFFICHER DECALAGE TEXTURE
+
     if (tag >= SOL_EAU_PROFONDE && tag <= SOL_MONTAGNE_2) {
         splitTexture(&source, (8 + 2 * TAILLE_TILE * tag),8, TAILLE_TILE,TAILLE_TILE);
     }

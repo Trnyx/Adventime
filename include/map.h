@@ -148,7 +148,7 @@ typedef enum {
  * @brief Modélise un block
  */
 typedef struct s_block {
-    t_vecteur2 position;                /**< La position du block dans la map */
+    t_vecteur3 position;                /**< La position du block dans la map */
     t_vecteur2 positionDansChunk;       /**< La position du block dans le chunk */
     int tag;                            /**< Le tag du block */
 } t_block;

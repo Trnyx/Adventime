@@ -161,6 +161,66 @@ static e_solTag selectionBlock(const e_biome biome) {
 
 
 /* -------------------------------------------------------------------------- */
+/*                                    Flags                                   */
+/* -------------------------------------------------------------------------- */
+
+
+void ajoutHauteurFlags(t_map *map) {
+    for (int x = 1; x < TAILLE_MAP * TAILLE_CHUNK - 1; x++) {
+        for (int y = 1; y < TAILLE_MAP * TAILLE_CHUNK - 1; y++) {
+
+            t_block *block = getBlockDansMap(x, y, COUCHE_SOL, map);
+            if (block == NULL) continue;
+
+            
+            t_block *blockAlentour = NULL;
+            unsigned int difference = 0;
+            
+            // Block au dessus
+            blockAlentour = getBlockDansMap(x, y - 1, COUCHE_SOL, map);
+            difference = abs(block->tag - blockAlentour->tag);
+            if (difference > 1) {
+                block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+                block->position.z = VIDE;
+            }
+
+
+            // Block en dessous
+            blockAlentour = getBlockDansMap(x, y + 1, COUCHE_SOL, map);
+            difference = abs(block->tag - blockAlentour->tag);
+            if (difference > 1) {
+                block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+                block->position.z = VIDE;
+            }
+
+
+            // Block à gauche
+            blockAlentour = getBlockDansMap(x - 1, y, COUCHE_SOL, map);
+            difference = abs(block->tag - blockAlentour->tag);
+            if (difference > 1) {
+                block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+                block->position.z = VIDE;
+            }
+
+
+            // Block à droite
+            blockAlentour = getBlockDansMap(x + 1, y, COUCHE_SOL, map);
+            difference = abs(block->tag - blockAlentour->tag);
+            if (difference > 1) {
+                block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+                block->position.z = VIDE;
+            }
+
+
+        }
+    }
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                 Changement                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -521,7 +581,7 @@ static t_block generationBlock(const int x, const int y, const t_chunk *chunk, c
 
     block.tag = estVide == VRAI ? VIDE : selectionBlock(chunk->biome);
 
-    t_vecteur2 position = { (TAILLE_CHUNK * chunk->position.x) + x, (TAILLE_CHUNK * chunk->position.y) + y };
+    t_vecteur3 position = { (TAILLE_CHUNK * chunk->position.x) + x, (TAILLE_CHUNK * chunk->position.y) + y, 0 };
     t_vecteur2 positionDansChunk = { x, y };
   
     block.position = position;
@@ -612,6 +672,10 @@ static t_map* genererOverworld(t_map *map) {
             }
         }
     }
+
+
+    // Ajout des blocks pour les différence de hauteur
+    ajoutHauteurFlags(map);
 
 
     // Structures
