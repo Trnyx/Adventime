@@ -178,10 +178,11 @@ void charger_entite(t_entite *entite, FILE *fichier)
     // Id
     printf("ID => ");
     entite->id = malloc(sizeof(char) * LONGUEUR_ID);
-    fscanf(fichier, "%s ", entite->id);
+    fscanf(fichier, "%[^ \n] ", entite->id);
+    printf("id : %s \n", entite->id);
 
     // Position / Direction / Orientation
-    printf("Position / Direction / Orientation => ");
+    // printf("Position / Direction / Orientation => ");
     fscanf(fichier, "%f ", &(entite->position.x));
     fscanf(fichier, "%f ", &(entite->position.y));
     fscanf(fichier, "%f ", &(entite->direction.x));
@@ -189,23 +190,23 @@ void charger_entite(t_entite *entite, FILE *fichier)
     fscanf(fichier, "%i ", (int *)&(entite->orientation));
 
     // Tag
-    printf("Tag => ");
+    // printf("Tag => ");
     fscanf(fichier, "%i ", (int *)&entite->entiteType);
     fscanf(fichier, "%i ", (int *)&entite->tag);
 
     // Taille
-    printf("Taille => ");
+    // printf("Taille => ");
     fscanf(fichier, "%f ", &(entite->taille));
 
     // Hitbox
-    printf("Hitbox => ");
+    // printf("Hitbox => ");
     entite->hitbox.x = entite->position.x - (entite->taille / 2);
     entite->hitbox.y = entite->position.y - (entite->taille / 2);
     entite->hitbox.h = entite->taille;
     entite->hitbox.w = entite->taille;
 
     // Timestamp de la création
-    printf("Timestamp de la création => ");
+    // printf("Timestamp de la création => ");
     fscanf(fichier, "%i ", (int *)&entite->destructionInactif);
     fscanf(fichier, "%i ", (int *)&entite->destructionDelai);
 
@@ -216,7 +217,7 @@ void charger_entite(t_entite *entite, FILE *fichier)
 
 
 
-    printf("TYPE ENTITE => \n");
+    // printf("TYPE ENTITE => \n");
     if (entite->entiteType == ENTITE_MOB)
     {
         entite = realloc(entite, sizeof(t_mob));
@@ -478,11 +479,11 @@ err_sauv charger_map(t_map *map, char *chemin_monde, const e_mapType type)
     fscanf(fichier, "%i ", (int *)&(map->type));
     fscanf(fichier, "\n");
 
-    printf("CHUNKS ET BLOCKS => ");
+    // printf("CHUNKS ET BLOCKS => ");
     // Chunks & Blocs
     // Initialisation chunks
     map->chunks = calloc(TAILLE_MAP * TAILLE_MAP * NB_COUCHE, sizeof(t_chunk));
-    printf("TAILLE : %ld\n", sizeof(t_chunk));
+    // printf("TAILLE : %ld\n", sizeof(t_chunk));
 
     if (map->chunks == NULL)
     {
@@ -500,7 +501,7 @@ err_sauv charger_map(t_map *map, char *chemin_monde, const e_mapType type)
                 fscanf(fichier, "%i ", (unsigned int *)&(map->chunks[i].biome));
                 fscanf(fichier, "\n");
 
-                printf("CHUNK %i (%i) ", i, map->chunks[i].biome);
+                // printf("CHUNK %i (%i) ", i, map->chunks[i].biome);
                 // Position d'un chunk
                 fscanf(fichier, "%f ", &(map->chunks[i].position.x));
                 fscanf(fichier, "%f ", &(map->chunks[i].position.y));
@@ -509,7 +510,7 @@ err_sauv charger_map(t_map *map, char *chemin_monde, const e_mapType type)
 
                 // Blocks
                 map->chunks[i].blocks = calloc(TAILLE_CHUNK * TAILLE_CHUNK, sizeof(t_block));
-                printf("TAILLE : %ld / %p\n", sizeof(t_block), map->chunks[i].blocks);
+                // printf("TAILLE : %ld / %p\n", sizeof(t_block), map->chunks[i].blocks);
 
                 if (map->chunks[i].blocks == NULL)
                 {
@@ -517,7 +518,7 @@ err_sauv charger_map(t_map *map, char *chemin_monde, const e_mapType type)
                     exit(1);
                 }
 
-                printf("(IB)");
+                // printf("(IB)");
                 for (int i_bloc = 0, x_bloc = 0; x_bloc < TAILLE_CHUNK; x_bloc++)
                 {
                     for (int y_bloc = 0; y_bloc < TAILLE_CHUNK; y_bloc++)
@@ -536,7 +537,7 @@ err_sauv charger_map(t_map *map, char *chemin_monde, const e_mapType type)
                 fscanf(fichier, "\n");
 
                 i++;
-                printf("[OK] => ");
+                // printf("[OK] => ");
             }
             fscanf(fichier, "\n");
         }
@@ -549,16 +550,18 @@ err_sauv charger_map(t_map *map, char *chemin_monde, const e_mapType type)
     fscanf(fichier, "%i ", &nombreEntites);
     fscanf(fichier, "\n");
 
-    printf("NOMBRE ENTITE : %i\n", nombreEntites);
+    // printf("NOMBRE ENTITE : %i\n", nombreEntites);
 
     map->entites = malloc(sizeof(t_liste));
     init_liste(map->entites);
 
     for (int i = 0; i < nombreEntites; i++)
     {
-        printf("ENTITE %i => \n", i);
+        printf("ENTITE %i => ", i);
         t_entite *entite = malloc(sizeof(t_entite));
         charger_entite(entite, fichier);
+        printf("bonjour\n");
+        printf("ID : %s \n", entite->id);
         ajout_droit(map->entites, entite);
         fprintf(fichier, "\n");
     }

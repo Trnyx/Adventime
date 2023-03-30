@@ -91,6 +91,8 @@ t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const floa
     en_tete_cache(entitesActuelles);
     while (!hors_liste_cache(entitesActuelles)) {
         valeur_elt_cache(entitesActuelles, &entite);
+        printf("CENTRE : %s \n", centre->id);
+        printf("ENTITE : %s \n", entite->id);
 
         if (!strcmp(centre->id, entite->id)) {
             suivant_cache(entitesActuelles);
