@@ -141,19 +141,21 @@ float getOrientationJoueur() {
 void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
     printf("JOUEUR ATTAQUE (angle : %1.2f)\n", angleAttaque);
     joueur->cooldownAttaque = JOUEUR_COOLDOWN_ATTAQUE;
-    t_liste mobsAlentour = getEntitesAlentour((t_entite*)joueur, ENTITE_MOB, 2.0);
+    t_liste *mobsAlentour = getEntitesAlentour((t_entite*)joueur, ENTITE_MOB, 2.0);
 
-    if (!liste_vide(&mobsAlentour)) {
+    if (!liste_vide(mobsAlentour)) {
         printf("ENTITE PROCHE\n");
-        en_tete(&mobsAlentour);
+        en_tete(mobsAlentour);
         t_mob *mob = NULL;
 
-        while (!hors_liste(&mobsAlentour)) {
-            valeur_elt(&mobsAlentour, (t_entite**)&mob);
+        while (!hors_liste(mobsAlentour)) {
+            valeur_elt(mobsAlentour, (t_entite**)&mob);
             metUnCoup((t_entiteVivante*)joueur, (t_entiteVivante*)mob, angleAttaque, 2.0);
 
-            suivant(&mobsAlentour);
+            suivant(mobsAlentour);
         }
+
+        detruire_liste(&mobsAlentour);
     }
     else {
         printf("AUCUNE ENTITE PROCHE\n");

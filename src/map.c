@@ -537,6 +537,12 @@ int detruireMap(t_map **map) {
 
     free((*map)->chunks);
     (*map)->chunks = NULL;
+
+
+    if ((*map)->entites != NULL) {
+        detruire_liste(&(*map)->entites);
+    }
+
   
     free(*map);
     *map = NULL;

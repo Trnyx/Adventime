@@ -80,10 +80,10 @@ boolean peutApparaitre(const t_vecteur2 position, t_map *map) {
  * 
  * @return Une liste contenant toutes les entités detectées aux alentours de l'entité centrale
  */
-t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range) {
+t_liste* getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range) {
     t_liste *entitesActuelles = moteur->cache->entites;
-    t_liste entitesAlentours;
-    init_liste(&entitesAlentours);
+    t_liste *entitesAlentours = malloc(sizeof(t_liste));
+    init_liste(entitesAlentours);
 
     t_entite *entite = NULL;
 
@@ -101,7 +101,7 @@ t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const floa
         const float distance = calculDistanceEntreEntites(centre, entite);
 
         if (entite->entiteType == type && distance <= range)
-            ajout_droit(&entitesAlentours, entite);
+            ajout_droit(entitesAlentours, entite);
 
         suivant_cache(entitesActuelles);
     }
@@ -240,9 +240,9 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
 
 
     // Check si il y a une collision avec les entités autour
-    t_liste entitesAlentours = getEntitesAlentour(entite, ENTITE_MOB, (entite->hitbox.w * entite->taille) * 0.8);
+    t_liste *entitesAlentours = getEntitesAlentour(entite, ENTITE_MOB, (entite->hitbox.w * entite->taille) * 0.8);
 
-    if (!liste_vide(&entitesAlentours)) {
+    if (!liste_vide(entitesAlentours)) {
         t_entite *entiteTempo = NULL;
 
         SDL_FRect hitbox;
@@ -251,9 +251,9 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
         hitbox.w = entite->hitbox.w;
         hitbox.h = entite->hitbox.h;
 
-        en_tete(&entitesAlentours);
-        while (!hors_liste(&entitesAlentours)) {
-            valeur_elt(&entitesAlentours, &entiteTempo);
+        en_tete(entitesAlentours);
+        while (!hors_liste(entitesAlentours)) {
+            valeur_elt(entitesAlentours, &entiteTempo);
 
 
             if (SDL_HasIntersectionF(&hitbox, &entiteTempo->hitbox)) {
@@ -265,11 +265,12 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
             }
                     
 
-            suivant(&entitesAlentours);
+            suivant(entitesAlentours);
         }
     }
 
 
+    detruire_liste(&entitesAlentours);
     return VRAI;
 }
 

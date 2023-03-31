@@ -362,6 +362,7 @@ void detruireAudio(t_audio **audio) {
             Mix_FreeMusic((*audio)->musiques->menu_principal);
             Mix_FreeMusic((*audio)->musiques->ambiance_jour_matin);
             Mix_FreeMusic((*audio)->musiques->ambiance_jour_apres_midi);
+            Mix_FreeMusic((*audio)->musiques->ambiance_jour_couche_soleil);
             Mix_FreeMusic((*audio)->musiques->ambiance_nuit);
             Mix_FreeMusic((*audio)->musiques->combat);
             Mix_FreeMusic((*audio)->musiques->boss);
@@ -379,13 +380,24 @@ void detruireAudio(t_audio **audio) {
             printf("Destruction bruitages => ");
             // Mix_FreeChunk((*bruitages)->);
 
-            // Mix_FreeChunk((*audio)->bruitages->menu_selection);
+            // Menu
+            Mix_FreeChunk((*audio)->bruitages->menu_selection);
+
+            // Joueur
             // Mix_FreeChunk((*audio)->bruitages->joueur_attaque);
             // Mix_FreeChunk((*audio)->bruitages->joueur_degat);
             // Mix_FreeChunk((*audio)->bruitages->joueur_mort);
+
+            // Monstre
             // Mix_FreeChunk((*audio)->bruitages->monstre_attaque);
             // Mix_FreeChunk((*audio)->bruitages->monstre_degat);
             // Mix_FreeChunk((*audio)->bruitages->monstre_mort);
+
+            // Animaux
+            Mix_FreeChunk((*audio)->bruitages->vache);
+            Mix_FreeChunk((*audio)->bruitages->cochon);
+
+            // Autres
             // Mix_FreeChunk((*audio)->bruitages->item_recuperation);
 
             free(bruitages);
