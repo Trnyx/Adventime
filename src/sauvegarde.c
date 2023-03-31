@@ -72,31 +72,56 @@ err_sauv charger_config()
 /*                                Entite et Mob                               */
 /* -------------------------------------------------------------------------- */
 
+/**
+ * \brief Sauvegarde la base d'une entité.
+ * 
+ * \param entite L'entité à sauvegarder.
+ * \param fichier Le fichier de sauvegarde de la map. 
+ */
 void sauvegarder_entite(t_entite *entite, FILE *fichier)
 {
+    // ID
     fprintf(fichier, "%s ", entite->id);
 
+    // Position
     fprintf(fichier, "%f ", entite->position.x);
     fprintf(fichier, "%f ", entite->position.y);
+
+    // Direction
     fprintf(fichier, "%f ", entite->direction.x);
     fprintf(fichier, "%f ", entite->direction.y);
+
+    // Orientation
     fprintf(fichier, "%i ", entite->orientation);
 
+    // Type de l'entité
     fprintf(fichier, "%i ", entite->entiteType);
+
+    // Tag
     fprintf(fichier, "%i ", entite->tag);
 
+    // Taille
     fprintf(fichier, "%f ", entite->taille);
     // fprintf(fichier, "%f ", entite->hitbox.h);
     // fprintf(fichier, "%f ", entite->hitbox.w);
     // fprintf(fichier, "%f ", entite->hitbox.x);
     // fprintf(fichier, "%f ", entite->hitbox.y);
 
+    // Destruction
     fprintf(fichier, "%i ", entite->destructionInactif);
     fprintf(fichier, "%i ", entite->destructionDelai);
+
+    // TimestampCreation
     fprintf(fichier, "%u ", entite->timestampCreation);
     // fprintf(fichier, "\n");
 }
 
+/**
+ * \brief Sauvegarde la base d'une entité vivante.
+ * 
+ * \param entite L'entité à sauvegarder.
+ * \param fichier Le fichier de sauvegarde de la map. 
+ */
 void sauvegarder_entite_vivante(t_entiteVivante *entite, FILE *fichier)
 {
     sauvegarder_entite((t_entite *)entite, fichier);
@@ -120,6 +145,12 @@ void sauvegarder_entite_vivante(t_entiteVivante *entite, FILE *fichier)
     // fprintf(fichier, "\n");
 }
 
+/**
+ * \brief Sauvegarde un mob, c'est-à-dire un animal, un monstre...
+ * 
+ * \param mob Le mob à sauvegarder.
+ * \param fichier Le fichier de sauvegarde de la map. 
+ */
 void sauvegarder_mob(t_mob *mob, FILE *fichier)
 {
     sauvegarder_entite_vivante((t_entiteVivante *)mob, fichier);
@@ -128,6 +159,12 @@ void sauvegarder_mob(t_mob *mob, FILE *fichier)
     fprintf(fichier, "%u ", mob->rayonDeplacement);
 }
 
+/**
+ * \brief Charge la base d'une entité vivante.
+ * 
+ * \param entite L'entité à charger.
+ * \param fichier Le fichier de sauvegarde de la map. 
+ */
 void charger_entite_vivante(t_entiteVivante *entite, FILE *fichier)
 {
     // Statistiques
@@ -149,6 +186,12 @@ void charger_entite_vivante(t_entiteVivante *entite, FILE *fichier)
     // fscanf(fichier, "\n");
 }
 
+/**
+ * \brief Charge un mob, c'est-à-dire un animal, un monstre...
+ * 
+ * \param mob Le mob à charger.
+ * \param fichier Le fichier de sauvegarde de la map. 
+ */
 void charger_mob(t_mob *mob, FILE *fichier)
 {
     charger_entite_vivante((t_entiteVivante *)mob, fichier);
@@ -172,6 +215,12 @@ void charger_mob(t_mob *mob, FILE *fichier)
         ++(moteur->cache->compteurEntites.mobPassifs);
 }
 
+/**
+ * \brief Charge la base d'une entité.
+ * 
+ * \param entite L'entité à charger.
+ * \param fichier Le fichier de sauvegarde de la map. 
+ */
 void charger_entite(t_entite *entite, FILE *fichier)
 {
     // // Chargement de l'entité
@@ -183,7 +232,7 @@ void charger_entite(t_entite *entite, FILE *fichier)
     //     return LOAD_FAIL;
     // }
 
-    // Id
+    // ID
     printf("ID => ");
     entite->id = malloc(sizeof(char) * (LONGUEUR_ID + 1));
     fscanf(fichier, "%s ", entite->id);
