@@ -66,8 +66,26 @@ void charger_entite(t_entite* entite, FILE* fichier)
 
     // ID
     printf("ID => ");
+
+    char c;
     entite->id = malloc(sizeof(char) * (LONGUEUR_ID + 1));
-    fscanf(fichier, "%s ", entite->id);
+
+    fscanf(fichier, "%c", &c);
+
+    int i;
+    for (i = 0; i < LONGUEUR_ID; i++)
+    {
+        printf("%c", c);
+        entite->id[i] = c;
+        fscanf(fichier, "%c", &c);
+    }
+    entite->id[i] = '\0';
+    printf(".");
+    
+    printf("ID : %s ", entite->id);
+
+    // printf("%s ", entite->id);
+    // fscanf(fichier, "%s ", entite->id);
 
     // Position / Direction / Orientation
     // printf("Position / Direction / Orientation => ");
