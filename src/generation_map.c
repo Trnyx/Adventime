@@ -168,7 +168,6 @@ static e_solTag selectionBlock(const e_biome biome) {
 void ajoutDenivele(t_map *map) {
     for (int x = 1; x < TAILLE_MAP * TAILLE_CHUNK - 1; x++) {
         for (int y = 1; y < TAILLE_MAP * TAILLE_CHUNK - 1; y++) {
-
             t_block *block = getBlockDansMap(x, y, COUCHE_SOL, map);
             if (block == NULL) continue;
 
@@ -184,15 +183,19 @@ void ajoutDenivele(t_map *map) {
                     // -4 -3 -2
                     // -1  0  1
                     //  2  3  4
-                    if (difference > 1) {
+                    if (difference < -1) {
                         block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
                         block->tag = ((xAlentour - x) + (yAlentour - y) * 3) + DENIVELE_CENTRE;
+                        printf("TAG %i \n", block->tag);
+
+
+                        if (xAlentour == x || yAlentour == y)
+                            goto _BLOCK_SUIVANT;
                     }
                 }
             }
-            
-
-
+            _BLOCK_SUIVANT:
+                continue;
         }
     }
 }

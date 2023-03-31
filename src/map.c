@@ -413,10 +413,13 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
 
         else if (tag >= DENIVELE_HAUT_GAUCHE && tag <= DENIVELE_BAS_DROIT) {
             texture = moteur->textures->sol;
+            // printf("TAG %i => \n", tag);
             tag = tag % DENIVELE_HAUT_GAUCHE;
 
-            decalage.x += tag % 3;
-            decalage.y += (tag / 3) + 3;
+            decalage.x = tag % 3;
+            decalage.y = (tag / 3) + 3;
+
+            // printf("Decalage %.2f:%.2f\n", decalage.x, decalage.y);
         }
 
 

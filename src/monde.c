@@ -32,14 +32,24 @@
  *  => Pour le seed "123", les 5 premières au début de l'execution du code 
  *     suivra toujours cet ordre
  */
+
 /**
- * @brief Set the Generation Seed object
+ * @brief Applique le seed pour l'initialisation des valeurs aléatoires
  * 
- * @param seed 
- * @return unsigned int 
+ * @param seed Le seed utilisé
+ * @return Le seed donné
  */
-unsigned int setGenerationSeed(unsigned int seed) {
+int setGenerationSeed(int seed) {
     srand(seed);
+    return seed;
+}
+
+
+
+
+
+int convertionSeed(char *seedString) {
+    int seed;
     return seed;
 }
 

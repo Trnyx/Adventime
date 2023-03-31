@@ -27,6 +27,7 @@ typedef enum {
 
 typedef enum {
     ITEM_STEAK,
+    ITEM_PORC,
     ITEM_MATERIEL_BATON,
     ITEM_OUTIL_PIOCHE,
     ITEM_ARME_EPEE,
