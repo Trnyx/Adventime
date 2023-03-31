@@ -161,6 +161,47 @@ static e_solTag selectionBlock(const e_biome biome) {
 
 
 /* -------------------------------------------------------------------------- */
+/*                                    Flags                                   */
+/* -------------------------------------------------------------------------- */
+
+
+void ajoutDenivele(t_map *map) {
+    for (int x = 1; x < TAILLE_MAP * TAILLE_CHUNK - 1; x++) {
+        for (int y = 1; y < TAILLE_MAP * TAILLE_CHUNK - 1; y++) {
+
+            t_block *block = getBlockDansMap(x, y, COUCHE_SOL, map);
+            if (block == NULL) continue;
+
+            
+            t_block *blockAlentour = NULL;
+            int difference = 0;
+            
+            for (int xAlentour = x - 1; xAlentour <= x + 1; xAlentour++) {
+                for (int yAlentour = y - 1; yAlentour <= y + 1; yAlentour++) {
+                    blockAlentour = getBlockDansMap(xAlentour, yAlentour, COUCHE_SOL, map);
+
+                    difference = block->tag - blockAlentour->tag;
+                    // -4 -3 -2
+                    // -1  0  1
+                    //  2  3  4
+                    if (difference > 1) {
+                        block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+                        block->tag = ((xAlentour - x) + (yAlentour - y) * 3) + DENIVELE_CENTRE;
+                    }
+                }
+            }
+            
+
+
+        }
+    }
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
 /*                                 Changement                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -612,6 +653,10 @@ static t_map* genererOverworld(t_map *map) {
             }
         }
     }
+
+
+    // Ajout des blocks pour les différence de hauteur
+    ajoutDenivele(map);
 
 
     // Structures

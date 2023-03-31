@@ -150,7 +150,7 @@ static int adventime(t_monde *monde) {
     // Sauvegarde du monde complet ici
 
     viderEntitesDeListe(cache->entites);
-    viderEntitesDeListe(cache->map->entites);
+    detruireMonde(&cache->monde);
 
     return continuer;
 }

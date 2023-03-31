@@ -36,9 +36,10 @@ char* safe_simple();
 
 char* custom(char alphs[], int size) {
     int alph_size = strlen(alphs) - 1;
-    char *id = (char *) malloc(sizeof(char) * 3);
+    char *id = (char *) malloc(sizeof(char) * (size + 1));
 
-    for( int i = 0; i < size; i++ ) {
+    int i;
+    for( i = 0; i < size; i++ ) {
         int random_num;
         do {
             random_num = rand();
@@ -48,6 +49,7 @@ char* custom(char alphs[], int size) {
         id[i] = alphs[random_num];
     }
 
+    id[i] = '\0';
     return id;
 }
 

@@ -85,9 +85,12 @@ void detruireAll(t_moteur *moteur, t_audio *audio) {
         if (cache->monde->joueur != NULL) 
             detruireJoueur(&cache->monde->joueur);
 
-        detruireCache(&cache);
-        detruireTemps(&moteur->temps);
     }
+    
+    detruireCache(&cache);
+    detruireTemps(&moteur->temps);
+
+
     TTF_Quit();
     detruireCamera(&moteur->camera);
     detruireTextures(&moteur->textures);

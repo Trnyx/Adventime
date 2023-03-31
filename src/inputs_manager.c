@@ -86,8 +86,10 @@ int inputManager(t_joueur *joueur) {
 
                 // Inventaire
                 else if (controles.inventory == event.key.keysym.scancode) {
-                    if (joueur->actionFlags->inventory == 0)
+                    if (joueur->actionFlags->inventory == 0) {
                         joueur->actionFlags->inventory = 1;
+                        // CHANGER ETAT OUVERTURE INVENTAIRE
+                    }
                     else
                         joueur->actionFlags->inventory = -1;
                 }

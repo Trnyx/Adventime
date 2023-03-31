@@ -63,13 +63,13 @@ void dessinerLumiere(SDL_Rect source) {
     const int rayon = 2 * source.w;
 
 
-    for (float i = 0; i < rayon; i += 0.5) {
+    for (int i = 0; i < rayon; i++) {
         // Calcul de l'alpha en fonction de la distance au centre
         float distance = (float)i / (float)rayon;
         float alpha = 1.0f - expf(-1.0 * distance);
 
         // Définition de la couleur avec l'alpha ajusté
-        int alphaByte = (alpha * (float)0x50);
+        int alphaByte = (alpha * (float)0x70);
         SDL_SetRenderDrawColor(moteur->renderer, 0xff, 0xf0, 0xbc, alphaByte);
 
         // Dessin du cercle avec un rayon décroissant

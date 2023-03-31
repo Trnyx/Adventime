@@ -68,6 +68,7 @@ typedef enum {
 
 
     /* ---------------------------------- TOIT ---------------------------------- */
+    // Petit
     // LAYER 1
     //  Variant 1
     BLOCK_TOIT_PETIT_LAYER_1_1_STANDARD,
@@ -196,6 +197,8 @@ typedef enum {
 
 
     /* ------------------------------- DECORATIONS ------------------------------ */
+    BLOCK_PIERRE,
+    
     BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE,
     BLOCK_PANNEAU_AFFICHAGE_HAUT_DROIT,
     BLOCK_PANNEAU_AFFICHAGE_BAS_GAUCHE,
@@ -219,6 +222,21 @@ typedef enum {
     BLOCK_BANC_DROIT_BAS,
 
     BLOCK_TONNEAU,
+    FIN_BLOCK_DECORATION,
+
+
+
+    /* -------------------------------- Denivelé -------------------------------- */
+
+    DENIVELE_HAUT_GAUCHE = 1200,
+    DENIVELE_HAUT_CENTRE,
+    DENIVELE_HAUT_DROIT,
+    DENIVELE_GAUCHE,
+    DENIVELE_CENTRE,
+    DENIVELE_DROIT,
+    DENIVELE_BAS_GAUCHE,
+    DENIVELE_BAS_CENTRE,
+    DENIVELE_BAS_DROIT,
     
 
     FIN_BLOCK_STRUCTURE,
@@ -226,12 +244,22 @@ typedef enum {
 
 
 
+
+/**
+ * @enum e_decoration_flag
+ * @brief Enumeration repertoriant les différents flags de décoration
+ * 
+ * Les flags de décorations autour des chemins permettent d'indiquer de facon temporelle
+ * qu'une décoration sera placé à l'endroit du flag
+ * 
+ */
 typedef enum {
     FLAG_LAMPADAIRE_GAUCHE,
     FLAG_BANC_GAUCHE,
-    NB_FLAG_DECO,
+    NB_CENTRE_FLAG_DECO,
     FLAG_LAMPADAIRE_DROIT,
     FLAG_BANC_DROIT,
+    NB_FLAG_DECO,
 } e_decoration_flag;
 
 

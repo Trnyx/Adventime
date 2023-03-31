@@ -90,6 +90,7 @@ void combatMob(t_mob *mob, float distance) {
         else if (distance <= MOB_RAYON_COMBAT_ATTAQUE && distance > MOB_RAYON_COMBAT_RETRAIT) {
             if (mob->cooldownAttaque == 0) {
                 mob->operation = ATTAQUE;
+                mob->animation->frameCourante = 1;
             }
             else {
                 --(mob->cooldownAttaque);
