@@ -123,8 +123,13 @@ static int adventime(t_monde *monde) {
 	    continuer = menu_options(ctx);
 	  }
 	}
-	
-	update(cache->map, joueur);
+
+	if(joueur->actionFlags->bool_inventory) {
+	  menu_inventaire(ctx, joueur);
+	} else {
+	  update(cache->map, joueur);
+	}
+       
 
 	if(continuer == J_MORT) {
 	  continuer = gameOver(ctx, joueur);

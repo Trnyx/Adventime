@@ -8,7 +8,9 @@
  * @version 	1.0
  */
 
+#include "SDL2/SDL_events.h"
 #include "SDL2/SDL_render.h"
+#include "SDL2/SDL_timer.h"
 #include "SDL2/SDL_ttf.h"
 #include <stdio.h>
 #define NK_IMPLEMENTATION
@@ -581,7 +583,6 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
       
     }
     nk_end(ctx);
-    menu_inventaire(ctx, joueur);
     nk_sdl_render(NK_ANTI_ALIASING_ON);
     SDL_RenderPresent(moteur->renderer);
     
@@ -594,19 +595,32 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
 }
 
 state_main menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
-
-  set_style(ctx, THEME_BLACK);
-
-  if (nk_begin(ctx, "inv_menu",
-               nk_rect(0, 0, moteur->window_width, moteur->window_height),
-               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
-    
-  }
-  nk_end(ctx);
-  inv_stats(ctx, joueur);
-  inventaire(ctx, joueur);
   
-  nk_sdl_render(NK_ANTI_ALIASING_ON);
+  set_style(ctx, THEME_BLACK);
+  state_main click = 1;
+  
+  if (joueur->actionFlags->bool_inventory) {
+    SDL_Event evt;
+    nk_input_begin(ctx);
+    while (SDL_PollEvent(&evt)) {
+      nk_sdl_handle_event(&evt);
+      if (evt.key.keysym.scancode == SDL_SCANCODE_E) {
+	click = 0;
+	joueur->actionFlags->bool_inventory = 0;
+      }
+    }
+    nk_input_end(ctx);
+
+    if (nk_begin(ctx, "inv_menu",
+                 nk_rect(0, 0, moteur->window_width, moteur->window_height),
+                 (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
+    }
+  
+    nk_end(ctx);
+    inv_stats(ctx, joueur);
+    inventaire(ctx, joueur);
+    nk_sdl_render(NK_ANTI_ALIASING_ON);
+  }
 }
 
 void inv_stats (struct nk_context * ctx, t_joueur *joueur) {
@@ -672,4 +686,5 @@ void inventaire(struct nk_context *ctx, t_joueur *joueur) {
   }
   nk_end(ctx);
   SDL_RenderPresent(moteur->renderer);
+  SDL_RenderClear(moteur->renderer);
 }

@@ -303,6 +303,8 @@ t_action_flags* initialiserActionFlags() {
     flags->interaction = 0;
     flags->miniMap = 0;
 
+    flags->bool_inventory = 0;
+
     return flags;
 }
 
