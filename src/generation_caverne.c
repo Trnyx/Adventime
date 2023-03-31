@@ -28,9 +28,9 @@
 
 
 void genererCave(t_map *map) {
-    t_chunk* chunkTempo = NULL;
+    // t_chunk* chunkTempo = NULL;
 
-    map->chunks = calloc(TAILLE_MAP * TAILLE_MAP * NB_COUCHE, sizeof(t_chunk));
+    // map->chunks = calloc(TAILLE_MAP * TAILLE_MAP * NB_COUCHE, sizeof(t_chunk));
 
 
 }

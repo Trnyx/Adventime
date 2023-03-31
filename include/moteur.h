@@ -54,6 +54,9 @@ typedef struct s_controles {
     SDL_Scancode key_left;      /**< La touche de direction vers la gauche */
     SDL_Scancode key_right;     /**< La touche de direction vers la droite */
 
+    // Inventaire
+    SDL_Scancode inventory;    /**< La touche pour ouvrir et fermer l'inventaire */
+
     // Interactions
     SDL_Scancode interaction;   /**< La touche d'interaction */
     int attack;                 /**< Le clique pour l'attaque */

@@ -216,7 +216,7 @@ void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
  * @return Un pointeur sur le temps, NULL en cas d'echec
  */
 t_temps* initTemps(const time_t timestamp) {
-    t_temps *temps = malloc(sizeof(t_temps));
+    t_temps *temps = calloc(1, sizeof(t_temps));
 
     if (temps == NULL) {
         printf("Erreur mémoire : Impossible d'allouer la place nécessaire pour le temps\n");

@@ -84,6 +84,16 @@ int inputManager(t_joueur *joueur) {
                     joueur->actionFlags->right = 1;
                 }
 
+                // Inventaire
+                else if (controles.inventory == event.key.keysym.scancode) {
+                    if (joueur->actionFlags->inventory == 0) {
+                        joueur->actionFlags->inventory = 1;
+                        // CHANGER ETAT OUVERTURE INVENTAIRE
+                    }
+                    else
+                        joueur->actionFlags->inventory = -1;
+                }
+
                 // Interaction
                 else if (controles.interaction == event.key.keysym.scancode) {
                     joueur->actionFlags->interaction = 1;
@@ -123,6 +133,11 @@ int inputManager(t_joueur *joueur) {
                 }
                 else if (controles.key_right == event.key.keysym.scancode) {
                     joueur->actionFlags->right = 0;
+                }
+
+                // Inventaire
+                else if (controles.inventory == event.key.keysym.scancode) {
+                    joueur->actionFlags->inventory = 0;
                 }
 
                 // Interaction

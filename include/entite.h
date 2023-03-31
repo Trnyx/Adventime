@@ -179,7 +179,7 @@ typedef struct s_map t_map;
 
 
 boolean peutApparaitre(const t_vecteur2 position, t_map *map);
-t_liste getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range);
+t_liste* getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range);
 void regenerationEntite(t_entiteVivante *entite);
 
 t_entite* creerEntite(const t_vecteur2 position);

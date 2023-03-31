@@ -386,10 +386,24 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
 
     SDL_Rect Message_rect;
     Message_rect.w = (moteur->window_width)*0.17;
-    Message_rect.h = (moteur->window_height)*0.09;
+    Message_rect.h = (moteur->window_height)*0.10;
 
     Message_rect.x = (moteur->window_width) - 5 - Message_rect.w;
     Message_rect.y = 4;
+
+    char lvl[8];
+    sprintf(lvl, "%d", joueur->statistiques.niveau);
+
+    SDL_Surface * s_lvl = TTF_RenderText_Solid(moteur->font, lvl , color);
+	
+    SDL_Texture * t_lvl = SDL_CreateTextureFromSurface(moteur->renderer, s_lvl);
+
+    SDL_Rect r_lvl;
+    r_lvl.w = 30;
+    r_lvl.h = 30;
+
+    r_lvl.x = 330;
+    r_lvl.y = 40;
 
     if (nk_begin(ctx, "HUD", nk_rect(0, 0, 370, 300),
                  (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR))) {
@@ -403,16 +417,19 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
       ctx->style.progress.cursor_normal =
 	nk_style_item_color(nk_rgba(8, 255, 114, 255));
 
-	
+      
       nk_progress(ctx, &current_xp, max_xp, NK_FIXED);
       nk_layout_space_end(ctx);
     }
 
     nk_end(ctx);
     SDL_RenderCopy(moteur->renderer, texture, NULL, &Message_rect);
+    SDL_RenderCopy(moteur->renderer, t_lvl, NULL, &r_lvl);
     nk_sdl_render(NK_ANTI_ALIASING_ON);
     SDL_FreeSurface(surface);
+    SDL_FreeSurface(s_lvl);
     SDL_DestroyTexture(texture);
+    SDL_DestroyTexture(t_lvl);
     
   }
 }
@@ -430,7 +447,7 @@ state_main pauseMenu(struct nk_context *ctx) {
     nk_input_begin(ctx);
     while (SDL_PollEvent(&evt)) {
       if (evt.type == SDL_QUIT) {
-        click = JEU_QUITTER;
+        click = M_MENU;
       }
       nk_sdl_handle_event(&evt);
       if ((evt.type == SDL_MOUSEBUTTONUP) ||
@@ -564,7 +581,7 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
       
     }
     nk_end(ctx);
-    menu_inventaire(ctx);
+    menu_inventaire(ctx, joueur);
     nk_sdl_render(NK_ANTI_ALIASING_ON);
     SDL_RenderPresent(moteur->renderer);
     
@@ -576,7 +593,7 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
   return click;
 }
 
-state_main menu_inventaire(struct nk_context *ctx) {
+state_main menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
 
   set_style(ctx, THEME_BLACK);
 
@@ -586,13 +603,13 @@ state_main menu_inventaire(struct nk_context *ctx) {
     
   }
   nk_end(ctx);
-  inv_stats(ctx);
-  inventaire(ctx);
+  inv_stats(ctx, joueur);
+  inventaire(ctx, joueur);
   
   nk_sdl_render(NK_ANTI_ALIASING_ON);
 }
 
-void inv_stats (struct nk_context * ctx) {
+void inv_stats (struct nk_context * ctx, t_joueur *joueur) {
   
     if (nk_begin(ctx, "Stats",
                nk_rect(moteur->window_width*0.03, moteur->window_height*0.15, moteur->window_width*0.2, moteur->window_height*0.7),
@@ -602,13 +619,37 @@ void inv_stats (struct nk_context * ctx) {
   nk_end(ctx);
 }
 
-void inventaire (struct nk_context * ctx) {
+void inventaire (struct nk_context * ctx, t_joueur *joueur) {
 
-      if (nk_begin(ctx, "Inventaire",
-               nk_rect(moteur->window_width*0.25, moteur->window_height*0.15, moteur->window_width*0.72, moteur->window_height*0.7),
-               (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
-    
+  static int selected[50] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+  char quantite[99];
+
+  struct nk_rect bounds;
+  const struct nk_input *in = &ctx->input;
+
+  if (nk_begin(
+          ctx, "Inventaire",
+          nk_rect(moteur->window_width * 0.25, moteur->window_height * 0.15,
+                  moteur->window_width * 0.72, moteur->window_height * 0.7),
+          (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
+
+    nk_layout_row_static(ctx, 88, 88, 10);
+    for (int i = 0; i < NOMBRE_SLOT_INVENTAIRE; i++) {
+      bounds = nk_widget_bounds(ctx);
+      
+      sprintf(quantite, "%d", joueur->inventaire->itemSlots[i].quantite);
+      
+      if (nk_input_is_mouse_hovering_rect(in, bounds)) {
+        SDL_Log("oui je suis dedans %d", i);
+        SDL_Log("%f, %f, %f, %f", bounds.x, bounds.y, bounds.w, bounds.h);
+      }
+      selected[i] = 1;
+      if (nk_selectable_label(ctx, quantite, NK_TEXT_ALIGN_RIGHT, &selected[i])) {
+      }
+    }
   }
   nk_end(ctx);
-  
 }

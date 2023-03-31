@@ -192,6 +192,11 @@ t_monde* creerMonde(int seed) {
 void detruireMonde(t_monde **monde) {
     printf("Destruction Monde => ");
     if (monde != NULL && *monde != NULL) {
+        if ((*monde)->id != NULL) {
+            free((*monde)->id);
+            (*monde)->id = NULL;
+        }
+
         if ((*monde)->overworld != NULL)
             detruireMap(&(*monde)->overworld);
         if ((*monde)->caverne != NULL)

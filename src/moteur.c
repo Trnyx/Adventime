@@ -61,6 +61,9 @@ void initControles(t_controles *controles) {
     controles->key_left = SDL_SCANCODE_A;
     controles->key_right = SDL_SCANCODE_D;
 
+    // Inventaire
+    controles->inventory = SDL_SCANCODE_E;
+
     // Interactions
     controles->interaction = SDL_SCANCODE_F;
     controles->attack = SDL_BUTTON_LEFT;

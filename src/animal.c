@@ -52,9 +52,9 @@ e_entiteTag choisirTag() {
  * @return un pointeur sur l'entité d'un animal se situant dans le troupeau lorque l'animal que l'on vérifie se situe trop loin du troupeau
  */
 t_entite* estTropLoinDuTroupeau(t_animal *animal) {
-    t_liste entitesAlentours = getEntitesAlentour((t_entite*)animal, ENTITE_MOB, ANIMAL_RAYON_DETECTION_TROUPEAU);
+    t_liste *entitesAlentours = getEntitesAlentour((t_entite*)animal, ENTITE_MOB, ANIMAL_RAYON_DETECTION_TROUPEAU);
     
-    if (liste_vide(&entitesAlentours))
+    if (liste_vide(entitesAlentours))
         return NULL;
 
 
@@ -62,9 +62,9 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
     t_entite *entite = NULL;
     float distance = 0.0;
 
-    en_tete(&entitesAlentours);
-    while (!hors_liste(&entitesAlentours)) {
-        valeur_elt(&entitesAlentours, &entiteTempo);
+    en_tete(entitesAlentours);
+    while (!hors_liste(entitesAlentours)) {
+        valeur_elt(entitesAlentours, &entiteTempo);
 
         if (entiteTempo->tag == animal->tag) {
             distance = calculDistanceEntreEntites((t_entite*)animal, entiteTempo);
@@ -75,10 +75,11 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
                 entite = entiteTempo;
         }
 
-        suivant(&entitesAlentours);
+        suivant(entitesAlentours);
     }
     
     
+    detruire_liste(&entitesAlentours);
     return entite;
 }
 

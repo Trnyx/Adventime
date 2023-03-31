@@ -17,6 +17,7 @@
 #include "../include/map.h"
 #include "../include/vegetations.h"
 #include "../include/structures.h"
+#include "../include/particules.h"
 #include "../include/camera.h"
 
 
@@ -177,6 +178,11 @@ t_chunk* getChunkGraceABlock(const int x, const int y, const int couche, t_map *
 
 
 
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                    Rendu                                   */
 /* -------------------------------------------------------------------------- */
@@ -195,6 +201,7 @@ t_chunk* getChunkGraceABlock(const int x, const int y, const int couche, t_map *
  */
 int dessinerBlockSol(int tag, SDL_Rect *rendu) {
     SDL_Rect source;
+
 
 
     if (tag >= SOL_EAU_PROFONDE && tag <= SOL_MONTAGNE_2) {
@@ -382,16 +389,34 @@ int dessinerObjet(int tag, SDL_Rect *rendu) {
 
         /* ------------------------------- DECORATIONS ------------------------------ */
 
-        else if (tag >= BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE && tag < FIN_BLOCK_STRUCTURE) {
-            if (tag == BLOCK_LAMPADAIRE_GAUCHE_BAS) {
-                printf("BONJOUR");
+        else if (tag >= BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE && tag < FIN_BLOCK_DECORATION) {
+            // Allume les lampadaire pendant la nuit
+            switch (tag) {
+                case BLOCK_LAMPADAIRE_GAUCHE_HAUT:
+                case BLOCK_LAMPADAIRE_DROIT_HAUT:
+                    if (moteur->temps->cycleJeu == CYCLE_NUIT) {
+                        decalage.y += 1;
+                        dessinerLumiere(*rendu);
+                    }
+                    break;
+                
+                default:
+                    break;
             }
-            
+
             tag = tag % BLOCK_PANNEAU_AFFICHAGE_HAUT_GAUCHE;
 
             decalage.x = tag;
-            decalage.y = (17);
+            decalage.y += (17);
+        }
 
+
+        else if (tag >= DENIVELE_HAUT_GAUCHE && tag <= DENIVELE_BAS_DROIT) {
+            texture = moteur->textures->sol;
+            tag = tag % DENIVELE_HAUT_GAUCHE;
+
+            decalage.x += tag % 3;
+            decalage.y += (tag / 3) + 3;
         }
 
 
@@ -512,6 +537,12 @@ int detruireMap(t_map **map) {
 
     free((*map)->chunks);
     (*map)->chunks = NULL;
+
+
+    if ((*map)->entites != NULL) {
+        detruire_liste(&(*map)->entites);
+    }
+
   
     free(*map);
     *map = NULL;

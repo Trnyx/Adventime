@@ -23,7 +23,7 @@
 
 
 
-#define NOMBRE_SLOT_INVENTAIRE 6
+#define NOMBRE_SLOT_INVENTAIRE 36
 
 
 
