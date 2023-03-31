@@ -38,6 +38,18 @@ typedef enum {
 } boolean;
 
 
+ /**
+  * \enum err_sauv
+  * \brief Définit les erreurs possibles durant la sauvegarde.
+ */
+typedef enum
+{
+    SUCCESS = 0,
+    FOPEN_FAIL,
+    LOAD_FAIL,
+} err_sauv;
+
+
 
 /* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */

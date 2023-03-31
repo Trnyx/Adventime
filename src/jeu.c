@@ -26,11 +26,7 @@
 #include "../include/input_manager.h"
 #include "../include/menus.h"
 #include "../include/sauvegarde.h"
-
-
-
-
-
+#include "../include/chargement.h"
 
 
 
