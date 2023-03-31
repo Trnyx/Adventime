@@ -61,5 +61,6 @@ dkms.conf
 /save/
 /bin/
 /lib/
+/sauvegarde/
 
 .DS_Store
