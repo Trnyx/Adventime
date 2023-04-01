@@ -39,7 +39,7 @@
  * @param seed Le seed utilisé
  * @return Le seed donné
  */
-int setGenerationSeed(int seed) {
+int setGenerationSeed(long long int seed) {
     srand(seed);
     return seed;
 }
@@ -136,7 +136,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
  * @param seed 
  * @return t_monde* 
  */
-t_monde* creerMonde(int seed) {
+t_monde* creerMonde(long long int seed) {
     t_monde *monde = malloc(sizeof(t_monde));
     const time_t timestamp = time(NULL);
 
@@ -161,6 +161,7 @@ t_monde* creerMonde(int seed) {
 
     // Seed
     monde->seed = seed;
+    printf("SEED : %i\n", seed);
 
     // Maps
     monde->overworld = genererMap(MAP_OVERWORLD);

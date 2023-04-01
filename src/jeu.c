@@ -164,7 +164,7 @@ static int adventime(t_monde *monde) {
  * 
  * @return int 
  */
-static int nouveauMonde(/* char *nom, int seed */) {
+static int nouveauMonde(/* char *nom, const long long int seed */) {
     // int seed = -1;
     // int seed = 1679905571;
     // int seed = 1679940582;
