@@ -6,7 +6,7 @@ SYS := $(shell uname)
 # Compilateur
 CC = gcc
 # Paramètres de la compilation
-CFLAGS = -g -Wall -fms-extensions -Llib -lm
+CFLAGS = -g -Wall -Wno-microsoft-anon-tag -fms-extensions -Llib -lm
 
 # Nom de l'exécutable
 EXEC = Adventime
