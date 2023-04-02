@@ -273,13 +273,14 @@ t_itemEntite *creerItemEntite(const t_vecteur2 position, const e_itemTag tag) {
 
 t_baseItem basesItems[] = {
     { ITEM_STEAK, CATEGORIE_MATERIEL, 16 },
+    { ITEM_PORC, CATEGORIE_MATERIEL, 16 },
 
     // MATERIELS
     { ITEM_MATERIEL_BATON, CATEGORIE_MATERIEL, 16 },
 
-    // ARMES
-    { ITEM_ARME_EPEE, CATEGORIE_ARME, 1 },
-
     // OUTILS
     { ITEM_OUTIL_PIOCHE, CATEGORIE_OUTIL, 1 },
+
+    // ARMES
+    { ITEM_ARME_EPEE, CATEGORIE_ARME, 1 },
 };
