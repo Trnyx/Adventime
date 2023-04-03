@@ -343,12 +343,11 @@ void update(t_map *map, t_joueur *joueur) {
 
     /* --------------- Construction de l'affichage de l'interface --------------- */
 
-    // afficherInterface(joueur);
+    updateHUD(ctx, joueur);
     
 
     /* ------------------------ Affichage à l'utilisateur ----------------------- */
 
-    updateHUD(ctx, joueur);
 	
     SDL_RenderPresent(moteur->renderer);
     SDL_RenderClear(moteur->renderer);

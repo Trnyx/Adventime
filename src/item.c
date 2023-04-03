@@ -188,6 +188,13 @@ extern t_arme* arme_creer(e_itemTag tag)
 
 
 
+/**
+ * @brief Met à jour l'item entité
+ * 
+ * @param itemEntite L'item entité qui doit être mis à jour
+ * @param distance La distance entre l'item entité et le joueur
+ * @param recuperateur L'entité récupérant l'item
+ */
 void updateItemEntite(t_itemEntite *itemEntite, const float distance, t_joueur *recuperateur) {
     if (itemEntite->cooldownAvantPrise > 0) {
         --(itemEntite->cooldownAvantPrise);
@@ -206,6 +213,11 @@ void updateItemEntite(t_itemEntite *itemEntite, const float distance, t_joueur *
 
 
 
+/**
+ * @brief Detruit un coffre est libère la mémoire allouée pour ce dernier
+ * 
+ * @param itemEntite L'adresse du pointeur de l'item entité
+ */
 void detruireItemEntite(t_itemEntite **itemEntite) {
     if (itemEntite != NULL && itemEntite != NULL) {
         printf("Destruction Item Entite => ");
@@ -222,6 +234,14 @@ void detruireItemEntite(t_itemEntite **itemEntite) {
 
 
 
+/**
+ * @brief Alloue l'espace nécessaire pour un item entité et le créer
+ * 
+ * @param position La position à laquelle l'item entité doit apparaitre
+ * @param tag Le tag de l'item qui doit être créé
+ * 
+ * @return Un pointeur sur l'item, NULL en cas d'echec
+ */
 t_itemEntite *creerItemEntite(const t_vecteur2 position, const e_itemTag tag) {
     t_item *item = item_creer(tag);
 
@@ -271,6 +291,10 @@ t_itemEntite *creerItemEntite(const t_vecteur2 position, const e_itemTag tag) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief 
+ * 
+ */
 t_baseItem basesItems[] = {
     { ITEM_STEAK, CATEGORIE_MATERIEL, 16 },
     { ITEM_PORC, CATEGORIE_MATERIEL, 16 },

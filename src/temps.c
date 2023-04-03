@@ -209,7 +209,7 @@ void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp) {
 
 
 /**
- * @brief Alloue l'espace nécessaire pour le temps et le créé
+ * @brief Alloue l'espace nécessaire pour le temps et le créer
  * 
  * @param timestamp Le timestamp réel permettant d'intialiser le temps du jeu
  * 

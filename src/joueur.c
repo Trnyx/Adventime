@@ -331,7 +331,7 @@ void detruireActionFlags(t_action_flags **flags) {
 /**
  * @brief Detruit un joueur est libère la mémoire allouée pour ce dernier
  * 
- * @param joueur L'adrese du pointeur du joueur à détruire
+ * @param joueur L'adresse du pointeur du joueur à détruire
  */
 void detruireJoueur(t_joueur **joueur) {
     if (joueur != NULL && *joueur != NULL) {
@@ -379,7 +379,7 @@ t_action_flags* initialiserActionFlags() {
 
 
 /**
- * @brief Alloue l'espace nécessaire pour un joueur et le créé
+ * @brief Alloue l'espace nécessaire pour un joueur et le créer
  * 
  * @param position La position à laquelle le joueur doit être créé
  * 

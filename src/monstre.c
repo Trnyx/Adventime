@@ -68,7 +68,7 @@ int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
 /**
  * @brief Detruit un monstre est libère la mémoire allouée pour ce dernier
  * 
- * @param monstre L'adrese du pointeur du monstre à détruire
+ * @param monstre L'adresse du pointeur du monstre à détruire
  */
 void detruireMonstre(t_monstre **monstre) {
     printf("Destruction Monstre => ");
@@ -90,7 +90,7 @@ void detruireMonstre(t_monstre **monstre) {
 
 
 /**
- * @brief Alloue l'espace nécessaire pour un monstre et le créé
+ * @brief Alloue l'espace nécessaire pour un monstre et le créer
  * 
  * @param position La position à laquelle le monstre doit apparaitre
  * @param biome Le biome dans lequel le monstre apparait

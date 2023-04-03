@@ -198,7 +198,7 @@ t_monde* creerMonde(long long int seed) {
 /**
  * @brief Detruit un monde est libère la mémoire allouée pour ce dernier
  * 
- * @param monde L'adrese du pointeur du monde à détruire
+ * @param monde L'adresse du pointeur du monde à détruire
  */
 void detruireMonde(t_monde **monde) {
     printf("Destruction Monde => ");

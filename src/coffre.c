@@ -53,7 +53,7 @@ void recupererCoffre(t_coffre *coffre, t_joueur *recuperateur) {
 
 
 /**
- * @brief Detruit un coffre est libère la mémoire allouée pour cette dernière
+ * @brief Detruit un coffre est libère la mémoire allouée pour ce dernier
  * 
  * @param coffre L'adresse du pointeur du coffre à détruire
  */

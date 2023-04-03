@@ -1,7 +1,7 @@
 /**
  * @file inventaire.c
  * 
- * @brief 
+ * @brief pmp
  * 
  * @author Clément Hibon
  * @date 24 mars
@@ -117,10 +117,11 @@ void recupererItem(t_itemEntite *itemEntite, t_joueur *recuperateur) {
 
 
 /**
- * @brief 
+ * @brief Vérifie si le stockage est vide
  * 
- * @param stockage 
- * @return boolean 
+ * @param stockage Le stockage à vérifier
+ * 
+ * @return VRAI si le stockage est vide, FAUX sinon
  */
 boolean stockageEstVide(t_stockage *stockage) {
     for (int i = 0; i < stockage->nbSlots; i++) {
@@ -138,10 +139,10 @@ boolean stockageEstVide(t_stockage *stockage) {
 
 
 /**
- * @brief 
+ * @brief Permet de transférer les items contenuent dans un stockage dans un autre stockage
  * 
- * @param source 
- * @param cible 
+ * @param source Le stockage source
+ * @param cible Le stockage cible
  */
 void transfererStockage(t_stockage *source, t_stockage *cible) {
     if (stockageEstVide(source)) return;
@@ -202,10 +203,11 @@ void transfererStockage(t_stockage *source, t_stockage *cible) {
 
 
 /**
- * @brief 
+ * @brief Initialise un slot d'un stockage
  * 
- * @param index 
- * @return t_itemSlot 
+ * @param index Le numéro du slot à initialiser
+ * 
+ * @return Le slot initialisé
  */
 t_itemSlot initItemSlot(const int index) {
     t_itemSlot itemSlot;
@@ -225,10 +227,11 @@ t_itemSlot initItemSlot(const int index) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour un stockage et le créer
  * 
- * @param nbSlots 
- * @return t_stockage 
+ * @param nbSlots Le nombre de slots que doit contenir le stockage 
+ * 
+ * @return Un pointeur sur le stockage, NULL en cas d'echec
  */
 t_stockage* creerStockage(const unsigned int nbSlots) {
     t_stockage *stockage = malloc(sizeof(t_stockage));
@@ -250,9 +253,9 @@ t_stockage* creerStockage(const unsigned int nbSlots) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour un inventaire et le créer
  * 
- * @return t_inventaire 
+ * @return Un pointeur sur le inventaire, NULL en cas d'echec
  */
 t_inventaire* creerInventaire() {
     t_stockage *stockage = creerStockage(NOMBRE_SLOT_INVENTAIRE);
@@ -274,9 +277,9 @@ t_inventaire* creerInventaire() {
 
 
 /**
- * @brief 
+ * @brief Permet de vider l'entièreté d'un stockage sans le détruire
  * 
- * @param stockage 
+ * @param stockage Le stockage qui doit être vidé
  */
 void viderStockage(t_stockage *stockage) {
     for (int i = 0; i < stockage->nbSlots; i++) {
@@ -290,9 +293,9 @@ void viderStockage(t_stockage *stockage) {
 
 
 /**
- * @brief 
+ * @brief Détruit le slot d'un stockage
  * 
- * @param slot 
+ * @param slot Un pointeur sur le slot à détruire
  */
 void detruireSlot(t_itemSlot *slot) {
     if (slot != NULL) {
@@ -309,9 +312,9 @@ void detruireSlot(t_itemSlot *slot) {
 
 
 /**
- * @brief 
+ * @brief Detruit un stockage est libère la mémoire allouée pour ce dernier
  * 
- * @param stockage 
+ * @param stockage L'adresse du pointeur du stockage à détruire
  */
 void detruireStockage(t_stockage **stockage) {
     if (stockage != NULL && *stockage != NULL) {
@@ -338,9 +341,9 @@ void detruireStockage(t_stockage **stockage) {
 
 
 /**
- * @brief 
+ * @brief Detruit un inventaire est libère la mémoire allouée pour ce dernier
  * 
- * @param inventaire 
+ * @param inventaire L'adresse du pointeur du inventaire à détruire
  */
 void detruireInventaire(t_inventaire **inventaire) {
     if (inventaire != NULL && *inventaire != NULL) {

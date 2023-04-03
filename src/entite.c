@@ -469,7 +469,7 @@ void dessinerEntite(t_entite *entite) {
 /**
  * @brief Detruit une entité est libère la mémoire allouée pour cette dernière
  * 
- * @param entite L'adrese du pointeur de l'entité à détruire
+ * @param entite L'adresse du pointeur de l'entité à détruire
  */
 void detruireEntite(t_entite **entite) {
     printf("Destruction Entite => ");
@@ -502,7 +502,7 @@ void detruireEntite(t_entite **entite) {
 
 
 /**
- * @brief Alloue l'espace nécessaire pour une entité et la créée
+ * @brief Alloue l'espace nécessaire pour une entité et la créer
  * 
  * @param position La position à laquelle l'entité doit être créée
  * 

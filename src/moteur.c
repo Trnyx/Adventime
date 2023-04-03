@@ -78,7 +78,7 @@ void initControles(t_controles *controles) {
 
 
 /**
- * @brief Alloue l'espace nécessaire pour le moteur et le créé
+ * @brief Alloue l'espace nécessaire pour le moteur et le créer
  * 
  * @return Un pointeur sur le moteur, NULL en cas d'echec
  */
