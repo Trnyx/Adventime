@@ -161,7 +161,7 @@ t_monde* creerMonde(long long int seed) {
 
     // Seed
     monde->seed = seed;
-    printf("SEED : %i\n", seed);
+    printf("SEED : %lli\n", seed);
 
     // Maps
     monde->overworld = genererMap(MAP_OVERWORLD);

@@ -24,7 +24,7 @@
 /* -------------------------------------------------------------------------- */
 
 
-void convertirEnSeed(char *string);
+long long int convertirEnSeed(char *string);
 
 
 

@@ -110,7 +110,7 @@ char* convertionChaineEnChaineAscii(char *string) {
  * 
  * @param string 
  */
-void convertirEnSeed(char *string) {
+long long int convertirEnSeed(char *string) {
     char* seedString = convertionChaineEnChaineAscii(string);
 
     const int seedInt = atoi(seedString);
