@@ -20,6 +20,7 @@
 #include "../include/audio.h"
 #include "../include/menus.h"
 #include "../include/mob.h"
+#include "../include/coffre.h"
 
 
 
@@ -227,6 +228,15 @@ void update(t_map *map, t_joueur *joueur) {
                                 musiqueType = MUSIC_BOSS;
                             }
 
+                            break;
+
+
+                        // Sur les coffres
+                        case ENTITE_COFFRE_INVENTAIRE:
+                            if (coffreEstVide((t_coffre*)entite)) {
+                                suppressionEntite(entites, entite);
+                                continue;
+                            }
                             break;
 
 

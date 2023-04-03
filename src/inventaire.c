@@ -119,20 +119,73 @@ void recupererItem(t_itemEntite *itemEntite, t_joueur *recuperateur) {
 /**
  * @brief 
  * 
+ * @param stockage 
+ * @return boolean 
+ */
+boolean stockageEstVide(t_stockage *stockage) {
+    for (int i = 0; i < stockage->nbSlots; i++) {
+        t_itemSlot slot = stockage->itemSlots[i];
+        if (slot.item != NULL && slot.quantite > 0)
+            return FAUX;
+    }
+    
+
+    return VRAI;
+}
+
+
+
+
+
+/**
+ * @brief 
+ * 
  * @param source 
  * @param cible 
  */
 void transfererStockage(t_stockage *source, t_stockage *cible) {
+    if (stockageEstVide(source)) return;
+
     t_itemSlot *slotSource = NULL;
     t_itemSlot *slotCible = NULL;
     
 
-    for (int i = 0; i < source->nbSlots; i++) {
+    for (int i = 0, j = 0; i < source->nbSlots && j < cible->nbSlots; j++) {
         slotSource = &source->itemSlots[i];
-        slotCible = &cible->itemSlots[i];
+        slotCible = &cible->itemSlots[j];
+
+
+        if (slotSource->item == NULL || slotSource->quantite == 0) {
+            i++;
+        }
         
-        slotCible->item = slotSource->item;
-        slotCible->quantite = slotSource->quantite;
+        // Check si le slot dans le stockage cible est déjà utilisé
+        else if (slotCible->item != NULL || slotCible->quantite > 0) {
+            if (slotCible->item->tag == slotSource->item->tag) {
+                t_baseItem base = basesItems[slotSource->item->tag];
+                int quantite = 0;
+                
+                if (slotSource->quantite + slotCible->quantite > base.stackable) {
+                    quantite = base.stackable - slotCible->quantite;
+                }
+                else {
+                    quantite = slotSource->quantite;
+                }
+                
+                slotCible->quantite += quantite;
+                slotSource->quantite -= quantite;
+            }
+        }
+        else {
+            slotCible->item = slotSource->item;
+            slotCible->quantite = slotSource->quantite;
+
+            j = 0;
+
+            slotSource->item = NULL;
+            slotSource->quantite = 0;
+        }    
+
     }
 }
 
@@ -241,15 +294,12 @@ void viderStockage(t_stockage *stockage) {
  * 
  * @param slot 
  */
-void detruireSlot(t_itemSlot **slot) {
-    if (slot != NULL && *slot != NULL) {
+void detruireSlot(t_itemSlot *slot) {
+    if (slot != NULL) {
 
-        t_item *item = (*slot)->item;
+        t_item *item = slot->item;
         if (item != NULL)
             item->detruire(&item);
-
-        free(*slot);
-        *slot = NULL;
 
     }
 }
@@ -267,11 +317,11 @@ void detruireStockage(t_stockage **stockage) {
     if (stockage != NULL && *stockage != NULL) {
 
         int nbSlots = (*stockage)->nbSlots;
-        t_itemSlot *itemSlot = NULL;
+        t_itemSlot itemSlot;
 
         if (nbSlots) {
             for (int i = 0; i < nbSlots; i++) {
-                itemSlot = &(*stockage)->itemSlots[i];
+                itemSlot = (*stockage)->itemSlots[i];
                 detruireSlot(&itemSlot);
             }            
         }

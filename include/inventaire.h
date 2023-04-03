@@ -92,14 +92,17 @@ typedef struct s_joueur t_joueur;
 // void changerSlot();
 
 
+boolean stockageEstVide(t_stockage *stockage);
+
 t_stockage* creerStockage(const unsigned int nbSlots);
 t_inventaire* creerInventaire();
 
 void recupererItem(t_itemEntite *itemEntite, t_joueur *recuperateur);
 
+void transfererStockage(t_stockage *source, t_stockage *cible);
 void viderStockage(t_stockage *stockage);
 
-void detruireSlot(t_itemSlot **slot);
+void detruireSlot(t_itemSlot *slot);
 void detruireStockage(t_stockage **stockage);
 void detruireInventaire(t_inventaire **inventaire);
 

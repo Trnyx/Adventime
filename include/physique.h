@@ -77,6 +77,9 @@
 // Le rayon dans lequel la physique du jeu est inactive
 #define JOUEUR_RAYON_INACTIF (JOUEUR_RAYON_ACTIF * 4)
 
+// Le rayon dans lequel on peut interargir avec les entités
+#define RAYON_INTERACTION 1.5
+
 
 
 

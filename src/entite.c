@@ -398,6 +398,12 @@ void dessinerEntite(t_entite *entite) {
             }
             break;
 
+        case ENTITE_COFFRE:
+        case ENTITE_COFFRE_INVENTAIRE:
+            texture = moteur->textures->structures;
+            sprite.x = 9 * TAILLE_TILE;
+            break;
+
         default:
             break;
     }

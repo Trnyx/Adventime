@@ -303,7 +303,7 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
             printf("EXPERIENCE => %i / %i\n", entite->statistiques.niveau, entite->statistiques.experience);
 
             if (cible->entiteType == ENTITE_JOUEUR)
-                dropInventaire();
+                mortJoueur((t_joueur*)cible);
             else
                 dropItems((t_mob*)cible);
         }

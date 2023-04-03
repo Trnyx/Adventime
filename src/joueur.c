@@ -22,6 +22,7 @@
 #include "../include/joueur.h"
 #include "../include/camera.h"
 #include "../include/combat.h"
+#include "../include/coffre.h"
 
 
 
@@ -158,7 +159,6 @@ void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
     t_liste *mobsAlentour = getEntitesAlentour((t_entite*)joueur, ENTITE_MOB, 2.0);
 
     if (!liste_vide(mobsAlentour)) {
-        printf("ENTITE PROCHE\n");
         en_tete(mobsAlentour);
         t_mob *mob = NULL;
 
@@ -207,8 +207,10 @@ void joueurInteraction(t_joueur *joueur) {
 
     
     if (entite != NULL)
+        if (entite->interaction != NULL) {
             if (entite->tag == TAG_COFFRE)
                 entite->interaction(entite, joueur);
+        }
 
 }
 
@@ -272,9 +274,18 @@ int updateJoueur(t_joueur *joueur) {
  * @param joueur Le joueur qui est mort
  */
 void mortJoueur(t_joueur *joueur) {
-    // bruitage
+    // todo : bruitage
     joueur->statistiques.pv = 0;
 
+    // Inventaire
+    if (!stockageEstVide((t_stockage*)joueur->inventaire)) {
+        t_coffre *coffre = creerCoffre(joueur->position);
+        coffre->entiteType = ENTITE_COFFRE_INVENTAIRE;
+        ajout_droit(moteur->cache->entites, (t_entite*)coffre);
+
+        transfererStockage((t_stockage*)joueur->inventaire, coffre->stockage);
+        viderStockage((t_stockage*)joueur->inventaire);
+    }
 }
 
 
