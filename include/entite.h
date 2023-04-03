@@ -127,10 +127,12 @@ struct s_entite {
 
     boolean destructionInactif;                             /**< Doit être détruite lorsqu'elle est inactive */
     boolean destructionDelai;                               /**< Doit être détruite lorsqu'elle est inactive */
+    boolean interargirAvec;                                 /**< Peut être interargit */
 
 
     int  (*update)(t_entite*, float, t_entite* cible);      /**< Fonction d'actualisation de l'entité */
     void (*detruire)(t_entite**);                           /**< Fonction de suppression de l'entité */
+    void (*interaction)(void*, void*);                      /**< Fonction d'interaction avec l'entité */
 };
 
 

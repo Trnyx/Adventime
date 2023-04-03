@@ -96,7 +96,10 @@ int inputManager(t_joueur *joueur) {
 
                 // Interaction
                 else if (controles.interaction == event.key.keysym.scancode) {
-                    joueur->actionFlags->interaction = 1;
+                    if (joueur->actionFlags->interaction == 0)
+                        joueur->actionFlags->interaction = 1;
+                    else
+                        joueur->actionFlags->interaction = -1;
                 }
 
                 // Minimap

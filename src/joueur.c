@@ -17,6 +17,7 @@
 #include <math.h>
 #include <SDL2/SDL.h>
 
+#include "../include/physique.h"
 #include "../include/moteur.h"
 #include "../include/joueur.h"
 #include "../include/camera.h"
@@ -68,6 +69,19 @@ boolean doitAttaquer(t_action_flags *flags) {
  */
 boolean doitSeDeplacer(t_action_flags *flags) {
     return flags->up || flags->down || flags->left || flags->right;
+}
+
+
+
+/**
+ * @brief Regarde les inputs et vérifie si le joueur doit intéragir
+ * 
+ * @param flags Les flags indiquant les inputs du joueur
+ * 
+ * @return VRAI si le joueur doit interargir, FAUX sinon
+ */
+boolean doitInterargir(t_action_flags *flags) {
+    return flags->interaction == 1;
 }
 
 
@@ -166,6 +180,42 @@ void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
 
 
 
+void joueurInteraction(t_joueur *joueur) {
+    t_liste *entites = moteur->cache->entites;
+    t_entite *entite = NULL;
+    t_entite *entiteTempo = NULL;
+    int distanceMin = RAYON_INTERACTION;
+
+    en_tete_cache(entites);
+    while (!hors_liste_cache(entites)) {
+        valeur_elt_cache(entites, &entiteTempo);
+        if (!entiteTempo->interargirAvec) {
+            suivant_cache(entites);
+            continue;
+        }
+
+
+        const float distance = calculDistanceEntreEntites((t_entite*)joueur, entiteTempo);
+
+        if (distance <= RAYON_INTERACTION) {
+            if (distance <= distanceMin)
+                entite = entiteTempo;
+        }
+
+        suivant_cache(entites);
+    }
+
+    
+    if (entite != NULL)
+            if (entite->tag == TAG_COFFRE)
+                entite->interaction(entite, joueur);
+
+}
+
+
+
+
+
 /**
  * @brief Actualise le joueur
  * 
@@ -177,6 +227,11 @@ int updateJoueur(t_joueur *joueur) {
 
     if (joueur->cooldownAttaque > 0) {
         --(joueur->cooldownAttaque);
+    }
+
+
+    if (doitInterargir(joueur->actionFlags)) {
+        joueurInteraction(joueur);
     }
 
 

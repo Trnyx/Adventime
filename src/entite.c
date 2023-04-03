@@ -535,6 +535,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
     
     entite->update = NULL;
     entite->detruire = detruireEntite;
+    entite->interaction = NULL;
     
 
     entite->timestampCreation = SDL_GetTicks();
@@ -542,6 +543,7 @@ t_entite* creerEntite(const t_vecteur2 position) {
 
     entite->destructionInactif = VRAI;
     entite->destructionDelai = VRAI;
+    entite->interargirAvec = FAUX;
 
     ++(moteur->cache->compteurEntites.entites);
     return entite;
