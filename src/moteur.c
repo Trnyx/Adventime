@@ -141,18 +141,18 @@ void updateEchelle() {
     // moteur->camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
     // moteur->camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
   
-    int tailleRendu;
+    int tailleRendu = moteur->window_width / TAILLE_CAMERA_LARGEUR;
 
-    int tailleLargeur = moteur->window_width / TAILLE_CAMERA_LARGEUR;
-    int tailleHauteur = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
+    // int tailleLargeur = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    // int tailleHauteur = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
 
 
-    if (tailleHauteur < tailleLargeur) {
-        tailleRendu = tailleHauteur;
-    }
-    else {
-        tailleRendu = tailleLargeur;
-    }
+    // if (tailleHauteur < tailleLargeur) {
+    //     tailleRendu = tailleHauteur;
+    // }
+    // else {
+    //     tailleRendu = tailleLargeur;
+    // }
 
 
     moteur->camera->tailleRendu.x = tailleRendu;
