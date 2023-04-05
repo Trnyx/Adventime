@@ -1,7 +1,7 @@
 /**
  * @file audio.c
  * 
- * @brief 
+ * @brief Gestion des musiques et des bruitages
  * 
  * 
  * @author Clément Hibon

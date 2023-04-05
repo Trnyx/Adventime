@@ -1,7 +1,7 @@
 /**
  * @file inventaire.h
  * 
- * @brief 
+ * @brief Module de gestion de l'inventaire
  * 
  * @author Clément Hibon
  * @date 24 mars
@@ -17,7 +17,7 @@
 
 
 
-#include "item.h"
+#include "stockage.h"
 
 
 
@@ -35,35 +35,8 @@
 
 
 /**
- * @brief Structure modélisant un slot d'un stockage
- * 
- */
-typedef struct s_itemSlot {
-    int slot;                   /**< Le numéro du slot */
-
-    t_item *item;               /**< L'item contenue dans le slot (à voir si c'est un pointeur) */
-    int quantite;               /**< Le nombre d'item contenue dans le slot */
-
-    // boolean estSelectionne;
-} t_itemSlot;
-
-
-
-
-/**
- * @brief Structure modélisant la base d'un inventaire
- * 
- */
-typedef struct s_stockage {
-    int nbSlots;                /**< Le nombre de slots dans le stockage */
-    // int nbSlotsMax;             /**< Le nombre de slots maximal que peut avoir le stockage */
-    t_itemSlot *itemSlots;      /**< La liste des slots dans le stockage */
-} t_stockage;
-
-
-
-/**
- * @brief 
+ * @struct t_extensionInventaire
+ * @brief Structure modélisant une extension d'inventaire
  * 
  */
 typedef struct s_extensionInventaire {
@@ -73,8 +46,13 @@ typedef struct s_extensionInventaire {
 
 
 
+/**
+ * @struct t_inventaire
+ * @brief Structure modélisant l'inventaire
+ * 
+ */
 typedef struct s_inventaire {
-    struct s_stockage;                // Les infos de stockage pour l'inventaire
+    struct s_stockage;                /**< "Etend" la structure stockage */
 
     // Extensions d'inventaire
     // struct s_extensionInventaire extension;    // un sac ou une petite sacoche pour avoir plus de slots disponible 
@@ -92,18 +70,11 @@ typedef struct s_joueur t_joueur;
 // void changerSlot();
 
 
-boolean stockageEstVide(t_stockage *stockage);
 
-t_stockage* creerStockage(const unsigned int nbSlots);
 t_inventaire* creerInventaire();
 
 void recupererItem(t_itemEntite *itemEntite, t_joueur *recuperateur);
 
-void transfererStockage(t_stockage *source, t_stockage *cible);
-void viderStockage(t_stockage *stockage);
-
-void detruireSlot(t_itemSlot *slot);
-void detruireStockage(t_stockage **stockage);
 void detruireInventaire(t_inventaire **inventaire);
 
 

@@ -34,6 +34,11 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @enum e_structureTag
+ * @brief Enumerateur contenant les tags des structures 
+ * 
+ */
 typedef enum {
     STRUCTURE_PUIT,
     STRUCTURE_PETITE_MAISON_1,
@@ -56,7 +61,7 @@ typedef enum {
 
 /**
  * @struct t_structure
- * @brief 
+ * @brief Structures modélisant les données d'une structure
  * 
  */
 typedef struct s_structure {

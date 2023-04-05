@@ -1,3 +1,17 @@
+/**
+ * @file blocks_tag.h
+ *
+ * @brief Module regroupant tous les blocks du jeu
+ *
+ * @author Clément Hibon
+ * @date 10 mars
+ * @version 1.1
+ */
+
+
+
+
+
 #ifndef _JEU_BLOCK_TAG_
 #define _JEU_BLOCK_TAG_
 

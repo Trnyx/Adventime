@@ -19,7 +19,7 @@
 
 
 
-#include "inventaire.h"
+#include "stockage.h"
 
 
 
@@ -31,12 +31,13 @@
 
 
 /**
- * @brief 
+ * @struct t_coffre
+ * @brief Structure modélisant un coffre
  * 
  */
 typedef struct s_coffre {
-    struct s_entite;
-    t_stockage *stockage;
+    struct s_entite;            /**< "Etend" la structure entite */
+    t_stockage *stockage;       /**< Le stockage du coffre */
 } t_coffre;
 
 

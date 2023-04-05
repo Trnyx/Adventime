@@ -1,7 +1,7 @@
 /**
  * @file logique_combat.c
  * 
- * @brief 
+ * @brief Gestion pour les combats
  * 
  * @author Clément Hibon
  * @date 10 février

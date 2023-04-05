@@ -1,7 +1,10 @@
 /**
  * @file moteur.c
  *
- * @brief
+ * @brief Gestion du moteur du jeu
+ * 
+ * Le moteur contient toutes les informations nécessaire pour le renderer, la caméra, les textures 
+ * ainsi que le cache du jeu
  *
  * @author Eliott Remars & Clément Hibon
  * @date 3 février

@@ -1,7 +1,7 @@
 /**
  * @file logique_deplacements.c
  * 
- * @brief 
+ * @brief Gestion des déplacement du jeu
  * 
  * @author Clément Hibon
  * @date 10 février

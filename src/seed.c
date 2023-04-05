@@ -1,7 +1,7 @@
 /**
  * @file seed.c
  *
- * @brief
+ * @brief Module 
  *
  * @author Clément Hibon
  * @date 31 mars
@@ -22,10 +22,10 @@
 
 
 /**
- * @brief 
+ * @brief Converti un caractère en int (code ascii)
  * 
- * @param c 
- * @return unsigned int 
+ * @param c Le caractère à convertir
+ * @return Le code ascii du caractère
  */
 unsigned int charToInt(char c) {
     return (int)c;
@@ -34,9 +34,9 @@ unsigned int charToInt(char c) {
 
 
 /**
- * @brief 
+ * @brief Inverse une chaine de caractères
  * 
- * @param string 
+ * @param string La chaine de caractères à inverser
  */
 void reverse(char *string) {
     int i, j;
@@ -52,10 +52,12 @@ void reverse(char *string) {
 
 
 /**
- * @brief 
+ * @brief Fonction convertissant un nombre en chaine de caractères
  * 
- * @param n 
- * @param string 
+ * Une fonction itoa existe déjà mais aucune référence vers celle ci est fait lors de la compilation
+ * 
+ * @param n Le nombre à convertir
+ * @param string La chaine de caractère finale
  */
 void myItoa(int n, char *string) {
     int i = 0, sign = n;
@@ -80,10 +82,10 @@ void myItoa(int n, char *string) {
 
 
 /**
- * @brief 
+ * @brief Convertie une chaine de caractère en une chaine de caractère contenant le code ascii des caractère de la première chaine
  * 
- * @param string 
- * @return char* 
+ * @param string La chaine à convertir
+ * @return La chaine de caractère ascii
  */
 char* convertionChaineEnChaineAscii(char *string) {
     char *seedString = calloc(strlen(string), sizeof(char));
@@ -107,9 +109,11 @@ char* convertionChaineEnChaineAscii(char *string) {
 
 
 /**
- * @brief 
+ * @brief Converti une chaine de caractère en long long int
  * 
- * @param string 
+ * @param string La chaine de caractère à convertir
+ * 
+ * @return Un nombre correspondant à la chaine donnée en paramètre
  */
 long long int convertirEnSeed(char *string) {
     char* seedString = convertionChaineEnChaineAscii(string);

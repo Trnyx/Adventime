@@ -1,7 +1,7 @@
 /**
  * @file physique.h
  * 
- * @brief 
+ * @brief Module contenant toutes les constantes requises pour la physique du jeu
  * 
  * @author Clément Hibon
  * @date 10 février

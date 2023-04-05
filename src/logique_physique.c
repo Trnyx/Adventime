@@ -1,7 +1,9 @@
 /**
  * @file logique_physique.c
  * 
- * @brief 
+ * @brief Module de gestion pour la physique / logique du jeu
+ * 
+ * A chaque frame la fonction update est executer afin de mettre à jour toute la physique / logique du jeu
  * 
  * @author Clément Hibon
  * @date 10 février

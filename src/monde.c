@@ -12,10 +12,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-// #include "../include/NanoId/nanoid.h"
-
 #include "../include/moteur.h"
 #include "../include/monde.h"
+#include "../include/seed.h"
 
 
 
@@ -48,9 +47,8 @@ int setGenerationSeed(long long int seed) {
 
 
 
-int convertionSeed(char *seedString) {
-    int seed;
-    return seed;
+long long int convertionSeed(char *seedString) {
+    return convertirEnSeed(seedString);
 }
 
 
