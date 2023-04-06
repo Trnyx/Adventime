@@ -634,17 +634,17 @@ void inv_stats (struct nk_context * ctx, t_joueur *joueur) {
 
   sprintf(text_pv, "%d/%d", (int)joueur->statistiques.pv, joueur->statistiques.pvMax);
   
-  sprintf(attaque, "%f", joueur->statistiques.attaque);
+  sprintf(attaque, "%d", (int)joueur->statistiques.attaque);
 
-  sprintf(def, "%f", joueur->statistiques.defense);
+  sprintf(def, "%d", (int)joueur->statistiques.defense);
 
-  sprintf(vitesse, "%f", joueur->statistiques.vitesse);
+  sprintf(vitesse, "%d", (int)joueur->statistiques.vitesse);
   
     if (nk_begin(ctx, "Stats",
                nk_rect(moteur->window_width*0.03, moteur->window_height*0.15, moteur->window_width*0.2, moteur->window_height*0.7),
                (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
 
-      nk_layout_row_static(ctx, moteur->window_height*0.1, moteur->window_width*0.1, 2);
+      nk_layout_row_static(ctx, moteur->window_height*0.12, moteur->window_width*0.1, 2);
 
       nk_label(ctx, "Niveau :", NK_TEXT_CENTERED);
       nk_label(ctx, lvl, NK_TEXT_LEFT);
