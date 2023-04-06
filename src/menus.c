@@ -623,10 +623,16 @@ void menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
 }
 
 void inv_stats (struct nk_context * ctx, t_joueur *joueur) {
+
+  char current_pv[2];
   
     if (nk_begin(ctx, "Stats",
                nk_rect(moteur->window_width*0.03, moteur->window_height*0.15, moteur->window_width*0.2, moteur->window_height*0.7),
                (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
+
+      nk_layout_row_static(ctx, moteur->window_height*0.1, moteur->window_width*0.1, 2);
+      nk_label(ctx, "PV : ", NK_TEXT_CENTERED);
+      nk_label(ctx, "500", NK_TEXT_LEFT);
     
   }
   nk_end(ctx);
