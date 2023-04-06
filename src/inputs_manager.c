@@ -113,9 +113,10 @@ int inputManager(t_joueur *joueur) {
                     return M_PAUSE;
                 }
 
-                else if (event.key.keysym.scancode == SDL_SCANCODE_K) {
-                    joueur->statistiques.pv = 0;
-                }
+                // Décommenter pour débuguer
+                // else if (event.key.keysym.scancode == SDL_SCANCODE_K) {
+                //     joueur->statistiques.pv = 0;
+                // }
 
                 break;
 

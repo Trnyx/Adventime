@@ -34,7 +34,7 @@ Votre objectif est de vous préparer et de vaincre les 3 boss du jeu qui apparai
 
 **Autres :** </br>
 `E` : Inventaire </br>
-`F` : Interaction </br>
+`F` : Interaction (Ouvrir coffre)</br>
 `Tab` : afficher la carte </br>
 
 
