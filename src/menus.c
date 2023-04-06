@@ -121,23 +121,17 @@ state_main main_menu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.6), 300, 50));
       if (nk_button_label(ctx, "Jouer")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(bg_img);
         click = M_JOUER;
-      }
-
-      if (nk_widget_is_hovered(ctx)) {
-        if (!hovered) {
-          hovered = 1;
-        } else {
-          hovered = 0;
-        }
       }
 
       nk_layout_space_push(
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.7), 300, 50));
       if (nk_button_label(ctx, "Options")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(bg_img);
         click = M_OPTIONS;
@@ -155,6 +149,7 @@ state_main main_menu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.8), 300, 50));
       if (nk_button_label(ctx, "Quitter")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(bg_img);
         click = JEU_QUITTER;
@@ -317,6 +312,7 @@ state_main menu_options(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.8), 300, 50));
       if (nk_button_label(ctx, "Retour")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
 	if (moteur->state == M_PAUSE) {
 	  click = M_PAUSE;
 	} else {
@@ -470,6 +466,7 @@ state_main pauseMenu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.3), 300, 50));
       if (nk_button_label(ctx, "Continuer")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
 	moteur->state = M_JOUER;
         click = M_JOUER;
       }
@@ -486,6 +483,7 @@ state_main pauseMenu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.5), 300, 50));
       if (nk_button_label(ctx, "Options")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
 	click = M_OPTIONS;
       }
 
@@ -501,6 +499,7 @@ state_main pauseMenu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.7), 300, 50));
       if (nk_button_label(ctx, "Quitter")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
         click = M_MENU;
       }
       nk_layout_space_end(ctx);
@@ -564,6 +563,7 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
 					(moteur->window_height * 0.6), 300, 50));
       
       if (nk_button_label(ctx, "Réapparaitre")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
         reapparitionJoueur(joueur, moteur->cache->monde->pointApparitionDefaut);
 	moteur->state = M_JOUER;
 	click = M_JOUER;
@@ -574,6 +574,7 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
 					(moteur->window_height * 0.7), 300, 50));
       
       if (nk_button_label(ctx, "Quitter")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
 	moteur->state = M_MENU;
         click = M_MENU;
       }
