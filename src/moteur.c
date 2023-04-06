@@ -1,7 +1,10 @@
 /**
  * @file moteur.c
  *
- * @brief
+ * @brief Gestion du moteur du jeu
+ * 
+ * Le moteur contient toutes les informations nécessaire pour le renderer, la caméra, les textures 
+ * ainsi que le cache du jeu
  *
  * @author Eliott Remars & Clément Hibon
  * @date 3 février
@@ -78,7 +81,7 @@ void initControles(t_controles *controles) {
 
 
 /**
- * @brief Alloue l'espace nécessaire pour le moteur et le créé
+ * @brief Alloue l'espace nécessaire pour le moteur et le créer
  * 
  * @return Un pointeur sur le moteur, NULL en cas d'echec
  */
@@ -141,18 +144,18 @@ void updateEchelle() {
     // moteur->camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
     // moteur->camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
   
-    int tailleRendu;
+    int tailleRendu = moteur->window_width / TAILLE_CAMERA_LARGEUR;
 
-    int tailleLargeur = moteur->window_width / TAILLE_CAMERA_LARGEUR;
-    int tailleHauteur = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
+    // int tailleLargeur = moteur->window_width / TAILLE_CAMERA_LARGEUR;
+    // int tailleHauteur = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
 
 
-    if (tailleHauteur < tailleLargeur) {
-        tailleRendu = tailleHauteur;
-    }
-    else {
-        tailleRendu = tailleLargeur;
-    }
+    // if (tailleHauteur < tailleLargeur) {
+    //     tailleRendu = tailleHauteur;
+    // }
+    // else {
+    //     tailleRendu = tailleLargeur;
+    // }
 
 
     moteur->camera->tailleRendu.x = tailleRendu;

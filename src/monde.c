@@ -12,10 +12,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-// #include "../include/NanoId/nanoid.h"
-
 #include "../include/moteur.h"
 #include "../include/monde.h"
+#include "../include/seed.h"
 
 
 
@@ -32,15 +31,24 @@
  *  => Pour le seed "123", les 5 premières au début de l'execution du code 
  *     suivra toujours cet ordre
  */
+
 /**
- * @brief Set the Generation Seed object
+ * @brief Applique le seed pour l'initialisation des valeurs aléatoires
  * 
- * @param seed 
- * @return unsigned int 
+ * @param seed Le seed utilisé
+ * @return Le seed donné
  */
-unsigned int setGenerationSeed(unsigned int seed) {
+int setGenerationSeed(long long int seed) {
     srand(seed);
     return seed;
+}
+
+
+
+
+
+long long int convertionSeed(char *seedString) {
+    return convertirEnSeed(seedString);
 }
 
 
@@ -126,7 +134,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
  * @param seed 
  * @return t_monde* 
  */
-t_monde* creerMonde(int seed) {
+t_monde* creerMonde(long long int seed) {
     t_monde *monde = malloc(sizeof(t_monde));
     const time_t timestamp = time(NULL);
 
@@ -151,6 +159,7 @@ t_monde* creerMonde(int seed) {
 
     // Seed
     monde->seed = seed;
+    printf("SEED : %lli\n", seed);
 
     // Maps
     monde->overworld = genererMap(MAP_OVERWORLD);
@@ -187,7 +196,7 @@ t_monde* creerMonde(int seed) {
 /**
  * @brief Detruit un monde est libère la mémoire allouée pour ce dernier
  * 
- * @param monde L'adrese du pointeur du monde à détruire
+ * @param monde L'adresse du pointeur du monde à détruire
  */
 void detruireMonde(t_monde **monde) {
     printf("Destruction Monde => ");

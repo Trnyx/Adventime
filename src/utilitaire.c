@@ -25,9 +25,9 @@
 
 
 /**
- * @brief 
+ * @brief Génère un ID
  * 
- * @return char* 
+ * @return Un pointeur sur l'ID
  */
 char* genererId() {
     return generate(LONGUEUR_ID);

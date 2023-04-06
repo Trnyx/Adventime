@@ -30,7 +30,7 @@
 
 /**
  * @enum booleen
- * @brief 
+ * @brief Enumeration afin d'utiliser des valeurs booléennes
  */
 typedef enum {
     FAUX,
