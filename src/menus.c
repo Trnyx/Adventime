@@ -624,15 +624,42 @@ void menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
 
 void inv_stats (struct nk_context * ctx, t_joueur *joueur) {
 
-  char current_pv[2];
+  char text_pv[10];
+  char attaque[10];
+  char def[10];
+  char vitesse[10];
+  char lvl[8];
+  
+  sprintf(lvl, "%d", joueur->statistiques.niveau);
+
+  sprintf(text_pv, "%d/%d", (int)joueur->statistiques.pv, joueur->statistiques.pvMax);
+  
+  sprintf(attaque, "%f", joueur->statistiques.attaque);
+
+  sprintf(def, "%f", joueur->statistiques.defense);
+
+  sprintf(vitesse, "%f", joueur->statistiques.vitesse);
   
     if (nk_begin(ctx, "Stats",
                nk_rect(moteur->window_width*0.03, moteur->window_height*0.15, moteur->window_width*0.2, moteur->window_height*0.7),
                (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
 
       nk_layout_row_static(ctx, moteur->window_height*0.1, moteur->window_width*0.1, 2);
-      nk_label(ctx, "PV : ", NK_TEXT_CENTERED);
-      nk_label(ctx, "500", NK_TEXT_LEFT);
+
+      nk_label(ctx, "Niveau :", NK_TEXT_CENTERED);
+      nk_label(ctx, lvl, NK_TEXT_LEFT);
+      
+      nk_label(ctx, "PV :", NK_TEXT_CENTERED);
+      nk_label(ctx, text_pv, NK_TEXT_LEFT);
+
+      nk_label(ctx, "Atq :", NK_TEXT_CENTERED);
+      nk_label(ctx, attaque, NK_TEXT_LEFT);
+
+      nk_label(ctx, "Def :", NK_TEXT_CENTERED);
+      nk_label(ctx, def, NK_TEXT_LEFT);
+
+      nk_label(ctx, "Vit :", NK_TEXT_CENTERED);
+      nk_label(ctx, vitesse, NK_TEXT_LEFT);
     
   }
   nk_end(ctx);
@@ -678,10 +705,10 @@ void inventaire(struct nk_context *ctx, t_joueur *joueur) {
 	sprintf(quantite, " ");
       }
 
-      if (nk_input_is_mouse_hovering_rect(in, bounds)) {
-        SDL_Log("oui je suis dedans %d", i);
-        SDL_Log("%f, %f, %f, %f", bounds.x, bounds.y, bounds.w, bounds.h);
-      }
+      /* if (nk_input_is_mouse_hovering_rect(in, bounds)) { */
+      /*   SDL_Log("oui je suis dedans %d", i); */
+      /*   SDL_Log("%f, %f, %f, %f", bounds.x, bounds.y, bounds.w, bounds.h); */
+      /* } */
       
       selected[i] = 1;
       if (nk_selectable_label(ctx, quantite, NK_TEXT_ALIGN_LEFT,
