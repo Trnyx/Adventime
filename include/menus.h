@@ -29,7 +29,7 @@ state_main menu_options(struct nk_context *ctx);
 void updateHUD(struct nk_context *ctx, t_joueur *joueur);
 state_main pauseMenu(struct nk_context *ctx);
 state_main gameOver(struct nk_context *ctx, t_joueur *joueur);
-state_main menu_inventaire(struct nk_context *ctx, t_joueur *joueur);
+void menu_inventaire(struct nk_context *ctx, t_joueur *joueur);
 void inv_stats(struct nk_context *ctx, t_joueur *joueur);
 void inventaire (struct nk_context * ctx, t_joueur *joueur);
 

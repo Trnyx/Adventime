@@ -595,10 +595,9 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
   return click;
 }
 
-state_main menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
+void menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
   
   set_style(ctx, THEME_BLACK);
-  state_main click = 1;
   
   if (joueur->actionFlags->bool_inventory) {
     SDL_Event evt;
@@ -606,7 +605,6 @@ state_main menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
     while (SDL_PollEvent(&evt)) {
       nk_sdl_handle_event(&evt);
       if (evt.key.keysym.scancode == SDL_SCANCODE_E) {
-	click = 0;
 	joueur->actionFlags->bool_inventory = 0;
       }
     }
