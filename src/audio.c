@@ -113,7 +113,6 @@ void play_sonAmbiance(Mix_Chunk *bruitage, float angle, float distance) {
 
 
     if (bruitage != NULL) {
-        printf("BRUIT => ");
         // On ajuste l'angle
         angle = revolution(angle - 90);
 
@@ -369,9 +368,11 @@ t_audio* initAudio() {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour un pack audio et le créer
  * 
- * @return t_audioPack* 
+ * Le pack audio correspond au bruitages que produit une entité
+ * 
+ * @return Un pointeur sur le pack audio créé, NULL si echec
  */
 t_audioPack *creerAudioPack() {
     t_audioPack *pack = malloc(sizeof(t_audioPack));
@@ -401,12 +402,11 @@ t_audioPack *creerAudioPack() {
 
 
 /**
- * @brief 
+ * @brief Detruit l'audio est libère la mémoire allouée pour ce dernier
  * 
- * @param audio 
+ * @param audio L'adresse du pointeur sur l'audio 
  */
 void detruireAudio(t_audio **audio) {
-    printf("Destruction Audio => ");
     if (audio != NULL && *audio != NULL) {
 
         t_musiques *musiques = (*audio)->musiques;
@@ -418,7 +418,6 @@ void detruireAudio(t_audio **audio) {
 
         /* -------------------------------- Musiques -------------------------------- */
         if (musiques != NULL) {
-            printf("Destruction musiques => ");
             // Mix_FreeMusic((*musiques)->);
 
             Mix_FreeMusic((*audio)->musiques->menu_principal);
@@ -432,14 +431,10 @@ void detruireAudio(t_audio **audio) {
             free(musiques);
             musiques = NULL;
         }
-        else {
-            printf("Pas de musique => ");
-        }
-
+        
 
         /* -------------------------------- Bruitages ------------------------------- */
         if (bruitages != NULL) {
-            printf("Destruction bruitages => ");
             // Mix_FreeChunk((*bruitages)->);
 
             // Menu
@@ -468,19 +463,14 @@ void detruireAudio(t_audio **audio) {
             free(bruitages);
             bruitages = NULL;
         }
-        else {
-            printf("Pas de bruitage => ");
-        }
+        
 
-
-        printf("Destruction global => ");
         free(*audio);
         *audio = NULL;
 
         Mix_CloseAudio();
 
     }
-    printf("Succes\n");
 }
 
 
@@ -488,9 +478,9 @@ void detruireAudio(t_audio **audio) {
 
 
 /**
- * @brief 
+ * @brief Detruit le pack audio est libère la mémoire allouée pour ce dernier
  * 
- * @param pack 
+ * @param pack L'adresse du pointeur sur le pack audio
  */
 void detruireAudioPack(t_audioPack **pack) {
     if (pack != NULL && *pack != NULL) {

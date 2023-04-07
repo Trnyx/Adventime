@@ -144,7 +144,7 @@ struct s_entite {
     t_audioPack *bruitages;                                 /**< Les bruitages de l'entité vivante */
 
 
-    int  (*update)(t_entite*, float, t_entite* cible);      /**< Fonction d'actualisation de l'entité */
+    void (*update)(t_entite*, float, t_entite* cible);      /**< Fonction d'actualisation de l'entité */
     void (*detruire)(t_entite**);                           /**< Fonction de suppression de l'entité */
     void (*interaction)(void*, void*);                      /**< Fonction d'interaction avec l'entité */
 };
