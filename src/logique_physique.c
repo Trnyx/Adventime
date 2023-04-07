@@ -1,7 +1,9 @@
 /**
  * @file logique_physique.c
  * 
- * @brief 
+ * @brief Module de gestion pour la physique / logique du jeu
+ * 
+ * A chaque frame la fonction update est executer afin de mettre à jour toute la physique / logique du jeu
  * 
  * @author Clément Hibon
  * @date 10 février
@@ -20,6 +22,7 @@
 #include "../include/audio.h"
 #include "../include/menus.h"
 #include "../include/mob.h"
+#include "../include/coffre.h"
 
 
 
@@ -230,6 +233,15 @@ void update(t_map *map, t_joueur *joueur) {
                             break;
 
 
+                        // Sur les coffres
+                        case ENTITE_COFFRE_INVENTAIRE:
+                            if (coffreEstVide((t_coffre*)entite)) {
+                                suppressionEntite(entites, entite);
+                                continue;
+                            }
+                            break;
+
+
                         // Sur toutes les entités
                         default:
                             
@@ -333,12 +345,11 @@ void update(t_map *map, t_joueur *joueur) {
 
     /* --------------- Construction de l'affichage de l'interface --------------- */
 
-    // afficherInterface(joueur);
+    updateHUD(ctx, joueur);
     
 
     /* ------------------------ Affichage à l'utilisateur ----------------------- */
 
-    updateHUD(ctx, joueur);
 	
     SDL_RenderPresent(moteur->renderer);
     SDL_RenderClear(moteur->renderer);

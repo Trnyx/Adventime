@@ -266,7 +266,7 @@ void updateMob(t_mob* mob, float distance) {
 /**
  * @brief Detruit un mob est libère la mémoire allouée pour ce dernier
  * 
- * @param mob L'adrese du pointeur du mob à détruire
+ * @param mob L'adresse du pointeur du mob à détruire
  */
 void detruireMob(t_mob **mob) {
     printf("Destruction Mob => ");
@@ -296,7 +296,7 @@ void detruireMob(t_mob **mob) {
 
 
 /**
- * @brief Alloue l'espace nécessaire pour un mob et le créé
+ * @brief Alloue l'espace nécessaire pour un mob et le créer
  * 
  * @param position La position à laquelle le mob doit apparaitre
  * 

@@ -1,7 +1,7 @@
 /**
  * @file disc_sampling.h
  *
- * @brief
+ * @brief Module de gestion pour l'algorithme "Poisson Disc Sampling"
  *
  * @author Clément Hibon
  * @date 15 mars

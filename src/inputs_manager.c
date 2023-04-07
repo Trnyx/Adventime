@@ -88,7 +88,7 @@ int inputManager(t_joueur *joueur) {
                 else if (controles.inventory == event.key.keysym.scancode) {
                     if (joueur->actionFlags->inventory == 0) {
                         joueur->actionFlags->inventory = 1;
-                        // CHANGER ETAT OUVERTURE INVENTAIRE
+                        joueur->actionFlags->bool_inventory = !joueur->actionFlags->bool_inventory;
                     }
                     else
                         joueur->actionFlags->inventory = -1;
@@ -96,7 +96,10 @@ int inputManager(t_joueur *joueur) {
 
                 // Interaction
                 else if (controles.interaction == event.key.keysym.scancode) {
-                    joueur->actionFlags->interaction = 1;
+                    if (joueur->actionFlags->interaction == 0)
+                        joueur->actionFlags->interaction = 1;
+                    else
+                        joueur->actionFlags->interaction = -1;
                 }
 
                 // Minimap

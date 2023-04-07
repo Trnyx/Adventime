@@ -146,7 +146,7 @@ const t_baseVegetal basesVegetaux[] = {
 const t_baseMob basesMobs[] = {
     // Animal
     { TAG_ANIMAL_VACHE, { ITEM_STEAK }, { 100 } },
-    { TAG_ANIMAL_COCHON, { ITEM_STEAK }, { 100 } },
+    { TAG_ANIMAL_COCHON, { ITEM_PORC }, { 100 } },
     
     // 
     { TAG_MONSTRE_BASIC, { ITEM_MATERIEL_BATON }, { 100 } },

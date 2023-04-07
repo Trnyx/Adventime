@@ -152,7 +152,7 @@ int updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
 /**
  * @brief Detruit un animal est libère la mémoire allouée pour ce dernier
  * 
- * @param animal L'adrese du pointeur de l'animal à détruire
+ * @param animal L'adresse du pointeur de l'animal à détruire
  */
 void detruireAnimal(t_animal **animal) {
     if (animal != NULL && *animal != NULL) {

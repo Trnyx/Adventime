@@ -37,7 +37,7 @@
  */
 typedef struct s_monde {
     char *id;                               /**< L'ID du monde */
-    unsigned int seed;                      /**< La seed de génération du monde */
+    long long int seed;                     /**< La seed de génération du monde */
 
     // Maps
     t_map *overworld;                       /**< La map overworld */
@@ -68,10 +68,10 @@ typedef struct s_monde {
 /* -------------------------------------------------------------------------- */
 
 
-unsigned int setGenerationSeed(unsigned int seed);
+int setGenerationSeed(long long int seed);
 
 
-t_monde* creerMonde(int seed);
+t_monde* creerMonde(long long int seed);
 void detruireMonde(t_monde **monde);
 void afficherMonde(t_monde *monde);
 

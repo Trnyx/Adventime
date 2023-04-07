@@ -116,17 +116,21 @@ static int adventime(t_monde *monde) {
     while (continuer != M_MENU) {
         regulerFPS();
 	
-        continuer = inputManager(joueur);
-        
-        while(continuer == M_PAUSE) {
-            continuer = pauseMenu(ctx);
-            if (continuer == M_OPTIONS) {
-                continuer = menu_options(ctx);
-            }
-        }
-        
+	continuer = inputManager(joueur);
+	
+	while(continuer == M_PAUSE) {
+	  continuer = pauseMenu(ctx);
+	  if (continuer == M_OPTIONS) {
+	    continuer = menu_options(ctx);
+	  }
+	}
 
-        update(cache->map, joueur);
+	if(joueur->actionFlags->bool_inventory) {
+	  menu_inventaire(ctx, joueur);
+	} else {
+	  update(cache->map, joueur);
+	}
+       
 
         if(continuer == J_MORT) {
             continuer = gameOver(ctx, joueur);
@@ -169,7 +173,7 @@ static int adventime(t_monde *monde) {
  * 
  * @return int 
  */
-static int nouveauMonde() {
+static int nouveauMonde(/* char *nom, const long long int seed */) {
     // int seed = -1;
     // int seed = 1679905571;
     // int seed = 1679940582;
@@ -186,7 +190,7 @@ static int nouveauMonde() {
 
 
 
-static int chargerMonde() {
+static int chargerMonde(/* char *tnom */) {
     t_monde *monde = malloc(sizeof(t_monde));
 
     charger_monde(monde, "test_monde");

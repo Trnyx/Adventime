@@ -55,7 +55,7 @@ void updateAnimation(t_animation *animation, const unsigned int timestamp) {
 /**
  * @brief Detruit une animation est libère la mémoire allouée pour cette dernière
  * 
- * @param animation L'adrese du pointeur de l'animation à détruire
+ * @param animation L'adresse du pointeur de l'animation à détruire
  */
 void detruireAnimation(t_animation **animation) {
     if (animation != NULL && *animation != NULL) {

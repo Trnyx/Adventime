@@ -165,10 +165,16 @@ static e_solTag selectionBlock(const e_biome biome) {
 /* -------------------------------------------------------------------------- */
 
 
+void changerEnDenivele(const int x, const int y, const int xAlentour, const int yAlentour, t_map *map) {
+    t_block *blockDenivele = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+    blockDenivele->tag = ((xAlentour - x) + (yAlentour - y) * 3) + DENIVELE_CENTRE;
+}
+
+
+
 void ajoutDenivele(t_map *map) {
     for (int x = 1; x < TAILLE_MAP * TAILLE_CHUNK - 1; x++) {
         for (int y = 1; y < TAILLE_MAP * TAILLE_CHUNK - 1; y++) {
-
             t_block *block = getBlockDansMap(x, y, COUCHE_SOL, map);
             if (block == NULL) continue;
 
@@ -176,21 +182,58 @@ void ajoutDenivele(t_map *map) {
             t_block *blockAlentour = NULL;
             int difference = 0;
             
-            for (int xAlentour = x - 1; xAlentour <= x + 1; xAlentour++) {
-                for (int yAlentour = y - 1; yAlentour <= y + 1; yAlentour++) {
-                    blockAlentour = getBlockDansMap(xAlentour, yAlentour, COUCHE_SOL, map);
+            // for (int xAlentour = x - 1; xAlentour <= x + 1; xAlentour++) {
+            //     for (int yAlentour = y - 1; yAlentour <= y + 1; yAlentour++) {
+            //         if (x == xAlentour && y == yAlentour) continue;
+            //         blockAlentour = getBlockDansMap(xAlentour, yAlentour, COUCHE_SOL, map);
 
-                    difference = block->tag - blockAlentour->tag;
-                    // -4 -3 -2
-                    // -1  0  1
-                    //  2  3  4
-                    if (difference > 1) {
-                        block = getBlockDansMap(x, y, COUCHE_OBJETS, map);
-                        block->tag = ((xAlentour - x) + (yAlentour - y) * 3) + DENIVELE_CENTRE;
-                    }
-                }
-            }
-            
+            //         difference = block->tag - blockAlentour->tag;
+                    
+            //         // -4 -3 -2
+            //         // -1  0  1
+            //         //  2  3  4
+            //         if (difference < -1) {
+            //             t_block *blockDenivele = getBlockDansMap(x, y, COUCHE_OBJETS, map);
+            //             blockDenivele->tag = ((xAlentour - x) + (yAlentour - y) * 3) + DENIVELE_CENTRE;
+                        
+            //             if (yAlentour == y || xAlentour == x)
+            //                 goto _BLOCK_SUIVANT;
+            //         }
+            //     }
+            // }
+            // _BLOCK_SUIVANT:
+            //     continue;
+
+
+            // -4 -3 -2
+            // -1  0  1
+            //  2  3  4
+
+            // En haut
+            blockAlentour = getBlockDansMap(x, y - 1, COUCHE_SOL, map);
+            difference = block->tag - blockAlentour->tag;
+            if (difference < -1) 
+                changerEnDenivele(x, y, x, y - 1, map);
+
+            // A gauche
+            blockAlentour = getBlockDansMap(x - 1, y, COUCHE_SOL, map);
+            difference = block->tag - blockAlentour->tag;
+            if (difference < -1) 
+                changerEnDenivele(x, y, x - 1, y, map);
+
+
+            // A droite
+            blockAlentour = getBlockDansMap(x + 1, y, COUCHE_SOL, map);
+            difference = block->tag - blockAlentour->tag;
+            if (difference < -1) 
+                changerEnDenivele(x, y, x + 1, y, map);
+
+
+            // En bas
+            blockAlentour = getBlockDansMap(x, y + 1, COUCHE_SOL, map);
+            difference = block->tag - blockAlentour->tag;
+            if (difference < -1) 
+                changerEnDenivele(x, y, x, y + 1, map);
 
 
         }

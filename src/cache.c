@@ -25,9 +25,9 @@
 
 
 /**
- * @brief 
+ * @brief Detruit le cache est libère la mémoire allouée pour ce dernier
  * 
- * @param cache 
+ * @param cache L'adresse du pointeur du cache à détruire
  */
 void detruireCache(t_cache **cache) {
     if (cache != NULL && *cache != NULL) {
@@ -49,9 +49,9 @@ void detruireCache(t_cache **cache) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour le cache et l'initialise
  * 
- * @return t_cache* 
+ * @return Un pointeur sur le cache, NULL si echec
  */
 t_cache *initCache() {
     t_cache *cache = malloc(sizeof(t_cache));

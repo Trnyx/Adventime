@@ -236,7 +236,7 @@ void updateCamera(const t_vecteur2 position) {
 
 
 /**
- * @brief Alloue l'espace nécessaire pour une caméra et la créée
+ * @brief Alloue l'espace nécessaire pour une caméra et la créer
  * 
  * @param position La position à laquelle la caméra doit être créée
  * 
@@ -274,7 +274,7 @@ t_camera* creerCamera(const t_vecteur2 position) {
 /**
  * @brief Detruit une camera est libère la mémoire allouée pour cette dernière
  * 
- * @param camera L'adrese du pointeur de la camera à détruire
+ * @param camera L'adresse du pointeur de la camera à détruire
  */
 void detruireCamera(t_camera **camera) {
     printf("Destruction Camera => ");

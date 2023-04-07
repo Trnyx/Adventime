@@ -589,7 +589,7 @@ void genererVillage(t_map *map) {
             }
         }
 
-                genererDecorations(map, grille);
+        genererDecorations(map, grille);
 
 
 

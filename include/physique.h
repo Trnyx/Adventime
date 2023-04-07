@@ -1,7 +1,7 @@
 /**
  * @file physique.h
  * 
- * @brief 
+ * @brief Module contenant toutes les constantes requises pour la physique du jeu
  * 
  * @author Clément Hibon
  * @date 10 février
@@ -34,7 +34,7 @@
 /* ------------------------------ Temps en jeu ------------------------------ */
 
 // Nombre de jour par heure (vrai) 
-#define NOMBRE_JOUR 4
+#define NOMBRE_JOUR 60
 // Le temps d'un jour dans le jeu (en seconde)
 // Nombre de seconde réelles pour faire un jour dans le jeu
 #define TEMPS_JOUR (3600 / NOMBRE_JOUR)
@@ -76,6 +76,9 @@
 #define JOUEUR_RAYON_SEMIACTIF (JOUEUR_RAYON_ACTIF * 3) 
 // Le rayon dans lequel la physique du jeu est inactive
 #define JOUEUR_RAYON_INACTIF (JOUEUR_RAYON_ACTIF * 4)
+
+// Le rayon dans lequel on peut interargir avec les entités
+#define RAYON_INTERACTION 1.5
 
 
 
