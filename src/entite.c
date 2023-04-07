@@ -15,7 +15,9 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+
 #include "../include/physique.h"
+#include "../include/audio.h"
 #include "../include/moteur.h"
 #include "../include/monde.h"
 #include "../include/entite.h"
@@ -483,6 +485,11 @@ void detruireEntite(t_entite **entite) {
             detruireAnimation(&(*entite)->animation);
             (*entite)->animation = NULL;
         }
+
+        if ((*entite)->bruitages != NULL) {
+            detruireAudioPack(&(*entite)->bruitages);
+            (*entite)->bruitages = NULL;
+        }
         
 
         free(*entite);
@@ -550,6 +557,9 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->destructionInactif = VRAI;
     entite->destructionDelai = VRAI;
     entite->interargirAvec = FAUX;
+
+
+    entite->bruitages = NULL;
 
     ++(moteur->cache->compteurEntites.entites);
     return entite;

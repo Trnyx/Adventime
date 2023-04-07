@@ -130,7 +130,7 @@ void updateMob(t_mob* mob, float distance) {
     }
     else {
         const float angle = calculAngleEntrePoints(moteur->cache->monde->joueur->position, mob->position);
-        play_sonAmbiance(mob->tag, angle, distance);
+        play_sonAmbiance(mob->bruitages->normal, angle, distance);
         mob->cooldownBruitage = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_BRUIT, MOB_DELAI_MAX_ENTRE_BRUIT);
     }
 

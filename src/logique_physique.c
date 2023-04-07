@@ -210,7 +210,6 @@ void update(t_map *map, t_joueur *joueur) {
                             // Si le mob est mort 
                             if (((t_mob*)entite)->statistiques.pv <= 0) {
                                 suppressionEntite(entites, entite);
-                                // play_bruitage(audio->bruitages->monstre_mort, 4);
                                 continue;
                             }
 

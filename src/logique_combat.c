@@ -16,6 +16,7 @@
 #include <stdio.h>
 
 #include "../include/physique.h"
+#include "../include/audio.h"
 #include "../include/moteur.h"
 #include "../include/deplacement.h"
 #include "../include/combat.h"
@@ -270,6 +271,11 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
  * @param range Le rayon dans lequel l'entité attaquante peut touché sa cible
  */
 void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque, const float range) {
+    if (entite->bruitages != NULL) {
+        play_bruitage(entite->bruitages->attaque, -1);
+    }
+
+
     if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
         printf("CIBLE TOUCHE\n");
         cible->cooldownRegeneration = COOLDOWN_REGENERATION;
@@ -306,6 +312,11 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
                 mortJoueur((t_joueur*)cible);
             else
                 dropItems((t_mob*)cible);
+
+            play_bruitage(cible->bruitages->mort, -1);
+        }
+        else {
+            play_bruitage(cible->bruitages->degat, -1);
         }
     }
     else

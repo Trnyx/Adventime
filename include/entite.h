@@ -36,6 +36,7 @@
 
 
 /**
+ * @enum e_entiteType
  * @brief 
  * 
  */
@@ -50,6 +51,7 @@ typedef enum {
 
 
 /**
+ * @enum e_entiteTag
  * @brief Enumérateur regroupant les différents tags des monstres
  * 
  * Un compteur du nombre de tags est également initialisé à la fin de l'énumérateur
@@ -61,11 +63,13 @@ typedef enum {
     TAG_MONSTRE_BASIC,
     TAG_COFFRE,
     TAG_BOSS,
-    NB_TAGS
+    NB_TAGS,
+    TAG_JOUEUR,
 } e_entiteTag;
 
 
 /**
+ * @enum e_orientation
  * @brief 
  * 
  */
@@ -79,6 +83,7 @@ typedef enum {
 
 
 /**
+ * @enum e_operation
  * @brief 
  * 
  */
@@ -97,11 +102,13 @@ typedef enum {
 /* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */
 /* -------------------------------------------------------------------------- */
+// #include "audio.h"
 
 
 // Nous avons besoin de définir cette structure "temporaire"
 // afin que le compilateur connaisse son existence
 typedef struct s_moteur t_moteur;
+typedef struct s_audioPack t_audioPack;
 
 
 
@@ -133,6 +140,10 @@ struct s_entite {
     boolean interargirAvec;                                 /**< Peut être interargit */
 
 
+    // Audio
+    t_audioPack *bruitages;                                 /**< Les bruitages de l'entité vivante */
+
+
     int  (*update)(t_entite*, float, t_entite* cible);      /**< Fonction d'actualisation de l'entité */
     void (*detruire)(t_entite**);                           /**< Fonction de suppression de l'entité */
     void (*interaction)(void*, void*);                      /**< Fonction d'interaction avec l'entité */
@@ -157,12 +168,12 @@ typedef struct s_entiteVivante {
     unsigned int cooldownAttaque;           /**< Cooldown entre deux attaque (en seconde) */
     unsigned int cooldownRegeneration;      /**< Cooldown pour la régénération (en seconde) */
 
-
 } t_entiteVivante;
 
 
 
 /**
+ * @struct t_compteur
  * @brief 
  * 
  */

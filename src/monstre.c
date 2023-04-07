@@ -16,6 +16,7 @@
 #include <stdio.h>
 
 #include "../include/physique.h"
+#include "../include/audio.h"
 #include "../include/moteur.h"
 #include "../include/monstre.h"
 
@@ -129,6 +130,11 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
     // Timer
     monstre->destructionInactif = monstre->aggressif;
     monstre->destructionDelai = VRAI;
+
+
+    // Audio
+    monstre->bruitages = creerAudioPack();
+    chargerAudioPack(monstre->bruitages, monstre->tag);
 
 
     if (monstre->aggressif)

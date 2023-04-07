@@ -14,6 +14,7 @@
 #include <stdlib.h>
 
 #include "../include/physique.h"
+#include "../include/audio.h"
 #include "../include/moteur.h"
 #include "../include/animal.h"
 
@@ -207,6 +208,11 @@ t_animal *creerAnimal(const t_vecteur2 position, const e_entiteTag tag) {
 
     // Timer
     animal->destructionInactif = animal->aggressif;
+
+
+    // Audio
+    animal->bruitages = creerAudioPack();
+    chargerAudioPack(animal->bruitages, animal->tag);
 
 
     if (animal->aggressif)

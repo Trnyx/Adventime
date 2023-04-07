@@ -18,6 +18,8 @@
 #include <SDL2/SDL.h>
 
 #include "../include/physique.h"
+
+#include "../include/audio.h"
 #include "../include/moteur.h"
 #include "../include/joueur.h"
 #include "../include/camera.h"
@@ -399,6 +401,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
 
     joueur->entiteType = ENTITE_JOUEUR;
+    joueur->tag = TAG_JOUEUR;
     joueur->map = MAP_OVERWORLD;
 
     // Statistiques
@@ -423,7 +426,9 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->cooldownRegeneration = 0;
     joueur->destructionInactif = FAUX;
 
-    // Avancement
+    // Audio
+    joueur->bruitages = creerAudioPack();
+    chargerAudioPack(joueur->bruitages, joueur->tag);
 
 
     printf("Succes\n");

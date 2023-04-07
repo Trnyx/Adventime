@@ -11,6 +11,7 @@
 
 
 #include "../include/moteur.h"
+#include "../include/audio.h"
 #include "../include/physique.h"
 #include "../include/item.h"
 #include "../include/inventaire.h"
@@ -201,6 +202,8 @@ void updateItemEntite(t_itemEntite *itemEntite, const float distance, t_joueur *
     }
     else {
         if (distance <= itemEntite->rayonPrise) {
+            play_bruitage(audio->bruitages->item_recuperation, -1);
+
             recupererItem(itemEntite, recuperateur);
             itemEntite->detruire((t_entite**)&itemEntite);
             oter_elt(moteur->cache->entites);
