@@ -109,7 +109,7 @@ typedef struct s_joueur {
 
 
 t_joueur* creerJoueur(const t_vecteur2 position);
-int updateJoueur(t_joueur *joueur);
+void updateJoueur(t_joueur *joueur);
 void detruireJoueur(t_joueur **joueur);
 
 t_action_flags* initialiserActionFlags();

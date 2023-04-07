@@ -138,7 +138,7 @@ void dropItems(t_mob *mob) {
 boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float angleAttaque, const float range) {
     // Calcul la distance
     const float distance = calculDistanceEntreEntites(source, cible);
-    // printf("\n\nDISTANCE : %1.2f\n", distance);
+
     if (distance > range)
         return FAUX;
 
@@ -209,7 +209,6 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
  * @return Les dégâts affliger à l'adversaire
  */
 float calculDegat(const int niveauAttaquant, int pointAttaque, int pointDefense, const boolean attaquantEstNocture, const boolean defenseurEstNocturne) {
-  printf("%d", niveauAttaquant);
     if (defenseurEstNocturne) {
         pointDefense += (((pointDefense / 2.5) + pointDefense + 2));
     }
@@ -302,23 +301,3 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
     }
 }
 
-
-
-
-
-
-
-
-
-
-void mort(t_entiteVivante *entite) {
-    switch (entite->entiteType) {
-        case ENTITE_JOUEUR:
-            // reapparitionJoueur();
-            break;
-
-        default:
-            entite->statistiques.pv = 0;
-            break;
-    }
-}

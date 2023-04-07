@@ -1,7 +1,7 @@
 /**
  * @file monstre.c
  *
- * @brief Génération d'un monstre
+ * @brief Module de gestion des monstres
  *
  * @author Clément Hibon
  * @date 23 janvier
@@ -40,8 +40,7 @@
  * 
  * @return 
  */
-int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
-    // printf("Update Monstre => ");
+void updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
 
     // Si le joueur est dans le rayon de détection du monstre
     if (monstre->deplacementType != DEPLACEMENT_COMBAT && distance <= MONSTRE_RAYON_COMBAT_DETECTION) {
@@ -52,9 +51,6 @@ int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
     
     updateMob((t_mob*)monstre, distance);
 
-
-    // printf("Fin Update Monstre\n");
-    return 1;
 }
 
 
@@ -72,13 +68,11 @@ int updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
  * @param monstre L'adresse du pointeur du monstre à détruire
  */
 void detruireMonstre(t_monstre **monstre) {
-    printf("Destruction Monstre => ");
     if (monstre != NULL && *monstre != NULL) {
 
         detruireMob((t_mob**) monstre);
         
     }
-    printf("Succes\n");
 }
 
 
@@ -124,7 +118,7 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
     monstre->animation = creerAnimation(100, 4);
 
     // Fonctions
-    monstre->update = (int (*)(t_entite*, float, t_entite*)) updateMonstre;
+    monstre->update = (void (*)(t_entite*, float, t_entite*)) updateMonstre;
     monstre->detruire = (void (*)(t_entite**)) detruireMonstre;
 
     // Timer
@@ -178,12 +172,6 @@ void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJo
         position.y = (position.y + JOUEUR_RAYON_ACTIF) + positionJoueur.y; 
     else if (position.y < 0) 
         position.y = (position.y - JOUEUR_RAYON_ACTIF) + positionJoueur.y; 
-    // t_vecteur2 position = choisirPointDansRayon(JOUEUR_RAYON_SEMIACTIF);
-
-
-    // // Rapport du point généré à la position du joueur dans le disque semiactif
-    // position.x += positionJoueur.x;
-    // position.y += positionJoueur.y;
 
 
     if (peutApparaitre(position, map)) {
@@ -196,24 +184,4 @@ void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJo
             ajout_droit(entites, (t_entite*)monstre);
         }
     }
-    // t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
-
-    // if (chunk != NULL) {
-    //     // printf("Chunk => ");
-    //     const e_biome biome = chunk->biome;
-    //     if (biome != BIOME_PROFONDEUR){
-    //         t_block *block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
-
-    //         if (block != NULL) {
-    //             // printf("Block => ");
-    //             if (block->tag == VIDE) {
-    //                 // printf("%i => ", block->tag);
-    //                 t_monstre *monstre = creerMonstre(position, biome, niveauJoueur);
-
-    //                 en_queue(entites);
-    //                 ajout_droit(entites, (t_entite*)monstre);
-    //             }
-    //         }
-    //     }
-    // }
 }

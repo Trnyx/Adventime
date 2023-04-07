@@ -277,7 +277,7 @@ t_itemEntite *creerItemEntite(const t_vecteur2 position, const e_itemTag tag) {
     itemEntite->cooldownAvantPrise = ENTITE_ITEM_DELAI_RECUPERATION;
 
 
-    itemEntite->update = (int (*)(t_entite*, float, t_entite*)) updateItemEntite;
+    itemEntite->update = (void (*)(t_entite*, float, t_entite*)) updateItemEntite;
     itemEntite->detruire = (void (*)(t_entite**)) detruireItemEntite;
 
 

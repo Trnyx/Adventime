@@ -178,6 +178,11 @@ void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
 
 
 
+/**
+ * @brief Execute une interaction du joueur
+ * 
+ * @param joueur Pointeur sur le joueur qui intérargit
+ */
 void joueurInteraction(t_joueur *joueur) {
     t_liste *entites = moteur->cache->entites;
     t_entite *entite = NULL;

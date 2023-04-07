@@ -263,7 +263,7 @@ t_boss* creerBoss(const t_vecteur2 position, const e_jour jour) {
 
 
     // Fonctions
-    boss->update = (int (*)(t_entite*, float, t_entite*)) updateBoss;
+    boss->update = (void (*)(t_entite*, float, t_entite*)) updateBoss;
     boss->detruire = (void (*)(t_entite**)) detruireBoss;
 
     boss->destructionInactif = FAUX;

@@ -116,8 +116,6 @@ void updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
 
     updateMob((t_mob*)animal, distance);
 
-    
-    return 0;
 }
 
 

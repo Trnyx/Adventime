@@ -34,8 +34,6 @@
 /* -------------------------------------------------------------------------- */
 
 
-int (*getDeplacement(e_deplacementType deplacement))(t_mob*, const float);
-
 void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible);
 void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible);
 void seloigneDe(t_mob *mob, const float vitesse, const t_vecteur2 cible);
