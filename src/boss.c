@@ -213,6 +213,7 @@ t_boss* creerBoss(const t_vecteur2 position, const e_jour jour) {
     boss->entiteType = ENTITE_MOB;
     boss->tag = TAG_BOSS;
     boss->taille = 3;
+    boss->aggressif = VRAI;
 
     boss->hitbox.x = position.x - (boss->taille / 2);
     boss->hitbox.y = position.y - (boss->taille / 2);
@@ -229,6 +230,9 @@ t_boss* creerBoss(const t_vecteur2 position, const e_jour jour) {
 
     boss->destructionInactif = FAUX;
     boss->destructionDelai = FAUX;
+
+
+    ++(moteur->cache->compteurEntites.mobAggressifs);
 
     mob = NULL;
     return boss;

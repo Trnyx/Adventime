@@ -53,7 +53,7 @@ err_sauv charger_config()
   * \param entite L'entité à charger.
   * \param fichier Le fichier de sauvegarde de la map.
   */
-void charger_entite(t_entite* entite, FILE* fichier)
+void charger_entite(t_entite** entite, FILE* fichier)
 {
     // // Chargement de l'entité
     // t_entite* entite = malloc(sizeof(t_entite));
@@ -68,7 +68,7 @@ void charger_entite(t_entite* entite, FILE* fichier)
     printf("ID => ");
 
     char c;
-    entite->id = malloc(sizeof(char) * (LONGUEUR_ID + 1));
+    (*entite)->id = malloc(sizeof(char) * (LONGUEUR_ID + 1));
 
     fscanf(fichier, "%c", &c);
 
@@ -76,65 +76,65 @@ void charger_entite(t_entite* entite, FILE* fichier)
     for (i = 0; i < LONGUEUR_ID; i++)
     {
         printf("%c", c);
-        entite->id[i] = c;
+        (*entite)->id[i] = c;
         fscanf(fichier, "%c", &c);
     }
-    entite->id[i] = '\0';
+    (*entite)->id[i] = '\0';
     printf(".");
     
-    printf("ID : %s ", entite->id);
+    printf("ID : %s ", (*entite)->id);
 
-    // printf("%s ", entite->id);
-    // fscanf(fichier, "%s ", entite->id);
+    // printf("%s ", (*entite)->id);
+    // fscanf(fichier, "%s ", (*entite)->id);
 
     // Position / Direction / Orientation
     // printf("Position / Direction / Orientation => ");
-    fscanf(fichier, "%f ", &(entite->position.x));
-    fscanf(fichier, "%f ", &(entite->position.y));
-    fscanf(fichier, "%f ", &(entite->direction.x));
-    fscanf(fichier, "%f ", &(entite->direction.y));
-    fscanf(fichier, "%i ", (int*)&(entite->orientation));
+    fscanf(fichier, "%f ", &((*entite)->position.x));
+    fscanf(fichier, "%f ", &((*entite)->position.y));
+    fscanf(fichier, "%f ", &((*entite)->direction.x));
+    fscanf(fichier, "%f ", &((*entite)->direction.y));
+    fscanf(fichier, "%i ", (int*)&((*entite)->orientation));
 
     // Tag
     // printf("Tag => ");
-    fscanf(fichier, "%i ", (int*)&entite->entiteType);
-    fscanf(fichier, "%i ", (int*)&entite->tag);
+    fscanf(fichier, "%i ", (int*)&(*entite)->entiteType);
+    fscanf(fichier, "%i ", (int*)&(*entite)->tag);
 
     // Taille
     // printf("Taille => ");
-    fscanf(fichier, "%f ", &(entite->taille));
+    fscanf(fichier, "%f ", &((*entite)->taille));
 
     // Hitbox
     // printf("Hitbox => ");
-    entite->hitbox.x = entite->position.x - (entite->taille / 2);
-    entite->hitbox.y = entite->position.y - (entite->taille / 2);
-    entite->hitbox.h = entite->taille;
-    entite->hitbox.w = entite->taille;
+    (*entite)->hitbox.x = (*entite)->position.x - ((*entite)->taille / 2);
+    (*entite)->hitbox.y = (*entite)->position.y - ((*entite)->taille / 2);
+    (*entite)->hitbox.h = (*entite)->taille;
+    (*entite)->hitbox.w = (*entite)->taille;
 
     // Timestamp de la création
     // printf("Timestamp de la création => ");
-    fscanf(fichier, "%i ", (int*)&entite->destructionInactif);
-    fscanf(fichier, "%i ", (int*)&entite->destructionDelai);
+    fscanf(fichier, "%i ", (int*)&(*entite)->destructionInactif);
+    fscanf(fichier, "%i ", (int*)&(*entite)->destructionDelai);
 
-    fscanf(fichier, "%u ", &(entite->timestampCreation));
+    fscanf(fichier, "%u ", &((*entite)->timestampCreation));
 
-    entite->update = NULL;
-    entite->detruire = detruireEntite;
+    (*entite)->update = NULL;
+    (*entite)->detruire = detruireEntite;
 
 
 
     // printf("TYPE ENTITE => \n");
-    if (entite->entiteType == ENTITE_MOB)
+    if ((*entite)->entiteType == ENTITE_MOB)
     {
-        entite = realloc(entite, sizeof(t_mob));
-        charger_mob((t_mob*)entite, fichier);
+        *entite = realloc(*entite, sizeof(t_mob));
+        charger_mob((t_mob*)*entite, fichier);
     }
-    else if (entite->entiteType == ENTITE_JOUEUR)
+    else if ((*entite)->entiteType == ENTITE_JOUEUR)
     {
         charger_entite_vivante((t_entiteVivante*)entite, fichier);
 
-        entite->update = (int(*)(t_entite*, const float, t_entite*)) updateJoueur;
-        entite->detruire = (void (*)(t_entite**)) detruireJoueur;
+        (*entite)->update = (int(*)(t_entite*, const float, t_entite*)) updateJoueur;
+        (*entite)->detruire = (void (*)(t_entite**)) detruireJoueur;
     }
 
 
@@ -214,7 +214,7 @@ void charger_mob(t_mob* mob, FILE* fichier)
   * \param chemin_monde Le chemin d'accès au fichier de sauvegarde du monde.
   * \return err_sauv, un code d'erreur (0 si succès).
   */
-err_sauv charger_joueur(t_joueur* joueur, char* chemin_monde)
+err_sauv charger_joueur(t_joueur** joueur, char* chemin_monde)
 {
     // Explicite le chemin du fichier de sauvegarde des données joueur.
     char chemin_joueur[50];
@@ -228,24 +228,24 @@ err_sauv charger_joueur(t_joueur* joueur, char* chemin_monde)
         return FOPEN_FAIL;
     }
 
-    charger_entite((t_entite*)joueur, fichier);
+    charger_entite((t_entite**)joueur, fichier);
 
     // Map (dans quel map le joueur se trouve)
-    fscanf(fichier, "%i ", (int*)&(joueur->map));
+    fscanf(fichier, "%i ", (int*)&((*joueur)->map));
     fscanf(fichier, "\n");
 
     // Actions
-    joueur->actionFlags = initialiserActionFlags();
+    (*joueur)->actionFlags = initialiserActionFlags();
 
     // Animation
-    joueur->animation = creerAnimation(100, 4);
+    (*joueur)->animation = creerAnimation(100, 4);
 
     // Fonctions
-    joueur->update = (int (*)(t_entite*, const float, t_entite*))updateJoueur;
-    joueur->detruire = (void (*)(t_entite**))detruireJoueur;
+    (*joueur)->update = (int (*)(t_entite*, const float, t_entite*))updateJoueur;
+    (*joueur)->detruire = (void (*)(t_entite**))detruireJoueur;
 
     // Timer
-    joueur->cooldownAttaque = 0;
+    (*joueur)->cooldownAttaque = 0;
 
     fclose(fichier);
     return SUCCESS;
@@ -383,8 +383,10 @@ err_sauv charger_map(t_map* map, char* chemin_monde, const e_mapType type)
     {
         printf("ENTITE %i => ", i);
         t_entite* entite = malloc(sizeof(t_entite));
-        charger_entite(entite, fichier);
+        charger_entite(&entite, fichier);
+
         printf("ID : %s \n", entite->id);
+
         ajout_droit(map->entites, entite);
         fprintf(fichier, "\n");
     }
@@ -439,7 +441,7 @@ err_sauv charger_global(t_monde* monde, char* chemin_monde)
 
     // Seed
     printf("Seed => ");
-    fscanf(fichier, "%u ", &(monde->seed));
+    fscanf(fichier, "%llu ", &(monde->seed));
     fscanf(fichier, "\n");
 
     // Points d'apparition
@@ -522,7 +524,7 @@ err_sauv charger_monde(t_monde* monde, char* nom_monde)
     printf("CHARGER JOUEUR => ");
     t_joueur* joueur = malloc(sizeof(t_joueur));
 
-    charger_joueur(joueur, chemin_monde);
+    charger_joueur(&joueur, chemin_monde);
     monde->joueur = joueur;
 
     return SUCCESS;
