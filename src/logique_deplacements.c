@@ -37,7 +37,6 @@
  * @param mob Un pointeur sur le mob qui se déplace
  */
 void finDeplacement(t_mob *mob) {
-    printf("FIN DEPLACEMENT\n");
     mob->positionDeplacement = mob->position;
     mob->cooldownDeplacement = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_DEPLACEMENT, MOB_DELAI_MAX_ENTRE_DEPLACEMENT);
 }
@@ -80,7 +79,6 @@ static void orienterVersCible(t_mob *mob) {
  * @param cible La position cible que doit rejoindre le mob
  */
 void deplacerVers(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
-    printf("Deplacer vers => %1.2f:%1.2f (%i : %s)\n", cible.x, cible.y, mob->tag, mob->id);
     mob->direction.x = (cible.x - mob->position.x);
     mob->direction.y = (cible.y - mob->position.y);
 
@@ -143,7 +141,6 @@ void deplacerAutour(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
  * @param cible La position de la cible de laquelle le mob s'éloigne
  */
 void seloigneDe(t_mob *mob, const float vitesse, const t_vecteur2 cible) {
-    printf("S'eloigne de => %1.2f:%1.2f\n", cible.x, cible.y);
     mob->direction.x = (mob->position.x - cible.x);
     mob->direction.y = (mob->position.y - cible.y);
 

@@ -103,9 +103,6 @@ extern t_item* item_creer(e_itemTag tag)
     item->categorie = base.categorie;
 
 
-    // item->nom = malloc(sizeof(char) * strlen(nom) + 1);
-    // strcpy(item->nom, nom);
-
     item->afficher = (int (*)(t_item*)) item_afficher;
     item->detruire = (int (*)(t_item**)) item_detruire;
 

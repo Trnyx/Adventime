@@ -203,7 +203,6 @@ t_boss_flags initialiserBossFlags() {
  * @param boss L'adresse du pointeur du boss à détruire
  */
 void detruireBoss(t_boss **boss) {
-    printf("Destruction Boss => ");
     if (boss != NULL && *boss != NULL) {
         
         if ((*boss)->statistiques.pv <= 0)

@@ -262,6 +262,7 @@ void donnerExperience(t_entiteVivante *entite, const int experience) {
  * @brief Calcul le nombre de point d'expèrience qui sera donner/retirer
  * 
  * @param cible L'entité qui a été vaincu
+ * 
  * @return Le nombre de point d'expèrience
  */
 int calculExperience(t_entiteVivante *cible) {
@@ -332,6 +333,7 @@ int rapide(const unsigned int niveau) {
  * @brief Obtient la formule correspondant à la courbe d'expérience
  * 
  * @param courbe Le type de courbe d'expèrience que suit l'entité
+ * 
  * @return Un pointeur sur la fonction calculant la courbe choisit int(*)(const unsigned int) 
  */
 int (*getExperienceCourbe(const e_courbeExperience courbe))(const unsigned int) {

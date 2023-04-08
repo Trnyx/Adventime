@@ -249,7 +249,7 @@ void genererCave(t_map *map);
 void genererVegetations(t_map *map);
 void genererAnimaux(t_map *map);
 
-int detruireMap(t_map **map);
+void detruireMap(t_map **map);
 
 void dessinerSol(t_map *map);
 void dessinerObjets(t_map *map);

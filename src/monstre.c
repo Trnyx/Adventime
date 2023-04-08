@@ -37,8 +37,6 @@
  * @param monstre Un pointeur sur le monstre à actualiser
  * @param distance La distance entre le monstre et le joueur
  * @param cible Un pointeur sur la cible du monstre 
- * 
- * @return 
  */
 void updateMonstre(t_monstre *monstre, float distance, t_entiteVivante *cible) {
 

@@ -107,7 +107,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
             continue;
 
         if (block->tag == SOL_EAU_PROFONDE || block->tag == SOL_EAU) {
-            block = NULL;
+            // block = NULL;
             continue;
         }
 
@@ -116,7 +116,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
         block = getBlockDansChunk(blockPosition.x, blockPosition.y, chunk);
 
         if (block->tag != VIDE) {
-            block = NULL;
+            // block = NULL;
             continue;
         }
     }

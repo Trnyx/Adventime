@@ -1,7 +1,7 @@
 /**
  * @file mob.c
  * 
- * @brief 
+ * @brief Module de gestion des mobs
  * 
  * @author Clément Hibon
  * @date 3 mars
@@ -42,16 +42,15 @@
 
 
 /**
- * @brief 
+ * @brief Execute l'attaque d'un mob
  * 
- * @param mob 
- * @param distanceFinale 
+ * @param mob Le mob qui attaque
+ * @param distanceFinale La séparant la cible du mob et celui-ci
  */
 void attaquer(t_mob *mob, const float distanceFinale) {
     deplacerVers(mob, mob->statistiques.vitesse * MOB_VITESSE_MODIFICATEUR_ATTAQUE, mob->positionDeplacement);
     
     if (distanceFinale < 1.0) {
-        printf("COMBAT => ");
         metUnCoup((t_entiteVivante*)mob, mob->cible, calculAngleEntrePoints(mob->position, mob->positionDeplacement), 1.4);
 
         mob->cooldownAttaque = getNombreAleatoire(MOB_DELAI_MIN_ENTRE_ATTAQUE, MOB_DELAI_MAX_ENTRE_ATTAQUE);
@@ -64,7 +63,7 @@ void attaquer(t_mob *mob, const float distanceFinale) {
 
 
 /**
- * @brief 
+ * @brief Gère la logique de combat d'un mob
  * 
  * @param mob Un pointeur sur le mob qui combat
  * @param distance La distance entre le mob et sa cible
@@ -219,8 +218,6 @@ void updateMob(t_mob* mob, float distance) {
                 }
 
                 else if (probabilite <= PROBABILITE_MOUVEMENT_ROTATION) {
-                    printf("Choix nouvelle orientation => ");
-
                     const float angle = getNombreAleatoire(0, 360);
                     orienterEntite(angle, (t_entite*)mob);
 
@@ -228,8 +225,6 @@ void updateMob(t_mob* mob, float distance) {
                 }
 
                 else if (probabilite <= PROBABILITE_MOUVEMENT_DEPLACEMENT) {
-                    printf("Choix nouvelle position => ");
-
                     const t_vecteur2 pointARejoindre = choisirPointDansRayon(mob->rayonDeplacement);
                     const t_vecteur2 positionFinale = {
                         mob->position.x + pointARejoindre.x,
@@ -243,7 +238,6 @@ void updateMob(t_mob* mob, float distance) {
                         mob->positionDeplacement.x = positionFinale.x;
                         mob->positionDeplacement.y = positionFinale.y;
 
-                        printf("Position target : %1.2f:%1.2f\n", mob->positionDeplacement.x, mob->positionDeplacement.y);
                         mob->timerDeplacement = MOB_DUREE_DEPLACEMENT;
                     }
                 }
@@ -269,7 +263,6 @@ void updateMob(t_mob* mob, float distance) {
  * @param mob L'adresse du pointeur du mob à détruire
  */
 void detruireMob(t_mob **mob) {
-    printf("Destruction Mob => ");
     if (mob != NULL && *mob != NULL) {
 
         if ((*mob)->aggressif)

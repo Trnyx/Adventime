@@ -118,14 +118,12 @@ t_moteur* initMoteur() {
  * @param moteur L'adresse du pointeur sur le moteur 
  */
 void detruireMoteur(t_moteur **moteur) {
-    printf("Destruction Moteur => ");
     if (moteur != NULL && *moteur != NULL) {
 
         free((*moteur));
         *moteur = NULL;
         
     }
-    printf("Succes\n");
 }
 
 
@@ -141,21 +139,11 @@ void updateEchelle() {
 
     SDL_GetWindowSize(moteur->window, &moteur->window_width, &moteur->window_height);
 
-    // moteur->camera->tailleRendu.x = moteur->window_width / TAILLE_CAMERA_LARGEUR;
-    // moteur->camera->tailleRendu.y = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
   
     int tailleRendu = moteur->window_width / TAILLE_CAMERA_LARGEUR;
 
     // int tailleLargeur = moteur->window_width / TAILLE_CAMERA_LARGEUR;
     // int tailleHauteur = moteur->window_height / TAILLE_CAMERA_HAUTEUR;
-
-
-    // if (tailleHauteur < tailleLargeur) {
-    //     tailleRendu = tailleHauteur;
-    // }
-    // else {
-    //     tailleRendu = tailleLargeur;
-    // }
 
 
     moteur->camera->tailleRendu.x = tailleRendu;

@@ -243,7 +243,6 @@ int chargerAudio(t_musiques **musiques, t_bruitages **bruitages) {
     // m->combat_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
     m->boss = NULL;
     loadMusiqueBoss(m, getJourDeLaSemaine(time(NULL)));
-    // m->combat_boss = Mix_LoadMUS("assets/audio/musiques/.mp3");
     
     
     /* -------------------------------- Bruitages ------------------------------- */
@@ -255,7 +254,6 @@ int chargerAudio(t_musiques **musiques, t_bruitages **bruitages) {
     // b->joueur_mort = Mix_LoadWAV("assets/audio/bruitages/.ogg");
 
     // Monstre
-    // b->monstre_attaque = Mix_LoadWAV("assets/audio/bruitages/.ogg");
     // b->monstre_degat = Mix_LoadWAV("assets/audio/bruitages/.ogg");
     // b->monstre_mort = Mix_LoadWAV("assets/audio/bruitages/.ogg");
 

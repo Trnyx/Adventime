@@ -70,7 +70,6 @@ static t_map* loadMap(t_monde *monde, e_mapType type) {
     switch (type) {
         case MAP_OVERWORLD: 
             map = monde->overworld;
-            // printf("\nAPPARITION BOSS : %.2f:%1.2f / BOSS : %.2f:%1.2f / ID => %s \n\n", monde->positionApparitionBoss.x, monde->positionApparitionBoss.y, monde->boss->position.x, monde->boss->position.y, monde->boss->id);
             break;
         case MAP_CAVE: 
             map = monde->caverne;

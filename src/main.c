@@ -56,6 +56,6 @@ int main(int argc, char* argv[]) {
 
 	detruireAll(moteur, audio);
 	SDL_Quit();
-
+ 
 	return 0;
 }

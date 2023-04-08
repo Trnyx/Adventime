@@ -50,7 +50,7 @@ int inputManager(t_joueur *joueur) {
         return J_MORT;
     }
 
-    // Si le clique de la souris reste enfoncé on ignore en mettant à -1
+    // Si le clique de la souris reste enfoncé, on ignore en mettant à -1
     if (joueur->actionFlags->attack == 1)
         joueur->actionFlags->attack = -1;
 

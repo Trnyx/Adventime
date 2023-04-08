@@ -1,7 +1,7 @@
 /**
  * @file joueur.c
  * 
- * @brief 
+ * @brief Module de gestion du joueur
  * 
  * @author Clément Hibon
  * @date 3 février
@@ -276,9 +276,12 @@ void mortJoueur(t_joueur *joueur) {
     joueur->statistiques.pv = 0;
 
     // Inventaire
+    // Si l'inventaire du joueur n'est pas vide
+    // On créer un coffre, à la position de la mort du joueur, contenant l'inventaire de celui ci
     if (!stockageEstVide((t_stockage*)joueur->inventaire)) {
         t_coffre *coffre = creerCoffre(joueur->position);
         coffre->entiteType = ENTITE_COFFRE_INVENTAIRE;
+        
         ajout_droit(moteur->cache->entites, (t_entite*)coffre);
 
         transfererStockage((t_stockage*)joueur->inventaire, coffre->stockage);

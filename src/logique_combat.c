@@ -26,23 +26,6 @@
 
 
 
-// On attend avant de faire une action
-// Une fois le temps d'attente terminé 
-//     Le mob se déplace en direction du joueur rapidement
-//     On check distance et ouverture
-//     Si le joueur est assez proche et dans l'ouverture 
-//         On calcul les dégâts infligés au joueur (attaque / défense)
-//         On applique les dégâts
-//         On vérifie si le joueur est mort
-//         Si le joueur est mort
-//             gestion des drops
-//             gestion de l'expérience
-//     Choix aléatoire du temps d'attente avant prochaine attaque 
-
-
-
-
-
 /**
  * @brief Remet un mob en normal
  * 
