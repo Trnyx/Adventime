@@ -1,7 +1,7 @@
 /**
  * @file temps.h
  * 
- * @brief 
+ * @brief Module de manipulation du temps
  * 
  * @author Clément Hibon
  * @date 23 février
@@ -29,7 +29,8 @@
 
 
 /**
- * @brief 
+ * @enum e_cyle
+ * @brief Enumérateur regroupant les cycles jour et nuit
  * 
  */
 typedef enum {
@@ -39,7 +40,8 @@ typedef enum {
 
 
 /**
- * @brief 
+ * @enum e_jour
+ * @brief Enumérateur regroupant les jours de la semaine
  * 
  */
 typedef enum {
@@ -54,7 +56,8 @@ typedef enum {
 
 
 /**
- * @brief 
+ * @enum e_periode
+ * @brief Enumérateur regroupant les différentes périodes de la journée en jeu
  * 
  */
 typedef enum {
@@ -74,16 +77,24 @@ typedef enum {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @struct t_temps
+ * @brief Structures regroupant les données du temps en jeu
+ * 
+ */
 typedef struct s_temps {
-    unsigned int heures;            /**< */
-    unsigned int minutes;           /**< */
-    unsigned int timestampJeu;      /**< */
-    time_t timestamp;               /**< */
+    unsigned int heures;            /**< L'heure en jeu */
+    unsigned int minutes;           /**< Les minutes en jeu */
+    unsigned int timestampJeu;      /**< Le timestamp en jeu */
+    time_t timestamp;               /**< Le timestamp réel */
 
-    e_cycle cycleJeu;               /**< */
-    e_cycle cycleVrai;              /**< */
-    e_periode periode;              /**< */
+    e_cycle cycleJeu;               /**< Le cycle jour/nuit en jeu */
+    e_cycle cycleVrai;              /**< Le cycle jour/nuit réel */
+    e_periode periode;              /**< La période du jour en jeu */
 } t_temps; 
+
+
+
 
 
 /* -------------------------------------------------------------------------- */

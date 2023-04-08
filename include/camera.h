@@ -81,8 +81,6 @@ t_camera* creerCamera(const t_vecteur2 position);
 void detruireCamera(t_camera **camera);
 
 void updateCamera(const t_vecteur2 position);
-void afficherCamera(t_map *map);
-
 void dessinerCalqueAmbiance(t_temps *temps);
 
 int positionRelativeEnPositionSurEcran(const float coordonnee, const float offset, const float origine, const float tailleRendu);

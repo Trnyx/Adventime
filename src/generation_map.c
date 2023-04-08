@@ -729,8 +729,6 @@ static t_map* genererOverworld(t_map *map) {
  * @version 1.2
  */
 t_map* genererMap(e_mapType type) {
-    printf("Generation map => ");
-
     t_map* map = malloc(sizeof(t_map));
 
     if (map == NULL) {
@@ -753,7 +751,6 @@ t_map* genererMap(e_mapType type) {
 
     
 
-    printf("Succes\n");
     return map;
 }
 

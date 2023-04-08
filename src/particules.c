@@ -1,7 +1,7 @@
 /**
  * @file particules.c
  * 
- * @brief 
+ * @brief Module de gestion des particules
  * 
  * @author Clément Hibon
  * @date 28 mars
@@ -25,9 +25,15 @@
 /* --------------------------------- Lumière -------------------------------- */
 
 
+/**
+ * @brief Dessine un cercle
+ * 
+ * @param centreX La coordonnée x du centre du cercle
+ * @param centreY La coordonnée y du centre du cercle
+ * @param rayon Le rayon du cercle
+ */
 void dessinerCercle(int centreX, int centreY, int rayon) {
     SDL_Renderer *renderer = moteur->renderer;
-    // SDL_SetRenderDrawColor(renderer, couleur.r, couleur.g, couleur.b, couleur.a);
 
     int x = 0;
     int y = rayon;
@@ -57,6 +63,11 @@ void dessinerCercle(int centreX, int centreY, int rayon) {
 
 
 
+/**
+ * @brief Dessine un cercle "lumineux"
+ * 
+ * @param source Le rectangle contenant le centre du cercle et le rayon du cercle
+ */
 void dessinerLumiere(SDL_Rect source) {
     source.x += source.w / 2; 
     source.y += source.h * 0.75;

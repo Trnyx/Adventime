@@ -1,7 +1,7 @@
 /**
  * @file entite.c
  * 
- * @brief 
+ * @brief Module de gestion des entités
  * 
  * @author Clément Hibon
  * @date 3 février
@@ -15,7 +15,9 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+
 #include "../include/physique.h"
+#include "../include/audio.h"
 #include "../include/moteur.h"
 #include "../include/monde.h"
 #include "../include/entite.h"
@@ -40,17 +42,22 @@
  */
 boolean peutApparaitre(const t_vecteur2 position, t_map *map) {
     t_chunk *chunk = getChunkGraceABlock(position.x, position.y, COUCHE_OBJETS, map);
-
     if (chunk == NULL) 
         return FAUX;
+
 
     const e_biome biome = chunk->biome;
     if (biome == BIOME_PROFONDEUR)
         return FAUX;
 
+
     t_block *block = getBlockDansMap(position.x, position.y, COUCHE_SOL, map);
+    if (block == NULL)
+        return FAUX;
+
     if (block->tag == SOL_EAU)
         return FAUX;
+
 
     block = getBlockDansMap(position.x, position.y, COUCHE_OBJETS, map);
     if (block == NULL)
@@ -59,6 +66,7 @@ boolean peutApparaitre(const t_vecteur2 position, t_map *map) {
     if (block->tag != VIDE)
         return FAUX;
             
+
     return VRAI;
 }
 
@@ -258,8 +266,6 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
 
             if (SDL_HasIntersectionF(&hitbox, &entiteTempo->hitbox)) {
                 pousseEntite(entite, entiteTempo);
-                // entiteTempo->position.x;
-                // entiteTempo->position.y;
 
                 return FAUX;
             }
@@ -286,24 +292,17 @@ boolean peutDeplacerEntite(t_map *map, t_entite *entite, const t_vecteur2 positi
  */
 boolean deplacerEntite(t_entite *entite, const float vitesse) {
     const float distance = vitesse * TPS / 1000.0;
-    // printf("Vitesse : %1.2f / TPS : %1.2f => ", vitesse, TPS);
 
-    // Justification calcul normale
     const float normale = sqrt(pow(entite->direction.x, 2) + pow(entite->direction.y, 2));
 
-    // Justification calcul
     t_vecteur2 positionSuivante;
     positionSuivante.x = entite->position.x + (distance * (entite->direction.x / normale));
     positionSuivante.y = entite->position.y + (distance * (entite->direction.y / normale));
-    // printf("(distance : %1.2f, normale : %1.2f) ", distance, normale);
-    // printf("Position suivante : %1.2f:%1.2f => ", positionSuivante.x, positionSuivante.y);
     
     boolean peutSeDeplacer = peutDeplacerEntite(moteur->cache->map, entite, positionSuivante);
-    // printf("Peut se deplacer ? %i => ", peutSeDeplacer);
 
 
     if (peutSeDeplacer == VRAI) {
-        // printf("Precedente : %1.2f:%1.2f | Nouvelle : %1.2f:%1.2f\n", entite->position.x, entite->position.y, positionSuivante.x, positionSuivante.y);
         entite->position = positionSuivante;
         
         entite->hitbox.x = entite->position.x - (entite->taille / 2);
@@ -438,15 +437,15 @@ void dessinerEntite(t_entite *entite) {
                 break;
         }
 
-        // if (((t_entiteVivante*)entite)->operation) {
-        //     sprite.y += TAILLE_TILE * 4;
-        // }
     }
 
 
 
 
     SDL_RenderCopy(moteur->renderer, texture, &sprite, &rendu);
+
+    // Affiche la hitbox
+    // A decommenter pour debug
     // SDL_Rect point = {
     //     positionRelativeEnPositionSurEcran(entite->hitbox.x, 0.0, moteur->camera->origine.x, rendu.w), 
     //     positionRelativeEnPositionSurEcran(entite->hitbox.y, 0.0, moteur->camera->origine.y, rendu.h), 
@@ -472,7 +471,6 @@ void dessinerEntite(t_entite *entite) {
  * @param entite L'adresse du pointeur de l'entité à détruire
  */
 void detruireEntite(t_entite **entite) {
-    printf("Destruction Entite => ");
     if (entite != NULL && *entite != NULL) {
         if ((*entite)->id != NULL) {
             free((*entite)->id);
@@ -482,6 +480,11 @@ void detruireEntite(t_entite **entite) {
         if ((*entite)->animation != NULL) {
             detruireAnimation(&(*entite)->animation);
             (*entite)->animation = NULL;
+        }
+
+        if ((*entite)->bruitages != NULL) {
+            detruireAudioPack(&(*entite)->bruitages);
+            (*entite)->bruitages = NULL;
         }
         
 
@@ -517,7 +520,6 @@ t_entite* creerEntite(const t_vecteur2 position) {
     }
 
     entite->id = genererId();
-    printf("ID : %s\n", entite->id);
 
 
     entite->position.x = position.x;
@@ -550,6 +552,9 @@ t_entite* creerEntite(const t_vecteur2 position) {
     entite->destructionInactif = VRAI;
     entite->destructionDelai = VRAI;
     entite->interargirAvec = FAUX;
+
+
+    entite->bruitages = NULL;
 
     ++(moteur->cache->compteurEntites.entites);
     return entite;

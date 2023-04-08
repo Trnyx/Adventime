@@ -12,6 +12,8 @@
 
 
 
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
@@ -113,11 +115,8 @@ void update(t_map *map, t_joueur *joueur) {
     unsigned int nombreMobsCombat = 0;
 
 
-    // printf("TIME => ");
-
     unsigned int timestampFrame = SDL_GetTicks();
     t_temps *temps = moteur->temps;
-    // printf("%i : %i\n", temps->heures, temps->minutes);
 
     gestionnaireTempsEvenements(temps, time(NULL));
 
@@ -155,7 +154,6 @@ void update(t_map *map, t_joueur *joueur) {
 
     en_tete(entites);
     if (!liste_vide(entites)) {
-        // printf("Update Entites => ");
 
         while (!hors_liste(entites)) {
             valeur_elt(entites, &entite);
@@ -164,12 +162,10 @@ void update(t_map *map, t_joueur *joueur) {
             if (entite != NULL) {
                 // La distance séparant l'entité actuelle et le joueur
                 const float distance = calculDistanceEntreEntites(entite, (t_entite*)joueur);
-                // printf("distance : %1.2f ", distance);
 
                 // Lorsque l'entité se trouve au delà des deux disques précédents
                 // L'entité est concidéré dans un disque inactif
                 if (distance > JOUEUR_RAYON_SEMIACTIF) {
-                    // printf("(Inactif) => ");
                     // Si l'entité doit être supprimé
                     // Alors on la détruit
                     if (entite->destructionInactif) {
@@ -186,8 +182,6 @@ void update(t_map *map, t_joueur *joueur) {
 
                 // Lorsque l'entité se trouve dans le disque semi actif par rapport au joueur
                 if (distance > JOUEUR_RAYON_ACTIF && distance <= JOUEUR_RAYON_SEMIACTIF) {
-                    // printf("(Semi Actif) => ");
-
                     // Gestion de la durée de vie de l'entité
                     // Si l'entité à atteint la durée de vie maximale d'une entité alors elle est supprimé
                     if (entite->destructionDelai) {
@@ -200,9 +194,7 @@ void update(t_map *map, t_joueur *joueur) {
 
 
                 // Lorsque l'entité se trouve dans le disque actif par rapport au joueur
-                else if (distance <= JOUEUR_RAYON_ACTIF) {
-                    // printf("(Actif) => ");
-                    
+                else if (distance <= JOUEUR_RAYON_ACTIF) {                    
                     // En fonction du type de l'entité
                     switch (entite->entiteType) {
                         // Si l'entité est un mob 
@@ -210,7 +202,6 @@ void update(t_map *map, t_joueur *joueur) {
                             // Si le mob est mort 
                             if (((t_mob*)entite)->statistiques.pv <= 0) {
                                 suppressionEntite(entites, entite);
-                                // play_bruitage(audio->bruitages->monstre_mort, 4);
                                 continue;
                             }
 
@@ -253,8 +244,6 @@ void update(t_map *map, t_joueur *joueur) {
                     if (entite->update != NULL)
                         entite->update((t_entite*)entite, distance, (t_entite*)joueur);
 
-                    // combat
-                    // entite->update((t_entite*)entite);
 
                     dessinerEntite((t_entite*)entite);
                 }
@@ -265,7 +254,8 @@ void update(t_map *map, t_joueur *joueur) {
             suivant(entites);
         }
 
-        // printf("Fin Update Entites\n");
+        // Compteur d'entités
+        // Décommenter pour deboguer
         // printf("Entites Total : %i / Mobs Total : %i  /  Mobs Passifs : %i / Mobs Agressifs : %i\n", compteur.entites, compteur.mobs, compteur.mobPassifs, compteur.mobAggressifs);
     }
 
@@ -336,7 +326,6 @@ void update(t_map *map, t_joueur *joueur) {
     /* ---------------- Construction de l'affichage de la caméra ---------------- */
 
     updateCamera(joueur->position);
-    // afficherCamera(map);
     dessinerObjets(map);
 
     if (map->type == MAP_OVERWORLD) {

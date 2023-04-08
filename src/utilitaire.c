@@ -1,7 +1,7 @@
 /**
  * @file utilitaire.c
  *
- * @brief
+ * @brief Module regroupant les fonctions dites utiles
  *
  * @author Clément Hibon
  * @date 21 janvier

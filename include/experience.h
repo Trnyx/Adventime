@@ -1,7 +1,7 @@
 /**
  * @file experience.h
  *
- * @brief
+ * @brief Module de manipulation pour l'expérience 
  *
  * @author Clément Hibon
  * @date 23 janvier

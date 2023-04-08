@@ -36,8 +36,6 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat);
 
 void metUnCoup(t_entiteVivante *entie, t_entiteVivante *cible, const float angleAttaque, const float range);
 
-void mort(t_entiteVivante *entite);
-
 
 
 

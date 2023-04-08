@@ -16,27 +16,11 @@
 #include <stdio.h>
 
 #include "../include/physique.h"
+#include "../include/audio.h"
 #include "../include/moteur.h"
 #include "../include/deplacement.h"
 #include "../include/combat.h"
 #include "../include/experience.h"
-
-
-
-
-
-// On attend avant de faire une action
-// Une fois le temps d'attente terminé 
-//     Le mob se déplace en direction du joueur rapidement
-//     On check distance et ouverture
-//     Si le joueur est assez proche et dans l'ouverture 
-//         On calcul les dégâts infligés au joueur (attaque / défense)
-//         On applique les dégâts
-//         On vérifie si le joueur est mort
-//         Si le joueur est mort
-//             gestion des drops
-//             gestion de l'expérience
-//     Choix aléatoire du temps d'attente avant prochaine attaque 
 
 
 
@@ -90,18 +74,7 @@ void gestionExeperience(t_entiteVivante *entite, t_entiteVivante *cible) {
 /* -------------------------------------------------------------------------- */
 
 
-// Créer à la position de la mort
-// Un truc qui stock l'inventaire du joueur
-void dropInventaire(/*t_stockage inventaire*/) {
-
-}
-
-
-
-
 void dropItems(t_mob *mob) {
-    printf("DROP ITEM => ");
-
     t_baseMob base = basesMobs[mob->tag - TAG_ANIMAL_VACHE];
     e_itemTag tag;
 
@@ -119,9 +92,7 @@ void dropItems(t_mob *mob) {
     }
 
 
-    printf("TAG %i => ", tag);
     t_itemEntite *itemEntite = creerItemEntite(mob->position, tag);
-    printf("ITEM ENTITE CREE\n");
     
     ajout_droit(moteur->cache->entites, (t_entite*)itemEntite);
 }
@@ -150,7 +121,7 @@ void dropItems(t_mob *mob) {
 boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float angleAttaque, const float range) {
     // Calcul la distance
     const float distance = calculDistanceEntreEntites(source, cible);
-    // printf("\n\nDISTANCE : %1.2f\n", distance);
+
     if (distance > range)
         return FAUX;
 
@@ -200,7 +171,6 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
     if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
         return VRAI;
 
-    // printf("ANGLE ATTAQUE : %1.2f\nANGLE ENTRE SOURCE ET CIBLE : %1.2f \nMIN : %1.2f\nMAX : %1.2f\nMIN REVO : %1.2f\nMAX REVO : %1.2f\n\n", angleAttaque, angleFinale, angleAttaque + OUVERTURE / 2, angleAttaque - OUVERTURE / 2, revolution(angleAttaque + OUVERTURE / 2), revolution(angleAttaque - OUVERTURE / 2));
     
     return FAUX;
 
@@ -222,7 +192,6 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
  * @return Les dégâts affliger à l'adversaire
  */
 float calculDegat(const int niveauAttaquant, int pointAttaque, int pointDefense, const boolean attaquantEstNocture, const boolean defenseurEstNocturne) {
-  printf("%d", niveauAttaquant);
     if (defenseurEstNocturne) {
         pointDefense += (((pointDefense / 2.5) + pointDefense + 2));
     }
@@ -270,8 +239,10 @@ boolean appliquerDegat(t_entiteVivante *entite, const float degat) {
  * @param range Le rayon dans lequel l'entité attaquante peut touché sa cible
  */
 void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angleAttaque, const float range) {
+    play_bruitage(entite->bruitages->attaque, -1);
+
+
     if (toucheLaCible((t_entite*)entite, (t_entite*)cible, angleAttaque, range)) {
-        printf("CIBLE TOUCHE\n");
         cible->cooldownRegeneration = COOLDOWN_REGENERATION;
         
 
@@ -294,41 +265,22 @@ void metUnCoup(t_entiteVivante *entite, t_entiteVivante *cible, const float angl
 
 
 
-        // mort(cible);
         if (cibleEstMorte) {
             if (entite->entiteType != ENTITE_JOUEUR)
                 finCombat((t_mob*)entite);
 
             gestionExeperience(entite, cible);
-            printf("EXPERIENCE => %i / %i\n", entite->statistiques.niveau, entite->statistiques.experience);
-
+            
             if (cible->entiteType == ENTITE_JOUEUR)
                 mortJoueur((t_joueur*)cible);
             else
                 dropItems((t_mob*)cible);
+
+            play_bruitage(cible->bruitages->mort, -1);
+        }
+        else {
+            play_bruitage(cible->bruitages->degat, -1);
         }
     }
-    else
-        printf("CIBLE NON TOUCHE\n");
 }
 
-
-
-
-
-
-
-
-
-
-void mort(t_entiteVivante *entite) {
-    switch (entite->entiteType) {
-        case ENTITE_JOUEUR:
-            // reapparitionJoueur();
-            break;
-
-        default:
-            entite->statistiques.pv = 0;
-            break;
-    }
-}

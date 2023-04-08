@@ -1,7 +1,7 @@
 /**
  * @file jeu.c
  * 
- * @brief 
+ * @brief Module de gestion pour le jeu
  * 
  * @author Clément Hibon
  * @date 2 mars
@@ -70,7 +70,6 @@ static t_map* loadMap(t_monde *monde, e_mapType type) {
     switch (type) {
         case MAP_OVERWORLD: 
             map = monde->overworld;
-            // printf("\nAPPARITION BOSS : %.2f:%1.2f / BOSS : %.2f:%1.2f / ID => %s \n\n", monde->positionApparitionBoss.x, monde->positionApparitionBoss.y, monde->boss->position.x, monde->boss->position.y, monde->boss->id);
             break;
         case MAP_CAVE: 
             map = monde->caverne;
@@ -118,21 +117,21 @@ static int adventime(t_monde *monde) {
 	continuer = inputManager(joueur);
 	
 	while(continuer == M_PAUSE) {
-	  continuer = pauseMenu(ctx);
-	  if (continuer == M_OPTIONS) {
-	    continuer = menu_options(ctx);
-	  }
+        continuer = pauseMenu(ctx);
+        if (continuer == M_OPTIONS) {
+            continuer = menu_options(ctx);
+        }
 	}
 
 	if(joueur->actionFlags->bool_inventory) {
-	  menu_inventaire(ctx, joueur);
+	    menu_inventaire(ctx, joueur);
 	} else {
-	  update(cache->map, joueur);
+	    update(cache->map, joueur);
 	}
        
 
 	if(continuer == J_MORT) {
-	  continuer = gameOver(ctx, joueur);
+	    continuer = gameOver(ctx, joueur);
 	}
 
 
@@ -170,7 +169,7 @@ static int adventime(t_monde *monde) {
  * @return int 
  */
 static int nouveauMonde(/* char *nom, const long long int seed */) {
-    int seed = -1;
+    // int seed = -1;
     // int seed = 1679905571;
     // int seed = 1679940582;
     // int seed = 1680032110;

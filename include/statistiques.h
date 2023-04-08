@@ -1,7 +1,7 @@
 /**
  * @file statisitques.h
  *
- * @brief
+ * @brief Module de manipulation des statistiques
  *
  * @author Clément Hibon
  * @date 23 janvier
@@ -35,8 +35,11 @@
  * @brief Enumération regroupant les différentes type de courbe d'expérience
  */
 typedef enum {
+    /*! Indique que la vitesse de progression des niveaux est lente */
     EXPERIENCE_LENT,
+    /*! Indique que la vitesse de progression des niveaux est moyenne */
     EXPERIENCE_MOYEN,
+    /*! Indique que la vitesse de progression des niveaux est rapide */
     EXPERIENCE_RAPIDE,
 } e_courbeExperience;
 

@@ -1,7 +1,7 @@
 /**
  * @file boss.h
  * 
- * @brief 
+ * @brief Module de gestion des boss
  * 
  * @author Clément Hibon
  * @date 18 mars
@@ -32,13 +32,13 @@
 
 /**
  * @struct t_boss_flags
- * @brief 
+ * @brief Les flags indiquant si le boss du jour correspondant a été vaincu
  * 
  */
 typedef struct s_boss_flags {
-    unsigned int lundi;
-    unsigned int mercredi;
-    unsigned int vendredi;
+    unsigned int lundi;         /**< Flag pour le boss du lundi */
+    unsigned int mercredi;      /**< Flag pour le boss du mercredi */
+    unsigned int vendredi;      /**< Flag pour le boss du vendredi */
 } t_boss_flags;
 
 
@@ -47,13 +47,13 @@ typedef struct s_boss_flags {
 
 /**
  * @struct t_boss
- * @brief 
+ * @brief Structure modélisant un boss
  * 
  */
 typedef struct s_boss {
-    struct s_mob;
+    struct s_mob;       /**< "Etend" la structure mob */
 
-    e_jour jour;
+    e_jour jour;        /**< Le jour du boss */
 } t_boss;
 
 

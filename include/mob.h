@@ -1,7 +1,7 @@
 /**
  * @file mob.h
  * 
- * @brief 
+ * @brief Module de manipulation des mobs
  * 
  * @author Clément Hibon
  * @date 3 mars
@@ -34,9 +34,13 @@
  * 
  */
 typedef enum {
+    /**<  */
     DEPLACEMENT_JOUEUR = -1,
+    /**< Indique aucun déplacement */
     DEPLACEMENT_STATIQUE,
+    /**< Indique que le mode de déplacement est normal */
     DEPLACEMENT_NORMAL,
+    /**< Indique que le mode de déplacement est combat */
     DEPLACEMENT_COMBAT,
 } e_deplacementType;
 
@@ -98,14 +102,15 @@ typedef struct s_mob {
 
 
 /**
- * @brief 
+ * @struct t_baseMob
+ * @brief Modélise la base d'un mob
  * 
  */
 typedef struct s_baseMob {
-    e_entiteTag tag;
+    e_entiteTag tag;                        /**< Le tag du mob */
 
-    e_itemTag loots[2];
-    unsigned int lootProbabilite[2];
+    e_itemTag loots[2];                     /**< Les items que peut loot le mob */
+    unsigned int lootProbabilite[2];        /**< Les probabilités de loot des items */
 } t_baseMob;
 
 

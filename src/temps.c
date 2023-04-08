@@ -1,7 +1,7 @@
 /**
  * @file temps.c
  * 
- * @brief 
+ * @brief Module de gestion du temps en jeu et réel
  * 
  * @author Clément Hibon
  * @date 23 février
@@ -36,6 +36,7 @@
  * @brief Récupère le jour de la semaine
  * 
  * @param timestamp Le timestamp actuel
+ * 
  * @return e_jour, le jour de la semaine 
  */
 e_jour getJourDeLaSemaine(const time_t timestamp) {
@@ -49,6 +50,7 @@ e_jour getJourDeLaSemaine(const time_t timestamp) {
  * @brief Récupère le cycle jour/nuit du jeu
  * 
  * @param temps Un pointeur sur la structure temps du jeu
+ * 
  * @return e_cycle, si il fait jour ou nuit
  */
 e_cycle getCycleJeu(t_temps *temps) {
@@ -61,6 +63,7 @@ e_cycle getCycleJeu(t_temps *temps) {
  * @brief Récupère le cycle jour/nuit réel
  * 
  * @param timestamp Le timestamp actuel 
+ * 
  * @return e_cycle, si il fait jour ou nuit
  */
 e_cycle getCycleVrai(const time_t timestamp) {
@@ -75,7 +78,8 @@ e_cycle getCycleVrai(const time_t timestamp) {
 /**
  * @brief Récupère la période de la journée
  * 
- * @param temps 
+ * @param temps Le temps actuel
+ * 
  * @return e_periode, la periode de la journée
  */
 e_periode getPeriode(t_temps *temps) {

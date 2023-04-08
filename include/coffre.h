@@ -1,7 +1,7 @@
 /**
  * @file coffre.h
  * 
- * @brief 
+ * @brief Module de manipulation des coffres
  * 
  * @author Clément Hibon
  * @date 31 mars

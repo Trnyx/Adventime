@@ -1,7 +1,7 @@
 /**
  * @file stockage.h
  * 
- * @brief Module de gestion du stockage
+ * @brief Module de manipulation du stockage
  * 
  * @author Clément Hibon
  * @date 24 mars

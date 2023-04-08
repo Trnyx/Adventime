@@ -14,10 +14,6 @@
 #include "../include/menus.h"
 #include "../include/initialiseur.h"
 #include "../include/jeu.h"
-// #include "../include/textures.h"
-// #include "../include/monde.h"
-// #include "../include/joueur.h"
-// #include "../include/input_manager.h"
 
 
 
@@ -29,16 +25,17 @@
 
 
 int main(int argc, char* argv[]) {
-
-	// moteur = NULL;
-	// audio = NULL;
 	
 
 	initAll(&moteur, &audio);
 	ctx = nk_sdl_init(moteur->window, moteur->renderer);
+
 	moteur->state = M_MENU;
 	
+
+
 	play_music(audio->musiques->menu_principal, VRAI, FAUX);
+
 
 	while (moteur->state != JEU_QUITTER) {
 		
@@ -59,6 +56,6 @@ int main(int argc, char* argv[]) {
 
 	detruireAll(moteur, audio);
 	SDL_Quit();
-
+ 
 	return 0;
 }

@@ -1,7 +1,9 @@
 /**
  * @file seed.c
  *
- * @brief Module 
+ * @brief Module de gestion du seed
+ * 
+ * Toute la gestion du seed (convertion) est géré ici
  *
  * @author Clément Hibon
  * @date 31 mars
@@ -85,6 +87,7 @@ void myItoa(int n, char *string) {
  * @brief Convertie une chaine de caractère en une chaine de caractère contenant le code ascii des caractère de la première chaine
  * 
  * @param string La chaine à convertir
+ * 
  * @return La chaine de caractère ascii
  */
 char* convertionChaineEnChaineAscii(char *string) {
@@ -127,5 +130,6 @@ long long int convertirEnSeed(char *string) {
 
     if (seedLonLongInt > INT_MAX)
         return seedLonLongInt / seedInt;
-    else return seedLonLongInt;
+    else 
+        return seedLonLongInt;
 }

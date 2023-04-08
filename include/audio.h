@@ -22,7 +22,6 @@
 #include "utilitaire.h"
 #include "entite.h"
 #include "temps.h"
-#include "entite.h"
 
 
 
@@ -107,23 +106,38 @@ typedef struct s_bruitages {
     Mix_Chunk *menu_selection;          /**< Bruit lorsque l'on clique sur un bouton */
 
     // Joueur :
-    Mix_Chunk *joueur_attaque;          /**< Bruit lorsque le joueur attaque */
     Mix_Chunk *joueur_degat;            /**< Bruit lorsque le joueur prend des dégâts */
     Mix_Chunk *joueur_mort;             /**< Bruit lorsque le joueur meurt */
     
     // Monstre :
-    Mix_Chunk *monstre_attaque;         /**< Bruit lorsqu'un monstre attaque */
     Mix_Chunk *monstre_degat;           /**< Bruit lorsqu'un monstre prend des dégâts */
     Mix_Chunk *monstre_mort;            /**< Bruit lorsqu'un monstre meurt */
 
     // Animaux
     Mix_Chunk *vache;                   /**< Bruit d'une vache */
+    Mix_Chunk *vache_degat;                   /**< Bruit d'une vache */
+    Mix_Chunk *vache_mort;                   /**< Bruit d'une vache */
     Mix_Chunk *cochon;                  /**< Bruit d'un cochon */
+    Mix_Chunk *cochon_degat;                  /**< Bruit d'un cochon */
+    Mix_Chunk *cochon_mort;                  /**< Bruit d'un cochon */
 
     // Autres :
-    Mix_Chunk *degats;                  /**< Bruit lorsque des dégâts sont mis */
+    Mix_Chunk *attaque;                  /**< Bruit lorsque des dégâts sont mis */
     Mix_Chunk *item_recuperation;       /**< Bruit lorsque qu'un item est récupéré */
 } t_bruitages;
+
+
+
+/**
+ * @enum
+ * @brief 
+ */
+typedef struct s_audioPack {
+    Mix_Chunk *normal;
+    Mix_Chunk *degat;
+    Mix_Chunk *mort;
+    Mix_Chunk *attaque;
+} t_audioPack;
 
 
 
@@ -155,7 +169,12 @@ extern t_audio *audio;
 /* -------------------------------------------------------------------------- */
 /*                                  Fonctions                                 */
 /* -------------------------------------------------------------------------- */
+#include "entite.h"
 
+
+t_audioPack *creerAudioPack();
+void detruireAudioPack(t_audioPack **pack);
+void chargerAudioPack(t_audioPack *pack, e_entiteTag tag);
 
 t_audio *initAudio(void);
 int chargerAudio(t_musiques **musiques, t_bruitages **bruitages);
@@ -164,7 +183,7 @@ void detruireAudio(t_audio **audio);
 void changerVolume(const e_audio_channel channel, const float nouveauVolume);
 void play_music(Mix_Music *music, boolean repeat, boolean estLaSuite);
 void play_bruitage(Mix_Chunk *sound, int channel);
-void play_sonAmbiance(e_entiteTag tag, float angle, float distance);
+void play_sonAmbiance(Mix_Chunk *bruitage, float angle, float distance);
 void selectionMusique(t_temps *temps);
 
 

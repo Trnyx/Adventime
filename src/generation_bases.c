@@ -141,14 +141,16 @@ const t_baseVegetal basesVegetaux[] = {
 
 
 /**
- * @brief 
+ * @brief Tableau regroupant les informations de bases des mobs
+ * - Les items dropés
+ * - La probabilité de drop des items
  */
 const t_baseMob basesMobs[] = {
-    // Animal
+    // Animaux
     { TAG_ANIMAL_VACHE, { ITEM_STEAK }, { 100 } },
     { TAG_ANIMAL_COCHON, { ITEM_PORC }, { 100 } },
     
-    // 
+    // Monstres
     { TAG_MONSTRE_BASIC, { ITEM_MATERIEL_BATON }, { 100 } },
 };
 

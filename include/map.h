@@ -1,7 +1,7 @@
 /**
  * @file map.h
  *
- * @brief
+ * @brief Module de manipulation de la map
  *
  * @author Clément Hibon
  * @date 21 janvier
@@ -24,9 +24,6 @@
 
 
 
-
-// #define TAILLE_MAP 8
-// #define TAILLE_CHUNK 5
 
 // La taille de la map (Le nombre de chunk)
 // La map est carré
@@ -173,8 +170,6 @@ typedef struct s_map {
     e_mapType type;             /**< Le type de la map */
     t_chunk *chunks;            /**< Les chunks contenue dans la map */
 
-    // int nombreEntites;          /**< */
-    // t_entite **entites;         /**< */
     t_liste *entites;           /**< Les entités contenue dans la map */
 } t_map;
 
@@ -240,16 +235,13 @@ t_chunk* getChunk(const int x, const int y, const int z, t_map *map);
 t_chunk* getChunkGraceABlock(const int x, const int y, const int z, t_map *map);
 
 
-// void normalisationDuChunk(t_chunk* chunk, t_map *map);
-
-
 t_map* genererMap(e_mapType type);
 
 void genererCave(t_map *map);
 void genererVegetations(t_map *map);
 void genererAnimaux(t_map *map);
 
-int detruireMap(t_map **map);
+void detruireMap(t_map **map);
 
 void dessinerSol(t_map *map);
 void dessinerObjets(t_map *map);

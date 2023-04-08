@@ -1,7 +1,7 @@
 /**
  * @file window.c
  * 
- * @brief 
+ * @brief Module de gestion pour la création de la fenêtre et le rendu du jeu
  * 
  * @author Eliott Remars & Clément Hibon
  * @date 3 février
@@ -15,7 +15,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "../include/moteur.h"
 #include "../include/window.h"
 
 
@@ -25,9 +24,7 @@
 
 
 /**
- * @brief 
- * 
- * @return int 
+ * @brief Initialise la librairie SDL et créer la fenêtre
  */
 void initSDL(t_moteur *moteur) {
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {

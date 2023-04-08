@@ -4,7 +4,7 @@
  * @brief Génération de la végétation 
  * 
  * La génération de la végétation suit le principe du "Poisson Disc Sampling"
- * Cf. disc_sampling.c pour plus d'information
+ * Cf. disc_sampling.c pour plus d'informations
  * 
  *
  * @author Clément Hibon
@@ -46,18 +46,7 @@
  * 
  * @version 1.1
  */
-// e_vegetalTag selectionVegetation(t_baseBiome baseBiome) {
 e_vegetalTag selectionVegetation(e_solTag sol) {
-    // const int probabilite = getNombreAleatoire(1, 100); // rand() % 100;
-    // const int nbVegetauxPossibles = sizeof(baseBiome.tagVegetations) / sizeof(baseBiome.tagVegetations[0]);
-
-    // for (int i = 0; i < nbVegetauxPossibles; i++) {
-    //     if (baseBiome.probabilitesVegetations[i] <= probabilite) return baseBiome.tagVegetations[i];
-    // }
-    
-  
-    // return HERBE;
-
     switch (sol) {
         case SOL_SABLE:
             return PALMIER;
@@ -112,7 +101,7 @@ void genererVegetations(t_map *map) {
             const t_vecteur2 min = { 0, 0 };
             const t_vecteur2 max = { TAILLE_CHUNK, TAILLE_CHUNK };
 
-            const int nbVegetaux = TAILLE_CHUNK; // (TAILLE_CHUNK / 3) * baseBiome.vegetationDensite;
+            const int nbVegetaux = TAILLE_CHUNK;
             float rayon = (TAILLE_CHUNK * 0.5) / baseBiome.vegetationDensite;
             if (rayon < 1.0)
                 rayon = 1.0;
@@ -130,10 +119,8 @@ void genererVegetations(t_map *map) {
                 if (block->tag <= SOL_EAU || block->tag >= NB_TYPES_SOL) continue;
 
                 const e_vegetalTag vegetalTag = selectionVegetation(block->tag);
-                // const e_vegetalTag vegetalTag = selectionVegetation(baseBiome);
         
                 t_chunk *chunkObjets = getChunk(x, y, COUCHE_OBJETS, map);
-                // chunk = getChunk(x, y, COUCHE_OBJETS, map);
                 block = getBlockDansChunk((int)point.x % TAILLE_CHUNK, (int)point.y % TAILLE_CHUNK, chunkObjets);
                 if (block->tag != VIDE) continue;
 

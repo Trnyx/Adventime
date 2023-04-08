@@ -7,7 +7,8 @@
  * Comme les points sont choisis de façon aléatoire, le résultat a un aspect plus organique
  * 
  * 1. Un premier point est généré aléatoirement et est stocké dans un tableau
- * 2. 
+ * 2. Pour chaque nouveau points généré on regarde la distance le séparant de tous les autres points
+ * 3. Si ce dernier est trop loin ou trop proche alors on l'ignore et créer un nouveau point
  * 
  * 
  * @author Clément Hibon
@@ -46,11 +47,9 @@ boolean pointValide(t_vecteur2 elementsExistant[], const int nombreElementsExist
     for (int i = 0; i < nombreElementsExistant; i++) {
         t_vecteur2 pointExistant = elementsExistant[i];
         const float distance = calculDistanceEntrePoints(pointExistant, nouveauPoint);
-        
-        // printf("DISTANCE : %.2f  |  RAYON : %.2f / %.2f", distance, rayon, rayon * 2);
-    
+
+
         if (distance < rayon || distance > rayon * 2) {
-            // printf("DISTANCE : %.2f \n", distance);
             estValide = FAUX;      
         }
         
@@ -92,7 +91,7 @@ t_vecteur2 creerNouveauPoint(t_vecteur2 min, t_vecteur2 max) {
  * 
  * @param grille La grille contenant tous les points
  * @param nouveauPoint Le point à ajouter
- * @param i 
+ * @param i L'index du nouveau point dans la grille
  */
 void ajouterPoint(t_discSampling *grille, const t_vecteur2 nouveauPoint, const int i) {
     grille->elementPositions[i] = nouveauPoint;
@@ -142,10 +141,6 @@ t_discSampling genererGrilleDiscSampling(const t_vecteur2 minGrille, const t_vec
         if (pointValide(grille.elementPositions, grille.nbElements, nouveauPoint, rayon)) {
             ajouterPoint(&grille, nouveauPoint, grille.nbElements);
         }
-        else {
-            // --i;
-        }
-
     }
 
 

@@ -53,6 +53,5 @@ t_animal* genererAnimal(t_animal *animal, const e_entiteTag tag) {
  * @param map Un pointeur sur la map dans laquelle les animaux sont générés
  */
 void genererAnimaux(t_map *map) {
-    printf("GENERATION ANIMAUX => ");
     apparitionTroupeau(map->entites, map);
 }

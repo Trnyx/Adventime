@@ -30,12 +30,6 @@
 /* -------------------------------------------------------------------------- */
 
 
-typedef enum {
-    DISC_CENTRE,
-    DISC_ALEATOIRE,
-} e_disc_methode_gen;
-
-
 
 
 
