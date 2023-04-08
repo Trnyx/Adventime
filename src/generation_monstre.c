@@ -136,9 +136,7 @@ t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome, const int niv
     monstre->tag = TAG_MONSTRE_BASIC;
     monstre->type = choisirTypeMonstre(basesBiomes[biome]);
 
-    printf("NIVEAU => ");
     const int niveau = calculNiveau(niveauJoueur);
-    printf("OK\n");
 
     monstre->baseStatistiques = genererStatistiquesDeBaseMonstre(monstre->type);
     monstre->statistiques = genererStatistiques(monstre->baseStatistiques, niveau);

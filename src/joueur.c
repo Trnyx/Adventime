@@ -386,7 +386,6 @@ t_action_flags* initialiserActionFlags() {
  * @return Un pointeur sur le joueur créé, NULL si echec
  */
 t_joueur* creerJoueur(const t_vecteur2 position) {
-    printf("Creation du joueur (%1.0f:%1.0f) => ", position.x, position.y);
     t_entite *entite = creerEntite(position);
     t_joueur *joueur = realloc(entite, sizeof(t_joueur));
 
