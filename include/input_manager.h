@@ -1,5 +1,5 @@
 /**
- * @file inputs_manager.h
+ * @file input_manager.h
  * 
  * @brief Module de manipulations des inputs du joueur
  *

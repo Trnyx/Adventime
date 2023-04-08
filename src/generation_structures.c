@@ -1,7 +1,7 @@
 /**
  * @file generation_structures.c
  * 
- * @brief 
+ * @brief Module de création des structures
  * 
  * @author Clément Hibon
  * @date 18 mars

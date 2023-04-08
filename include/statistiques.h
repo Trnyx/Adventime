@@ -1,5 +1,5 @@
 /**
- * @file statisitques.h
+ * @file statistiques.h
  *
  * @brief Module de manipulation des statistiques
  *

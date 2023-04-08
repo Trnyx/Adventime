@@ -1,5 +1,5 @@
 /**
- * @file jeu.c
+ * @file jeu.h
  * 
  * @brief Module de gestion du jeu
  * 
