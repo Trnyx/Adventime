@@ -1,7 +1,7 @@
 /**
  * @file liste.c
  * 
- * @brief 
+ * @brief Module de gestion d'une liste
  * 
  * @author Clément Hibon
  * @date 10 février

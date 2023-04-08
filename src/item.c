@@ -223,10 +223,8 @@ void updateItemEntite(t_itemEntite *itemEntite, const float distance, t_joueur *
  */
 void detruireItemEntite(t_itemEntite **itemEntite) {
     if (itemEntite != NULL && itemEntite != NULL) {
-        printf("Destruction Item Entite => ");
 
         if ((*itemEntite)->timestampActualisation - (*itemEntite)->timestampCreation >= ENTITE_DUREE_VIE_MAX * 1000) {
-            printf("Destruciton item => ");
             t_item *item = (*itemEntite)->item;
             item->detruire(&item);
         }
@@ -295,7 +293,10 @@ t_itemEntite *creerItemEntite(const t_vecteur2 position, const e_itemTag tag) {
 
 
 /**
- * @brief 
+ * @brief Tableau regroupant les bases des différents items
+ * - Tag
+ * - Catégorie
+ * - Le nombre d'item par stack
  * 
  */
 t_baseItem basesItems[] = {

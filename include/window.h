@@ -1,7 +1,7 @@
 /**
  * @file window.h
  * 
- * @brief 
+ * @brief Module de gestion de la fenêtre du jeu
  * 
  * @author Eliott Remars & Clément Hibon
  * @date 3 février
@@ -19,6 +19,8 @@
 
 
 #include <SDL2/SDL.h>
+
+#include "moteur.h"
 
 
 
@@ -39,7 +41,7 @@
 /* -------------------------------------------------------------------------- */
 
 
-void initSDL();
+void initSDL(t_moteur *moteur);
 
 
 

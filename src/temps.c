@@ -1,7 +1,7 @@
 /**
  * @file temps.c
  * 
- * @brief 
+ * @brief Module de gestion du temps en jeu et réel
  * 
  * @author Clément Hibon
  * @date 23 février

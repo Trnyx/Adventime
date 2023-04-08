@@ -1,7 +1,7 @@
 /**
  * @file statisitques.c
  *
- * @brief
+ * @brief Module de gestion des statistiques
  *
  * @author Clément Hibon
  * @date 23 janvier
@@ -39,6 +39,7 @@
  * Les statistiques de base sont utilisés à chaque fois que les statistiques ont besoins d'être calculées
  * 
  * @param type Le type du monstre
+ * 
  * @return Les statistiques de base du monstre
  */
 t_baseStatistiques genererStatistiquesDeBaseMonstre(const e_monstreType type) {
@@ -65,6 +66,7 @@ t_baseStatistiques genererStatistiquesDeBaseMonstre(const e_monstreType type) {
  * Les statistiques de base sont utilisés à chaque fois que les statistiques ont besoins d'être calculées
  * 
  * @param tag Le tag l'animal
+ * 
  * @return Les statistiques de base de l'animal
  */
 t_baseStatistiques genererStatistiquesDeBaseAnimal(const e_entiteTag tag) {
@@ -91,6 +93,7 @@ t_baseStatistiques genererStatistiquesDeBaseAnimal(const e_entiteTag tag) {
  * Les statistiques de base sont utilisés à chaque fois que les statistiques ont besoins d'être calculées
  * 
  * @param jour Le jour du boss
+ * 
  * @return Les statistiques de base du boss
  */
 t_baseStatistiques genererStatistiquesDeBaseBoss(const e_jour jour) {
@@ -103,6 +106,11 @@ t_baseStatistiques genererStatistiquesDeBaseBoss(const e_jour jour) {
 
 
 
+/**
+ * @brief Génère les statistiques de base du joueur
+ * 
+ * @return Les statistiques de bases du joueur
+ */
 t_baseStatistiques genererStatistiquesDeBaseJoueur() {
     t_baseStatistiques baseStatistiques;
 
@@ -129,6 +137,7 @@ t_baseStatistiques genererStatistiquesDeBaseJoueur() {
  * 
  * @param base La statistique de base concerné
  * @param niveau Le niveau du monstre
+ * 
  * @return La valeur de la statistique
  */
 int calculStatistique(const int base, const int niveau) {
@@ -162,6 +171,7 @@ int calculPv(const int attaque, const int defense, const int basePv) {
  * 
  * @param baseStatistiques Les statistiques de base d'un mob
  * @param niveau Le niveau du mob
+ * 
  * @return Les statistiques du mob
  */
 t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau) {
@@ -269,10 +279,13 @@ int calculExperience(t_entiteVivante *cible) {
 
 
 /**
- * @brief 
+ * @brief Calcul le nombre de point de d'expérience en fonction du niveau donnée
  * 
- * @param niveau 
- * @return int 
+ * Cette fonction calcul pour une courbe à "vitesse lente"
+ * 
+ * @param niveau Le niveau que dont on veut calculer le nombre de point d'expérience
+ * 
+ * @return Le nombre de point d'expérience
  */
 int lent(const unsigned int niveau) {
     if (niveau <= 1) return 0;
@@ -282,10 +295,13 @@ int lent(const unsigned int niveau) {
 
 
 /**
- * @brief 
+ * @brief Calcul le nombre de point de d'expérience en fonction du niveau donnée
  * 
- * @param niveau 
- * @return int 
+ * Cette fonction calcul pour une courbe à "vitesse moyenne"
+ * 
+ * @param niveau Le niveau que dont on veut calculer le nombre de point d'expérience
+ * 
+ * @return Le nombre de point d'expérience
  */
 int moyen(const unsigned int niveau) {
     if (niveau <= 1) return 0;
@@ -295,10 +311,13 @@ int moyen(const unsigned int niveau) {
 
 
 /**
- * @brief 
+ * @brief Calcul le nombre de point de d'expérience en fonction du niveau donnée
  * 
- * @param niveau 
- * @return int 
+ * Cette fonction calcul pour une courbe à "vitesse rapide"
+ * 
+ * @param niveau Le niveau que dont on veut calculer le nombre de point d'expérience
+ * 
+ * @return Le nombre de point d'expérience
  */
 int rapide(const unsigned int niveau) {
     if (niveau <= 1) return 0;

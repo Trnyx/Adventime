@@ -1,7 +1,7 @@
 /**
  * @file jeu.c
  * 
- * @brief 
+ * @brief Module de gestion pour le jeu
  * 
  * @author Clément Hibon
  * @date 2 mars
@@ -118,21 +118,21 @@ static int adventime(t_monde *monde) {
 	continuer = inputManager(joueur);
 	
 	while(continuer == M_PAUSE) {
-	  continuer = pauseMenu(ctx);
-	  if (continuer == M_OPTIONS) {
-	    continuer = menu_options(ctx);
-	  }
+        continuer = pauseMenu(ctx);
+        if (continuer == M_OPTIONS) {
+            continuer = menu_options(ctx);
+        }
 	}
 
 	if(joueur->actionFlags->bool_inventory) {
-	  menu_inventaire(ctx, joueur);
+	    menu_inventaire(ctx, joueur);
 	} else {
-	  update(cache->map, joueur);
+	    update(cache->map, joueur);
 	}
        
 
 	if(continuer == J_MORT) {
-	  continuer = gameOver(ctx, joueur);
+	    continuer = gameOver(ctx, joueur);
 	}
 
 
