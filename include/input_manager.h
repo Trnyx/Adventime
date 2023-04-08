@@ -1,7 +1,7 @@
 /**
  * @file inputs_manager.h
  * 
- * @brief
+ * @brief Module de manipulations des inputs du joueur
  *
  * @author Clément Hibon
  * @date 6 février

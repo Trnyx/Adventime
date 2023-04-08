@@ -1,7 +1,7 @@
 /**
  * @file textures.h
  *
- * @brief Module de gestion des textures
+ * @brief Module de manipulation des textures
  *
  * @author Clément Hibon
  * @date 3 février

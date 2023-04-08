@@ -1,7 +1,7 @@
 /**
  * @file structures.h
  *
- * @brief 
+ * @brief Module de manipulation des structures 
  *
  * @author Clément Hibon
  * @date 10 mars
@@ -65,12 +65,12 @@ typedef enum {
  * 
  */
 typedef struct s_structure {
-    e_structureTag tag;         /**< */
+    e_structureTag tag;         /**< Le tag de la structure */
 
-    unsigned int hauteur;       /**< */
-    unsigned int largeur;       /**< */
+    unsigned int hauteur;       /**< Le nombre de blocs en hauteur que prend la structure */
+    unsigned int largeur;       /**< Le nombre de blocs en largeur que prend la structure */
 
-    e_blockTag blocks[7][6];    /**< */
+    e_blockTag blocks[7][6];    /**< Le tableau regroupant les blocs de la structure */
 } t_structure;
 
 

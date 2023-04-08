@@ -114,8 +114,8 @@ t_baseStatistiques genererStatistiquesDeBaseBoss(const e_jour jour) {
 t_baseStatistiques genererStatistiquesDeBaseJoueur() {
     t_baseStatistiques baseStatistiques;
 
-    baseStatistiques.attaque = JOUEUR_ATTAQUE_DEFAUT;
-    baseStatistiques.defense = JOUEUR_DEFENSE_DEFAUT;
+    baseStatistiques.attaque = JOUEUR_BASE_ATTAQUE;
+    baseStatistiques.defense = JOUEUR_BASE_DEFENSE;
     baseStatistiques.vitesse = JOUEUR_BASE_VITESSE;
     baseStatistiques.pv = JOUEUR_BASE_PV;
     baseStatistiques.experience_courbe = EXPERIENCE_MOYEN;

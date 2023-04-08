@@ -1,7 +1,7 @@
 /**
  * @file entite.h
  * 
- * @brief 
+ * @brief Module de manipulation des entités
  * 
  * @author Clément Hibon
  * @date 3 février
@@ -37,7 +37,7 @@
 
 /**
  * @enum e_entiteType
- * @brief 
+ * @brief Enumérateur regroupant les différents types d'entité
  * 
  */
 typedef enum {
@@ -52,7 +52,7 @@ typedef enum {
 
 /**
  * @enum e_entiteTag
- * @brief Enumérateur regroupant les différents tags des monstres
+ * @brief Enumérateur regroupant les différents tags des entités
  * 
  * Un compteur du nombre de tags est également initialisé à la fin de l'énumérateur
  */
@@ -70,7 +70,9 @@ typedef enum {
 
 /**
  * @enum e_orientation
- * @brief 
+ * @brief Les orientations
+ * 
+ * Pour simplifier, nous utilisons les points cardinaux
  * 
  */
 typedef enum {
@@ -84,14 +86,19 @@ typedef enum {
 
 /**
  * @enum e_operation
- * @brief 
+ * @brief Enumérateur regroupant les différentes opérations des mobs
  * 
  */
 typedef enum {
+    /*! Lorsque le mob est en attente, aucune action particulière ne sera faite */
     ATTENTE,
+    /*! Indique que le mob se déplace vers sa cible */
     SE_DEPLACE_VERS,
+    /*! Indique que le mob se déplace autour de sa cible */
     SE_DEPLACE_AUTOUR,
+    /*! Indique que le mob s'éloigne de sa cible */
     S_ELOIGNE_DE,
+    /*! Indique que le mob attaque sa cible */
     ATTAQUE,
 } e_operation;
 
@@ -174,14 +181,16 @@ typedef struct s_entiteVivante {
 
 /**
  * @struct t_compteur
- * @brief 
+ * @brief Structure permettant de regroupé les compteurs d'entités
+ * 
+ * Les compteurs sont utilisés pour les différents caps
  * 
  */
 typedef struct s_compteur {
-    int entites;
-    int mobs;
-    int mobAggressifs;
-    int mobPassifs;
+    int entites;                /**< Compteur d'entités, la limite est définit par ENTITE_CAP */
+    int mobs;                   /**< Compteur de mobs, la limite est définit par MOB_CAP */
+    int mobAggressifs;          /**< Compteur de mob aggressifs, la limite est définit par MONSTRE_AGGRESSIF_CAP */
+    int mobPassifs;             /**< Compteur de monstres passifs, la limite est définit par MONSTRE_PASSIF_CAP */
 } t_compteur;
 
 

@@ -1,7 +1,7 @@
 /**
  * @file inventaire.h
  * 
- * @brief Module de gestion de l'inventaire
+ * @brief Module de manipulation de l'inventaire
  * 
  * @author Clément Hibon
  * @date 24 mars
@@ -67,7 +67,6 @@ typedef struct s_inventaire {
 /* -------------------------------------------------------------------------- */
 
 typedef struct s_joueur t_joueur;
-// void changerSlot();
 
 
 
@@ -76,6 +75,7 @@ t_inventaire* creerInventaire();
 void recupererItem(t_itemEntite *itemEntite, t_joueur *recuperateur);
 
 void detruireInventaire(t_inventaire **inventaire);
+
 
 
 

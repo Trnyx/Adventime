@@ -4,7 +4,7 @@
  * @brief Module de manipulation du monde
  * 
  * @author Clément Hibon
- * @date 
+ * @date 25 janvier
  * @version 1.1
  */
 

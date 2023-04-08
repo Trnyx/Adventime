@@ -1,7 +1,7 @@
 /**
  * @file joueur.h
  * 
- * @brief 
+ * @brief Module de manipulation du joueur 
  * 
  * @author Clément Hibon
  * @date 3 février
@@ -25,11 +25,6 @@
 
 
 
-#define JOUEUR_VITESSE_DEFAUT 10
-#define JOUEUR_ATTAQUE_DEFAUT 20
-#define JOUEUR_DEFENSE_DEFAUT 20
-#define JOUEUR_PV_DEFAUT 40
-
 // La statistique "attaque" de base du joueur
 #define JOUEUR_BASE_ATTAQUE 25
 // La statistique "defense" de base du joueur
@@ -39,6 +34,7 @@
 // La statistique "pv" de base du joueur
 #define JOUEUR_BASE_PV 45
 
+// Cooldown entre chaque attaque du joueur [en ticks]
 #define JOUEUR_COOLDOWN_ATTAQUE 10
 
 
@@ -56,23 +52,23 @@
  */
 typedef struct s_action_flags {
     // Déplacements
-    int up;
-    int down;
-    int left;
-    int right;
+    int up;       				/**< Le joueur se déplace vers le NORD */
+    int down;       			/**< Le joueur se déplace vers le SUD */
+    int left;       			/**< Le joueur se déplace vers l'OUEST */
+    int right;        			/**< Le joueur se déplace vers l'EST */
 
     // Inventaire
-    int inventory;
-  int bool_inventory;
+    int inventory;				/**< Le joueur ouvre/ferme son inventaire */
+    int bool_inventory;			/**< L'inventaire est actuellement ouvert */
 
     // Intéractions
-    int interaction;
+    int interaction;			/**< Le joueur interargit */
 
     // Attaque
-    int attack;
+    int attack;					/**< Le joueur attaque */
 
     // Autres
-    int miniMap;
+    int miniMap;				/**< Le joueur affiche la mini map*/
 } t_action_flags;
 
 
@@ -92,11 +88,7 @@ typedef struct s_joueur {
     int slotSelectionne;            /**< Le slot selectionne par le joueur */
 
     // Input
-    t_action_flags *actionFlags;    /**< Les inputs du joueur */
-
-    // Cooldowns
-    int timestampAttaque;           /**< */
-    
+    t_action_flags *actionFlags;    /**< Les inputs du joueur */    
 } t_joueur;
 
 
