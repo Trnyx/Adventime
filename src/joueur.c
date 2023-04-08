@@ -428,7 +428,6 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     chargerAudioPack(joueur->bruitages, joueur->tag);
 
 
-    printf("Succes\n");
     entite = NULL;
     return joueur;
 };

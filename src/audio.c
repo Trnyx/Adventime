@@ -122,7 +122,7 @@ void play_sonAmbiance(Mix_Chunk *bruitage, float angle, float distance) {
             distance = 255;
 
         // Récupère le premier channel libre
-        channel = Mix_PlayChannel(channel, bruitage, 1);
+        channel = Mix_PlayChannel(channel, bruitage, 0);
 
         
         Mix_UnregisterAllEffects(channel);

@@ -63,14 +63,6 @@ long long int convertionSeed(char *seedString) {
 
 
 
-long long int convertionSeed(char *seedString) {
-    return convertirEnSeed(seedString);
-}
-
-
-
-
-
 /**
  * @brief Obtient le point d'apparition par défaut du joueur
  * 
