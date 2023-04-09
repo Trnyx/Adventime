@@ -5,7 +5,6 @@
  *
  * @author Clément Hibon
  * @date 5 février
- * @version 1.1
  */
 
 
@@ -39,7 +38,6 @@
  * 
  * @return Vrai si le block se situe bien dans un chunk, faux sinon
  * 
- * @version 1.1
  */
 int blockEstDansLeChunk(const int x, const int y) {
     return x >= 0 && y >= 0 && x < TAILLE_CHUNK && y < TAILLE_CHUNK;
@@ -54,7 +52,6 @@ int blockEstDansLeChunk(const int x, const int y) {
  * 
  * @return Vrai si le block se situe bien dans la map, faux sinon
  * 
- * @version 1.1
  */
 int blockEstDansLaMap(const int x, const int y) {
     return x >= 0 && y >= 0 && x < (TAILLE_MAP * TAILLE_CHUNK) && y < (TAILLE_MAP * TAILLE_CHUNK);
@@ -70,7 +67,6 @@ int blockEstDansLaMap(const int x, const int y) {
  * 
  * @return Vrai si le chunk se situe bien dans la map, faux sinon
  * 
- * @version 1.1
  */ 
 int chunkEstDansLaMap(const int x, const int y, const int z) {
     return x >= 0 && y >= 0 && z >= 0 && x < TAILLE_MAP && y < TAILLE_MAP && z < NB_COUCHE;
@@ -95,7 +91,6 @@ int chunkEstDansLaMap(const int x, const int y, const int z) {
  * 
  * @return Un pointeur sur le block trouvé, NULL sinon
  * 
- * @version 1.3
  */
 t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk) {
     if (!blockEstDansLeChunk(x, y)) return NULL;
@@ -120,7 +115,6 @@ t_block* getBlockDansChunk(const int x, const int y, t_chunk *chunk) {
  * 
  * @return Un pointeur sur le block trouvé, NULL sinon
  * 
- * @version 1.2
  */
 t_block* getBlockDansMap(const int x, const int y, const int z, t_map *map) {
     if (!blockEstDansLaMap(x, y)) return NULL;
@@ -143,7 +137,6 @@ t_block* getBlockDansMap(const int x, const int y, const int z, t_map *map) {
  * 
  * @return Un pointeur sur le chunk trouvé, NULL sinon
  * 
- * @version 1.3
  */
 t_chunk* getChunk(const int x, const int y, const int couche, t_map *map) {
     if (!chunkEstDansLaMap(x, y, couche)) return NULL;
@@ -168,7 +161,6 @@ t_chunk* getChunk(const int x, const int y, const int couche, t_map *map) {
  * 
  * @return Un pointeur sur le chunk trouvé, NULL sinon
  * 
- * @version 1.1
  */
 t_chunk* getChunkGraceABlock(const int x, const int y, const int couche, t_map *map) {
     const int xChunk = x / TAILLE_CHUNK;

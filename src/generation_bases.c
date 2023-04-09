@@ -11,7 +11,6 @@
  *
  * @author Clément Hibon
  * @date 8 février
- * @version 1.2
  */
 
 

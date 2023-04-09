@@ -5,7 +5,6 @@
  *
  * @author Clément Hibon, Julien Houget
  * @date 21 janvier
- * @version 1.3
  */
 
 

@@ -16,7 +16,6 @@
  * 
  * @author Clément Hibon
  * @date 21 janvier
- * @version 1.4
  */
 
 
@@ -69,7 +68,6 @@ const int probabilitesBiomes[NB_BIOMES] = {
  * 
  * @return Une structure composé du tag de l'objet prédominant ainsi que le nombre de fois où il est apparue
  * 
- * @version 1.2
  */
 static t_predominance getPredominance(int alentours[], const int nbElementsAlentours) {
     t_predominance predominance = { 0, 0 };  
@@ -105,7 +103,6 @@ static t_predominance getPredominance(int alentours[], const int nbElementsAlent
  * 
  * @return Le tag du biome sélectionné
  * 
- * @version 1.1
  */
 static e_biome selectionBiome(const int xChunk, const int yChunk) {
     // Si le chunk se situe en bordure de map Dans ce cas on force le biome à PROFONDEUR
@@ -131,7 +128,6 @@ static e_biome selectionBiome(const int xChunk, const int yChunk) {
  * 
  * @return Le tag du block sélectionné
  * 
- * @version 1.2
  */
 static e_solTag selectionBlock(const e_biome biome) {
     e_solTag solTag = VIDE;
@@ -257,7 +253,6 @@ void ajoutDenivele(t_map *map) {
  * 
  * @return Le nouveau biome
  * 
- * @version 1.2
  */
 static e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel) { 
     // Si le biome prédominant est le même que le biome central
@@ -316,7 +311,6 @@ static e_biome changerBiome(t_predominance biomePredominant, e_biome biomeActuel
  * 
  * @return Le nouveau tag du block
  * 
- * @version 1.2
  */
 static e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActuel) {
     // Si le block prédominant est le même que le block central alors on renvoie ce dernier
@@ -343,7 +337,6 @@ static e_solTag changerBlock(t_predominance blockPredominant, e_solTag blockActu
  * 
  * @return Un tableau contenant le nombre d'occurence des biomes alentours
  * 
- * @version 1.2
  */
 static int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
     static int biomesAlentours[NB_BIOMES] = { 0 };
@@ -378,7 +371,6 @@ static int* getBiomesAlentours(t_chunk *chunk, t_map *map) {
  * 
  * @return Un tableau contenant le nombre d'occurence des tags des blocks alentours
  * 
- * @version 1.1
  */
 static int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
     static int blocksAlentours[NB_TYPES_SOL] = { 0 };
@@ -422,7 +414,6 @@ static int* getBlocksAlentours(const int xBlock, const int yBlock, t_map *map) {
  * @param chunk Le chunk qui doit être normalisé
  * @param map La map dans laquelle le tout se situe
  * 
- * @version 1.3
  */
 static void normalisationDuChunk(t_chunk* chunk, t_map *map) {
     e_solTag blockVoisins[TAILLE_CHUNK][TAILLE_CHUNK] = { SOL_EAU_PROFONDE };
@@ -463,7 +454,6 @@ static void normalisationDuChunk(t_chunk* chunk, t_map *map) {
  * @param map La map dans laquelle le tout se situe
  * @param ceuil Le ceuil à partir du quelle un block est concidéré comme étant à être modifié
  * 
- * @version 1.2
  */
 static void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
     e_solTag hauteurVoisins[TAILLE_CHUNK][TAILLE_CHUNK] = { 0 };
@@ -509,7 +499,6 @@ static void lissageDuChunk(t_chunk* chunk, t_map *map, const int ceuil) {
  * 
  * @param map La map à normaliser
  * 
- * @version 1.1
  */
 static void normalisationDeLaMap(t_map* map) {  
     e_biome nouveauxBiomes[TAILLE_MAP][TAILLE_MAP] = { BIOME_PROFONDEUR };
@@ -560,7 +549,6 @@ static void normalisationDeLaMap(t_map* map) {
  * 
  * @return Le chunk initialisé 
  * 
- * @version 1.2
  */
 static t_chunk initialisationChunk(const int x, const int y, const int z) {
     t_chunk chunk;
@@ -597,7 +585,6 @@ static t_chunk initialisationChunk(const int x, const int y, const int z) {
  * 
  * @return Le block généré
  * 
- * @version 1.2
  */
 static t_block generationBlock(const int x, const int y, const t_chunk *chunk, const boolean estVide) {
     t_block block;
@@ -626,7 +613,6 @@ static t_block generationBlock(const int x, const int y, const t_chunk *chunk, c
  * 
  * @return Un pointeur sur le chunk généré
  * 
- * @version 1.4
  */
 static t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVide) {
     for (int x = 0, i = 0; x < TAILLE_CHUNK; x++) {
@@ -657,11 +643,11 @@ static t_chunk* generationChunk(t_chunk *chunk, t_map *map, const boolean estVid
 
 
 /**
- * @brief 
+ * @brief Génère la partie overworld (la carte standard)
  * 
- * @param map 
+ * @param map La map qui contiendra les informations de l'overworld
  * 
- * @return t_map* 
+ * @return La map donnée en entrée 
  */
 static t_map* genererOverworld(t_map *map) {
     t_chunk* chunkTempo = NULL;
@@ -724,9 +710,10 @@ static t_map* genererOverworld(t_map *map) {
 /**
  * @brief Génère une map complète
  * 
+ * @param type Le type de la map à générer
+ * 
  * @return Un pointeur sur la map générée
  * 
- * @version 1.2
  */
 t_map* genererMap(e_mapType type) {
     t_map* map = malloc(sizeof(t_map));

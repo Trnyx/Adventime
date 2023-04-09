@@ -7,7 +7,6 @@
  * 
  * @author Clément Hibon
  * @date 10 février
- * @version 1.1
  */
 
 

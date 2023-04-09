@@ -9,7 +9,6 @@
  *
  * @author Clément Hibon
  * @date 27 janvier
- * @version 1.3
  */
 
 
@@ -44,7 +43,6 @@
  * @param baseBiome La base du biome dans lequel le végétal est placé
  * @return Le tag du végétal
  * 
- * @version 1.1
  */
 e_vegetalTag selectionVegetation(e_solTag sol) {
     switch (sol) {
@@ -79,7 +77,6 @@ e_vegetalTag selectionVegetation(e_solTag sol) {
  * 
  * @param map Un pointeur sur la map dans laquelle sera généré les végétaux
  * 
- * @version 1.2
  */
 void genererVegetations(t_map *map) {
     t_chunk *chunk = NULL;

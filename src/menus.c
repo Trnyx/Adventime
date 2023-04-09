@@ -5,7 +5,6 @@
  *
  * @author	Eliott Remars
  * @date 	2023-02-07
- * @version 	1.0
  */
 
 #include "SDL2/SDL_events.h"

@@ -5,7 +5,6 @@
  *
  * @author	Eliott Remars
  * @date 	2023-02-09
- * @version 	1.0
  */
 
 #ifndef _JEU_MAIN_

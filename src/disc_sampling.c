@@ -13,7 +13,6 @@
  * 
  * @author Clément Hibon
  * @date 15 mars
- * @version 1.1
  */
 
 
