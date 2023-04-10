@@ -221,10 +221,10 @@ const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesAnimaux[] = {
  */
 const t_baseStatistiques statistiquesDeBasesBoss[] = {
     { 0, 0, 0, 0, 0 },          // DIMANCHE
-    { 50, 50, 8, 60, 0 },       // LUNDI
+    { 50, 50, 4, 60, 0 },       // LUNDI
     { 0, 0, 0, 0, 0 },          // MARDI
-    { 50, 50, 9, 50, 0 },       // MERCREDI
+    { 50, 50, 5, 50, 0 },       // MERCREDI
     { 0, 0, 0, 0, 0 },          // JEUDI
-    { 50, 50, 9, 50, 0 },       // VENDREDI
+    { 50, 50, 5, 50, 0 },       // VENDREDI
     { 0, 0, 0, 0, 0 },          // SAMEDI
 };

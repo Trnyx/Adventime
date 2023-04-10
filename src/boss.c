@@ -17,6 +17,7 @@
 #include "../include/physique.h"
 #include "../include/utilitaire.h"
 #include "../include/moteur.h"
+#include "../include/audio.h"
 #include "../include/blocks_tag.h"
 #include "../include/combat.h"
 #include "../include/boss.h"
@@ -47,6 +48,7 @@ void updateBoss(t_boss *boss, float distance, t_entiteVivante *cible) {
             finCombat((t_mob*)boss);
 
         boss->positionDeplacement = positionApparitionBoss;
+        boss->timerDeplacement = MOB_DUREE_DEPLACEMENT;
         boss->operation = SE_DEPLACE_VERS;
     }
 
@@ -266,6 +268,8 @@ t_boss* creerBoss(const t_vecteur2 position, const e_jour jour) {
 
     boss->destructionInactif = FAUX;
     boss->destructionDelai = FAUX;
+
+    boss->bruitages = creerAudioPack();
 
     mob = NULL;
     return boss;
