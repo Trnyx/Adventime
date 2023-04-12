@@ -411,8 +411,7 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
       
       nk_layout_space_push(ctx, nk_rect(5, 40, 300, 20));
 
-      ctx->style.progress.cursor_normal =
-	nk_style_item_color(nk_rgba(8, 255, 114, 255));
+      ctx->style.progress.cursor_normal = nk_style_item_color(nk_rgba(8, 255, 114, 255));
 
       
       nk_progress(ctx, &current_xp, max_xp, NK_FIXED);
@@ -432,7 +431,6 @@ void updateHUD(struct nk_context *ctx, t_joueur *joueur) {
 }
 
 state_main pauseMenu(struct nk_context *ctx) {
-
   set_style(ctx, THEME_BLACK);
   
   int hovered = 1;
@@ -465,8 +463,8 @@ state_main pauseMenu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.3), 300, 50));
       if (nk_button_label(ctx, "Continuer")) {
-	play_bruitage(audio->bruitages->menu_selection, -1);
-	moteur->state = M_JOUER;
+        play_bruitage(audio->bruitages->menu_selection, -1);
+        moteur->state = M_JOUER;
         click = M_JOUER;
       }
 
@@ -482,8 +480,8 @@ state_main pauseMenu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.5), 300, 50));
       if (nk_button_label(ctx, "Options")) {
-	play_bruitage(audio->bruitages->menu_selection, -1);
-	click = M_OPTIONS;
+        play_bruitage(audio->bruitages->menu_selection, -1);
+        click = M_OPTIONS;
       }
 
       if (nk_widget_is_hovered(ctx)) {
@@ -498,7 +496,7 @@ state_main pauseMenu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.7), 300, 50));
       if (nk_button_label(ctx, "Quitter")) {
-	play_bruitage(audio->bruitages->menu_selection, -1);
+	      play_bruitage(audio->bruitages->menu_selection, -1);
         click = M_MENU;
       }
       nk_layout_space_end(ctx);
@@ -603,7 +601,7 @@ void menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
     nk_input_begin(ctx);
     while (SDL_PollEvent(&evt)) {
       nk_sdl_handle_event(&evt);
-      if (evt.key.keysym.scancode == SDL_SCANCODE_E) {
+      if (evt.key.keysym.scancode == SDL_SCANCODE_E || evt.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
         if (joueur->actionFlags->inventory == 0)
 	        joueur->actionFlags->bool_inventory = !joueur->actionFlags->bool_inventory;
       }
@@ -667,9 +665,7 @@ void inv_stats (struct nk_context * ctx, t_joueur *joueur) {
 
 void inventaire(struct nk_context *ctx, t_joueur *joueur) {
 
-  static int selected[NOMBRE_SLOT_INVENTAIRE] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                             0, 0};
+  static int selected[NOMBRE_SLOT_INVENTAIRE] = { 0 };
 
   char quantite[99];
 

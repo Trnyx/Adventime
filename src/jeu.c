@@ -24,6 +24,7 @@
 #include "../include/joueur.h"
 #include "../include/input_manager.h"
 #include "../include/menus.h"
+#include "../include/sauvegarde.h"
 
 
 
@@ -45,8 +46,11 @@ static void viderEntitesDeListe(t_liste *liste) {
     en_queue(liste);
     while (!liste_vide(liste)) {
         valeur_elt(liste, &entite);
-        oter_elt(liste);
+
+        entite->detruire(&entite);
         entite = NULL;
+
+        oter_elt(liste);
     }
 }
 
@@ -101,9 +105,9 @@ static int adventime(t_monde *monde) {
     t_cache *cache = moteur->cache;
     t_joueur *joueur = monde->joueur;
 
-    monde->boss = chargerBoss(monde);
+    monde->boss = chargerBoss();
 
-    // La map dans laquelle se situe au début de la partie
+    // La map dans laquelle le joueur se situe au début de la partie
     e_mapType mapType = joueur->map;
     loadMap(monde, mapType);
     updateCamera(joueur->position);
@@ -113,25 +117,28 @@ static int adventime(t_monde *monde) {
     while (continuer != M_MENU) {
         regulerFPS();
 	
-	continuer = inputManager(joueur);
-	
-	while(continuer == M_PAUSE) {
-        continuer = pauseMenu(ctx);
-        if (continuer == M_OPTIONS) {
-            continuer = menu_options(ctx);
+        continuer = inputManager(joueur);
+        
+        
+        while(continuer == M_PAUSE) {
+            continuer = pauseMenu(ctx);
+            if (continuer == M_OPTIONS) {
+                continuer = menu_options(ctx);
+            }
         }
-	}
 
-	if(joueur->actionFlags->bool_inventory) {
-	    menu_inventaire(ctx, joueur);
-	} else {
-	    update(cache->map, joueur);
-	}
-       
 
-	if(continuer == J_MORT) {
-	    continuer = gameOver(ctx, joueur);
-	}
+        if(joueur->actionFlags->bool_inventory) {
+            menu_inventaire(ctx, joueur);
+        } 
+        else {
+            update(cache->map, joueur);
+        }
+        
+
+        if(continuer == J_MORT) {
+            continuer = gameOver(ctx, joueur);
+        }
 
 
         // Dès qu'on change de zone (map)
@@ -142,7 +149,8 @@ static int adventime(t_monde *monde) {
         //      - Ignore les entités à suppression après un temps
         if (mapType != joueur->map) {
             mapType = joueur->map;
-            // sauvegarde
+            
+            sauvegarder_map(cache->map, mapType);
 
             viderEntitesDeListe(cache->entites);
             loadMap(monde, mapType);
@@ -150,7 +158,7 @@ static int adventime(t_monde *monde) {
     }
 
 
-    // Sauvegarde du monde complet ici
+    sauvegarder_monde(monde, "monde");
 
     viderEntitesDeListe(cache->entites);
     detruireMonde(&cache->monde);
@@ -169,6 +177,7 @@ static int adventime(t_monde *monde) {
  */
 static int nouveauMonde(/* char *nom, const long long int seed */) {
     int seed = -1;
+    // int seed = 1681302295;
     // int seed = 1679905571;
     // int seed = 1679940582;
     // int seed = 1680032110;
@@ -185,9 +194,8 @@ static int nouveauMonde(/* char *nom, const long long int seed */) {
 
 
 static int chargerMonde(/* char *tnom */) {
-    t_monde *monde = NULL;
-
-    // Charger le monde depuis la sauvegarde
+    t_monde *monde = malloc(sizeof(t_monde));
+    chargerMonde(monde, "monde");
 
     /* ---------------------------------- Cache --------------------------------- */
 

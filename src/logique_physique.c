@@ -167,7 +167,7 @@ void update(t_map *map, t_joueur *joueur) {
                 if (distance > JOUEUR_RAYON_SEMIACTIF) {
                     // Si l'entité doit être supprimé
                     // Alors on la détruit
-                    if (entite->destructionInactif) {
+                    if (entite->destructionInactif == VRAI) {
                         suppressionEntite(entites, entite);
                         continue;
                     }
@@ -183,7 +183,7 @@ void update(t_map *map, t_joueur *joueur) {
                 if (distance > JOUEUR_RAYON_ACTIF && distance <= JOUEUR_RAYON_SEMIACTIF) {
                     // Gestion de la durée de vie de l'entité
                     // Si l'entité à atteint la durée de vie maximale d'une entité alors elle est supprimé
-                    if (entite->destructionDelai) {
+                    if (entite->destructionDelai == VRAI) {
                         if (entite->timestampActualisation - entite->timestampCreation >= (ENTITE_DUREE_VIE_MAX * 1000)) {
                             suppressionEntite(entites, entite);
                             continue;
