@@ -86,7 +86,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
         if (chunk == NULL)
             continue;
 
-        if (chunk->biome == BIOME_PROFONDEUR || chunk->biome == BIOME_LAC) {
+        if (chunk->biome <= BIOME_LAC) {
             chunk = NULL;
         }
     }
@@ -106,7 +106,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
             continue;
 
         if (block->tag == SOL_EAU_PROFONDE || block->tag == SOL_EAU) {
-            // block = NULL;
+            block = NULL;
             continue;
         }
 
@@ -115,7 +115,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
         block = getBlockDansChunk(blockPosition.x, blockPosition.y, chunk);
 
         if (block->tag != VIDE) {
-            // block = NULL;
+            block = NULL;
             continue;
         }
     }

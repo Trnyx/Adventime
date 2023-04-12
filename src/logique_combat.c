@@ -73,6 +73,11 @@ void gestionExeperience(t_entiteVivante *entite, t_entiteVivante *cible) {
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @brief Fonction de gestion de drops des items d'un mob
+ * 
+ * @param mob Le mob qui a été tué
+ */
 void dropItems(t_mob *mob) {
     t_baseMob base = basesMobs[mob->tag - TAG_ANIMAL_VACHE];
     e_itemTag tag;
@@ -137,7 +142,7 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
         cible->hitbox.h / 2,
     };
 
-    // Point HItbox Haut Gauche
+    // Point Hitbox Haut Gauche
     pointHitbox.x = cible->position.x - tailleDemiHitbox.x;
     pointHitbox.y = cible->position.y - tailleDemiHitbox.y;
     anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
@@ -146,7 +151,7 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
         return VRAI;
 
 
-    // Point HItbox Haut Droit
+    // Point Hitbox Haut Droit
     pointHitbox.x = cible->position.x + tailleDemiHitbox.x;
     pointHitbox.y = cible->position.y - tailleDemiHitbox.y;
     anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
@@ -154,7 +159,7 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
     if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
         return VRAI;
 
-    // Point HItbox Bas Gauche
+    // Point Hitbox Bas Gauche
     pointHitbox.x = cible->position.x - tailleDemiHitbox.x;
     pointHitbox.y = cible->position.y + tailleDemiHitbox.y;
     anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));
@@ -162,7 +167,7 @@ boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float
     if (angleMaximum >= anglePointHitbox && angleMinimum <= anglePointHitbox)
         return VRAI;
 
-    // Point HItbox Bas Droit
+    // Point Hitbox Bas Droit
     pointHitbox.x = cible->position.x + tailleDemiHitbox.x;
     pointHitbox.y = cible->position.y + tailleDemiHitbox.y;
     anglePointHitbox = revolution(calculAngleEntrePoints(source->position, pointHitbox));

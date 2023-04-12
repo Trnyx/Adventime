@@ -151,6 +151,9 @@ const t_baseMob basesMobs[] = {
     
     // Monstres
     { TAG_MONSTRE_BASIC, { ITEM_MATERIEL_BATON }, { 100 } },
+
+    // Monstres
+    { TAG_BOSS, { ITEM_ARME_EPEE }, { 100 } },
 };
 
 

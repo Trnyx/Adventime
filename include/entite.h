@@ -60,8 +60,8 @@ typedef enum {
     TAG_ANIMAL_VACHE,
     TAG_ANIMAL_COCHON,
     TAG_MONSTRE_BASIC,
-    TAG_COFFRE,
     TAG_BOSS,
+    TAG_COFFRE,
     NB_TAGS,
     TAG_JOUEUR,
 } e_entiteTag;

@@ -365,8 +365,8 @@ void dessinerEntite(t_entite *entite) {
     rendu.w = moteur->camera->tailleRendu.x;
     rendu.h = moteur->camera->tailleRendu.y;
 
-    rendu.x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w) - rendu.w / 2;
-    rendu.y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h) - rendu.h / 2;
+    rendu.x = positionRelativeEnPositionSurEcran(entite->position.x, 0.0, moteur->camera->origine.x, rendu.w) - ((rendu.w * entite->taille) / 2);
+    rendu.y = positionRelativeEnPositionSurEcran(entite->position.y, 0.0, moteur->camera->origine.y, rendu.h) - ((rendu.h * entite->taille) / 2);
 
     // SDL_SetRenderDrawColor(moteur->renderer, 255, 0, 0, 255);
     // SDL_RenderFillRect(moteur->renderer, &rendu);
