@@ -415,8 +415,6 @@ void detruireAudio(t_audio **audio) {
 
         /* -------------------------------- Musiques -------------------------------- */
         if (musiques != NULL) {
-            // Mix_FreeMusic((*musiques)->);
-
             Mix_FreeMusic((*audio)->musiques->menu_principal);
             Mix_FreeMusic((*audio)->musiques->ambiance_jour_matin);
             Mix_FreeMusic((*audio)->musiques->ambiance_jour_apres_midi);
@@ -432,8 +430,6 @@ void detruireAudio(t_audio **audio) {
 
         /* -------------------------------- Bruitages ------------------------------- */
         if (bruitages != NULL) {
-            // Mix_FreeChunk((*bruitages)->);
-
             // Menu
             Mix_FreeChunk((*audio)->bruitages->menu_selection);
 

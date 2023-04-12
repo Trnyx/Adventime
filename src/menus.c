@@ -604,7 +604,8 @@ void menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
     while (SDL_PollEvent(&evt)) {
       nk_sdl_handle_event(&evt);
       if (evt.key.keysym.scancode == SDL_SCANCODE_E) {
-	joueur->actionFlags->bool_inventory = 0;
+        if (joueur->actionFlags->inventory == 0)
+	        joueur->actionFlags->bool_inventory = !joueur->actionFlags->bool_inventory;
       }
     }
     nk_input_end(ctx);
