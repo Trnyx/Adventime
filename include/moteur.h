@@ -1,7 +1,7 @@
 /**
  * @file moteur.h
  *
- * @brief
+ * @brief Module de manipulation du moteur du jeu
  *
  * @author Eliott Remars & Clément Hibon
  * @date 3 février
@@ -43,7 +43,7 @@
 
 /**
  * @struct t_controles
- * @brief 
+ * @brief Struture contenant les touches pour les contrôles du jeu
  * 
  */
 typedef struct s_controles {
@@ -69,7 +69,8 @@ typedef struct s_controles {
 
 
 /**
- * @brief 
+ * @struct t_moteur
+ * @brief Structure contenant les informations globales du jeu
  * 
  */
 typedef struct s_moteur {
@@ -90,8 +91,8 @@ typedef struct s_moteur {
     t_cache *cache;                 /**< Cache du jeu */
     t_temps *temps;                 /**< Le temps dans le jeu */
     unsigned int frame;             /**< Le timestamp (tick) de la drame actuelle */
-  state_main state;
-  TTF_Font * font;
+    state_main state;               /**< L'état du jeu (écran à afficher) */
+    TTF_Font * font;                /**< La police d'écriture */
     
 
 } t_moteur;
