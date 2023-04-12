@@ -1,8 +1,8 @@
 /**
  * @file jeu.c
- * 
+ *
  * @brief Module de gestion pour le jeu
- * 
+ *
  * @author Clément Hibon
  * @date 2 mars
  */
@@ -37,8 +37,8 @@
 
 /**
  * @brief Vide toutes les entités de la liste donné
- * 
- * @param liste Pointeur sur la liste 
+ *
+ * @param liste Pointeur sur la liste
  */
 static void viderEntitesDeListe(t_liste *liste) {
     t_entite *entite = NULL;
@@ -60,24 +60,24 @@ static void viderEntitesDeListe(t_liste *liste) {
 
 /**
  * @brief Charge une map dans le cache
- * 
+ *
  * @param monde Le monde dans lequel est récupéré la map à charger
  * @param type Le type de la map à charger
- * 
+ *
  * @return Un pointeur sur la map chargée
  */
 static t_map* loadMap(t_monde *monde, e_mapType type) {
     t_map *map = NULL;
 
-    
+
     switch (type) {
-        case MAP_OVERWORLD: 
+        case MAP_OVERWORLD:
             map = monde->overworld;
             break;
-        case MAP_CAVE: 
+        case MAP_CAVE:
             map = monde->caverne;
             break;
-        default: 
+        default:
             break;
     }
 
@@ -96,10 +96,10 @@ static t_map* loadMap(t_monde *monde, e_mapType type) {
 
 /**
  * @brief Gère tout le fonctionnement d'une partie
- * 
+ *
  * @param monde Le monde dans lequel le joueur est entrain de jouer
- * 
- * @return int 
+ *
+ * @return int
  */
 static int adventime(t_monde *monde) {
     t_cache *cache = moteur->cache;
@@ -116,10 +116,10 @@ static int adventime(t_monde *monde) {
     int continuer = 1;
     while (continuer != M_MENU) {
         regulerFPS();
-	
+
         continuer = inputManager(joueur);
-        
-        
+
+
         while(continuer == M_PAUSE) {
             continuer = pauseMenu(ctx);
             if (continuer == M_OPTIONS) {
@@ -130,11 +130,11 @@ static int adventime(t_monde *monde) {
 
         if(joueur->actionFlags->bool_inventory) {
             menu_inventaire(ctx, joueur);
-        } 
+        }
         else {
             update(cache->map, joueur);
         }
-        
+
 
         if(continuer == J_MORT) {
             continuer = gameOver(ctx, joueur);
@@ -149,8 +149,8 @@ static int adventime(t_monde *monde) {
         //      - Ignore les entités à suppression après un temps
         if (mapType != joueur->map) {
             mapType = joueur->map;
-            
-            sauvegarder_map(cache->map, mapType);
+
+            // sauvegarder_map(cache->map, mapType);
 
             viderEntitesDeListe(cache->entites);
             loadMap(monde, mapType);
@@ -171,9 +171,9 @@ static int adventime(t_monde *monde) {
 
 
 /**
- * @brief Création d'un nouveau monde 
- * 
- * @return int 
+ * @brief Création d'un nouveau monde
+ *
+ * @return int
  */
 static int nouveauMonde(/* char *nom, const long long int seed */) {
     int seed = -1;
@@ -210,9 +210,9 @@ static int chargerMonde(/* char *tnom */) {
 
 /**
  * @brief Lance une partie dans un monde en fonction de l'action
- * 
+ *
  * @param action Le choix si on créer un nouveau monde où si on charge un monde exustant
- * 
+ *
  * @return L'état indiquant le fait qu'il faut retourner au menu principal
  */
 state_main jouer(e_actionMonde action) {
@@ -221,7 +221,7 @@ state_main jouer(e_actionMonde action) {
         case MONDE_CREER:
             nouveauMonde();
             break;
-            
+
         case MONDE_CHARGER:
             chargerMonde();
             break;
