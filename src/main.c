@@ -1,3 +1,21 @@
+/**
+ * @file main.c
+ *
+ * @brief Programme principal
+ * 
+ * 1. Création et initialisation des variables de travail
+ * 2. Menu & jeu principal
+ * 3. Destruction des variables de travail et fermeture du programme
+ *
+ * @author Clément Hibon & Julien Houget & Eliott Remars
+ * @date 20 janvien
+ */
+
+
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 

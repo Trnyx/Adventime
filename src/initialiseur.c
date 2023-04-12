@@ -70,7 +70,7 @@ void initAll(t_moteur **moteur, t_audio **audio) {
 
 
 /**
- * @brief Detruit tout ce qui à été initialisé pour le fonctionnement du jeu
+ * @brief Detruit tout ce qui a été initialisé pour le fonctionnement du jeu
  * 
  * @param moteur Le pointeur sur le moteur qui sera détruit
  * @param audio Le pointeur sur l'audio qui sera détruit

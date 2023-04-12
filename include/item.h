@@ -65,7 +65,7 @@ struct s_item {
 
 
  /**
-  * \struct arme_t
+  * \struct t_arme
   * \brief Définit les armes.
   */
 typedef struct s_arme  t_arme;

@@ -70,6 +70,7 @@ typedef enum {
 
 
 /**
+ * @struct t_mob
  * @brief Structure représentant un mob
  * 
  * Un mob est une entité mobile (mob correspond à l'abreviation)

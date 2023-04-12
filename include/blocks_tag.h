@@ -24,7 +24,7 @@
 
 
 /**
- * @struct e_blockTag
+ * @enum e_blockTag
  * @brief Enumerateur répertoriant tous les "blocs" du jeu à afficher
  * 
  */

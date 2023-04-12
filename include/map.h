@@ -194,7 +194,8 @@ typedef struct s_baseBiome {
 } t_baseBiome;
 
 
-/**
+/** 
+ * @struct t_predominance
  * @brief Modélise un objet prédominant
  */
 typedef struct s_predominance {

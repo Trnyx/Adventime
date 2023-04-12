@@ -1,9 +1,9 @@
 /**
  * @file	main.h
  *
- * @brief	A Documented file.
+ * @brief	Module de manipulation pour la globalité du jeu
  *
- * @author	Eliott Remars
+ * @author	Eliott Remars & Julien Houget & Clément Hibon
  * @date 	2023-02-09
  */
 
