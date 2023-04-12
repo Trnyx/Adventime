@@ -50,9 +50,10 @@ typedef struct s_boss_flags {
  * 
  */
 typedef struct s_boss {
-    struct s_mob;       /**< "Etend" la structure mob */
+    struct s_mob;                   /**< "Etend" la structure mob */
 
-    e_jour jour;        /**< Le jour du boss */
+    boolean peutAttaquerJoueur;     /**< Vérifie que le boss peut attaquer le joueur */
+    e_jour jour;                    /**< Le jour du boss */
 } t_boss;
 
 

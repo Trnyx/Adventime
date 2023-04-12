@@ -41,21 +41,29 @@
 void updateBoss(t_boss *boss, float distance, t_entiteVivante *cible) {
     const t_vecteur2 positionApparitionBoss = moteur->cache->monde->positionApparitionBoss;
     const float eloignementPointBoss = calculDistanceEntrePoints(positionApparitionBoss, boss->position);
+
+
+    if (boss->peutAttaquerJoueur == FAUX && eloignementPointBoss <= 6) {
+        boss->peutAttaquerJoueur = VRAI;
+    }
     
 
     if (eloignementPointBoss > TAILLE_CHUNK) {
-        if (boss->cible != NULL)
+        if (boss->cible != NULL) {
             finCombat((t_mob*)boss);
+            boss->peutAttaquerJoueur = FAUX;
+        }
 
         boss->positionDeplacement = positionApparitionBoss;
-        boss->timerDeplacement = MOB_DUREE_DEPLACEMENT;
         boss->operation = SE_DEPLACE_VERS;
     }
 
 
     else if (boss->deplacementType != DEPLACEMENT_COMBAT && distance <= BOSS_RAYON_COMBAT_DETECTION) {
-        boss->deplacementType = DEPLACEMENT_COMBAT;
-        boss->cible = cible;
+        if (boss->peutAttaquerJoueur) {
+            boss->deplacementType = DEPLACEMENT_COMBAT;
+            boss->cible = cible;
+        }
     }
 
 
@@ -243,6 +251,7 @@ t_boss* creerBoss(const t_vecteur2 position, const e_jour jour) {
 
 
     boss->jour = jour;
+    boss->peutAttaquerJoueur = VRAI;
 
     boss->baseStatistiques = genererStatistiquesDeBaseBoss(boss->jour);
     boss->statistiques = genererStatistiques(boss->baseStatistiques, 10);
