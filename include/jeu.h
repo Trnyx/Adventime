@@ -1,7 +1,7 @@
 /**
  * @file jeu.c
  * 
- * @brief 
+ * @brief Module de gestion du jeu
  * 
  * @author Clément Hibon
  * @date 2 mars

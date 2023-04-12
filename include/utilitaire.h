@@ -1,7 +1,7 @@
 /**
  * @file utilitaire.h
  *
- * @brief
+ * @brief Module de manipulation des données globales
  *
  * @author Clément Hibon, Julien Houget
  * @date 21 janvier
@@ -17,6 +17,7 @@
 
 
 
+// La longueur d'un ID
 #define LONGUEUR_ID 8
 
 

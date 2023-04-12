@@ -1,7 +1,7 @@
 /**
  * @file joueur.c
  * 
- * @brief 
+ * @brief Module de gestion du joueur
  * 
  * @author Clément Hibon
  * @date 3 février
@@ -18,6 +18,8 @@
 #include <SDL2/SDL.h>
 
 #include "../include/physique.h"
+
+#include "../include/audio.h"
 #include "../include/moteur.h"
 #include "../include/joueur.h"
 #include "../include/camera.h"
@@ -154,7 +156,6 @@ float getOrientationJoueur() {
  * @param angleAttaque L'angle dans lequel le joueur attaque
  */
 void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
-    printf("JOUEUR ATTAQUE (angle : %1.2f)\n", angleAttaque);
     joueur->cooldownAttaque = JOUEUR_COOLDOWN_ATTAQUE;
     t_liste *mobsAlentour = getEntitesAlentour((t_entite*)joueur, ENTITE_MOB, 2.0);
 
@@ -171,15 +172,17 @@ void joueurAttaque(t_joueur *joueur, const float angleAttaque) {
 
         detruire_liste(&mobsAlentour);
     }
-    else {
-        printf("AUCUNE ENTITE PROCHE\n");
-    }
 }
 
 
 
 
 
+/**
+ * @brief Execute une interaction du joueur
+ * 
+ * @param joueur Pointeur sur le joueur qui intérargit
+ */
 void joueurInteraction(t_joueur *joueur) {
     t_liste *entites = moteur->cache->entites;
     t_entite *entite = NULL;
@@ -222,9 +225,8 @@ void joueurInteraction(t_joueur *joueur) {
  * @brief Actualise le joueur
  * 
  * @param joueur Pointeur sur le joueur qui doit être actualisé
- * @return int 
  */
-int updateJoueur(t_joueur *joueur) {
+void updateJoueur(t_joueur *joueur) {
     regenerationEntite((t_entiteVivante*)joueur);
 
     if (joueur->cooldownAttaque > 0) {
@@ -255,13 +257,9 @@ int updateJoueur(t_joueur *joueur) {
         joueur->operation = ATTAQUE;
         joueur->animation->frameCourante = 1;
         joueurAttaque(joueur, angle);
-    } 
-    // else if (joueur->operation != SE_DEPLACE_VERS) {
-    //     joueur->operation = ATTENTE;
-    // }
+    }
 
 
-    return 0;
 }
 
 
@@ -278,9 +276,12 @@ void mortJoueur(t_joueur *joueur) {
     joueur->statistiques.pv = 0;
 
     // Inventaire
+    // Si l'inventaire du joueur n'est pas vide
+    // On créer un coffre, à la position de la mort du joueur, contenant l'inventaire de celui ci
     if (!stockageEstVide((t_stockage*)joueur->inventaire)) {
         t_coffre *coffre = creerCoffre(joueur->position);
         coffre->entiteType = ENTITE_COFFRE_INVENTAIRE;
+        
         ajout_droit(moteur->cache->entites, (t_entite*)coffre);
 
         transfererStockage((t_stockage*)joueur->inventaire, coffre->stockage);
@@ -335,11 +336,10 @@ void detruireActionFlags(t_action_flags **flags) {
  */
 void detruireJoueur(t_joueur **joueur) {
     if (joueur != NULL && *joueur != NULL) {
+
         detruireActionFlags(&(*joueur)->actionFlags);
         detruireEntite((t_entite**) joueur);
-    }
-    else {
-        printf("PAS DE JOUEUR => ");
+
     }
 };
 
@@ -353,9 +353,9 @@ void detruireJoueur(t_joueur **joueur) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour les flags des inputs du joueur et les initialise
  * 
- * @return t_action_flags* 
+ * @return Un pointeur sur les flags des inputs, NULL si echec
  */
 t_action_flags* initialiserActionFlags() {
     t_action_flags *flags = malloc(sizeof(t_action_flags));
@@ -386,7 +386,6 @@ t_action_flags* initialiserActionFlags() {
  * @return Un pointeur sur le joueur créé, NULL si echec
  */
 t_joueur* creerJoueur(const t_vecteur2 position) {
-    printf("Creation du joueur (%1.0f:%1.0f) => ", position.x, position.y);
     t_entite *entite = creerEntite(position);
     t_joueur *joueur = realloc(entite, sizeof(t_joueur));
 
@@ -399,6 +398,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
 
 
     joueur->entiteType = ENTITE_JOUEUR;
+    joueur->tag = TAG_JOUEUR;
     joueur->map = MAP_OVERWORLD;
 
     // Statistiques
@@ -415,7 +415,7 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->animation = creerAnimation(100, 4);
 
     // Fonctions
-    joueur->update = (int(*)(t_entite*, const float, t_entite*)) updateJoueur;
+    joueur->update = (void (*)(t_entite*, const float, t_entite*)) updateJoueur;
     joueur->detruire = (void (*)(t_entite**)) detruireJoueur;
 
     // Timer
@@ -423,7 +423,9 @@ t_joueur* creerJoueur(const t_vecteur2 position) {
     joueur->cooldownRegeneration = 0;
     joueur->destructionInactif = FAUX;
 
-    // Avancement
+    // Audio
+    joueur->bruitages = creerAudioPack();
+    chargerAudioPack(joueur->bruitages, joueur->tag);
 
 
     printf("Succes\n");

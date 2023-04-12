@@ -20,14 +20,29 @@
 /* -------------------------------------------------------------------------- */
 
 
+/**
+ * @enum state_main
+ * @brief 
+ * 
+ */
 typedef enum {
-  JEU_QUITTER = -1, M_JOUER = 1, M_MENU, M_OPTIONS, M_PAUSE, J_MORT
+  	JEU_QUITTER = -1, 
+  	M_JOUER = 1,
+  	M_MENU,
+  	M_OPTIONS,
+  	M_PAUSE, 
+  	J_MORT
 } state_main;
 
 
+/**
+ * @enum e_actionMonde
+ * @brief 
+ * 
+ */
 typedef enum {
-  MONDE_CREER,
-  MONDE_CHARGER
+  	MONDE_CREER,
+  	MONDE_CHARGER
 } e_actionMonde;
 
 

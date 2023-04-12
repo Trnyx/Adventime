@@ -10,6 +10,8 @@
 
 
 
+
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -480,76 +482,61 @@ void dessinerObjets(t_map *map) {
 
 
 /**
- * @brief 
+ * @brief Detruit un block est libère la mémoire allouée pour ce dernier
  * 
- * @param block 
- *  
- * @version 1.1
+ * @param block L'adresse du pointeur du block à détruire
  */
-int detruireBlock(t_block **block) {
-    if (block == NULL || *block == NULL) return 0;
-
-    free(*block);
-    *block = NULL;
-
-    return 0;
+void detruireBlock(t_block **block) {
+    if (block != NULL && *block != NULL) {
+        free(*block);
+        *block = NULL;
+    }
 }
 
 
 /**
- * @brief 
+ * @brief Detruit un chunk est libère la mémoire allouée pour ce dernier
  * 
- * @param chunk 
- * 
- * @version 1.2
+ * @param chunk L'adresse du pointeur du chunk à détruire
  */
-int detruireChunk(t_chunk **chunk) {
-    if (chunk == NULL || *chunk == NULL) return 0;
-
-
-    free((*chunk)->blocks);
-    (*chunk)->blocks = NULL;
-
-  
-    return 0;
+void detruireChunk(t_chunk **chunk) {
+    if (chunk != NULL && *chunk != NULL) {
+        free((*chunk)->blocks);
+        (*chunk)->blocks = NULL;
+    }
 }
 
 
 /**
- * @brief 
+ * @brief Detruit une map est libère la mémoire allouée pour cette dernière
  * 
- * @param map 
- * 
- * @version 1.2
+ * @param map L'adresse du pointeur de la map à détruire
  */
-int detruireMap(t_map **map) {
-    printf("Destruction Map => ");
-    if (map == NULL || *map == NULL) return 0;
-    t_chunk *chunk = NULL;
-  
+void detruireMap(t_map **map) {
+    if (map != NULL && *map != NULL) {
+        t_chunk *chunk = NULL;
+    
 
-    for (int x = 0; x < TAILLE_MAP; x++) {
-        for (int y = 0; y < TAILLE_MAP; y++) {
-            for (int z = 0; z < NB_COUCHE; z++) {
-                chunk = getChunk(x, y, z, *map);
-                detruireChunk(&chunk);
+        for (int x = 0; x < TAILLE_MAP; x++) {
+            for (int y = 0; y < TAILLE_MAP; y++) {
+                for (int z = 0; z < NB_COUCHE; z++) {
+                    chunk = getChunk(x, y, z, *map);
+                    detruireChunk(&chunk);
+                }
             }
         }
+
+
+        free((*map)->chunks);
+        (*map)->chunks = NULL;
+
+
+        if ((*map)->entites != NULL) {
+            detruire_liste(&(*map)->entites);
+        }
+
+    
+        free(*map);
+        *map = NULL;
     }
-
-
-    free((*map)->chunks);
-    (*map)->chunks = NULL;
-
-
-    if ((*map)->entites != NULL) {
-        detruire_liste(&(*map)->entites);
-    }
-
-  
-    free(*map);
-    *map = NULL;
-
-  
-    return 0;
 }

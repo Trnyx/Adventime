@@ -1,7 +1,7 @@
 /**
  * @file seed.h
  *
- * @brief
+ * @brief Module de manipulation du seed
  *
  * @author Clément Hibon
  * @date 31 mars

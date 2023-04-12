@@ -2,6 +2,8 @@
  * @file cache.h
  *
  * @brief Module de manipulation du cache
+ * 
+ * Le cache permet un accès rapide à certaines variables facilitant leur gestion
  *
  * @author Clément Hibon
  * @date 9 mars
@@ -39,7 +41,7 @@ typedef struct s_cache {
     t_map *map;                     /**< La map chargée */
 
     t_liste *entites;               /**< Les entités chargées */
-    t_compteur compteurEntites;     /**< */
+    t_compteur compteurEntites;     /**< Le compteur d'entités */
 } t_cache;
 
 

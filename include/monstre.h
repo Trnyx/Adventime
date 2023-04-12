@@ -1,7 +1,7 @@
 /**
  * @file monstre.h
  *
- * @brief
+ * @brief Module de manipulation des monstres 
  *
  * @author Clément Hibon
  * @date 23 janvier

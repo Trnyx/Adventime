@@ -1,7 +1,7 @@
 /**
  * @file liste.c
  * 
- * @brief 
+ * @brief Module de gestion d'une liste
  * 
  * @author Clément Hibon
  * @date 10 février
@@ -25,7 +25,7 @@
 /**
  * @brief Initialise la liste
  * 
- * @param liste la liste à initialiser
+ * @param liste La liste à initialiser
  */
 void init_liste(t_liste *liste) {
     // Crée la liste constituée du seul drapeau
@@ -41,10 +41,9 @@ void init_liste(t_liste *liste) {
 /**
  * @brief Détruit la liste et libere la mémoire allouée
  * 
- * @param liste La liste a détruire
+ * @param liste Adresse du pointeur de la liste a détruire
  */
-void detruire_liste(t_liste **liste)
-{
+void detruire_liste(t_liste **liste) {
     if(liste != NULL && *liste != NULL) {
         en_queue(*liste);
 
@@ -70,37 +69,37 @@ void detruire_liste(t_liste **liste)
 /**
  * @brief Vérifie si la liste est vide
  * 
- * @param liste Une liste
+ * @param liste La liste
  * 
  * @return VRAI si la liste est vide, FAUX sinon
  */
-boolean liste_vide(t_liste *liste){
-    return (liste->drapeau->succ == liste->drapeau) ;
+boolean liste_vide(t_liste *liste) {
+    return (liste->drapeau->succ == liste->drapeau);
 }
 
 
 
 /**
- * @brief L'element courant est hors liste
+ * @brief Vérifie si l'element courant est hors liste
  * 
- * @param liste une liste
+ * @param liste La liste
  * 
- * @return Vrai si l'élément courant est hors liste, FAUX sinon
+ * @return VRAI si l'élément courant est hors liste, FAUX sinon
  */
-boolean hors_liste(t_liste *liste){
-    return (liste->ec == liste->drapeau) ;
+boolean hors_liste(t_liste *liste) {
+    return (liste->ec == liste->drapeau);
 }
 
 
 /**
- * @brief L'element courant est hors liste
+ * @brief Vérifie si l'element courant au niveau du drapeau cache est hors liste
  * 
- * @param liste une liste
+ * @param liste La liste
  * 
- * @return Vrai si l'élément courant est hors liste, FAUX sinon
+ * @return VRAI si l'élément courant est hors liste, FAUX sinon
  */
-boolean hors_liste_cache(t_liste *liste){
-    return (liste->cacheFlag == liste->drapeau) ;
+boolean hors_liste_cache(t_liste *liste) {
+    return (liste->cacheFlag == liste->drapeau);
 }
 
 
@@ -115,20 +114,20 @@ boolean hors_liste_cache(t_liste *liste){
 /**
  * @brief Met l'element courant au premier element de la liste
  * 
- * @param liste une liste
+ * @param liste La liste
  */
-void en_tete(t_liste *liste){
+void en_tete(t_liste *liste) {
     if (!liste_vide(liste))
         liste->ec = liste->drapeau->succ;
 }
 
 
 /**
- * @brief Met l'element courant au premier element de la liste
+ * @brief Met l'element courant du drapeau cache au premier element de la liste
  * 
- * @param liste une liste
+ * @param liste La liste
  */
-void en_tete_cache(t_liste *liste){
+void en_tete_cache(t_liste *liste) {
     if (!liste_vide(liste))
         liste->cacheFlag = liste->drapeau->succ;
 }
@@ -138,22 +137,22 @@ void en_tete_cache(t_liste *liste){
 /**
  * @brief Met l'element courant au dernier element de la liste
  * 
- * @param liste une liste
+ * @param liste La liste
  */
-void en_queue(t_liste *liste){
+void en_queue(t_liste *liste) {
     if (!liste_vide(liste))
-        liste->ec = liste->drapeau->pred ;
+        liste->ec = liste->drapeau->pred;
 }
 
 
 /**
- * @brief Met l'element courant au dernier element de la liste
+ * @brief Met l'element courant du drapeau cache au dernier element de la liste
  * 
- * @param liste une liste
+ * @param liste La liste
  */
-void en_queue_cache(t_liste *liste){
+void en_queue_cache(t_liste *liste) {
     if (!liste_vide(liste))
-        liste->cacheFlag = liste->drapeau->pred ;
+        liste->cacheFlag = liste->drapeau->pred;
 }
 
 
@@ -161,20 +160,20 @@ void en_queue_cache(t_liste *liste){
 /**
  * @brief Met l'element courant a l'element juste avant l'element courant
  * 
- * @param liste une liste
+ * @param liste La liste
  */
-void precedent(t_liste *liste){
+void precedent(t_liste *liste) {
     if (!hors_liste(liste))
         liste->ec = liste->ec->pred;
 }
 
 
 /**
- * @brief Met l'element courant a l'element juste avant l'element courant
+ * @brief Met l'element courant au drapeau cache a l'element juste avant l'element courant
  * 
- * @param liste une liste
+ * @param liste La liste
  */
-void precedent_cache(t_liste *liste){
+void precedent_cache(t_liste *liste) {
     if (!hors_liste(liste))
         liste->cacheFlag = liste->cacheFlag->pred;
 }
@@ -184,7 +183,7 @@ void precedent_cache(t_liste *liste){
 /**
  * @brief Met l'element courant a l'element juste apres l'element courant
  * 
- * @param liste une liste
+ * @param liste La liste
  */
 void suivant(t_liste *liste) {
     if (!hors_liste(liste))
@@ -193,9 +192,9 @@ void suivant(t_liste *liste) {
 
 
 /**
- * @brief Met l'element courant a l'element juste apres l'element courant
+ * @brief Met l'element courant au drapeau cache a l'element juste apres l'element courant
  * 
- * @param liste une liste
+ * @param liste La liste
  */
 void suivant_cache(t_liste *liste) {
     if (!hors_liste(liste))
@@ -212,7 +211,10 @@ void suivant_cache(t_liste *liste) {
 
 
 /**
- * @brief Recupere la valeur de l'element de la liste et _entite *
+ * @brief Recupere la valeur de l'element de la liste et _entite
+ * 
+ * @param liste La liste
+ * @param entite Adresse du pointeur sur l'entité
  */
 void valeur_elt(t_liste *liste, t_entite **entite) {
     if (!hors_liste(liste))
@@ -221,7 +223,10 @@ void valeur_elt(t_liste *liste, t_entite **entite) {
 
 
 /**
- * @brief Recupere la valeur de l'element de la liste et _entite *
+ * @brief Recupere la valeur de l'element de la liste au niveau du drapeau "cache"
+ * 
+ * @param liste La liste
+ * @param entite Adresse du pointeur sur l'entité
  */
 void valeur_elt_cache(t_liste *liste, t_entite **entite) {
     if (!hors_liste(liste))
@@ -230,10 +235,10 @@ void valeur_elt_cache(t_liste *liste, t_entite **entite) {
 
 
 /**
- * @brief Recupere la valeur de l'element de la liste et l'assigne a v
+ * @brief Recupere la valeur de l'element de la liste et l'assigne a entité
  * 
- * @param liste une liste
- * @param entite une valeur
+ * @param liste La liste
+ * @param entite La nouvelle valeur
  */
 void modif_elt(t_liste *liste, t_entite **entite) {
     if (!hors_liste(liste))
@@ -242,9 +247,9 @@ void modif_elt(t_liste *liste, t_entite **entite) {
 
 
 /**
- * @brief Supprime l'element de la liste a l'endroit ou est l'ec
+ * @brief Supprime l'element de la liste a l'endroit ou est l'element courant
  * 
- * @param liste une liste
+ * @param liste La liste
  */
 void oter_elt(t_liste *liste) {
     if (!hors_liste(liste)) {
@@ -269,10 +274,10 @@ void oter_elt(t_liste *liste) {
 
 
 /**
- * @brief Ajoute a droite de l'element courant une valeur v
+ * @brief Ajoute a droite de l'element courant
  * 
- * @param liste une liste
- * @param entite une valeur
+ * @param liste La liste
+ * @param entite L'entité à ajouter
  */
 void ajout_droit(t_liste *liste, t_entite *entite) {
     if (liste_vide(liste) || !hors_liste(liste)) {
@@ -293,10 +298,10 @@ void ajout_droit(t_liste *liste, t_entite *entite) {
 
 
 /**
- * @brief Ajoute a gauche de l'element courant une valeur v
+ * @brief Ajoute a gauche de l'element courant
  * 
- * @param liste La liste dans 
- * @param entite Une entite
+ * @param liste La liste
+ * @param entite L'entité à ajouter
  */
 void ajout_gauche(t_liste *liste, t_entite *entite) {
     if (liste_vide(liste) || !hors_liste(liste)) {

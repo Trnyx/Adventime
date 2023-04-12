@@ -1,7 +1,7 @@
 /**
  * @file entite.h
  * 
- * @brief 
+ * @brief Module de manipulation des entités
  * 
  * @author Clément Hibon
  * @date 3 février
@@ -36,7 +36,8 @@
 
 
 /**
- * @brief 
+ * @enum e_entiteType
+ * @brief Enumérateur regroupant les différents types d'entité
  * 
  */
 typedef enum {
@@ -50,7 +51,8 @@ typedef enum {
 
 
 /**
- * @brief Enumérateur regroupant les différents tags des monstres
+ * @enum e_entiteTag
+ * @brief Enumérateur regroupant les différents tags des entités
  * 
  * Un compteur du nombre de tags est également initialisé à la fin de l'énumérateur
  */
@@ -61,12 +63,16 @@ typedef enum {
     TAG_MONSTRE_BASIC,
     TAG_COFFRE,
     TAG_BOSS,
-    NB_TAGS
+    NB_TAGS,
+    TAG_JOUEUR,
 } e_entiteTag;
 
 
 /**
- * @brief 
+ * @enum e_orientation
+ * @brief Les orientations
+ * 
+ * Pour simplifier, nous utilisons les points cardinaux
  * 
  */
 typedef enum {
@@ -79,14 +85,20 @@ typedef enum {
 
 
 /**
- * @brief 
+ * @enum e_operation
+ * @brief Enumérateur regroupant les différentes opérations des mobs
  * 
  */
 typedef enum {
+    /*! Lorsque le mob est en attente, aucune action particulière ne sera faite */
     ATTENTE,
+    /*! Indique que le mob se déplace vers sa cible */
     SE_DEPLACE_VERS,
+    /*! Indique que le mob se déplace autour de sa cible */
     SE_DEPLACE_AUTOUR,
+    /*! Indique que le mob s'éloigne de sa cible */
     S_ELOIGNE_DE,
+    /*! Indique que le mob attaque sa cible */
     ATTAQUE,
 } e_operation;
 
@@ -97,11 +109,13 @@ typedef enum {
 /* -------------------------------------------------------------------------- */
 /*                                 Structures                                 */
 /* -------------------------------------------------------------------------- */
+// #include "audio.h"
 
 
 // Nous avons besoin de définir cette structure "temporaire"
 // afin que le compilateur connaisse son existence
 typedef struct s_moteur t_moteur;
+typedef struct s_audioPack t_audioPack;
 
 
 
@@ -133,7 +147,11 @@ struct s_entite {
     boolean interargirAvec;                                 /**< Peut être interargit */
 
 
-    int  (*update)(t_entite*, float, t_entite* cible);      /**< Fonction d'actualisation de l'entité */
+    // Audio
+    t_audioPack *bruitages;                                 /**< Les bruitages de l'entité vivante */
+
+
+    void (*update)(t_entite*, float, t_entite* cible);      /**< Fonction d'actualisation de l'entité */
     void (*detruire)(t_entite**);                           /**< Fonction de suppression de l'entité */
     void (*interaction)(void*, void*);                      /**< Fonction d'interaction avec l'entité */
 };
@@ -157,20 +175,22 @@ typedef struct s_entiteVivante {
     unsigned int cooldownAttaque;           /**< Cooldown entre deux attaque (en seconde) */
     unsigned int cooldownRegeneration;      /**< Cooldown pour la régénération (en seconde) */
 
-
 } t_entiteVivante;
 
 
 
 /**
- * @brief 
+ * @struct t_compteur
+ * @brief Structure permettant de regroupé les compteurs d'entités
+ * 
+ * Les compteurs sont utilisés pour les différents caps
  * 
  */
 typedef struct s_compteur {
-    int entites;
-    int mobs;
-    int mobAggressifs;
-    int mobPassifs;
+    int entites;                /**< Compteur d'entités, la limite est définit par ENTITE_CAP */
+    int mobs;                   /**< Compteur de mobs, la limite est définit par MOB_CAP */
+    int mobAggressifs;          /**< Compteur de mob aggressifs, la limite est définit par MONSTRE_AGGRESSIF_CAP */
+    int mobPassifs;             /**< Compteur de monstres passifs, la limite est définit par MONSTRE_PASSIF_CAP */
 } t_compteur;
 
 

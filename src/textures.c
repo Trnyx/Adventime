@@ -1,7 +1,7 @@
 /**
  * @file textures.c
  *
- * @brief
+ * @brief Module de gestion des textures
  *
  * @author Clément Hibon
  * @date 3 février
@@ -24,47 +24,19 @@
 
 
 /**
- * @brief 
+ * @brief Permet de récupérer une texture au sein d'un tileset
  * 
- * @param source 
- * @param x 
- * @param y 
- * @param tailleX 
- * @param tailleY 
+ * @param source Le rectangle stockant la texture finale
+ * @param x La position x de la texture dans le tileset
+ * @param y La position y de la texture dans le tileset
+ * @param tailleX La dimension en largeur de la texture à récupérer
+ * @param tailleY La dimension en hauteur de la texture à récupérer
  */
 void splitTexture(SDL_Rect *source, const int x, const int y, const int tailleX, const int tailleY) {
     source->x = x;
     source->y = y;
     source->w = tailleX;
     source->h = tailleY;
-}
-
-
-
-
-
-/**
- * @brief 
- * 
- * @param tag Le tag de la texture à afficher
- * @param textures Un pointeur sur la structure stoccant les textures
- * 
- * @return La te
- */
-SDL_Texture* getTexture(const int tag, t_textures *textures) {    
-    switch (tag) {
-        // case SOL_EAU_PROFONDE: return textures->sol_profondeur;
-        // case SOL_EAU: return textures->sol_eau;
-        // case SOL_SABLE: return textures->sol_sable;
-        // case SOL_HERBE_1: return textures->sol_herbe_1;
-        // case SOL_HERBE_2: return textures->sol_herbe_2;
-        // case SOL_HERBE_3: return textures->sol_herbe_3;
-        // case SOL_MONTAGNE_1: return textures->sol_montagne_1;
-        // case SOL_MONTAGNE_2: return textures->sol_montagne_2;
-        // case SOL_NEIGE: return textures->sol_profondeur;
-        
-        default: return NULL;
-    }
 }
 
 
@@ -192,7 +164,6 @@ t_textures* initTextures(SDL_Renderer *renderer) {
  * @param textures L'adresse du pointeur sur les textures 
  */
 void detruireTextures(t_textures **textures) {
-    printf("Destruction Textures => ");
     if (textures != NULL && *textures != NULL) {
 
         if ((*textures)->null != NULL) 
@@ -231,5 +202,4 @@ void detruireTextures(t_textures **textures) {
         *textures = NULL;
 
     }
-    printf("Succes\n");
 }

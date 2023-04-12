@@ -1,7 +1,7 @@
 /**
  * @file structures.c
  *
- * @brief 
+ * @brief Module gérant la génération des structures et décorations
  *
  * @author Clément Hibon
  * @date 10 mars
@@ -68,7 +68,7 @@ int biomeValidationPourEntreeTemple(t_chunk *chunk) {
  * @param map La map dans lequel on recherche le chunk
  * @param validation Un pointeur sur la fonction de validation, cette fonction de validation doit retourner 1 pour un cas valide, 0 pour un cas non valide, -1 pour un cas banni (interdisant donc la sélection du chunk regardé)
  * 
- * @return t_chunk* Le chunk correspondant le plus à la condition de validation
+ * @return Le chunk correspondant le plus à la condition de validation, NULL si il n'en existe pas
  */
 t_chunk* getChunkCentralBiome(const e_biome biome, t_map *map, int (*validation)(t_chunk*)) {
     t_chunk *chunkFinal = NULL;
@@ -113,7 +113,6 @@ t_chunk* getChunkCentralBiome(const e_biome biome, t_map *map, int (*validation)
     }
     
 
-    printf("CHUNK FINAL : %.2f:%.2f (%i)\n", chunkFinal->position.x, chunkFinal->position.y, chunkFinal->biome);
     return chunkFinal;
 }
 
@@ -252,7 +251,7 @@ t_vecteur2 decorationAutourDePoint(t_map *map, const e_blockTag blockDecoration,
 
 
 /**
- * @brief Remplace les flags de décorations
+ * @brief Remplace les flags de décorations par les décorations correspondantes
  * 
  * Les flags doivent être placé au préalables
  * 
@@ -317,7 +316,6 @@ void decorationRemplacerFlags(t_map *map) {
  * @param grille La grille contenant la position des maisons du village
  */
 void genererDecorations(t_map *map, t_discSampling grille) {
-    printf("DECORATINONS => ");
     // Flags
     decorationRemplacerFlags(map);
 
@@ -346,9 +344,6 @@ void genererDecorations(t_map *map, t_discSampling grille) {
         decorationAutourDePoint(map, BLOCK_TONNEAU, tonneau, 1, 1, 1);
     }
 
-
-
-    printf("\n");
 }
 
 
@@ -381,8 +376,8 @@ void changerBlock(t_map *map, const float x, const float y, const int z, const i
  * @param map La map dans laquelle sera créé le chemin
  * @param depart Le point de départ original
  * @param arrive Le point d'arriver original
- * @param x 
- * @param y 
+ * @param x Un pointeur sur la coordonnée x actuelle du tracé en cours
+ * @param y Un pointeur sur la coordonnée y actuelle du tracé en cours
  */
 void tracerCheminVertical(t_map *map, t_vecteur2 depart, t_vecteur2 arrive, int *x, int *y) {
     const int longueur = abs(depart.y - arrive.y);
@@ -391,7 +386,7 @@ void tracerCheminVertical(t_map *map, t_vecteur2 depart, t_vecteur2 arrive, int 
     int yParcourue = 0;
     int cote, modifieur;
 
-    // Maison en haut
+    // Point d'arrivé en haut
     if (depart.y > arrive.y) {
         for (; *y < depart.y; (*y)++) {
             changerBlock(map, *x, *y, COUCHE_SOL, SOL_CHEMIN);
@@ -412,7 +407,7 @@ void tracerCheminVertical(t_map *map, t_vecteur2 depart, t_vecteur2 arrive, int 
         }
     }
 
-    // Maison en bas
+    // Point d'arrivé en bas
     else {
         for (; *y > depart.y + 2; (*y)--) {
             changerBlock(map, *x, *y, COUCHE_SOL, SOL_CHEMIN);
@@ -437,11 +432,11 @@ void tracerCheminVertical(t_map *map, t_vecteur2 depart, t_vecteur2 arrive, int 
 
 
 /**
- * @brief 
+ * @brief Trace un chemin entre un point de départ et un point d'arrivé
  * 
  * @param map La map dans laquelle est tracée les chemins
- * @param depart Le point de départ pour la création du chemin (Le puit)
- * @param arrive Le point d'arrive de la création du chemin (La maison)
+ * @param depart Le point de départ pour la création du chemin
+ * @param arrive Le point d'arrive de la création du chemin
  */
 void tracerChemin(t_map *map, t_vecteur2 depart, t_vecteur2 arrive) {
     t_vecteur2 separation = {
@@ -454,7 +449,7 @@ void tracerChemin(t_map *map, t_vecteur2 depart, t_vecteur2 arrive) {
     int y = arrive.y + 7;
     
 
-    // Maison à gauche
+    // Point d'arrivé à gauche
     if (separation.x > 0) { 
         x += 2;
 
@@ -478,7 +473,7 @@ void tracerChemin(t_map *map, t_vecteur2 depart, t_vecteur2 arrive) {
     } 
 
 
-    // Maison à droite ou alignée horizontalement
+    // Point d'arrivé à droite ou alignée horizontalement
     else { 
         x += 4;
 
@@ -548,7 +543,6 @@ void genererChemins(t_map *map, t_discSampling grille) {
  * @param map La map dans laquelle est généré le village
  */
 void genererVillage(t_map *map) {
-    printf("GENERATION VILLAGE => ");
     t_chunk *plusGrandePlaine = getChunkCentralBiome(BIOME_PLAINE, map, biomeValidationPourVillage);
 
 
@@ -564,7 +558,6 @@ void genererVillage(t_map *map) {
         const int nombreBatiment = getNombreAleatoire(6, 8);
         
 
-        printf("GENERATION GRILLE => ");
         const t_discSampling grille = genererGrilleDiscSampling(min, max, nombreBatiment, 12, &centre);
         // grille.elementPositions[0] = centre;
 
@@ -574,17 +567,14 @@ void genererVillage(t_map *map) {
         }
 
 
-        printf("NOMBRE STRUCTURE %i => ", grille.nbElements);
         for (int i = 0; i < grille.nbElements; i++) {
             t_vecteur2 position = grille.elementPositions[i];
             e_structureTag tag = selectionMaisonTag();
 
             if (!i && grille.nbElements > 1) {
-                printf("GENERATION PUIT %i (%1.2f:%1.2f) => ", i, position.x, position.y);
                 genererStructure(position, STRUCTURE_PUIT, map);
             }
             else {
-                printf("GENERATION BATIMENT %i (%1.2f:%1.2f) => ", i, position.x, position.y);
                 genererStructure(position, tag, map);
             }
         }
@@ -597,7 +587,6 @@ void genererVillage(t_map *map) {
 
     }
 
-    printf("\n\n");
 }
 
 
@@ -616,7 +605,6 @@ void genererVillage(t_map *map) {
  * @param map La map dans laquelle l'entrée du boss est généré
  */
 void genererEntreeTemple(t_map *map) {
-    printf("GENERATION ENTREE TEMPLE => ");
     t_chunk *plusGrandeMontagne = getChunkCentralBiome(BIOME_MONTAGNE, map, biomeValidationPourEntreeTemple);
 
 
@@ -626,10 +614,8 @@ void genererEntreeTemple(t_map *map) {
             (plusGrandeMontagne->position.y * TAILLE_CHUNK) + TAILLE_CHUNK / 2,
         };
 
-        printf("%1.2f:%1.2f => ", centre.x, centre.y);
         genererStructure(centre, STRUCTURE_ENTREE_TEMPLE, map);
     }
-    printf("\n");
 }
 
 
@@ -647,7 +633,6 @@ void genererEntreeTemple(t_map *map) {
  * @param map 
  */
 void genererEntreeCaverne(t_map *map) {
-    printf("GENERATION ENTREE Caverne => ");
 
     
     printf("\n");

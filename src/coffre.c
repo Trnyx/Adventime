@@ -1,7 +1,7 @@
 /**
  * @file coffre.c
  * 
- * @brief 
+ * @brief Module de gestion des coffres
  * 
  * @author Clément Hibon
  * @date 31 mars

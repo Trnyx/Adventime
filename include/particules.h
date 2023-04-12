@@ -1,7 +1,7 @@
 /**
  * @file particules.h
  * 
- * @brief 
+ * @brief Module de manipulation des particules
  * 
  * @author Clément Hibon
  * @date 28 mars

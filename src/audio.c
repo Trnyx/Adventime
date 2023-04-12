@@ -95,7 +95,8 @@ void play_music(Mix_Music *music, boolean repeat, boolean estLaSuite) {
  * @param channel Le channel dans lequel sera joué le bruitage, -1 si on veut utilisé le premier channel disponible 
  */
 void play_bruitage(Mix_Chunk *sound, int channel) {
-    Mix_PlayChannel(channel, sound, 1);
+    if (sound != NULL)
+        Mix_PlayChannel(channel, sound, 0);
 }
 
 
@@ -107,22 +108,11 @@ void play_bruitage(Mix_Chunk *sound, int channel) {
  * @param angle L'angle entre l'entité est le joueur
  * @param distance La distance séparant l'entité du joueur
  */
-void play_sonAmbiance(e_entiteTag tag, float angle, float distance) {
-    Mix_Chunk *bruitage = NULL;
+void play_sonAmbiance(Mix_Chunk *bruitage, float angle, float distance) {
     int channel = -1;
 
 
-    switch (tag) {
-        case TAG_ANIMAL_VACHE: bruitage = audio->bruitages->vache; break;
-        case TAG_ANIMAL_COCHON: bruitage = audio->bruitages->cochon; break;
-        
-        default: break;
-    }
-
-
-
     if (bruitage != NULL) {
-        printf("BRUIT => ");
         // On ajuste l'angle
         angle = revolution(angle - 90);
 
@@ -253,29 +243,31 @@ int chargerAudio(t_musiques **musiques, t_bruitages **bruitages) {
     // m->combat_nuit = Mix_LoadMUS("assets/audio/musiques/.mp3");
     m->boss = NULL;
     loadMusiqueBoss(m, getJourDeLaSemaine(time(NULL)));
-    // m->combat_boss = Mix_LoadMUS("assets/audio/musiques/.mp3");
     
     
     /* -------------------------------- Bruitages ------------------------------- */
     // Menu
-    b->menu_selection = Mix_LoadWAV("assets/audio/bruitages/menu_selection.wav");
+    b->menu_selection = Mix_LoadWAV("assets/audio/bruitages/menu_selection.ogg");
 
     // Joueur
-    // b->joueur_attaque = Mix_LoadWAV("assets/audio/bruitages/.wav");
-    // b->joueur_degat = Mix_LoadWAV("assets/audio/bruitages/.wav");
-    // b->joueur_mort = Mix_LoadWAV("assets/audio/bruitages/.wav");
+    // b->joueur_degat = Mix_LoadWAV("assets/audio/bruitages/.ogg");
+    // b->joueur_mort = Mix_LoadWAV("assets/audio/bruitages/.ogg");
 
     // Monstre
-    // b->monstre_attaque = Mix_LoadWAV("assets/audio/bruitages/.wav");
-    // b->monstre_degat = Mix_LoadWAV("assets/audio/bruitages/.wav");
-    // b->monstre_mort = Mix_LoadWAV("assets/audio/bruitages/.wav");
+    // b->monstre_degat = Mix_LoadWAV("assets/audio/bruitages/.ogg");
+    // b->monstre_mort = Mix_LoadWAV("assets/audio/bruitages/.ogg");
 
     // Animaux
-    b->vache = Mix_LoadWAV("assets/audio/bruitages/vache.wav");
-    b->cochon = Mix_LoadWAV("assets/audio/bruitages/cochon.wav");
+    b->vache = Mix_LoadWAV("assets/audio/bruitages/vache.ogg");
+    b->vache_degat = Mix_LoadWAV("assets/audio/bruitages/vache_degat.ogg");
+    b->vache_mort = Mix_LoadWAV("assets/audio/bruitages/vache_mort.ogg");
+    b->cochon = Mix_LoadWAV("assets/audio/bruitages/cochon.ogg");
+    b->cochon_degat = Mix_LoadWAV("assets/audio/bruitages/cochon_degat.ogg");
+    b->cochon_mort = Mix_LoadWAV("assets/audio/bruitages/cochon_mort.ogg");
 
     // Autres
-    // b->item_recuperation = Mix_LoadMUS("assets/audio/bruitages/.wav");
+    b->attaque = Mix_LoadWAV("assets/audio/bruitages/attaque.ogg");
+    b->item_recuperation = Mix_LoadWAV("assets/audio/bruitages/item_recuperation.ogg");
 
 
 
@@ -284,6 +276,46 @@ int chargerAudio(t_musiques **musiques, t_bruitages **bruitages) {
 
 
     return 0;
+}
+
+
+
+
+
+void chargerAudioPack(t_audioPack *pack, e_entiteTag tag) {
+    switch (tag) {
+        case TAG_JOUEUR:
+            // pack->degat = audio->bruitages->joueur_degat;
+            // pack->mort = audio->bruitages->joueur_mort;
+            break;
+        
+
+        case TAG_MONSTRE_BASIC:
+            // pack->degat = audio->bruitages->monstre_degat;
+            // pack->mort = audio->bruitages->monstre_mort;
+            break;
+     
+     
+        case TAG_ANIMAL_VACHE:
+            pack->normal = audio->bruitages->vache;
+            pack->degat = audio->bruitages->vache_degat;
+            pack->mort = audio->bruitages->vache_mort;
+            break;
+     
+        case TAG_ANIMAL_COCHON:
+            pack->normal = audio->bruitages->cochon;
+            pack->degat = audio->bruitages->cochon_degat;
+            pack->mort = audio->bruitages->cochon_mort;
+            break;
+
+
+
+        default:
+            break;
+    }
+
+
+    pack->attaque = audio->bruitages->attaque;
 }
 
 
@@ -333,18 +365,46 @@ t_audio* initAudio() {
 
 
 
+/**
+ * @brief Alloue l'espace nécessaire pour un pack audio et le créer
+ * 
+ * Le pack audio correspond au bruitages que produit une entité
+ * 
+ * @return Un pointeur sur le pack audio créé, NULL si echec
+ */
+t_audioPack *creerAudioPack() {
+    t_audioPack *pack = malloc(sizeof(t_audioPack));
+
+    if (pack == NULL) {
+        printf("Erreur mémoire : impossible d'allouer l'espace nécessaire pour l'audio pack\n");
+        return NULL;
+    }
+
+
+    pack->normal = NULL;
+    pack->attaque = NULL;
+    pack->degat = NULL;
+    pack->mort = NULL;
+
+
+    return pack;
+}
+
+
+
+
+
 /* -------------------------------------------------------------------------- */
 /*                                 Destruction                                */
 /* -------------------------------------------------------------------------- */
 
 
 /**
- * @brief 
+ * @brief Detruit l'audio est libère la mémoire allouée pour ce dernier
  * 
- * @param audio 
+ * @param audio L'adresse du pointeur sur l'audio 
  */
 void detruireAudio(t_audio **audio) {
-    printf("Destruction Audio => ");
     if (audio != NULL && *audio != NULL) {
 
         t_musiques *musiques = (*audio)->musiques;
@@ -356,7 +416,6 @@ void detruireAudio(t_audio **audio) {
 
         /* -------------------------------- Musiques -------------------------------- */
         if (musiques != NULL) {
-            printf("Destruction musiques => ");
             // Mix_FreeMusic((*musiques)->);
 
             Mix_FreeMusic((*audio)->musiques->menu_principal);
@@ -370,52 +429,60 @@ void detruireAudio(t_audio **audio) {
             free(musiques);
             musiques = NULL;
         }
-        else {
-            printf("Pas de musique => ");
-        }
-
+        
 
         /* -------------------------------- Bruitages ------------------------------- */
         if (bruitages != NULL) {
-            printf("Destruction bruitages => ");
             // Mix_FreeChunk((*bruitages)->);
 
             // Menu
             Mix_FreeChunk((*audio)->bruitages->menu_selection);
 
             // Joueur
-            // Mix_FreeChunk((*audio)->bruitages->joueur_attaque);
             // Mix_FreeChunk((*audio)->bruitages->joueur_degat);
             // Mix_FreeChunk((*audio)->bruitages->joueur_mort);
 
             // Monstre
-            // Mix_FreeChunk((*audio)->bruitages->monstre_attaque);
             // Mix_FreeChunk((*audio)->bruitages->monstre_degat);
             // Mix_FreeChunk((*audio)->bruitages->monstre_mort);
 
             // Animaux
             Mix_FreeChunk((*audio)->bruitages->vache);
+            Mix_FreeChunk((*audio)->bruitages->vache_degat);
+            Mix_FreeChunk((*audio)->bruitages->vache_mort);
             Mix_FreeChunk((*audio)->bruitages->cochon);
+            Mix_FreeChunk((*audio)->bruitages->cochon_degat);
+            Mix_FreeChunk((*audio)->bruitages->cochon_mort);
 
             // Autres
-            // Mix_FreeChunk((*audio)->bruitages->item_recuperation);
+            Mix_FreeChunk((*audio)->bruitages->attaque);
+            Mix_FreeChunk((*audio)->bruitages->item_recuperation);
 
             free(bruitages);
             bruitages = NULL;
         }
-        else {
-            printf("Pas de bruitage => ");
-        }
+        
 
-
-        printf("Destruction global => ");
         free(*audio);
         *audio = NULL;
 
         Mix_CloseAudio();
 
     }
-    printf("Succes\n");
 }
 
 
+
+
+
+/**
+ * @brief Detruit le pack audio est libère la mémoire allouée pour ce dernier
+ * 
+ * @param pack L'adresse du pointeur sur le pack audio
+ */
+void detruireAudioPack(t_audioPack **pack) {
+    if (pack != NULL && *pack != NULL) {
+        free(*pack);
+        *pack = NULL;
+    }
+}

@@ -121,23 +121,17 @@ state_main main_menu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.6), 300, 50));
       if (nk_button_label(ctx, "Jouer")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(bg_img);
         click = M_JOUER;
-      }
-
-      if (nk_widget_is_hovered(ctx)) {
-        if (!hovered) {
-          hovered = 1;
-        } else {
-          hovered = 0;
-        }
       }
 
       nk_layout_space_push(
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.7), 300, 50));
       if (nk_button_label(ctx, "Options")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(bg_img);
         click = M_OPTIONS;
@@ -155,6 +149,7 @@ state_main main_menu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.8), 300, 50));
       if (nk_button_label(ctx, "Quitter")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
         SDL_DestroyTexture(texture);
         SDL_FreeSurface(bg_img);
         click = JEU_QUITTER;
@@ -317,6 +312,7 @@ state_main menu_options(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.8), 300, 50));
       if (nk_button_label(ctx, "Retour")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
 	if (moteur->state == M_PAUSE) {
 	  click = M_PAUSE;
 	} else {
@@ -470,6 +466,7 @@ state_main pauseMenu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.3), 300, 50));
       if (nk_button_label(ctx, "Continuer")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
 	moteur->state = M_JOUER;
         click = M_JOUER;
       }
@@ -486,6 +483,7 @@ state_main pauseMenu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.5), 300, 50));
       if (nk_button_label(ctx, "Options")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
 	click = M_OPTIONS;
       }
 
@@ -501,6 +499,7 @@ state_main pauseMenu(struct nk_context *ctx) {
           ctx, nk_rect(((float)moteur->window_width / 2) - 300.0 / 2,
                        (moteur->window_height * 0.7), 300, 50));
       if (nk_button_label(ctx, "Quitter")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
         click = M_MENU;
       }
       nk_layout_space_end(ctx);
@@ -564,6 +563,7 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
 					(moteur->window_height * 0.6), 300, 50));
       
       if (nk_button_label(ctx, "Réapparaitre")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
         reapparitionJoueur(joueur, moteur->cache->monde->pointApparitionDefaut);
 	moteur->state = M_JOUER;
 	click = M_JOUER;
@@ -574,6 +574,7 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
 					(moteur->window_height * 0.7), 300, 50));
       
       if (nk_button_label(ctx, "Quitter")) {
+	play_bruitage(audio->bruitages->menu_selection, -1);
 	moteur->state = M_MENU;
         click = M_MENU;
       }
@@ -594,10 +595,9 @@ state_main gameOver(struct nk_context *ctx, t_joueur *joueur) {
   return click;
 }
 
-state_main menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
+void menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
   
   set_style(ctx, THEME_BLACK);
-  state_main click = 1;
   
   if (joueur->actionFlags->bool_inventory) {
     SDL_Event evt;
@@ -605,7 +605,6 @@ state_main menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
     while (SDL_PollEvent(&evt)) {
       nk_sdl_handle_event(&evt);
       if (evt.key.keysym.scancode == SDL_SCANCODE_E) {
-	click = 0;
 	joueur->actionFlags->bool_inventory = 0;
       }
     }
@@ -624,10 +623,43 @@ state_main menu_inventaire(struct nk_context *ctx, t_joueur *joueur) {
 }
 
 void inv_stats (struct nk_context * ctx, t_joueur *joueur) {
+
+  char text_pv[10];
+  char attaque[10];
+  char def[10];
+  char vitesse[10];
+  char lvl[8];
+  
+  sprintf(lvl, "%d", joueur->statistiques.niveau);
+
+  sprintf(text_pv, "%d/%d", (int)joueur->statistiques.pv, joueur->statistiques.pvMax);
+  
+  sprintf(attaque, "%d", (int)joueur->statistiques.attaque);
+
+  sprintf(def, "%d", (int)joueur->statistiques.defense);
+
+  sprintf(vitesse, "%d", (int)joueur->statistiques.vitesse);
   
     if (nk_begin(ctx, "Stats",
                nk_rect(moteur->window_width*0.03, moteur->window_height*0.15, moteur->window_width*0.2, moteur->window_height*0.7),
                (NK_WINDOW_BORDER | NK_WINDOW_NO_SCROLLBAR | NK_WINDOW_TITLE))) {
+
+      nk_layout_row_static(ctx, moteur->window_height*0.12, moteur->window_width*0.1, 2);
+
+      nk_label(ctx, "Niveau :", NK_TEXT_CENTERED);
+      nk_label(ctx, lvl, NK_TEXT_LEFT);
+      
+      nk_label(ctx, "PV :", NK_TEXT_CENTERED);
+      nk_label(ctx, text_pv, NK_TEXT_LEFT);
+
+      nk_label(ctx, "Atq :", NK_TEXT_CENTERED);
+      nk_label(ctx, attaque, NK_TEXT_LEFT);
+
+      nk_label(ctx, "Def :", NK_TEXT_CENTERED);
+      nk_label(ctx, def, NK_TEXT_LEFT);
+
+      nk_label(ctx, "Vit :", NK_TEXT_CENTERED);
+      nk_label(ctx, vitesse, NK_TEXT_LEFT);
     
   }
   nk_end(ctx);
@@ -673,10 +705,10 @@ void inventaire(struct nk_context *ctx, t_joueur *joueur) {
 	sprintf(quantite, " ");
       }
 
-      if (nk_input_is_mouse_hovering_rect(in, bounds)) {
-        SDL_Log("oui je suis dedans %d", i);
-        SDL_Log("%f, %f, %f, %f", bounds.x, bounds.y, bounds.w, bounds.h);
-      }
+      /* if (nk_input_is_mouse_hovering_rect(in, bounds)) { */
+      /*   SDL_Log("oui je suis dedans %d", i); */
+      /*   SDL_Log("%f, %f, %f, %f", bounds.x, bounds.y, bounds.w, bounds.h); */
+      /* } */
       
       selected[i] = 1;
       if (nk_selectable_label(ctx, quantite, NK_TEXT_ALIGN_LEFT,

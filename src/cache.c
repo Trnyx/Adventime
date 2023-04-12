@@ -1,7 +1,9 @@
 /**
  * @file cache.c
  *
- * @brief
+ * @brief Module de gestion du cache
+ * 
+ * Le cache permet d'avoir un accès plus simple et plus rapide à des variables importantes
  *
  * @author Clément Hibon
  * @date 9 mars

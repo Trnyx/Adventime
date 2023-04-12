@@ -1,9 +1,10 @@
 /**
  * @file monde.h
  *
- * @brief
+ * @brief Module de manipulation d'un monde
  *
  * @author Clément Hibon
+ * @date 25 janvier
  * @version 1.1
  */
 
@@ -33,7 +34,7 @@
 
 /**
  * @struct t_monde
- * @brief
+ * @brief Modélise un monde
  */
 typedef struct s_monde {
     char *id;                               /**< L'ID du monde */
@@ -43,7 +44,7 @@ typedef struct s_monde {
     t_map *overworld;                       /**< La map overworld */
     t_map *caverne;                         /**< La map caverne */
 
-    t_vecteur2 positionApparitionBoss;      /**< */
+    t_vecteur2 positionApparitionBoss;      /**< La point d'apparition du boss */
     t_boss *boss;                           /**< Le boss qui est actuellement présent dans le monde */
 
 

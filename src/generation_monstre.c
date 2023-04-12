@@ -1,7 +1,7 @@
 /**
  * @file generation_monstre.c
  *
- * @brief Génération d'un monstre
+ * @brief Module de génération d'un monstre
  *
  * @author Clément Hibon
  * @date 23 janvier
@@ -62,6 +62,15 @@ e_monstreType choisirTypeMonstre(const t_baseBiome baseBiome) {
 
 
 
+/**
+ * @brief Selectionne le niveau du monstre
+ * 
+ * Le niveau du monstre dépend du niveau du joueur et peut être aléatoire selon le niveau de ce dernier
+ * 
+ * @param niveauJoueur Le niveau actuel du joueur
+ * 
+ * @return Len niveau du monstre
+ */
 int calculNiveau(const unsigned int niveauJoueur) {
     if (niveauJoueur <= 3)
         return niveauJoueur;
@@ -81,9 +90,9 @@ int calculNiveau(const unsigned int niveauJoueur) {
 
 
 /**
- * @brief 
+ * @brief Calcul la probabilité que le monstre soit de type Nocturne
  * 
- * @return boolean 
+ * @return VRAI si le monstre doit être nocturne, FAUX sinon
  */
 boolean estNocturne() {
     t_temps *temps = moteur->temps;
@@ -127,9 +136,7 @@ t_monstre* genererMonstre(t_monstre *monstre, const e_biome biome, const int niv
     monstre->tag = TAG_MONSTRE_BASIC;
     monstre->type = choisirTypeMonstre(basesBiomes[biome]);
 
-    printf("NIVEAU => ");
     const int niveau = calculNiveau(niveauJoueur);
-    printf("OK\n");
 
     monstre->baseStatistiques = genererStatistiquesDeBaseMonstre(monstre->type);
     monstre->statistiques = genererStatistiques(monstre->baseStatistiques, niveau);

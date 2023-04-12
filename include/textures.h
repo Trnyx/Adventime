@@ -1,7 +1,7 @@
 /**
  * @file textures.h
  *
- * @brief
+ * @brief Module de manipulation des textures
  *
  * @author Clément Hibon
  * @date 3 février
@@ -21,6 +21,7 @@
 
 
 
+// La taille d'une tile (d'une case) [en pixel]
 #define TAILLE_TILE 16
 
 
@@ -41,27 +42,28 @@
 
 
 /**
+ * @struct t_textures
  * @brief Structures contenant toutes les textures du jeu
  * 
  */
 typedef struct s_textures {
 
     // Map
-    SDL_Texture *null;
-    SDL_Texture *sol;
+    SDL_Texture *null;              /**< La texture lorsque un objet est NULL */
+    SDL_Texture *sol;               /**< Le tileset contenant les textures du sol */
 
     // Végétaux
-    SDL_Texture *vegetaux;
-    SDL_Texture *structures;
+    SDL_Texture *vegetaux;          /**< Le tileset contenant les textures des végétaux */
+    SDL_Texture *structures;        /**< Le tileset contenant les textures des structures et décorations */
 
 
     // Entités
-    SDL_Texture *joueur;
-    SDL_Texture *monstres;
-    SDL_Texture *animaux;
+    SDL_Texture *joueur;            /**< Le tileset contenant les textures du joueur */
+    SDL_Texture *monstres;          /**< Le tileset contenant les textures des monstres */
+    SDL_Texture *animaux;           /**< Le tileset contenant les textures des animaux */
 
     // Autres
-    SDL_Texture *items;
+    SDL_Texture *items;             /**< Le tileset contenant les textures des items */
 
 } t_textures;
 
@@ -77,7 +79,6 @@ typedef struct s_textures {
 t_textures* initTextures(SDL_Renderer *renderer);
 void detruireTextures(t_textures **textures);
 
-SDL_Texture* getTexture(const int tag, t_textures *textures);
 void splitTexture(SDL_Rect *rectangle, const int x, const int y, const int tailleX, const int tailleY);
 
 

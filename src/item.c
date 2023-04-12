@@ -11,6 +11,7 @@
 
 
 #include "../include/moteur.h"
+#include "../include/audio.h"
 #include "../include/physique.h"
 #include "../include/item.h"
 #include "../include/inventaire.h"
@@ -101,9 +102,6 @@ extern t_item* item_creer(e_itemTag tag)
     t_baseItem base = basesItems[tag];
     item->categorie = base.categorie;
 
-
-    // item->nom = malloc(sizeof(char) * strlen(nom) + 1);
-    // strcpy(item->nom, nom);
 
     item->afficher = (int (*)(t_item*)) item_afficher;
     item->detruire = (int (*)(t_item**)) item_detruire;
@@ -201,6 +199,8 @@ void updateItemEntite(t_itemEntite *itemEntite, const float distance, t_joueur *
     }
     else {
         if (distance <= itemEntite->rayonPrise) {
+            play_bruitage(audio->bruitages->item_recuperation, -1);
+
             recupererItem(itemEntite, recuperateur);
             itemEntite->detruire((t_entite**)&itemEntite);
             oter_elt(moteur->cache->entites);
@@ -220,10 +220,8 @@ void updateItemEntite(t_itemEntite *itemEntite, const float distance, t_joueur *
  */
 void detruireItemEntite(t_itemEntite **itemEntite) {
     if (itemEntite != NULL && itemEntite != NULL) {
-        printf("Destruction Item Entite => ");
 
         if ((*itemEntite)->timestampActualisation - (*itemEntite)->timestampCreation >= ENTITE_DUREE_VIE_MAX * 1000) {
-            printf("Destruciton item => ");
             t_item *item = (*itemEntite)->item;
             item->detruire(&item);
         }
@@ -274,7 +272,7 @@ t_itemEntite *creerItemEntite(const t_vecteur2 position, const e_itemTag tag) {
     itemEntite->cooldownAvantPrise = ENTITE_ITEM_DELAI_RECUPERATION;
 
 
-    itemEntite->update = (int (*)(t_entite*, float, t_entite*)) updateItemEntite;
+    itemEntite->update = (void (*)(t_entite*, float, t_entite*)) updateItemEntite;
     itemEntite->detruire = (void (*)(t_entite**)) detruireItemEntite;
 
 
@@ -292,7 +290,10 @@ t_itemEntite *creerItemEntite(const t_vecteur2 position, const e_itemTag tag) {
 
 
 /**
- * @brief 
+ * @brief Tableau regroupant les bases des différents items
+ * - Tag
+ * - Catégorie
+ * - Le nombre d'item par stack
  * 
  */
 t_baseItem basesItems[] = {

@@ -1,9 +1,11 @@
 /**
- * @file 
- *
- * @brief
- *
- * @author
+ * @file animation.h
+ * 
+ * @brief Module de manipulation du monde
+ * 
+ * @author Clément Hibon
+ * @date 25 janvier
+ * @version 1.1
  */
 
 
@@ -46,7 +48,13 @@ int setGenerationSeed(long long int seed) {
 
 
 
-
+/**
+ * @brief Converti la chaine de caractère en seed
+ * 
+ * @param seedString La chaine de caractère utilisé pour le seed
+ * 
+ * @return Le seed
+ */
 long long int convertionSeed(char *seedString) {
     return convertirEnSeed(seedString);
 }
@@ -56,14 +64,13 @@ long long int convertionSeed(char *seedString) {
 
 
 /**
- * @brief Get the Point Apparition Joueur object
+ * @brief Obtient le point d'apparition par défaut du joueur
  * 
- * @param map 
- * @return t_vecteur2 
+ * @param map La map dans laquelle le joueur apparait
+ * 
+ * @return La position d'apparition par défaut du joueur 
  */
 t_vecteur2 getPointApparitionJoueur(t_map *map) {
-    // const int centre = (TAILLE_CHUNK) / 2;
-
     t_chunk *chunk = NULL;
     t_block *block = NULL;
 
@@ -100,7 +107,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
             continue;
 
         if (block->tag == SOL_EAU_PROFONDE || block->tag == SOL_EAU) {
-            block = NULL;
+            // block = NULL;
             continue;
         }
 
@@ -109,7 +116,7 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
         block = getBlockDansChunk(blockPosition.x, blockPosition.y, chunk);
 
         if (block->tag != VIDE) {
-            block = NULL;
+            // block = NULL;
             continue;
         }
     }
@@ -129,10 +136,11 @@ t_vecteur2 getPointApparitionJoueur(t_map *map) {
 
 
 /**
- * @brief 
+ * @brief Alloue l'espace nécessaire pour un monde et le créer
  * 
- * @param seed 
- * @return t_monde* 
+ * @param seed Le seed du monde
+ * 
+ * @return Un pointeur sur le monde créé, NULL si echec
  */
 t_monde* creerMonde(long long int seed) {
     t_monde *monde = malloc(sizeof(t_monde));
@@ -146,7 +154,6 @@ t_monde* creerMonde(long long int seed) {
 
 
     monde->id = genererId();
-    printf("ID : %s\n", monde->id);
 
 
     if (seed == -1) {
@@ -199,7 +206,6 @@ t_monde* creerMonde(long long int seed) {
  * @param monde L'adresse du pointeur du monde à détruire
  */
 void detruireMonde(t_monde **monde) {
-    printf("Destruction Monde => ");
     if (monde != NULL && *monde != NULL) {
         if ((*monde)->id != NULL) {
             free((*monde)->id);
@@ -215,5 +221,4 @@ void detruireMonde(t_monde **monde) {
         free(*monde);
         *monde = NULL;  
     }
-    printf("Succes\n");
 }
