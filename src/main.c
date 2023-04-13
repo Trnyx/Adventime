@@ -45,11 +45,19 @@
 int main(int argc, char* argv[]) {
 	
 
+	/* ----------------------------- Initialisation ----------------------------- */
+
+
 	initAll(&moteur, &audio);
 	ctx = nk_sdl_init(moteur->window, moteur->renderer);
 
 	moteur->state = M_MENU;
 	
+
+
+
+
+	/* ---------------------------- Lancement du jeu ---------------------------- */
 
 
 	play_music(audio->musiques->menu_principal, VRAI, FAUX);
@@ -58,24 +66,45 @@ int main(int argc, char* argv[]) {
 	while (moteur->state != JEU_QUITTER) {
 		
 		switch (moteur->state) {
-			case M_MENU: moteur->state = main_menu(ctx); break;
+			case M_MENU: 
+				moteur->state = main_menu(ctx); 
+				break;
+
 			case M_JOUER: 
-				moteur->state = jouer(MONDE_CREER); 
+				// Mettre MONDE_CHARGER pour charger le monde
+				// A changer lorsque le menu de sélection sera fait
+				moteur->state = jouer(MONDE_CREER);
+
+				// Lance la musique lors du retour au menu principal 
 				if (moteur->state != JEU_QUITTER) {
 				  	play_music(audio->musiques->menu_principal, VRAI, FAUX);
 					audio->musiqueType = MUSIC_MENU;
 				}
 				break;
-			case M_OPTIONS: moteur->state = menu_options(ctx); break;
-			default: moteur->state = JEU_QUITTER; break;
+
+			case M_OPTIONS: 
+				moteur->state = menu_options(ctx); 
+				break;
+
+			default: 
+				moteur->state = JEU_QUITTER; 
+				break;
 		}
 
 	}
 
 	
 
+
+	/* ------------------------------- Destruction ------------------------------ */
+
+
 	detruireAll(moteur, audio);
 	SDL_Quit();
  
-	return 0;
+
+
+
+
+	return EXIT_SUCCESS;
 }

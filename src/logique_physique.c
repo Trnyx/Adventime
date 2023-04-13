@@ -103,7 +103,7 @@ static void suppressionEntite(t_liste *entites, t_entite *entite) {
  * 
  * Elle gère toute la physique et logique du jeu
  * 
- * @param map Un pointeur sur la map dans laquelle le joueur
+ * @param map Un pointeur sur la map dans laquelle le joueur progresse
  * @param joueur Un pointeur sur le joueur
  */
 void update(t_map *map, t_joueur *joueur) {

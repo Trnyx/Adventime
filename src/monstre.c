@@ -147,12 +147,12 @@ t_monstre* creerMonstre(const t_vecteur2 position, const e_biome biome, const in
 
 
 /**
- * @brief 
+ * @brief Fait apparaitre un monstre 
  * 
- * @param entites 
- * @param biome 
- * @param positionJoueur 
- * @param niveauJoueur 
+ * @param entites La liste d'entités déjà existante
+ * @param biome Le biome dans lequel le monstre apparait
+ * @param positionJoueur La position du joueur
+ * @param niveauJoueur Le niveau actuel du joueur
  */
 void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJoueur, const int niveauJoueur) {
     const float rayon = JOUEUR_RAYON_INACTIF - JOUEUR_RAYON_SEMIACTIF;

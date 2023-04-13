@@ -103,6 +103,7 @@ t_entite* estTropLoinDuTroupeau(t_animal *animal) {
  */
 void updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
     if (animal->cible == NULL) {
+        // Gestion du troupeau
         t_entite *animalDuTroupeauLePlusProche = estTropLoinDuTroupeau(animal);
         
         if (animalDuTroupeauLePlusProche != NULL) {
@@ -113,8 +114,8 @@ void updateAnimal(t_animal *animal, float distance, t_entiteVivante *cible) {
         }
     }
 
-    updateMob((t_mob*)animal, distance);
 
+    updateMob((t_mob*)animal, distance);
 }
 
 

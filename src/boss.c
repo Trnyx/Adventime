@@ -43,11 +43,13 @@ void updateBoss(t_boss *boss, float distance, t_entiteVivante *cible) {
     const float eloignementPointBoss = calculDistanceEntrePoints(positionApparitionBoss, boss->position);
 
 
+    // Si le boss est bien retourné à son temple
     if (boss->peutAttaquerJoueur == FAUX && eloignementPointBoss <= 6) {
         boss->peutAttaquerJoueur = VRAI;
     }
     
 
+    // Si le boss est trop loin de son temple
     if (eloignementPointBoss > TAILLE_CHUNK) {
         if (boss->cible != NULL) {
             finCombat((t_mob*)boss);
@@ -59,6 +61,7 @@ void updateBoss(t_boss *boss, float distance, t_entiteVivante *cible) {
     }
 
 
+    // Si le boss détecte le joueur
     else if (boss->deplacementType != DEPLACEMENT_COMBAT && distance <= BOSS_RAYON_COMBAT_DETECTION) {
         if (boss->peutAttaquerJoueur) {
             boss->deplacementType = DEPLACEMENT_COMBAT;

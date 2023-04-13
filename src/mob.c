@@ -206,7 +206,6 @@ void updateMob(t_mob* mob, float distance) {
         else {
             if (mob->cooldownDeplacement) {
                 --(mob->cooldownDeplacement);
-                // printf("%i\n",mob->cooldownDeplacement);
             }
             else {
                 const int probabilite = getNombreAleatoire(1, 100);
