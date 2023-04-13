@@ -99,7 +99,7 @@ static t_map* loadMap(t_monde *monde, e_mapType type) {
  *
  * @param monde Le monde dans lequel le joueur est entrain de jouer
  *
- * @return int
+ * @return Lorsque le joueur retourne au menu principal
  */
 static int adventime(t_monde *monde) {
     t_cache *cache = moteur->cache;
@@ -111,6 +111,9 @@ static int adventime(t_monde *monde) {
     e_mapType mapType = joueur->map;
     loadMap(monde, mapType);
     updateCamera(joueur->position);
+
+    gestionnaireTempsEvenements(moteur->temps, time(NULL));
+    selectionMusique(moteur->temps);
 
 
     int continuer = 1;
@@ -128,6 +131,8 @@ static int adventime(t_monde *monde) {
         }
 
 
+        // Affiche l'interface demandé
+        // Sinon on affiche le jeu
         if(joueur->actionFlags->bool_inventory) {
             menu_inventaire(ctx, joueur);
         }
@@ -136,6 +141,7 @@ static int adventime(t_monde *monde) {
         }
 
 
+        // Affiche le game over si le joueur est mort
         if(continuer == J_MORT) {
             continuer = gameOver(ctx, joueur);
         }
@@ -173,14 +179,11 @@ static int adventime(t_monde *monde) {
 /**
  * @brief Création d'un nouveau monde
  *
- * @return int
+ * @return La valeur si le joueur retourne au menu principal
  */
 static int nouveauMonde(/* char *nom, const long long int seed */) {
     int seed = -1;
-    // int seed = 1681302295;
-    // int seed = 1679905571;
-    // int seed = 1679940582;
-    // int seed = 1680032110;
+
     t_monde *monde = creerMonde(seed);
     monde->joueur = creerJoueur(monde->pointApparitionDefaut);
 
@@ -193,6 +196,11 @@ static int nouveauMonde(/* char *nom, const long long int seed */) {
 
 
 
+/**
+ * @brief Charge un monde déjà existant
+ * 
+ * @return La valeur si le joueur retourne au menu principal
+ */
 static int chargerMonde(/* char *tnom */) {
     t_monde *monde = malloc(sizeof(t_monde));
     chargerMonde(monde, "monde");
