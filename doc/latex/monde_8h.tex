@@ -1,0 +1,126 @@
+\hypertarget{monde_8h}{}\doxysection{Référence du fichier include/monde.h}
+\label{monde_8h}\index{include/monde.h@{include/monde.h}}
+
+
+Module de manipulation d\textquotesingle{}un monde.  
+
+
+{\ttfamily \#include \char`\"{}utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}map.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}joueur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}temps.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}boss.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__monde}{s\+\_\+monde}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{monde_8h_a6e039832be1531ca328b885cb3b072c4}\label{monde_8h_a6e039832be1531ca328b885cb3b072c4}} 
+typedef struct \mbox{\hyperlink{structs__monde}{s\+\_\+monde}} {\bfseries t\+\_\+monde}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{monde_8h_ab3bd285d3d5e32204e6d271f42933cb9}{set\+Generation\+Seed}} (long long int seed)
+\begin{DoxyCompactList}\small\item\em Applique le seed pour l\textquotesingle{}initialisation des valeurs aléatoires. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$ \mbox{\hyperlink{monde_8h_a54a0960a13cb6691edfe1ac385b898bb}{creer\+Monde}} (long long int seed)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un monde et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monde_8h_a7cf315ba442cc8ab09823f6189770f74}{detruire\+Monde}} (\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$$\ast$monde)
+\begin{DoxyCompactList}\small\item\em Detruit un monde est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{monde_8h_a4288a23796bacecc73cf4727be6a289c}\label{monde_8h_a4288a23796bacecc73cf4727be6a289c}} 
+void {\bfseries afficher\+Monde} (\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$monde)
+\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{monde_8h_a5f1bfd67e7b9bf4e37dbd78a1cfef15a}{get\+Point\+Apparition\+Joueur}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Obtient le point d\textquotesingle{}apparition par défaut du joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation d\textquotesingle{}un monde. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+25 janvier 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{monde_8h_a54a0960a13cb6691edfe1ac385b898bb}\label{monde_8h_a54a0960a13cb6691edfe1ac385b898bb}} 
+\index{monde.h@{monde.h}!creerMonde@{creerMonde}}
+\index{creerMonde@{creerMonde}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{creerMonde()}{creerMonde()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__monde}{t\+\_\+monde}}$\ast$ creer\+Monde (\begin{DoxyParamCaption}\item[{long long int}]{seed }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un monde et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em seed} & Le seed du monde\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le monde créé, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{monde_8h_a7cf315ba442cc8ab09823f6189770f74}\label{monde_8h_a7cf315ba442cc8ab09823f6189770f74}} 
+\index{monde.h@{monde.h}!detruireMonde@{detruireMonde}}
+\index{detruireMonde@{detruireMonde}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{detruireMonde()}{detruireMonde()}}
+{\footnotesize\ttfamily void detruire\+Monde (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$$\ast$}]{monde }\end{DoxyParamCaption})}
+
+
+
+Detruit un monde est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monde} & L\textquotesingle{}adresse du pointeur du monde à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monde_8h_a5f1bfd67e7b9bf4e37dbd78a1cfef15a}\label{monde_8h_a5f1bfd67e7b9bf4e37dbd78a1cfef15a}} 
+\index{monde.h@{monde.h}!getPointApparitionJoueur@{getPointApparitionJoueur}}
+\index{getPointApparitionJoueur@{getPointApparitionJoueur}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{getPointApparitionJoueur()}{getPointApparitionJoueur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} get\+Point\+Apparition\+Joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Obtient le point d\textquotesingle{}apparition par défaut du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle le joueur apparait\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La position d\textquotesingle{}apparition par défaut du joueur 
+\end{DoxyReturn}
+\mbox{\Hypertarget{monde_8h_ab3bd285d3d5e32204e6d271f42933cb9}\label{monde_8h_ab3bd285d3d5e32204e6d271f42933cb9}} 
+\index{monde.h@{monde.h}!setGenerationSeed@{setGenerationSeed}}
+\index{setGenerationSeed@{setGenerationSeed}!monde.h@{monde.h}}
+\doxysubsubsection{\texorpdfstring{setGenerationSeed()}{setGenerationSeed()}}
+{\footnotesize\ttfamily int set\+Generation\+Seed (\begin{DoxyParamCaption}\item[{long long int}]{seed }\end{DoxyParamCaption})}
+
+
+
+Applique le seed pour l\textquotesingle{}initialisation des valeurs aléatoires. 
+
+srand(unsigned int seed) permet de définir le \char`\"{}seed\char`\"{} utilisé par la fonction rand() grâce au \char`\"{}seed\char`\"{}, la fonction rand() donnera toujours les mêmes valeurs
+
+Prenons par exemple les 5 premières génération du seed 123 \+: seed \+: 123 résultats \+: 128959393 / 1692901013 / 436085873 / 748533630 / 776550279
+
+=$>$ Pour le seed \char`\"{}123\char`\"{}, les 5 premières au début de l\textquotesingle{}execution du code suivra toujours cet ordre
+
+
+\begin{DoxyParams}{Paramètres}
+{\em seed} & Le seed utilisé \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le seed donné 
+\end{DoxyReturn}

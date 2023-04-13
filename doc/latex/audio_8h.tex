@@ -1,0 +1,327 @@
+\hypertarget{audio_8h}{}\doxysection{Référence du fichier include/audio.h}
+\label{audio_8h}\index{include/audio.h@{include/audio.h}}
+
+
+Module de manipulation pour l\textquotesingle{}audio.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+mixer.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}temps.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__musiques}{s\+\_\+musiques}}
+\item 
+struct \mbox{\hyperlink{structs__bruitages}{s\+\_\+bruitages}}
+\item 
+struct \mbox{\hyperlink{structs__audioPack}{s\+\_\+audio\+Pack}}
+\item 
+struct \mbox{\hyperlink{structs__audio}{s\+\_\+audio}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{audio_8h_adb09832c9da6ef521343473ff832e287}\label{audio_8h_adb09832c9da6ef521343473ff832e287}} 
+typedef struct \mbox{\hyperlink{structs__musiques}{s\+\_\+musiques}} {\bfseries t\+\_\+musiques}
+\item 
+\mbox{\Hypertarget{audio_8h_a21e1ed3135e0e51c670ed147141b24a2}\label{audio_8h_a21e1ed3135e0e51c670ed147141b24a2}} 
+typedef struct \mbox{\hyperlink{structs__bruitages}{s\+\_\+bruitages}} {\bfseries t\+\_\+bruitages}
+\item 
+\mbox{\Hypertarget{audio_8h_a89e484de01b8856a5c83cc2544b7b96e}\label{audio_8h_a89e484de01b8856a5c83cc2544b7b96e}} 
+typedef struct \mbox{\hyperlink{structs__audioPack}{s\+\_\+audio\+Pack}} {\bfseries t\+\_\+audio\+Pack}
+\item 
+\mbox{\Hypertarget{audio_8h_a338ef2f47ee0ae2afb522bb88971b6ee}\label{audio_8h_a338ef2f47ee0ae2afb522bb88971b6ee}} 
+typedef struct \mbox{\hyperlink{structs__audio}{s\+\_\+audio}} {\bfseries t\+\_\+audio}
+\end{DoxyCompactItemize}
+\doxysubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{audio_8h_a657994509f67504fd69370f550b4e516}{e\+\_\+audio\+\_\+channel}} \{ \mbox{\hyperlink{audio_8h_a657994509f67504fd69370f550b4e516ae4cbb1538772654fb86ecd9a78681cc7}{CHANNEL\+\_\+\+MASTER}}
+, \mbox{\hyperlink{audio_8h_a657994509f67504fd69370f550b4e516ae23e916ecc2c0b71e6329acdb658f234}{CHANNEL\+\_\+\+MUSIQUE}}
+, \mbox{\hyperlink{audio_8h_a657994509f67504fd69370f550b4e516a5d221c97268ba2e144921a8c5dedf246}{CHANNEL\+\_\+\+BRUITAGE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents type de channel controlable. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{audio_8h_ad945e3a5e09c848cff95d3bb3313d280}{e\+\_\+musiques\+\_\+type}} \{ \newline
+\mbox{\hyperlink{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a870994d2d268d847b4bde3d0d9909232}{MUSIC\+\_\+\+AUCUNE}}
+, \mbox{\hyperlink{audio_8h_ad945e3a5e09c848cff95d3bb3313d280ab2ddd126a9b0f79ddf87b33dc446b852}{MUSIC\+\_\+\+MENU}}
+, \mbox{\hyperlink{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a6f5631f2df6a7715f4e6e91c687bdf20}{MUSIC\+\_\+\+AMBIANCE}}
+, \mbox{\hyperlink{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a6ca849ca0d1395063fb1fcf8cc9869b7}{MUSIC\+\_\+\+COMBAT}}
+, \newline
+\mbox{\hyperlink{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a39cbe5da49d9b9e7a62ff6d8d6b07149}{MUSIC\+\_\+\+BOSS}}
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents types de musiques. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structs__audioPack}{t\+\_\+audio\+Pack}} $\ast$ \mbox{\hyperlink{audio_8h_ae18dfcfac05e61f4c35a32f25854a6e7}{creer\+Audio\+Pack}} ()
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un pack audio et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{audio_8h_a2cea5857fa45e9197e718ddcc9cc4149}{detruire\+Audio\+Pack}} (\mbox{\hyperlink{structs__audioPack}{t\+\_\+audio\+Pack}} $\ast$$\ast$pack)
+\begin{DoxyCompactList}\small\item\em Detruit le pack audio est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{audio_8h_a22370c44398921d23fbde34985a0c6fb}\label{audio_8h_a22370c44398921d23fbde34985a0c6fb}} 
+void {\bfseries charger\+Audio\+Pack} (\mbox{\hyperlink{structs__audioPack}{t\+\_\+audio\+Pack}} $\ast$pack, \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}} tag)
+\item 
+\mbox{\hyperlink{structt__audio}{t\+\_\+audio}} $\ast$ \mbox{\hyperlink{audio_8h_a43efc86ed16b1867386683f643a95486}{init\+Audio}} (void)
+\begin{DoxyCompactList}\small\item\em Initialise, crée et alloue la mémoire pour l\textquotesingle{}audio du jeu. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{audio_8h_a46307baa25fd9b05458784e82dc1dfd7}{charger\+Audio}} (\mbox{\hyperlink{structt__musiques}{t\+\_\+musiques}} $\ast$$\ast$musiques, \mbox{\hyperlink{structt__bruitages}{t\+\_\+bruitages}} $\ast$$\ast$bruitages)
+\begin{DoxyCompactList}\small\item\em Charge tous les fichiers audio au sein des structures de musiques et de bruitages. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{audio_8h_a0ae1c800453a1eedc3a5099a327a41b2}{detruire\+Audio}} (\mbox{\hyperlink{structt__audio}{t\+\_\+audio}} $\ast$$\ast$audio)
+\begin{DoxyCompactList}\small\item\em Detruit l\textquotesingle{}audio est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{audio_8h_a256a2f975d149d161132e1877bfe2b44}{changer\+Volume}} (const \mbox{\hyperlink{audio_8h_a657994509f67504fd69370f550b4e516}{e\+\_\+audio\+\_\+channel}} channel, const float nouveau\+Volume)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de changer le volume du channel spécifié \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{audio_8h_a9a2819a9f51b5907778e9698870777b0}{play\+\_\+music}} (Mix\+\_\+\+Music $\ast$music, boolean repeat, boolean est\+La\+Suite)
+\begin{DoxyCompactList}\small\item\em Joue une musique donnée en paramètre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{audio_8h_a8024b133cbcfb4a0b17af72b625e9cae}{play\+\_\+bruitage}} (Mix\+\_\+\+Chunk $\ast$sound, int channel)
+\begin{DoxyCompactList}\small\item\em Joue un bruitage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{audio_8h_aa2527c811415da9fe672a212bf58a347}{play\+\_\+son\+Ambiance}} (Mix\+\_\+\+Chunk $\ast$bruitage, float angle, float distance)
+\begin{DoxyCompactList}\small\item\em Joue le bruit d\textquotesingle{}une entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{audio_8h_a9142c675b26cab1b1d5a9b405268da70}{selection\+Musique}} (\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$temps)
+\begin{DoxyCompactList}\small\item\em Sélectionne la musique à jouer en fonction du temps dans le jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{audio_8h_ab3e8bdc04a1d2b159545e660f936fb63}\label{audio_8h_ab3e8bdc04a1d2b159545e660f936fb63}} 
+\mbox{\hyperlink{structt__audio}{t\+\_\+audio}} $\ast$ {\bfseries audio}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation pour l\textquotesingle{}audio. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\mbox{\Hypertarget{audio_8h_a657994509f67504fd69370f550b4e516}\label{audio_8h_a657994509f67504fd69370f550b4e516}} 
+\index{audio.h@{audio.h}!e\_audio\_channel@{e\_audio\_channel}}
+\index{e\_audio\_channel@{e\_audio\_channel}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{e\_audio\_channel}{e\_audio\_channel}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{audio_8h_a657994509f67504fd69370f550b4e516}{e\+\_\+audio\+\_\+channel}}}
+
+
+
+Les différents type de channel controlable. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CHANNEL\_MASTER@{CHANNEL\_MASTER}!audio.h@{audio.h}}\index{audio.h@{audio.h}!CHANNEL\_MASTER@{CHANNEL\_MASTER}}}\mbox{\Hypertarget{audio_8h_a657994509f67504fd69370f550b4e516ae4cbb1538772654fb86ecd9a78681cc7}\label{audio_8h_a657994509f67504fd69370f550b4e516ae4cbb1538772654fb86ecd9a78681cc7}} 
+CHANNEL\+\_\+\+MASTER&Le channel principal \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CHANNEL\_MUSIQUE@{CHANNEL\_MUSIQUE}!audio.h@{audio.h}}\index{audio.h@{audio.h}!CHANNEL\_MUSIQUE@{CHANNEL\_MUSIQUE}}}\mbox{\Hypertarget{audio_8h_a657994509f67504fd69370f550b4e516ae23e916ecc2c0b71e6329acdb658f234}\label{audio_8h_a657994509f67504fd69370f550b4e516ae23e916ecc2c0b71e6329acdb658f234}} 
+CHANNEL\+\_\+\+MUSIQUE&Le channel utilisé pour la musique \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CHANNEL\_BRUITAGE@{CHANNEL\_BRUITAGE}!audio.h@{audio.h}}\index{audio.h@{audio.h}!CHANNEL\_BRUITAGE@{CHANNEL\_BRUITAGE}}}\mbox{\Hypertarget{audio_8h_a657994509f67504fd69370f550b4e516a5d221c97268ba2e144921a8c5dedf246}\label{audio_8h_a657994509f67504fd69370f550b4e516a5d221c97268ba2e144921a8c5dedf246}} 
+CHANNEL\+\_\+\+BRUITAGE&Les channels pour les bruitages \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{audio_8h_ad945e3a5e09c848cff95d3bb3313d280}\label{audio_8h_ad945e3a5e09c848cff95d3bb3313d280}} 
+\index{audio.h@{audio.h}!e\_musiques\_type@{e\_musiques\_type}}
+\index{e\_musiques\_type@{e\_musiques\_type}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{e\_musiques\_type}{e\_musiques\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{audio_8h_ad945e3a5e09c848cff95d3bb3313d280}{e\+\_\+musiques\+\_\+type}}}
+
+
+
+Les différents types de musiques. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MUSIC\_AUCUNE@{MUSIC\_AUCUNE}!audio.h@{audio.h}}\index{audio.h@{audio.h}!MUSIC\_AUCUNE@{MUSIC\_AUCUNE}}}\mbox{\Hypertarget{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a870994d2d268d847b4bde3d0d9909232}\label{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a870994d2d268d847b4bde3d0d9909232}} 
+MUSIC\+\_\+\+AUCUNE&Indique qu\textquotesingle{}il n\textquotesingle{}y a pas de musique \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MUSIC\_MENU@{MUSIC\_MENU}!audio.h@{audio.h}}\index{audio.h@{audio.h}!MUSIC\_MENU@{MUSIC\_MENU}}}\mbox{\Hypertarget{audio_8h_ad945e3a5e09c848cff95d3bb3313d280ab2ddd126a9b0f79ddf87b33dc446b852}\label{audio_8h_ad945e3a5e09c848cff95d3bb3313d280ab2ddd126a9b0f79ddf87b33dc446b852}} 
+MUSIC\+\_\+\+MENU&Indique qu\textquotesingle{}il faut jouer la musique du menu \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MUSIC\_AMBIANCE@{MUSIC\_AMBIANCE}!audio.h@{audio.h}}\index{audio.h@{audio.h}!MUSIC\_AMBIANCE@{MUSIC\_AMBIANCE}}}\mbox{\Hypertarget{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a6f5631f2df6a7715f4e6e91c687bdf20}\label{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a6f5631f2df6a7715f4e6e91c687bdf20}} 
+MUSIC\+\_\+\+AMBIANCE&Indique qu\textquotesingle{}il faut jouer la musique d\textquotesingle{}ambiance \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MUSIC\_COMBAT@{MUSIC\_COMBAT}!audio.h@{audio.h}}\index{audio.h@{audio.h}!MUSIC\_COMBAT@{MUSIC\_COMBAT}}}\mbox{\Hypertarget{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a6ca849ca0d1395063fb1fcf8cc9869b7}\label{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a6ca849ca0d1395063fb1fcf8cc9869b7}} 
+MUSIC\+\_\+\+COMBAT&Indique qu\textquotesingle{}il faut jouer la musique de combat \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MUSIC\_BOSS@{MUSIC\_BOSS}!audio.h@{audio.h}}\index{audio.h@{audio.h}!MUSIC\_BOSS@{MUSIC\_BOSS}}}\mbox{\Hypertarget{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a39cbe5da49d9b9e7a62ff6d8d6b07149}\label{audio_8h_ad945e3a5e09c848cff95d3bb3313d280a39cbe5da49d9b9e7a62ff6d8d6b07149}} 
+MUSIC\+\_\+\+BOSS&Indique qu\textquotesingle{}il faut jouer la musique du boss \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{audio_8h_a256a2f975d149d161132e1877bfe2b44}\label{audio_8h_a256a2f975d149d161132e1877bfe2b44}} 
+\index{audio.h@{audio.h}!changerVolume@{changerVolume}}
+\index{changerVolume@{changerVolume}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{changerVolume()}{changerVolume()}}
+{\footnotesize\ttfamily void changer\+Volume (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{audio_8h_a657994509f67504fd69370f550b4e516}{e\+\_\+audio\+\_\+channel}}}]{channel,  }\item[{const float}]{nouveau\+Volume }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de changer le volume du channel spécifié 
+
+La channel ici n\textquotesingle{}est pas une piste audio mais plus une catégorie
+
+
+\begin{DoxyParams}{Paramètres}
+{\em channel} & Le channel où le volume sera modifié \\
+\hline
+{\em nouveau\+Volume} & Le nouveau volume (en \%) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{audio_8h_a46307baa25fd9b05458784e82dc1dfd7}\label{audio_8h_a46307baa25fd9b05458784e82dc1dfd7}} 
+\index{audio.h@{audio.h}!chargerAudio@{chargerAudio}}
+\index{chargerAudio@{chargerAudio}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{chargerAudio()}{chargerAudio()}}
+{\footnotesize\ttfamily int charger\+Audio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__musiques}{t\+\_\+musiques}} $\ast$$\ast$}]{musiques,  }\item[{\mbox{\hyperlink{structt__bruitages}{t\+\_\+bruitages}} $\ast$$\ast$}]{bruitages }\end{DoxyParamCaption})}
+
+
+
+Charge tous les fichiers audio au sein des structures de musiques et de bruitages. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em musiques} & L\textquotesingle{}adresse du pointeur de la structure de musique dans laquelle seront chargées les musiques \\
+\hline
+{\em bruitages} & L\textquotesingle{}adresse du pointeur de la structure de bruitages dans laquelle seront chargées les bruitages\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 Si tout se passe bien, -\/1 si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{audio_8h_ae18dfcfac05e61f4c35a32f25854a6e7}\label{audio_8h_ae18dfcfac05e61f4c35a32f25854a6e7}} 
+\index{audio.h@{audio.h}!creerAudioPack@{creerAudioPack}}
+\index{creerAudioPack@{creerAudioPack}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{creerAudioPack()}{creerAudioPack()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__audioPack}{t\+\_\+audio\+Pack}}$\ast$ creer\+Audio\+Pack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un pack audio et le créer. 
+
+Le pack audio correspond au bruitages que produit une entité
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le pack audio créé, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{audio_8h_a0ae1c800453a1eedc3a5099a327a41b2}\label{audio_8h_a0ae1c800453a1eedc3a5099a327a41b2}} 
+\index{audio.h@{audio.h}!detruireAudio@{detruireAudio}}
+\index{detruireAudio@{detruireAudio}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{detruireAudio()}{detruireAudio()}}
+{\footnotesize\ttfamily void detruire\+Audio (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__audio}{t\+\_\+audio}} $\ast$$\ast$}]{audio }\end{DoxyParamCaption})}
+
+
+
+Detruit l\textquotesingle{}audio est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em audio} & L\textquotesingle{}adresse du pointeur sur l\textquotesingle{}audio \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{audio_8h_a2cea5857fa45e9197e718ddcc9cc4149}\label{audio_8h_a2cea5857fa45e9197e718ddcc9cc4149}} 
+\index{audio.h@{audio.h}!detruireAudioPack@{detruireAudioPack}}
+\index{detruireAudioPack@{detruireAudioPack}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{detruireAudioPack()}{detruireAudioPack()}}
+{\footnotesize\ttfamily void detruire\+Audio\+Pack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__audioPack}{t\+\_\+audio\+Pack}} $\ast$$\ast$}]{pack }\end{DoxyParamCaption})}
+
+
+
+Detruit le pack audio est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em pack} & L\textquotesingle{}adresse du pointeur sur le pack audio \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{audio_8h_a43efc86ed16b1867386683f643a95486}\label{audio_8h_a43efc86ed16b1867386683f643a95486}} 
+\index{audio.h@{audio.h}!initAudio@{initAudio}}
+\index{initAudio@{initAudio}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{initAudio()}{initAudio()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__audio}{t\+\_\+audio}}$\ast$ init\+Audio (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialise, crée et alloue la mémoire pour l\textquotesingle{}audio du jeu. 
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur la structure gérant l\textquotesingle{}audio, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{audio_8h_a8024b133cbcfb4a0b17af72b625e9cae}\label{audio_8h_a8024b133cbcfb4a0b17af72b625e9cae}} 
+\index{audio.h@{audio.h}!play\_bruitage@{play\_bruitage}}
+\index{play\_bruitage@{play\_bruitage}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{play\_bruitage()}{play\_bruitage()}}
+{\footnotesize\ttfamily void play\+\_\+bruitage (\begin{DoxyParamCaption}\item[{Mix\+\_\+\+Chunk $\ast$}]{sound,  }\item[{int}]{channel }\end{DoxyParamCaption})}
+
+
+
+Joue un bruitage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em sound} & Le bruitage à joué \\
+\hline
+{\em channel} & Le channel dans lequel sera joué le bruitage, -\/1 si on veut utilisé le premier channel disponible \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{audio_8h_a9a2819a9f51b5907778e9698870777b0}\label{audio_8h_a9a2819a9f51b5907778e9698870777b0}} 
+\index{audio.h@{audio.h}!play\_music@{play\_music}}
+\index{play\_music@{play\_music}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{play\_music()}{play\_music()}}
+{\footnotesize\ttfamily void play\+\_\+music (\begin{DoxyParamCaption}\item[{Mix\+\_\+\+Music $\ast$}]{music,  }\item[{boolean}]{repeat,  }\item[{boolean}]{est\+La\+Suite }\end{DoxyParamCaption})}
+
+
+
+Joue une musique donnée en paramètre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em music} & La musique qui sera joué \\
+\hline
+{\em repeat} & Si la musique doit être répété \\
+\hline
+{\em est\+La\+Suite} & \mbox{[}Musique évolutive\mbox{]}~Si la musique donnée est une autre version de la musique actuellement jouée \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{audio_8h_aa2527c811415da9fe672a212bf58a347}\label{audio_8h_aa2527c811415da9fe672a212bf58a347}} 
+\index{audio.h@{audio.h}!play\_sonAmbiance@{play\_sonAmbiance}}
+\index{play\_sonAmbiance@{play\_sonAmbiance}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{play\_sonAmbiance()}{play\_sonAmbiance()}}
+{\footnotesize\ttfamily void play\+\_\+son\+Ambiance (\begin{DoxyParamCaption}\item[{Mix\+\_\+\+Chunk $\ast$}]{bruitage,  }\item[{float}]{angle,  }\item[{float}]{distance }\end{DoxyParamCaption})}
+
+
+
+Joue le bruit d\textquotesingle{}une entité 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tag} & Le tag de l\textquotesingle{}entité originelle du bruit \\
+\hline
+{\em angle} & L\textquotesingle{}angle entre l\textquotesingle{}entité est le joueur \\
+\hline
+{\em distance} & La distance séparant l\textquotesingle{}entité du joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{audio_8h_a9142c675b26cab1b1d5a9b405268da70}\label{audio_8h_a9142c675b26cab1b1d5a9b405268da70}} 
+\index{audio.h@{audio.h}!selectionMusique@{selectionMusique}}
+\index{selectionMusique@{selectionMusique}!audio.h@{audio.h}}
+\doxysubsubsection{\texorpdfstring{selectionMusique()}{selectionMusique()}}
+{\footnotesize\ttfamily void selection\+Musique (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$}]{temps }\end{DoxyParamCaption})}
+
+
+
+Sélectionne la musique à jouer en fonction du temps dans le jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em temps} & Le temps actuel du jeu \\
+\hline
+\end{DoxyParams}

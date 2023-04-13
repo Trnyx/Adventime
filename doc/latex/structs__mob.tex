@@ -1,0 +1,83 @@
+\hypertarget{structs__mob}{}\doxysection{Référence de la structure s\+\_\+mob}
+\label{structs__mob}\index{s\_mob@{s\_mob}}
+\doxysubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{structs__mob_a70b8bee978fb0af3cf08d95d49cce1e4}{aggressif}}
+\item 
+\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$ \mbox{\hyperlink{structs__mob_a48dfa09794c7fc6b8b5280329f03bb9c}{cible}}
+\item 
+unsigned int \mbox{\hyperlink{structs__mob_a6bd0a5fa7dfb0a671c7a5099dd20883a}{rayon\+Deplacement}}
+\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{structs__mob_af296252128298bd5db5c40e894f4da61}{position\+Deplacement}}
+\item 
+\mbox{\hyperlink{mob_8h_ac1c585dd3be1942f4ca12403db4313b3}{e\+\_\+deplacement\+Type}} \mbox{\hyperlink{structs__mob_a4f996817bc8aea0e5efa02f245cc4cb8}{deplacement\+Type}}
+\item 
+\mbox{\Hypertarget{structs__mob_a3fb3eebf77398920d2dc3be3f4534230}\label{structs__mob_a3fb3eebf77398920d2dc3be3f4534230}} 
+double {\bfseries gamma}
+\item 
+\mbox{\Hypertarget{structs__mob_aad84b03f39fef273a63e4122100b210e}\label{structs__mob_aad84b03f39fef273a63e4122100b210e}} 
+\mbox{\hyperlink{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056}{e\+\_\+rotation}} {\bfseries rotation}
+\item 
+unsigned int \mbox{\hyperlink{structs__mob_a660793dc737ff5269482e4fac0667232}{timer\+Deplacement}}
+\item 
+unsigned int \mbox{\hyperlink{structs__mob_a250fc89c327b4bb01c877c9ac3c55e01}{cooldown\+Deplacement}}
+\item 
+unsigned int \mbox{\hyperlink{structs__mob_a4c6f605c61cc6b74bd4af6dad48dedc6}{cooldown\+Bruitage}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentation des données membres}
+\mbox{\Hypertarget{structs__mob_a70b8bee978fb0af3cf08d95d49cce1e4}\label{structs__mob_a70b8bee978fb0af3cf08d95d49cce1e4}} 
+\index{s\_mob@{s\_mob}!aggressif@{aggressif}}
+\index{aggressif@{aggressif}!s\_mob@{s\_mob}}
+\doxysubsubsection{\texorpdfstring{aggressif}{aggressif}}
+{\footnotesize\ttfamily boolean s\+\_\+mob\+::aggressif}
+
+On \char`\"{}étend\char`\"{} la structure \char`\"{}entite\+Vivante\char`\"{} Si le mob est aggressif \mbox{\Hypertarget{structs__mob_a48dfa09794c7fc6b8b5280329f03bb9c}\label{structs__mob_a48dfa09794c7fc6b8b5280329f03bb9c}} 
+\index{s\_mob@{s\_mob}!cible@{cible}}
+\index{cible@{cible}!s\_mob@{s\_mob}}
+\doxysubsubsection{\texorpdfstring{cible}{cible}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}}$\ast$ s\+\_\+mob\+::cible}
+
+La cible du mob \mbox{\Hypertarget{structs__mob_a4c6f605c61cc6b74bd4af6dad48dedc6}\label{structs__mob_a4c6f605c61cc6b74bd4af6dad48dedc6}} 
+\index{s\_mob@{s\_mob}!cooldownBruitage@{cooldownBruitage}}
+\index{cooldownBruitage@{cooldownBruitage}!s\_mob@{s\_mob}}
+\doxysubsubsection{\texorpdfstring{cooldownBruitage}{cooldownBruitage}}
+{\footnotesize\ttfamily unsigned int s\+\_\+mob\+::cooldown\+Bruitage}
+
+Cooldown entre deux bruits (en seconde) \mbox{\Hypertarget{structs__mob_a250fc89c327b4bb01c877c9ac3c55e01}\label{structs__mob_a250fc89c327b4bb01c877c9ac3c55e01}} 
+\index{s\_mob@{s\_mob}!cooldownDeplacement@{cooldownDeplacement}}
+\index{cooldownDeplacement@{cooldownDeplacement}!s\_mob@{s\_mob}}
+\doxysubsubsection{\texorpdfstring{cooldownDeplacement}{cooldownDeplacement}}
+{\footnotesize\ttfamily unsigned int s\+\_\+mob\+::cooldown\+Deplacement}
+
+Cooldown entre deux déplacements (en ticks) \mbox{\Hypertarget{structs__mob_a4f996817bc8aea0e5efa02f245cc4cb8}\label{structs__mob_a4f996817bc8aea0e5efa02f245cc4cb8}} 
+\index{s\_mob@{s\_mob}!deplacementType@{deplacementType}}
+\index{deplacementType@{deplacementType}!s\_mob@{s\_mob}}
+\doxysubsubsection{\texorpdfstring{deplacementType}{deplacementType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{mob_8h_ac1c585dd3be1942f4ca12403db4313b3}{e\+\_\+deplacement\+Type}} s\+\_\+mob\+::deplacement\+Type}
+
+Le type de déplacement du mob \mbox{\Hypertarget{structs__mob_af296252128298bd5db5c40e894f4da61}\label{structs__mob_af296252128298bd5db5c40e894f4da61}} 
+\index{s\_mob@{s\_mob}!positionDeplacement@{positionDeplacement}}
+\index{positionDeplacement@{positionDeplacement}!s\_mob@{s\_mob}}
+\doxysubsubsection{\texorpdfstring{positionDeplacement}{positionDeplacement}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} s\+\_\+mob\+::position\+Deplacement}
+
+La position à laquelle le mob veut se déplacer \mbox{\Hypertarget{structs__mob_a6bd0a5fa7dfb0a671c7a5099dd20883a}\label{structs__mob_a6bd0a5fa7dfb0a671c7a5099dd20883a}} 
+\index{s\_mob@{s\_mob}!rayonDeplacement@{rayonDeplacement}}
+\index{rayonDeplacement@{rayonDeplacement}!s\_mob@{s\_mob}}
+\doxysubsubsection{\texorpdfstring{rayonDeplacement}{rayonDeplacement}}
+{\footnotesize\ttfamily unsigned int s\+\_\+mob\+::rayon\+Deplacement}
+
+Le rayon dans lequel le mob peut se déplacer \mbox{\Hypertarget{structs__mob_a660793dc737ff5269482e4fac0667232}\label{structs__mob_a660793dc737ff5269482e4fac0667232}} 
+\index{s\_mob@{s\_mob}!timerDeplacement@{timerDeplacement}}
+\index{timerDeplacement@{timerDeplacement}!s\_mob@{s\_mob}}
+\doxysubsubsection{\texorpdfstring{timerDeplacement}{timerDeplacement}}
+{\footnotesize\ttfamily unsigned int s\+\_\+mob\+::timer\+Deplacement}
+
+Timer à partir duquel on calcul le temps de déplacement (en ticks) 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{mob_8h}{mob.\+h}}\end{DoxyCompactItemize}

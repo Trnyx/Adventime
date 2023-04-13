@@ -1,0 +1,203 @@
+\hypertarget{generation__bases_8c}{}\doxysection{Référence du fichier src/generation\+\_\+bases.c}
+\label{generation__bases_8c}\index{src/generation\_bases.c@{src/generation\_bases.c}}
+
+
+Toutes les informations de bases utiles aux générations et autres.  
+
+
+{\ttfamily \#include \char`\"{}../include/vegetations.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/monstre.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/animal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/boss.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/map.\+h\char`\"{}}\newline
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{structt__baseBiome}{t\+\_\+base\+Biome}} \mbox{\hyperlink{generation__bases_8c_a5209636f0cde38d41b8864cf6511d569}{bases\+Biomes}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau initialisant toutes les informations de bases d\textquotesingle{}un biome. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structt__baseVegetal}{t\+\_\+base\+Vegetal}} \mbox{\hyperlink{generation__bases_8c_af55a1f068096bd7de9db720c933365a4}{bases\+Vegetaux}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les informations de base des végétaux. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structt__baseMob}{t\+\_\+base\+Mob}} \mbox{\hyperlink{generation__bases_8c_a722945534acdabc34c44b76680a09188}{bases\+Mobs}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les informations de bases des mobs. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structt__baseStatistiquesIntervales}{t\+\_\+base\+Statistiques\+Intervales}} \mbox{\hyperlink{generation__bases_8c_ae4c38faf0caef0d9c4780b90200ef3a4}{statistiques\+De\+Bases\+Intervales\+Monstres}} \mbox{[}NB\+\_\+\+MONSTRE\+\_\+\+TYPES\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les intervales des statistiques de bases en fonction du type du monstre. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structt__baseStatistiquesIntervales}{t\+\_\+base\+Statistiques\+Intervales}} \mbox{\hyperlink{generation__bases_8c_a1a670d142570728057652e6199c9e896}{statistiques\+De\+Bases\+Intervales\+Animaux}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les statistiques de bases en fonction de l\textquotesingle{}animal. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} \mbox{\hyperlink{generation__bases_8c_a8b32f9ba52b7d945a681f9902e2c4f67}{statistiques\+De\+Bases\+Boss}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les statistiques de bases en fonction de l\textquotesingle{}animal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Toutes les informations de bases utiles aux générations et autres. 
+
+
+\begin{DoxyItemize}
+\item Les informations de bases des biomes
+\item Les informations de bases des végétaux
+\item Les informations de bases concernant les monstres
+\item Les informations de bases concernant les animaux
+\end{DoxyItemize}
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+8 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{generation__bases_8c_a5209636f0cde38d41b8864cf6511d569}\label{generation__bases_8c_a5209636f0cde38d41b8864cf6511d569}} 
+\index{generation\_bases.c@{generation\_bases.c}!basesBiomes@{basesBiomes}}
+\index{basesBiomes@{basesBiomes}!generation\_bases.c@{generation\_bases.c}}
+\doxysubsubsection{\texorpdfstring{basesBiomes}{basesBiomes}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseBiome}{t\+\_\+base\+Biome}} bases\+Biomes\mbox{[}$\,$\mbox{]}}
+
+
+
+Tableau initialisant toutes les informations de bases d\textquotesingle{}un biome. 
+
+Les différents informations définis \+:
+\begin{DoxyItemize}
+\item Le biome
+\item L\textquotesingle{}altitude du biome
+\item Les types de sol que peut avoir le biome
+\item Les probabilites (cumulative) d\textquotesingle{}apparition des sols
+\item Les tag des végétaux pouvant apparaitre dans le biome
+\item Les probabilites d\textquotesingle{}apparition des tags des végétaux
+\item La densite de la végétation
+\item Les types des monstres qui peuvent apparaitre dans le biome
+\item Les probabilites d\textquotesingle{}apparition des types des monstres 
+\end{DoxyItemize}\mbox{\Hypertarget{generation__bases_8c_a722945534acdabc34c44b76680a09188}\label{generation__bases_8c_a722945534acdabc34c44b76680a09188}} 
+\index{generation\_bases.c@{generation\_bases.c}!basesMobs@{basesMobs}}
+\index{basesMobs@{basesMobs}!generation\_bases.c@{generation\_bases.c}}
+\doxysubsubsection{\texorpdfstring{basesMobs}{basesMobs}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseMob}{t\+\_\+base\+Mob}} bases\+Mobs\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \{ TAG\_ANIMAL\_VACHE, \{ ITEM\_STEAK \}, \{ 100 \} \},}
+\DoxyCodeLine{    \{ TAG\_ANIMAL\_COCHON, \{ ITEM\_PORC \}, \{ 100 \} \},}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \{ TAG\_MONSTRE\_BASIC, \{ ITEM\_MATERIEL\_BATON \}, \{ 100 \} \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \{ TAG\_BOSS, \{ ITEM\_ARME\_EPEE \}, \{ 100 \} \},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Tableau regroupant les informations de bases des mobs. 
+
+
+\begin{DoxyItemize}
+\item Les items dropés
+\item La probabilité de drop des items 
+\end{DoxyItemize}\mbox{\Hypertarget{generation__bases_8c_af55a1f068096bd7de9db720c933365a4}\label{generation__bases_8c_af55a1f068096bd7de9db720c933365a4}} 
+\index{generation\_bases.c@{generation\_bases.c}!basesVegetaux@{basesVegetaux}}
+\index{basesVegetaux@{basesVegetaux}!generation\_bases.c@{generation\_bases.c}}
+\doxysubsubsection{\texorpdfstring{basesVegetaux}{basesVegetaux}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseVegetal}{t\+\_\+base\+Vegetal}} bases\+Vegetaux\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \{ HERBE, 1.0 \},}
+\DoxyCodeLine{    \{ CHAINE, 3.0 \},}
+\DoxyCodeLine{    \{ PALMIER, 6.0 \},}
+\DoxyCodeLine{    \{ SAPIN, 5.0 \},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Tableau regroupant les informations de base des végétaux. 
+
+\mbox{\Hypertarget{generation__bases_8c_a8b32f9ba52b7d945a681f9902e2c4f67}\label{generation__bases_8c_a8b32f9ba52b7d945a681f9902e2c4f67}} 
+\index{generation\_bases.c@{generation\_bases.c}!statistiquesDeBasesBoss@{statistiquesDeBasesBoss}}
+\index{statistiquesDeBasesBoss@{statistiquesDeBasesBoss}!generation\_bases.c@{generation\_bases.c}}
+\doxysubsubsection{\texorpdfstring{statistiquesDeBasesBoss}{statistiquesDeBasesBoss}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} statistiques\+De\+Bases\+Boss\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \{ 0, 0, 0, 0, 0 \},          }
+\DoxyCodeLine{    \{ 50, 50, 4, 60, 0 \},       }
+\DoxyCodeLine{    \{ 0, 0, 0, 0, 0 \},          }
+\DoxyCodeLine{    \{ 50, 50, 5, 50, 0 \},       }
+\DoxyCodeLine{    \{ 0, 0, 0, 0, 0 \},          }
+\DoxyCodeLine{    \{ 50, 50, 5, 50, 0 \},       }
+\DoxyCodeLine{    \{ 0, 0, 0, 0, 0 \},          }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Tableau regroupant les statistiques de bases en fonction de l\textquotesingle{}animal. 
+
+
+\begin{DoxyItemize}
+\item attaque
+\item defense
+\item vitesse
+\item pv
+\item courbe\+Exp 
+\end{DoxyItemize}\mbox{\Hypertarget{generation__bases_8c_a1a670d142570728057652e6199c9e896}\label{generation__bases_8c_a1a670d142570728057652e6199c9e896}} 
+\index{generation\_bases.c@{generation\_bases.c}!statistiquesDeBasesIntervalesAnimaux@{statistiquesDeBasesIntervalesAnimaux}}
+\index{statistiquesDeBasesIntervalesAnimaux@{statistiquesDeBasesIntervalesAnimaux}!generation\_bases.c@{generation\_bases.c}}
+\doxysubsubsection{\texorpdfstring{statistiquesDeBasesIntervalesAnimaux}{statistiquesDeBasesIntervalesAnimaux}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseStatistiquesIntervales}{t\+\_\+base\+Statistiques\+Intervales}} statistiques\+De\+Bases\+Intervales\+Animaux\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \{ \{ 15, 20 \}, \{ 15, 20 \}, \{ 4, 4 \}, 30, \{ 0 \} \}, }
+\DoxyCodeLine{    \{ \{ 10, 15 \}, \{ 10, 15 \}, \{ 4, 4 \}, 30, \{ 0 \} \}, }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Tableau regroupant les statistiques de bases en fonction de l\textquotesingle{}animal. 
+
+
+\begin{DoxyItemize}
+\item attaque
+\item defense
+\item vitesse
+\item pv
+\item courbe\+Exp 
+\end{DoxyItemize}\mbox{\Hypertarget{generation__bases_8c_ae4c38faf0caef0d9c4780b90200ef3a4}\label{generation__bases_8c_ae4c38faf0caef0d9c4780b90200ef3a4}} 
+\index{generation\_bases.c@{generation\_bases.c}!statistiquesDeBasesIntervalesMonstres@{statistiquesDeBasesIntervalesMonstres}}
+\index{statistiquesDeBasesIntervalesMonstres@{statistiquesDeBasesIntervalesMonstres}!generation\_bases.c@{generation\_bases.c}}
+\doxysubsubsection{\texorpdfstring{statistiquesDeBasesIntervalesMonstres}{statistiquesDeBasesIntervalesMonstres}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseStatistiquesIntervales}{t\+\_\+base\+Statistiques\+Intervales}} statistiques\+De\+Bases\+Intervales\+Monstres\mbox{[}NB\+\_\+\+MONSTRE\+\_\+\+TYPES\mbox{]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \{ \{ 20, 30 \}, \{ 20, 30 \}, \{ 4, 4 \}, 40, \{ \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9fea98a11d11be32e8f653be7d8f03f1bda7}{EXPERIENCE\_MOYEN}}, \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9fea98a11d11be32e8f653be7d8f03f1bda7}{EXPERIENCE\_MOYEN}} \} \}, }
+\DoxyCodeLine{    \{ \{ 25, 35 \}, \{ 15, 25 \}, \{ 4, 4 \}, 40, \{ \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9fea98a11d11be32e8f653be7d8f03f1bda7}{EXPERIENCE\_MOYEN}}, \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9feae6c0532534bea14f93a12e9277ea0814}{EXPERIENCE\_RAPIDE}} \} \}, }
+\DoxyCodeLine{    \{ \{ 15, 25 \}, \{ 35, 45 \}, \{ 4, 4 \}, 40, \{ \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9fea5c952702153559b7219f4cf0c0a3d15c}{EXPERIENCE\_LENT}}, \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9feae6c0532534bea14f93a12e9277ea0814}{EXPERIENCE\_RAPIDE}} \} \}, }
+\DoxyCodeLine{    }
+\DoxyCodeLine{    }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Tableau regroupant les intervales des statistiques de bases en fonction du type du monstre. 
+
+
+\begin{DoxyItemize}
+\item attaque
+\item defense
+\item vitesse
+\item pv
+\item courbe\+Exp 
+\end{DoxyItemize}

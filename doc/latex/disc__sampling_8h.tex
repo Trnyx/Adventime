@@ -1,0 +1,64 @@
+\hypertarget{disc__sampling_8h}{}\doxysection{Référence du fichier include/disc\+\_\+sampling.h}
+\label{disc__sampling_8h}\index{include/disc\_sampling.h@{include/disc\_sampling.h}}
+
+
+Module de gestion pour l\textquotesingle{}algorithme \char`\"{}\+Poisson Disc Sampling\char`\"{}.  
+
+
+{\ttfamily \#include \char`\"{}utilitaire.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__discSampling}{s\+\_\+disc\+Sampling}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{disc__sampling_8h_af7fb0ba67785bd18d11e90a089f747b6}\label{disc__sampling_8h_af7fb0ba67785bd18d11e90a089f747b6}} 
+typedef struct \mbox{\hyperlink{structs__discSampling}{s\+\_\+disc\+Sampling}} {\bfseries t\+\_\+disc\+Sampling}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__discSampling}{t\+\_\+disc\+Sampling}} \mbox{\hyperlink{disc__sampling_8h_ae009c220ccac30fe3ca0ff13309bb539}{generer\+Grille\+Disc\+Sampling}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} min\+Grille, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} max\+Grille, int nb\+Elements\+Objectif, float rayon, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} $\ast$centre)
+\begin{DoxyCompactList}\small\item\em Génère une grille / un tableau de point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion pour l\textquotesingle{}algorithme \char`\"{}\+Poisson Disc Sampling\char`\"{}. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+15 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{disc__sampling_8h_ae009c220ccac30fe3ca0ff13309bb539}\label{disc__sampling_8h_ae009c220ccac30fe3ca0ff13309bb539}} 
+\index{disc\_sampling.h@{disc\_sampling.h}!genererGrilleDiscSampling@{genererGrilleDiscSampling}}
+\index{genererGrilleDiscSampling@{genererGrilleDiscSampling}!disc\_sampling.h@{disc\_sampling.h}}
+\doxysubsubsection{\texorpdfstring{genererGrilleDiscSampling()}{genererGrilleDiscSampling()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__discSampling}{t\+\_\+disc\+Sampling}} generer\+Grille\+Disc\+Sampling (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{min\+Grille,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{max\+Grille,  }\item[{int}]{nb\+Elements\+Objectif,  }\item[{float}]{rayon,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} $\ast$}]{centre }\end{DoxyParamCaption})}
+
+
+
+Génère une grille / un tableau de point. 
+
+Ces points sont généré de sorte à ce qu\textquotesingle{}ils suivent l\textquotesingle{}algorithme \char`\"{}\+Poisson Disc Sampling\char`\"{}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em min\+Grille} & Les coordonnées x et y minimum de la grille \\
+\hline
+{\em max\+Grille} & Les coordonnées x et y maximum de la grille \\
+\hline
+{\em nb\+Elements\+Objectif} & Le nombre d\textquotesingle{}éléments souhaité (ils ne seront pas tous créés) \\
+\hline
+{\em rayon} & Le rayon minimum de placement\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La grille de points 
+\end{DoxyReturn}

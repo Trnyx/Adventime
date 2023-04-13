@@ -1,0 +1,101 @@
+\hypertarget{moteur_8h}{}\doxysection{Référence du fichier include/moteur.h}
+\label{moteur_8h}\index{include/moteur.h@{include/moteur.h}}
+
+
+Module de manipulation du moteur du jeu.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/\+SDL2/\+SDL\+\_\+ttf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}textures.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}camera.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}monde.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}cache.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__controles}{s\+\_\+controles}}
+\item 
+struct \mbox{\hyperlink{structs__moteur}{s\+\_\+moteur}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{moteur_8h_ac92ca5ab87034a348decad7ee8d4bd1b}\label{moteur_8h_ac92ca5ab87034a348decad7ee8d4bd1b}} 
+\#define {\bfseries FPS}~60
+\item 
+\mbox{\Hypertarget{moteur_8h_a5a4b32e0a7ed302b1959f2d663eb9207}\label{moteur_8h_a5a4b32e0a7ed302b1959f2d663eb9207}} 
+\#define {\bfseries TPS}~((float)1000/FPS)
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{moteur_8h_a47b7638e52cb2b22ec6fed63653dee23}\label{moteur_8h_a47b7638e52cb2b22ec6fed63653dee23}} 
+typedef struct \mbox{\hyperlink{structs__controles}{s\+\_\+controles}} {\bfseries t\+\_\+controles}
+\item 
+\mbox{\Hypertarget{moteur_8h_a5a3daf0bf964cf6be35cf706dfc7e04c}\label{moteur_8h_a5a3daf0bf964cf6be35cf706dfc7e04c}} 
+typedef struct \mbox{\hyperlink{structs__moteur}{s\+\_\+moteur}} {\bfseries t\+\_\+moteur}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{moteur_8h_aa38fa260bebae19be15f8984b9d5cac5}\label{moteur_8h_aa38fa260bebae19be15f8984b9d5cac5}} 
+void \mbox{\hyperlink{moteur_8h_aa38fa260bebae19be15f8984b9d5cac5}{reguler\+FPS}} ()
+\begin{DoxyCompactList}\small\item\em Cette fonction permet de faire en sorte que le jeu soit constamment à 60 images par secondes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$ \mbox{\hyperlink{moteur_8h_ae4cd1f2651eb7545323fd4c26b6d192c}{init\+Moteur}} ()
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour le moteur et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{moteur_8h_aa8ba0a1a326f5f885b9f58d650c5f50c}{detruire\+Moteur}} (\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$$\ast$moteur)
+\begin{DoxyCompactList}\small\item\em Detruit le moteur est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{moteur_8h_a19bf7070caedc05e8161ad08489598ef}\label{moteur_8h_a19bf7070caedc05e8161ad08489598ef}} 
+void \mbox{\hyperlink{moteur_8h_a19bf7070caedc05e8161ad08489598ef}{update\+Echelle}} ()
+\begin{DoxyCompactList}\small\item\em Calcule la taille en pixel d\textquotesingle{}un bloc selon la taille de l\textquotesingle{}écran et actualise les informations de la caméra pour le rendu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{moteur_8h_a6260a40ab508ff41fb456c5070177f40}\label{moteur_8h_a6260a40ab508ff41fb456c5070177f40}} 
+\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$ {\bfseries moteur}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation du moteur du jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Eliott Remars \& Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{moteur_8h_aa8ba0a1a326f5f885b9f58d650c5f50c}\label{moteur_8h_aa8ba0a1a326f5f885b9f58d650c5f50c}} 
+\index{moteur.h@{moteur.h}!detruireMoteur@{detruireMoteur}}
+\index{detruireMoteur@{detruireMoteur}!moteur.h@{moteur.h}}
+\doxysubsubsection{\texorpdfstring{detruireMoteur()}{detruireMoteur()}}
+{\footnotesize\ttfamily void detruire\+Moteur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$$\ast$}]{moteur }\end{DoxyParamCaption})}
+
+
+
+Detruit le moteur est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em moteur} & L\textquotesingle{}adresse du pointeur sur le moteur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{moteur_8h_ae4cd1f2651eb7545323fd4c26b6d192c}\label{moteur_8h_ae4cd1f2651eb7545323fd4c26b6d192c}} 
+\index{moteur.h@{moteur.h}!initMoteur@{initMoteur}}
+\index{initMoteur@{initMoteur}!moteur.h@{moteur.h}}
+\doxysubsubsection{\texorpdfstring{initMoteur()}{initMoteur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}}$\ast$ init\+Moteur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour le moteur et le créer. 
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le moteur, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}

@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/audio.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">audio.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="audio_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#ifndef _JEU_AUDIO_</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define _JEU_AUDIO_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL_mixer.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utilitaire_8h.html">utilitaire.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="entite_8h.html">entite.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="temps_8h.html">temps.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/*                                Enumerations                                */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="audio_8h.html#a657994509f67504fd69370f550b4e516">   39</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="audio_8h.html#a657994509f67504fd69370f550b4e516ae4cbb1538772654fb86ecd9a78681cc7">   41</a></span>&#160;    <a class="code" href="audio_8h.html#a657994509f67504fd69370f550b4e516ae4cbb1538772654fb86ecd9a78681cc7">CHANNEL_MASTER</a>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="audio_8h.html#a657994509f67504fd69370f550b4e516ae23e916ecc2c0b71e6329acdb658f234">   43</a></span>&#160;    <a class="code" href="audio_8h.html#a657994509f67504fd69370f550b4e516ae23e916ecc2c0b71e6329acdb658f234">CHANNEL_MUSIQUE</a>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="audio_8h.html#a657994509f67504fd69370f550b4e516a5d221c97268ba2e144921a8c5dedf246">   45</a></span>&#160;    <a class="code" href="audio_8h.html#a657994509f67504fd69370f550b4e516a5d221c97268ba2e144921a8c5dedf246">CHANNEL_BRUITAGE</a>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="audio_8h.html#a657994509f67504fd69370f550b4e516">e_audio_channel</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280">   55</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a870994d2d268d847b4bde3d0d9909232">   57</a></span>&#160;    <a class="code" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a870994d2d268d847b4bde3d0d9909232">MUSIC_AUCUNE</a>,</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280ab2ddd126a9b0f79ddf87b33dc446b852">   59</a></span>&#160;    <a class="code" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280ab2ddd126a9b0f79ddf87b33dc446b852">MUSIC_MENU</a>,</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a6f5631f2df6a7715f4e6e91c687bdf20">   61</a></span>&#160;    <a class="code" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a6f5631f2df6a7715f4e6e91c687bdf20">MUSIC_AMBIANCE</a>,</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a6ca849ca0d1395063fb1fcf8cc9869b7">   63</a></span>&#160;    <a class="code" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a6ca849ca0d1395063fb1fcf8cc9869b7">MUSIC_COMBAT</a>,</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a39cbe5da49d9b9e7a62ff6d8d6b07149">   65</a></span>&#160;    <a class="code" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a39cbe5da49d9b9e7a62ff6d8d6b07149">MUSIC_BOSS</a>,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <a class="code" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280">e_musiques_type</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structs__musiques.html">   81</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__musiques.html">s_musiques</a> {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// Menu Principal</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="structs__musiques.html#a11754de16c2709c019ca9cd890549e62">   83</a></span>&#160;    Mix_Music *<a class="code" href="structs__musiques.html#a11754de16c2709c019ca9cd890549e62">menu_principal</a>;                  </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// Ambiance</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="structs__musiques.html#a5916d704ed83f06cf9a900fad90e4a5a">   86</a></span>&#160;    Mix_Music *<a class="code" href="structs__musiques.html#a5916d704ed83f06cf9a900fad90e4a5a">ambiance_jour_matin</a>;             </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structs__musiques.html#af2317523505f94ccbe158f45a060cf09">   87</a></span>&#160;    Mix_Music *<a class="code" href="structs__musiques.html#af2317523505f94ccbe158f45a060cf09">ambiance_jour_apres_midi</a>;        </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structs__musiques.html#a99cfe5553a834ab303d099b91ef6caed">   88</a></span>&#160;    Mix_Music *<a class="code" href="structs__musiques.html#a99cfe5553a834ab303d099b91ef6caed">ambiance_jour_couche_soleil</a>;     </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="structs__musiques.html#aed088db646bd784db5250f0e7bf8ac3a">   89</a></span>&#160;    Mix_Music *<a class="code" href="structs__musiques.html#aed088db646bd784db5250f0e7bf8ac3a">ambiance_nuit</a>;                   </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// Combat</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="structs__musiques.html#a6a35cb11af93ab2d3737a58ce3922d0e">   92</a></span>&#160;    Mix_Music *<a class="code" href="structs__musiques.html#a6a35cb11af93ab2d3737a58ce3922d0e">combat</a>;                          </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">// Mix_Music *combat_nuit;</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="structs__musiques.html#a1b79f13796d47b91462cfff71b23cc2d">   94</a></span>&#160;    Mix_Music *<a class="code" href="structs__musiques.html#a1b79f13796d47b91462cfff71b23cc2d">boss</a>;                            </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;} <a class="code" href="structt__musiques.html">t_musiques</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="structs__bruitages.html">  103</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__bruitages.html">s_bruitages</a> {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="comment">// Menu :</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="structs__bruitages.html#a4bd14fd05cbbbe0f703f66e919aefe22">  105</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#a4bd14fd05cbbbe0f703f66e919aefe22">menu_selection</a>;          </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// Joueur :</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="structs__bruitages.html#a75a09eb83784b5c848b1eb36b7652c92">  108</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#a75a09eb83784b5c848b1eb36b7652c92">joueur_degat</a>;            </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="structs__bruitages.html#a44ecc81d6bde792c52d66b4470c263ea">  109</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#a44ecc81d6bde792c52d66b4470c263ea">joueur_mort</a>;             </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">// Monstre :</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="structs__bruitages.html#ad18cb49b893422f679558c30ffd8d68d">  112</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#ad18cb49b893422f679558c30ffd8d68d">monstre_degat</a>;           </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="structs__bruitages.html#acfdfd1ad61a413d3742dfb5a5dff922d">  113</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#acfdfd1ad61a413d3742dfb5a5dff922d">monstre_mort</a>;            </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">// Animaux</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="structs__bruitages.html#ad39b9313aed2882c43be315868b9355d">  116</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#ad39b9313aed2882c43be315868b9355d">vache</a>;                   </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="structs__bruitages.html#aa35767cb8e596c3272ee9e2f55e9f575">  117</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#aa35767cb8e596c3272ee9e2f55e9f575">vache_degat</a>;                   </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="structs__bruitages.html#a2a2dd5c34c1a2ae98cad45df059a1201">  118</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#a2a2dd5c34c1a2ae98cad45df059a1201">vache_mort</a>;                   </div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="structs__bruitages.html#a2b45731ab5318e9895105eb24ef61736">  119</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#a2b45731ab5318e9895105eb24ef61736">cochon</a>;                  </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="structs__bruitages.html#a7d895956d159285e3a7015e68002a66c">  120</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#a7d895956d159285e3a7015e68002a66c">cochon_degat</a>;                  </div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="structs__bruitages.html#a644b08d19906d773b82617e39c016fb5">  121</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#a644b08d19906d773b82617e39c016fb5">cochon_mort</a>;                  </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">// Autres :</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="structs__bruitages.html#acac13715f6133cab32bb5c05ad21a00f">  124</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#acac13715f6133cab32bb5c05ad21a00f">attaque</a>;                  </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="structs__bruitages.html#ab45498978de46252af6de7ade4fb9523">  125</a></span>&#160;    Mix_Chunk *<a class="code" href="structs__bruitages.html#ab45498978de46252af6de7ade4fb9523">item_recuperation</a>;       </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;} <a class="code" href="structt__bruitages.html">t_bruitages</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="structs__audioPack.html">  134</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__audioPack.html">s_audioPack</a> {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    Mix_Chunk *normal;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    Mix_Chunk *degat;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    Mix_Chunk *mort;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    Mix_Chunk *attaque;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;} <a class="code" href="structs__audioPack.html">t_audioPack</a>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="structs__audio.html">  147</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__audio.html">s_audio</a> {</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="structs__audio.html#aed1524d0eb98dced390c6c5bb4d99507">  148</a></span>&#160;    <a class="code" href="structt__musiques.html">t_musiques</a> *<a class="code" href="structs__audio.html#aed1524d0eb98dced390c6c5bb4d99507">musiques</a>;           </div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="structs__audio.html#a92ccb7b70a7eee52fa4115c2eea6b9b1">  149</a></span>&#160;    <a class="code" href="structt__bruitages.html">t_bruitages</a> *<a class="code" href="structs__audio.html#a92ccb7b70a7eee52fa4115c2eea6b9b1">bruitages</a>;         </div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="structs__audio.html#ab726ca75d6ce640415081c7aa3645bdd">  151</a></span>&#160;    <a class="code" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280">e_musiques_type</a> <a class="code" href="structs__audio.html#ab726ca75d6ce640415081c7aa3645bdd">musiqueType</a>;    </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="structs__audio.html#ad8d5db2a6ac338394afcd20bc7a73d22">  153</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__audio.html#ad8d5db2a6ac338394afcd20bc7a73d22">timestampDebutMusique</a>;      </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="structs__audio.html#a2862f0375a6429baf1c802a8bc6baef8">  155</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structs__audio.html#a2862f0375a6429baf1c802a8bc6baef8">masterVolume</a>;             </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="structs__audio.html#aaea2205d4ce4e41a2d1dad4edc9ca4cd">  156</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structs__audio.html#aaea2205d4ce4e41a2d1dad4edc9ca4cd">musiqueVolume</a>;            </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="structs__audio.html#a86110b70e8a78e388ea90f51acd9e211">  157</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structs__audio.html#a86110b70e8a78e388ea90f51acd9e211">bruitageVolume</a>;           </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;} <a class="code" href="structt__audio.html">t_audio</a>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">// Le moteur est en global pour faciliter l&#39;accès</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">extern</span> <a class="code" href="structt__audio.html">t_audio</a> *audio;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="entite_8h.html">entite.h</a>&quot;</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<a class="code" href="structs__audioPack.html">t_audioPack</a> *<a class="code" href="audio_8h.html#ae18dfcfac05e61f4c35a32f25854a6e7">creerAudioPack</a>();</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keywordtype">void</span> <a class="code" href="audio_8h.html#a2cea5857fa45e9197e718ddcc9cc4149">detruireAudioPack</a>(<a class="code" href="structs__audioPack.html">t_audioPack</a> **pack);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keywordtype">void</span> chargerAudioPack(<a class="code" href="structs__audioPack.html">t_audioPack</a> *pack, <a class="code" href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a> tag);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<a class="code" href="structt__audio.html">t_audio</a> *<a class="code" href="audio_8h.html#a43efc86ed16b1867386683f643a95486">initAudio</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keywordtype">int</span> <a class="code" href="audio_8h.html#a46307baa25fd9b05458784e82dc1dfd7">chargerAudio</a>(<a class="code" href="structt__musiques.html">t_musiques</a> **musiques, <a class="code" href="structt__bruitages.html">t_bruitages</a> **bruitages);</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keywordtype">void</span> <a class="code" href="audio_8h.html#a0ae1c800453a1eedc3a5099a327a41b2">detruireAudio</a>(<a class="code" href="structt__audio.html">t_audio</a> **audio);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="keywordtype">void</span> <a class="code" href="audio_8h.html#a256a2f975d149d161132e1877bfe2b44">changerVolume</a>(<span class="keyword">const</span> <a class="code" href="audio_8h.html#a657994509f67504fd69370f550b4e516">e_audio_channel</a> channel, <span class="keyword">const</span> <span class="keywordtype">float</span> nouveauVolume);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keywordtype">void</span> <a class="code" href="audio_8h.html#a9a2819a9f51b5907778e9698870777b0">play_music</a>(Mix_Music *music, <span class="keywordtype">boolean</span> repeat, <span class="keywordtype">boolean</span> estLaSuite);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keywordtype">void</span> <a class="code" href="audio_8h.html#a8024b133cbcfb4a0b17af72b625e9cae">play_bruitage</a>(Mix_Chunk *sound, <span class="keywordtype">int</span> channel);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keywordtype">void</span> <a class="code" href="audio_8h.html#aa2527c811415da9fe672a212bf58a347">play_sonAmbiance</a>(Mix_Chunk *bruitage, <span class="keywordtype">float</span> angle, <span class="keywordtype">float</span> distance);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="keywordtype">void</span> <a class="code" href="audio_8h.html#a9142c675b26cab1b1d5a9b405268da70">selectionMusique</a>(<a class="code" href="structt__temps.html">t_temps</a> *temps);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aaudio_8h_html_a0ae1c800453a1eedc3a5099a327a41b2"><div class="ttname"><a href="audio_8h.html#a0ae1c800453a1eedc3a5099a327a41b2">detruireAudio</a></div><div class="ttdeci">void detruireAudio(t_audio **audio)</div><div class="ttdoc">Detruit l'audio est libère la mémoire allouée pour ce dernier.</div><div class="ttdef"><b>Definition:</b> audio.c:406</div></div>
+<div class="ttc" id="aaudio_8h_html_a256a2f975d149d161132e1877bfe2b44"><div class="ttname"><a href="audio_8h.html#a256a2f975d149d161132e1877bfe2b44">changerVolume</a></div><div class="ttdeci">void changerVolume(const e_audio_channel channel, const float nouveauVolume)</div><div class="ttdoc">Fonction permettant de changer le volume du channel spécifié</div><div class="ttdef"><b>Definition:</b> audio.c:48</div></div>
+<div class="ttc" id="aaudio_8h_html_a2cea5857fa45e9197e718ddcc9cc4149"><div class="ttname"><a href="audio_8h.html#a2cea5857fa45e9197e718ddcc9cc4149">detruireAudioPack</a></div><div class="ttdeci">void detruireAudioPack(t_audioPack **pack)</div><div class="ttdoc">Detruit le pack audio est libère la mémoire allouée pour ce dernier.</div><div class="ttdef"><b>Definition:</b> audio.c:478</div></div>
+<div class="ttc" id="aaudio_8h_html_a43efc86ed16b1867386683f643a95486"><div class="ttname"><a href="audio_8h.html#a43efc86ed16b1867386683f643a95486">initAudio</a></div><div class="ttdeci">t_audio * initAudio(void)</div><div class="ttdoc">Initialise, crée et alloue la mémoire pour l'audio du jeu.</div><div class="ttdef"><b>Definition:</b> audio.c:334</div></div>
+<div class="ttc" id="aaudio_8h_html_a46307baa25fd9b05458784e82dc1dfd7"><div class="ttname"><a href="audio_8h.html#a46307baa25fd9b05458784e82dc1dfd7">chargerAudio</a></div><div class="ttdeci">int chargerAudio(t_musiques **musiques, t_bruitages **bruitages)</div><div class="ttdoc">Charge tous les fichiers audio au sein des structures de musiques et de bruitages.</div><div class="ttdef"><b>Definition:</b> audio.c:214</div></div>
+<div class="ttc" id="aaudio_8h_html_a657994509f67504fd69370f550b4e516"><div class="ttname"><a href="audio_8h.html#a657994509f67504fd69370f550b4e516">e_audio_channel</a></div><div class="ttdeci">e_audio_channel</div><div class="ttdoc">Les différents type de channel controlable.</div><div class="ttdef"><b>Definition:</b> audio.h:39</div></div>
+<div class="ttc" id="aaudio_8h_html_a657994509f67504fd69370f550b4e516a5d221c97268ba2e144921a8c5dedf246"><div class="ttname"><a href="audio_8h.html#a657994509f67504fd69370f550b4e516a5d221c97268ba2e144921a8c5dedf246">CHANNEL_BRUITAGE</a></div><div class="ttdeci">@ CHANNEL_BRUITAGE</div><div class="ttdef"><b>Definition:</b> audio.h:45</div></div>
+<div class="ttc" id="aaudio_8h_html_a657994509f67504fd69370f550b4e516ae23e916ecc2c0b71e6329acdb658f234"><div class="ttname"><a href="audio_8h.html#a657994509f67504fd69370f550b4e516ae23e916ecc2c0b71e6329acdb658f234">CHANNEL_MUSIQUE</a></div><div class="ttdeci">@ CHANNEL_MUSIQUE</div><div class="ttdef"><b>Definition:</b> audio.h:43</div></div>
+<div class="ttc" id="aaudio_8h_html_a657994509f67504fd69370f550b4e516ae4cbb1538772654fb86ecd9a78681cc7"><div class="ttname"><a href="audio_8h.html#a657994509f67504fd69370f550b4e516ae4cbb1538772654fb86ecd9a78681cc7">CHANNEL_MASTER</a></div><div class="ttdeci">@ CHANNEL_MASTER</div><div class="ttdef"><b>Definition:</b> audio.h:41</div></div>
+<div class="ttc" id="aaudio_8h_html_a8024b133cbcfb4a0b17af72b625e9cae"><div class="ttname"><a href="audio_8h.html#a8024b133cbcfb4a0b17af72b625e9cae">play_bruitage</a></div><div class="ttdeci">void play_bruitage(Mix_Chunk *sound, int channel)</div><div class="ttdoc">Joue un bruitage.</div><div class="ttdef"><b>Definition:</b> audio.c:96</div></div>
+<div class="ttc" id="aaudio_8h_html_a9142c675b26cab1b1d5a9b405268da70"><div class="ttname"><a href="audio_8h.html#a9142c675b26cab1b1d5a9b405268da70">selectionMusique</a></div><div class="ttdeci">void selectionMusique(t_temps *temps)</div><div class="ttdoc">Sélectionne la musique à jouer en fonction du temps dans le jeu.</div><div class="ttdef"><b>Definition:</b> audio.c:141</div></div>
+<div class="ttc" id="aaudio_8h_html_a9a2819a9f51b5907778e9698870777b0"><div class="ttname"><a href="audio_8h.html#a9a2819a9f51b5907778e9698870777b0">play_music</a></div><div class="ttdeci">void play_music(Mix_Music *music, boolean repeat, boolean estLaSuite)</div><div class="ttdoc">Joue une musique donnée en paramètre.</div><div class="ttdef"><b>Definition:</b> audio.c:77</div></div>
+<div class="ttc" id="aaudio_8h_html_aa2527c811415da9fe672a212bf58a347"><div class="ttname"><a href="audio_8h.html#aa2527c811415da9fe672a212bf58a347">play_sonAmbiance</a></div><div class="ttdeci">void play_sonAmbiance(Mix_Chunk *bruitage, float angle, float distance)</div><div class="ttdoc">Joue le bruit d'une entité</div><div class="ttdef"><b>Definition:</b> audio.c:110</div></div>
+<div class="ttc" id="aaudio_8h_html_ad945e3a5e09c848cff95d3bb3313d280"><div class="ttname"><a href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280">e_musiques_type</a></div><div class="ttdeci">e_musiques_type</div><div class="ttdoc">Les différents types de musiques.</div><div class="ttdef"><b>Definition:</b> audio.h:55</div></div>
+<div class="ttc" id="aaudio_8h_html_ad945e3a5e09c848cff95d3bb3313d280a39cbe5da49d9b9e7a62ff6d8d6b07149"><div class="ttname"><a href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a39cbe5da49d9b9e7a62ff6d8d6b07149">MUSIC_BOSS</a></div><div class="ttdeci">@ MUSIC_BOSS</div><div class="ttdef"><b>Definition:</b> audio.h:65</div></div>
+<div class="ttc" id="aaudio_8h_html_ad945e3a5e09c848cff95d3bb3313d280a6ca849ca0d1395063fb1fcf8cc9869b7"><div class="ttname"><a href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a6ca849ca0d1395063fb1fcf8cc9869b7">MUSIC_COMBAT</a></div><div class="ttdeci">@ MUSIC_COMBAT</div><div class="ttdef"><b>Definition:</b> audio.h:63</div></div>
+<div class="ttc" id="aaudio_8h_html_ad945e3a5e09c848cff95d3bb3313d280a6f5631f2df6a7715f4e6e91c687bdf20"><div class="ttname"><a href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a6f5631f2df6a7715f4e6e91c687bdf20">MUSIC_AMBIANCE</a></div><div class="ttdeci">@ MUSIC_AMBIANCE</div><div class="ttdef"><b>Definition:</b> audio.h:61</div></div>
+<div class="ttc" id="aaudio_8h_html_ad945e3a5e09c848cff95d3bb3313d280a870994d2d268d847b4bde3d0d9909232"><div class="ttname"><a href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a870994d2d268d847b4bde3d0d9909232">MUSIC_AUCUNE</a></div><div class="ttdeci">@ MUSIC_AUCUNE</div><div class="ttdef"><b>Definition:</b> audio.h:57</div></div>
+<div class="ttc" id="aaudio_8h_html_ad945e3a5e09c848cff95d3bb3313d280ab2ddd126a9b0f79ddf87b33dc446b852"><div class="ttname"><a href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280ab2ddd126a9b0f79ddf87b33dc446b852">MUSIC_MENU</a></div><div class="ttdeci">@ MUSIC_MENU</div><div class="ttdef"><b>Definition:</b> audio.h:59</div></div>
+<div class="ttc" id="aaudio_8h_html_ae18dfcfac05e61f4c35a32f25854a6e7"><div class="ttname"><a href="audio_8h.html#ae18dfcfac05e61f4c35a32f25854a6e7">creerAudioPack</a></div><div class="ttdeci">t_audioPack * creerAudioPack()</div><div class="ttdoc">Alloue l'espace nécessaire pour un pack audio et le créer.</div><div class="ttdef"><b>Definition:</b> audio.c:374</div></div>
+<div class="ttc" id="aentite_8h_html"><div class="ttname"><a href="entite_8h.html">entite.h</a></div><div class="ttdoc">Module de manipulation des entités.</div></div>
+<div class="ttc" id="aentite_8h_html_a0040801926229213be8bb8a3fe378b15"><div class="ttname"><a href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a></div><div class="ttdeci">e_entiteTag</div><div class="ttdoc">Enumérateur regroupant les différents tags des entités.</div><div class="ttdef"><b>Definition:</b> entite.h:58</div></div>
+<div class="ttc" id="astructs__audioPack_html"><div class="ttname"><a href="structs__audioPack.html">s_audioPack</a></div><div class="ttdef"><b>Definition:</b> audio.h:134</div></div>
+<div class="ttc" id="astructs__audio_html"><div class="ttname"><a href="structs__audio.html">s_audio</a></div><div class="ttdef"><b>Definition:</b> audio.h:147</div></div>
+<div class="ttc" id="astructs__audio_html_a2862f0375a6429baf1c802a8bc6baef8"><div class="ttname"><a href="structs__audio.html#a2862f0375a6429baf1c802a8bc6baef8">s_audio::masterVolume</a></div><div class="ttdeci">float masterVolume</div><div class="ttdef"><b>Definition:</b> audio.h:155</div></div>
+<div class="ttc" id="astructs__audio_html_a86110b70e8a78e388ea90f51acd9e211"><div class="ttname"><a href="structs__audio.html#a86110b70e8a78e388ea90f51acd9e211">s_audio::bruitageVolume</a></div><div class="ttdeci">float bruitageVolume</div><div class="ttdef"><b>Definition:</b> audio.h:157</div></div>
+<div class="ttc" id="astructs__audio_html_a92ccb7b70a7eee52fa4115c2eea6b9b1"><div class="ttname"><a href="structs__audio.html#a92ccb7b70a7eee52fa4115c2eea6b9b1">s_audio::bruitages</a></div><div class="ttdeci">t_bruitages * bruitages</div><div class="ttdef"><b>Definition:</b> audio.h:149</div></div>
+<div class="ttc" id="astructs__audio_html_aaea2205d4ce4e41a2d1dad4edc9ca4cd"><div class="ttname"><a href="structs__audio.html#aaea2205d4ce4e41a2d1dad4edc9ca4cd">s_audio::musiqueVolume</a></div><div class="ttdeci">float musiqueVolume</div><div class="ttdef"><b>Definition:</b> audio.h:156</div></div>
+<div class="ttc" id="astructs__audio_html_ab726ca75d6ce640415081c7aa3645bdd"><div class="ttname"><a href="structs__audio.html#ab726ca75d6ce640415081c7aa3645bdd">s_audio::musiqueType</a></div><div class="ttdeci">e_musiques_type musiqueType</div><div class="ttdef"><b>Definition:</b> audio.h:151</div></div>
+<div class="ttc" id="astructs__audio_html_ad8d5db2a6ac338394afcd20bc7a73d22"><div class="ttname"><a href="structs__audio.html#ad8d5db2a6ac338394afcd20bc7a73d22">s_audio::timestampDebutMusique</a></div><div class="ttdeci">int timestampDebutMusique</div><div class="ttdef"><b>Definition:</b> audio.h:153</div></div>
+<div class="ttc" id="astructs__audio_html_aed1524d0eb98dced390c6c5bb4d99507"><div class="ttname"><a href="structs__audio.html#aed1524d0eb98dced390c6c5bb4d99507">s_audio::musiques</a></div><div class="ttdeci">t_musiques * musiques</div><div class="ttdef"><b>Definition:</b> audio.h:148</div></div>
+<div class="ttc" id="astructs__bruitages_html"><div class="ttname"><a href="structs__bruitages.html">s_bruitages</a></div><div class="ttdef"><b>Definition:</b> audio.h:103</div></div>
+<div class="ttc" id="astructs__bruitages_html_a2a2dd5c34c1a2ae98cad45df059a1201"><div class="ttname"><a href="structs__bruitages.html#a2a2dd5c34c1a2ae98cad45df059a1201">s_bruitages::vache_mort</a></div><div class="ttdeci">Mix_Chunk * vache_mort</div><div class="ttdef"><b>Definition:</b> audio.h:118</div></div>
+<div class="ttc" id="astructs__bruitages_html_a2b45731ab5318e9895105eb24ef61736"><div class="ttname"><a href="structs__bruitages.html#a2b45731ab5318e9895105eb24ef61736">s_bruitages::cochon</a></div><div class="ttdeci">Mix_Chunk * cochon</div><div class="ttdef"><b>Definition:</b> audio.h:119</div></div>
+<div class="ttc" id="astructs__bruitages_html_a44ecc81d6bde792c52d66b4470c263ea"><div class="ttname"><a href="structs__bruitages.html#a44ecc81d6bde792c52d66b4470c263ea">s_bruitages::joueur_mort</a></div><div class="ttdeci">Mix_Chunk * joueur_mort</div><div class="ttdef"><b>Definition:</b> audio.h:109</div></div>
+<div class="ttc" id="astructs__bruitages_html_a4bd14fd05cbbbe0f703f66e919aefe22"><div class="ttname"><a href="structs__bruitages.html#a4bd14fd05cbbbe0f703f66e919aefe22">s_bruitages::menu_selection</a></div><div class="ttdeci">Mix_Chunk * menu_selection</div><div class="ttdef"><b>Definition:</b> audio.h:105</div></div>
+<div class="ttc" id="astructs__bruitages_html_a644b08d19906d773b82617e39c016fb5"><div class="ttname"><a href="structs__bruitages.html#a644b08d19906d773b82617e39c016fb5">s_bruitages::cochon_mort</a></div><div class="ttdeci">Mix_Chunk * cochon_mort</div><div class="ttdef"><b>Definition:</b> audio.h:121</div></div>
+<div class="ttc" id="astructs__bruitages_html_a75a09eb83784b5c848b1eb36b7652c92"><div class="ttname"><a href="structs__bruitages.html#a75a09eb83784b5c848b1eb36b7652c92">s_bruitages::joueur_degat</a></div><div class="ttdeci">Mix_Chunk * joueur_degat</div><div class="ttdef"><b>Definition:</b> audio.h:108</div></div>
+<div class="ttc" id="astructs__bruitages_html_a7d895956d159285e3a7015e68002a66c"><div class="ttname"><a href="structs__bruitages.html#a7d895956d159285e3a7015e68002a66c">s_bruitages::cochon_degat</a></div><div class="ttdeci">Mix_Chunk * cochon_degat</div><div class="ttdef"><b>Definition:</b> audio.h:120</div></div>
+<div class="ttc" id="astructs__bruitages_html_aa35767cb8e596c3272ee9e2f55e9f575"><div class="ttname"><a href="structs__bruitages.html#aa35767cb8e596c3272ee9e2f55e9f575">s_bruitages::vache_degat</a></div><div class="ttdeci">Mix_Chunk * vache_degat</div><div class="ttdef"><b>Definition:</b> audio.h:117</div></div>
+<div class="ttc" id="astructs__bruitages_html_ab45498978de46252af6de7ade4fb9523"><div class="ttname"><a href="structs__bruitages.html#ab45498978de46252af6de7ade4fb9523">s_bruitages::item_recuperation</a></div><div class="ttdeci">Mix_Chunk * item_recuperation</div><div class="ttdef"><b>Definition:</b> audio.h:125</div></div>
+<div class="ttc" id="astructs__bruitages_html_acac13715f6133cab32bb5c05ad21a00f"><div class="ttname"><a href="structs__bruitages.html#acac13715f6133cab32bb5c05ad21a00f">s_bruitages::attaque</a></div><div class="ttdeci">Mix_Chunk * attaque</div><div class="ttdef"><b>Definition:</b> audio.h:124</div></div>
+<div class="ttc" id="astructs__bruitages_html_acfdfd1ad61a413d3742dfb5a5dff922d"><div class="ttname"><a href="structs__bruitages.html#acfdfd1ad61a413d3742dfb5a5dff922d">s_bruitages::monstre_mort</a></div><div class="ttdeci">Mix_Chunk * monstre_mort</div><div class="ttdef"><b>Definition:</b> audio.h:113</div></div>
+<div class="ttc" id="astructs__bruitages_html_ad18cb49b893422f679558c30ffd8d68d"><div class="ttname"><a href="structs__bruitages.html#ad18cb49b893422f679558c30ffd8d68d">s_bruitages::monstre_degat</a></div><div class="ttdeci">Mix_Chunk * monstre_degat</div><div class="ttdef"><b>Definition:</b> audio.h:112</div></div>
+<div class="ttc" id="astructs__bruitages_html_ad39b9313aed2882c43be315868b9355d"><div class="ttname"><a href="structs__bruitages.html#ad39b9313aed2882c43be315868b9355d">s_bruitages::vache</a></div><div class="ttdeci">Mix_Chunk * vache</div><div class="ttdef"><b>Definition:</b> audio.h:116</div></div>
+<div class="ttc" id="astructs__musiques_html"><div class="ttname"><a href="structs__musiques.html">s_musiques</a></div><div class="ttdef"><b>Definition:</b> audio.h:81</div></div>
+<div class="ttc" id="astructs__musiques_html_a11754de16c2709c019ca9cd890549e62"><div class="ttname"><a href="structs__musiques.html#a11754de16c2709c019ca9cd890549e62">s_musiques::menu_principal</a></div><div class="ttdeci">Mix_Music * menu_principal</div><div class="ttdef"><b>Definition:</b> audio.h:83</div></div>
+<div class="ttc" id="astructs__musiques_html_a1b79f13796d47b91462cfff71b23cc2d"><div class="ttname"><a href="structs__musiques.html#a1b79f13796d47b91462cfff71b23cc2d">s_musiques::boss</a></div><div class="ttdeci">Mix_Music * boss</div><div class="ttdef"><b>Definition:</b> audio.h:94</div></div>
+<div class="ttc" id="astructs__musiques_html_a5916d704ed83f06cf9a900fad90e4a5a"><div class="ttname"><a href="structs__musiques.html#a5916d704ed83f06cf9a900fad90e4a5a">s_musiques::ambiance_jour_matin</a></div><div class="ttdeci">Mix_Music * ambiance_jour_matin</div><div class="ttdef"><b>Definition:</b> audio.h:86</div></div>
+<div class="ttc" id="astructs__musiques_html_a6a35cb11af93ab2d3737a58ce3922d0e"><div class="ttname"><a href="structs__musiques.html#a6a35cb11af93ab2d3737a58ce3922d0e">s_musiques::combat</a></div><div class="ttdeci">Mix_Music * combat</div><div class="ttdef"><b>Definition:</b> audio.h:92</div></div>
+<div class="ttc" id="astructs__musiques_html_a99cfe5553a834ab303d099b91ef6caed"><div class="ttname"><a href="structs__musiques.html#a99cfe5553a834ab303d099b91ef6caed">s_musiques::ambiance_jour_couche_soleil</a></div><div class="ttdeci">Mix_Music * ambiance_jour_couche_soleil</div><div class="ttdef"><b>Definition:</b> audio.h:88</div></div>
+<div class="ttc" id="astructs__musiques_html_aed088db646bd784db5250f0e7bf8ac3a"><div class="ttname"><a href="structs__musiques.html#aed088db646bd784db5250f0e7bf8ac3a">s_musiques::ambiance_nuit</a></div><div class="ttdeci">Mix_Music * ambiance_nuit</div><div class="ttdef"><b>Definition:</b> audio.h:89</div></div>
+<div class="ttc" id="astructs__musiques_html_af2317523505f94ccbe158f45a060cf09"><div class="ttname"><a href="structs__musiques.html#af2317523505f94ccbe158f45a060cf09">s_musiques::ambiance_jour_apres_midi</a></div><div class="ttdeci">Mix_Music * ambiance_jour_apres_midi</div><div class="ttdef"><b>Definition:</b> audio.h:87</div></div>
+<div class="ttc" id="astructt__audio_html"><div class="ttname"><a href="structt__audio.html">t_audio</a></div><div class="ttdoc">Structures contenant toutes les informations pour le fonctionnement de l'audio.</div></div>
+<div class="ttc" id="astructt__bruitages_html"><div class="ttname"><a href="structt__bruitages.html">t_bruitages</a></div><div class="ttdoc">Structure contenant tous les bruitages du jeu.</div></div>
+<div class="ttc" id="astructt__musiques_html"><div class="ttname"><a href="structt__musiques.html">t_musiques</a></div><div class="ttdoc">Structure contenant toutes les musiques du jeu.</div></div>
+<div class="ttc" id="astructt__temps_html"><div class="ttname"><a href="structt__temps.html">t_temps</a></div><div class="ttdoc">Structures regroupant les données du temps en jeu.</div></div>
+<div class="ttc" id="atemps_8h_html"><div class="ttname"><a href="temps_8h.html">temps.h</a></div><div class="ttdoc">Module de manipulation du temps.</div></div>
+<div class="ttc" id="autilitaire_8h_html"><div class="ttname"><a href="utilitaire_8h.html">utilitaire.h</a></div><div class="ttdoc">Module de manipulation des données globales.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

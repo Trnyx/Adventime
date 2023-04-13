@@ -1,0 +1,204 @@
+\hypertarget{sauvegarde_8c}{}\doxysection{Référence du fichier src/sauvegarde.c}
+\label{sauvegarde_8c}\index{src/sauvegarde.c@{src/sauvegarde.c}}
+
+
+Gestion de la sauvegarde du jeu.  
+
+
+{\ttfamily \#include \char`\"{}../include/sauvegarde.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{sauvegarde_8c_a064c1425b53c62f13c668f1c28d2c35b}\label{sauvegarde_8c_a064c1425b53c62f13c668f1c28d2c35b}} 
+\#define {\bfseries CHEMIN\+\_\+\+PARAM}~\char`\"{}./sauvegarde/config.\+txt\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \mbox{\hyperlink{sauvegarde_8c_a55c9a053ec0604b987a77d223971c94d}{sauvegarder\+\_\+config}} (int largeur\+\_\+fenetre, int hauteur\+\_\+fenetre, float volume\+\_\+general, float volume\+\_\+musique, float volume\+\_\+bruitage, int flag\+\_\+plein\+\_\+ecran)
+\begin{DoxyCompactList}\small\item\em Sauvegarde les paramètres d\textquotesingle{}options globaux au jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sauvegarde_8c_a3dc332f673bf2794231c7299ab726740}{sauvegarder\+\_\+entite}} (\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$entite, FILE $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Sauvegarde la base d\textquotesingle{}une entité. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sauvegarde_8c_a8428348d29633db57c66839823dddab6}{sauvegarder\+\_\+entite\+\_\+vivante}} (\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$entite, FILE $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Sauvegarde la base d\textquotesingle{}une entité vivante. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{sauvegarde_8c_a48097121768c3a08256ccdd9b8bcd25e}{sauvegarder\+\_\+mob}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, FILE $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Sauvegarde un mob, c\textquotesingle{}est-\/à-\/dire un animal, un monstre... \end{DoxyCompactList}\item 
+\mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \mbox{\hyperlink{sauvegarde_8c_a4f75651c96aefb5e8e423baf139f5f23}{sauvegarder\+\_\+joueur}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur, char $\ast$chemin\+\_\+monde)
+\begin{DoxyCompactList}\small\item\em Sauvegarde les données du joueur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \mbox{\hyperlink{sauvegarde_8c_ae1925256a02843280da956877df751fb}{sauvegarder\+\_\+map}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, char $\ast$chemin\+\_\+monde, const \mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8}{e\+\_\+map\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Sauvegarde les données de la map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \mbox{\hyperlink{sauvegarde_8c_a6ac08d08aa2d2673b888794ee77cb5bb}{sauvegarder\+\_\+global}} (\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$monde, char $\ast$chemin\+\_\+monde)
+\begin{DoxyCompactList}\small\item\em Sauvegarde les paramètres globaux du monde. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \mbox{\hyperlink{sauvegarde_8c_a4a5250c6989bc6501d4013fcc5ea4491}{sauvegarder\+\_\+monde}} (\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$monde, char $\ast$nom\+\_\+monde)
+\begin{DoxyCompactList}\small\item\em Sauvegarde le monde du jeu, c\textquotesingle{}est-\/à-\/dire les données du joueur, de la map et des données globales. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion de la sauvegarde du jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Julien Houget \& Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+12/03/23 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{sauvegarde_8c_a55c9a053ec0604b987a77d223971c94d}\label{sauvegarde_8c_a55c9a053ec0604b987a77d223971c94d}} 
+\index{sauvegarde.c@{sauvegarde.c}!sauvegarder\_config@{sauvegarder\_config}}
+\index{sauvegarder\_config@{sauvegarder\_config}!sauvegarde.c@{sauvegarde.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarder\_config()}{sauvegarder\_config()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} sauvegarder\+\_\+config (\begin{DoxyParamCaption}\item[{int}]{largeur\+\_\+fenetre,  }\item[{int}]{hauteur\+\_\+fenetre,  }\item[{float}]{volume\+\_\+general,  }\item[{float}]{volume\+\_\+musique,  }\item[{float}]{volume\+\_\+bruitage,  }\item[{int}]{flag\+\_\+plein\+\_\+ecran }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde les paramètres d\textquotesingle{}options globaux au jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em largeur\+\_\+fenetre} & Largeur de la fenêtre. \\
+\hline
+{\em hauteur\+\_\+fenetre} & Hauteur de la fenêtre. \\
+\hline
+{\em volume\+\_\+general} & Volume sonore général. \\
+\hline
+{\em volume\+\_\+musique} & Volume sonore musique. \\
+\hline
+{\em volume\+\_\+bruitage} & Volume effets sonores. \\
+\hline
+{\em flag\+\_\+plein\+\_\+ecran} & Stipule si la fenêtre doit être en plein écran. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+err\+\_\+sauv, un code d\textquotesingle{}erreur (0 si succès). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sauvegarde_8c_a3dc332f673bf2794231c7299ab726740}\label{sauvegarde_8c_a3dc332f673bf2794231c7299ab726740}} 
+\index{sauvegarde.c@{sauvegarde.c}!sauvegarder\_entite@{sauvegarder\_entite}}
+\index{sauvegarder\_entite@{sauvegarder\_entite}!sauvegarde.c@{sauvegarde.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarder\_entite()}{sauvegarder\_entite()}}
+{\footnotesize\ttfamily void sauvegarder\+\_\+entite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{entite,  }\item[{FILE $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde la base d\textquotesingle{}une entité. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & L\textquotesingle{}entité à sauvegarder. \\
+\hline
+{\em fichier} & Le fichier de sauvegarde de la map. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sauvegarde_8c_a8428348d29633db57c66839823dddab6}\label{sauvegarde_8c_a8428348d29633db57c66839823dddab6}} 
+\index{sauvegarde.c@{sauvegarde.c}!sauvegarder\_entite\_vivante@{sauvegarder\_entite\_vivante}}
+\index{sauvegarder\_entite\_vivante@{sauvegarder\_entite\_vivante}!sauvegarde.c@{sauvegarde.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarder\_entite\_vivante()}{sauvegarder\_entite\_vivante()}}
+{\footnotesize\ttfamily void sauvegarder\+\_\+entite\+\_\+vivante (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$}]{entite,  }\item[{FILE $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde la base d\textquotesingle{}une entité vivante. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & L\textquotesingle{}entité à sauvegarder. \\
+\hline
+{\em fichier} & Le fichier de sauvegarde de la map. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sauvegarde_8c_a6ac08d08aa2d2673b888794ee77cb5bb}\label{sauvegarde_8c_a6ac08d08aa2d2673b888794ee77cb5bb}} 
+\index{sauvegarde.c@{sauvegarde.c}!sauvegarder\_global@{sauvegarder\_global}}
+\index{sauvegarder\_global@{sauvegarder\_global}!sauvegarde.c@{sauvegarde.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarder\_global()}{sauvegarder\_global()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} sauvegarder\+\_\+global (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$}]{monde,  }\item[{char $\ast$}]{chemin\+\_\+monde }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde les paramètres globaux du monde. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chemin\+\_\+monde} & Le chemin d\textquotesingle{}accès au fichier de sauvegarde du monde. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+err\+\_\+sauv, un code d\textquotesingle{}erreur (0 si succès). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sauvegarde_8c_a4f75651c96aefb5e8e423baf139f5f23}\label{sauvegarde_8c_a4f75651c96aefb5e8e423baf139f5f23}} 
+\index{sauvegarde.c@{sauvegarde.c}!sauvegarder\_joueur@{sauvegarder\_joueur}}
+\index{sauvegarder\_joueur@{sauvegarder\_joueur}!sauvegarde.c@{sauvegarde.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarder\_joueur()}{sauvegarder\_joueur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} sauvegarder\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur,  }\item[{char $\ast$}]{chemin\+\_\+monde }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde les données du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Le joueur à sauvegarder. \\
+\hline
+{\em chemin\+\_\+monde} & Le chemin d\textquotesingle{}accès au fichier de sauvegarde du monde. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+err\+\_\+sauv, un code d\textquotesingle{}erreur (0 si succès). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sauvegarde_8c_ae1925256a02843280da956877df751fb}\label{sauvegarde_8c_ae1925256a02843280da956877df751fb}} 
+\index{sauvegarde.c@{sauvegarde.c}!sauvegarder\_map@{sauvegarder\_map}}
+\index{sauvegarder\_map@{sauvegarder\_map}!sauvegarde.c@{sauvegarde.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarder\_map()}{sauvegarder\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} sauvegarder\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{char $\ast$}]{chemin\+\_\+monde,  }\item[{const \mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8}{e\+\_\+map\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde les données de la map. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map à sauvegarder. \\
+\hline
+{\em chemin\+\_\+monde} & Le chemin d\textquotesingle{}accès au fichier de sauvegarde du monde. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+err\+\_\+sauv, un code d\textquotesingle{}erreur (0 si succès). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{sauvegarde_8c_a48097121768c3a08256ccdd9b8bcd25e}\label{sauvegarde_8c_a48097121768c3a08256ccdd9b8bcd25e}} 
+\index{sauvegarde.c@{sauvegarde.c}!sauvegarder\_mob@{sauvegarder\_mob}}
+\index{sauvegarder\_mob@{sauvegarder\_mob}!sauvegarde.c@{sauvegarde.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarder\_mob()}{sauvegarder\_mob()}}
+{\footnotesize\ttfamily void sauvegarder\+\_\+mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{FILE $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde un mob, c\textquotesingle{}est-\/à-\/dire un animal, un monstre... 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Le mob à sauvegarder. \\
+\hline
+{\em fichier} & Le fichier de sauvegarde de la map. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{sauvegarde_8c_a4a5250c6989bc6501d4013fcc5ea4491}\label{sauvegarde_8c_a4a5250c6989bc6501d4013fcc5ea4491}} 
+\index{sauvegarde.c@{sauvegarde.c}!sauvegarder\_monde@{sauvegarder\_monde}}
+\index{sauvegarder\_monde@{sauvegarder\_monde}!sauvegarde.c@{sauvegarde.c}}
+\doxysubsubsection{\texorpdfstring{sauvegarder\_monde()}{sauvegarder\_monde()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} sauvegarder\+\_\+monde (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$}]{monde,  }\item[{char $\ast$}]{nom\+\_\+monde }\end{DoxyParamCaption})}
+
+
+
+Sauvegarde le monde du jeu, c\textquotesingle{}est-\/à-\/dire les données du joueur, de la map et des données globales. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monde} & Le monde à sauvegarder. \\
+\hline
+{\em nom\+\_\+monde} & Le nom du mon de à sauvegarder, pour obtenir le chemin d\textquotesingle{}accès aux fichiers. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+err\+\_\+sauv, un code d\textquotesingle{}erreur (0 si succès). 
+\end{DoxyReturn}

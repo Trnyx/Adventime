@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/monstre.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monstre.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monstre_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _JEU_MONSTRE_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define _JEU_MONSTRE_</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="statistiques_8h.html">statistiques.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mob_8h.html">mob.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/*                                 Enumeration                                */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="monstre_8h.html#a73006f0dcf50cd05e2355e55899b7f31">   40</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    MONSTRE_TYPE_NORMAL,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    MONSTRE_TYPE_PLANTE,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    MONSTRE_TYPE_MONTAGNARD,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// MONSTRE_TYPE_DESERTIQUE,</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    NB_MONSTRE_TYPES,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;} <a class="code" href="monstre_8h.html#a73006f0dcf50cd05e2355e55899b7f31">e_monstreType</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structs__monstre.html">   61</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__monstre.html">s_monstre</a> {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">struct </span><a class="code" href="structs__mob.html">s_mob</a>;                   </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structs__monstre.html#a5d0239c4b35d0448a89f095f687961fe">   64</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structs__monstre.html#a5d0239c4b35d0448a89f095f687961fe">name</a>;                     </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structs__monstre.html#a8e8b859105944d29920d6cdccc27c502">   65</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__monstre.html#a8e8b859105944d29920d6cdccc27c502">rayonDetection</a>;             </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structs__monstre.html#ae675456acfb475cd7c0f3744ff75cc2f">   66</a></span>&#160;    <a class="code" href="monstre_8h.html#a73006f0dcf50cd05e2355e55899b7f31">e_monstreType</a> <a class="code" href="structs__monstre.html#ae675456acfb475cd7c0f3744ff75cc2f">type</a>;             </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structs__monstre.html#a2d232fc15f2688396256ca4003ac8fa9">   67</a></span>&#160;    <span class="keywordtype">boolean</span> <a class="code" href="structs__monstre.html#a2d232fc15f2688396256ca4003ac8fa9">estNocturne</a>;            </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <a class="code" href="structt__monstre.html">t_monstre</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*                                 Constantes                                 */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structt__baseStatistiquesIntervales.html">t_baseStatistiquesIntervales</a> <a class="code" href="monstre_8h.html#ae4c38faf0caef0d9c4780b90200ef3a4">statistiquesDeBasesIntervalesMonstres</a>[NB_MONSTRE_TYPES];</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="map_8h.html">map.h</a>&quot;</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__map.html">s_map</a> <a class="code" href="structt__map.html">t_map</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<a class="code" href="structt__baseStatistiques.html">t_baseStatistiques</a> <a class="code" href="monstre_8h.html#a9075d9338012a6c9e7abf48441ebf1c0">genererStatistiquesDeBaseMonstre</a>(<span class="keyword">const</span> <a class="code" href="monstre_8h.html#a73006f0dcf50cd05e2355e55899b7f31">e_monstreType</a> <a class="code" href="structs__map.html#a6c97a5653eb4bc2835cabfd7d5491b80">type</a>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<a class="code" href="structt__monstre.html">t_monstre</a>* <a class="code" href="monstre_8h.html#a0d3cde7c92bf7b49ba49e67fb5a5a8a2">genererMonstre</a>(<a class="code" href="structt__monstre.html">t_monstre</a> *monstre, <span class="keyword">const</span> <a class="code" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a> biome, <span class="keyword">const</span> <span class="keywordtype">int</span> niveauJoueur);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<a class="code" href="structt__monstre.html">t_monstre</a>* <a class="code" href="monstre_8h.html#a180483b80c6873766691ffe27ebb507c">creerMonstre</a>(<span class="keyword">const</span> <a class="code" href="structt__vecteur2.html">t_vecteur2</a> position, <span class="keyword">const</span> <a class="code" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a> biome, <span class="keyword">const</span> <span class="keywordtype">int</span> niveauJoueur);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monstre_8h.html#aa3db13cd64e4d2dc8c2d0ac8178c7d4c">apparitionMonstre</a>(<a class="code" href="structt__liste.html">t_liste</a> *<a class="code" href="structs__map.html#acf20c8c525a9590c247bc8bcd7de06ca">entites</a>, <a class="code" href="structt__map.html">t_map</a> *map, <span class="keyword">const</span> <a class="code" href="structt__vecteur2.html">t_vecteur2</a> positionJoueur, <span class="keyword">const</span> <span class="keywordtype">int</span> niveauJoueur);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monstre_8h.html#adaaee129a169052ce4f00a27397500bc">detruireMonstre</a>(<a class="code" href="structt__monstre.html">t_monstre</a> **monstre);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="amap_8h_html"><div class="ttname"><a href="map_8h.html">map.h</a></div><div class="ttdoc">Module de manipulation de la map.</div></div>
+<div class="ttc" id="amap_8h_html_a03a577c44d494b095cbbc30a2144ba53"><div class="ttname"><a href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a></div><div class="ttdeci">e_biome</div><div class="ttdoc">Tag permettant de reconnaitre le biome.</div><div class="ttdef"><b>Definition:</b> map.h:86</div></div>
+<div class="ttc" id="amob_8h_html"><div class="ttname"><a href="mob_8h.html">mob.h</a></div><div class="ttdoc">Module de manipulation des mobs.</div></div>
+<div class="ttc" id="amonstre_8h_html_a0d3cde7c92bf7b49ba49e67fb5a5a8a2"><div class="ttname"><a href="monstre_8h.html#a0d3cde7c92bf7b49ba49e67fb5a5a8a2">genererMonstre</a></div><div class="ttdeci">t_monstre * genererMonstre(t_monstre *monstre, const e_biome biome, const int niveauJoueur)</div><div class="ttdoc">Génère un monstre.</div><div class="ttdef"><b>Definition:</b> generation_monstre.c:133</div></div>
+<div class="ttc" id="amonstre_8h_html_a180483b80c6873766691ffe27ebb507c"><div class="ttname"><a href="monstre_8h.html#a180483b80c6873766691ffe27ebb507c">creerMonstre</a></div><div class="ttdeci">t_monstre * creerMonstre(const t_vecteur2 position, const e_biome biome, const int niveauJoueur)</div><div class="ttdoc">Alloue l'espace nécessaire pour un monstre et le créer.</div><div class="ttdef"><b>Definition:</b> monstre.c:93</div></div>
+<div class="ttc" id="amonstre_8h_html_a73006f0dcf50cd05e2355e55899b7f31"><div class="ttname"><a href="monstre_8h.html#a73006f0dcf50cd05e2355e55899b7f31">e_monstreType</a></div><div class="ttdeci">e_monstreType</div><div class="ttdoc">Enumérateur regroupant les différents types des monstres.</div><div class="ttdef"><b>Definition:</b> monstre.h:40</div></div>
+<div class="ttc" id="amonstre_8h_html_a9075d9338012a6c9e7abf48441ebf1c0"><div class="ttname"><a href="monstre_8h.html#a9075d9338012a6c9e7abf48441ebf1c0">genererStatistiquesDeBaseMonstre</a></div><div class="ttdeci">t_baseStatistiques genererStatistiquesDeBaseMonstre(const e_monstreType type)</div><div class="ttdoc">Génère les statistiques de base d'un monstre.</div><div class="ttdef"><b>Definition:</b> statistiques.c:44</div></div>
+<div class="ttc" id="amonstre_8h_html_aa3db13cd64e4d2dc8c2d0ac8178c7d4c"><div class="ttname"><a href="monstre_8h.html#aa3db13cd64e4d2dc8c2d0ac8178c7d4c">apparitionMonstre</a></div><div class="ttdeci">void apparitionMonstre(t_liste *entites, t_map *map, const t_vecteur2 positionJoueur, const int niveauJoueur)</div><div class="ttdoc">Fait apparaitre un monstre.</div><div class="ttdef"><b>Definition:</b> monstre.c:157</div></div>
+<div class="ttc" id="amonstre_8h_html_adaaee129a169052ce4f00a27397500bc"><div class="ttname"><a href="monstre_8h.html#adaaee129a169052ce4f00a27397500bc">detruireMonstre</a></div><div class="ttdeci">void detruireMonstre(t_monstre **monstre)</div><div class="ttdoc">Detruit un monstre est libère la mémoire allouée pour ce dernier.</div><div class="ttdef"><b>Definition:</b> monstre.c:67</div></div>
+<div class="ttc" id="amonstre_8h_html_ae4c38faf0caef0d9c4780b90200ef3a4"><div class="ttname"><a href="monstre_8h.html#ae4c38faf0caef0d9c4780b90200ef3a4">statistiquesDeBasesIntervalesMonstres</a></div><div class="ttdeci">const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesMonstres[NB_MONSTRE_TYPES]</div><div class="ttdoc">Tableau regroupant les intervales des statistiques de bases en fonction du type du monstre.</div><div class="ttdef"><b>Definition:</b> generation_bases.c:177</div></div>
+<div class="ttc" id="astatistiques_8h_html"><div class="ttname"><a href="statistiques_8h.html">statistiques.h</a></div><div class="ttdoc">Module de manipulation des statistiques.</div></div>
+<div class="ttc" id="astructs__map_html"><div class="ttname"><a href="structs__map.html">s_map</a></div><div class="ttdef"><b>Definition:</b> map.h:168</div></div>
+<div class="ttc" id="astructs__map_html_a6c97a5653eb4bc2835cabfd7d5491b80"><div class="ttname"><a href="structs__map.html#a6c97a5653eb4bc2835cabfd7d5491b80">s_map::type</a></div><div class="ttdeci">e_mapType type</div><div class="ttdef"><b>Definition:</b> map.h:169</div></div>
+<div class="ttc" id="astructs__map_html_acf20c8c525a9590c247bc8bcd7de06ca"><div class="ttname"><a href="structs__map.html#acf20c8c525a9590c247bc8bcd7de06ca">s_map::entites</a></div><div class="ttdeci">t_liste * entites</div><div class="ttdef"><b>Definition:</b> map.h:172</div></div>
+<div class="ttc" id="astructs__mob_html"><div class="ttname"><a href="structs__mob.html">s_mob</a></div><div class="ttdef"><b>Definition:</b> mob.h:78</div></div>
+<div class="ttc" id="astructs__monstre_html"><div class="ttname"><a href="structs__monstre.html">s_monstre</a></div><div class="ttdef"><b>Definition:</b> monstre.h:61</div></div>
+<div class="ttc" id="astructs__monstre_html_a2d232fc15f2688396256ca4003ac8fa9"><div class="ttname"><a href="structs__monstre.html#a2d232fc15f2688396256ca4003ac8fa9">s_monstre::estNocturne</a></div><div class="ttdeci">boolean estNocturne</div><div class="ttdef"><b>Definition:</b> monstre.h:67</div></div>
+<div class="ttc" id="astructs__monstre_html_a5d0239c4b35d0448a89f095f687961fe"><div class="ttname"><a href="structs__monstre.html#a5d0239c4b35d0448a89f095f687961fe">s_monstre::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> monstre.h:62</div></div>
+<div class="ttc" id="astructs__monstre_html_a8e8b859105944d29920d6cdccc27c502"><div class="ttname"><a href="structs__monstre.html#a8e8b859105944d29920d6cdccc27c502">s_monstre::rayonDetection</a></div><div class="ttdeci">int rayonDetection</div><div class="ttdef"><b>Definition:</b> monstre.h:65</div></div>
+<div class="ttc" id="astructs__monstre_html_ae675456acfb475cd7c0f3744ff75cc2f"><div class="ttname"><a href="structs__monstre.html#ae675456acfb475cd7c0f3744ff75cc2f">s_monstre::type</a></div><div class="ttdeci">e_monstreType type</div><div class="ttdef"><b>Definition:</b> monstre.h:66</div></div>
+<div class="ttc" id="astructt__baseStatistiquesIntervales_html"><div class="ttname"><a href="structt__baseStatistiquesIntervales.html">t_baseStatistiquesIntervales</a></div><div class="ttdoc">Modélise les intervales des statistiques de base.</div></div>
+<div class="ttc" id="astructt__baseStatistiques_html"><div class="ttname"><a href="structt__baseStatistiques.html">t_baseStatistiques</a></div><div class="ttdoc">Structure regroupant les différentes statistiques de base.</div></div>
+<div class="ttc" id="astructt__liste_html"><div class="ttname"><a href="structt__liste.html">t_liste</a></div><div class="ttdoc">Modelise l'emplacement actuel dans la liste.</div></div>
+<div class="ttc" id="astructt__map_html"><div class="ttname"><a href="structt__map.html">t_map</a></div><div class="ttdoc">Modélise une map.</div></div>
+<div class="ttc" id="astructt__monstre_html"><div class="ttname"><a href="structt__monstre.html">t_monstre</a></div><div class="ttdoc">Modélise un monstre.</div></div>
+<div class="ttc" id="astructt__vecteur2_html"><div class="ttname"><a href="structt__vecteur2.html">t_vecteur2</a></div><div class="ttdoc">Structure modélisant un vecteur à deux dimensions.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

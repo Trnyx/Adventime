@@ -1,0 +1,162 @@
+\hypertarget{boss_8c}{}\doxysection{Référence du fichier src/boss.c}
+\label{boss_8c}\index{src/boss.c@{src/boss.c}}
+
+
+Module de gestion des boss.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/physique.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/audio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/blocks\+\_\+tag.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/combat.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/boss.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{boss_8c_aedd5cb25826bb52ae938cc80ec15c304}{update\+Boss}} (\mbox{\hyperlink{structt__boss}{t\+\_\+boss}} $\ast$boss, float distance, \mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$cible)
+\begin{DoxyCompactList}\small\item\em Met à jour le boss. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__boss}{t\+\_\+boss}} $\ast$ \mbox{\hyperlink{boss_8c_a1e43be3e46d79ef623a2841be23db37c}{charger\+Boss}} ()
+\begin{DoxyCompactList}\small\item\em Charge un boss dans la map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{boss_8c_a90ab31b31639440782f454c8cdde14bc}{changer\+Flag}} (const \mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}} jour)
+\begin{DoxyCompactList}\small\item\em Met à jour le flag du boss vaincu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{boss_8c_adb0e4eb60797ec7358a6eac2649fe5f9}{get\+Point\+Apparition\+Boss}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Obtient le point d\textquotesingle{}apparition du boss. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__boss__flags}{t\+\_\+boss\+\_\+flags}} \mbox{\hyperlink{boss_8c_a780c240668652ef948dc3b1fea7bc18b}{initialiser\+Boss\+Flags}} ()
+\begin{DoxyCompactList}\small\item\em Créer et initialise les flags des boss vaincus à 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{boss_8c_ab7216997470c8d912b59d414b349147d}{detruire\+Boss}} (\mbox{\hyperlink{structt__boss}{t\+\_\+boss}} $\ast$$\ast$boss)
+\begin{DoxyCompactList}\small\item\em Detruit un boss est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__boss}{t\+\_\+boss}} $\ast$ \mbox{\hyperlink{boss_8c_a4f39cf873ba128eb65fba7baba225dd6}{creer\+Boss}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position, const \mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}} jour)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour les flags des inputs du joueur et les initialise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion des boss. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{boss_8c_a90ab31b31639440782f454c8cdde14bc}\label{boss_8c_a90ab31b31639440782f454c8cdde14bc}} 
+\index{boss.c@{boss.c}!changerFlag@{changerFlag}}
+\index{changerFlag@{changerFlag}!boss.c@{boss.c}}
+\doxysubsubsection{\texorpdfstring{changerFlag()}{changerFlag()}}
+{\footnotesize\ttfamily void changer\+Flag (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}}}]{jour }\end{DoxyParamCaption})}
+
+
+
+Met à jour le flag du boss vaincu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em jour} & Le jour du boss vaincu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{boss_8c_a1e43be3e46d79ef623a2841be23db37c}\label{boss_8c_a1e43be3e46d79ef623a2841be23db37c}} 
+\index{boss.c@{boss.c}!chargerBoss@{chargerBoss}}
+\index{chargerBoss@{chargerBoss}!boss.c@{boss.c}}
+\doxysubsubsection{\texorpdfstring{chargerBoss()}{chargerBoss()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__boss}{t\+\_\+boss}}$\ast$ charger\+Boss (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Charge un boss dans la map. 
+
+\begin{DoxyReturn}{Renvoie}
+Le boss actif, NULL si aucun boss 
+\end{DoxyReturn}
+\mbox{\Hypertarget{boss_8c_a4f39cf873ba128eb65fba7baba225dd6}\label{boss_8c_a4f39cf873ba128eb65fba7baba225dd6}} 
+\index{boss.c@{boss.c}!creerBoss@{creerBoss}}
+\index{creerBoss@{creerBoss}!boss.c@{boss.c}}
+\doxysubsubsection{\texorpdfstring{creerBoss()}{creerBoss()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__boss}{t\+\_\+boss}}$\ast$ creer\+Boss (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position,  }\item[{const \mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}}}]{jour }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour les flags des inputs du joueur et les initialise. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle le boss apparaît \\
+\hline
+{\em jour} & Le jour correspondant au boss\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur les flags des inputs, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{boss_8c_ab7216997470c8d912b59d414b349147d}\label{boss_8c_ab7216997470c8d912b59d414b349147d}} 
+\index{boss.c@{boss.c}!detruireBoss@{detruireBoss}}
+\index{detruireBoss@{detruireBoss}!boss.c@{boss.c}}
+\doxysubsubsection{\texorpdfstring{detruireBoss()}{detruireBoss()}}
+{\footnotesize\ttfamily void detruire\+Boss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__boss}{t\+\_\+boss}} $\ast$$\ast$}]{boss }\end{DoxyParamCaption})}
+
+
+
+Detruit un boss est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em boss} & L\textquotesingle{}adresse du pointeur du boss à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{boss_8c_adb0e4eb60797ec7358a6eac2649fe5f9}\label{boss_8c_adb0e4eb60797ec7358a6eac2649fe5f9}} 
+\index{boss.c@{boss.c}!getPointApparitionBoss@{getPointApparitionBoss}}
+\index{getPointApparitionBoss@{getPointApparitionBoss}!boss.c@{boss.c}}
+\doxysubsubsection{\texorpdfstring{getPointApparitionBoss()}{getPointApparitionBoss()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} get\+Point\+Apparition\+Boss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Obtient le point d\textquotesingle{}apparition du boss. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle le boss doit apparaitre\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La position où apparait le boss 
+\end{DoxyReturn}
+\mbox{\Hypertarget{boss_8c_a780c240668652ef948dc3b1fea7bc18b}\label{boss_8c_a780c240668652ef948dc3b1fea7bc18b}} 
+\index{boss.c@{boss.c}!initialiserBossFlags@{initialiserBossFlags}}
+\index{initialiserBossFlags@{initialiserBossFlags}!boss.c@{boss.c}}
+\doxysubsubsection{\texorpdfstring{initialiserBossFlags()}{initialiserBossFlags()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__boss__flags}{t\+\_\+boss\+\_\+flags}} initialiser\+Boss\+Flags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Créer et initialise les flags des boss vaincus à 0. 
+
+Les flags des boss indique que le boss à bien été vaincu
+
+\begin{DoxyReturn}{Renvoie}
+Une structure contenant les flags des boss 
+\end{DoxyReturn}
+\mbox{\Hypertarget{boss_8c_aedd5cb25826bb52ae938cc80ec15c304}\label{boss_8c_aedd5cb25826bb52ae938cc80ec15c304}} 
+\index{boss.c@{boss.c}!updateBoss@{updateBoss}}
+\index{updateBoss@{updateBoss}!boss.c@{boss.c}}
+\doxysubsubsection{\texorpdfstring{updateBoss()}{updateBoss()}}
+{\footnotesize\ttfamily void update\+Boss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__boss}{t\+\_\+boss}} $\ast$}]{boss,  }\item[{float}]{distance,  }\item[{\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$}]{cible }\end{DoxyParamCaption})}
+
+
+
+Met à jour le boss. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em boss} & Le boss qui est mit à jour \\
+\hline
+{\em distance} & La distance entre le boss et sa cible \\
+\hline
+{\em cible} & La cible du boss \\
+\hline
+\end{DoxyParams}

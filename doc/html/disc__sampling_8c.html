@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier src/disc_sampling.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier disc_sampling.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Génération de "Poisson Disc Sampling".  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="disc__sampling_8h_source.html">../include/disc_sampling.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae13f2bf0fb8235d34f0251f0ecbcb75f"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disc__sampling_8c.html#ae13f2bf0fb8235d34f0251f0ecbcb75f">pointValide</a> (<a class="el" href="structt__vecteur2.html">t_vecteur2</a> elementsExistant[], const int nombreElementsExistant, const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> nouveauPoint, const float rayon)</td></tr>
+<tr class="memdesc:ae13f2bf0fb8235d34f0251f0ecbcb75f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si le point à placer est un point valide.  <a href="disc__sampling_8c.html#ae13f2bf0fb8235d34f0251f0ecbcb75f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae13f2bf0fb8235d34f0251f0ecbcb75f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4e1c7a59be96b63b36f562969986537"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disc__sampling_8c.html#af4e1c7a59be96b63b36f562969986537">creerNouveauPoint</a> (<a class="el" href="structt__vecteur2.html">t_vecteur2</a> min, <a class="el" href="structt__vecteur2.html">t_vecteur2</a> max)</td></tr>
+<tr class="memdesc:af4e1c7a59be96b63b36f562969986537"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créer un nouveau point aléatoire entre les coordonnées min et max données.  <a href="disc__sampling_8c.html#af4e1c7a59be96b63b36f562969986537">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af4e1c7a59be96b63b36f562969986537"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a367e341f7b7ece47b64545f5d9c1be3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disc__sampling_8c.html#a367e341f7b7ece47b64545f5d9c1be3c">ajouterPoint</a> (<a class="el" href="structt__discSampling.html">t_discSampling</a> *grille, const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> nouveauPoint, const int i)</td></tr>
+<tr class="memdesc:a367e341f7b7ece47b64545f5d9c1be3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajouter un nouveau point dans la grille.  <a href="disc__sampling_8c.html#a367e341f7b7ece47b64545f5d9c1be3c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a367e341f7b7ece47b64545f5d9c1be3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae009c220ccac30fe3ca0ff13309bb539"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__discSampling.html">t_discSampling</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="disc__sampling_8c.html#ae009c220ccac30fe3ca0ff13309bb539">genererGrilleDiscSampling</a> (const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> minGrille, const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> maxGrille, int nbElementsObjectif, float rayon, const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> *centre)</td></tr>
+<tr class="memdesc:ae009c220ccac30fe3ca0ff13309bb539"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère une grille / un tableau de point.  <a href="disc__sampling_8c.html#ae009c220ccac30fe3ca0ff13309bb539">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae009c220ccac30fe3ca0ff13309bb539"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Génération de "Poisson Disc Sampling". </p>
+<p>Poisson Disc Sampling est une technique permettant de sélectionner de manière aléatoire des points serrés de façon à ce qu'ils respectent une distance minimale Comme les points sont choisis de façon aléatoire, le résultat a un aspect plus organique</p>
+<ol type="1">
+<li>Un premier point est généré aléatoirement et est stocké dans un tableau</li>
+<li>Pour chaque nouveau points généré on regarde la distance le séparant de tous les autres points</li>
+<li>Si ce dernier est trop loin ou trop proche alors on l'ignore et créer un nouveau point</li>
+</ol>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>15 mars </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a367e341f7b7ece47b64545f5d9c1be3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a367e341f7b7ece47b64545f5d9c1be3c">&#9670;&nbsp;</a></span>ajouterPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ajouterPoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__discSampling.html">t_discSampling</a> *&#160;</td>
+          <td class="paramname"><em>grille</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>nouveauPoint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ajouter un nouveau point dans la grille. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">grille</td><td>La grille contenant tous les points </td></tr>
+    <tr><td class="paramname">nouveauPoint</td><td>Le point à ajouter </td></tr>
+    <tr><td class="paramname">i</td><td>L'index du nouveau point dans la grille </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af4e1c7a59be96b63b36f562969986537"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4e1c7a59be96b63b36f562969986537">&#9670;&nbsp;</a></span>creerNouveauPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__vecteur2.html">t_vecteur2</a> creerNouveauPoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Créer un nouveau point aléatoire entre les coordonnées min et max données. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">min</td><td>Les coordonnées x et y minimum </td></tr>
+    <tr><td class="paramname">max</td><td>Les coordonnées x et y maximum</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La position du nouveau point </dd></dl>
+
+</div>
+</div>
+<a id="ae009c220ccac30fe3ca0ff13309bb539"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae009c220ccac30fe3ca0ff13309bb539">&#9670;&nbsp;</a></span>genererGrilleDiscSampling()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__discSampling.html">t_discSampling</a> genererGrilleDiscSampling </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>minGrille</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>maxGrille</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nbElementsObjectif</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>rayon</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> *&#160;</td>
+          <td class="paramname"><em>centre</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Génère une grille / un tableau de point. </p>
+<p>Ces points sont généré de sorte à ce qu'ils suivent l'algorithme "Poisson Disc Sampling"</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minGrille</td><td>Les coordonnées x et y minimum de la grille </td></tr>
+    <tr><td class="paramname">maxGrille</td><td>Les coordonnées x et y maximum de la grille </td></tr>
+    <tr><td class="paramname">nbElementsObjectif</td><td>Le nombre d'éléments souhaité (ils ne seront pas tous créés) </td></tr>
+    <tr><td class="paramname">rayon</td><td>Le rayon minimum de placement</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La grille de points </dd></dl>
+
+</div>
+</div>
+<a id="ae13f2bf0fb8235d34f0251f0ecbcb75f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae13f2bf0fb8235d34f0251f0ecbcb75f">&#9670;&nbsp;</a></span>pointValide()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean pointValide </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>elementsExistant</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>nombreElementsExistant</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>nouveauPoint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>rayon</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si le point à placer est un point valide. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">elementsExistant</td><td>Tableau des éléments déjà existant </td></tr>
+    <tr><td class="paramname">nombreElementsExistant</td><td>Le nombre d'élément déjà existant </td></tr>
+    <tr><td class="paramname">nouveauPoint</td><td>Le point à créer </td></tr>
+    <tr><td class="paramname">rayon</td><td>Le rayon minimum autorisé</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>VRAI si le point peut être placé, FAUX sinon </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

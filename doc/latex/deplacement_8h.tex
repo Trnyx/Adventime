@@ -1,0 +1,124 @@
+\hypertarget{deplacement_8h}{}\doxysection{Référence du fichier include/deplacement.h}
+\label{deplacement_8h}\index{include/deplacement.h@{include/deplacement.h}}
+
+
+Module de manipulation pour les déplacements.  
+
+
+{\ttfamily \#include \char`\"{}mob.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{deplacement_8h_a81c17839abec879490d7efc3acb95665}{deplacer\+Vers}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, const float \mbox{\hyperlink{attributs__statistiques_8h_aef55e1775d611bfea0196692da1a0bc5}{vitesse}}, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} cible)
+\begin{DoxyCompactList}\small\item\em Déplace un mob vers une position cible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{deplacement_8h_a9b25d64f5367c17c935496fad5f364b1}{deplacer\+Autour}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, const float \mbox{\hyperlink{attributs__statistiques_8h_aef55e1775d611bfea0196692da1a0bc5}{vitesse}}, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} cible)
+\begin{DoxyCompactList}\small\item\em Deplace un mob autour d\textquotesingle{}une position cible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{deplacement_8h_a6dc787b6855ec266862a979f24a9b1d5}{seloigne\+De}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, const float \mbox{\hyperlink{attributs__statistiques_8h_aef55e1775d611bfea0196692da1a0bc5}{vitesse}}, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} cible)
+\begin{DoxyCompactList}\small\item\em Deplace le mob en direction opposé à la cible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{deplacement_8h_ae33224e15c3a501d8361d50429b9b6bf}{fin\+Deplacement}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob)
+\begin{DoxyCompactList}\small\item\em Termine les déplacement du mob. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{deplacement_8h_a66fc7fa709486d16886ecbbccee8f52e}{attaquer}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, const float distance\+Finale)
+\begin{DoxyCompactList}\small\item\em Execute l\textquotesingle{}attaque d\textquotesingle{}un mob. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation pour les déplacements. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{deplacement_8h_a66fc7fa709486d16886ecbbccee8f52e}\label{deplacement_8h_a66fc7fa709486d16886ecbbccee8f52e}} 
+\index{deplacement.h@{deplacement.h}!attaquer@{attaquer}}
+\index{attaquer@{attaquer}!deplacement.h@{deplacement.h}}
+\doxysubsubsection{\texorpdfstring{attaquer()}{attaquer()}}
+{\footnotesize\ttfamily void attaquer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{const float}]{distance\+Finale }\end{DoxyParamCaption})}
+
+
+
+Execute l\textquotesingle{}attaque d\textquotesingle{}un mob. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Le mob qui attaque \\
+\hline
+{\em distance\+Finale} & La séparant la cible du mob et celui-\/ci \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{deplacement_8h_a9b25d64f5367c17c935496fad5f364b1}\label{deplacement_8h_a9b25d64f5367c17c935496fad5f364b1}} 
+\index{deplacement.h@{deplacement.h}!deplacerAutour@{deplacerAutour}}
+\index{deplacerAutour@{deplacerAutour}!deplacement.h@{deplacement.h}}
+\doxysubsubsection{\texorpdfstring{deplacerAutour()}{deplacerAutour()}}
+{\footnotesize\ttfamily void deplacer\+Autour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{const float}]{vitesse,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{cible }\end{DoxyParamCaption})}
+
+
+
+Deplace un mob autour d\textquotesingle{}une position cible. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui doit se déplacer \\
+\hline
+{\em vitesse} & La vitesse de déplacement \\
+\hline
+{\em cible} & La position cible autour de laquelle se déplace le mob \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{deplacement_8h_a81c17839abec879490d7efc3acb95665}\label{deplacement_8h_a81c17839abec879490d7efc3acb95665}} 
+\index{deplacement.h@{deplacement.h}!deplacerVers@{deplacerVers}}
+\index{deplacerVers@{deplacerVers}!deplacement.h@{deplacement.h}}
+\doxysubsubsection{\texorpdfstring{deplacerVers()}{deplacerVers()}}
+{\footnotesize\ttfamily void deplacer\+Vers (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{const float}]{vitesse,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{cible }\end{DoxyParamCaption})}
+
+
+
+Déplace un mob vers une position cible. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui doit se déplacer \\
+\hline
+{\em vitesse} & La vitesse de déplacement du mob \\
+\hline
+{\em cible} & La position cible que doit rejoindre le mob \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{deplacement_8h_ae33224e15c3a501d8361d50429b9b6bf}\label{deplacement_8h_ae33224e15c3a501d8361d50429b9b6bf}} 
+\index{deplacement.h@{deplacement.h}!finDeplacement@{finDeplacement}}
+\index{finDeplacement@{finDeplacement}!deplacement.h@{deplacement.h}}
+\doxysubsubsection{\texorpdfstring{finDeplacement()}{finDeplacement()}}
+{\footnotesize\ttfamily void fin\+Deplacement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob }\end{DoxyParamCaption})}
+
+
+
+Termine les déplacement du mob. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui se déplace \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{deplacement_8h_a6dc787b6855ec266862a979f24a9b1d5}\label{deplacement_8h_a6dc787b6855ec266862a979f24a9b1d5}} 
+\index{deplacement.h@{deplacement.h}!seloigneDe@{seloigneDe}}
+\index{seloigneDe@{seloigneDe}!deplacement.h@{deplacement.h}}
+\doxysubsubsection{\texorpdfstring{seloigneDe()}{seloigneDe()}}
+{\footnotesize\ttfamily void seloigne\+De (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{const float}]{vitesse,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{cible }\end{DoxyParamCaption})}
+
+
+
+Deplace le mob en direction opposé à la cible. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui doit se déplacer \\
+\hline
+{\em vitesse} & La vitesse de déplacement \\
+\hline
+{\em cible} & La position de la cible de laquelle le mob s\textquotesingle{}éloigne \\
+\hline
+\end{DoxyParams}

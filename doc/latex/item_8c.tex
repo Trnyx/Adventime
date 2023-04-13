@@ -1,0 +1,255 @@
+\hypertarget{item_8c}{}\doxysection{Référence du fichier src/item.c}
+\label{item_8c}\index{src/item.c@{src/item.c}}
+
+
+Module de gestion des items.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/audio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/physique.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/item.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/inventaire.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{item_8c_aaa6c0278b4e7fceb1fc3d9be59c90ca6}{item\+\_\+existe}} (\mbox{\hyperlink{structt__item}{t\+\_\+item}} $\ast$const item)
+\begin{DoxyCompactList}\small\item\em Vérifie que l\textquotesingle{}item existe. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{item_8c_ae6f8343326d9bec2172cb1aa3bf6e99c}{item\+\_\+afficher}} (\mbox{\hyperlink{structt__item}{t\+\_\+item}} $\ast$item)
+\begin{DoxyCompactList}\small\item\em Affiche les caractéristiques d\textquotesingle{}un item. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{item_8c_a7d12f37f111117a94a2ee8a08d04175e}{item\+\_\+detruire}} (\mbox{\hyperlink{structt__item}{t\+\_\+item}} $\ast$$\ast$item)
+\begin{DoxyCompactList}\small\item\em Détruis un item. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__item}{t\+\_\+item}} $\ast$ \mbox{\hyperlink{item_8c_a179096058768130909d8b958f4ac69b7}{item\+\_\+creer}} (\mbox{\hyperlink{item_8h_a7e2152df03629d9a84fcc68cf675b93b}{e\+\_\+item\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Crée un item. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{item_8c_a06025caa562064d9be43920a868c99af}{arme\+\_\+existe}} (\mbox{\hyperlink{structt__arme}{t\+\_\+arme}} $\ast$const arme)
+\begin{DoxyCompactList}\small\item\em Vérifie que l\textquotesingle{}arme existe. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__arme}{t\+\_\+arme}} $\ast$ \mbox{\hyperlink{item_8c_a714128d0f137d9dc2067f936e70e8c97}{arme\+\_\+creer}} (\mbox{\hyperlink{item_8h_a7e2152df03629d9a84fcc68cf675b93b}{e\+\_\+item\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Crée une arme. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{item_8c_ab12ec41d24a7b9e060fcde8864ec8f51}{update\+Item\+Entite}} (\mbox{\hyperlink{structt__itemEntite}{t\+\_\+item\+Entite}} $\ast$item\+Entite, const float distance, \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$recuperateur)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}item entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{item_8c_aaa4cda46cdeeb1f64d2a9eed4fba4ecf}{detruire\+Item\+Entite}} (\mbox{\hyperlink{structt__itemEntite}{t\+\_\+item\+Entite}} $\ast$$\ast$item\+Entite)
+\begin{DoxyCompactList}\small\item\em Detruit un coffre est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__itemEntite}{t\+\_\+item\+Entite}} $\ast$ \mbox{\hyperlink{item_8c_a82b5a32acf1efeeed7ed88f608fd57bc}{creer\+Item\+Entite}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position, const \mbox{\hyperlink{item_8h_a7e2152df03629d9a84fcc68cf675b93b}{e\+\_\+item\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un item entité et le créer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long int \mbox{\hyperlink{item_8c_a61f9f1c5c397c609c3a9fd417585e3a1}{item\+\_\+cpt}} = 0
+\item 
+unsigned long int \mbox{\hyperlink{item_8c_a32c202eff87a9304b0fc1d94d2b76dcf}{arme\+\_\+cpt}} = 0
+\item 
+\mbox{\hyperlink{structt__baseItem}{t\+\_\+base\+Item}} \mbox{\hyperlink{item_8c_a5e430bff9f168c2dc8f5d7d475a60729}{bases\+Items}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les bases des différents items. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion des items. 
+
+\begin{DoxyAuthor}{Auteur}
+Julien Houget \& Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+27/01/22 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{item_8c_a714128d0f137d9dc2067f936e70e8c97}\label{item_8c_a714128d0f137d9dc2067f936e70e8c97}} 
+\index{item.c@{item.c}!arme\_creer@{arme\_creer}}
+\index{arme\_creer@{arme\_creer}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{arme\_creer()}{arme\_creer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__arme}{t\+\_\+arme}}$\ast$ arme\+\_\+creer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{item_8h_a7e2152df03629d9a84fcc68cf675b93b}{e\+\_\+item\+Tag}}}]{tag }\end{DoxyParamCaption})}
+
+
+
+Crée une arme. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em degat} & Entier spécifiant le nombre de dégats infligées par l\textquotesingle{}arme. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{item_8c_a06025caa562064d9be43920a868c99af}\label{item_8c_a06025caa562064d9be43920a868c99af}} 
+\index{item.c@{item.c}!arme\_existe@{arme\_existe}}
+\index{arme\_existe@{arme\_existe}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{arme\_existe()}{arme\_existe()}}
+{\footnotesize\ttfamily boolean arme\+\_\+existe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__arme}{t\+\_\+arme}} $\ast$const}]{arme }\end{DoxyParamCaption})}
+
+
+
+Vérifie que l\textquotesingle{}arme existe. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em arme} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{item_8c_a82b5a32acf1efeeed7ed88f608fd57bc}\label{item_8c_a82b5a32acf1efeeed7ed88f608fd57bc}} 
+\index{item.c@{item.c}!creerItemEntite@{creerItemEntite}}
+\index{creerItemEntite@{creerItemEntite}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{creerItemEntite()}{creerItemEntite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__itemEntite}{t\+\_\+item\+Entite}}$\ast$ creer\+Item\+Entite (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position,  }\item[{const \mbox{\hyperlink{item_8h_a7e2152df03629d9a84fcc68cf675b93b}{e\+\_\+item\+Tag}}}]{tag }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un item entité et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle l\textquotesingle{}item entité doit apparaitre \\
+\hline
+{\em tag} & Le tag de l\textquotesingle{}item qui doit être créé\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur l\textquotesingle{}item, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{item_8c_aaa4cda46cdeeb1f64d2a9eed4fba4ecf}\label{item_8c_aaa4cda46cdeeb1f64d2a9eed4fba4ecf}} 
+\index{item.c@{item.c}!detruireItemEntite@{detruireItemEntite}}
+\index{detruireItemEntite@{detruireItemEntite}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{detruireItemEntite()}{detruireItemEntite()}}
+{\footnotesize\ttfamily void detruire\+Item\+Entite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__itemEntite}{t\+\_\+item\+Entite}} $\ast$$\ast$}]{item\+Entite }\end{DoxyParamCaption})}
+
+
+
+Detruit un coffre est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em item\+Entite} & L\textquotesingle{}adresse du pointeur de l\textquotesingle{}item entité \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{item_8c_ae6f8343326d9bec2172cb1aa3bf6e99c}\label{item_8c_ae6f8343326d9bec2172cb1aa3bf6e99c}} 
+\index{item.c@{item.c}!item\_afficher@{item\_afficher}}
+\index{item\_afficher@{item\_afficher}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{item\_afficher()}{item\_afficher()}}
+{\footnotesize\ttfamily int item\+\_\+afficher (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__item}{t\+\_\+item}} $\ast$}]{item }\end{DoxyParamCaption})}
+
+
+
+Affiche les caractéristiques d\textquotesingle{}un item. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{item_8c_a179096058768130909d8b958f4ac69b7}\label{item_8c_a179096058768130909d8b958f4ac69b7}} 
+\index{item.c@{item.c}!item\_creer@{item\_creer}}
+\index{item\_creer@{item\_creer}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{item\_creer()}{item\_creer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__item}{t\+\_\+item}}$\ast$ item\+\_\+creer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{item_8h_a7e2152df03629d9a84fcc68cf675b93b}{e\+\_\+item\+Tag}}}]{tag }\end{DoxyParamCaption})}
+
+
+
+Crée un item. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em categorie} & String spécifiant la catégorie de l\textquotesingle{}item (arme, outi, etc.). \\
+\hline
+{\em tag} & String spécifiant le type de l\textquotesingle{}item (épée en pierre, pioche, etc.). \\
+\hline
+{\em nom} & String spécifiant le nom de l\textquotesingle{}item. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{item_8c_a7d12f37f111117a94a2ee8a08d04175e}\label{item_8c_a7d12f37f111117a94a2ee8a08d04175e}} 
+\index{item.c@{item.c}!item\_detruire@{item\_detruire}}
+\index{item\_detruire@{item\_detruire}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{item\_detruire()}{item\_detruire()}}
+{\footnotesize\ttfamily int item\+\_\+detruire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__item}{t\+\_\+item}} $\ast$$\ast$}]{item }\end{DoxyParamCaption})}
+
+
+
+Détruis un item. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em item} & L\textquotesingle{}addresse de l\textquotesingle{}item. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{item_8c_aaa6c0278b4e7fceb1fc3d9be59c90ca6}\label{item_8c_aaa6c0278b4e7fceb1fc3d9be59c90ca6}} 
+\index{item.c@{item.c}!item\_existe@{item\_existe}}
+\index{item\_existe@{item\_existe}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{item\_existe()}{item\_existe()}}
+{\footnotesize\ttfamily boolean item\+\_\+existe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__item}{t\+\_\+item}} $\ast$const}]{item }\end{DoxyParamCaption})}
+
+
+
+Vérifie que l\textquotesingle{}item existe. 
+
+FONCTIONS 
+\begin{DoxyParams}{Paramètres}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{item_8c_ab12ec41d24a7b9e060fcde8864ec8f51}\label{item_8c_ab12ec41d24a7b9e060fcde8864ec8f51}} 
+\index{item.c@{item.c}!updateItemEntite@{updateItemEntite}}
+\index{updateItemEntite@{updateItemEntite}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{updateItemEntite()}{updateItemEntite()}}
+{\footnotesize\ttfamily void update\+Item\+Entite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__itemEntite}{t\+\_\+item\+Entite}} $\ast$}]{item\+Entite,  }\item[{const float}]{distance,  }\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{recuperateur }\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}item entité 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em item\+Entite} & L\textquotesingle{}item entité qui doit être mis à jour \\
+\hline
+{\em distance} & La distance entre l\textquotesingle{}item entité et le joueur \\
+\hline
+{\em recuperateur} & L\textquotesingle{}entité récupérant l\textquotesingle{}item \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{item_8c_a32c202eff87a9304b0fc1d94d2b76dcf}\label{item_8c_a32c202eff87a9304b0fc1d94d2b76dcf}} 
+\index{item.c@{item.c}!arme\_cpt@{arme\_cpt}}
+\index{arme\_cpt@{arme\_cpt}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{arme\_cpt}{arme\_cpt}}
+{\footnotesize\ttfamily unsigned long int arme\+\_\+cpt = 0}
+
+Compteur d\textquotesingle{}arme \mbox{\Hypertarget{item_8c_a5e430bff9f168c2dc8f5d7d475a60729}\label{item_8c_a5e430bff9f168c2dc8f5d7d475a60729}} 
+\index{item.c@{item.c}!basesItems@{basesItems}}
+\index{basesItems@{basesItems}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{basesItems}{basesItems}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__baseItem}{t\+\_\+base\+Item}} bases\+Items\mbox{[}$\,$\mbox{]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    \{ ITEM\_STEAK, CATEGORIE\_MATERIEL, 16 \},}
+\DoxyCodeLine{    \{ ITEM\_PORC, CATEGORIE\_MATERIEL, 16 \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \{ ITEM\_MATERIEL\_BATON, CATEGORIE\_MATERIEL, 16 \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \{ ITEM\_OUTIL\_PIOCHE, CATEGORIE\_OUTIL, 1 \},}
+\DoxyCodeLine{}
+\DoxyCodeLine{    }
+\DoxyCodeLine{    \{ ITEM\_ARME\_EPEE, CATEGORIE\_ARME, 1 \},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Tableau regroupant les bases des différents items. 
+
+
+\begin{DoxyItemize}
+\item Tag
+\item Catégorie
+\item Le nombre d\textquotesingle{}item par stack 
+\end{DoxyItemize}\mbox{\Hypertarget{item_8c_a61f9f1c5c397c609c3a9fd417585e3a1}\label{item_8c_a61f9f1c5c397c609c3a9fd417585e3a1}} 
+\index{item.c@{item.c}!item\_cpt@{item\_cpt}}
+\index{item\_cpt@{item\_cpt}!item.c@{item.c}}
+\doxysubsubsection{\texorpdfstring{item\_cpt}{item\_cpt}}
+{\footnotesize\ttfamily unsigned long int item\+\_\+cpt = 0}
+
+VARIABLE LOCALE Compteur d\textquotesingle{}item 

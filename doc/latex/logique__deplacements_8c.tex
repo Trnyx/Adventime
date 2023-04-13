@@ -1,0 +1,112 @@
+\hypertarget{logique__deplacements_8c}{}\doxysection{Référence du fichier src/logique\+\_\+deplacements.c}
+\label{logique__deplacements_8c}\index{src/logique\_deplacements.c@{src/logique\_deplacements.c}}
+
+
+Gestion des déplacement du jeu.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/physique.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/mob.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/deplacement.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{logique__deplacements_8c_ae33224e15c3a501d8361d50429b9b6bf}{fin\+Deplacement}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob)
+\begin{DoxyCompactList}\small\item\em Termine les déplacement du mob. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{logique__deplacements_8c_a81c17839abec879490d7efc3acb95665}{deplacer\+Vers}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, const float \mbox{\hyperlink{attributs__statistiques_8h_aef55e1775d611bfea0196692da1a0bc5}{vitesse}}, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} cible)
+\begin{DoxyCompactList}\small\item\em Déplace un mob vers une position cible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{logique__deplacements_8c_a9b25d64f5367c17c935496fad5f364b1}{deplacer\+Autour}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, const float \mbox{\hyperlink{attributs__statistiques_8h_aef55e1775d611bfea0196692da1a0bc5}{vitesse}}, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} cible)
+\begin{DoxyCompactList}\small\item\em Deplace un mob autour d\textquotesingle{}une position cible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{logique__deplacements_8c_a6dc787b6855ec266862a979f24a9b1d5}{seloigne\+De}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, const float \mbox{\hyperlink{attributs__statistiques_8h_aef55e1775d611bfea0196692da1a0bc5}{vitesse}}, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} cible)
+\begin{DoxyCompactList}\small\item\em Deplace le mob en direction opposé à la cible. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion des déplacement du jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{logique__deplacements_8c_a9b25d64f5367c17c935496fad5f364b1}\label{logique__deplacements_8c_a9b25d64f5367c17c935496fad5f364b1}} 
+\index{logique\_deplacements.c@{logique\_deplacements.c}!deplacerAutour@{deplacerAutour}}
+\index{deplacerAutour@{deplacerAutour}!logique\_deplacements.c@{logique\_deplacements.c}}
+\doxysubsubsection{\texorpdfstring{deplacerAutour()}{deplacerAutour()}}
+{\footnotesize\ttfamily void deplacer\+Autour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{const float}]{vitesse,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{cible }\end{DoxyParamCaption})}
+
+
+
+Deplace un mob autour d\textquotesingle{}une position cible. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui doit se déplacer \\
+\hline
+{\em vitesse} & La vitesse de déplacement \\
+\hline
+{\em cible} & La position cible autour de laquelle se déplace le mob \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logique__deplacements_8c_a81c17839abec879490d7efc3acb95665}\label{logique__deplacements_8c_a81c17839abec879490d7efc3acb95665}} 
+\index{logique\_deplacements.c@{logique\_deplacements.c}!deplacerVers@{deplacerVers}}
+\index{deplacerVers@{deplacerVers}!logique\_deplacements.c@{logique\_deplacements.c}}
+\doxysubsubsection{\texorpdfstring{deplacerVers()}{deplacerVers()}}
+{\footnotesize\ttfamily void deplacer\+Vers (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{const float}]{vitesse,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{cible }\end{DoxyParamCaption})}
+
+
+
+Déplace un mob vers une position cible. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui doit se déplacer \\
+\hline
+{\em vitesse} & La vitesse de déplacement du mob \\
+\hline
+{\em cible} & La position cible que doit rejoindre le mob \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logique__deplacements_8c_ae33224e15c3a501d8361d50429b9b6bf}\label{logique__deplacements_8c_ae33224e15c3a501d8361d50429b9b6bf}} 
+\index{logique\_deplacements.c@{logique\_deplacements.c}!finDeplacement@{finDeplacement}}
+\index{finDeplacement@{finDeplacement}!logique\_deplacements.c@{logique\_deplacements.c}}
+\doxysubsubsection{\texorpdfstring{finDeplacement()}{finDeplacement()}}
+{\footnotesize\ttfamily void fin\+Deplacement (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob }\end{DoxyParamCaption})}
+
+
+
+Termine les déplacement du mob. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui se déplace \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{logique__deplacements_8c_a6dc787b6855ec266862a979f24a9b1d5}\label{logique__deplacements_8c_a6dc787b6855ec266862a979f24a9b1d5}} 
+\index{logique\_deplacements.c@{logique\_deplacements.c}!seloigneDe@{seloigneDe}}
+\index{seloigneDe@{seloigneDe}!logique\_deplacements.c@{logique\_deplacements.c}}
+\doxysubsubsection{\texorpdfstring{seloigneDe()}{seloigneDe()}}
+{\footnotesize\ttfamily void seloigne\+De (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{const float}]{vitesse,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{cible }\end{DoxyParamCaption})}
+
+
+
+Deplace le mob en direction opposé à la cible. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui doit se déplacer \\
+\hline
+{\em vitesse} & La vitesse de déplacement \\
+\hline
+{\em cible} & La position de la cible de laquelle le mob s\textquotesingle{}éloigne \\
+\hline
+\end{DoxyParams}

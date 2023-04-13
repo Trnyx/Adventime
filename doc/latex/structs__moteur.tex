@@ -1,0 +1,117 @@
+\hypertarget{structs__moteur}{}\doxysection{Référence de la structure s\+\_\+moteur}
+\label{structs__moteur}\index{s\_moteur@{s\_moteur}}
+\doxysubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Window $\ast$ \mbox{\hyperlink{structs__moteur_a5e3316b77214a8b6af140fafd36dc872}{window}}
+\item 
+SDL\+\_\+\+Renderer $\ast$ \mbox{\hyperlink{structs__moteur_a3def9cb4c9002ab3f38b73ea21940596}{renderer}}
+\item 
+int \mbox{\hyperlink{structs__moteur_a76572d3008cbe247aaf2b0276f742957}{window\+\_\+width}}
+\item 
+int \mbox{\hyperlink{structs__moteur_a458af7bb6a7ce0446c69e0b18ddc136c}{window\+\_\+height}}
+\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{structs__moteur_a94f9336fa9ec297015cf919ee8bdd2a0}{position\+Souris}}
+\item 
+\mbox{\hyperlink{structt__camera}{t\+\_\+camera}} $\ast$ \mbox{\hyperlink{structs__moteur_a796d95e449107717c3f8df6a141a3d80}{camera}}
+\item 
+\mbox{\hyperlink{structt__textures}{t\+\_\+textures}} $\ast$ \mbox{\hyperlink{structs__moteur_aaca3eb3ffdf266c04d9cb4d5cea42e38}{textures}}
+\item 
+\mbox{\hyperlink{structt__controles}{t\+\_\+controles}} \mbox{\hyperlink{structs__moteur_ac29f8aa409e51f5dd550d8d214bf954c}{controles}}
+\item 
+\mbox{\hyperlink{structt__cache}{t\+\_\+cache}} $\ast$ \mbox{\hyperlink{structs__moteur_a55c71e50f28516dbda87e2fa009c4e89}{cache}}
+\item 
+\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$ \mbox{\hyperlink{structs__moteur_a359724e665de4a6f8faa08a92593bb9a}{temps}}
+\item 
+unsigned int \mbox{\hyperlink{structs__moteur_a0818cbaa13b9bf3cfddfdf3d52514139}{frame}}
+\item 
+state\+\_\+main \mbox{\hyperlink{structs__moteur_ae418d27c36cfd2689629679d637becdb}{state}}
+\item 
+TTF\+\_\+\+Font $\ast$ \mbox{\hyperlink{structs__moteur_aad14538489467c95b1363a618309f875}{font}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentation des données membres}
+\mbox{\Hypertarget{structs__moteur_a55c71e50f28516dbda87e2fa009c4e89}\label{structs__moteur_a55c71e50f28516dbda87e2fa009c4e89}} 
+\index{s\_moteur@{s\_moteur}!cache@{cache}}
+\index{cache@{cache}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{cache}{cache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__cache}{t\+\_\+cache}}$\ast$ s\+\_\+moteur\+::cache}
+
+Cache du jeu \mbox{\Hypertarget{structs__moteur_a796d95e449107717c3f8df6a141a3d80}\label{structs__moteur_a796d95e449107717c3f8df6a141a3d80}} 
+\index{s\_moteur@{s\_moteur}!camera@{camera}}
+\index{camera@{camera}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{camera}{camera}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__camera}{t\+\_\+camera}}$\ast$ s\+\_\+moteur\+::camera}
+
+La caméra \mbox{\Hypertarget{structs__moteur_ac29f8aa409e51f5dd550d8d214bf954c}\label{structs__moteur_ac29f8aa409e51f5dd550d8d214bf954c}} 
+\index{s\_moteur@{s\_moteur}!controles@{controles}}
+\index{controles@{controles}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{controles}{controles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__controles}{t\+\_\+controles}} s\+\_\+moteur\+::controles}
+
+Les contrôles du jeu \mbox{\Hypertarget{structs__moteur_aad14538489467c95b1363a618309f875}\label{structs__moteur_aad14538489467c95b1363a618309f875}} 
+\index{s\_moteur@{s\_moteur}!font@{font}}
+\index{font@{font}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{font}{font}}
+{\footnotesize\ttfamily TTF\+\_\+\+Font$\ast$ s\+\_\+moteur\+::font}
+
+La police d\textquotesingle{}écriture \mbox{\Hypertarget{structs__moteur_a0818cbaa13b9bf3cfddfdf3d52514139}\label{structs__moteur_a0818cbaa13b9bf3cfddfdf3d52514139}} 
+\index{s\_moteur@{s\_moteur}!frame@{frame}}
+\index{frame@{frame}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{frame}{frame}}
+{\footnotesize\ttfamily unsigned int s\+\_\+moteur\+::frame}
+
+Le timestamp (tick) de la drame actuelle \mbox{\Hypertarget{structs__moteur_a94f9336fa9ec297015cf919ee8bdd2a0}\label{structs__moteur_a94f9336fa9ec297015cf919ee8bdd2a0}} 
+\index{s\_moteur@{s\_moteur}!positionSouris@{positionSouris}}
+\index{positionSouris@{positionSouris}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{positionSouris}{positionSouris}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} s\+\_\+moteur\+::position\+Souris}
+
+La position de la souris sur l\textquotesingle{}écran \mbox{\Hypertarget{structs__moteur_a3def9cb4c9002ab3f38b73ea21940596}\label{structs__moteur_a3def9cb4c9002ab3f38b73ea21940596}} 
+\index{s\_moteur@{s\_moteur}!renderer@{renderer}}
+\index{renderer@{renderer}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer$\ast$ s\+\_\+moteur\+::renderer}
+
+Le renderer du jeu \mbox{\Hypertarget{structs__moteur_ae418d27c36cfd2689629679d637becdb}\label{structs__moteur_ae418d27c36cfd2689629679d637becdb}} 
+\index{s\_moteur@{s\_moteur}!state@{state}}
+\index{state@{state}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily state\+\_\+main s\+\_\+moteur\+::state}
+
+L\textquotesingle{}état du jeu (écran à afficher) \mbox{\Hypertarget{structs__moteur_a359724e665de4a6f8faa08a92593bb9a}\label{structs__moteur_a359724e665de4a6f8faa08a92593bb9a}} 
+\index{s\_moteur@{s\_moteur}!temps@{temps}}
+\index{temps@{temps}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{temps}{temps}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__temps}{t\+\_\+temps}}$\ast$ s\+\_\+moteur\+::temps}
+
+Le temps dans le jeu \mbox{\Hypertarget{structs__moteur_aaca3eb3ffdf266c04d9cb4d5cea42e38}\label{structs__moteur_aaca3eb3ffdf266c04d9cb4d5cea42e38}} 
+\index{s\_moteur@{s\_moteur}!textures@{textures}}
+\index{textures@{textures}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{textures}{textures}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__textures}{t\+\_\+textures}}$\ast$ s\+\_\+moteur\+::textures}
+
+Toutes les textures du jeu \mbox{\Hypertarget{structs__moteur_a5e3316b77214a8b6af140fafd36dc872}\label{structs__moteur_a5e3316b77214a8b6af140fafd36dc872}} 
+\index{s\_moteur@{s\_moteur}!window@{window}}
+\index{window@{window}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily SDL\+\_\+\+Window$\ast$ s\+\_\+moteur\+::window}
+
+La fenetre du jeu \mbox{\Hypertarget{structs__moteur_a458af7bb6a7ce0446c69e0b18ddc136c}\label{structs__moteur_a458af7bb6a7ce0446c69e0b18ddc136c}} 
+\index{s\_moteur@{s\_moteur}!window\_height@{window\_height}}
+\index{window\_height@{window\_height}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{window\_height}{window\_height}}
+{\footnotesize\ttfamily int s\+\_\+moteur\+::window\+\_\+height}
+
+Hauteur de la fenêtre \mbox{\Hypertarget{structs__moteur_a76572d3008cbe247aaf2b0276f742957}\label{structs__moteur_a76572d3008cbe247aaf2b0276f742957}} 
+\index{s\_moteur@{s\_moteur}!window\_width@{window\_width}}
+\index{window\_width@{window\_width}!s\_moteur@{s\_moteur}}
+\doxysubsubsection{\texorpdfstring{window\_width}{window\_width}}
+{\footnotesize\ttfamily int s\+\_\+moteur\+::window\+\_\+width}
+
+Largeur de la fenêtre 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{moteur_8h}{moteur.\+h}}\end{DoxyCompactItemize}

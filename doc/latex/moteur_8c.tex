@@ -1,0 +1,91 @@
+\hypertarget{moteur_8c}{}\doxysection{Référence du fichier src/moteur.c}
+\label{moteur_8c}\index{src/moteur.c@{src/moteur.c}}
+
+
+Gestion du moteur du jeu.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/window.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{moteur_8c_aa38fa260bebae19be15f8984b9d5cac5}\label{moteur_8c_aa38fa260bebae19be15f8984b9d5cac5}} 
+void \mbox{\hyperlink{moteur_8c_aa38fa260bebae19be15f8984b9d5cac5}{reguler\+FPS}} ()
+\begin{DoxyCompactList}\small\item\em Cette fonction permet de faire en sorte que le jeu soit constamment à 60 images par secondes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{moteur_8c_ae1bdf2f4b1304383df7dac75b80b8a2a}{init\+Controles}} (\mbox{\hyperlink{structt__controles}{t\+\_\+controles}} $\ast$controles)
+\begin{DoxyCompactList}\small\item\em Initialise les controles du jeu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$ \mbox{\hyperlink{moteur_8c_ae4cd1f2651eb7545323fd4c26b6d192c}{init\+Moteur}} ()
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour le moteur et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{moteur_8c_aa8ba0a1a326f5f885b9f58d650c5f50c}{detruire\+Moteur}} (\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$$\ast$moteur)
+\begin{DoxyCompactList}\small\item\em Detruit le moteur est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{moteur_8c_a19bf7070caedc05e8161ad08489598ef}\label{moteur_8c_a19bf7070caedc05e8161ad08489598ef}} 
+void \mbox{\hyperlink{moteur_8c_a19bf7070caedc05e8161ad08489598ef}{update\+Echelle}} ()
+\begin{DoxyCompactList}\small\item\em Calcule la taille en pixel d\textquotesingle{}un bloc selon la taille de l\textquotesingle{}écran et actualise les informations de la caméra pour le rendu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{moteur_8c_a6260a40ab508ff41fb456c5070177f40}\label{moteur_8c_a6260a40ab508ff41fb456c5070177f40}} 
+\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$ {\bfseries moteur} = NULL
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Gestion du moteur du jeu. 
+
+Le moteur contient toutes les informations nécessaire pour le renderer, la caméra, les textures ainsi que le cache du jeu
+
+\begin{DoxyAuthor}{Auteur}
+Eliott Remars \& Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{moteur_8c_aa8ba0a1a326f5f885b9f58d650c5f50c}\label{moteur_8c_aa8ba0a1a326f5f885b9f58d650c5f50c}} 
+\index{moteur.c@{moteur.c}!detruireMoteur@{detruireMoteur}}
+\index{detruireMoteur@{detruireMoteur}!moteur.c@{moteur.c}}
+\doxysubsubsection{\texorpdfstring{detruireMoteur()}{detruireMoteur()}}
+{\footnotesize\ttfamily void detruire\+Moteur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$$\ast$}]{moteur }\end{DoxyParamCaption})}
+
+
+
+Detruit le moteur est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em moteur} & L\textquotesingle{}adresse du pointeur sur le moteur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{moteur_8c_ae1bdf2f4b1304383df7dac75b80b8a2a}\label{moteur_8c_ae1bdf2f4b1304383df7dac75b80b8a2a}} 
+\index{moteur.c@{moteur.c}!initControles@{initControles}}
+\index{initControles@{initControles}!moteur.c@{moteur.c}}
+\doxysubsubsection{\texorpdfstring{initControles()}{initControles()}}
+{\footnotesize\ttfamily void init\+Controles (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__controles}{t\+\_\+controles}} $\ast$}]{controles }\end{DoxyParamCaption})}
+
+
+
+Initialise les controles du jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em controles} & Un pointeur sur une structure où sont stocké les controles du jeu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{moteur_8c_ae4cd1f2651eb7545323fd4c26b6d192c}\label{moteur_8c_ae4cd1f2651eb7545323fd4c26b6d192c}} 
+\index{moteur.c@{moteur.c}!initMoteur@{initMoteur}}
+\index{initMoteur@{initMoteur}!moteur.c@{moteur.c}}
+\doxysubsubsection{\texorpdfstring{initMoteur()}{initMoteur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}}$\ast$ init\+Moteur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour le moteur et le créer. 
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le moteur, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}

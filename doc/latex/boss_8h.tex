@@ -1,0 +1,143 @@
+\hypertarget{boss_8h}{}\doxysection{Référence du fichier include/boss.h}
+\label{boss_8h}\index{include/boss.h@{include/boss.h}}
+
+
+Module de gestion des boss.  
+
+
+{\ttfamily \#include \char`\"{}temps.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}monstre.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}statistiques.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__boss__flags}{s\+\_\+boss\+\_\+flags}}
+\item 
+struct \mbox{\hyperlink{structs__boss}{s\+\_\+boss}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{boss_8h_af4327f383af76ff89ba4f798547667bc}\label{boss_8h_af4327f383af76ff89ba4f798547667bc}} 
+typedef struct \mbox{\hyperlink{structs__boss__flags}{s\+\_\+boss\+\_\+flags}} {\bfseries t\+\_\+boss\+\_\+flags}
+\item 
+\mbox{\Hypertarget{boss_8h_a45251e5cdd9ec96ffdbdf861f3440702}\label{boss_8h_a45251e5cdd9ec96ffdbdf861f3440702}} 
+typedef struct \mbox{\hyperlink{structs__boss}{s\+\_\+boss}} {\bfseries t\+\_\+boss}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__boss__flags}{t\+\_\+boss\+\_\+flags}} \mbox{\hyperlink{boss_8h_a780c240668652ef948dc3b1fea7bc18b}{initialiser\+Boss\+Flags}} ()
+\begin{DoxyCompactList}\small\item\em Créer et initialise les flags des boss vaincus à 0. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{boss_8h_adb0e4eb60797ec7358a6eac2649fe5f9}{get\+Point\+Apparition\+Boss}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Obtient le point d\textquotesingle{}apparition du boss. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__boss}{t\+\_\+boss}} $\ast$ \mbox{\hyperlink{boss_8h_a1e43be3e46d79ef623a2841be23db37c}{charger\+Boss}} ()
+\begin{DoxyCompactList}\small\item\em Charge un boss dans la map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__boss}{t\+\_\+boss}} $\ast$ \mbox{\hyperlink{boss_8h_a4f39cf873ba128eb65fba7baba225dd6}{creer\+Boss}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position, const \mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}} jour)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour les flags des inputs du joueur et les initialise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} \mbox{\hyperlink{boss_8h_a8b32f9ba52b7d945a681f9902e2c4f67}{statistiques\+De\+Bases\+Boss}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les statistiques de bases en fonction de l\textquotesingle{}animal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion des boss. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{boss_8h_a1e43be3e46d79ef623a2841be23db37c}\label{boss_8h_a1e43be3e46d79ef623a2841be23db37c}} 
+\index{boss.h@{boss.h}!chargerBoss@{chargerBoss}}
+\index{chargerBoss@{chargerBoss}!boss.h@{boss.h}}
+\doxysubsubsection{\texorpdfstring{chargerBoss()}{chargerBoss()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__boss}{t\+\_\+boss}}$\ast$ charger\+Boss (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Charge un boss dans la map. 
+
+\begin{DoxyReturn}{Renvoie}
+Le boss actif, NULL si aucun boss 
+\end{DoxyReturn}
+\mbox{\Hypertarget{boss_8h_a4f39cf873ba128eb65fba7baba225dd6}\label{boss_8h_a4f39cf873ba128eb65fba7baba225dd6}} 
+\index{boss.h@{boss.h}!creerBoss@{creerBoss}}
+\index{creerBoss@{creerBoss}!boss.h@{boss.h}}
+\doxysubsubsection{\texorpdfstring{creerBoss()}{creerBoss()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__boss}{t\+\_\+boss}}$\ast$ creer\+Boss (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position,  }\item[{const \mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}}}]{jour }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour les flags des inputs du joueur et les initialise. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle le boss apparaît \\
+\hline
+{\em jour} & Le jour correspondant au boss\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur les flags des inputs, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{boss_8h_adb0e4eb60797ec7358a6eac2649fe5f9}\label{boss_8h_adb0e4eb60797ec7358a6eac2649fe5f9}} 
+\index{boss.h@{boss.h}!getPointApparitionBoss@{getPointApparitionBoss}}
+\index{getPointApparitionBoss@{getPointApparitionBoss}!boss.h@{boss.h}}
+\doxysubsubsection{\texorpdfstring{getPointApparitionBoss()}{getPointApparitionBoss()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} get\+Point\+Apparition\+Boss (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Obtient le point d\textquotesingle{}apparition du boss. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle le boss doit apparaitre\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La position où apparait le boss 
+\end{DoxyReturn}
+\mbox{\Hypertarget{boss_8h_a780c240668652ef948dc3b1fea7bc18b}\label{boss_8h_a780c240668652ef948dc3b1fea7bc18b}} 
+\index{boss.h@{boss.h}!initialiserBossFlags@{initialiserBossFlags}}
+\index{initialiserBossFlags@{initialiserBossFlags}!boss.h@{boss.h}}
+\doxysubsubsection{\texorpdfstring{initialiserBossFlags()}{initialiserBossFlags()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__boss__flags}{t\+\_\+boss\+\_\+flags}} initialiser\+Boss\+Flags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Créer et initialise les flags des boss vaincus à 0. 
+
+Les flags des boss indique que le boss à bien été vaincu
+
+\begin{DoxyReturn}{Renvoie}
+Une structure contenant les flags des boss 
+\end{DoxyReturn}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{boss_8h_a8b32f9ba52b7d945a681f9902e2c4f67}\label{boss_8h_a8b32f9ba52b7d945a681f9902e2c4f67}} 
+\index{boss.h@{boss.h}!statistiquesDeBasesBoss@{statistiquesDeBasesBoss}}
+\index{statistiquesDeBasesBoss@{statistiquesDeBasesBoss}!boss.h@{boss.h}}
+\doxysubsubsection{\texorpdfstring{statistiquesDeBasesBoss}{statistiquesDeBasesBoss}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} statistiques\+De\+Bases\+Boss\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tableau regroupant les statistiques de bases en fonction de l\textquotesingle{}animal. 
+
+
+\begin{DoxyItemize}
+\item attaque
+\item defense
+\item vitesse
+\item pv
+\item courbe\+Exp 
+\end{DoxyItemize}

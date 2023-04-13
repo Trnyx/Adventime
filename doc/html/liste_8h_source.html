@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/liste.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">liste.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="liste_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _JEU_LISTE_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define _JEU_LISTE_</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utilitaire_8h.html">utilitaire.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__entite.html">s_entite</a> <a class="code" href="structt__entite.html">t_entite</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structs__element.html">   37</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__element.html">s_element</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structs__element.html#a5672f8452d762f3adba5138be8a49418">   38</a></span>&#160;    <a class="code" href="structt__entite.html">t_entite</a> *<a class="code" href="structs__element.html#a5672f8452d762f3adba5138be8a49418">entite</a>;           </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structs__element.html#ac51c98cbc0e58e615bf7b56678433382">   39</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structs__element.html">s_element</a> *<a class="code" href="structs__element.html#ac51c98cbc0e58e615bf7b56678433382">pred</a>;     </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structs__element.html#acbd94087aa45515a14c4692123758835">   40</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structs__element.html">s_element</a> *<a class="code" href="structs__element.html#acbd94087aa45515a14c4692123758835">succ</a>;     </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;} <a class="code" href="structt__element.html">t_element</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__liste.html">s_liste</a> <a class="code" href="structt__liste.html">t_liste</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structs__liste.html">   52</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structs__liste.html">s_liste</a> {</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structs__liste.html#a9b354e206c3753b25822e9e5b5a0b43f">   53</a></span>&#160;    <a class="code" href="structt__element.html">t_element</a> *<a class="code" href="structs__liste.html#a9b354e206c3753b25822e9e5b5a0b43f">drapeau</a>;         </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structs__liste.html#a46e022d00df8edfb20df409eb60845ad">   54</a></span>&#160;    <a class="code" href="structt__element.html">t_element</a> *<a class="code" href="structs__liste.html#a46e022d00df8edfb20df409eb60845ad">ec</a>;              </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structs__liste.html#aab82f5e9cbf2052f68b57f7eeff10e94">   55</a></span>&#160;    <a class="code" href="structt__element.html">t_element</a> *<a class="code" href="structs__liste.html#aab82f5e9cbf2052f68b57f7eeff10e94">cacheFlag</a>;       </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} ;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#a7dda997062b284703a6637cb25a8871a">init_liste</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#ad5b069705682d9575af1123aae1299b8">detruire_liste</a>(<a class="code" href="structt__liste.html">t_liste</a> **liste);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">boolean</span> <a class="code" href="liste_8h.html#ac0acf115fd58838596b88295a9c983d9">liste_vide</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">boolean</span> <a class="code" href="liste_8h.html#a47af77c244cb0519ffd954a5070202ca">hors_liste</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">boolean</span> <a class="code" href="liste_8h.html#ad4964855b04eb4c2d325fbb117048cb1">hors_liste_cache</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#a6f3dc42709b31e9eb527e3018568e766">en_tete</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#adfcd75398085343e1d84407dbffad6b4">en_tete_cache</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#a0070ce853ee19eac4f1226988a494e01">en_queue</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#a74675eac0a0d929f29e7fa163950a28c">en_queue_cache</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#a8e2e7a55e996e294e79a6e607cad00dc">precedent</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#aca8b531ecb56a206557313e2f238197f">precedent_cache</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#ac76a08dfdd4e447188d85378a1c39aba">suivant</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#acfda4d93132e38657f0713fcc607dab8">suivant_cache</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#a2dd459d2a87ac820c1104a4a0482f061">valeur_elt</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste, <a class="code" href="structt__entite.html">t_entite</a> **entite);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#ae5490f0f73219eec9623e1f0924f8193">valeur_elt_cache</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste, <a class="code" href="structt__entite.html">t_entite</a> **entite);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#ab5156689caf5504054a447b6168ff587">modif_elt</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste, <a class="code" href="structt__entite.html">t_entite</a> **entite);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#a6173fcd0d246aa6ab73cfd9395d1e179">oter_elt</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#ae50586c9b8808123b8a100097ca88ef6">ajout_droit</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste, <a class="code" href="structt__entite.html">t_entite</a> *entite);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">void</span> <a class="code" href="liste_8h.html#af4c4c356463a6c07922cd9bb13ee082e">ajout_gauche</a>(<a class="code" href="structt__liste.html">t_liste</a> *liste, <a class="code" href="structt__entite.html">t_entite</a> *entite);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aliste_8h_html_a0070ce853ee19eac4f1226988a494e01"><div class="ttname"><a href="liste_8h.html#a0070ce853ee19eac4f1226988a494e01">en_queue</a></div><div class="ttdeci">void en_queue(t_liste *liste)</div><div class="ttdoc">Met l'element courant au dernier element de la liste.</div><div class="ttdef"><b>Definition:</b> liste.c:141</div></div>
+<div class="ttc" id="aliste_8h_html_a2dd459d2a87ac820c1104a4a0482f061"><div class="ttname"><a href="liste_8h.html#a2dd459d2a87ac820c1104a4a0482f061">valeur_elt</a></div><div class="ttdeci">void valeur_elt(t_liste *liste, t_entite **entite)</div><div class="ttdoc">Recupere la valeur de l'element de la liste et _entite.</div><div class="ttdef"><b>Definition:</b> liste.c:218</div></div>
+<div class="ttc" id="aliste_8h_html_a47af77c244cb0519ffd954a5070202ca"><div class="ttname"><a href="liste_8h.html#a47af77c244cb0519ffd954a5070202ca">hors_liste</a></div><div class="ttdeci">boolean hors_liste(t_liste *liste)</div><div class="ttdoc">Vérifie si l'element courant est hors liste.</div><div class="ttdef"><b>Definition:</b> liste.c:88</div></div>
+<div class="ttc" id="aliste_8h_html_a6173fcd0d246aa6ab73cfd9395d1e179"><div class="ttname"><a href="liste_8h.html#a6173fcd0d246aa6ab73cfd9395d1e179">oter_elt</a></div><div class="ttdeci">void oter_elt(t_liste *liste)</div><div class="ttdoc">Supprime l'element de la liste a l'endroit ou est l'element courant.</div><div class="ttdef"><b>Definition:</b> liste.c:253</div></div>
+<div class="ttc" id="aliste_8h_html_a6f3dc42709b31e9eb527e3018568e766"><div class="ttname"><a href="liste_8h.html#a6f3dc42709b31e9eb527e3018568e766">en_tete</a></div><div class="ttdeci">void en_tete(t_liste *liste)</div><div class="ttdoc">Met l'element courant au premier element de la liste.</div><div class="ttdef"><b>Definition:</b> liste.c:118</div></div>
+<div class="ttc" id="aliste_8h_html_a74675eac0a0d929f29e7fa163950a28c"><div class="ttname"><a href="liste_8h.html#a74675eac0a0d929f29e7fa163950a28c">en_queue_cache</a></div><div class="ttdeci">void en_queue_cache(t_liste *liste)</div><div class="ttdoc">Met l'element courant du drapeau cache au dernier element de la liste.</div><div class="ttdef"><b>Definition:</b> liste.c:152</div></div>
+<div class="ttc" id="aliste_8h_html_a7dda997062b284703a6637cb25a8871a"><div class="ttname"><a href="liste_8h.html#a7dda997062b284703a6637cb25a8871a">init_liste</a></div><div class="ttdeci">void init_liste(t_liste *liste)</div><div class="ttdoc">Initialise la liste.</div><div class="ttdef"><b>Definition:</b> liste.c:29</div></div>
+<div class="ttc" id="aliste_8h_html_a8e2e7a55e996e294e79a6e607cad00dc"><div class="ttname"><a href="liste_8h.html#a8e2e7a55e996e294e79a6e607cad00dc">precedent</a></div><div class="ttdeci">void precedent(t_liste *liste)</div><div class="ttdoc">Met l'element courant a l'element juste avant l'element courant.</div><div class="ttdef"><b>Definition:</b> liste.c:164</div></div>
+<div class="ttc" id="aliste_8h_html_ab5156689caf5504054a447b6168ff587"><div class="ttname"><a href="liste_8h.html#ab5156689caf5504054a447b6168ff587">modif_elt</a></div><div class="ttdeci">void modif_elt(t_liste *liste, t_entite **entite)</div><div class="ttdoc">Recupere la valeur de l'element de la liste et l'assigne a entité</div><div class="ttdef"><b>Definition:</b> liste.c:242</div></div>
+<div class="ttc" id="aliste_8h_html_ac0acf115fd58838596b88295a9c983d9"><div class="ttname"><a href="liste_8h.html#ac0acf115fd58838596b88295a9c983d9">liste_vide</a></div><div class="ttdeci">boolean liste_vide(t_liste *liste)</div><div class="ttdoc">Vérifie si la liste est vide.</div><div class="ttdef"><b>Definition:</b> liste.c:75</div></div>
+<div class="ttc" id="aliste_8h_html_ac76a08dfdd4e447188d85378a1c39aba"><div class="ttname"><a href="liste_8h.html#ac76a08dfdd4e447188d85378a1c39aba">suivant</a></div><div class="ttdeci">void suivant(t_liste *liste)</div><div class="ttdoc">Met l'element courant a l'element juste apres l'element courant.</div><div class="ttdef"><b>Definition:</b> liste.c:187</div></div>
+<div class="ttc" id="aliste_8h_html_aca8b531ecb56a206557313e2f238197f"><div class="ttname"><a href="liste_8h.html#aca8b531ecb56a206557313e2f238197f">precedent_cache</a></div><div class="ttdeci">void precedent_cache(t_liste *liste)</div><div class="ttdoc">Met l'element courant au drapeau cache a l'element juste avant l'element courant.</div><div class="ttdef"><b>Definition:</b> liste.c:175</div></div>
+<div class="ttc" id="aliste_8h_html_acfda4d93132e38657f0713fcc607dab8"><div class="ttname"><a href="liste_8h.html#acfda4d93132e38657f0713fcc607dab8">suivant_cache</a></div><div class="ttdeci">void suivant_cache(t_liste *liste)</div><div class="ttdoc">Met l'element courant au drapeau cache a l'element juste apres l'element courant.</div><div class="ttdef"><b>Definition:</b> liste.c:198</div></div>
+<div class="ttc" id="aliste_8h_html_ad4964855b04eb4c2d325fbb117048cb1"><div class="ttname"><a href="liste_8h.html#ad4964855b04eb4c2d325fbb117048cb1">hors_liste_cache</a></div><div class="ttdeci">boolean hors_liste_cache(t_liste *liste)</div><div class="ttdoc">Vérifie si l'element courant au niveau du drapeau cache est hors liste.</div><div class="ttdef"><b>Definition:</b> liste.c:100</div></div>
+<div class="ttc" id="aliste_8h_html_ad5b069705682d9575af1123aae1299b8"><div class="ttname"><a href="liste_8h.html#ad5b069705682d9575af1123aae1299b8">detruire_liste</a></div><div class="ttdeci">void detruire_liste(t_liste **liste)</div><div class="ttdoc">Détruit la liste et libere la mémoire allouée.</div><div class="ttdef"><b>Definition:</b> liste.c:45</div></div>
+<div class="ttc" id="aliste_8h_html_adfcd75398085343e1d84407dbffad6b4"><div class="ttname"><a href="liste_8h.html#adfcd75398085343e1d84407dbffad6b4">en_tete_cache</a></div><div class="ttdeci">void en_tete_cache(t_liste *liste)</div><div class="ttdoc">Met l'element courant du drapeau cache au premier element de la liste.</div><div class="ttdef"><b>Definition:</b> liste.c:129</div></div>
+<div class="ttc" id="aliste_8h_html_ae50586c9b8808123b8a100097ca88ef6"><div class="ttname"><a href="liste_8h.html#ae50586c9b8808123b8a100097ca88ef6">ajout_droit</a></div><div class="ttdeci">void ajout_droit(t_liste *liste, t_entite *entite)</div><div class="ttdoc">Ajoute a droite de l'element courant.</div><div class="ttdef"><b>Definition:</b> liste.c:281</div></div>
+<div class="ttc" id="aliste_8h_html_ae5490f0f73219eec9623e1f0924f8193"><div class="ttname"><a href="liste_8h.html#ae5490f0f73219eec9623e1f0924f8193">valeur_elt_cache</a></div><div class="ttdeci">void valeur_elt_cache(t_liste *liste, t_entite **entite)</div><div class="ttdoc">Recupere la valeur de l'element de la liste au niveau du drapeau &quot;cache&quot;.</div><div class="ttdef"><b>Definition:</b> liste.c:230</div></div>
+<div class="ttc" id="aliste_8h_html_af4c4c356463a6c07922cd9bb13ee082e"><div class="ttname"><a href="liste_8h.html#af4c4c356463a6c07922cd9bb13ee082e">ajout_gauche</a></div><div class="ttdeci">void ajout_gauche(t_liste *liste, t_entite *entite)</div><div class="ttdoc">Ajoute a gauche de l'element courant.</div><div class="ttdef"><b>Definition:</b> liste.c:305</div></div>
+<div class="ttc" id="astructs__element_html"><div class="ttname"><a href="structs__element.html">s_element</a></div><div class="ttdef"><b>Definition:</b> liste.h:37</div></div>
+<div class="ttc" id="astructs__element_html_a5672f8452d762f3adba5138be8a49418"><div class="ttname"><a href="structs__element.html#a5672f8452d762f3adba5138be8a49418">s_element::entite</a></div><div class="ttdeci">t_entite * entite</div><div class="ttdef"><b>Definition:</b> liste.h:38</div></div>
+<div class="ttc" id="astructs__element_html_ac51c98cbc0e58e615bf7b56678433382"><div class="ttname"><a href="structs__element.html#ac51c98cbc0e58e615bf7b56678433382">s_element::pred</a></div><div class="ttdeci">struct s_element * pred</div><div class="ttdef"><b>Definition:</b> liste.h:39</div></div>
+<div class="ttc" id="astructs__element_html_acbd94087aa45515a14c4692123758835"><div class="ttname"><a href="structs__element.html#acbd94087aa45515a14c4692123758835">s_element::succ</a></div><div class="ttdeci">struct s_element * succ</div><div class="ttdef"><b>Definition:</b> liste.h:40</div></div>
+<div class="ttc" id="astructs__entite_html"><div class="ttname"><a href="structs__entite.html">s_entite</a></div><div class="ttdef"><b>Definition:</b> entite.h:126</div></div>
+<div class="ttc" id="astructs__liste_html"><div class="ttname"><a href="structs__liste.html">s_liste</a></div><div class="ttdef"><b>Definition:</b> liste.h:52</div></div>
+<div class="ttc" id="astructs__liste_html_a46e022d00df8edfb20df409eb60845ad"><div class="ttname"><a href="structs__liste.html#a46e022d00df8edfb20df409eb60845ad">s_liste::ec</a></div><div class="ttdeci">t_element * ec</div><div class="ttdef"><b>Definition:</b> liste.h:54</div></div>
+<div class="ttc" id="astructs__liste_html_a9b354e206c3753b25822e9e5b5a0b43f"><div class="ttname"><a href="structs__liste.html#a9b354e206c3753b25822e9e5b5a0b43f">s_liste::drapeau</a></div><div class="ttdeci">t_element * drapeau</div><div class="ttdef"><b>Definition:</b> liste.h:53</div></div>
+<div class="ttc" id="astructs__liste_html_aab82f5e9cbf2052f68b57f7eeff10e94"><div class="ttname"><a href="structs__liste.html#aab82f5e9cbf2052f68b57f7eeff10e94">s_liste::cacheFlag</a></div><div class="ttdeci">t_element * cacheFlag</div><div class="ttdef"><b>Definition:</b> liste.h:55</div></div>
+<div class="ttc" id="astructt__element_html"><div class="ttname"><a href="structt__element.html">t_element</a></div><div class="ttdoc">Modelise un element de la liste.</div></div>
+<div class="ttc" id="astructt__entite_html"><div class="ttname"><a href="structt__entite.html">t_entite</a></div><div class="ttdoc">Structure modélisant une entité</div></div>
+<div class="ttc" id="astructt__liste_html"><div class="ttname"><a href="structt__liste.html">t_liste</a></div><div class="ttdoc">Modelise l'emplacement actuel dans la liste.</div></div>
+<div class="ttc" id="autilitaire_8h_html"><div class="ttname"><a href="utilitaire_8h.html">utilitaire.h</a></div><div class="ttdoc">Module de manipulation des données globales.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

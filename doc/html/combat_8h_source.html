@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/combat.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">combat.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="combat_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _JEU_COMBAT_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define _JEU_COMBAT_</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utilitaire_8h.html">utilitaire.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mob_8h.html">mob.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> <a class="code" href="combat_8h.html#a2445884e27d1b21c079998e0496aab4d">finCombat</a>(<a class="code" href="structt__mob.html">t_mob</a> *mob);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">boolean</span> <a class="code" href="combat_8h.html#a17081d45c320805a0a18eb5d30a07cdf">toucheLaCible</a>(<span class="keyword">const</span> <a class="code" href="structt__entite.html">t_entite</a> *source, <span class="keyword">const</span> <a class="code" href="structt__entite.html">t_entite</a> *cible, <span class="keyword">const</span> <span class="keywordtype">float</span> angleAttaque, <span class="keyword">const</span> <span class="keywordtype">float</span> range);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">float</span> <a class="code" href="combat_8h.html#a0be05452cc331b0b1ab60c45731b4e60">calculDegat</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> niveauAttaquant, <span class="keywordtype">int</span> pointAttaque, <span class="keywordtype">int</span> pointDefense, <span class="keyword">const</span> <span class="keywordtype">boolean</span> attaquantEstNocture, <span class="keyword">const</span> <span class="keywordtype">boolean</span> defenseurEstNocturne);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">boolean</span> <a class="code" href="combat_8h.html#a2dac0d258995f05e5ed3d3dfe3a1f3e1">appliquerDegat</a>(<a class="code" href="structs__entiteVivante.html">t_entiteVivante</a> *entite, <span class="keyword">const</span> <span class="keywordtype">float</span> degat);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keywordtype">void</span> <a class="code" href="combat_8h.html#aba180c79ed631aaa23bfca2394ffbc6f">metUnCoup</a>(<a class="code" href="structs__entiteVivante.html">t_entiteVivante</a> *entie, <a class="code" href="structs__entiteVivante.html">t_entiteVivante</a> *cible, <span class="keyword">const</span> <span class="keywordtype">float</span> angleAttaque, <span class="keyword">const</span> <span class="keywordtype">float</span> range);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="acombat_8h_html_a0be05452cc331b0b1ab60c45731b4e60"><div class="ttname"><a href="combat_8h.html#a0be05452cc331b0b1ab60c45731b4e60">calculDegat</a></div><div class="ttdeci">float calculDegat(const int niveauAttaquant, int pointAttaque, int pointDefense, const boolean attaquantEstNocture, const boolean defenseurEstNocturne)</div><div class="ttdoc">Calcul les dégâts.</div><div class="ttdef"><b>Definition:</b> logique_combat.c:198</div></div>
+<div class="ttc" id="acombat_8h_html_a17081d45c320805a0a18eb5d30a07cdf"><div class="ttname"><a href="combat_8h.html#a17081d45c320805a0a18eb5d30a07cdf">toucheLaCible</a></div><div class="ttdeci">boolean toucheLaCible(const t_entite *source, const t_entite *cible, const float angleAttaque, const float range)</div><div class="ttdoc">Vérifie si la cible est touché par la source qui attaque.</div><div class="ttdef"><b>Definition:</b> logique_combat.c:125</div></div>
+<div class="ttc" id="acombat_8h_html_a2445884e27d1b21c079998e0496aab4d"><div class="ttname"><a href="combat_8h.html#a2445884e27d1b21c079998e0496aab4d">finCombat</a></div><div class="ttdeci">void finCombat(t_mob *mob)</div><div class="ttdoc">Remet un mob en normal.</div><div class="ttdef"><b>Definition:</b> logique_combat.c:33</div></div>
+<div class="ttc" id="acombat_8h_html_a2dac0d258995f05e5ed3d3dfe3a1f3e1"><div class="ttname"><a href="combat_8h.html#a2dac0d258995f05e5ed3d3dfe3a1f3e1">appliquerDegat</a></div><div class="ttdeci">boolean appliquerDegat(t_entiteVivante *entite, const float degat)</div><div class="ttdoc">Applique les dégâts à l'entité</div><div class="ttdef"><b>Definition:</b> logique_combat.c:227</div></div>
+<div class="ttc" id="acombat_8h_html_aba180c79ed631aaa23bfca2394ffbc6f"><div class="ttname"><a href="combat_8h.html#aba180c79ed631aaa23bfca2394ffbc6f">metUnCoup</a></div><div class="ttdeci">void metUnCoup(t_entiteVivante *entie, t_entiteVivante *cible, const float angleAttaque, const float range)</div><div class="ttdoc">Met un coup à l'entité cible.</div><div class="ttdef"><b>Definition:</b> logique_combat.c:245</div></div>
+<div class="ttc" id="amob_8h_html"><div class="ttname"><a href="mob_8h.html">mob.h</a></div><div class="ttdoc">Module de manipulation des mobs.</div></div>
+<div class="ttc" id="astructs__entiteVivante_html"><div class="ttname"><a href="structs__entiteVivante.html">s_entiteVivante</a></div><div class="ttdef"><b>Definition:</b> entite.h:164</div></div>
+<div class="ttc" id="astructt__entite_html"><div class="ttname"><a href="structt__entite.html">t_entite</a></div><div class="ttdoc">Structure modélisant une entité</div></div>
+<div class="ttc" id="astructt__mob_html"><div class="ttname"><a href="structt__mob.html">t_mob</a></div><div class="ttdoc">Structure représentant un mob.</div></div>
+<div class="ttc" id="autilitaire_8h_html"><div class="ttname"><a href="utilitaire_8h.html">utilitaire.h</a></div><div class="ttdoc">Module de manipulation des données globales.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

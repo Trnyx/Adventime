@@ -1,0 +1,133 @@
+\hypertarget{disc__sampling_8c}{}\doxysection{Référence du fichier src/disc\+\_\+sampling.c}
+\label{disc__sampling_8c}\index{src/disc\_sampling.c@{src/disc\_sampling.c}}
+
+
+Génération de \char`\"{}\+Poisson Disc Sampling\char`\"{}.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/disc\+\_\+sampling.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{disc__sampling_8c_ae13f2bf0fb8235d34f0251f0ecbcb75f}{point\+Valide}} (\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} elements\+Existant\mbox{[}$\,$\mbox{]}, const int nombre\+Elements\+Existant, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} nouveau\+Point, const float rayon)
+\begin{DoxyCompactList}\small\item\em Vérifie si le point à placer est un point valide. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{disc__sampling_8c_af4e1c7a59be96b63b36f562969986537}{creer\+Nouveau\+Point}} (\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} min, \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} max)
+\begin{DoxyCompactList}\small\item\em Créer un nouveau point aléatoire entre les coordonnées min et max données. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{disc__sampling_8c_a367e341f7b7ece47b64545f5d9c1be3c}{ajouter\+Point}} (\mbox{\hyperlink{structt__discSampling}{t\+\_\+disc\+Sampling}} $\ast$grille, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} nouveau\+Point, const int i)
+\begin{DoxyCompactList}\small\item\em Ajouter un nouveau point dans la grille. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__discSampling}{t\+\_\+disc\+Sampling}} \mbox{\hyperlink{disc__sampling_8c_ae009c220ccac30fe3ca0ff13309bb539}{generer\+Grille\+Disc\+Sampling}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} min\+Grille, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} max\+Grille, int nb\+Elements\+Objectif, float rayon, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} $\ast$centre)
+\begin{DoxyCompactList}\small\item\em Génère une grille / un tableau de point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Génération de \char`\"{}\+Poisson Disc Sampling\char`\"{}. 
+
+Poisson Disc Sampling est une technique permettant de sélectionner de manière aléatoire des points serrés de façon à ce qu\textquotesingle{}ils respectent une distance minimale Comme les points sont choisis de façon aléatoire, le résultat a un aspect plus organique
+
+
+\begin{DoxyEnumerate}
+\item Un premier point est généré aléatoirement et est stocké dans un tableau
+\item Pour chaque nouveau points généré on regarde la distance le séparant de tous les autres points
+\item Si ce dernier est trop loin ou trop proche alors on l\textquotesingle{}ignore et créer un nouveau point
+\end{DoxyEnumerate}
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+15 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{disc__sampling_8c_a367e341f7b7ece47b64545f5d9c1be3c}\label{disc__sampling_8c_a367e341f7b7ece47b64545f5d9c1be3c}} 
+\index{disc\_sampling.c@{disc\_sampling.c}!ajouterPoint@{ajouterPoint}}
+\index{ajouterPoint@{ajouterPoint}!disc\_sampling.c@{disc\_sampling.c}}
+\doxysubsubsection{\texorpdfstring{ajouterPoint()}{ajouterPoint()}}
+{\footnotesize\ttfamily void ajouter\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__discSampling}{t\+\_\+disc\+Sampling}} $\ast$}]{grille,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{nouveau\+Point,  }\item[{const int}]{i }\end{DoxyParamCaption})}
+
+
+
+Ajouter un nouveau point dans la grille. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em grille} & La grille contenant tous les points \\
+\hline
+{\em nouveau\+Point} & Le point à ajouter \\
+\hline
+{\em i} & L\textquotesingle{}index du nouveau point dans la grille \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{disc__sampling_8c_af4e1c7a59be96b63b36f562969986537}\label{disc__sampling_8c_af4e1c7a59be96b63b36f562969986537}} 
+\index{disc\_sampling.c@{disc\_sampling.c}!creerNouveauPoint@{creerNouveauPoint}}
+\index{creerNouveauPoint@{creerNouveauPoint}!disc\_sampling.c@{disc\_sampling.c}}
+\doxysubsubsection{\texorpdfstring{creerNouveauPoint()}{creerNouveauPoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} creer\+Nouveau\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{min,  }\item[{\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{max }\end{DoxyParamCaption})}
+
+
+
+Créer un nouveau point aléatoire entre les coordonnées min et max données. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em min} & Les coordonnées x et y minimum \\
+\hline
+{\em max} & Les coordonnées x et y maximum\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La position du nouveau point 
+\end{DoxyReturn}
+\mbox{\Hypertarget{disc__sampling_8c_ae009c220ccac30fe3ca0ff13309bb539}\label{disc__sampling_8c_ae009c220ccac30fe3ca0ff13309bb539}} 
+\index{disc\_sampling.c@{disc\_sampling.c}!genererGrilleDiscSampling@{genererGrilleDiscSampling}}
+\index{genererGrilleDiscSampling@{genererGrilleDiscSampling}!disc\_sampling.c@{disc\_sampling.c}}
+\doxysubsubsection{\texorpdfstring{genererGrilleDiscSampling()}{genererGrilleDiscSampling()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__discSampling}{t\+\_\+disc\+Sampling}} generer\+Grille\+Disc\+Sampling (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{min\+Grille,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{max\+Grille,  }\item[{int}]{nb\+Elements\+Objectif,  }\item[{float}]{rayon,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} $\ast$}]{centre }\end{DoxyParamCaption})}
+
+
+
+Génère une grille / un tableau de point. 
+
+Ces points sont généré de sorte à ce qu\textquotesingle{}ils suivent l\textquotesingle{}algorithme \char`\"{}\+Poisson Disc Sampling\char`\"{}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em min\+Grille} & Les coordonnées x et y minimum de la grille \\
+\hline
+{\em max\+Grille} & Les coordonnées x et y maximum de la grille \\
+\hline
+{\em nb\+Elements\+Objectif} & Le nombre d\textquotesingle{}éléments souhaité (ils ne seront pas tous créés) \\
+\hline
+{\em rayon} & Le rayon minimum de placement\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La grille de points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{disc__sampling_8c_ae13f2bf0fb8235d34f0251f0ecbcb75f}\label{disc__sampling_8c_ae13f2bf0fb8235d34f0251f0ecbcb75f}} 
+\index{disc\_sampling.c@{disc\_sampling.c}!pointValide@{pointValide}}
+\index{pointValide@{pointValide}!disc\_sampling.c@{disc\_sampling.c}}
+\doxysubsubsection{\texorpdfstring{pointValide()}{pointValide()}}
+{\footnotesize\ttfamily boolean point\+Valide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{elements\+Existant\mbox{[}$\,$\mbox{]},  }\item[{const int}]{nombre\+Elements\+Existant,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{nouveau\+Point,  }\item[{const float}]{rayon }\end{DoxyParamCaption})}
+
+
+
+Vérifie si le point à placer est un point valide. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em elements\+Existant} & Tableau des éléments déjà existant \\
+\hline
+{\em nombre\+Elements\+Existant} & Le nombre d\textquotesingle{}élément déjà existant \\
+\hline
+{\em nouveau\+Point} & Le point à créer \\
+\hline
+{\em rayon} & Le rayon minimum autorisé\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si le point peut être placé, FAUX sinon 
+\end{DoxyReturn}

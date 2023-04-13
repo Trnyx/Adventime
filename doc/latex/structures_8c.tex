@@ -1,0 +1,388 @@
+\hypertarget{structures_8c}{}\doxysection{Référence du fichier src/structures.c}
+\label{structures_8c}\index{src/structures.c@{src/structures.c}}
+
+
+Module gérant la génération des structures et décorations.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/structures.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/disc\+\_\+sampling.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{structures_8c_a540a8fafa41d688e10f8b3c5ff13af50}{biome\+Validation\+Pour\+Village}} (\mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$chunk)
+\begin{DoxyCompactList}\small\item\em Vérifie que le chunk donné est conforme pour la génération d\textquotesingle{}un village. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{structures_8c_a8b017eda2a0c05490f667bc0dceb9067}{biome\+Validation\+Pour\+Entree\+Temple}} (\mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$chunk)
+\begin{DoxyCompactList}\small\item\em Vérifie que le chunk donné est conforme pour la génération de l\textquotesingle{}entré du temple. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$ \mbox{\hyperlink{structures_8c_adcc11339933129f174d4b02bbbe1d94e}{get\+Chunk\+Central\+Biome}} (const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}} biome, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, int($\ast$validation)(\mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$))
+\begin{DoxyCompactList}\small\item\em Permet d\textquotesingle{}obtenir le chunk central correspondant à la condition. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structures_8h_a949e802b1e8c18a685d88c745ccf05ed}{e\+\_\+structure\+Tag}} \mbox{\hyperlink{structures_8c_afb181cb2560ba069014336d19b957e7f}{selection\+Maison\+Tag}} ()
+\begin{DoxyCompactList}\small\item\em Sélectionne un tag d\textquotesingle{}une maison. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{structures_8c_a495a00783fb503eb0441ae0d6572324f}{peut\+Etre\+Placer}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, const float positionX, const float positionY, const int largeur, const int hauteur)
+\begin{DoxyCompactList}\small\item\em Vérifie si la décoration peut être placé \end{DoxyCompactList}\item 
+\mbox{\hyperlink{blocks__tag_8h_a6e661b297e634c1e97321bbbc12225e2}{e\+\_\+decoration\+\_\+flag}} \mbox{\hyperlink{structures_8c_a05ee03a4855065fb822643a886f0fe9f}{choisir\+Flag\+Deco\+Autour\+De\+Chemin}} (const int cote)
+\begin{DoxyCompactList}\small\item\em Choisis un flag de décoration. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{structures_8c_a115184da7e43a6a55024aa2f1f2b4660}{choisir\+Position\+Decoration\+Autour\+De\+Point}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} centre, const int largeur, const int hauteur, const int rayon)
+\begin{DoxyCompactList}\small\item\em Choisit une position pour une décoration autour d\textquotesingle{}un point central. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{structures_8c_ae868cb05802754f94a353ce0d0f9cdbd}{decoration\+Autour\+De\+Point}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, const \mbox{\hyperlink{blocks__tag_8h_a3c78697ff5025c219cebcacd24dcb595}{e\+\_\+block\+Tag}} block\+Decoration, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} centre, const int largeur, const int hauteur, const int rayon)
+\begin{DoxyCompactList}\small\item\em Construit une décoration autour d\textquotesingle{}un point donné \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8c_a9d3fdb62079e95cd51c8417e3bd4f4db}{decoration\+Remplacer\+Flags}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Remplace les flags de décorations par les décorations correspondantes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8c_afafb1270be2a58375c842c05581988f7}{generer\+Decorations}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, \mbox{\hyperlink{structt__discSampling}{t\+\_\+disc\+Sampling}} grille)
+\begin{DoxyCompactList}\small\item\em Génère les décorations d\textquotesingle{}un village. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8c_a2d779752cc1ce1989e5b0380664b61e2}{changer\+Block}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, const float x, const float y, const int z, const int nouveau\+Block)
+\begin{DoxyCompactList}\small\item\em Change le tag du block se trouvant aux coordonnées données. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8c_a7ad515c29566985d9ac3139c2204b968}{tracer\+Chemin\+Vertical}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} depart, \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} arrive, int $\ast$x, int $\ast$y)
+\begin{DoxyCompactList}\small\item\em Trace un chemin vertical. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8c_a0893ebcf3b00a9df73d9a4f5a733b5a8}{tracer\+Chemin}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} depart, \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} arrive)
+\begin{DoxyCompactList}\small\item\em Trace un chemin entre un point de départ et un point d\textquotesingle{}arrivé \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8c_a68e6cd77e4a644cab81f7c6238a56d8d}{generer\+Chemins}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, \mbox{\hyperlink{structt__discSampling}{t\+\_\+disc\+Sampling}} grille)
+\begin{DoxyCompactList}\small\item\em Génère les chemins d\textquotesingle{}un village. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8c_a84a9a563ecadaa6799c30db82413c6bf}{generer\+Village}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Génère un village. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8c_a796b0eb48d7724c94a0227a6de980f65}{generer\+Entree\+Temple}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Génère l\textquotesingle{}entrée du temple du boss. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8c_a98d3b791ea5571b0045a4287f68fa012}{generer\+Entree\+Caverne}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module gérant la génération des structures et décorations. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{structures_8c_a8b017eda2a0c05490f667bc0dceb9067}\label{structures_8c_a8b017eda2a0c05490f667bc0dceb9067}} 
+\index{structures.c@{structures.c}!biomeValidationPourEntreeTemple@{biomeValidationPourEntreeTemple}}
+\index{biomeValidationPourEntreeTemple@{biomeValidationPourEntreeTemple}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{biomeValidationPourEntreeTemple()}{biomeValidationPourEntreeTemple()}}
+{\footnotesize\ttfamily int biome\+Validation\+Pour\+Entree\+Temple (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$}]{chunk }\end{DoxyParamCaption})}
+
+
+
+Vérifie que le chunk donné est conforme pour la génération de l\textquotesingle{}entré du temple. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chunk} & Le chunk qui doit être vérifié\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si valide, 0 sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structures_8c_a540a8fafa41d688e10f8b3c5ff13af50}\label{structures_8c_a540a8fafa41d688e10f8b3c5ff13af50}} 
+\index{structures.c@{structures.c}!biomeValidationPourVillage@{biomeValidationPourVillage}}
+\index{biomeValidationPourVillage@{biomeValidationPourVillage}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{biomeValidationPourVillage()}{biomeValidationPourVillage()}}
+{\footnotesize\ttfamily int biome\+Validation\+Pour\+Village (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$}]{chunk }\end{DoxyParamCaption})}
+
+
+
+Vérifie que le chunk donné est conforme pour la génération d\textquotesingle{}un village. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em chunk} & Le chunk qui doit être vérifié\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+1 si valide, 0 sinon / Cas particulier \+: -\/1 =$>$ cas bannis 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structures_8c_a2d779752cc1ce1989e5b0380664b61e2}\label{structures_8c_a2d779752cc1ce1989e5b0380664b61e2}} 
+\index{structures.c@{structures.c}!changerBlock@{changerBlock}}
+\index{changerBlock@{changerBlock}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{changerBlock()}{changerBlock()}}
+{\footnotesize\ttfamily void changer\+Block (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{const float}]{x,  }\item[{const float}]{y,  }\item[{const int}]{z,  }\item[{const int}]{nouveau\+Block }\end{DoxyParamCaption})}
+
+
+
+Change le tag du block se trouvant aux coordonnées données. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle le block est changer \\
+\hline
+{\em x} & La coordonnée x (relative à la map) du block à changer \\
+\hline
+{\em y} & La coordonnée y (relative à la map) du block à changer \\
+\hline
+{\em z} & La coordonnée z (relative à la map) du block à changer \\
+\hline
+{\em nouveau\+Block} & Le tag du nouveau block \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8c_a05ee03a4855065fb822643a886f0fe9f}\label{structures_8c_a05ee03a4855065fb822643a886f0fe9f}} 
+\index{structures.c@{structures.c}!choisirFlagDecoAutourDeChemin@{choisirFlagDecoAutourDeChemin}}
+\index{choisirFlagDecoAutourDeChemin@{choisirFlagDecoAutourDeChemin}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{choisirFlagDecoAutourDeChemin()}{choisirFlagDecoAutourDeChemin()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{blocks__tag_8h_a6e661b297e634c1e97321bbbc12225e2}{e\+\_\+decoration\+\_\+flag}} choisir\+Flag\+Deco\+Autour\+De\+Chemin (\begin{DoxyParamCaption}\item[{const int}]{cote }\end{DoxyParamCaption})}
+
+
+
+Choisis un flag de décoration. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cote} & De quel côté se trouve la décoration, 0 à gauche, 1 à droite\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le flag de la décoration qui sera placé 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structures_8c_a115184da7e43a6a55024aa2f1f2b4660}\label{structures_8c_a115184da7e43a6a55024aa2f1f2b4660}} 
+\index{structures.c@{structures.c}!choisirPositionDecorationAutourDePoint@{choisirPositionDecorationAutourDePoint}}
+\index{choisirPositionDecorationAutourDePoint@{choisirPositionDecorationAutourDePoint}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{choisirPositionDecorationAutourDePoint()}{choisirPositionDecorationAutourDePoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} choisir\+Position\+Decoration\+Autour\+De\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{centre,  }\item[{const int}]{largeur,  }\item[{const int}]{hauteur,  }\item[{const int}]{rayon }\end{DoxyParamCaption})}
+
+
+
+Choisit une position pour une décoration autour d\textquotesingle{}un point central. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle sera placé la décoration \\
+\hline
+{\em centre} & Le point central autour duquel doit être placé la décoration \\
+\hline
+{\em largeur} & La largeur de la décoration \\
+\hline
+{\em hauteur} & La hauteur de la décoration \\
+\hline
+{\em rayon} & Le rayon autour duquel doit être placé la décoration\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La position de la décoration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structures_8c_ae868cb05802754f94a353ce0d0f9cdbd}\label{structures_8c_ae868cb05802754f94a353ce0d0f9cdbd}} 
+\index{structures.c@{structures.c}!decorationAutourDePoint@{decorationAutourDePoint}}
+\index{decorationAutourDePoint@{decorationAutourDePoint}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{decorationAutourDePoint()}{decorationAutourDePoint()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} decoration\+Autour\+De\+Point (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{const \mbox{\hyperlink{blocks__tag_8h_a3c78697ff5025c219cebcacd24dcb595}{e\+\_\+block\+Tag}}}]{block\+Decoration,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{centre,  }\item[{const int}]{largeur,  }\item[{const int}]{hauteur,  }\item[{const int}]{rayon }\end{DoxyParamCaption})}
+
+
+
+Construit une décoration autour d\textquotesingle{}un point donné 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle sera placé la décoration \\
+\hline
+{\em block\+Decoration} & Le block de départ de la décoration \\
+\hline
+{\em centre} & Le point autour duquel la décoration doit être construite \\
+\hline
+{\em largeur} & La largeur de la décoration \\
+\hline
+{\em hauteur} & La hauteur de la décoration \\
+\hline
+{\em rayon} & Le rayon autour duquel doit être placé la décoration\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La position de la décoration 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structures_8c_a9d3fdb62079e95cd51c8417e3bd4f4db}\label{structures_8c_a9d3fdb62079e95cd51c8417e3bd4f4db}} 
+\index{structures.c@{structures.c}!decorationRemplacerFlags@{decorationRemplacerFlags}}
+\index{decorationRemplacerFlags@{decorationRemplacerFlags}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{decorationRemplacerFlags()}{decorationRemplacerFlags()}}
+{\footnotesize\ttfamily void decoration\+Remplacer\+Flags (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Remplace les flags de décorations par les décorations correspondantes. 
+
+Les flags doivent être placé au préalables
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle les flags seront remplacé \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8c_a68e6cd77e4a644cab81f7c6238a56d8d}\label{structures_8c_a68e6cd77e4a644cab81f7c6238a56d8d}} 
+\index{structures.c@{structures.c}!genererChemins@{genererChemins}}
+\index{genererChemins@{genererChemins}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{genererChemins()}{genererChemins()}}
+{\footnotesize\ttfamily void generer\+Chemins (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{\mbox{\hyperlink{structt__discSampling}{t\+\_\+disc\+Sampling}}}]{grille }\end{DoxyParamCaption})}
+
+
+
+Génère les chemins d\textquotesingle{}un village. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle les chemins sont générées \\
+\hline
+{\em grille} & La grille contenant la position des maisons du village \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8c_afafb1270be2a58375c842c05581988f7}\label{structures_8c_afafb1270be2a58375c842c05581988f7}} 
+\index{structures.c@{structures.c}!genererDecorations@{genererDecorations}}
+\index{genererDecorations@{genererDecorations}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{genererDecorations()}{genererDecorations()}}
+{\footnotesize\ttfamily void generer\+Decorations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{\mbox{\hyperlink{structt__discSampling}{t\+\_\+disc\+Sampling}}}]{grille }\end{DoxyParamCaption})}
+
+
+
+Génère les décorations d\textquotesingle{}un village. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle les décorations sont générées \\
+\hline
+{\em grille} & La grille contenant la position des maisons du village \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8c_a98d3b791ea5571b0045a4287f68fa012}\label{structures_8c_a98d3b791ea5571b0045a4287f68fa012}} 
+\index{structures.c@{structures.c}!genererEntreeCaverne@{genererEntreeCaverne}}
+\index{genererEntreeCaverne@{genererEntreeCaverne}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{genererEntreeCaverne()}{genererEntreeCaverne()}}
+{\footnotesize\ttfamily void generer\+Entree\+Caverne (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8c_a796b0eb48d7724c94a0227a6de980f65}\label{structures_8c_a796b0eb48d7724c94a0227a6de980f65}} 
+\index{structures.c@{structures.c}!genererEntreeTemple@{genererEntreeTemple}}
+\index{genererEntreeTemple@{genererEntreeTemple}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{genererEntreeTemple()}{genererEntreeTemple()}}
+{\footnotesize\ttfamily void generer\+Entree\+Temple (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Génère l\textquotesingle{}entrée du temple du boss. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle l\textquotesingle{}entrée du boss est généré \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8c_a84a9a563ecadaa6799c30db82413c6bf}\label{structures_8c_a84a9a563ecadaa6799c30db82413c6bf}} 
+\index{structures.c@{structures.c}!genererVillage@{genererVillage}}
+\index{genererVillage@{genererVillage}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{genererVillage()}{genererVillage()}}
+{\footnotesize\ttfamily void generer\+Village (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Génère un village. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle est généré le village \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8c_adcc11339933129f174d4b02bbbe1d94e}\label{structures_8c_adcc11339933129f174d4b02bbbe1d94e}} 
+\index{structures.c@{structures.c}!getChunkCentralBiome@{getChunkCentralBiome}}
+\index{getChunkCentralBiome@{getChunkCentralBiome}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{getChunkCentralBiome()}{getChunkCentralBiome()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}}$\ast$ get\+Chunk\+Central\+Biome (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}}}]{biome,  }\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{int($\ast$)(\mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$)}]{validation }\end{DoxyParamCaption})}
+
+
+
+Permet d\textquotesingle{}obtenir le chunk central correspondant à la condition. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em biome} & Le biome du chunk recherché \\
+\hline
+{\em map} & La map dans lequel on recherche le chunk \\
+\hline
+{\em validation} & Un pointeur sur la fonction de validation, cette fonction de validation doit retourner 1 pour un cas valide, 0 pour un cas non valide, -\/1 pour un cas banni (interdisant donc la sélection du chunk regardé)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le chunk correspondant le plus à la condition de validation, NULL si il n\textquotesingle{}en existe pas 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structures_8c_a495a00783fb503eb0441ae0d6572324f}\label{structures_8c_a495a00783fb503eb0441ae0d6572324f}} 
+\index{structures.c@{structures.c}!peutEtrePlacer@{peutEtrePlacer}}
+\index{peutEtrePlacer@{peutEtrePlacer}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{peutEtrePlacer()}{peutEtrePlacer()}}
+{\footnotesize\ttfamily boolean peut\+Etre\+Placer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{const float}]{positionX,  }\item[{const float}]{positionY,  }\item[{const int}]{largeur,  }\item[{const int}]{hauteur }\end{DoxyParamCaption})}
+
+
+
+Vérifie si la décoration peut être placé 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle on souhaite placé la décoration \\
+\hline
+{\em positionX} & La coordonné x (relative à la map) à laquelle doit être placé la décoration (angle en haut à gauche) \\
+\hline
+{\em positionY} & La coordonné y (relative à la map) à laquelle doit être placé la décoration (angle en haut à gauche) \\
+\hline
+{\em largeur} & La largeur de la décoration \\
+\hline
+{\em hauteur} & La hauteur de la décoration\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si la décoration peut être placé, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structures_8c_afb181cb2560ba069014336d19b957e7f}\label{structures_8c_afb181cb2560ba069014336d19b957e7f}} 
+\index{structures.c@{structures.c}!selectionMaisonTag@{selectionMaisonTag}}
+\index{selectionMaisonTag@{selectionMaisonTag}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{selectionMaisonTag()}{selectionMaisonTag()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structures_8h_a949e802b1e8c18a685d88c745ccf05ed}{e\+\_\+structure\+Tag}} selection\+Maison\+Tag (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sélectionne un tag d\textquotesingle{}une maison. 
+
+\begin{DoxyReturn}{Renvoie}
+Le tag de la maison choisi 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structures_8c_a0893ebcf3b00a9df73d9a4f5a733b5a8}\label{structures_8c_a0893ebcf3b00a9df73d9a4f5a733b5a8}} 
+\index{structures.c@{structures.c}!tracerChemin@{tracerChemin}}
+\index{tracerChemin@{tracerChemin}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{tracerChemin()}{tracerChemin()}}
+{\footnotesize\ttfamily void tracer\+Chemin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{depart,  }\item[{\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{arrive }\end{DoxyParamCaption})}
+
+
+
+Trace un chemin entre un point de départ et un point d\textquotesingle{}arrivé 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle est tracée les chemins \\
+\hline
+{\em depart} & Le point de départ pour la création du chemin \\
+\hline
+{\em arrive} & Le point d\textquotesingle{}arrive de la création du chemin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8c_a7ad515c29566985d9ac3139c2204b968}\label{structures_8c_a7ad515c29566985d9ac3139c2204b968}} 
+\index{structures.c@{structures.c}!tracerCheminVertical@{tracerCheminVertical}}
+\index{tracerCheminVertical@{tracerCheminVertical}!structures.c@{structures.c}}
+\doxysubsubsection{\texorpdfstring{tracerCheminVertical()}{tracerCheminVertical()}}
+{\footnotesize\ttfamily void tracer\+Chemin\+Vertical (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{depart,  }\item[{\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{arrive,  }\item[{int $\ast$}]{x,  }\item[{int $\ast$}]{y }\end{DoxyParamCaption})}
+
+
+
+Trace un chemin vertical. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle sera créé le chemin \\
+\hline
+{\em depart} & Le point de départ original \\
+\hline
+{\em arrive} & Le point d\textquotesingle{}arriver original \\
+\hline
+{\em x} & Un pointeur sur la coordonnée x actuelle du tracé en cours \\
+\hline
+{\em y} & Un pointeur sur la coordonnée y actuelle du tracé en cours \\
+\hline
+\end{DoxyParams}

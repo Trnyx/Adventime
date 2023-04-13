@@ -1,0 +1,93 @@
+\hypertarget{coffre_8h}{}\doxysection{Référence du fichier include/coffre.h}
+\label{coffre_8h}\index{include/coffre.h@{include/coffre.h}}
+
+
+Module de manipulation des coffres.  
+
+
+{\ttfamily \#include \char`\"{}stockage.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__coffre}{s\+\_\+coffre}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{coffre_8h_a8325dd883e79b26f4fb35a5275ec8bf8}\label{coffre_8h_a8325dd883e79b26f4fb35a5275ec8bf8}} 
+typedef struct \mbox{\hyperlink{structs__coffre}{s\+\_\+coffre}} {\bfseries t\+\_\+coffre}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{coffre_8h_a060610628ffafca03f57a57e9554ba22}{coffre\+Est\+Vide}} (\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$coffre)
+\begin{DoxyCompactList}\small\item\em Vérifie si le coffre est vide. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$ \mbox{\hyperlink{coffre_8h_aec7fc04235a45bfe3967e27ff8e3a17e}{creer\+Coffre}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un coffre et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{coffre_8h_adf424b4a82bd4d2df36cb434363a083e}{detruire\+Coffre}} (\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$$\ast$coffre)
+\begin{DoxyCompactList}\small\item\em Detruit un coffre est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des coffres. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+31 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{coffre_8h_a060610628ffafca03f57a57e9554ba22}\label{coffre_8h_a060610628ffafca03f57a57e9554ba22}} 
+\index{coffre.h@{coffre.h}!coffreEstVide@{coffreEstVide}}
+\index{coffreEstVide@{coffreEstVide}!coffre.h@{coffre.h}}
+\doxysubsubsection{\texorpdfstring{coffreEstVide()}{coffreEstVide()}}
+{\footnotesize\ttfamily boolean coffre\+Est\+Vide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$}]{coffre }\end{DoxyParamCaption})}
+
+
+
+Vérifie si le coffre est vide. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coffre} & Le coffre à vérifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si le coffre est vide, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{coffre_8h_aec7fc04235a45bfe3967e27ff8e3a17e}\label{coffre_8h_aec7fc04235a45bfe3967e27ff8e3a17e}} 
+\index{coffre.h@{coffre.h}!creerCoffre@{creerCoffre}}
+\index{creerCoffre@{creerCoffre}!coffre.h@{coffre.h}}
+\doxysubsubsection{\texorpdfstring{creerCoffre()}{creerCoffre()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}}$\ast$ creer\+Coffre (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un coffre et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle le coffre doit être créé\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le coffre créé, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{coffre_8h_adf424b4a82bd4d2df36cb434363a083e}\label{coffre_8h_adf424b4a82bd4d2df36cb434363a083e}} 
+\index{coffre.h@{coffre.h}!detruireCoffre@{detruireCoffre}}
+\index{detruireCoffre@{detruireCoffre}!coffre.h@{coffre.h}}
+\doxysubsubsection{\texorpdfstring{detruireCoffre()}{detruireCoffre()}}
+{\footnotesize\ttfamily void detruire\+Coffre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$$\ast$}]{coffre }\end{DoxyParamCaption})}
+
+
+
+Detruit un coffre est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coffre} & L\textquotesingle{}adresse du pointeur du coffre à détruire \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,99 @@
+\hypertarget{generation__map_8c}{}\doxysection{Référence du fichier src/generation\+\_\+map.c}
+\label{generation__map_8c}\index{src/generation\_map.c@{src/generation\_map.c}}
+
+
+Génération d\textquotesingle{}une map.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/physique.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/map.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/animal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/structures.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{generation__map_8c_a7d1619181e7a288b31d7d68062a17a5e}\label{generation__map_8c_a7d1619181e7a288b31d7d68062a17a5e}} 
+void {\bfseries changer\+En\+Denivele} (const int x, const int y, const int x\+Alentour, const int y\+Alentour, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\item 
+\mbox{\Hypertarget{generation__map_8c_a2ddccdc0a00cfa859db14ce401857127}\label{generation__map_8c_a2ddccdc0a00cfa859db14ce401857127}} 
+void {\bfseries ajout\+Denivele} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\item 
+\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$ \mbox{\hyperlink{generation__map_8c_a218b8d54a5f7644f5c67e42ad2c66536}{generer\+Map}} (\mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8}{e\+\_\+map\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Génère une map complète. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{generation__map_8c_a455997551d2af091f5f23b525c7fc626}{probabilites\+Biomes}} \mbox{[}NB\+\_\+\+BIOMES\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les probabilités d\textquotesingle{}apparition d\textquotesingle{}un biome. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Génération d\textquotesingle{}une map. 
+
+Voici l\textquotesingle{}algorithme de création d\textquotesingle{}une map \+:
+\begin{DoxyEnumerate}
+\item Pour chacuns des chunks de la map, un biome est sélectionné aléatoirement
+\item Une fois tous les biomes choisis, on normalise la map NOMBRE\+\_\+\+DE\+\_\+\+NORMALISATION\+\_\+\+MAP fois
+\item Pour chacuns des blocks d\textquotesingle{}un chunk, un tag est sélectionné aléatoirement, celui ci dépendant du biome du chunk dans lequel il se situe
+\item Une fois tous les tags des blocks choisis, on normalise les blocks entre eux NOMBRE\+\_\+\+DE\+\_\+\+NORMALISATION\+\_\+\+CHUNK fois
+\item A chaque normalisation d\textquotesingle{}un chunk on le lisse afin de supprimer (le plus possible) les éventuels blocks qui seraient rester seul lors de l\textquotesingle{}étape de la normalisation
+\item Une fois tous les blocks normalisé, on place la végétation
+\end{DoxyEnumerate}
+
+Ce que nous appelons la \char`\"{}normalisation\char`\"{} est le fait \char`\"{}d\textquotesingle{}applatire\char`\"{} les chunks / les blocks entre eux chacun s\textquotesingle{}élève, s\textquotesingle{}abaisse ou ne bouge pas en fonction de ce qui l\textquotesingle{}entoure
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+21 janvier 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{generation__map_8c_a218b8d54a5f7644f5c67e42ad2c66536}\label{generation__map_8c_a218b8d54a5f7644f5c67e42ad2c66536}} 
+\index{generation\_map.c@{generation\_map.c}!genererMap@{genererMap}}
+\index{genererMap@{genererMap}!generation\_map.c@{generation\_map.c}}
+\doxysubsubsection{\texorpdfstring{genererMap()}{genererMap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__map}{t\+\_\+map}}$\ast$ generer\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8}{e\+\_\+map\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Génère une map complète. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em type} & Le type de la map à générer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur la map générée 
+\end{DoxyReturn}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{generation__map_8c_a455997551d2af091f5f23b525c7fc626}\label{generation__map_8c_a455997551d2af091f5f23b525c7fc626}} 
+\index{generation\_map.c@{generation\_map.c}!probabilitesBiomes@{probabilitesBiomes}}
+\index{probabilitesBiomes@{probabilitesBiomes}!generation\_map.c@{generation\_map.c}}
+\doxysubsubsection{\texorpdfstring{probabilitesBiomes}{probabilitesBiomes}}
+{\footnotesize\ttfamily const int probabilites\+Biomes\mbox{[}NB\+\_\+\+BIOMES\mbox{]}}
+
+{\bfseries Valeur initiale \+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{ }
+\DoxyCodeLine{    PROBA\_BIOME\_PROFONDEUR,}
+\DoxyCodeLine{    PROBA\_BIOME\_LAC, }
+\DoxyCodeLine{    PROBA\_BIOME\_PLAINE, }
+\DoxyCodeLine{    PROBA\_BIOME\_FORET, }
+\DoxyCodeLine{    PROBA\_BIOME\_MONTAGNE,}
+\DoxyCodeLine{    }
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Tableau regroupant les probabilités d\textquotesingle{}apparition d\textquotesingle{}un biome. 
+
+Principalement utilisé pour récupérer la probabilité en fonction de l\textquotesingle{}index du biome souhaité 

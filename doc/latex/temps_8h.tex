@@ -1,0 +1,206 @@
+\hypertarget{temps_8h}{}\doxysection{Référence du fichier include/temps.h}
+\label{temps_8h}\index{include/temps.h@{include/temps.h}}
+
+
+Module de manipulation du temps.  
+
+
+{\ttfamily \#include $<$time.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__temps}{s\+\_\+temps}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{temps_8h_a0e8a6eb8b8718439521412d45ed2c627}\label{temps_8h_a0e8a6eb8b8718439521412d45ed2c627}} 
+typedef struct \mbox{\hyperlink{structs__temps}{s\+\_\+temps}} {\bfseries t\+\_\+temps}
+\end{DoxyCompactItemize}
+\doxysubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{temps_8h_a7015b057701a2862901093ba70eebbe0}\label{temps_8h_a7015b057701a2862901093ba70eebbe0}} 
+enum {\bfseries e\+\_\+cycle} \{ {\bfseries CYCLE\+\_\+\+NUIT}
+, {\bfseries CYCLE\+\_\+\+JOUR}
+ \}
+\item 
+\mbox{\Hypertarget{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}\label{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}} 
+enum \mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}} \{ \newline
+{\bfseries DIMANCHE}
+, {\bfseries LUNDI}
+, {\bfseries MARDI}
+, {\bfseries MERCREDI}
+, \newline
+{\bfseries JEUDI}
+, {\bfseries VENDREDI}
+, {\bfseries SAMEDI}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumérateur regroupant les jours de la semaine. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{temps_8h_a14996ddce5a3c3127065f9b024ff8751}\label{temps_8h_a14996ddce5a3c3127065f9b024ff8751}} 
+enum \mbox{\hyperlink{temps_8h_a14996ddce5a3c3127065f9b024ff8751}{e\+\_\+periode}} \{ \newline
+{\bfseries PERIODE\+\_\+\+JOUR\+\_\+\+LEVE\+\_\+\+SOLEIL}
+, {\bfseries PERIODE\+\_\+\+JOUR\+\_\+\+MATIN}
+, {\bfseries PERIODE\+\_\+\+JOUR\+\_\+\+APRES\+\_\+\+MIDI}
+, {\bfseries PERIODE\+\_\+\+JOUR\+\_\+\+COUCHE\+\_\+\+SOLEIL}
+, \newline
+{\bfseries PERIODE\+\_\+\+NUIT}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumérateur regroupant les différentes périodes de la journée en jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$ \mbox{\hyperlink{temps_8h_a3ff9042c75b4cbd8b9f6cceb167c55d5}{init\+Temps}} (const time\+\_\+t timestamp)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour le temps et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{temps_8h_ab28849a8ac95ce2eb08815450445cbda}{detruire\+Temps}} (\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$$\ast$temps)
+\begin{DoxyCompactList}\small\item\em Detruit le temps est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}} \mbox{\hyperlink{temps_8h_a0ddfd7f02961a38a989b55268df8832a}{get\+Jour\+De\+La\+Semaine}} (const time\+\_\+t timestamp)
+\begin{DoxyCompactList}\small\item\em Récupère le jour de la semaine. \end{DoxyCompactList}\item 
+e\+\_\+cycle \mbox{\hyperlink{temps_8h_a6e41454400d8603d286f1a11c0bb1279}{get\+Cycle\+Jeu}} (\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$temps)
+\begin{DoxyCompactList}\small\item\em Récupère le cycle jour/nuit du jeu. \end{DoxyCompactList}\item 
+e\+\_\+cycle \mbox{\hyperlink{temps_8h_a69422e527e65b0edefc0cde30ada4ca0}{get\+Cycle\+Vrai}} (const time\+\_\+t timestamp)
+\begin{DoxyCompactList}\small\item\em Récupère le cycle jour/nuit réel. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$ \mbox{\hyperlink{temps_8h_acfe511133ab500cfe110d6f85c46b6c6}{get\+Temps}} (\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$temps, const time\+\_\+t timestamp)
+\begin{DoxyCompactList}\small\item\em Obtient et actualise le temps du jeu en fonction du temps réel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{temps_8h_adb377cf6406367bb8f03e6c27e57cc2d}{gestionnaire\+Temps\+Evenements}} (\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$temps, const time\+\_\+t timestamp)
+\begin{DoxyCompactList}\small\item\em Gère tous les évènements temporels du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation du temps. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{temps_8h_ab28849a8ac95ce2eb08815450445cbda}\label{temps_8h_ab28849a8ac95ce2eb08815450445cbda}} 
+\index{temps.h@{temps.h}!detruireTemps@{detruireTemps}}
+\index{detruireTemps@{detruireTemps}!temps.h@{temps.h}}
+\doxysubsubsection{\texorpdfstring{detruireTemps()}{detruireTemps()}}
+{\footnotesize\ttfamily void detruire\+Temps (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$$\ast$}]{temps }\end{DoxyParamCaption})}
+
+
+
+Detruit le temps est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em temps} & L\textquotesingle{}adresse du pointeur sur le temps \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{temps_8h_adb377cf6406367bb8f03e6c27e57cc2d}\label{temps_8h_adb377cf6406367bb8f03e6c27e57cc2d}} 
+\index{temps.h@{temps.h}!gestionnaireTempsEvenements@{gestionnaireTempsEvenements}}
+\index{gestionnaireTempsEvenements@{gestionnaireTempsEvenements}!temps.h@{temps.h}}
+\doxysubsubsection{\texorpdfstring{gestionnaireTempsEvenements()}{gestionnaireTempsEvenements()}}
+{\footnotesize\ttfamily void gestionnaire\+Temps\+Evenements (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$}]{temps,  }\item[{const time\+\_\+t}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Gère tous les évènements temporels du jeu. 
+
+Ces évènements se basent sur le temps réel tout comme le temps en jeu
+
+
+\begin{DoxyParams}{Paramètres}
+{\em temps} & Un pointeur sur le temps \\
+\hline
+{\em timestamp} & Le timestamp réel \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{temps_8h_a6e41454400d8603d286f1a11c0bb1279}\label{temps_8h_a6e41454400d8603d286f1a11c0bb1279}} 
+\index{temps.h@{temps.h}!getCycleJeu@{getCycleJeu}}
+\index{getCycleJeu@{getCycleJeu}!temps.h@{temps.h}}
+\doxysubsubsection{\texorpdfstring{getCycleJeu()}{getCycleJeu()}}
+{\footnotesize\ttfamily e\+\_\+cycle get\+Cycle\+Jeu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$}]{temps }\end{DoxyParamCaption})}
+
+
+
+Récupère le cycle jour/nuit du jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em temps} & Un pointeur sur la structure temps du jeu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+e\+\_\+cycle, si il fait jour ou nuit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{temps_8h_a69422e527e65b0edefc0cde30ada4ca0}\label{temps_8h_a69422e527e65b0edefc0cde30ada4ca0}} 
+\index{temps.h@{temps.h}!getCycleVrai@{getCycleVrai}}
+\index{getCycleVrai@{getCycleVrai}!temps.h@{temps.h}}
+\doxysubsubsection{\texorpdfstring{getCycleVrai()}{getCycleVrai()}}
+{\footnotesize\ttfamily e\+\_\+cycle get\+Cycle\+Vrai (\begin{DoxyParamCaption}\item[{const time\+\_\+t}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Récupère le cycle jour/nuit réel. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em timestamp} & Le timestamp actuel\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+e\+\_\+cycle, si il fait jour ou nuit 
+\end{DoxyReturn}
+\mbox{\Hypertarget{temps_8h_a0ddfd7f02961a38a989b55268df8832a}\label{temps_8h_a0ddfd7f02961a38a989b55268df8832a}} 
+\index{temps.h@{temps.h}!getJourDeLaSemaine@{getJourDeLaSemaine}}
+\index{getJourDeLaSemaine@{getJourDeLaSemaine}!temps.h@{temps.h}}
+\doxysubsubsection{\texorpdfstring{getJourDeLaSemaine()}{getJourDeLaSemaine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}} get\+Jour\+De\+La\+Semaine (\begin{DoxyParamCaption}\item[{const time\+\_\+t}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Récupère le jour de la semaine. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em timestamp} & Le timestamp actuel\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+e\+\_\+jour, le jour de la semaine 
+\end{DoxyReturn}
+\mbox{\Hypertarget{temps_8h_acfe511133ab500cfe110d6f85c46b6c6}\label{temps_8h_acfe511133ab500cfe110d6f85c46b6c6}} 
+\index{temps.h@{temps.h}!getTemps@{getTemps}}
+\index{getTemps@{getTemps}!temps.h@{temps.h}}
+\doxysubsubsection{\texorpdfstring{getTemps()}{getTemps()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__temps}{t\+\_\+temps}}$\ast$ get\+Temps (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$}]{temps,  }\item[{const time\+\_\+t}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Obtient et actualise le temps du jeu en fonction du temps réel. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em temps} & Un pointeur sur la structure temps du jeu \\
+\hline
+{\em timestamp} & Le timestamp réel permettant d\textquotesingle{}actualiser le temps du jeu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La structure de temps donnée en paramètre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{temps_8h_a3ff9042c75b4cbd8b9f6cceb167c55d5}\label{temps_8h_a3ff9042c75b4cbd8b9f6cceb167c55d5}} 
+\index{temps.h@{temps.h}!initTemps@{initTemps}}
+\index{initTemps@{initTemps}!temps.h@{temps.h}}
+\doxysubsubsection{\texorpdfstring{initTemps()}{initTemps()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__temps}{t\+\_\+temps}}$\ast$ init\+Temps (\begin{DoxyParamCaption}\item[{const time\+\_\+t}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour le temps et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em timestamp} & Le timestamp réel permettant d\textquotesingle{}intialiser le temps du jeu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le temps, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}

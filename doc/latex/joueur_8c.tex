@@ -1,0 +1,305 @@
+\hypertarget{joueur_8c}{}\doxysection{Référence du fichier src/joueur.c}
+\label{joueur_8c}\index{src/joueur.c@{src/joueur.c}}
+
+
+Module de gestion du joueur.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/physique.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/audio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/joueur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/camera.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/combat.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/coffre.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{joueur_8c_a2db2c90c3eb544320db62e4236a816bb}{peut\+Attaquer}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Vérifie si le joueur peut attaquer. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{joueur_8c_a4a6dc69a7defcbc932750f2792784aa0}{doit\+Attaquer}} (\mbox{\hyperlink{structt__action__flags}{t\+\_\+action\+\_\+flags}} $\ast$flags)
+\begin{DoxyCompactList}\small\item\em Regarde les inputs et vérifie si le joueur doit attaquer. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{joueur_8c_a0463824a0524664ae08ea44016ba6902}{doit\+Se\+Deplacer}} (\mbox{\hyperlink{structt__action__flags}{t\+\_\+action\+\_\+flags}} $\ast$flags)
+\begin{DoxyCompactList}\small\item\em Regarde les inputs et vérifie si le joueur doit se déplacer. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{joueur_8c_a92d6be98d74ac518eb0a9e6869deff69}{doit\+Interargir}} (\mbox{\hyperlink{structt__action__flags}{t\+\_\+action\+\_\+flags}} $\ast$flags)
+\begin{DoxyCompactList}\small\item\em Regarde les inputs et vérifie si le joueur doit intéragir. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8c_a3edd09e87d83075f2d6f53a59687a408}{get\+Direction\+Joueur}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Met à jour la direction du joueur en fonction de ses inputs. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{joueur_8c_a0e8821c0417b3dcbfdbb77013bd0b2d6}{get\+Orientation\+Joueur}} ()
+\begin{DoxyCompactList}\small\item\em Obtient l\textquotesingle{}angle d\textquotesingle{}orientation du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8c_a8de6e026be6d9c91b9c343daa98a0e22}{joueur\+Attaque}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur, const float angle\+Attaque)
+\begin{DoxyCompactList}\small\item\em Execute une attaque du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8c_a1e4bb377786b82a27480580f1ebda4db}{joueur\+Interaction}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Execute une interaction du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8c_a1c6bb24d038d22c7d5f472d3760a7b01}{update\+Joueur}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Actualise le joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8c_abe53ab4bf29486fff5892812e2aef66e}{mort\+Joueur}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Gère la mort du joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8c_a658b3773cafe0f5acc8d2bb207c4705d}{reapparition\+Joueur}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position)
+\begin{DoxyCompactList}\small\item\em Permet au joueur de réapparaitre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8c_a9dd7d6fe617601d4bebf79e84a8c7452}{detruire\+Action\+Flags}} (\mbox{\hyperlink{structt__action__flags}{t\+\_\+action\+\_\+flags}} $\ast$$\ast$flags)
+\begin{DoxyCompactList}\small\item\em Detruit les inputs du joueur est libère la mémoire allouée pour ces derniers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{joueur_8c_a1e9013c729e9fe43289429dc9df96d0e}{detruire\+Joueur}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$$\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Detruit un joueur est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__action__flags}{t\+\_\+action\+\_\+flags}} $\ast$ \mbox{\hyperlink{joueur_8c_a995f4aefdb75bd2c2088ea9f0047fd7a}{initialiser\+Action\+Flags}} ()
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour les flags des inputs du joueur et les initialise. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$ \mbox{\hyperlink{joueur_8c_ad834f21bebeda61e320b2bdcf673d0ea}{creer\+Joueur}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un joueur et le créer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion du joueur. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{joueur_8c_ad834f21bebeda61e320b2bdcf673d0ea}\label{joueur_8c_ad834f21bebeda61e320b2bdcf673d0ea}} 
+\index{joueur.c@{joueur.c}!creerJoueur@{creerJoueur}}
+\index{creerJoueur@{creerJoueur}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{creerJoueur()}{creerJoueur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}}$\ast$ creer\+Joueur (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un joueur et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle le joueur doit être créé\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le joueur créé, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8c_a9dd7d6fe617601d4bebf79e84a8c7452}\label{joueur_8c_a9dd7d6fe617601d4bebf79e84a8c7452}} 
+\index{joueur.c@{joueur.c}!detruireActionFlags@{detruireActionFlags}}
+\index{detruireActionFlags@{detruireActionFlags}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{detruireActionFlags()}{detruireActionFlags()}}
+{\footnotesize\ttfamily void detruire\+Action\+Flags (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__action__flags}{t\+\_\+action\+\_\+flags}} $\ast$$\ast$}]{flags }\end{DoxyParamCaption})}
+
+
+
+Detruit les inputs du joueur est libère la mémoire allouée pour ces derniers. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em flags} & L\textquotesingle{}adresse du pointeur sur les inputs du joueur à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8c_a1e9013c729e9fe43289429dc9df96d0e}\label{joueur_8c_a1e9013c729e9fe43289429dc9df96d0e}} 
+\index{joueur.c@{joueur.c}!detruireJoueur@{detruireJoueur}}
+\index{detruireJoueur@{detruireJoueur}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{detruireJoueur()}{detruireJoueur()}}
+{\footnotesize\ttfamily void detruire\+Joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$$\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Detruit un joueur est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & L\textquotesingle{}adresse du pointeur du joueur à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8c_a4a6dc69a7defcbc932750f2792784aa0}\label{joueur_8c_a4a6dc69a7defcbc932750f2792784aa0}} 
+\index{joueur.c@{joueur.c}!doitAttaquer@{doitAttaquer}}
+\index{doitAttaquer@{doitAttaquer}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{doitAttaquer()}{doitAttaquer()}}
+{\footnotesize\ttfamily boolean doit\+Attaquer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__action__flags}{t\+\_\+action\+\_\+flags}} $\ast$}]{flags }\end{DoxyParamCaption})}
+
+
+
+Regarde les inputs et vérifie si le joueur doit attaquer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em flags} & Les flags indiquant les inputs du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si le joueur doit attaquer, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8c_a92d6be98d74ac518eb0a9e6869deff69}\label{joueur_8c_a92d6be98d74ac518eb0a9e6869deff69}} 
+\index{joueur.c@{joueur.c}!doitInterargir@{doitInterargir}}
+\index{doitInterargir@{doitInterargir}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{doitInterargir()}{doitInterargir()}}
+{\footnotesize\ttfamily boolean doit\+Interargir (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__action__flags}{t\+\_\+action\+\_\+flags}} $\ast$}]{flags }\end{DoxyParamCaption})}
+
+
+
+Regarde les inputs et vérifie si le joueur doit intéragir. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em flags} & Les flags indiquant les inputs du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si le joueur doit interargir, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8c_a0463824a0524664ae08ea44016ba6902}\label{joueur_8c_a0463824a0524664ae08ea44016ba6902}} 
+\index{joueur.c@{joueur.c}!doitSeDeplacer@{doitSeDeplacer}}
+\index{doitSeDeplacer@{doitSeDeplacer}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{doitSeDeplacer()}{doitSeDeplacer()}}
+{\footnotesize\ttfamily boolean doit\+Se\+Deplacer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__action__flags}{t\+\_\+action\+\_\+flags}} $\ast$}]{flags }\end{DoxyParamCaption})}
+
+
+
+Regarde les inputs et vérifie si le joueur doit se déplacer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em flags} & Les flags indiquant les inputs du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si le joueur doit se déplacer, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8c_a3edd09e87d83075f2d6f53a59687a408}\label{joueur_8c_a3edd09e87d83075f2d6f53a59687a408}} 
+\index{joueur.c@{joueur.c}!getDirectionJoueur@{getDirectionJoueur}}
+\index{getDirectionJoueur@{getDirectionJoueur}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{getDirectionJoueur()}{getDirectionJoueur()}}
+{\footnotesize\ttfamily void get\+Direction\+Joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Met à jour la direction du joueur en fonction de ses inputs. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Le joueur dont la direction est mis à jour \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8c_a0e8821c0417b3dcbfdbb77013bd0b2d6}\label{joueur_8c_a0e8821c0417b3dcbfdbb77013bd0b2d6}} 
+\index{joueur.c@{joueur.c}!getOrientationJoueur@{getOrientationJoueur}}
+\index{getOrientationJoueur@{getOrientationJoueur}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{getOrientationJoueur()}{getOrientationJoueur()}}
+{\footnotesize\ttfamily float get\+Orientation\+Joueur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Obtient l\textquotesingle{}angle d\textquotesingle{}orientation du joueur. 
+
+\begin{DoxyReturn}{Renvoie}
+L\textquotesingle{}angle entre le centre de l\textquotesingle{}écran et la position de la souris 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8c_a995f4aefdb75bd2c2088ea9f0047fd7a}\label{joueur_8c_a995f4aefdb75bd2c2088ea9f0047fd7a}} 
+\index{joueur.c@{joueur.c}!initialiserActionFlags@{initialiserActionFlags}}
+\index{initialiserActionFlags@{initialiserActionFlags}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{initialiserActionFlags()}{initialiserActionFlags()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__action__flags}{t\+\_\+action\+\_\+flags}}$\ast$ initialiser\+Action\+Flags (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour les flags des inputs du joueur et les initialise. 
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur les flags des inputs, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8c_a8de6e026be6d9c91b9c343daa98a0e22}\label{joueur_8c_a8de6e026be6d9c91b9c343daa98a0e22}} 
+\index{joueur.c@{joueur.c}!joueurAttaque@{joueurAttaque}}
+\index{joueurAttaque@{joueurAttaque}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{joueurAttaque()}{joueurAttaque()}}
+{\footnotesize\ttfamily void joueur\+Attaque (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur,  }\item[{const float}]{angle\+Attaque }\end{DoxyParamCaption})}
+
+
+
+Execute une attaque du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur sur le joueur qui attaque \\
+\hline
+{\em angle\+Attaque} & L\textquotesingle{}angle dans lequel le joueur attaque \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8c_a1e4bb377786b82a27480580f1ebda4db}\label{joueur_8c_a1e4bb377786b82a27480580f1ebda4db}} 
+\index{joueur.c@{joueur.c}!joueurInteraction@{joueurInteraction}}
+\index{joueurInteraction@{joueurInteraction}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{joueurInteraction()}{joueurInteraction()}}
+{\footnotesize\ttfamily void joueur\+Interaction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Execute une interaction du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur sur le joueur qui intérargit \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8c_abe53ab4bf29486fff5892812e2aef66e}\label{joueur_8c_abe53ab4bf29486fff5892812e2aef66e}} 
+\index{joueur.c@{joueur.c}!mortJoueur@{mortJoueur}}
+\index{mortJoueur@{mortJoueur}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{mortJoueur()}{mortJoueur()}}
+{\footnotesize\ttfamily void mort\+Joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Gère la mort du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Le joueur qui est mort \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8c_a2db2c90c3eb544320db62e4236a816bb}\label{joueur_8c_a2db2c90c3eb544320db62e4236a816bb}} 
+\index{joueur.c@{joueur.c}!peutAttaquer@{peutAttaquer}}
+\index{peutAttaquer@{peutAttaquer}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{peutAttaquer()}{peutAttaquer()}}
+{\footnotesize\ttfamily boolean peut\+Attaquer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Vérifie si le joueur peut attaquer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Le joueur que l\textquotesingle{}on vérifie\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si le joueur peut attaquer, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{joueur_8c_a658b3773cafe0f5acc8d2bb207c4705d}\label{joueur_8c_a658b3773cafe0f5acc8d2bb207c4705d}} 
+\index{joueur.c@{joueur.c}!reapparitionJoueur@{reapparitionJoueur}}
+\index{reapparitionJoueur@{reapparitionJoueur}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{reapparitionJoueur()}{reapparitionJoueur()}}
+{\footnotesize\ttfamily void reapparition\+Joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Permet au joueur de réapparaitre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur sur le joueur qui réapparait \\
+\hline
+{\em position} & La position à laquelle le joueur réapparait \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{joueur_8c_a1c6bb24d038d22c7d5f472d3760a7b01}\label{joueur_8c_a1c6bb24d038d22c7d5f472d3760a7b01}} 
+\index{joueur.c@{joueur.c}!updateJoueur@{updateJoueur}}
+\index{updateJoueur@{updateJoueur}!joueur.c@{joueur.c}}
+\doxysubsubsection{\texorpdfstring{updateJoueur()}{updateJoueur()}}
+{\footnotesize\ttfamily void update\+Joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Actualise le joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Pointeur sur le joueur qui doit être actualisé \\
+\hline
+\end{DoxyParams}

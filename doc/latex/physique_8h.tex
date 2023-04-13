@@ -1,0 +1,186 @@
+\hypertarget{physique_8h}{}\doxysection{Référence du fichier include/physique.h}
+\label{physique_8h}\index{include/physique.h@{include/physique.h}}
+
+
+Module contenant toutes les constantes requises pour la physique du jeu.  
+
+
+{\ttfamily \#include \char`\"{}map.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}joueur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}temps.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{physique_8h_aefd7e5ae26a812bce5ef59e3d93ae8d5}\label{physique_8h_aefd7e5ae26a812bce5ef59e3d93ae8d5}} 
+\#define {\bfseries NOMBRE\+\_\+\+JOUR}~4
+\item 
+\mbox{\Hypertarget{physique_8h_a0e7ca068ea4e242f6f5a4172a0eba18e}\label{physique_8h_a0e7ca068ea4e242f6f5a4172a0eba18e}} 
+\#define {\bfseries TEMPS\+\_\+\+JOUR}~(3600 / NOMBRE\+\_\+\+JOUR)
+\item 
+\mbox{\Hypertarget{physique_8h_acd4da74c86d73c1a8f8018b763f91c0c}\label{physique_8h_acd4da74c86d73c1a8f8018b763f91c0c}} 
+\#define {\bfseries HEURE\+\_\+\+JEU\+\_\+\+MATIN}~8
+\item 
+\mbox{\Hypertarget{physique_8h_aef506ee6809ffe98b99812d991324162}\label{physique_8h_aef506ee6809ffe98b99812d991324162}} 
+\#define {\bfseries HEURE\+\_\+\+JEU\+\_\+\+APRES\+\_\+\+MIDI}~14
+\item 
+\mbox{\Hypertarget{physique_8h_a1aa105c2c57d528656c3979ed3f75645}\label{physique_8h_a1aa105c2c57d528656c3979ed3f75645}} 
+\#define {\bfseries HEURE\+\_\+\+JEU\+\_\+\+NUIT}~20
+\item 
+\mbox{\Hypertarget{physique_8h_ae4196c63d1fe18dd10a0dc9c732dd542}\label{physique_8h_ae4196c63d1fe18dd10a0dc9c732dd542}} 
+\#define {\bfseries HEURE\+\_\+\+JEU\+\_\+\+LEVE\+\_\+\+SOLEIL}~6
+\item 
+\mbox{\Hypertarget{physique_8h_a966d022d38af4cbed622e2067ccbe7d2}\label{physique_8h_a966d022d38af4cbed622e2067ccbe7d2}} 
+\#define {\bfseries HEURE\+\_\+\+JEU\+\_\+\+COUCHE\+\_\+\+SOLEIL}~18
+\item 
+\mbox{\Hypertarget{physique_8h_add4b65d70d4c9a423c097f669fea6420}\label{physique_8h_add4b65d70d4c9a423c097f669fea6420}} 
+\#define {\bfseries HEURE\+\_\+\+VRAI\+\_\+\+JOUR}~6
+\item 
+\mbox{\Hypertarget{physique_8h_ac81c9394c4fca0ad2882eeb57801b891}\label{physique_8h_ac81c9394c4fca0ad2882eeb57801b891}} 
+\#define {\bfseries HEURE\+\_\+\+VRAI\+\_\+\+NUIT}~20
+\item 
+\mbox{\Hypertarget{physique_8h_a1c6bfd387a6f75e964d1c8ac4db08cb4}\label{physique_8h_a1c6bfd387a6f75e964d1c8ac4db08cb4}} 
+\#define {\bfseries HEURE\+\_\+\+VRAI\+\_\+\+RENOUVELLEMENT}~4
+\item 
+\mbox{\Hypertarget{physique_8h_a3892a31603136e06662d6a34d269a73d}\label{physique_8h_a3892a31603136e06662d6a34d269a73d}} 
+\#define {\bfseries JOUEUR\+\_\+\+RAYON\+\_\+\+ACTIF}~(TAILLE\+\_\+\+CHUNK + (TAILLE\+\_\+\+CHUNK / 2))
+\item 
+\mbox{\Hypertarget{physique_8h_adac471a4e1f4f8122a88b3aab706c0bc}\label{physique_8h_adac471a4e1f4f8122a88b3aab706c0bc}} 
+\#define {\bfseries JOUEUR\+\_\+\+RAYON\+\_\+\+SEMIACTIF}~(JOUEUR\+\_\+\+RAYON\+\_\+\+ACTIF $\ast$ 3)
+\item 
+\mbox{\Hypertarget{physique_8h_a7e0b49830d1e82362a81dffb31489036}\label{physique_8h_a7e0b49830d1e82362a81dffb31489036}} 
+\#define {\bfseries JOUEUR\+\_\+\+RAYON\+\_\+\+INACTIF}~(JOUEUR\+\_\+\+RAYON\+\_\+\+ACTIF $\ast$ 4)
+\item 
+\mbox{\Hypertarget{physique_8h_ad49288796a5f6db85b60c55f6b4f07ef}\label{physique_8h_ad49288796a5f6db85b60c55f6b4f07ef}} 
+\#define {\bfseries RAYON\+\_\+\+INTERACTION}~1.\+5
+\item 
+\mbox{\Hypertarget{physique_8h_a9d2c7ed60b13c50c20d6b9a1ff3ddf98}\label{physique_8h_a9d2c7ed60b13c50c20d6b9a1ff3ddf98}} 
+\#define {\bfseries ENTITE\+\_\+\+CAP}~256
+\item 
+\mbox{\Hypertarget{physique_8h_a605d3ece1517df92b813ae85478e283e}\label{physique_8h_a605d3ece1517df92b813ae85478e283e}} 
+\#define {\bfseries MOB\+\_\+\+CAP}~128
+\item 
+\mbox{\Hypertarget{physique_8h_a99a7559c02de045f3eae68511b8cfefe}\label{physique_8h_a99a7559c02de045f3eae68511b8cfefe}} 
+\#define {\bfseries MONSTRE\+\_\+\+AGGRESSIF\+\_\+\+CAP}~16
+\item 
+\mbox{\Hypertarget{physique_8h_ab46c6fa9b70a31281447d507f0451ced}\label{physique_8h_ab46c6fa9b70a31281447d507f0451ced}} 
+\#define {\bfseries MONSTRE\+\_\+\+PASSIF\+\_\+\+CAP}~24
+\item 
+\mbox{\Hypertarget{physique_8h_ad6f7891ed94a46a89ad9e75de96ae870}\label{physique_8h_ad6f7891ed94a46a89ad9e75de96ae870}} 
+\#define {\bfseries MONSTRE\+\_\+\+RAYON\+\_\+\+COMBAT\+\_\+\+DETECTION}~4.\+5
+\item 
+\mbox{\Hypertarget{physique_8h_a449ae8ac1c7b61ec74ab8d8647264010}\label{physique_8h_a449ae8ac1c7b61ec74ab8d8647264010}} 
+\#define {\bfseries MOB\+\_\+\+RAYON\+\_\+\+COMBAT\+\_\+\+POSITIONNEMENT}~6.\+0
+\item 
+\mbox{\Hypertarget{physique_8h_a8fbdb2c3e09285ef2a1588358cf3acb1}\label{physique_8h_a8fbdb2c3e09285ef2a1588358cf3acb1}} 
+\#define {\bfseries MOB\+\_\+\+RAYON\+\_\+\+COMBAT\+\_\+\+RETRAIT}~1.\+8
+\item 
+\mbox{\Hypertarget{physique_8h_af20c9238de717621c1e844851c0a1044}\label{physique_8h_af20c9238de717621c1e844851c0a1044}} 
+\#define {\bfseries MOB\+\_\+\+RAYON\+\_\+\+COMBAT\+\_\+\+ATTAQUE}~2.\+2
+\item 
+\mbox{\Hypertarget{physique_8h_a55735f85bdd0cd19c79f1fde3db520a8}\label{physique_8h_a55735f85bdd0cd19c79f1fde3db520a8}} 
+\#define {\bfseries BOSS\+\_\+\+RAYON\+\_\+\+COMBAT\+\_\+\+DETECTION}~6.\+0
+\item 
+\mbox{\Hypertarget{physique_8h_a245a4bedabc8422e68029b8f2c9fa64f}\label{physique_8h_a245a4bedabc8422e68029b8f2c9fa64f}} 
+\#define {\bfseries BOSS\+\_\+\+RAYON\+\_\+\+COMBAT\+\_\+\+POSITIONNEMENT}~8.\+0
+\item 
+\mbox{\Hypertarget{physique_8h_a5897e831b1d256f667eb94a03a279185}\label{physique_8h_a5897e831b1d256f667eb94a03a279185}} 
+\#define {\bfseries MOB\+\_\+\+VITESSE\+\_\+\+MODIFICATEUR\+\_\+\+POSITIONNEMENT}
+\item 
+\mbox{\Hypertarget{physique_8h_a4952732fd2e3beadeb9c0bcb2883eb9e}\label{physique_8h_a4952732fd2e3beadeb9c0bcb2883eb9e}} 
+\#define {\bfseries MOB\+\_\+\+VITESSE\+\_\+\+MODIFICATEUR\+\_\+\+AUTOUR}~0.\+5
+\item 
+\mbox{\Hypertarget{physique_8h_a75965feb062ac93865086a18f12a3e3d}\label{physique_8h_a75965feb062ac93865086a18f12a3e3d}} 
+\#define {\bfseries MOB\+\_\+\+VITESSE\+\_\+\+MODIFICATEUR\+\_\+\+ELOIGNEMENT}~0.\+8
+\item 
+\mbox{\Hypertarget{physique_8h_a6ca317a45adf3cfb25d250a39f8f1750}\label{physique_8h_a6ca317a45adf3cfb25d250a39f8f1750}} 
+\#define {\bfseries MOB\+\_\+\+VITESSE\+\_\+\+MODIFICATEUR\+\_\+\+ATTAQUE}~1.\+6
+\item 
+\mbox{\Hypertarget{physique_8h_a0729dd52451d97aec5827835d0d70823}\label{physique_8h_a0729dd52451d97aec5827835d0d70823}} 
+\#define {\bfseries MOB\+\_\+\+DUREE\+\_\+\+DEPLACEMENT}~(5 $\ast$ FPS)
+\item 
+\mbox{\Hypertarget{physique_8h_a1795f6a6c7e5199da305e617eec4d0f9}\label{physique_8h_a1795f6a6c7e5199da305e617eec4d0f9}} 
+\#define {\bfseries MOB\+\_\+\+DELAI\+\_\+\+MIN\+\_\+\+ENTRE\+\_\+\+DEPLACEMENT}~(3 $\ast$ FPS)
+\item 
+\mbox{\Hypertarget{physique_8h_afadf4f76f79871f504e109278a206a4b}\label{physique_8h_afadf4f76f79871f504e109278a206a4b}} 
+\#define {\bfseries MOB\+\_\+\+DELAI\+\_\+\+MAX\+\_\+\+ENTRE\+\_\+\+DEPLACEMENT}~(8 $\ast$ FPS)
+\item 
+\mbox{\Hypertarget{physique_8h_a1627b5ca8c7fb72f06628a2d415e5495}\label{physique_8h_a1627b5ca8c7fb72f06628a2d415e5495}} 
+\#define {\bfseries MOB\+\_\+\+DELAI\+\_\+\+MIN\+\_\+\+ENTRE\+\_\+\+ATTAQUE}~(2 $\ast$ FPS)
+\item 
+\mbox{\Hypertarget{physique_8h_a1be1fcc23f78669b29413fd12ddcb2a3}\label{physique_8h_a1be1fcc23f78669b29413fd12ddcb2a3}} 
+\#define {\bfseries MOB\+\_\+\+DELAI\+\_\+\+MAX\+\_\+\+ENTRE\+\_\+\+ATTAQUE}~(5 $\ast$ FPS)
+\item 
+\mbox{\Hypertarget{physique_8h_a62c75536b41f22dc49fd18279ba3e9c9}\label{physique_8h_a62c75536b41f22dc49fd18279ba3e9c9}} 
+\#define {\bfseries MOB\+\_\+\+DELAI\+\_\+\+MIN\+\_\+\+ENTRE\+\_\+\+BRUIT}~(12 $\ast$ FPS)
+\item 
+\mbox{\Hypertarget{physique_8h_a3a7c4cf0d6e01642ce960a271b1c4725}\label{physique_8h_a3a7c4cf0d6e01642ce960a271b1c4725}} 
+\#define {\bfseries MOB\+\_\+\+DELAI\+\_\+\+MAX\+\_\+\+ENTRE\+\_\+\+BRUIT}~(20 $\ast$ FPS)
+\item 
+\mbox{\Hypertarget{physique_8h_a05ddc8fe218ea2ea7164426bcd29db3a}\label{physique_8h_a05ddc8fe218ea2ea7164426bcd29db3a}} 
+\#define {\bfseries ENTITE\+\_\+\+DUREE\+\_\+\+VIE\+\_\+\+MIN}~(TEMPS\+\_\+\+JOUR / 4)
+\item 
+\mbox{\Hypertarget{physique_8h_afef6f99b71a28cedd7bc6acf44237c67}\label{physique_8h_afef6f99b71a28cedd7bc6acf44237c67}} 
+\#define {\bfseries ENTITE\+\_\+\+DUREE\+\_\+\+VIE\+\_\+\+MAX}~(TEMPS\+\_\+\+JOUR / 2)
+\item 
+\mbox{\Hypertarget{physique_8h_a59c181357ac976391078cb19ee225c83}\label{physique_8h_a59c181357ac976391078cb19ee225c83}} 
+\#define {\bfseries ENTITE\+\_\+\+ITEM\+\_\+\+DELAI\+\_\+\+RECUPERATION}~(1 $\ast$ FPS)
+\item 
+\mbox{\Hypertarget{physique_8h_aa3a13b7e5b5f3c3a33992d19d56306fe}\label{physique_8h_aa3a13b7e5b5f3c3a33992d19d56306fe}} 
+\#define {\bfseries PROBABILITE\+\_\+\+MOUVEMENT\+\_\+\+AUCUN}~20
+\item 
+\mbox{\Hypertarget{physique_8h_a9e7ca0e5c7a8f306ccbba025dbff6e96}\label{physique_8h_a9e7ca0e5c7a8f306ccbba025dbff6e96}} 
+\#define {\bfseries PROBABILITE\+\_\+\+MOUVEMENT\+\_\+\+ROTATION}~55
+\item 
+\mbox{\Hypertarget{physique_8h_ae026b7df2266abaa6ad22d70423f55b7}\label{physique_8h_ae026b7df2266abaa6ad22d70423f55b7}} 
+\#define {\bfseries PROBABILITE\+\_\+\+MOUVEMENT\+\_\+\+DEPLACEMENT}~100
+\item 
+\mbox{\Hypertarget{physique_8h_a6f1c7395bcc64eb9956cd34f88107195}\label{physique_8h_a6f1c7395bcc64eb9956cd34f88107195}} 
+\#define {\bfseries PROBABILITE\+\_\+\+APPARITION\+\_\+\+MONSTRE}~30
+\item 
+\mbox{\Hypertarget{physique_8h_a356ea74ccefc41ad4562dc90b6992fcb}\label{physique_8h_a356ea74ccefc41ad4562dc90b6992fcb}} 
+\#define {\bfseries ANIMAL\+\_\+\+RAYON\+\_\+\+DETECTION\+\_\+\+TROUPEAU}~12
+\item 
+\mbox{\Hypertarget{physique_8h_adbf55f57576e8c30226bd7390dc1a680}\label{physique_8h_adbf55f57576e8c30226bd7390dc1a680}} 
+\#define {\bfseries ANIMAL\+\_\+\+RAYON\+\_\+\+TROP\+\_\+\+LOIN\+\_\+\+TROUPEAU}~5
+\item 
+\mbox{\Hypertarget{physique_8h_a6a1cb2da97cd790eb40ef55735aa9e92}\label{physique_8h_a6a1cb2da97cd790eb40ef55735aa9e92}} 
+\#define {\bfseries COOLDOWN\+\_\+\+REGENERATION}~(10 $\ast$ FPS)
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{physique_8h_a3b6113360bf1dc2ce79e1cbb377e435c}{update}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Fonction appelé à chaque frame du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module contenant toutes les constantes requises pour la physique du jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{physique_8h_a3b6113360bf1dc2ce79e1cbb377e435c}\label{physique_8h_a3b6113360bf1dc2ce79e1cbb377e435c}} 
+\index{physique.h@{physique.h}!update@{update}}
+\index{update@{update}!physique.h@{physique.h}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Fonction appelé à chaque frame du jeu. 
+
+Elle gère toute la physique et logique du jeu
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & Un pointeur sur la map dans laquelle le joueur progresse \\
+\hline
+{\em joueur} & Un pointeur sur le joueur \\
+\hline
+\end{DoxyParams}

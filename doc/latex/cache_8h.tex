@@ -1,0 +1,72 @@
+\hypertarget{cache_8h}{}\doxysection{Référence du fichier include/cache.h}
+\label{cache_8h}\index{include/cache.h@{include/cache.h}}
+
+
+Module de manipulation du cache.  
+
+
+{\ttfamily \#include \char`\"{}joueur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}monde.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}liste.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__cache}{s\+\_\+cache}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{cache_8h_a1a19da6850a176f6634f2b9ad63fb18a}\label{cache_8h_a1a19da6850a176f6634f2b9ad63fb18a}} 
+typedef struct \mbox{\hyperlink{structs__cache}{s\+\_\+cache}} {\bfseries t\+\_\+cache}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__cache}{t\+\_\+cache}} $\ast$ \mbox{\hyperlink{cache_8h_a2a3fa5272cc278a8a58d5a3e0708caaa}{init\+Cache}} ()
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour le cache et l\textquotesingle{}initialise. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cache_8h_aebb68024b82f5044c9e83480c725c241}{detruire\+Cache}} (\mbox{\hyperlink{structt__cache}{t\+\_\+cache}} $\ast$$\ast$cache)
+\begin{DoxyCompactList}\small\item\em Detruit le cache est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation du cache. 
+
+Le cache permet un accès rapide à certaines variables facilitant leur gestion
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+9 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{cache_8h_aebb68024b82f5044c9e83480c725c241}\label{cache_8h_aebb68024b82f5044c9e83480c725c241}} 
+\index{cache.h@{cache.h}!detruireCache@{detruireCache}}
+\index{detruireCache@{detruireCache}!cache.h@{cache.h}}
+\doxysubsubsection{\texorpdfstring{detruireCache()}{detruireCache()}}
+{\footnotesize\ttfamily void detruire\+Cache (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__cache}{t\+\_\+cache}} $\ast$$\ast$}]{cache }\end{DoxyParamCaption})}
+
+
+
+Detruit le cache est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cache} & L\textquotesingle{}adresse du pointeur du cache à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cache_8h_a2a3fa5272cc278a8a58d5a3e0708caaa}\label{cache_8h_a2a3fa5272cc278a8a58d5a3e0708caaa}} 
+\index{cache.h@{cache.h}!initCache@{initCache}}
+\index{initCache@{initCache}!cache.h@{cache.h}}
+\doxysubsubsection{\texorpdfstring{initCache()}{initCache()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__cache}{t\+\_\+cache}}$\ast$ init\+Cache (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour le cache et l\textquotesingle{}initialise. 
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le cache, NULL si echec 
+\end{DoxyReturn}

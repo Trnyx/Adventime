@@ -1,0 +1,555 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier src/joueur.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier joueur.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Module de gestion du joueur.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="physique_8h_source.html">../include/physique.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="audio_8h_source.html">../include/audio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="moteur_8h_source.html">../include/moteur.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="joueur_8h_source.html">../include/joueur.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="camera_8h_source.html">../include/camera.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="combat_8h_source.html">../include/combat.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="coffre_8h_source.html">../include/coffre.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a2db2c90c3eb544320db62e4236a816bb"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a2db2c90c3eb544320db62e4236a816bb">peutAttaquer</a> (<a class="el" href="structt__joueur.html">t_joueur</a> *joueur)</td></tr>
+<tr class="memdesc:a2db2c90c3eb544320db62e4236a816bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si le joueur peut attaquer.  <a href="joueur_8c.html#a2db2c90c3eb544320db62e4236a816bb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2db2c90c3eb544320db62e4236a816bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a6dc69a7defcbc932750f2792784aa0"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a4a6dc69a7defcbc932750f2792784aa0">doitAttaquer</a> (<a class="el" href="structt__action__flags.html">t_action_flags</a> *flags)</td></tr>
+<tr class="memdesc:a4a6dc69a7defcbc932750f2792784aa0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Regarde les inputs et vérifie si le joueur doit attaquer.  <a href="joueur_8c.html#a4a6dc69a7defcbc932750f2792784aa0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4a6dc69a7defcbc932750f2792784aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0463824a0524664ae08ea44016ba6902"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a0463824a0524664ae08ea44016ba6902">doitSeDeplacer</a> (<a class="el" href="structt__action__flags.html">t_action_flags</a> *flags)</td></tr>
+<tr class="memdesc:a0463824a0524664ae08ea44016ba6902"><td class="mdescLeft">&#160;</td><td class="mdescRight">Regarde les inputs et vérifie si le joueur doit se déplacer.  <a href="joueur_8c.html#a0463824a0524664ae08ea44016ba6902">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0463824a0524664ae08ea44016ba6902"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92d6be98d74ac518eb0a9e6869deff69"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a92d6be98d74ac518eb0a9e6869deff69">doitInterargir</a> (<a class="el" href="structt__action__flags.html">t_action_flags</a> *flags)</td></tr>
+<tr class="memdesc:a92d6be98d74ac518eb0a9e6869deff69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Regarde les inputs et vérifie si le joueur doit intéragir.  <a href="joueur_8c.html#a92d6be98d74ac518eb0a9e6869deff69">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a92d6be98d74ac518eb0a9e6869deff69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3edd09e87d83075f2d6f53a59687a408"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a3edd09e87d83075f2d6f53a59687a408">getDirectionJoueur</a> (<a class="el" href="structt__joueur.html">t_joueur</a> *joueur)</td></tr>
+<tr class="memdesc:a3edd09e87d83075f2d6f53a59687a408"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour la direction du joueur en fonction de ses inputs.  <a href="joueur_8c.html#a3edd09e87d83075f2d6f53a59687a408">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3edd09e87d83075f2d6f53a59687a408"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e8821c0417b3dcbfdbb77013bd0b2d6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a0e8821c0417b3dcbfdbb77013bd0b2d6">getOrientationJoueur</a> ()</td></tr>
+<tr class="memdesc:a0e8821c0417b3dcbfdbb77013bd0b2d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtient l'angle d'orientation du joueur.  <a href="joueur_8c.html#a0e8821c0417b3dcbfdbb77013bd0b2d6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0e8821c0417b3dcbfdbb77013bd0b2d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8de6e026be6d9c91b9c343daa98a0e22"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a8de6e026be6d9c91b9c343daa98a0e22">joueurAttaque</a> (<a class="el" href="structt__joueur.html">t_joueur</a> *joueur, const float angleAttaque)</td></tr>
+<tr class="memdesc:a8de6e026be6d9c91b9c343daa98a0e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute une attaque du joueur.  <a href="joueur_8c.html#a8de6e026be6d9c91b9c343daa98a0e22">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8de6e026be6d9c91b9c343daa98a0e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e4bb377786b82a27480580f1ebda4db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a1e4bb377786b82a27480580f1ebda4db">joueurInteraction</a> (<a class="el" href="structt__joueur.html">t_joueur</a> *joueur)</td></tr>
+<tr class="memdesc:a1e4bb377786b82a27480580f1ebda4db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute une interaction du joueur.  <a href="joueur_8c.html#a1e4bb377786b82a27480580f1ebda4db">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1e4bb377786b82a27480580f1ebda4db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c6bb24d038d22c7d5f472d3760a7b01"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a1c6bb24d038d22c7d5f472d3760a7b01">updateJoueur</a> (<a class="el" href="structt__joueur.html">t_joueur</a> *joueur)</td></tr>
+<tr class="memdesc:a1c6bb24d038d22c7d5f472d3760a7b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualise le joueur.  <a href="joueur_8c.html#a1c6bb24d038d22c7d5f472d3760a7b01">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1c6bb24d038d22c7d5f472d3760a7b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abe53ab4bf29486fff5892812e2aef66e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#abe53ab4bf29486fff5892812e2aef66e">mortJoueur</a> (<a class="el" href="structt__joueur.html">t_joueur</a> *joueur)</td></tr>
+<tr class="memdesc:abe53ab4bf29486fff5892812e2aef66e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère la mort du joueur.  <a href="joueur_8c.html#abe53ab4bf29486fff5892812e2aef66e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:abe53ab4bf29486fff5892812e2aef66e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a658b3773cafe0f5acc8d2bb207c4705d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a658b3773cafe0f5acc8d2bb207c4705d">reapparitionJoueur</a> (<a class="el" href="structt__joueur.html">t_joueur</a> *joueur, const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> position)</td></tr>
+<tr class="memdesc:a658b3773cafe0f5acc8d2bb207c4705d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet au joueur de réapparaitre.  <a href="joueur_8c.html#a658b3773cafe0f5acc8d2bb207c4705d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a658b3773cafe0f5acc8d2bb207c4705d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dd7d6fe617601d4bebf79e84a8c7452"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a9dd7d6fe617601d4bebf79e84a8c7452">detruireActionFlags</a> (<a class="el" href="structt__action__flags.html">t_action_flags</a> **flags)</td></tr>
+<tr class="memdesc:a9dd7d6fe617601d4bebf79e84a8c7452"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit les inputs du joueur est libère la mémoire allouée pour ces derniers.  <a href="joueur_8c.html#a9dd7d6fe617601d4bebf79e84a8c7452">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9dd7d6fe617601d4bebf79e84a8c7452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e9013c729e9fe43289429dc9df96d0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a1e9013c729e9fe43289429dc9df96d0e">detruireJoueur</a> (<a class="el" href="structt__joueur.html">t_joueur</a> **joueur)</td></tr>
+<tr class="memdesc:a1e9013c729e9fe43289429dc9df96d0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit un joueur est libère la mémoire allouée pour ce dernier.  <a href="joueur_8c.html#a1e9013c729e9fe43289429dc9df96d0e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1e9013c729e9fe43289429dc9df96d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a995f4aefdb75bd2c2088ea9f0047fd7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__action__flags.html">t_action_flags</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#a995f4aefdb75bd2c2088ea9f0047fd7a">initialiserActionFlags</a> ()</td></tr>
+<tr class="memdesc:a995f4aefdb75bd2c2088ea9f0047fd7a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue l'espace nécessaire pour les flags des inputs du joueur et les initialise.  <a href="joueur_8c.html#a995f4aefdb75bd2c2088ea9f0047fd7a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a995f4aefdb75bd2c2088ea9f0047fd7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad834f21bebeda61e320b2bdcf673d0ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__joueur.html">t_joueur</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="joueur_8c.html#ad834f21bebeda61e320b2bdcf673d0ea">creerJoueur</a> (const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> position)</td></tr>
+<tr class="memdesc:ad834f21bebeda61e320b2bdcf673d0ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue l'espace nécessaire pour un joueur et le créer.  <a href="joueur_8c.html#ad834f21bebeda61e320b2bdcf673d0ea">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad834f21bebeda61e320b2bdcf673d0ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Module de gestion du joueur. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>3 février </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ad834f21bebeda61e320b2bdcf673d0ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad834f21bebeda61e320b2bdcf673d0ea">&#9670;&nbsp;</a></span>creerJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__joueur.html">t_joueur</a>* creerJoueur </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alloue l'espace nécessaire pour un joueur et le créer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>La position à laquelle le joueur doit être créé</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur le joueur créé, NULL si echec </dd></dl>
+
+</div>
+</div>
+<a id="a9dd7d6fe617601d4bebf79e84a8c7452"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dd7d6fe617601d4bebf79e84a8c7452">&#9670;&nbsp;</a></span>detruireActionFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireActionFlags </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__action__flags.html">t_action_flags</a> **&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit les inputs du joueur est libère la mémoire allouée pour ces derniers. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>L'adresse du pointeur sur les inputs du joueur à détruire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1e9013c729e9fe43289429dc9df96d0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e9013c729e9fe43289429dc9df96d0e">&#9670;&nbsp;</a></span>detruireJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireJoueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__joueur.html">t_joueur</a> **&#160;</td>
+          <td class="paramname"><em>joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit un joueur est libère la mémoire allouée pour ce dernier. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>L'adresse du pointeur du joueur à détruire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4a6dc69a7defcbc932750f2792784aa0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a6dc69a7defcbc932750f2792784aa0">&#9670;&nbsp;</a></span>doitAttaquer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean doitAttaquer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__action__flags.html">t_action_flags</a> *&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Regarde les inputs et vérifie si le joueur doit attaquer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>Les flags indiquant les inputs du joueur</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>VRAI si le joueur doit attaquer, FAUX sinon </dd></dl>
+
+</div>
+</div>
+<a id="a92d6be98d74ac518eb0a9e6869deff69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92d6be98d74ac518eb0a9e6869deff69">&#9670;&nbsp;</a></span>doitInterargir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean doitInterargir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__action__flags.html">t_action_flags</a> *&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Regarde les inputs et vérifie si le joueur doit intéragir. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>Les flags indiquant les inputs du joueur</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>VRAI si le joueur doit interargir, FAUX sinon </dd></dl>
+
+</div>
+</div>
+<a id="a0463824a0524664ae08ea44016ba6902"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0463824a0524664ae08ea44016ba6902">&#9670;&nbsp;</a></span>doitSeDeplacer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean doitSeDeplacer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__action__flags.html">t_action_flags</a> *&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Regarde les inputs et vérifie si le joueur doit se déplacer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>Les flags indiquant les inputs du joueur</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>VRAI si le joueur doit se déplacer, FAUX sinon </dd></dl>
+
+</div>
+</div>
+<a id="a3edd09e87d83075f2d6f53a59687a408"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3edd09e87d83075f2d6f53a59687a408">&#9670;&nbsp;</a></span>getDirectionJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void getDirectionJoueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__joueur.html">t_joueur</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour la direction du joueur en fonction de ses inputs. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Le joueur dont la direction est mis à jour </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0e8821c0417b3dcbfdbb77013bd0b2d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e8821c0417b3dcbfdbb77013bd0b2d6">&#9670;&nbsp;</a></span>getOrientationJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float getOrientationJoueur </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtient l'angle d'orientation du joueur. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>L'angle entre le centre de l'écran et la position de la souris </dd></dl>
+
+</div>
+</div>
+<a id="a995f4aefdb75bd2c2088ea9f0047fd7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a995f4aefdb75bd2c2088ea9f0047fd7a">&#9670;&nbsp;</a></span>initialiserActionFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__action__flags.html">t_action_flags</a>* initialiserActionFlags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alloue l'espace nécessaire pour les flags des inputs du joueur et les initialise. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur les flags des inputs, NULL si echec </dd></dl>
+
+</div>
+</div>
+<a id="a8de6e026be6d9c91b9c343daa98a0e22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8de6e026be6d9c91b9c343daa98a0e22">&#9670;&nbsp;</a></span>joueurAttaque()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void joueurAttaque </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__joueur.html">t_joueur</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>angleAttaque</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute une attaque du joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Pointeur sur le joueur qui attaque </td></tr>
+    <tr><td class="paramname">angleAttaque</td><td>L'angle dans lequel le joueur attaque </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1e4bb377786b82a27480580f1ebda4db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e4bb377786b82a27480580f1ebda4db">&#9670;&nbsp;</a></span>joueurInteraction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void joueurInteraction </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__joueur.html">t_joueur</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Execute une interaction du joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Pointeur sur le joueur qui intérargit </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="abe53ab4bf29486fff5892812e2aef66e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe53ab4bf29486fff5892812e2aef66e">&#9670;&nbsp;</a></span>mortJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void mortJoueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__joueur.html">t_joueur</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère la mort du joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Le joueur qui est mort </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2db2c90c3eb544320db62e4236a816bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2db2c90c3eb544320db62e4236a816bb">&#9670;&nbsp;</a></span>peutAttaquer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean peutAttaquer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__joueur.html">t_joueur</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si le joueur peut attaquer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Le joueur que l'on vérifie</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>VRAI si le joueur peut attaquer, FAUX sinon </dd></dl>
+
+</div>
+</div>
+<a id="a658b3773cafe0f5acc8d2bb207c4705d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a658b3773cafe0f5acc8d2bb207c4705d">&#9670;&nbsp;</a></span>reapparitionJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reapparitionJoueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__joueur.html">t_joueur</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>position</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet au joueur de réapparaitre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Pointeur sur le joueur qui réapparait </td></tr>
+    <tr><td class="paramname">position</td><td>La position à laquelle le joueur réapparait </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1c6bb24d038d22c7d5f472d3760a7b01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c6bb24d038d22c7d5f472d3760a7b01">&#9670;&nbsp;</a></span>updateJoueur()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateJoueur </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__joueur.html">t_joueur</a> *&#160;</td>
+          <td class="paramname"><em>joueur</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualise le joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">joueur</td><td>Pointeur sur le joueur qui doit être actualisé </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,564 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier include/audio.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier audio.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Module de manipulation pour l'audio.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_mixer.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="utilitaire_8h_source.html">utilitaire.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="entite_8h_source.html">entite.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="temps_8h_source.html">temps.h</a>&quot;</code><br />
+</div>
+<p><a href="audio_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__musiques.html">s_musiques</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__bruitages.html">s_bruitages</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__audioPack.html">s_audioPack</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__audio.html">s_audio</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:adb09832c9da6ef521343473ff832e287"><td class="memItemLeft" align="right" valign="top"><a id="adb09832c9da6ef521343473ff832e287"></a>
+typedef struct <a class="el" href="structs__musiques.html">s_musiques</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_musiques</b></td></tr>
+<tr class="separator:adb09832c9da6ef521343473ff832e287"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e1ed3135e0e51c670ed147141b24a2"><td class="memItemLeft" align="right" valign="top"><a id="a21e1ed3135e0e51c670ed147141b24a2"></a>
+typedef struct <a class="el" href="structs__bruitages.html">s_bruitages</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_bruitages</b></td></tr>
+<tr class="separator:a21e1ed3135e0e51c670ed147141b24a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89e484de01b8856a5c83cc2544b7b96e"><td class="memItemLeft" align="right" valign="top"><a id="a89e484de01b8856a5c83cc2544b7b96e"></a>
+typedef struct <a class="el" href="structs__audioPack.html">s_audioPack</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_audioPack</b></td></tr>
+<tr class="separator:a89e484de01b8856a5c83cc2544b7b96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a338ef2f47ee0ae2afb522bb88971b6ee"><td class="memItemLeft" align="right" valign="top"><a id="a338ef2f47ee0ae2afb522bb88971b6ee"></a>
+typedef struct <a class="el" href="structs__audio.html">s_audio</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_audio</b></td></tr>
+<tr class="separator:a338ef2f47ee0ae2afb522bb88971b6ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a657994509f67504fd69370f550b4e516"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a657994509f67504fd69370f550b4e516">e_audio_channel</a> { <a class="el" href="audio_8h.html#a657994509f67504fd69370f550b4e516ae4cbb1538772654fb86ecd9a78681cc7">CHANNEL_MASTER</a>
+, <a class="el" href="audio_8h.html#a657994509f67504fd69370f550b4e516ae23e916ecc2c0b71e6329acdb658f234">CHANNEL_MUSIQUE</a>
+, <a class="el" href="audio_8h.html#a657994509f67504fd69370f550b4e516a5d221c97268ba2e144921a8c5dedf246">CHANNEL_BRUITAGE</a>
+ }</td></tr>
+<tr class="memdesc:a657994509f67504fd69370f550b4e516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les différents type de channel controlable.  <a href="audio_8h.html#a657994509f67504fd69370f550b4e516">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a657994509f67504fd69370f550b4e516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad945e3a5e09c848cff95d3bb3313d280"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280">e_musiques_type</a> { <br />
+&#160;&#160;<a class="el" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a870994d2d268d847b4bde3d0d9909232">MUSIC_AUCUNE</a>
+, <a class="el" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280ab2ddd126a9b0f79ddf87b33dc446b852">MUSIC_MENU</a>
+, <a class="el" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a6f5631f2df6a7715f4e6e91c687bdf20">MUSIC_AMBIANCE</a>
+, <a class="el" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a6ca849ca0d1395063fb1fcf8cc9869b7">MUSIC_COMBAT</a>
+, <br />
+&#160;&#160;<a class="el" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280a39cbe5da49d9b9e7a62ff6d8d6b07149">MUSIC_BOSS</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:ad945e3a5e09c848cff95d3bb3313d280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les différents types de musiques.  <a href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad945e3a5e09c848cff95d3bb3313d280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae18dfcfac05e61f4c35a32f25854a6e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structs__audioPack.html">t_audioPack</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#ae18dfcfac05e61f4c35a32f25854a6e7">creerAudioPack</a> ()</td></tr>
+<tr class="memdesc:ae18dfcfac05e61f4c35a32f25854a6e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue l'espace nécessaire pour un pack audio et le créer.  <a href="audio_8h.html#ae18dfcfac05e61f4c35a32f25854a6e7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae18dfcfac05e61f4c35a32f25854a6e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cea5857fa45e9197e718ddcc9cc4149"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a2cea5857fa45e9197e718ddcc9cc4149">detruireAudioPack</a> (<a class="el" href="structs__audioPack.html">t_audioPack</a> **pack)</td></tr>
+<tr class="memdesc:a2cea5857fa45e9197e718ddcc9cc4149"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit le pack audio est libère la mémoire allouée pour ce dernier.  <a href="audio_8h.html#a2cea5857fa45e9197e718ddcc9cc4149">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2cea5857fa45e9197e718ddcc9cc4149"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22370c44398921d23fbde34985a0c6fb"><td class="memItemLeft" align="right" valign="top"><a id="a22370c44398921d23fbde34985a0c6fb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>chargerAudioPack</b> (<a class="el" href="structs__audioPack.html">t_audioPack</a> *pack, <a class="el" href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a> tag)</td></tr>
+<tr class="separator:a22370c44398921d23fbde34985a0c6fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43efc86ed16b1867386683f643a95486"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__audio.html">t_audio</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a43efc86ed16b1867386683f643a95486">initAudio</a> (void)</td></tr>
+<tr class="memdesc:a43efc86ed16b1867386683f643a95486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise, crée et alloue la mémoire pour l'audio du jeu.  <a href="audio_8h.html#a43efc86ed16b1867386683f643a95486">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a43efc86ed16b1867386683f643a95486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46307baa25fd9b05458784e82dc1dfd7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a46307baa25fd9b05458784e82dc1dfd7">chargerAudio</a> (<a class="el" href="structt__musiques.html">t_musiques</a> **musiques, <a class="el" href="structt__bruitages.html">t_bruitages</a> **bruitages)</td></tr>
+<tr class="memdesc:a46307baa25fd9b05458784e82dc1dfd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge tous les fichiers audio au sein des structures de musiques et de bruitages.  <a href="audio_8h.html#a46307baa25fd9b05458784e82dc1dfd7">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a46307baa25fd9b05458784e82dc1dfd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ae1c800453a1eedc3a5099a327a41b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a0ae1c800453a1eedc3a5099a327a41b2">detruireAudio</a> (<a class="el" href="structt__audio.html">t_audio</a> **audio)</td></tr>
+<tr class="memdesc:a0ae1c800453a1eedc3a5099a327a41b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit l'audio est libère la mémoire allouée pour ce dernier.  <a href="audio_8h.html#a0ae1c800453a1eedc3a5099a327a41b2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0ae1c800453a1eedc3a5099a327a41b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a256a2f975d149d161132e1877bfe2b44"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a256a2f975d149d161132e1877bfe2b44">changerVolume</a> (const <a class="el" href="audio_8h.html#a657994509f67504fd69370f550b4e516">e_audio_channel</a> channel, const float nouveauVolume)</td></tr>
+<tr class="memdesc:a256a2f975d149d161132e1877bfe2b44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction permettant de changer le volume du channel spécifié  <a href="audio_8h.html#a256a2f975d149d161132e1877bfe2b44">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a256a2f975d149d161132e1877bfe2b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a2819a9f51b5907778e9698870777b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a9a2819a9f51b5907778e9698870777b0">play_music</a> (Mix_Music *music, boolean repeat, boolean estLaSuite)</td></tr>
+<tr class="memdesc:a9a2819a9f51b5907778e9698870777b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue une musique donnée en paramètre.  <a href="audio_8h.html#a9a2819a9f51b5907778e9698870777b0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9a2819a9f51b5907778e9698870777b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8024b133cbcfb4a0b17af72b625e9cae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a8024b133cbcfb4a0b17af72b625e9cae">play_bruitage</a> (Mix_Chunk *sound, int channel)</td></tr>
+<tr class="memdesc:a8024b133cbcfb4a0b17af72b625e9cae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue un bruitage.  <a href="audio_8h.html#a8024b133cbcfb4a0b17af72b625e9cae">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8024b133cbcfb4a0b17af72b625e9cae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2527c811415da9fe672a212bf58a347"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#aa2527c811415da9fe672a212bf58a347">play_sonAmbiance</a> (Mix_Chunk *bruitage, float angle, float distance)</td></tr>
+<tr class="memdesc:aa2527c811415da9fe672a212bf58a347"><td class="mdescLeft">&#160;</td><td class="mdescRight">Joue le bruit d'une entité  <a href="audio_8h.html#aa2527c811415da9fe672a212bf58a347">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa2527c811415da9fe672a212bf58a347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9142c675b26cab1b1d5a9b405268da70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8h.html#a9142c675b26cab1b1d5a9b405268da70">selectionMusique</a> (<a class="el" href="structt__temps.html">t_temps</a> *temps)</td></tr>
+<tr class="memdesc:a9142c675b26cab1b1d5a9b405268da70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sélectionne la musique à jouer en fonction du temps dans le jeu.  <a href="audio_8h.html#a9142c675b26cab1b1d5a9b405268da70">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9142c675b26cab1b1d5a9b405268da70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ab3e8bdc04a1d2b159545e660f936fb63"><td class="memItemLeft" align="right" valign="top"><a id="ab3e8bdc04a1d2b159545e660f936fb63"></a>
+<a class="el" href="structt__audio.html">t_audio</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>audio</b></td></tr>
+<tr class="separator:ab3e8bdc04a1d2b159545e660f936fb63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Module de manipulation pour l'audio. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>1 février </dd></dl>
+</div><h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a id="a657994509f67504fd69370f550b4e516"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a657994509f67504fd69370f550b4e516">&#9670;&nbsp;</a></span>e_audio_channel</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="audio_8h.html#a657994509f67504fd69370f550b4e516">e_audio_channel</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Les différents type de channel controlable. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a657994509f67504fd69370f550b4e516ae4cbb1538772654fb86ecd9a78681cc7"></a>CHANNEL_MASTER&#160;</td><td class="fielddoc"><p>Le channel principal </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a657994509f67504fd69370f550b4e516ae23e916ecc2c0b71e6329acdb658f234"></a>CHANNEL_MUSIQUE&#160;</td><td class="fielddoc"><p>Le channel utilisé pour la musique </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a657994509f67504fd69370f550b4e516a5d221c97268ba2e144921a8c5dedf246"></a>CHANNEL_BRUITAGE&#160;</td><td class="fielddoc"><p>Les channels pour les bruitages </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ad945e3a5e09c848cff95d3bb3313d280"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad945e3a5e09c848cff95d3bb3313d280">&#9670;&nbsp;</a></span>e_musiques_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="audio_8h.html#ad945e3a5e09c848cff95d3bb3313d280">e_musiques_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Les différents types de musiques. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="ad945e3a5e09c848cff95d3bb3313d280a870994d2d268d847b4bde3d0d9909232"></a>MUSIC_AUCUNE&#160;</td><td class="fielddoc"><p>Indique qu'il n'y a pas de musique </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad945e3a5e09c848cff95d3bb3313d280ab2ddd126a9b0f79ddf87b33dc446b852"></a>MUSIC_MENU&#160;</td><td class="fielddoc"><p>Indique qu'il faut jouer la musique du menu </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad945e3a5e09c848cff95d3bb3313d280a6f5631f2df6a7715f4e6e91c687bdf20"></a>MUSIC_AMBIANCE&#160;</td><td class="fielddoc"><p>Indique qu'il faut jouer la musique d'ambiance </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad945e3a5e09c848cff95d3bb3313d280a6ca849ca0d1395063fb1fcf8cc9869b7"></a>MUSIC_COMBAT&#160;</td><td class="fielddoc"><p>Indique qu'il faut jouer la musique de combat </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ad945e3a5e09c848cff95d3bb3313d280a39cbe5da49d9b9e7a62ff6d8d6b07149"></a>MUSIC_BOSS&#160;</td><td class="fielddoc"><p>Indique qu'il faut jouer la musique du boss </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a256a2f975d149d161132e1877bfe2b44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a256a2f975d149d161132e1877bfe2b44">&#9670;&nbsp;</a></span>changerVolume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changerVolume </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="audio_8h.html#a657994509f67504fd69370f550b4e516">e_audio_channel</a>&#160;</td>
+          <td class="paramname"><em>channel</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>nouveauVolume</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction permettant de changer le volume du channel spécifié </p>
+<p>La channel ici n'est pas une piste audio mais plus une catégorie</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">channel</td><td>Le channel où le volume sera modifié </td></tr>
+    <tr><td class="paramname">nouveauVolume</td><td>Le nouveau volume (en %) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a46307baa25fd9b05458784e82dc1dfd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46307baa25fd9b05458784e82dc1dfd7">&#9670;&nbsp;</a></span>chargerAudio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int chargerAudio </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__musiques.html">t_musiques</a> **&#160;</td>
+          <td class="paramname"><em>musiques</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__bruitages.html">t_bruitages</a> **&#160;</td>
+          <td class="paramname"><em>bruitages</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge tous les fichiers audio au sein des structures de musiques et de bruitages. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">musiques</td><td>L'adresse du pointeur de la structure de musique dans laquelle seront chargées les musiques </td></tr>
+    <tr><td class="paramname">bruitages</td><td>L'adresse du pointeur de la structure de bruitages dans laquelle seront chargées les bruitages</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 Si tout se passe bien, -1 si echec </dd></dl>
+
+</div>
+</div>
+<a id="ae18dfcfac05e61f4c35a32f25854a6e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae18dfcfac05e61f4c35a32f25854a6e7">&#9670;&nbsp;</a></span>creerAudioPack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structs__audioPack.html">t_audioPack</a>* creerAudioPack </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alloue l'espace nécessaire pour un pack audio et le créer. </p>
+<p>Le pack audio correspond au bruitages que produit une entité</p>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur le pack audio créé, NULL si echec </dd></dl>
+
+</div>
+</div>
+<a id="a0ae1c800453a1eedc3a5099a327a41b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ae1c800453a1eedc3a5099a327a41b2">&#9670;&nbsp;</a></span>detruireAudio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireAudio </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__audio.html">t_audio</a> **&#160;</td>
+          <td class="paramname"><em>audio</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit l'audio est libère la mémoire allouée pour ce dernier. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">audio</td><td>L'adresse du pointeur sur l'audio </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2cea5857fa45e9197e718ddcc9cc4149"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cea5857fa45e9197e718ddcc9cc4149">&#9670;&nbsp;</a></span>detruireAudioPack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireAudioPack </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structs__audioPack.html">t_audioPack</a> **&#160;</td>
+          <td class="paramname"><em>pack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit le pack audio est libère la mémoire allouée pour ce dernier. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pack</td><td>L'adresse du pointeur sur le pack audio </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a43efc86ed16b1867386683f643a95486"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43efc86ed16b1867386683f643a95486">&#9670;&nbsp;</a></span>initAudio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__audio.html">t_audio</a>* initAudio </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise, crée et alloue la mémoire pour l'audio du jeu. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur la structure gérant l'audio, NULL si echec </dd></dl>
+
+</div>
+</div>
+<a id="a8024b133cbcfb4a0b17af72b625e9cae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8024b133cbcfb4a0b17af72b625e9cae">&#9670;&nbsp;</a></span>play_bruitage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void play_bruitage </td>
+          <td>(</td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>sound</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Joue un bruitage. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sound</td><td>Le bruitage à joué </td></tr>
+    <tr><td class="paramname">channel</td><td>Le channel dans lequel sera joué le bruitage, -1 si on veut utilisé le premier channel disponible </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9a2819a9f51b5907778e9698870777b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a2819a9f51b5907778e9698870777b0">&#9670;&nbsp;</a></span>play_music()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void play_music </td>
+          <td>(</td>
+          <td class="paramtype">Mix_Music *&#160;</td>
+          <td class="paramname"><em>music</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>repeat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">boolean&#160;</td>
+          <td class="paramname"><em>estLaSuite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Joue une musique donnée en paramètre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">music</td><td>La musique qui sera joué </td></tr>
+    <tr><td class="paramname">repeat</td><td>Si la musique doit être répété </td></tr>
+    <tr><td class="paramname">estLaSuite</td><td>[Musique évolutive]&#160;Si la musique donnée est une autre version de la musique actuellement jouée </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa2527c811415da9fe672a212bf58a347"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2527c811415da9fe672a212bf58a347">&#9670;&nbsp;</a></span>play_sonAmbiance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void play_sonAmbiance </td>
+          <td>(</td>
+          <td class="paramtype">Mix_Chunk *&#160;</td>
+          <td class="paramname"><em>bruitage</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>distance</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Joue le bruit d'une entité </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tag</td><td>Le tag de l'entité originelle du bruit </td></tr>
+    <tr><td class="paramname">angle</td><td>L'angle entre l'entité est le joueur </td></tr>
+    <tr><td class="paramname">distance</td><td>La distance séparant l'entité du joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9142c675b26cab1b1d5a9b405268da70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9142c675b26cab1b1d5a9b405268da70">&#9670;&nbsp;</a></span>selectionMusique()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void selectionMusique </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__temps.html">t_temps</a> *&#160;</td>
+          <td class="paramname"><em>temps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sélectionne la musique à jouer en fonction du temps dans le jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">temps</td><td>Le temps actuel du jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

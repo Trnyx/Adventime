@@ -1,0 +1,151 @@
+\hypertarget{stockage_8h}{}\doxysection{Référence du fichier include/stockage.h}
+\label{stockage_8h}\index{include/stockage.h@{include/stockage.h}}
+
+
+Module de manipulation du stockage.  
+
+
+{\ttfamily \#include \char`\"{}item.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__itemSlot}{s\+\_\+item\+Slot}}
+\item 
+struct \mbox{\hyperlink{structs__stockage}{s\+\_\+stockage}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{stockage_8h_aec7929818343ceb323d52d35a4393073}\label{stockage_8h_aec7929818343ceb323d52d35a4393073}} 
+typedef struct \mbox{\hyperlink{structs__itemSlot}{s\+\_\+item\+Slot}} {\bfseries t\+\_\+item\+Slot}
+\item 
+\mbox{\Hypertarget{stockage_8h_a5d2f6e20c98e3db049562e00f8be1917}\label{stockage_8h_a5d2f6e20c98e3db049562e00f8be1917}} 
+typedef struct \mbox{\hyperlink{structs__stockage}{s\+\_\+stockage}} {\bfseries t\+\_\+stockage}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{stockage_8h_a1cd7700ce85753a195825b7949979e21}{stockage\+Est\+Vide}} (\mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$stockage)
+\begin{DoxyCompactList}\small\item\em Vérifie si le stockage est vide. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$ \mbox{\hyperlink{stockage_8h_a86e48b12ae9c926e63abf6b92a178fd8}{creer\+Stockage}} (const unsigned int nb\+Slots)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un stockage et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stockage_8h_aab38ac7a7b9bbd36e36025034ae513a1}{transferer\+Stockage}} (\mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$source, \mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$cible)
+\begin{DoxyCompactList}\small\item\em Permet de transférer les items contenuent dans un stockage dans un autre stockage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stockage_8h_a14493929b12f18b5171e9a6768cd641c}{vider\+Stockage}} (\mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$stockage)
+\begin{DoxyCompactList}\small\item\em Permet de vider l\textquotesingle{}entièreté d\textquotesingle{}un stockage sans le détruire. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stockage_8h_abc6d5f62fec44cb53c974bfb40822151}{detruire\+Slot}} (\mbox{\hyperlink{structt__itemSlot}{t\+\_\+item\+Slot}} $\ast$slot)
+\begin{DoxyCompactList}\small\item\em Détruit le slot d\textquotesingle{}un stockage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stockage_8h_ab4d1962fd3047eb2b525adaada53872d}{detruire\+Stockage}} (\mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$$\ast$stockage)
+\begin{DoxyCompactList}\small\item\em Detruit un stockage est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation du stockage. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+24 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{stockage_8h_a86e48b12ae9c926e63abf6b92a178fd8}\label{stockage_8h_a86e48b12ae9c926e63abf6b92a178fd8}} 
+\index{stockage.h@{stockage.h}!creerStockage@{creerStockage}}
+\index{creerStockage@{creerStockage}!stockage.h@{stockage.h}}
+\doxysubsubsection{\texorpdfstring{creerStockage()}{creerStockage()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}}$\ast$ creer\+Stockage (\begin{DoxyParamCaption}\item[{const unsigned int}]{nb\+Slots }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un stockage et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em nb\+Slots} & Le nombre de slots que doit contenir le stockage\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le stockage, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{stockage_8h_abc6d5f62fec44cb53c974bfb40822151}\label{stockage_8h_abc6d5f62fec44cb53c974bfb40822151}} 
+\index{stockage.h@{stockage.h}!detruireSlot@{detruireSlot}}
+\index{detruireSlot@{detruireSlot}!stockage.h@{stockage.h}}
+\doxysubsubsection{\texorpdfstring{detruireSlot()}{detruireSlot()}}
+{\footnotesize\ttfamily void detruire\+Slot (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__itemSlot}{t\+\_\+item\+Slot}} $\ast$}]{slot }\end{DoxyParamCaption})}
+
+
+
+Détruit le slot d\textquotesingle{}un stockage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em slot} & Un pointeur sur le slot à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{stockage_8h_ab4d1962fd3047eb2b525adaada53872d}\label{stockage_8h_ab4d1962fd3047eb2b525adaada53872d}} 
+\index{stockage.h@{stockage.h}!detruireStockage@{detruireStockage}}
+\index{detruireStockage@{detruireStockage}!stockage.h@{stockage.h}}
+\doxysubsubsection{\texorpdfstring{detruireStockage()}{detruireStockage()}}
+{\footnotesize\ttfamily void detruire\+Stockage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$$\ast$}]{stockage }\end{DoxyParamCaption})}
+
+
+
+Detruit un stockage est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em stockage} & L\textquotesingle{}adresse du pointeur du stockage à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{stockage_8h_a1cd7700ce85753a195825b7949979e21}\label{stockage_8h_a1cd7700ce85753a195825b7949979e21}} 
+\index{stockage.h@{stockage.h}!stockageEstVide@{stockageEstVide}}
+\index{stockageEstVide@{stockageEstVide}!stockage.h@{stockage.h}}
+\doxysubsubsection{\texorpdfstring{stockageEstVide()}{stockageEstVide()}}
+{\footnotesize\ttfamily boolean stockage\+Est\+Vide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$}]{stockage }\end{DoxyParamCaption})}
+
+
+
+Vérifie si le stockage est vide. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em stockage} & Le stockage à vérifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si le stockage est vide, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{stockage_8h_aab38ac7a7b9bbd36e36025034ae513a1}\label{stockage_8h_aab38ac7a7b9bbd36e36025034ae513a1}} 
+\index{stockage.h@{stockage.h}!transfererStockage@{transfererStockage}}
+\index{transfererStockage@{transfererStockage}!stockage.h@{stockage.h}}
+\doxysubsubsection{\texorpdfstring{transfererStockage()}{transfererStockage()}}
+{\footnotesize\ttfamily void transferer\+Stockage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$}]{source,  }\item[{\mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$}]{cible }\end{DoxyParamCaption})}
+
+
+
+Permet de transférer les items contenuent dans un stockage dans un autre stockage. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em source} & Le stockage source \\
+\hline
+{\em cible} & Le stockage cible \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{stockage_8h_a14493929b12f18b5171e9a6768cd641c}\label{stockage_8h_a14493929b12f18b5171e9a6768cd641c}} 
+\index{stockage.h@{stockage.h}!viderStockage@{viderStockage}}
+\index{viderStockage@{viderStockage}!stockage.h@{stockage.h}}
+\doxysubsubsection{\texorpdfstring{viderStockage()}{viderStockage()}}
+{\footnotesize\ttfamily void vider\+Stockage (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__stockage}{t\+\_\+stockage}} $\ast$}]{stockage }\end{DoxyParamCaption})}
+
+
+
+Permet de vider l\textquotesingle{}entièreté d\textquotesingle{}un stockage sans le détruire. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em stockage} & Le stockage qui doit être vidé \\
+\hline
+\end{DoxyParams}

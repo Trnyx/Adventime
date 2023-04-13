@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier src/logique_combat.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier logique_combat.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion pour les combats.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="physique_8h_source.html">../include/physique.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="audio_8h_source.html">../include/audio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="moteur_8h_source.html">../include/moteur.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="deplacement_8h_source.html">../include/deplacement.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="combat_8h_source.html">../include/combat.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="experience_8h_source.html">../include/experience.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a556b55fae0730428b096adfd7a3f8a76"><td class="memItemLeft" align="right" valign="top"><a id="a556b55fae0730428b096adfd7a3f8a76"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OUVERTURE</b>&#160;&#160;&#160;40</td></tr>
+<tr class="separator:a556b55fae0730428b096adfd7a3f8a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a2445884e27d1b21c079998e0496aab4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__combat_8c.html#a2445884e27d1b21c079998e0496aab4d">finCombat</a> (<a class="el" href="structt__mob.html">t_mob</a> *mob)</td></tr>
+<tr class="memdesc:a2445884e27d1b21c079998e0496aab4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remet un mob en normal.  <a href="logique__combat_8c.html#a2445884e27d1b21c079998e0496aab4d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2445884e27d1b21c079998e0496aab4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68dc1843f85984e1b099b38bc60a503e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__combat_8c.html#a68dc1843f85984e1b099b38bc60a503e">gestionExeperience</a> (<a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *entite, <a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *cible)</td></tr>
+<tr class="memdesc:a68dc1843f85984e1b099b38bc60a503e"><td class="mdescLeft">&#160;</td><td class="mdescRight">On calcul l'expèrience à donner au gagnant et retirer au perdant du combat.  <a href="logique__combat_8c.html#a68dc1843f85984e1b099b38bc60a503e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a68dc1843f85984e1b099b38bc60a503e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2444ad0fb3dc3acc663e9a6ada5a44b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__combat_8c.html#a2444ad0fb3dc3acc663e9a6ada5a44b9">dropItems</a> (<a class="el" href="structt__mob.html">t_mob</a> *mob)</td></tr>
+<tr class="memdesc:a2444ad0fb3dc3acc663e9a6ada5a44b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction de gestion de drops des items d'un mob.  <a href="logique__combat_8c.html#a2444ad0fb3dc3acc663e9a6ada5a44b9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2444ad0fb3dc3acc663e9a6ada5a44b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17081d45c320805a0a18eb5d30a07cdf"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__combat_8c.html#a17081d45c320805a0a18eb5d30a07cdf">toucheLaCible</a> (const <a class="el" href="structt__entite.html">t_entite</a> *source, const <a class="el" href="structt__entite.html">t_entite</a> *cible, const float angleAttaque, const float range)</td></tr>
+<tr class="memdesc:a17081d45c320805a0a18eb5d30a07cdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si la cible est touché par la source qui attaque.  <a href="logique__combat_8c.html#a17081d45c320805a0a18eb5d30a07cdf">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a17081d45c320805a0a18eb5d30a07cdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0be05452cc331b0b1ab60c45731b4e60"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__combat_8c.html#a0be05452cc331b0b1ab60c45731b4e60">calculDegat</a> (const int niveauAttaquant, int pointAttaque, int pointDefense, const boolean attaquantEstNocture, const boolean defenseurEstNocturne)</td></tr>
+<tr class="memdesc:a0be05452cc331b0b1ab60c45731b4e60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcul les dégâts.  <a href="logique__combat_8c.html#a0be05452cc331b0b1ab60c45731b4e60">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0be05452cc331b0b1ab60c45731b4e60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2dac0d258995f05e5ed3d3dfe3a1f3e1"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__combat_8c.html#a2dac0d258995f05e5ed3d3dfe3a1f3e1">appliquerDegat</a> (<a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *entite, const float degat)</td></tr>
+<tr class="memdesc:a2dac0d258995f05e5ed3d3dfe3a1f3e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applique les dégâts à l'entité  <a href="logique__combat_8c.html#a2dac0d258995f05e5ed3d3dfe3a1f3e1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2dac0d258995f05e5ed3d3dfe3a1f3e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af53168b0c96a9306ee2b58ccaf603dfd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__combat_8c.html#af53168b0c96a9306ee2b58ccaf603dfd">metUnCoup</a> (<a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *entite, <a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *cible, const float angleAttaque, const float range)</td></tr>
+<tr class="memdesc:af53168b0c96a9306ee2b58ccaf603dfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met un coup à l'entité cible.  <a href="logique__combat_8c.html#af53168b0c96a9306ee2b58ccaf603dfd">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af53168b0c96a9306ee2b58ccaf603dfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion pour les combats. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>10 février </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a2dac0d258995f05e5ed3d3dfe3a1f3e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2dac0d258995f05e5ed3d3dfe3a1f3e1">&#9670;&nbsp;</a></span>appliquerDegat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean appliquerDegat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *&#160;</td>
+          <td class="paramname"><em>entite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>degat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Applique les dégâts à l'entité </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>Un pointeur sur l'entité qui subbit les dégats </td></tr>
+    <tr><td class="paramname">degat</td><td>Les dégats à infliger</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>VRAI si l'entité est morte, FAUX sinon </dd></dl>
+
+</div>
+</div>
+<a id="a0be05452cc331b0b1ab60c45731b4e60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0be05452cc331b0b1ab60c45731b4e60">&#9670;&nbsp;</a></span>calculDegat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float calculDegat </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>niveauAttaquant</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pointAttaque</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pointDefense</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const boolean&#160;</td>
+          <td class="paramname"><em>attaquantEstNocture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const boolean&#160;</td>
+          <td class="paramname"><em>defenseurEstNocturne</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcul les dégâts. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">niveauAttaquant</td><td>Le niveau de l'attaquant </td></tr>
+    <tr><td class="paramname">pointAttaque</td><td>Les points d'attaque de l'attaquant </td></tr>
+    <tr><td class="paramname">pointDefense</td><td>Les points de défense de l'attaqué </td></tr>
+    <tr><td class="paramname">attaquantEstNocture</td><td>Si l'attaquant est de type nocturne </td></tr>
+    <tr><td class="paramname">defenseurEstNocturne</td><td>Si le défenseur est de type nocturne</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Les dégâts affliger à l'adversaire </dd></dl>
+
+</div>
+</div>
+<a id="a2444ad0fb3dc3acc663e9a6ada5a44b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2444ad0fb3dc3acc663e9a6ada5a44b9">&#9670;&nbsp;</a></span>dropItems()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dropItems </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__mob.html">t_mob</a> *&#160;</td>
+          <td class="paramname"><em>mob</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction de gestion de drops des items d'un mob. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>Le mob qui a été tué </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2445884e27d1b21c079998e0496aab4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2445884e27d1b21c079998e0496aab4d">&#9670;&nbsp;</a></span>finCombat()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void finCombat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__mob.html">t_mob</a> *&#160;</td>
+          <td class="paramname"><em>mob</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Remet un mob en normal. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>Un pointeur sur le mob qui n'est plus en combat </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a68dc1843f85984e1b099b38bc60a503e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68dc1843f85984e1b099b38bc60a503e">&#9670;&nbsp;</a></span>gestionExeperience()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestionExeperience </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *&#160;</td>
+          <td class="paramname"><em>entite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *&#160;</td>
+          <td class="paramname"><em>cible</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>On calcul l'expèrience à donner au gagnant et retirer au perdant du combat. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>L'entité gagnante </td></tr>
+    <tr><td class="paramname">cible</td><td>L'entité perdante </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af53168b0c96a9306ee2b58ccaf603dfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af53168b0c96a9306ee2b58ccaf603dfd">&#9670;&nbsp;</a></span>metUnCoup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void metUnCoup </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *&#160;</td>
+          <td class="paramname"><em>entite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *&#160;</td>
+          <td class="paramname"><em>cible</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>angleAttaque</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>range</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met un coup à l'entité cible. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>Un pointeur sur l'entité mettant le coup </td></tr>
+    <tr><td class="paramname">cible</td><td>Un pointeur sur l'entité recevant le coup </td></tr>
+    <tr><td class="paramname">angleAttaque</td><td>L'angle dans lequel l'entité attaque </td></tr>
+    <tr><td class="paramname">range</td><td>Le rayon dans lequel l'entité attaquante peut touché sa cible </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a17081d45c320805a0a18eb5d30a07cdf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17081d45c320805a0a18eb5d30a07cdf">&#9670;&nbsp;</a></span>toucheLaCible()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean toucheLaCible </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>cible</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>angleAttaque</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>range</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si la cible est touché par la source qui attaque. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Un pointeur sur l'entité attaquante </td></tr>
+    <tr><td class="paramname">cible</td><td>Un pointeur sur l'entité cible attaqué </td></tr>
+    <tr><td class="paramname">angleAttaque</td><td>L'angle dans lequel l'entité attaquant arrive par rapport à la cible </td></tr>
+    <tr><td class="paramname">range</td><td>Le rayon dans lequel l'entité attaquante peut touché la cible</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>VRAI si la cible est touchée, FAUX sinon </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,523 @@
+\hypertarget{map_8h}{}\doxysection{Référence du fichier include/map.h}
+\label{map_8h}\index{include/map.h@{include/map.h}}
+
+
+Module de manipulation de la map.  
+
+
+{\ttfamily \#include \char`\"{}utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}liste.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}vegetations.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}monstre.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__block}{s\+\_\+block}}
+\item 
+struct \mbox{\hyperlink{structs__chunk}{s\+\_\+chunk}}
+\item 
+struct \mbox{\hyperlink{structs__map}{s\+\_\+map}}
+\item 
+struct \mbox{\hyperlink{structs__baseBiome}{s\+\_\+base\+Biome}}
+\item 
+struct \mbox{\hyperlink{structs__predominance}{s\+\_\+predominance}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{map_8h_a806bbf08aeed7a9436227d64ea5da4db}\label{map_8h_a806bbf08aeed7a9436227d64ea5da4db}} 
+\#define {\bfseries TAILLE\+\_\+\+MAP}~14
+\item 
+\mbox{\Hypertarget{map_8h_abc0b6f1c11b1a2b80a8fb3bc825de542}\label{map_8h_abc0b6f1c11b1a2b80a8fb3bc825de542}} 
+\#define {\bfseries TAILLE\+\_\+\+CHUNK}~16
+\item 
+\mbox{\Hypertarget{map_8h_a162acb7780392f8715f815932cfa2365}\label{map_8h_a162acb7780392f8715f815932cfa2365}} 
+\#define {\bfseries NOMBRE\+\_\+\+DE\+\_\+\+NORMALISATION\+\_\+\+MAP}~1
+\item 
+\mbox{\Hypertarget{map_8h_af769c0ce216a9b14671bf30b07fc4662}\label{map_8h_af769c0ce216a9b14671bf30b07fc4662}} 
+\#define {\bfseries NOMBRE\+\_\+\+DE\+\_\+\+NORMALISATION\+\_\+\+CHUNK}~2
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{map_8h_a70ed1bd7b71e35b2384f0d91ac9fc112}\label{map_8h_a70ed1bd7b71e35b2384f0d91ac9fc112}} 
+typedef struct \mbox{\hyperlink{structs__block}{s\+\_\+block}} {\bfseries t\+\_\+block}
+\item 
+\mbox{\Hypertarget{map_8h_aab9f2c508f96e3939767a8b7edb8d00d}\label{map_8h_aab9f2c508f96e3939767a8b7edb8d00d}} 
+typedef struct \mbox{\hyperlink{structs__chunk}{s\+\_\+chunk}} {\bfseries t\+\_\+chunk}
+\item 
+\mbox{\Hypertarget{map_8h_aa6370cd7b08553210cd2ca45f421b122}\label{map_8h_aa6370cd7b08553210cd2ca45f421b122}} 
+typedef struct \mbox{\hyperlink{structs__map}{s\+\_\+map}} {\bfseries t\+\_\+map}
+\item 
+\mbox{\Hypertarget{map_8h_ae09806d448ad35eccb79f7bb254b8294}\label{map_8h_ae09806d448ad35eccb79f7bb254b8294}} 
+typedef struct \mbox{\hyperlink{structs__baseBiome}{s\+\_\+base\+Biome}} {\bfseries t\+\_\+base\+Biome}
+\item 
+\mbox{\Hypertarget{map_8h_a86a77b43f118d5b89dbfdbf12b9c6da0}\label{map_8h_a86a77b43f118d5b89dbfdbf12b9c6da0}} 
+typedef struct \mbox{\hyperlink{structs__predominance}{s\+\_\+predominance}} {\bfseries t\+\_\+predominance}
+\end{DoxyCompactItemize}
+\doxysubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8}{e\+\_\+map\+Type}} \{ \mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8acb0590055fe6a5ccc4cbbe2c12bf5546}{MAP\+\_\+\+OVERWORLD}}
+, \mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8a61670bb27e4e9a34d7d3ff1c8a2bd447}{MAP\+\_\+\+CAVE}}
+, \mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8a46039cbcd3514ba3bc348e737991e159}{MAP\+\_\+\+BOSS\+\_\+\+TEMPLE}}
+, \mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8a301934b0395e8021cd9cc4fab25f7481}{MAP\+\_\+\+MAISON}}
+ \}
+\begin{DoxyCompactList}\small\item\em Le type de la map. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{map_8h_a940cb0537dcb926c1efc6e878d60a103}{e\+\_\+couche\+Map}} \{ \mbox{\hyperlink{map_8h_a940cb0537dcb926c1efc6e878d60a103ab3a1f1290110b4528fddc0926fcdf7a1}{COUCHE\+\_\+\+SOL}}
+, \mbox{\hyperlink{map_8h_a940cb0537dcb926c1efc6e878d60a103a8691ffda0d443f564a0a32c19382ba5a}{COUCHE\+\_\+\+OBJETS}}
+, \mbox{\hyperlink{map_8h_a940cb0537dcb926c1efc6e878d60a103a410aac13be63858ac275734252e4ea33}{NB\+\_\+\+COUCHE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Tag permettant de reconnaitre la couche du chunk concerné \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}} \{ \newline
+{\bfseries BIOME\+\_\+\+PROFONDEUR}
+, {\bfseries BIOME\+\_\+\+LAC}
+, {\bfseries BIOME\+\_\+\+PLAINE}
+, {\bfseries BIOME\+\_\+\+FORET}
+, \newline
+{\bfseries BIOME\+\_\+\+MONTAGNE}
+, {\bfseries NB\+\_\+\+BIOMES}
+ \}
+\begin{DoxyCompactList}\small\item\em Tag permettant de reconnaitre le biome. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{map_8h_a5142c535740f7709a64bc789de532b79}\label{map_8h_a5142c535740f7709a64bc789de532b79}} 
+enum \mbox{\hyperlink{map_8h_a5142c535740f7709a64bc789de532b79}{e\+\_\+biome\+Proba}} \{ \newline
+{\bfseries PROBA\+\_\+\+BIOME\+\_\+\+PROFONDEUR} = 0
+, {\bfseries PROBA\+\_\+\+BIOME\+\_\+\+LAC} = 15
+, {\bfseries PROBA\+\_\+\+BIOME\+\_\+\+PLAINE} = 45
+, {\bfseries PROBA\+\_\+\+BIOME\+\_\+\+FORET} = 70
+, \newline
+{\bfseries PROBA\+\_\+\+BIOME\+\_\+\+MONTAGNE} = 100
+ \}
+\begin{DoxyCompactList}\small\item\em Enumérateur regroupant les probabilités d\textquotesingle{}apparition d\textquotesingle{}un biome. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{map_8h_ab24d5ed4277105abcd87fcfd2987b7bd}{e\+\_\+sol\+Tag}} \{ \newline
+{\bfseries VIDE} = -\/100
+, {\bfseries SOL\+\_\+\+EAU\+\_\+\+PROFONDE} = 0
+, {\bfseries SOL\+\_\+\+EAU}
+, {\bfseries SOL\+\_\+\+SABLE}
+, \newline
+{\bfseries SOL\+\_\+\+HERBE\+\_\+1}
+, {\bfseries SOL\+\_\+\+HERBE\+\_\+2}
+, {\bfseries SOL\+\_\+\+HERBE\+\_\+3}
+, {\bfseries SOL\+\_\+\+MONTAGNE\+\_\+1}
+, \newline
+{\bfseries SOL\+\_\+\+MONTAGNE\+\_\+2}
+, {\bfseries SOL\+\_\+\+NEIGE}
+, {\bfseries NB\+\_\+\+TYPES\+\_\+\+SOL}
+, {\bfseries SOL\+\_\+\+CHEMIN}
+ \}
+\begin{DoxyCompactList}\small\item\em Tag permettant de reconnaitre le type de sol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{map_8h_a633246171d99fabcacadccf89253882a}{block\+Est\+Dans\+Le\+Chunk}} (const int x, const int y)
+\begin{DoxyCompactList}\small\item\em Vérifie si un block se situe bien à l\textquotesingle{}intérieur d\textquotesingle{}un chunk. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{map_8h_a40611258624d791a9b18c702ace9fab9}{block\+Est\+Dans\+La\+Map}} (const int x, const int y)
+\begin{DoxyCompactList}\small\item\em Vérifie si un block se situe bien à l\textquotesingle{}intérieur de la map. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{map_8h_aafda8eee2701036bb3445015461e6c11}{chunk\+Est\+Dans\+La\+Map}} (const int x, const int y, const int z)
+\begin{DoxyCompactList}\small\item\em Vérifie que un chunk est bien à l\textquotesingle{}intérieur de la map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__block}{t\+\_\+block}} $\ast$ \mbox{\hyperlink{map_8h_a409e1fe424003fc6e36a385129295de2}{get\+Block\+Dans\+Chunk}} (const int x, const int y, \mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$chunk)
+\begin{DoxyCompactList}\small\item\em Récupère un block se situant dans un chunk. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__block}{t\+\_\+block}} $\ast$ \mbox{\hyperlink{map_8h_a356332cac46166c0b2b443a646ade9a3}{get\+Block\+Dans\+Map}} (const int x, const int y, const int z, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Récupère un block se situant dans la map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$ \mbox{\hyperlink{map_8h_a05f1205b4040957ddb5de2ea1b0a6f6b}{get\+Chunk}} (const int x, const int y, const int z, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Récupère un chunk se situant dans la map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$ \mbox{\hyperlink{map_8h_aca505e103cd0a49c145206834cb9bd84}{get\+Chunk\+Grace\+ABlock}} (const int x, const int y, const int z, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Récupère un chunk se situant dans la map grâce au coordonnée d\textquotesingle{}un block. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$ \mbox{\hyperlink{map_8h_a218b8d54a5f7644f5c67e42ad2c66536}{generer\+Map}} (\mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8}{e\+\_\+map\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Génère une map complète. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{map_8h_a172cb0d05a604a80ef70e333b742bda7}\label{map_8h_a172cb0d05a604a80ef70e333b742bda7}} 
+void {\bfseries generer\+Cave} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\item 
+void \mbox{\hyperlink{map_8h_a06e3caffbab82f4c7821de460fa0ce5c}{generer\+Vegetations}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Génère les végétaux. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{map_8h_a67c83e20f17f177782fdf8bdb113c2c5}{generer\+Animaux}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Génère un troupeau d\textquotesingle{}animaux. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{map_8h_ae75633b4bafa085431940e488b2dc774}{detruire\+Map}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$$\ast$map)
+\begin{DoxyCompactList}\small\item\em Detruit une map est libère la mémoire allouée pour cette dernière. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{map_8h_a3d0f75829828188cb17cd9458d0cb34a}{dessiner\+Sol}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Affiche le sol de la map en fonction de la taille de la caméra. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{map_8h_a3b6446d0f23ef60af0653ee2aaa95c07}{dessiner\+Objets}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Affiche les objets d\textquotesingle{}une map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{map_8h_abc0bc0c35b2dca9944af05a6a63e7820}\label{map_8h_abc0bc0c35b2dca9944af05a6a63e7820}} 
+const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}} {\bfseries biomes} \mbox{[}$\,$\mbox{]}
+\item 
+const int \mbox{\hyperlink{map_8h_a2e1d64a23bc4962fe429c1078fd684e4}{probabilites\+Biomes}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les probabilités d\textquotesingle{}apparition d\textquotesingle{}un biome. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{structt__baseBiome}{t\+\_\+base\+Biome}} \mbox{\hyperlink{map_8h_a5209636f0cde38d41b8864cf6511d569}{bases\+Biomes}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau initialisant toutes les informations de bases d\textquotesingle{}un biome. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation de la map. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+21 janvier 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\mbox{\Hypertarget{map_8h_a03a577c44d494b095cbbc30a2144ba53}\label{map_8h_a03a577c44d494b095cbbc30a2144ba53}} 
+\index{map.h@{map.h}!e\_biome@{e\_biome}}
+\index{e\_biome@{e\_biome}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{e\_biome}{e\_biome}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}}}
+
+
+
+Tag permettant de reconnaitre le biome. 
+
+Un compteur du nombre de biome est également initialisé à la fin de l\textquotesingle{}énumérateur \mbox{\Hypertarget{map_8h_a940cb0537dcb926c1efc6e878d60a103}\label{map_8h_a940cb0537dcb926c1efc6e878d60a103}} 
+\index{map.h@{map.h}!e\_coucheMap@{e\_coucheMap}}
+\index{e\_coucheMap@{e\_coucheMap}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{e\_coucheMap}{e\_coucheMap}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{map_8h_a940cb0537dcb926c1efc6e878d60a103}{e\+\_\+couche\+Map}}}
+
+
+
+Tag permettant de reconnaitre la couche du chunk concerné 
+
+Un compteur du nombre de couche est également initialisé à la fin de l\textquotesingle{}énumérateur \begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COUCHE\_SOL@{COUCHE\_SOL}!map.h@{map.h}}\index{map.h@{map.h}!COUCHE\_SOL@{COUCHE\_SOL}}}\mbox{\Hypertarget{map_8h_a940cb0537dcb926c1efc6e878d60a103ab3a1f1290110b4528fddc0926fcdf7a1}\label{map_8h_a940cb0537dcb926c1efc6e878d60a103ab3a1f1290110b4528fddc0926fcdf7a1}} 
+COUCHE\+\_\+\+SOL&La couche où sont stockés les blocks pour le sol \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{COUCHE\_OBJETS@{COUCHE\_OBJETS}!map.h@{map.h}}\index{map.h@{map.h}!COUCHE\_OBJETS@{COUCHE\_OBJETS}}}\mbox{\Hypertarget{map_8h_a940cb0537dcb926c1efc6e878d60a103a8691ffda0d443f564a0a32c19382ba5a}\label{map_8h_a940cb0537dcb926c1efc6e878d60a103a8691ffda0d443f564a0a32c19382ba5a}} 
+COUCHE\+\_\+\+OBJETS&La couche où sont stockés les blocks de décoration \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NB\_COUCHE@{NB\_COUCHE}!map.h@{map.h}}\index{map.h@{map.h}!NB\_COUCHE@{NB\_COUCHE}}}\mbox{\Hypertarget{map_8h_a940cb0537dcb926c1efc6e878d60a103a410aac13be63858ac275734252e4ea33}\label{map_8h_a940cb0537dcb926c1efc6e878d60a103a410aac13be63858ac275734252e4ea33}} 
+NB\+\_\+\+COUCHE&Le nombre de couche \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{map_8h_a3a965fc5c4d50016f0135575ef810ab8}\label{map_8h_a3a965fc5c4d50016f0135575ef810ab8}} 
+\index{map.h@{map.h}!e\_mapType@{e\_mapType}}
+\index{e\_mapType@{e\_mapType}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{e\_mapType}{e\_mapType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8}{e\+\_\+map\+Type}}}
+
+
+
+Le type de la map. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAP\_OVERWORLD@{MAP\_OVERWORLD}!map.h@{map.h}}\index{map.h@{map.h}!MAP\_OVERWORLD@{MAP\_OVERWORLD}}}\mbox{\Hypertarget{map_8h_a3a965fc5c4d50016f0135575ef810ab8acb0590055fe6a5ccc4cbbe2c12bf5546}\label{map_8h_a3a965fc5c4d50016f0135575ef810ab8acb0590055fe6a5ccc4cbbe2c12bf5546}} 
+MAP\+\_\+\+OVERWORLD&La map principale \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAP\_CAVE@{MAP\_CAVE}!map.h@{map.h}}\index{map.h@{map.h}!MAP\_CAVE@{MAP\_CAVE}}}\mbox{\Hypertarget{map_8h_a3a965fc5c4d50016f0135575ef810ab8a61670bb27e4e9a34d7d3ff1c8a2bd447}\label{map_8h_a3a965fc5c4d50016f0135575ef810ab8a61670bb27e4e9a34d7d3ff1c8a2bd447}} 
+MAP\+\_\+\+CAVE&La caverne \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAP\_BOSS\_TEMPLE@{MAP\_BOSS\_TEMPLE}!map.h@{map.h}}\index{map.h@{map.h}!MAP\_BOSS\_TEMPLE@{MAP\_BOSS\_TEMPLE}}}\mbox{\Hypertarget{map_8h_a3a965fc5c4d50016f0135575ef810ab8a46039cbcd3514ba3bc348e737991e159}\label{map_8h_a3a965fc5c4d50016f0135575ef810ab8a46039cbcd3514ba3bc348e737991e159}} 
+MAP\+\_\+\+BOSS\+\_\+\+TEMPLE&Le temple des boss \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MAP\_MAISON@{MAP\_MAISON}!map.h@{map.h}}\index{map.h@{map.h}!MAP\_MAISON@{MAP\_MAISON}}}\mbox{\Hypertarget{map_8h_a3a965fc5c4d50016f0135575ef810ab8a301934b0395e8021cd9cc4fab25f7481}\label{map_8h_a3a965fc5c4d50016f0135575ef810ab8a301934b0395e8021cd9cc4fab25f7481}} 
+MAP\+\_\+\+MAISON&L\textquotesingle{}intérieur des maisons \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{map_8h_ab24d5ed4277105abcd87fcfd2987b7bd}\label{map_8h_ab24d5ed4277105abcd87fcfd2987b7bd}} 
+\index{map.h@{map.h}!e\_solTag@{e\_solTag}}
+\index{e\_solTag@{e\_solTag}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{e\_solTag}{e\_solTag}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{map_8h_ab24d5ed4277105abcd87fcfd2987b7bd}{e\+\_\+sol\+Tag}}}
+
+
+
+Tag permettant de reconnaitre le type de sol. 
+
+Un compteur du nombre de types de sol est également initialisé à la fin de l\textquotesingle{}énumérateur 
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{map_8h_a40611258624d791a9b18c702ace9fab9}\label{map_8h_a40611258624d791a9b18c702ace9fab9}} 
+\index{map.h@{map.h}!blockEstDansLaMap@{blockEstDansLaMap}}
+\index{blockEstDansLaMap@{blockEstDansLaMap}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{blockEstDansLaMap()}{blockEstDansLaMap()}}
+{\footnotesize\ttfamily int block\+Est\+Dans\+La\+Map (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y }\end{DoxyParamCaption})}
+
+
+
+Vérifie si un block se situe bien à l\textquotesingle{}intérieur de la map. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & La coordonnée x du block (cordonnée relative à la map) \\
+\hline
+{\em y} & La coordonnée y du block (cordonnée relative à la map)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vrai si le block se situe bien dans la map, faux sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{map_8h_a633246171d99fabcacadccf89253882a}\label{map_8h_a633246171d99fabcacadccf89253882a}} 
+\index{map.h@{map.h}!blockEstDansLeChunk@{blockEstDansLeChunk}}
+\index{blockEstDansLeChunk@{blockEstDansLeChunk}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{blockEstDansLeChunk()}{blockEstDansLeChunk()}}
+{\footnotesize\ttfamily int block\+Est\+Dans\+Le\+Chunk (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y }\end{DoxyParamCaption})}
+
+
+
+Vérifie si un block se situe bien à l\textquotesingle{}intérieur d\textquotesingle{}un chunk. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & La coordonnée x du block (coordonnée relative au chunk) \\
+\hline
+{\em y} & La coordonnée y du block (coordonnée relative au chunk)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vrai si le block se situe bien dans un chunk, faux sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{map_8h_aafda8eee2701036bb3445015461e6c11}\label{map_8h_aafda8eee2701036bb3445015461e6c11}} 
+\index{map.h@{map.h}!chunkEstDansLaMap@{chunkEstDansLaMap}}
+\index{chunkEstDansLaMap@{chunkEstDansLaMap}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{chunkEstDansLaMap()}{chunkEstDansLaMap()}}
+{\footnotesize\ttfamily int chunk\+Est\+Dans\+La\+Map (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y,  }\item[{const int}]{z }\end{DoxyParamCaption})}
+
+
+
+Vérifie que un chunk est bien à l\textquotesingle{}intérieur de la map. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & La coordonnée x du chunk \\
+\hline
+{\em y} & La coordonnée y du chunk \\
+\hline
+{\em z} & La coordonnée z du chunk (correspond à la couche du chunk)\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Vrai si le chunk se situe bien dans la map, faux sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{map_8h_a3b6446d0f23ef60af0653ee2aaa95c07}\label{map_8h_a3b6446d0f23ef60af0653ee2aaa95c07}} 
+\index{map.h@{map.h}!dessinerObjets@{dessinerObjets}}
+\index{dessinerObjets@{dessinerObjets}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{dessinerObjets()}{dessinerObjets()}}
+{\footnotesize\ttfamily void dessiner\+Objets (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Affiche les objets d\textquotesingle{}une map. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & Un pointeur sur la map dans laquelle se trouve les objets \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{map_8h_a3d0f75829828188cb17cd9458d0cb34a}\label{map_8h_a3d0f75829828188cb17cd9458d0cb34a}} 
+\index{map.h@{map.h}!dessinerSol@{dessinerSol}}
+\index{dessinerSol@{dessinerSol}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{dessinerSol()}{dessinerSol()}}
+{\footnotesize\ttfamily void dessiner\+Sol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Affiche le sol de la map en fonction de la taille de la caméra. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & Un pointeur sur la map qui doit être affiché \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{map_8h_ae75633b4bafa085431940e488b2dc774}\label{map_8h_ae75633b4bafa085431940e488b2dc774}} 
+\index{map.h@{map.h}!detruireMap@{detruireMap}}
+\index{detruireMap@{detruireMap}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{detruireMap()}{detruireMap()}}
+{\footnotesize\ttfamily void detruire\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$$\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Detruit une map est libère la mémoire allouée pour cette dernière. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & L\textquotesingle{}adresse du pointeur de la map à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{map_8h_a67c83e20f17f177782fdf8bdb113c2c5}\label{map_8h_a67c83e20f17f177782fdf8bdb113c2c5}} 
+\index{map.h@{map.h}!genererAnimaux@{genererAnimaux}}
+\index{genererAnimaux@{genererAnimaux}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{genererAnimaux()}{genererAnimaux()}}
+{\footnotesize\ttfamily void generer\+Animaux (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Génère un troupeau d\textquotesingle{}animaux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & Un pointeur sur la map dans laquelle les animaux sont générés \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{map_8h_a218b8d54a5f7644f5c67e42ad2c66536}\label{map_8h_a218b8d54a5f7644f5c67e42ad2c66536}} 
+\index{map.h@{map.h}!genererMap@{genererMap}}
+\index{genererMap@{genererMap}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{genererMap()}{genererMap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__map}{t\+\_\+map}}$\ast$ generer\+Map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8}{e\+\_\+map\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Génère une map complète. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em type} & Le type de la map à générer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur la map générée 
+\end{DoxyReturn}
+\mbox{\Hypertarget{map_8h_a06e3caffbab82f4c7821de460fa0ce5c}\label{map_8h_a06e3caffbab82f4c7821de460fa0ce5c}} 
+\index{map.h@{map.h}!genererVegetations@{genererVegetations}}
+\index{genererVegetations@{genererVegetations}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{genererVegetations()}{genererVegetations()}}
+{\footnotesize\ttfamily void generer\+Vegetations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Génère les végétaux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & Un pointeur sur la map dans laquelle sera généré les végétaux \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{map_8h_a409e1fe424003fc6e36a385129295de2}\label{map_8h_a409e1fe424003fc6e36a385129295de2}} 
+\index{map.h@{map.h}!getBlockDansChunk@{getBlockDansChunk}}
+\index{getBlockDansChunk@{getBlockDansChunk}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{getBlockDansChunk()}{getBlockDansChunk()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__block}{t\+\_\+block}}$\ast$ get\+Block\+Dans\+Chunk (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y,  }\item[{\mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}} $\ast$}]{chunk }\end{DoxyParamCaption})}
+
+
+
+Récupère un block se situant dans un chunk. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & La cooronnée x (relative au chunk) du block \\
+\hline
+{\em y} & La cooronnée y (relative au chunk) du block \\
+\hline
+{\em chunk} & Un pointeur sur le chunk où sera récupérer le block\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le block trouvé, NULL sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{map_8h_a356332cac46166c0b2b443a646ade9a3}\label{map_8h_a356332cac46166c0b2b443a646ade9a3}} 
+\index{map.h@{map.h}!getBlockDansMap@{getBlockDansMap}}
+\index{getBlockDansMap@{getBlockDansMap}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{getBlockDansMap()}{getBlockDansMap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__block}{t\+\_\+block}}$\ast$ get\+Block\+Dans\+Map (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y,  }\item[{const int}]{z,  }\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Récupère un block se situant dans la map. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & La cooronnée x (relative à la map) du block \\
+\hline
+{\em y} & La cooronnée y (relative à la map) du block \\
+\hline
+{\em z} & La couche où se situe du block \\
+\hline
+{\em map} & Un pointeur sur la map où sera récupérer le block\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le block trouvé, NULL sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{map_8h_a05f1205b4040957ddb5de2ea1b0a6f6b}\label{map_8h_a05f1205b4040957ddb5de2ea1b0a6f6b}} 
+\index{map.h@{map.h}!getChunk@{getChunk}}
+\index{getChunk@{getChunk}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{getChunk()}{getChunk()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}}$\ast$ get\+Chunk (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y,  }\item[{const int}]{couche,  }\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Récupère un chunk se situant dans la map. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & La coordonnée x du chunk \\
+\hline
+{\em y} & La coordonnée y du chunk \\
+\hline
+{\em couche} & La couche du chunk \\
+\hline
+{\em map} & Un pointeur sur la map où sera récupéré le chunk\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le chunk trouvé, NULL sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{map_8h_aca505e103cd0a49c145206834cb9bd84}\label{map_8h_aca505e103cd0a49c145206834cb9bd84}} 
+\index{map.h@{map.h}!getChunkGraceABlock@{getChunkGraceABlock}}
+\index{getChunkGraceABlock@{getChunkGraceABlock}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{getChunkGraceABlock()}{getChunkGraceABlock()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__chunk}{t\+\_\+chunk}}$\ast$ get\+Chunk\+Grace\+ABlock (\begin{DoxyParamCaption}\item[{const int}]{x,  }\item[{const int}]{y,  }\item[{const int}]{couche,  }\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Récupère un chunk se situant dans la map grâce au coordonnée d\textquotesingle{}un block. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & La coordonnée x (relative à la map) d\textquotesingle{}un block \\
+\hline
+{\em y} & La coordonnée y (relative à la map) d\textquotesingle{}un block \\
+\hline
+{\em couche} & La couche du chunk \\
+\hline
+{\em map} & Un pointeur sur la map où sera récupéré le chunk\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le chunk trouvé, NULL sinon 
+\end{DoxyReturn}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{map_8h_a5209636f0cde38d41b8864cf6511d569}\label{map_8h_a5209636f0cde38d41b8864cf6511d569}} 
+\index{map.h@{map.h}!basesBiomes@{basesBiomes}}
+\index{basesBiomes@{basesBiomes}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{basesBiomes}{basesBiomes}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseBiome}{t\+\_\+base\+Biome}} bases\+Biomes\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tableau initialisant toutes les informations de bases d\textquotesingle{}un biome. 
+
+Les différents informations définis \+:
+\begin{DoxyItemize}
+\item Le biome
+\item L\textquotesingle{}altitude du biome
+\item Les types de sol que peut avoir le biome
+\item Les probabilites (cumulative) d\textquotesingle{}apparition des sols
+\item Les tag des végétaux pouvant apparaitre dans le biome
+\item Les probabilites d\textquotesingle{}apparition des tags des végétaux
+\item La densite de la végétation
+\item Les types des monstres qui peuvent apparaitre dans le biome
+\item Les probabilites d\textquotesingle{}apparition des types des monstres 
+\end{DoxyItemize}\mbox{\Hypertarget{map_8h_a2e1d64a23bc4962fe429c1078fd684e4}\label{map_8h_a2e1d64a23bc4962fe429c1078fd684e4}} 
+\index{map.h@{map.h}!probabilitesBiomes@{probabilitesBiomes}}
+\index{probabilitesBiomes@{probabilitesBiomes}!map.h@{map.h}}
+\doxysubsubsection{\texorpdfstring{probabilitesBiomes}{probabilitesBiomes}}
+{\footnotesize\ttfamily const int probabilites\+Biomes\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tableau regroupant les probabilités d\textquotesingle{}apparition d\textquotesingle{}un biome. 
+
+Principalement utilisé pour récupérer la probabilité en fonction de l\textquotesingle{}index du biome souhaité 

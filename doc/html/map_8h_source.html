@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/map.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">map.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="map_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _JEU_MAP_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define _JEU_MAP_</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utilitaire_8h.html">utilitaire.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="liste_8h.html">liste.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// La taille de la map (Le nombre de chunk)</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// La map est carré</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define TAILLE_MAP 14</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// La taille d&#39;un chunk (le nombre de block)</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// Le chunk est carré</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define TAILLE_CHUNK 16</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// Le nombre de fois que la map est normalisé</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define NOMBRE_DE_NORMALISATION_MAP 1</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// Le nombre de fois qu&#39;un chunk est normalisé</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define NOMBRE_DE_NORMALISATION_CHUNK 2</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/*                                 Enumeration                                */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">   53</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8acb0590055fe6a5ccc4cbbe2c12bf5546">   55</a></span>&#160;    <a class="code" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8acb0590055fe6a5ccc4cbbe2c12bf5546">MAP_OVERWORLD</a>,</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a61670bb27e4e9a34d7d3ff1c8a2bd447">   57</a></span>&#160;    <a class="code" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a61670bb27e4e9a34d7d3ff1c8a2bd447">MAP_CAVE</a>,</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a46039cbcd3514ba3bc348e737991e159">   59</a></span>&#160;    <a class="code" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a46039cbcd3514ba3bc348e737991e159">MAP_BOSS_TEMPLE</a>,</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a301934b0395e8021cd9cc4fab25f7481">   61</a></span>&#160;    <a class="code" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a301934b0395e8021cd9cc4fab25f7481">MAP_MAISON</a>,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;} <a class="code" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">e_mapType</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103">   70</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103ab3a1f1290110b4528fddc0926fcdf7a1">   72</a></span>&#160;    <a class="code" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103ab3a1f1290110b4528fddc0926fcdf7a1">COUCHE_SOL</a>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103a8691ffda0d443f564a0a32c19382ba5a">   74</a></span>&#160;    <a class="code" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103a8691ffda0d443f564a0a32c19382ba5a">COUCHE_OBJETS</a>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103a410aac13be63858ac275734252e4ea33">   76</a></span>&#160;    <a class="code" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103a410aac13be63858ac275734252e4ea33">NB_COUCHE</a>,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;} <a class="code" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103">e_coucheMap</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">   86</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    BIOME_PROFONDEUR,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    BIOME_LAC,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    BIOME_PLAINE,</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    BIOME_FORET,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    BIOME_MONTAGNE,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">// BIOME_DESERT,</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    NB_BIOMES</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;} <a class="code" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="map_8h.html#a5142c535740f7709a64bc789de532b79">  100</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    PROBA_BIOME_PROFONDEUR = 0,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    PROBA_BIOME_LAC = 15,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    PROBA_BIOME_PLAINE = 45,</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    PROBA_BIOME_FORET = 70,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    PROBA_BIOME_MONTAGNE = 100,</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">// PROBA_BIOME_DESERT = 100,</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <a class="code" href="map_8h.html#a5142c535740f7709a64bc789de532b79">e_biomeProba</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="map_8h.html#ab24d5ed4277105abcd87fcfd2987b7bd">  115</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    VIDE = -100,</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    SOL_EAU_PROFONDE = 0,</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    SOL_EAU,</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    SOL_SABLE,</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    SOL_HERBE_1, </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    SOL_HERBE_2, </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    SOL_HERBE_3,</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    SOL_MONTAGNE_1, </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    SOL_MONTAGNE_2,</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    SOL_NEIGE,</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    NB_TYPES_SOL,</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    SOL_CHEMIN,</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;} <a class="code" href="map_8h.html#ab24d5ed4277105abcd87fcfd2987b7bd">e_solTag</a>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="vegetations_8h.html">vegetations.h</a>&quot;</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monstre_8h.html">monstre.h</a>&quot;</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="structs__block.html">  146</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__block.html">s_block</a> {</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="structs__block.html#a20772dab26430ed5952a9704278e8c70">  147</a></span>&#160;    <a class="code" href="structt__vecteur2.html">t_vecteur2</a> <a class="code" href="structs__block.html#a20772dab26430ed5952a9704278e8c70">position</a>;                </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="structs__block.html#a297bd6770f9ba307b501d0cdb3b73a1a">  148</a></span>&#160;    <a class="code" href="structt__vecteur2.html">t_vecteur2</a> <a class="code" href="structs__block.html#a297bd6770f9ba307b501d0cdb3b73a1a">positionDansChunk</a>;       </div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="structs__block.html#a0d762b1f6a6017dc00460ff99a096193">  149</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__block.html#a0d762b1f6a6017dc00460ff99a096193">tag</a>;                            </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;} <a class="code" href="structt__block.html">t_block</a>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="structs__chunk.html">  157</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__chunk.html">s_chunk</a> {</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="structs__chunk.html#ae2d9a3a2d62ee5f39329426ec57fdef8">  158</a></span>&#160;    <a class="code" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a> <a class="code" href="structs__chunk.html#ae2d9a3a2d62ee5f39329426ec57fdef8">biome</a>;              </div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="structs__chunk.html#a0df0fd5d28ce4684e83fbf62b54d0f0e">  159</a></span>&#160;    <a class="code" href="structt__vecteur3.html">t_vecteur3</a> <a class="code" href="structs__chunk.html#a0df0fd5d28ce4684e83fbf62b54d0f0e">position</a>;        </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="structs__chunk.html#a557206f469f8dec2ff38b867238488c3">  160</a></span>&#160;    <a class="code" href="structt__block.html">t_block</a> *<a class="code" href="structs__chunk.html#a557206f469f8dec2ff38b867238488c3">blocks</a>;            </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;} <a class="code" href="structt__chunk.html">t_chunk</a>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="structs__map.html">  168</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__map.html">s_map</a> {</div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="structs__map.html#a6c97a5653eb4bc2835cabfd7d5491b80">  169</a></span>&#160;    <a class="code" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">e_mapType</a> <a class="code" href="structs__map.html#a6c97a5653eb4bc2835cabfd7d5491b80">type</a>;             </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="structs__map.html#ab4960bcc0584e58840974e611b7060ce">  170</a></span>&#160;    <a class="code" href="structt__chunk.html">t_chunk</a> *<a class="code" href="structs__map.html#ab4960bcc0584e58840974e611b7060ce">chunks</a>;            </div>
+<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="structs__map.html#acf20c8c525a9590c247bc8bcd7de06ca">  172</a></span>&#160;    <a class="code" href="structt__liste.html">t_liste</a> *<a class="code" href="structs__map.html#acf20c8c525a9590c247bc8bcd7de06ca">entites</a>;           </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;} <a class="code" href="structt__map.html">t_map</a>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="structs__baseBiome.html">  181</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__baseBiome.html">s_baseBiome</a> {</div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="structs__baseBiome.html#acd7d1b8e7970a1e35313e5c5ac71bc27">  182</a></span>&#160;    <a class="code" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a> <a class="code" href="structs__baseBiome.html#acd7d1b8e7970a1e35313e5c5ac71bc27">biome</a>;                          </div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="structs__baseBiome.html#a1457197d7b333f0851a36155d7db7a85">  183</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__baseBiome.html#a1457197d7b333f0851a36155d7db7a85">altitude</a>;                           </div>
+<div class="line"><a name="l00185"></a><span class="lineno"><a class="line" href="structs__baseBiome.html#ae5ccd100152cc5ccea2f550447af8b66">  185</a></span>&#160;    <a class="code" href="map_8h.html#ab24d5ed4277105abcd87fcfd2987b7bd">e_solTag</a> <a class="code" href="structs__baseBiome.html#ae5ccd100152cc5ccea2f550447af8b66">typesDeSol</a>[3];                 </div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="structs__baseBiome.html#a7181efa25e1c25d7ab18f4d002ca4d50">  186</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__baseBiome.html#a7181efa25e1c25d7ab18f4d002ca4d50">probabiliteDesBlocks</a>[3];            </div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="structs__baseBiome.html#a4ff8956e8ebe3120e1350f0ebd03afda">  188</a></span>&#160;    <a class="code" href="vegetations_8h.html#a83716eeb59a6326787a53030aa9c4a20">e_vegetalTag</a> <a class="code" href="structs__baseBiome.html#a4ff8956e8ebe3120e1350f0ebd03afda">tagVegetations</a>[2];         </div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="structs__baseBiome.html#a84599a1577ee28ad4391d3dc4f475b4e">  189</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__baseBiome.html#a84599a1577ee28ad4391d3dc4f475b4e">probabilitesVegetations</a>[2];         </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="structs__baseBiome.html#ab34755dfcfb76e10554feea989b066a7">  190</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="structs__baseBiome.html#ab34755dfcfb76e10554feea989b066a7">vegetationDensite</a>;                </div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="structs__baseBiome.html#a2b1fca7a90a0157b276c765d9b896306">  192</a></span>&#160;    <a class="code" href="monstre_8h.html#a73006f0dcf50cd05e2355e55899b7f31">e_monstreType</a> <a class="code" href="structs__baseBiome.html#a2b1fca7a90a0157b276c765d9b896306">typesMonstre</a>[2];          </div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="structs__baseBiome.html#a9e510a6286a051bf74cdaf95ea29fa90">  193</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__baseBiome.html#a9e510a6286a051bf74cdaf95ea29fa90">probabilitesTypesMonstre</a>[2];        </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;} <a class="code" href="structt__baseBiome.html">t_baseBiome</a>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="structs__predominance.html">  201</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__predominance.html">s_predominance</a> {</div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="structs__predominance.html#af0967ded79e9dae7c58d210b12549a6b">  202</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__predominance.html#af0967ded79e9dae7c58d210b12549a6b">tag</a>;                </div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="structs__predominance.html#a07893efaef25eb54e4a8f7149a803629">  203</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__predominance.html#a07893efaef25eb54e4a8f7149a803629">occurence</a>;          </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;} <a class="code" href="structt__predominance.html">t_predominance</a>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">/*                                 Constantes                                 */</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a> biomes[];</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="map_8h.html#a2e1d64a23bc4962fe429c1078fd684e4">probabilitesBiomes</a>[];</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structt__baseBiome.html">t_baseBiome</a> <a class="code" href="map_8h.html#a5209636f0cde38d41b8864cf6511d569">basesBiomes</a>[];</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="keywordtype">int</span> <a class="code" href="map_8h.html#a633246171d99fabcacadccf89253882a">blockEstDansLeChunk</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> x, <span class="keyword">const</span> <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="keywordtype">int</span> <a class="code" href="map_8h.html#a40611258624d791a9b18c702ace9fab9">blockEstDansLaMap</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> x, <span class="keyword">const</span> <span class="keywordtype">int</span> y);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="keywordtype">int</span> <a class="code" href="map_8h.html#aafda8eee2701036bb3445015461e6c11">chunkEstDansLaMap</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> x, <span class="keyword">const</span> <span class="keywordtype">int</span> y, <span class="keyword">const</span> <span class="keywordtype">int</span> z);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<a class="code" href="structt__block.html">t_block</a>* <a class="code" href="map_8h.html#a409e1fe424003fc6e36a385129295de2">getBlockDansChunk</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> x, <span class="keyword">const</span> <span class="keywordtype">int</span> y, <a class="code" href="structt__chunk.html">t_chunk</a> *chunk);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<a class="code" href="structt__block.html">t_block</a>* <a class="code" href="map_8h.html#a356332cac46166c0b2b443a646ade9a3">getBlockDansMap</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> x, <span class="keyword">const</span> <span class="keywordtype">int</span> y, <span class="keyword">const</span> <span class="keywordtype">int</span> z, <a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<a class="code" href="structt__chunk.html">t_chunk</a>* <a class="code" href="map_8h.html#a05f1205b4040957ddb5de2ea1b0a6f6b">getChunk</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> x, <span class="keyword">const</span> <span class="keywordtype">int</span> y, <span class="keyword">const</span> <span class="keywordtype">int</span> z, <a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<a class="code" href="structt__chunk.html">t_chunk</a>* <a class="code" href="map_8h.html#aca505e103cd0a49c145206834cb9bd84">getChunkGraceABlock</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> x, <span class="keyword">const</span> <span class="keywordtype">int</span> y, <span class="keyword">const</span> <span class="keywordtype">int</span> z, <a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<a class="code" href="structt__map.html">t_map</a>* <a class="code" href="map_8h.html#a218b8d54a5f7644f5c67e42ad2c66536">genererMap</a>(<a class="code" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">e_mapType</a> type);</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keywordtype">void</span> genererCave(<a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="keywordtype">void</span> <a class="code" href="map_8h.html#a06e3caffbab82f4c7821de460fa0ce5c">genererVegetations</a>(<a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="keywordtype">void</span> <a class="code" href="map_8h.html#a67c83e20f17f177782fdf8bdb113c2c5">genererAnimaux</a>(<a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="keywordtype">void</span> <a class="code" href="map_8h.html#ae75633b4bafa085431940e488b2dc774">detruireMap</a>(<a class="code" href="structt__map.html">t_map</a> **map);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keywordtype">void</span> <a class="code" href="map_8h.html#a3d0f75829828188cb17cd9458d0cb34a">dessinerSol</a>(<a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keywordtype">void</span> <a class="code" href="map_8h.html#a3b6446d0f23ef60af0653ee2aaa95c07">dessinerObjets</a>(<a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aliste_8h_html"><div class="ttname"><a href="liste_8h.html">liste.h</a></div><div class="ttdoc">Module de manipulation des listes.</div></div>
+<div class="ttc" id="amap_8h_html_a03a577c44d494b095cbbc30a2144ba53"><div class="ttname"><a href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a></div><div class="ttdeci">e_biome</div><div class="ttdoc">Tag permettant de reconnaitre le biome.</div><div class="ttdef"><b>Definition:</b> map.h:86</div></div>
+<div class="ttc" id="amap_8h_html_a05f1205b4040957ddb5de2ea1b0a6f6b"><div class="ttname"><a href="map_8h.html#a05f1205b4040957ddb5de2ea1b0a6f6b">getChunk</a></div><div class="ttdeci">t_chunk * getChunk(const int x, const int y, const int z, t_map *map)</div><div class="ttdoc">Récupère un chunk se situant dans la map.</div><div class="ttdef"><b>Definition:</b> map.c:141</div></div>
+<div class="ttc" id="amap_8h_html_a06e3caffbab82f4c7821de460fa0ce5c"><div class="ttname"><a href="map_8h.html#a06e3caffbab82f4c7821de460fa0ce5c">genererVegetations</a></div><div class="ttdeci">void genererVegetations(t_map *map)</div><div class="ttdoc">Génère les végétaux.</div><div class="ttdef"><b>Definition:</b> generation_vegetations.c:81</div></div>
+<div class="ttc" id="amap_8h_html_a218b8d54a5f7644f5c67e42ad2c66536"><div class="ttname"><a href="map_8h.html#a218b8d54a5f7644f5c67e42ad2c66536">genererMap</a></div><div class="ttdeci">t_map * genererMap(e_mapType type)</div><div class="ttdoc">Génère une map complète.</div><div class="ttdef"><b>Definition:</b> generation_map.c:718</div></div>
+<div class="ttc" id="amap_8h_html_a2e1d64a23bc4962fe429c1078fd684e4"><div class="ttname"><a href="map_8h.html#a2e1d64a23bc4962fe429c1078fd684e4">probabilitesBiomes</a></div><div class="ttdeci">const int probabilitesBiomes[]</div><div class="ttdoc">Tableau regroupant les probabilités d'apparition d'un biome.</div><div class="ttdef"><b>Definition:</b> generation_map.c:45</div></div>
+<div class="ttc" id="amap_8h_html_a356332cac46166c0b2b443a646ade9a3"><div class="ttname"><a href="map_8h.html#a356332cac46166c0b2b443a646ade9a3">getBlockDansMap</a></div><div class="ttdeci">t_block * getBlockDansMap(const int x, const int y, const int z, t_map *map)</div><div class="ttdoc">Récupère un block se situant dans la map.</div><div class="ttdef"><b>Definition:</b> map.c:119</div></div>
+<div class="ttc" id="amap_8h_html_a3a965fc5c4d50016f0135575ef810ab8"><div class="ttname"><a href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">e_mapType</a></div><div class="ttdeci">e_mapType</div><div class="ttdoc">Le type de la map.</div><div class="ttdef"><b>Definition:</b> map.h:53</div></div>
+<div class="ttc" id="amap_8h_html_a3a965fc5c4d50016f0135575ef810ab8a301934b0395e8021cd9cc4fab25f7481"><div class="ttname"><a href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a301934b0395e8021cd9cc4fab25f7481">MAP_MAISON</a></div><div class="ttdeci">@ MAP_MAISON</div><div class="ttdef"><b>Definition:</b> map.h:61</div></div>
+<div class="ttc" id="amap_8h_html_a3a965fc5c4d50016f0135575ef810ab8a46039cbcd3514ba3bc348e737991e159"><div class="ttname"><a href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a46039cbcd3514ba3bc348e737991e159">MAP_BOSS_TEMPLE</a></div><div class="ttdeci">@ MAP_BOSS_TEMPLE</div><div class="ttdef"><b>Definition:</b> map.h:59</div></div>
+<div class="ttc" id="amap_8h_html_a3a965fc5c4d50016f0135575ef810ab8a61670bb27e4e9a34d7d3ff1c8a2bd447"><div class="ttname"><a href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a61670bb27e4e9a34d7d3ff1c8a2bd447">MAP_CAVE</a></div><div class="ttdeci">@ MAP_CAVE</div><div class="ttdef"><b>Definition:</b> map.h:57</div></div>
+<div class="ttc" id="amap_8h_html_a3a965fc5c4d50016f0135575ef810ab8acb0590055fe6a5ccc4cbbe2c12bf5546"><div class="ttname"><a href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8acb0590055fe6a5ccc4cbbe2c12bf5546">MAP_OVERWORLD</a></div><div class="ttdeci">@ MAP_OVERWORLD</div><div class="ttdef"><b>Definition:</b> map.h:55</div></div>
+<div class="ttc" id="amap_8h_html_a3b6446d0f23ef60af0653ee2aaa95c07"><div class="ttname"><a href="map_8h.html#a3b6446d0f23ef60af0653ee2aaa95c07">dessinerObjets</a></div><div class="ttdeci">void dessinerObjets(t_map *map)</div><div class="ttdoc">Affiche les objets d'une map.</div><div class="ttdef"><b>Definition:</b> map.c:445</div></div>
+<div class="ttc" id="amap_8h_html_a3d0f75829828188cb17cd9458d0cb34a"><div class="ttname"><a href="map_8h.html#a3d0f75829828188cb17cd9458d0cb34a">dessinerSol</a></div><div class="ttdeci">void dessinerSol(t_map *map)</div><div class="ttdoc">Affiche le sol de la map en fonction de la taille de la caméra.</div><div class="ttdef"><b>Definition:</b> map.c:226</div></div>
+<div class="ttc" id="amap_8h_html_a40611258624d791a9b18c702ace9fab9"><div class="ttname"><a href="map_8h.html#a40611258624d791a9b18c702ace9fab9">blockEstDansLaMap</a></div><div class="ttdeci">int blockEstDansLaMap(const int x, const int y)</div><div class="ttdoc">Vérifie si un block se situe bien à l'intérieur de la map.</div><div class="ttdef"><b>Definition:</b> map.c:56</div></div>
+<div class="ttc" id="amap_8h_html_a409e1fe424003fc6e36a385129295de2"><div class="ttname"><a href="map_8h.html#a409e1fe424003fc6e36a385129295de2">getBlockDansChunk</a></div><div class="ttdeci">t_block * getBlockDansChunk(const int x, const int y, t_chunk *chunk)</div><div class="ttdoc">Récupère un block se situant dans un chunk.</div><div class="ttdef"><b>Definition:</b> map.c:95</div></div>
+<div class="ttc" id="amap_8h_html_a5142c535740f7709a64bc789de532b79"><div class="ttname"><a href="map_8h.html#a5142c535740f7709a64bc789de532b79">e_biomeProba</a></div><div class="ttdeci">e_biomeProba</div><div class="ttdoc">Enumérateur regroupant les probabilités d'apparition d'un biome.</div><div class="ttdef"><b>Definition:</b> map.h:100</div></div>
+<div class="ttc" id="amap_8h_html_a5209636f0cde38d41b8864cf6511d569"><div class="ttname"><a href="map_8h.html#a5209636f0cde38d41b8864cf6511d569">basesBiomes</a></div><div class="ttdeci">const t_baseBiome basesBiomes[]</div><div class="ttdoc">Tableau initialisant toutes les informations de bases d'un biome.</div><div class="ttdef"><b>Definition:</b> generation_bases.c:47</div></div>
+<div class="ttc" id="amap_8h_html_a633246171d99fabcacadccf89253882a"><div class="ttname"><a href="map_8h.html#a633246171d99fabcacadccf89253882a">blockEstDansLeChunk</a></div><div class="ttdeci">int blockEstDansLeChunk(const int x, const int y)</div><div class="ttdoc">Vérifie si un block se situe bien à l'intérieur d'un chunk.</div><div class="ttdef"><b>Definition:</b> map.c:42</div></div>
+<div class="ttc" id="amap_8h_html_a67c83e20f17f177782fdf8bdb113c2c5"><div class="ttname"><a href="map_8h.html#a67c83e20f17f177782fdf8bdb113c2c5">genererAnimaux</a></div><div class="ttdeci">void genererAnimaux(t_map *map)</div><div class="ttdoc">Génère un troupeau d'animaux.</div><div class="ttdef"><b>Definition:</b> generation_animaux.c:54</div></div>
+<div class="ttc" id="amap_8h_html_a940cb0537dcb926c1efc6e878d60a103"><div class="ttname"><a href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103">e_coucheMap</a></div><div class="ttdeci">e_coucheMap</div><div class="ttdoc">Tag permettant de reconnaitre la couche du chunk concerné</div><div class="ttdef"><b>Definition:</b> map.h:70</div></div>
+<div class="ttc" id="amap_8h_html_a940cb0537dcb926c1efc6e878d60a103a410aac13be63858ac275734252e4ea33"><div class="ttname"><a href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103a410aac13be63858ac275734252e4ea33">NB_COUCHE</a></div><div class="ttdeci">@ NB_COUCHE</div><div class="ttdef"><b>Definition:</b> map.h:76</div></div>
+<div class="ttc" id="amap_8h_html_a940cb0537dcb926c1efc6e878d60a103a8691ffda0d443f564a0a32c19382ba5a"><div class="ttname"><a href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103a8691ffda0d443f564a0a32c19382ba5a">COUCHE_OBJETS</a></div><div class="ttdeci">@ COUCHE_OBJETS</div><div class="ttdef"><b>Definition:</b> map.h:74</div></div>
+<div class="ttc" id="amap_8h_html_a940cb0537dcb926c1efc6e878d60a103ab3a1f1290110b4528fddc0926fcdf7a1"><div class="ttname"><a href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103ab3a1f1290110b4528fddc0926fcdf7a1">COUCHE_SOL</a></div><div class="ttdeci">@ COUCHE_SOL</div><div class="ttdef"><b>Definition:</b> map.h:72</div></div>
+<div class="ttc" id="amap_8h_html_aafda8eee2701036bb3445015461e6c11"><div class="ttname"><a href="map_8h.html#aafda8eee2701036bb3445015461e6c11">chunkEstDansLaMap</a></div><div class="ttdeci">int chunkEstDansLaMap(const int x, const int y, const int z)</div><div class="ttdoc">Vérifie que un chunk est bien à l'intérieur de la map.</div><div class="ttdef"><b>Definition:</b> map.c:71</div></div>
+<div class="ttc" id="amap_8h_html_ab24d5ed4277105abcd87fcfd2987b7bd"><div class="ttname"><a href="map_8h.html#ab24d5ed4277105abcd87fcfd2987b7bd">e_solTag</a></div><div class="ttdeci">e_solTag</div><div class="ttdoc">Tag permettant de reconnaitre le type de sol.</div><div class="ttdef"><b>Definition:</b> map.h:115</div></div>
+<div class="ttc" id="amap_8h_html_aca505e103cd0a49c145206834cb9bd84"><div class="ttname"><a href="map_8h.html#aca505e103cd0a49c145206834cb9bd84">getChunkGraceABlock</a></div><div class="ttdeci">t_chunk * getChunkGraceABlock(const int x, const int y, const int z, t_map *map)</div><div class="ttdoc">Récupère un chunk se situant dans la map grâce au coordonnée d'un block.</div><div class="ttdef"><b>Definition:</b> map.c:165</div></div>
+<div class="ttc" id="amap_8h_html_ae75633b4bafa085431940e488b2dc774"><div class="ttname"><a href="map_8h.html#ae75633b4bafa085431940e488b2dc774">detruireMap</a></div><div class="ttdeci">void detruireMap(t_map **map)</div><div class="ttdoc">Detruit une map est libère la mémoire allouée pour cette dernière.</div><div class="ttdef"><b>Definition:</b> map.c:507</div></div>
+<div class="ttc" id="amonstre_8h_html"><div class="ttname"><a href="monstre_8h.html">monstre.h</a></div><div class="ttdoc">Module de manipulation des monstres.</div></div>
+<div class="ttc" id="amonstre_8h_html_a73006f0dcf50cd05e2355e55899b7f31"><div class="ttname"><a href="monstre_8h.html#a73006f0dcf50cd05e2355e55899b7f31">e_monstreType</a></div><div class="ttdeci">e_monstreType</div><div class="ttdoc">Enumérateur regroupant les différents types des monstres.</div><div class="ttdef"><b>Definition:</b> monstre.h:40</div></div>
+<div class="ttc" id="astructs__baseBiome_html"><div class="ttname"><a href="structs__baseBiome.html">s_baseBiome</a></div><div class="ttdef"><b>Definition:</b> map.h:181</div></div>
+<div class="ttc" id="astructs__baseBiome_html_a1457197d7b333f0851a36155d7db7a85"><div class="ttname"><a href="structs__baseBiome.html#a1457197d7b333f0851a36155d7db7a85">s_baseBiome::altitude</a></div><div class="ttdeci">int altitude</div><div class="ttdef"><b>Definition:</b> map.h:183</div></div>
+<div class="ttc" id="astructs__baseBiome_html_a2b1fca7a90a0157b276c765d9b896306"><div class="ttname"><a href="structs__baseBiome.html#a2b1fca7a90a0157b276c765d9b896306">s_baseBiome::typesMonstre</a></div><div class="ttdeci">e_monstreType typesMonstre[2]</div><div class="ttdef"><b>Definition:</b> map.h:192</div></div>
+<div class="ttc" id="astructs__baseBiome_html_a4ff8956e8ebe3120e1350f0ebd03afda"><div class="ttname"><a href="structs__baseBiome.html#a4ff8956e8ebe3120e1350f0ebd03afda">s_baseBiome::tagVegetations</a></div><div class="ttdeci">e_vegetalTag tagVegetations[2]</div><div class="ttdef"><b>Definition:</b> map.h:188</div></div>
+<div class="ttc" id="astructs__baseBiome_html_a7181efa25e1c25d7ab18f4d002ca4d50"><div class="ttname"><a href="structs__baseBiome.html#a7181efa25e1c25d7ab18f4d002ca4d50">s_baseBiome::probabiliteDesBlocks</a></div><div class="ttdeci">int probabiliteDesBlocks[3]</div><div class="ttdef"><b>Definition:</b> map.h:186</div></div>
+<div class="ttc" id="astructs__baseBiome_html_a84599a1577ee28ad4391d3dc4f475b4e"><div class="ttname"><a href="structs__baseBiome.html#a84599a1577ee28ad4391d3dc4f475b4e">s_baseBiome::probabilitesVegetations</a></div><div class="ttdeci">int probabilitesVegetations[2]</div><div class="ttdef"><b>Definition:</b> map.h:189</div></div>
+<div class="ttc" id="astructs__baseBiome_html_a9e510a6286a051bf74cdaf95ea29fa90"><div class="ttname"><a href="structs__baseBiome.html#a9e510a6286a051bf74cdaf95ea29fa90">s_baseBiome::probabilitesTypesMonstre</a></div><div class="ttdeci">int probabilitesTypesMonstre[2]</div><div class="ttdef"><b>Definition:</b> map.h:193</div></div>
+<div class="ttc" id="astructs__baseBiome_html_ab34755dfcfb76e10554feea989b066a7"><div class="ttname"><a href="structs__baseBiome.html#ab34755dfcfb76e10554feea989b066a7">s_baseBiome::vegetationDensite</a></div><div class="ttdeci">float vegetationDensite</div><div class="ttdef"><b>Definition:</b> map.h:190</div></div>
+<div class="ttc" id="astructs__baseBiome_html_acd7d1b8e7970a1e35313e5c5ac71bc27"><div class="ttname"><a href="structs__baseBiome.html#acd7d1b8e7970a1e35313e5c5ac71bc27">s_baseBiome::biome</a></div><div class="ttdeci">e_biome biome</div><div class="ttdef"><b>Definition:</b> map.h:182</div></div>
+<div class="ttc" id="astructs__baseBiome_html_ae5ccd100152cc5ccea2f550447af8b66"><div class="ttname"><a href="structs__baseBiome.html#ae5ccd100152cc5ccea2f550447af8b66">s_baseBiome::typesDeSol</a></div><div class="ttdeci">e_solTag typesDeSol[3]</div><div class="ttdef"><b>Definition:</b> map.h:185</div></div>
+<div class="ttc" id="astructs__block_html"><div class="ttname"><a href="structs__block.html">s_block</a></div><div class="ttdef"><b>Definition:</b> map.h:146</div></div>
+<div class="ttc" id="astructs__block_html_a0d762b1f6a6017dc00460ff99a096193"><div class="ttname"><a href="structs__block.html#a0d762b1f6a6017dc00460ff99a096193">s_block::tag</a></div><div class="ttdeci">int tag</div><div class="ttdef"><b>Definition:</b> map.h:149</div></div>
+<div class="ttc" id="astructs__block_html_a20772dab26430ed5952a9704278e8c70"><div class="ttname"><a href="structs__block.html#a20772dab26430ed5952a9704278e8c70">s_block::position</a></div><div class="ttdeci">t_vecteur2 position</div><div class="ttdef"><b>Definition:</b> map.h:147</div></div>
+<div class="ttc" id="astructs__block_html_a297bd6770f9ba307b501d0cdb3b73a1a"><div class="ttname"><a href="structs__block.html#a297bd6770f9ba307b501d0cdb3b73a1a">s_block::positionDansChunk</a></div><div class="ttdeci">t_vecteur2 positionDansChunk</div><div class="ttdef"><b>Definition:</b> map.h:148</div></div>
+<div class="ttc" id="astructs__chunk_html"><div class="ttname"><a href="structs__chunk.html">s_chunk</a></div><div class="ttdef"><b>Definition:</b> map.h:157</div></div>
+<div class="ttc" id="astructs__chunk_html_a0df0fd5d28ce4684e83fbf62b54d0f0e"><div class="ttname"><a href="structs__chunk.html#a0df0fd5d28ce4684e83fbf62b54d0f0e">s_chunk::position</a></div><div class="ttdeci">t_vecteur3 position</div><div class="ttdef"><b>Definition:</b> map.h:159</div></div>
+<div class="ttc" id="astructs__chunk_html_a557206f469f8dec2ff38b867238488c3"><div class="ttname"><a href="structs__chunk.html#a557206f469f8dec2ff38b867238488c3">s_chunk::blocks</a></div><div class="ttdeci">t_block * blocks</div><div class="ttdef"><b>Definition:</b> map.h:160</div></div>
+<div class="ttc" id="astructs__chunk_html_ae2d9a3a2d62ee5f39329426ec57fdef8"><div class="ttname"><a href="structs__chunk.html#ae2d9a3a2d62ee5f39329426ec57fdef8">s_chunk::biome</a></div><div class="ttdeci">e_biome biome</div><div class="ttdef"><b>Definition:</b> map.h:158</div></div>
+<div class="ttc" id="astructs__map_html"><div class="ttname"><a href="structs__map.html">s_map</a></div><div class="ttdef"><b>Definition:</b> map.h:168</div></div>
+<div class="ttc" id="astructs__map_html_a6c97a5653eb4bc2835cabfd7d5491b80"><div class="ttname"><a href="structs__map.html#a6c97a5653eb4bc2835cabfd7d5491b80">s_map::type</a></div><div class="ttdeci">e_mapType type</div><div class="ttdef"><b>Definition:</b> map.h:169</div></div>
+<div class="ttc" id="astructs__map_html_ab4960bcc0584e58840974e611b7060ce"><div class="ttname"><a href="structs__map.html#ab4960bcc0584e58840974e611b7060ce">s_map::chunks</a></div><div class="ttdeci">t_chunk * chunks</div><div class="ttdef"><b>Definition:</b> map.h:170</div></div>
+<div class="ttc" id="astructs__map_html_acf20c8c525a9590c247bc8bcd7de06ca"><div class="ttname"><a href="structs__map.html#acf20c8c525a9590c247bc8bcd7de06ca">s_map::entites</a></div><div class="ttdeci">t_liste * entites</div><div class="ttdef"><b>Definition:</b> map.h:172</div></div>
+<div class="ttc" id="astructs__predominance_html"><div class="ttname"><a href="structs__predominance.html">s_predominance</a></div><div class="ttdef"><b>Definition:</b> map.h:201</div></div>
+<div class="ttc" id="astructs__predominance_html_a07893efaef25eb54e4a8f7149a803629"><div class="ttname"><a href="structs__predominance.html#a07893efaef25eb54e4a8f7149a803629">s_predominance::occurence</a></div><div class="ttdeci">int occurence</div><div class="ttdef"><b>Definition:</b> map.h:203</div></div>
+<div class="ttc" id="astructs__predominance_html_af0967ded79e9dae7c58d210b12549a6b"><div class="ttname"><a href="structs__predominance.html#af0967ded79e9dae7c58d210b12549a6b">s_predominance::tag</a></div><div class="ttdeci">int tag</div><div class="ttdef"><b>Definition:</b> map.h:202</div></div>
+<div class="ttc" id="astructt__baseBiome_html"><div class="ttname"><a href="structt__baseBiome.html">t_baseBiome</a></div><div class="ttdoc">Modélise la base d'un biome.</div></div>
+<div class="ttc" id="astructt__block_html"><div class="ttname"><a href="structt__block.html">t_block</a></div><div class="ttdoc">Modélise un block.</div></div>
+<div class="ttc" id="astructt__chunk_html"><div class="ttname"><a href="structt__chunk.html">t_chunk</a></div><div class="ttdoc">Modélise un chunk.</div></div>
+<div class="ttc" id="astructt__liste_html"><div class="ttname"><a href="structt__liste.html">t_liste</a></div><div class="ttdoc">Modelise l'emplacement actuel dans la liste.</div></div>
+<div class="ttc" id="astructt__map_html"><div class="ttname"><a href="structt__map.html">t_map</a></div><div class="ttdoc">Modélise une map.</div></div>
+<div class="ttc" id="astructt__predominance_html"><div class="ttname"><a href="structt__predominance.html">t_predominance</a></div><div class="ttdoc">Modélise un objet prédominant.</div></div>
+<div class="ttc" id="astructt__vecteur2_html"><div class="ttname"><a href="structt__vecteur2.html">t_vecteur2</a></div><div class="ttdoc">Structure modélisant un vecteur à deux dimensions.</div></div>
+<div class="ttc" id="astructt__vecteur3_html"><div class="ttname"><a href="structt__vecteur3.html">t_vecteur3</a></div><div class="ttdoc">Structure modélisant un vecteur à trois dimensions.</div></div>
+<div class="ttc" id="autilitaire_8h_html"><div class="ttname"><a href="utilitaire_8h.html">utilitaire.h</a></div><div class="ttdoc">Module de manipulation des données globales.</div></div>
+<div class="ttc" id="avegetations_8h_html"><div class="ttname"><a href="vegetations_8h.html">vegetations.h</a></div><div class="ttdoc">Module de manipulations de la végétation.</div></div>
+<div class="ttc" id="avegetations_8h_html_a83716eeb59a6326787a53030aa9c4a20"><div class="ttname"><a href="vegetations_8h.html#a83716eeb59a6326787a53030aa9c4a20">e_vegetalTag</a></div><div class="ttdeci">e_vegetalTag</div><div class="ttdoc">Tag permettant de reconnaitre les végétaux.</div><div class="ttdef"><b>Definition:</b> vegetations.h:41</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

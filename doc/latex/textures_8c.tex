@@ -1,0 +1,91 @@
+\hypertarget{textures_8c}{}\doxysection{Référence du fichier src/textures.c}
+\label{textures_8c}\index{src/textures.c@{src/textures.c}}
+
+
+Module de gestion des textures.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/textures.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/monde.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{textures_8c_a6ee779f890742478c765be5c5169c216}{split\+Texture}} (SDL\+\_\+\+Rect $\ast$source, const int x, const int y, const int tailleX, const int tailleY)
+\begin{DoxyCompactList}\small\item\em Permet de récupérer une texture au sein d\textquotesingle{}un tileset. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__textures}{t\+\_\+textures}} $\ast$ \mbox{\hyperlink{textures_8c_ab7779a77d98f10ca2c14c7a8fb88b9c4}{init\+Textures}} (SDL\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour les textures et les chargent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{textures_8c_a48d76eceb81b1e6477d3bb1f80060b7b}{detruire\+Textures}} (\mbox{\hyperlink{structt__textures}{t\+\_\+textures}} $\ast$$\ast$textures)
+\begin{DoxyCompactList}\small\item\em Detruit les textures est libère la mémoire allouée pour ces dernières. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion des textures. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{textures_8c_a48d76eceb81b1e6477d3bb1f80060b7b}\label{textures_8c_a48d76eceb81b1e6477d3bb1f80060b7b}} 
+\index{textures.c@{textures.c}!detruireTextures@{detruireTextures}}
+\index{detruireTextures@{detruireTextures}!textures.c@{textures.c}}
+\doxysubsubsection{\texorpdfstring{detruireTextures()}{detruireTextures()}}
+{\footnotesize\ttfamily void detruire\+Textures (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__textures}{t\+\_\+textures}} $\ast$$\ast$}]{textures }\end{DoxyParamCaption})}
+
+
+
+Detruit les textures est libère la mémoire allouée pour ces dernières. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em textures} & L\textquotesingle{}adresse du pointeur sur les textures \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{textures_8c_ab7779a77d98f10ca2c14c7a8fb88b9c4}\label{textures_8c_ab7779a77d98f10ca2c14c7a8fb88b9c4}} 
+\index{textures.c@{textures.c}!initTextures@{initTextures}}
+\index{initTextures@{initTextures}!textures.c@{textures.c}}
+\doxysubsubsection{\texorpdfstring{initTextures()}{initTextures()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__textures}{t\+\_\+textures}}$\ast$ init\+Textures (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour les textures et les chargent. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Le renderer SDL nécessaire pour le rendu du jeu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur les textures, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{textures_8c_a6ee779f890742478c765be5c5169c216}\label{textures_8c_a6ee779f890742478c765be5c5169c216}} 
+\index{textures.c@{textures.c}!splitTexture@{splitTexture}}
+\index{splitTexture@{splitTexture}!textures.c@{textures.c}}
+\doxysubsubsection{\texorpdfstring{splitTexture()}{splitTexture()}}
+{\footnotesize\ttfamily void split\+Texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Rect $\ast$}]{source,  }\item[{const int}]{x,  }\item[{const int}]{y,  }\item[{const int}]{tailleX,  }\item[{const int}]{tailleY }\end{DoxyParamCaption})}
+
+
+
+Permet de récupérer une texture au sein d\textquotesingle{}un tileset. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em source} & Le rectangle stockant la texture finale \\
+\hline
+{\em x} & La position x de la texture dans le tileset \\
+\hline
+{\em y} & La position y de la texture dans le tileset \\
+\hline
+{\em tailleX} & La dimension en largeur de la texture à récupérer \\
+\hline
+{\em tailleY} & La dimension en hauteur de la texture à récupérer \\
+\hline
+\end{DoxyParams}

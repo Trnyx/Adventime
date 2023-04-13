@@ -1,0 +1,181 @@
+\hypertarget{utilitaire_8h}{}\doxysection{Référence du fichier include/utilitaire.h}
+\label{utilitaire_8h}\index{include/utilitaire.h@{include/utilitaire.h}}
+
+
+Module de manipulation des données globales.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__vecteur2}{s\+\_\+vecteur2}}
+\item 
+struct \mbox{\hyperlink{structs__vecteur3}{s\+\_\+vecteur3}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{utilitaire_8h_af30d3e15da762dec576a94bf84261116}\label{utilitaire_8h_af30d3e15da762dec576a94bf84261116}} 
+\#define {\bfseries LONGUEUR\+\_\+\+ID}~8
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{utilitaire_8h_a840d052247a7998fa8bd705056b44fe8}\label{utilitaire_8h_a840d052247a7998fa8bd705056b44fe8}} 
+typedef struct \mbox{\hyperlink{structs__vecteur2}{s\+\_\+vecteur2}} {\bfseries t\+\_\+vecteur2}
+\item 
+\mbox{\Hypertarget{utilitaire_8h_aee6714c7df6462397dbf0814081864de}\label{utilitaire_8h_aee6714c7df6462397dbf0814081864de}} 
+typedef struct \mbox{\hyperlink{structs__vecteur3}{s\+\_\+vecteur3}} {\bfseries t\+\_\+vecteur3}
+\end{DoxyCompactItemize}
+\doxysubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{utilitaire_8h_a7c6368b321bd9acd0149b030bb8275ed}\label{utilitaire_8h_a7c6368b321bd9acd0149b030bb8275ed}} 
+enum {\bfseries boolean} \{ {\bfseries FAUX}
+, {\bfseries VRAI}
+ \}
+\item 
+\mbox{\Hypertarget{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}\label{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}} 
+enum \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \{ {\bfseries SUCCESS} = 0
+, {\bfseries FOPEN\+\_\+\+FAIL}
+, {\bfseries LOAD\+\_\+\+FAIL}
+ \}
+\begin{DoxyCompactList}\small\item\em Définit les erreurs possibles durant la sauvegarde. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{utilitaire_8h_a8a52706734f87c3cac784550da5ba0dd}{generer\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Génère un ID. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{utilitaire_8h_ae972c4f21fed17b0dea651e044245fd2}{get\+Nombre\+Aleatoire}} (const int min, const int max)
+\begin{DoxyCompactList}\small\item\em Génère un nombre aléatoire entre un minimum et un maximum. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{utilitaire_8h_a717e06d0e4dbd07d97d1ae344c07dc99}{calcul\+Distance\+Entre\+Points}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} source, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} cible)
+\begin{DoxyCompactList}\small\item\em Calcul la distance entre deux points. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{utilitaire_8h_a64764c3470009ddc6a54599ca78dace9}{calcul\+Angle\+Entre\+Points}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} source, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} cible)
+\begin{DoxyCompactList}\small\item\em Calcul l\textquotesingle{}angle entre deux points. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{utilitaire_8h_a7a781a864fea6a3ebd2f8f764f302e2f}{revolution}} (const float angle)
+\begin{DoxyCompactList}\small\item\em Rapporte les angles $>$ 360° et $<$ 0° à un angle dans l\textquotesingle{}interval \mbox{[}0; 360\mbox{[}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{utilitaire_8h_a7ce2be1608ca2c194282f4b5a3ec8c93}{choisir\+Point\+Dans\+Rayon}} (const int rayon)
+\begin{DoxyCompactList}\small\item\em Génère un point aléatoirement dans le rayon donné \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des données globales. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon, Julien Houget 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+21 janvier 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{utilitaire_8h_a64764c3470009ddc6a54599ca78dace9}\label{utilitaire_8h_a64764c3470009ddc6a54599ca78dace9}} 
+\index{utilitaire.h@{utilitaire.h}!calculAngleEntrePoints@{calculAngleEntrePoints}}
+\index{calculAngleEntrePoints@{calculAngleEntrePoints}!utilitaire.h@{utilitaire.h}}
+\doxysubsubsection{\texorpdfstring{calculAngleEntrePoints()}{calculAngleEntrePoints()}}
+{\footnotesize\ttfamily float calcul\+Angle\+Entre\+Points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{source,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{cible }\end{DoxyParamCaption})}
+
+
+
+Calcul l\textquotesingle{}angle entre deux points. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em source} & La position source \\
+\hline
+{\em cible} & La position cible\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+L\textquotesingle{}angle entre les deux points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilitaire_8h_a717e06d0e4dbd07d97d1ae344c07dc99}\label{utilitaire_8h_a717e06d0e4dbd07d97d1ae344c07dc99}} 
+\index{utilitaire.h@{utilitaire.h}!calculDistanceEntrePoints@{calculDistanceEntrePoints}}
+\index{calculDistanceEntrePoints@{calculDistanceEntrePoints}!utilitaire.h@{utilitaire.h}}
+\doxysubsubsection{\texorpdfstring{calculDistanceEntrePoints()}{calculDistanceEntrePoints()}}
+{\footnotesize\ttfamily float calcul\+Distance\+Entre\+Points (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{source,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{cible }\end{DoxyParamCaption})}
+
+
+
+Calcul la distance entre deux points. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em source} & La position source \\
+\hline
+{\em cible} & La position cible\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La distance entre les deux points 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilitaire_8h_a7ce2be1608ca2c194282f4b5a3ec8c93}\label{utilitaire_8h_a7ce2be1608ca2c194282f4b5a3ec8c93}} 
+\index{utilitaire.h@{utilitaire.h}!choisirPointDansRayon@{choisirPointDansRayon}}
+\index{choisirPointDansRayon@{choisirPointDansRayon}!utilitaire.h@{utilitaire.h}}
+\doxysubsubsection{\texorpdfstring{choisirPointDansRayon()}{choisirPointDansRayon()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} choisir\+Point\+Dans\+Rayon (\begin{DoxyParamCaption}\item[{const int}]{rayon }\end{DoxyParamCaption})}
+
+
+
+Génère un point aléatoirement dans le rayon donné 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em rayon} & Le rayon dans lequel le point sera généré\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le point généré 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilitaire_8h_a8a52706734f87c3cac784550da5ba0dd}\label{utilitaire_8h_a8a52706734f87c3cac784550da5ba0dd}} 
+\index{utilitaire.h@{utilitaire.h}!genererId@{genererId}}
+\index{genererId@{genererId}!utilitaire.h@{utilitaire.h}}
+\doxysubsubsection{\texorpdfstring{genererId()}{genererId()}}
+{\footnotesize\ttfamily char$\ast$ generer\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Génère un ID. 
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur l\textquotesingle{}ID 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilitaire_8h_ae972c4f21fed17b0dea651e044245fd2}\label{utilitaire_8h_ae972c4f21fed17b0dea651e044245fd2}} 
+\index{utilitaire.h@{utilitaire.h}!getNombreAleatoire@{getNombreAleatoire}}
+\index{getNombreAleatoire@{getNombreAleatoire}!utilitaire.h@{utilitaire.h}}
+\doxysubsubsection{\texorpdfstring{getNombreAleatoire()}{getNombreAleatoire()}}
+{\footnotesize\ttfamily int get\+Nombre\+Aleatoire (\begin{DoxyParamCaption}\item[{const int}]{min,  }\item[{const int}]{max }\end{DoxyParamCaption})}
+
+
+
+Génère un nombre aléatoire entre un minimum et un maximum. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em min} & Le nombre minimum \\
+\hline
+{\em max} & Le nombre maximum\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le nombre généré 
+\end{DoxyReturn}
+\mbox{\Hypertarget{utilitaire_8h_a7a781a864fea6a3ebd2f8f764f302e2f}\label{utilitaire_8h_a7a781a864fea6a3ebd2f8f764f302e2f}} 
+\index{utilitaire.h@{utilitaire.h}!revolution@{revolution}}
+\index{revolution@{revolution}!utilitaire.h@{utilitaire.h}}
+\doxysubsubsection{\texorpdfstring{revolution()}{revolution()}}
+{\footnotesize\ttfamily float revolution (\begin{DoxyParamCaption}\item[{const float}]{angle }\end{DoxyParamCaption})}
+
+
+
+Rapporte les angles $>$ 360° et $<$ 0° à un angle dans l\textquotesingle{}interval \mbox{[}0; 360\mbox{[}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em angle} & L\textquotesingle{}angle que l\textquotesingle{}on vérifie\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le nouvel angle 
+\end{DoxyReturn}

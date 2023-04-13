@@ -1,0 +1,101 @@
+\hypertarget{animation_8h}{}\doxysection{Référence du fichier include/animation.h}
+\label{animation_8h}\index{include/animation.h@{include/animation.h}}
+
+
+Module de manipulation du monde.  
+
+
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__animation}{s\+\_\+animation}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{animation_8h_a16b8fb64ee762fcc60ee22284e546339}\label{animation_8h_a16b8fb64ee762fcc60ee22284e546339}} 
+typedef struct \mbox{\hyperlink{structs__animation}{s\+\_\+animation}} {\bfseries t\+\_\+animation}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$ \mbox{\hyperlink{animation_8h_ab6a27f3482d7105b66aa820e710c4e51}{creer\+Animation}} (const unsigned int \mbox{\hyperlink{attributs__statistiques_8h_aef55e1775d611bfea0196692da1a0bc5}{vitesse}}, const unsigned int nombre\+Frame)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour une animation et la créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{animation_8h_a1e29331d629c266556bb66cfa75e66e7}{detruire\+Animation}} (\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$$\ast$animation)
+\begin{DoxyCompactList}\small\item\em Detruit une animation est libère la mémoire allouée pour cette dernière. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{animation_8h_aa60ccf51e650ae03d6b14f48f5473cea}{update\+Animation}} (\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$animation, const unsigned int timestamp)
+\begin{DoxyCompactList}\small\item\em Actualise l\textquotesingle{}animation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation du monde. 
+
+Module pour manipuler les animations.
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+25 janvier
+\end{DoxyDate}
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{animation_8h_ab6a27f3482d7105b66aa820e710c4e51}\label{animation_8h_ab6a27f3482d7105b66aa820e710c4e51}} 
+\index{animation.h@{animation.h}!creerAnimation@{creerAnimation}}
+\index{creerAnimation@{creerAnimation}!animation.h@{animation.h}}
+\doxysubsubsection{\texorpdfstring{creerAnimation()}{creerAnimation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__animation}{t\+\_\+animation}}$\ast$ creer\+Animation (\begin{DoxyParamCaption}\item[{const unsigned int}]{vitesse,  }\item[{const unsigned int}]{nombre\+Frame }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour une animation et la créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em vitesse} & La vitesse de défilement soit le temps (en milisecondes) entre chaque changement d\textquotesingle{}image \\
+\hline
+{\em nombre\+Frame} & Le nombre d\textquotesingle{}image constituant l\textquotesingle{}animation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur l\textquotesingle{}animation créée, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{animation_8h_a1e29331d629c266556bb66cfa75e66e7}\label{animation_8h_a1e29331d629c266556bb66cfa75e66e7}} 
+\index{animation.h@{animation.h}!detruireAnimation@{detruireAnimation}}
+\index{detruireAnimation@{detruireAnimation}!animation.h@{animation.h}}
+\doxysubsubsection{\texorpdfstring{detruireAnimation()}{detruireAnimation()}}
+{\footnotesize\ttfamily void detruire\+Animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$$\ast$}]{animation }\end{DoxyParamCaption})}
+
+
+
+Detruit une animation est libère la mémoire allouée pour cette dernière. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em animation} & L\textquotesingle{}adresse du pointeur de l\textquotesingle{}animation à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8h_aa60ccf51e650ae03d6b14f48f5473cea}\label{animation_8h_aa60ccf51e650ae03d6b14f48f5473cea}} 
+\index{animation.h@{animation.h}!updateAnimation@{updateAnimation}}
+\index{updateAnimation@{updateAnimation}!animation.h@{animation.h}}
+\doxysubsubsection{\texorpdfstring{updateAnimation()}{updateAnimation()}}
+{\footnotesize\ttfamily void update\+Animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$}]{animation,  }\item[{const unsigned int}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Actualise l\textquotesingle{}animation. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em animation} & Pointeur sur l\textquotesingle{}animation à actualiser \\
+\hline
+{\em timestamp} & Le temps actuel du jeu \\
+\hline
+\end{DoxyParams}

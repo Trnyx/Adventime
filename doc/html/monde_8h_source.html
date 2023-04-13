@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/monde.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">monde.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="monde_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _JEU_MONDE_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define _JEU_MONDE_</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utilitaire_8h.html">utilitaire.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="map_8h.html">map.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="joueur_8h.html">joueur.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="temps_8h.html">temps.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="boss_8h.html">boss.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structs__monde.html">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__monde.html">s_monde</a> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structs__monde.html#a3790e4432031a0d592a45ad7a6d20832">   39</a></span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="structs__monde.html#a3790e4432031a0d592a45ad7a6d20832">id</a>;                               </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structs__monde.html#a15e8abbba9e63dae78d2f5de5cf39933">   40</a></span>&#160;    <span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="structs__monde.html#a15e8abbba9e63dae78d2f5de5cf39933">seed</a>;                     </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Maps</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structs__monde.html#a50439803d477c2d63215239feead4474">   43</a></span>&#160;    <a class="code" href="structt__map.html">t_map</a> *<a class="code" href="structs__monde.html#a50439803d477c2d63215239feead4474">overworld</a>;                       </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structs__monde.html#ae2b869d9fe8da5d3d76822ebccc1465f">   44</a></span>&#160;    <a class="code" href="structt__map.html">t_map</a> *<a class="code" href="structs__monde.html#ae2b869d9fe8da5d3d76822ebccc1465f">caverne</a>;                         </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structs__monde.html#ab4bf6b3070fec4c6d7b5dbd74ea6980d">   46</a></span>&#160;    <a class="code" href="structt__vecteur2.html">t_vecteur2</a> <a class="code" href="structs__monde.html#ab4bf6b3070fec4c6d7b5dbd74ea6980d">positionApparitionBoss</a>;      </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="structs__monde.html#ad3fc1e6ebcfc3b71b3cdd0854dbe04e6">   47</a></span>&#160;    <a class="code" href="structt__boss.html">t_boss</a> *<a class="code" href="structs__monde.html#ad3fc1e6ebcfc3b71b3cdd0854dbe04e6">boss</a>;                           </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// Joueur</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structs__monde.html#ad626c530a214c1927f645d92e5816019">   51</a></span>&#160;    <a class="code" href="structt__joueur.html">t_joueur</a> *<a class="code" href="structs__monde.html#ad626c530a214c1927f645d92e5816019">joueur</a>;                       </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structs__monde.html#a4974bc523ef8107b6196167937ba4b87">   52</a></span>&#160;    <a class="code" href="structt__vecteur2.html">t_vecteur2</a> <a class="code" href="structs__monde.html#a4974bc523ef8107b6196167937ba4b87">pointApparitionDefaut</a>;       </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structs__monde.html#ab99120c7f26e6c354af7046d94a74ccd">   53</a></span>&#160;    <a class="code" href="structt__vecteur2.html">t_vecteur2</a> <a class="code" href="structs__monde.html#ab99120c7f26e6c354af7046d94a74ccd">pointApparition</a>;             </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// Progression</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structs__monde.html#ae1ebc82d556b987778c71c13de096154">   56</a></span>&#160;    <a class="code" href="structt__boss__flags.html">t_boss_flags</a> <a class="code" href="structs__monde.html#ae1ebc82d556b987778c71c13de096154">bossFlags</a>;                 </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Information</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structs__monde.html#a3ad803a9516db14830123bf3b06c66c2">   59</a></span>&#160;    time_t <a class="code" href="structs__monde.html#a3ad803a9516db14830123bf3b06c66c2">timestampRenouvellement</a>;         </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;} <a class="code" href="structt__monde.html">t_monde</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">int</span> <a class="code" href="monde_8h.html#ab3bd285d3d5e32204e6d271f42933cb9">setGenerationSeed</a>(<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> seed);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<a class="code" href="structt__monde.html">t_monde</a>* <a class="code" href="monde_8h.html#a54a0960a13cb6691edfe1ac385b898bb">creerMonde</a>(<span class="keywordtype">long</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> seed);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> <a class="code" href="monde_8h.html#a7cf315ba442cc8ab09823f6189770f74">detruireMonde</a>(<a class="code" href="structt__monde.html">t_monde</a> **monde);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> afficherMonde(<a class="code" href="structt__monde.html">t_monde</a> *monde);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<a class="code" href="structt__vecteur2.html">t_vecteur2</a> <a class="code" href="monde_8h.html#a5f1bfd67e7b9bf4e37dbd78a1cfef15a">getPointApparitionJoueur</a>(<a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="ttc" id="aboss_8h_html"><div class="ttname"><a href="boss_8h.html">boss.h</a></div><div class="ttdoc">Module de gestion des boss.</div></div>
+<div class="ttc" id="ajoueur_8h_html"><div class="ttname"><a href="joueur_8h.html">joueur.h</a></div><div class="ttdoc">Module de manipulation du joueur.</div></div>
+<div class="ttc" id="amap_8h_html"><div class="ttname"><a href="map_8h.html">map.h</a></div><div class="ttdoc">Module de manipulation de la map.</div></div>
+<div class="ttc" id="amonde_8h_html_a54a0960a13cb6691edfe1ac385b898bb"><div class="ttname"><a href="monde_8h.html#a54a0960a13cb6691edfe1ac385b898bb">creerMonde</a></div><div class="ttdeci">t_monde * creerMonde(long long int seed)</div><div class="ttdoc">Alloue l'espace nécessaire pour un monde et le créer.</div><div class="ttdef"><b>Definition:</b> monde.c:144</div></div>
+<div class="ttc" id="amonde_8h_html_a5f1bfd67e7b9bf4e37dbd78a1cfef15a"><div class="ttname"><a href="monde_8h.html#a5f1bfd67e7b9bf4e37dbd78a1cfef15a">getPointApparitionJoueur</a></div><div class="ttdeci">t_vecteur2 getPointApparitionJoueur(t_map *map)</div><div class="ttdoc">Obtient le point d'apparition par défaut du joueur.</div><div class="ttdef"><b>Definition:</b> monde.c:72</div></div>
+<div class="ttc" id="amonde_8h_html_a7cf315ba442cc8ab09823f6189770f74"><div class="ttname"><a href="monde_8h.html#a7cf315ba442cc8ab09823f6189770f74">detruireMonde</a></div><div class="ttdeci">void detruireMonde(t_monde **monde)</div><div class="ttdoc">Detruit un monde est libère la mémoire allouée pour ce dernier.</div><div class="ttdef"><b>Definition:</b> monde.c:207</div></div>
+<div class="ttc" id="amonde_8h_html_ab3bd285d3d5e32204e6d271f42933cb9"><div class="ttname"><a href="monde_8h.html#ab3bd285d3d5e32204e6d271f42933cb9">setGenerationSeed</a></div><div class="ttdeci">int setGenerationSeed(long long int seed)</div><div class="ttdoc">Applique le seed pour l'initialisation des valeurs aléatoires.</div><div class="ttdef"><b>Definition:</b> monde.c:42</div></div>
+<div class="ttc" id="astructs__monde_html"><div class="ttname"><a href="structs__monde.html">s_monde</a></div><div class="ttdef"><b>Definition:</b> monde.h:38</div></div>
+<div class="ttc" id="astructs__monde_html_a15e8abbba9e63dae78d2f5de5cf39933"><div class="ttname"><a href="structs__monde.html#a15e8abbba9e63dae78d2f5de5cf39933">s_monde::seed</a></div><div class="ttdeci">long long int seed</div><div class="ttdef"><b>Definition:</b> monde.h:40</div></div>
+<div class="ttc" id="astructs__monde_html_a3790e4432031a0d592a45ad7a6d20832"><div class="ttname"><a href="structs__monde.html#a3790e4432031a0d592a45ad7a6d20832">s_monde::id</a></div><div class="ttdeci">char * id</div><div class="ttdef"><b>Definition:</b> monde.h:39</div></div>
+<div class="ttc" id="astructs__monde_html_a3ad803a9516db14830123bf3b06c66c2"><div class="ttname"><a href="structs__monde.html#a3ad803a9516db14830123bf3b06c66c2">s_monde::timestampRenouvellement</a></div><div class="ttdeci">time_t timestampRenouvellement</div><div class="ttdef"><b>Definition:</b> monde.h:59</div></div>
+<div class="ttc" id="astructs__monde_html_a4974bc523ef8107b6196167937ba4b87"><div class="ttname"><a href="structs__monde.html#a4974bc523ef8107b6196167937ba4b87">s_monde::pointApparitionDefaut</a></div><div class="ttdeci">t_vecteur2 pointApparitionDefaut</div><div class="ttdef"><b>Definition:</b> monde.h:52</div></div>
+<div class="ttc" id="astructs__monde_html_a50439803d477c2d63215239feead4474"><div class="ttname"><a href="structs__monde.html#a50439803d477c2d63215239feead4474">s_monde::overworld</a></div><div class="ttdeci">t_map * overworld</div><div class="ttdef"><b>Definition:</b> monde.h:43</div></div>
+<div class="ttc" id="astructs__monde_html_ab4bf6b3070fec4c6d7b5dbd74ea6980d"><div class="ttname"><a href="structs__monde.html#ab4bf6b3070fec4c6d7b5dbd74ea6980d">s_monde::positionApparitionBoss</a></div><div class="ttdeci">t_vecteur2 positionApparitionBoss</div><div class="ttdef"><b>Definition:</b> monde.h:46</div></div>
+<div class="ttc" id="astructs__monde_html_ab99120c7f26e6c354af7046d94a74ccd"><div class="ttname"><a href="structs__monde.html#ab99120c7f26e6c354af7046d94a74ccd">s_monde::pointApparition</a></div><div class="ttdeci">t_vecteur2 pointApparition</div><div class="ttdef"><b>Definition:</b> monde.h:53</div></div>
+<div class="ttc" id="astructs__monde_html_ad3fc1e6ebcfc3b71b3cdd0854dbe04e6"><div class="ttname"><a href="structs__monde.html#ad3fc1e6ebcfc3b71b3cdd0854dbe04e6">s_monde::boss</a></div><div class="ttdeci">t_boss * boss</div><div class="ttdef"><b>Definition:</b> monde.h:47</div></div>
+<div class="ttc" id="astructs__monde_html_ad626c530a214c1927f645d92e5816019"><div class="ttname"><a href="structs__monde.html#ad626c530a214c1927f645d92e5816019">s_monde::joueur</a></div><div class="ttdeci">t_joueur * joueur</div><div class="ttdef"><b>Definition:</b> monde.h:51</div></div>
+<div class="ttc" id="astructs__monde_html_ae1ebc82d556b987778c71c13de096154"><div class="ttname"><a href="structs__monde.html#ae1ebc82d556b987778c71c13de096154">s_monde::bossFlags</a></div><div class="ttdeci">t_boss_flags bossFlags</div><div class="ttdef"><b>Definition:</b> monde.h:56</div></div>
+<div class="ttc" id="astructs__monde_html_ae2b869d9fe8da5d3d76822ebccc1465f"><div class="ttname"><a href="structs__monde.html#ae2b869d9fe8da5d3d76822ebccc1465f">s_monde::caverne</a></div><div class="ttdeci">t_map * caverne</div><div class="ttdef"><b>Definition:</b> monde.h:44</div></div>
+<div class="ttc" id="astructt__boss__flags_html"><div class="ttname"><a href="structt__boss__flags.html">t_boss_flags</a></div><div class="ttdoc">Les flags indiquant si le boss du jour correspondant a été vaincu.</div></div>
+<div class="ttc" id="astructt__boss_html"><div class="ttname"><a href="structt__boss.html">t_boss</a></div><div class="ttdoc">Structure modélisant un boss.</div></div>
+<div class="ttc" id="astructt__joueur_html"><div class="ttname"><a href="structt__joueur.html">t_joueur</a></div><div class="ttdoc">Structure modélisant un joueur.</div></div>
+<div class="ttc" id="astructt__map_html"><div class="ttname"><a href="structt__map.html">t_map</a></div><div class="ttdoc">Modélise une map.</div></div>
+<div class="ttc" id="astructt__monde_html"><div class="ttname"><a href="structt__monde.html">t_monde</a></div><div class="ttdoc">Modélise un monde.</div></div>
+<div class="ttc" id="astructt__vecteur2_html"><div class="ttname"><a href="structt__vecteur2.html">t_vecteur2</a></div><div class="ttdoc">Structure modélisant un vecteur à deux dimensions.</div></div>
+<div class="ttc" id="atemps_8h_html"><div class="ttname"><a href="temps_8h.html">temps.h</a></div><div class="ttdoc">Module de manipulation du temps.</div></div>
+<div class="ttc" id="autilitaire_8h_html"><div class="ttname"><a href="utilitaire_8h.html">utilitaire.h</a></div><div class="ttdoc">Module de manipulation des données globales.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

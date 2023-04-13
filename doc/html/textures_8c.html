@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier src/textures.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier textures.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Module de gestion des textures.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL_image.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="textures_8h_source.html">../include/textures.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monde_8h_source.html">../include/monde.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a6ee779f890742478c765be5c5169c216"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="textures_8c.html#a6ee779f890742478c765be5c5169c216">splitTexture</a> (SDL_Rect *source, const int x, const int y, const int tailleX, const int tailleY)</td></tr>
+<tr class="memdesc:a6ee779f890742478c765be5c5169c216"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de récupérer une texture au sein d'un tileset.  <a href="textures_8c.html#a6ee779f890742478c765be5c5169c216">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6ee779f890742478c765be5c5169c216"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7779a77d98f10ca2c14c7a8fb88b9c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__textures.html">t_textures</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="textures_8c.html#ab7779a77d98f10ca2c14c7a8fb88b9c4">initTextures</a> (SDL_Renderer *renderer)</td></tr>
+<tr class="memdesc:ab7779a77d98f10ca2c14c7a8fb88b9c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue l'espace nécessaire pour les textures et les chargent.  <a href="textures_8c.html#ab7779a77d98f10ca2c14c7a8fb88b9c4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab7779a77d98f10ca2c14c7a8fb88b9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48d76eceb81b1e6477d3bb1f80060b7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="textures_8c.html#a48d76eceb81b1e6477d3bb1f80060b7b">detruireTextures</a> (<a class="el" href="structt__textures.html">t_textures</a> **textures)</td></tr>
+<tr class="memdesc:a48d76eceb81b1e6477d3bb1f80060b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit les textures est libère la mémoire allouée pour ces dernières.  <a href="textures_8c.html#a48d76eceb81b1e6477d3bb1f80060b7b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a48d76eceb81b1e6477d3bb1f80060b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Module de gestion des textures. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>3 février </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a48d76eceb81b1e6477d3bb1f80060b7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48d76eceb81b1e6477d3bb1f80060b7b">&#9670;&nbsp;</a></span>detruireTextures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireTextures </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__textures.html">t_textures</a> **&#160;</td>
+          <td class="paramname"><em>textures</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit les textures est libère la mémoire allouée pour ces dernières. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">textures</td><td>L'adresse du pointeur sur les textures </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab7779a77d98f10ca2c14c7a8fb88b9c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7779a77d98f10ca2c14c7a8fb88b9c4">&#9670;&nbsp;</a></span>initTextures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__textures.html">t_textures</a>* initTextures </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>renderer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alloue l'espace nécessaire pour les textures et les chargent. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">renderer</td><td>Le renderer SDL nécessaire pour le rendu du jeu</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur les textures, NULL en cas d'echec </dd></dl>
+
+</div>
+</div>
+<a id="a6ee779f890742478c765be5c5169c216"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ee779f890742478c765be5c5169c216">&#9670;&nbsp;</a></span>splitTexture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void splitTexture </td>
+          <td>(</td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>tailleX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>tailleY</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet de récupérer une texture au sein d'un tileset. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>Le rectangle stockant la texture finale </td></tr>
+    <tr><td class="paramname">x</td><td>La position x de la texture dans le tileset </td></tr>
+    <tr><td class="paramname">y</td><td>La position y de la texture dans le tileset </td></tr>
+    <tr><td class="paramname">tailleX</td><td>La dimension en largeur de la texture à récupérer </td></tr>
+    <tr><td class="paramname">tailleY</td><td>La dimension en hauteur de la texture à récupérer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

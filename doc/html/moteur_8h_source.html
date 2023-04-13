@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/moteur.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">moteur.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="moteur_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef _JEU_MOTEUR_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define _JEU_MOTEUR_</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;../include/SDL2/SDL_ttf.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utilitaire_8h.html">utilitaire.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="textures_8h.html">textures.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="camera_8h.html">camera.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="monde_8h.html">monde.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="main_8h.html">main.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cache_8h.html">cache.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define FPS 60</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#define TPS ((float)1000/FPS)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structs__controles.html">   49</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__controles.html">s_controles</a> {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// Directions</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structs__controles.html#a049ee76607131cd6207e8d223118e878">   51</a></span>&#160;    SDL_Scancode <a class="code" href="structs__controles.html#a049ee76607131cd6207e8d223118e878">key_up</a>;        </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structs__controles.html#a5d50501aea94f08793f22483b91f0246">   52</a></span>&#160;    SDL_Scancode <a class="code" href="structs__controles.html#a5d50501aea94f08793f22483b91f0246">key_down</a>;      </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structs__controles.html#aca5e1d0e8b79652e9d4ed6beb5b8a6d8">   53</a></span>&#160;    SDL_Scancode <a class="code" href="structs__controles.html#aca5e1d0e8b79652e9d4ed6beb5b8a6d8">key_left</a>;      </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structs__controles.html#a664143514253a47119e8eab92770611a">   54</a></span>&#160;    SDL_Scancode <a class="code" href="structs__controles.html#a664143514253a47119e8eab92770611a">key_right</a>;     </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// Inventaire</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structs__controles.html#a7851ee80812d11bf47f1a73756604da1">   57</a></span>&#160;    SDL_Scancode <a class="code" href="structs__controles.html#a7851ee80812d11bf47f1a73756604da1">inventory</a>;    </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// Interactions</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structs__controles.html#a72372940f4ad5e295f6f03492b6a074f">   60</a></span>&#160;    SDL_Scancode <a class="code" href="structs__controles.html#a72372940f4ad5e295f6f03492b6a074f">interaction</a>;   </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structs__controles.html#a131f5336e40e4933a46b1260a3fe4993">   61</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__controles.html#a131f5336e40e4933a46b1260a3fe4993">attack</a>;                 </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Autres</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="structs__controles.html#a8a34529418376032c2bfb92428a14a99">   64</a></span>&#160;    SDL_Scancode <a class="code" href="structs__controles.html#a8a34529418376032c2bfb92428a14a99">escape</a>;        </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="structs__controles.html#ad6a74dc2eb458ccdd495af0f4b5a9612">   65</a></span>&#160;    SDL_Scancode <a class="code" href="structs__controles.html#ad6a74dc2eb458ccdd495af0f4b5a9612">miniMap</a>;       </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <a class="code" href="structt__controles.html">t_controles</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="structs__moteur.html">   76</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__moteur.html">s_moteur</a> {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structs__moteur.html#a5e3316b77214a8b6af140fafd36dc872">   78</a></span>&#160;    SDL_Window *<a class="code" href="structs__moteur.html#a5e3316b77214a8b6af140fafd36dc872">window</a>;             </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="structs__moteur.html#a3def9cb4c9002ab3f38b73ea21940596">   79</a></span>&#160;    SDL_Renderer *<a class="code" href="structs__moteur.html#a3def9cb4c9002ab3f38b73ea21940596">renderer</a>;         </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="structs__moteur.html#a76572d3008cbe247aaf2b0276f742957">   81</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__moteur.html#a76572d3008cbe247aaf2b0276f742957">window_width</a>;               </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="structs__moteur.html#a458af7bb6a7ce0446c69e0b18ddc136c">   82</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__moteur.html#a458af7bb6a7ce0446c69e0b18ddc136c">window_height</a>;              </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="structs__moteur.html#a94f9336fa9ec297015cf919ee8bdd2a0">   83</a></span>&#160;    <a class="code" href="structt__vecteur2.html">t_vecteur2</a> <a class="code" href="structs__moteur.html#a94f9336fa9ec297015cf919ee8bdd2a0">positionSouris</a>;      </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="structs__moteur.html#a796d95e449107717c3f8df6a141a3d80">   86</a></span>&#160;    <a class="code" href="structt__camera.html">t_camera</a> *<a class="code" href="structs__moteur.html#a796d95e449107717c3f8df6a141a3d80">camera</a>;               </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structs__moteur.html#aaca3eb3ffdf266c04d9cb4d5cea42e38">   87</a></span>&#160;    <a class="code" href="structt__textures.html">t_textures</a> *<a class="code" href="structs__moteur.html#aaca3eb3ffdf266c04d9cb4d5cea42e38">textures</a>;           </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structs__moteur.html#ac29f8aa409e51f5dd550d8d214bf954c">   88</a></span>&#160;    <a class="code" href="structt__controles.html">t_controles</a> <a class="code" href="structs__moteur.html#ac29f8aa409e51f5dd550d8d214bf954c">controles</a>;          </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="structs__moteur.html#a55c71e50f28516dbda87e2fa009c4e89">   91</a></span>&#160;    <a class="code" href="structt__cache.html">t_cache</a> *<a class="code" href="structs__moteur.html#a55c71e50f28516dbda87e2fa009c4e89">cache</a>;                 </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="structs__moteur.html#a359724e665de4a6f8faa08a92593bb9a">   92</a></span>&#160;    <a class="code" href="structt__temps.html">t_temps</a> *<a class="code" href="structs__moteur.html#a359724e665de4a6f8faa08a92593bb9a">temps</a>;                 </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="structs__moteur.html#a0818cbaa13b9bf3cfddfdf3d52514139">   93</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__moteur.html#a0818cbaa13b9bf3cfddfdf3d52514139">frame</a>;             </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="structs__moteur.html#ae418d27c36cfd2689629679d637becdb">   94</a></span>&#160;    state_main <a class="code" href="structs__moteur.html#ae418d27c36cfd2689629679d637becdb">state</a>;               </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="structs__moteur.html#aad14538489467c95b1363a618309f875">   95</a></span>&#160;    TTF_Font * <a class="code" href="structs__moteur.html#aad14538489467c95b1363a618309f875">font</a>;                </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;} <a class="code" href="structt__moteur.html">t_moteur</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">// Le moteur est en global pour faciliter l&#39;accès</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">extern</span> <a class="code" href="structt__moteur.html">t_moteur</a> *moteur;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keywordtype">void</span> <a class="code" href="moteur_8h.html#aa38fa260bebae19be15f8984b9d5cac5">regulerFPS</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<a class="code" href="structt__moteur.html">t_moteur</a>* <a class="code" href="moteur_8h.html#ae4cd1f2651eb7545323fd4c26b6d192c">initMoteur</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keywordtype">void</span> <a class="code" href="moteur_8h.html#aa8ba0a1a326f5f885b9f58d650c5f50c">detruireMoteur</a>(<a class="code" href="structt__moteur.html">t_moteur</a> **moteur);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">void</span> <a class="code" href="moteur_8h.html#a19bf7070caedc05e8161ad08489598ef">updateEchelle</a>();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="acache_8h_html"><div class="ttname"><a href="cache_8h.html">cache.h</a></div><div class="ttdoc">Module de manipulation du cache.</div></div>
+<div class="ttc" id="acamera_8h_html"><div class="ttname"><a href="camera_8h.html">camera.h</a></div><div class="ttdoc">Module de manipulation de la caméra.</div></div>
+<div class="ttc" id="amain_8h_html"><div class="ttname"><a href="main_8h.html">main.h</a></div><div class="ttdoc">Module de manipulation pour la globalité du jeu.</div></div>
+<div class="ttc" id="amonde_8h_html"><div class="ttname"><a href="monde_8h.html">monde.h</a></div><div class="ttdoc">Module de manipulation d'un monde.</div></div>
+<div class="ttc" id="amoteur_8h_html_a19bf7070caedc05e8161ad08489598ef"><div class="ttname"><a href="moteur_8h.html#a19bf7070caedc05e8161ad08489598ef">updateEchelle</a></div><div class="ttdeci">void updateEchelle()</div><div class="ttdoc">Calcule la taille en pixel d'un bloc selon la taille de l'écran et actualise les informations de la c...</div><div class="ttdef"><b>Definition:</b> moteur.c:137</div></div>
+<div class="ttc" id="amoteur_8h_html_aa38fa260bebae19be15f8984b9d5cac5"><div class="ttname"><a href="moteur_8h.html#aa38fa260bebae19be15f8984b9d5cac5">regulerFPS</a></div><div class="ttdeci">void regulerFPS()</div><div class="ttdoc">Cette fonction permet de faire en sorte que le jeu soit constamment à 60 images par secondes.</div><div class="ttdef"><b>Definition:</b> moteur.c:43</div></div>
+<div class="ttc" id="amoteur_8h_html_aa8ba0a1a326f5f885b9f58d650c5f50c"><div class="ttname"><a href="moteur_8h.html#aa8ba0a1a326f5f885b9f58d650c5f50c">detruireMoteur</a></div><div class="ttdeci">void detruireMoteur(t_moteur **moteur)</div><div class="ttdoc">Detruit le moteur est libère la mémoire allouée pour ce dernier.</div><div class="ttdef"><b>Definition:</b> moteur.c:119</div></div>
+<div class="ttc" id="amoteur_8h_html_ae4cd1f2651eb7545323fd4c26b6d192c"><div class="ttname"><a href="moteur_8h.html#ae4cd1f2651eb7545323fd4c26b6d192c">initMoteur</a></div><div class="ttdeci">t_moteur * initMoteur()</div><div class="ttdoc">Alloue l'espace nécessaire pour le moteur et le créer.</div><div class="ttdef"><b>Definition:</b> moteur.c:87</div></div>
+<div class="ttc" id="astructs__controles_html"><div class="ttname"><a href="structs__controles.html">s_controles</a></div><div class="ttdef"><b>Definition:</b> moteur.h:49</div></div>
+<div class="ttc" id="astructs__controles_html_a049ee76607131cd6207e8d223118e878"><div class="ttname"><a href="structs__controles.html#a049ee76607131cd6207e8d223118e878">s_controles::key_up</a></div><div class="ttdeci">SDL_Scancode key_up</div><div class="ttdef"><b>Definition:</b> moteur.h:51</div></div>
+<div class="ttc" id="astructs__controles_html_a131f5336e40e4933a46b1260a3fe4993"><div class="ttname"><a href="structs__controles.html#a131f5336e40e4933a46b1260a3fe4993">s_controles::attack</a></div><div class="ttdeci">int attack</div><div class="ttdef"><b>Definition:</b> moteur.h:61</div></div>
+<div class="ttc" id="astructs__controles_html_a5d50501aea94f08793f22483b91f0246"><div class="ttname"><a href="structs__controles.html#a5d50501aea94f08793f22483b91f0246">s_controles::key_down</a></div><div class="ttdeci">SDL_Scancode key_down</div><div class="ttdef"><b>Definition:</b> moteur.h:52</div></div>
+<div class="ttc" id="astructs__controles_html_a664143514253a47119e8eab92770611a"><div class="ttname"><a href="structs__controles.html#a664143514253a47119e8eab92770611a">s_controles::key_right</a></div><div class="ttdeci">SDL_Scancode key_right</div><div class="ttdef"><b>Definition:</b> moteur.h:54</div></div>
+<div class="ttc" id="astructs__controles_html_a72372940f4ad5e295f6f03492b6a074f"><div class="ttname"><a href="structs__controles.html#a72372940f4ad5e295f6f03492b6a074f">s_controles::interaction</a></div><div class="ttdeci">SDL_Scancode interaction</div><div class="ttdef"><b>Definition:</b> moteur.h:60</div></div>
+<div class="ttc" id="astructs__controles_html_a7851ee80812d11bf47f1a73756604da1"><div class="ttname"><a href="structs__controles.html#a7851ee80812d11bf47f1a73756604da1">s_controles::inventory</a></div><div class="ttdeci">SDL_Scancode inventory</div><div class="ttdef"><b>Definition:</b> moteur.h:57</div></div>
+<div class="ttc" id="astructs__controles_html_a8a34529418376032c2bfb92428a14a99"><div class="ttname"><a href="structs__controles.html#a8a34529418376032c2bfb92428a14a99">s_controles::escape</a></div><div class="ttdeci">SDL_Scancode escape</div><div class="ttdef"><b>Definition:</b> moteur.h:64</div></div>
+<div class="ttc" id="astructs__controles_html_aca5e1d0e8b79652e9d4ed6beb5b8a6d8"><div class="ttname"><a href="structs__controles.html#aca5e1d0e8b79652e9d4ed6beb5b8a6d8">s_controles::key_left</a></div><div class="ttdeci">SDL_Scancode key_left</div><div class="ttdef"><b>Definition:</b> moteur.h:53</div></div>
+<div class="ttc" id="astructs__controles_html_ad6a74dc2eb458ccdd495af0f4b5a9612"><div class="ttname"><a href="structs__controles.html#ad6a74dc2eb458ccdd495af0f4b5a9612">s_controles::miniMap</a></div><div class="ttdeci">SDL_Scancode miniMap</div><div class="ttdef"><b>Definition:</b> moteur.h:65</div></div>
+<div class="ttc" id="astructs__moteur_html"><div class="ttname"><a href="structs__moteur.html">s_moteur</a></div><div class="ttdef"><b>Definition:</b> moteur.h:76</div></div>
+<div class="ttc" id="astructs__moteur_html_a0818cbaa13b9bf3cfddfdf3d52514139"><div class="ttname"><a href="structs__moteur.html#a0818cbaa13b9bf3cfddfdf3d52514139">s_moteur::frame</a></div><div class="ttdeci">unsigned int frame</div><div class="ttdef"><b>Definition:</b> moteur.h:93</div></div>
+<div class="ttc" id="astructs__moteur_html_a359724e665de4a6f8faa08a92593bb9a"><div class="ttname"><a href="structs__moteur.html#a359724e665de4a6f8faa08a92593bb9a">s_moteur::temps</a></div><div class="ttdeci">t_temps * temps</div><div class="ttdef"><b>Definition:</b> moteur.h:92</div></div>
+<div class="ttc" id="astructs__moteur_html_a3def9cb4c9002ab3f38b73ea21940596"><div class="ttname"><a href="structs__moteur.html#a3def9cb4c9002ab3f38b73ea21940596">s_moteur::renderer</a></div><div class="ttdeci">SDL_Renderer * renderer</div><div class="ttdef"><b>Definition:</b> moteur.h:79</div></div>
+<div class="ttc" id="astructs__moteur_html_a458af7bb6a7ce0446c69e0b18ddc136c"><div class="ttname"><a href="structs__moteur.html#a458af7bb6a7ce0446c69e0b18ddc136c">s_moteur::window_height</a></div><div class="ttdeci">int window_height</div><div class="ttdef"><b>Definition:</b> moteur.h:82</div></div>
+<div class="ttc" id="astructs__moteur_html_a55c71e50f28516dbda87e2fa009c4e89"><div class="ttname"><a href="structs__moteur.html#a55c71e50f28516dbda87e2fa009c4e89">s_moteur::cache</a></div><div class="ttdeci">t_cache * cache</div><div class="ttdef"><b>Definition:</b> moteur.h:91</div></div>
+<div class="ttc" id="astructs__moteur_html_a5e3316b77214a8b6af140fafd36dc872"><div class="ttname"><a href="structs__moteur.html#a5e3316b77214a8b6af140fafd36dc872">s_moteur::window</a></div><div class="ttdeci">SDL_Window * window</div><div class="ttdef"><b>Definition:</b> moteur.h:78</div></div>
+<div class="ttc" id="astructs__moteur_html_a76572d3008cbe247aaf2b0276f742957"><div class="ttname"><a href="structs__moteur.html#a76572d3008cbe247aaf2b0276f742957">s_moteur::window_width</a></div><div class="ttdeci">int window_width</div><div class="ttdef"><b>Definition:</b> moteur.h:81</div></div>
+<div class="ttc" id="astructs__moteur_html_a796d95e449107717c3f8df6a141a3d80"><div class="ttname"><a href="structs__moteur.html#a796d95e449107717c3f8df6a141a3d80">s_moteur::camera</a></div><div class="ttdeci">t_camera * camera</div><div class="ttdef"><b>Definition:</b> moteur.h:86</div></div>
+<div class="ttc" id="astructs__moteur_html_a94f9336fa9ec297015cf919ee8bdd2a0"><div class="ttname"><a href="structs__moteur.html#a94f9336fa9ec297015cf919ee8bdd2a0">s_moteur::positionSouris</a></div><div class="ttdeci">t_vecteur2 positionSouris</div><div class="ttdef"><b>Definition:</b> moteur.h:83</div></div>
+<div class="ttc" id="astructs__moteur_html_aaca3eb3ffdf266c04d9cb4d5cea42e38"><div class="ttname"><a href="structs__moteur.html#aaca3eb3ffdf266c04d9cb4d5cea42e38">s_moteur::textures</a></div><div class="ttdeci">t_textures * textures</div><div class="ttdef"><b>Definition:</b> moteur.h:87</div></div>
+<div class="ttc" id="astructs__moteur_html_aad14538489467c95b1363a618309f875"><div class="ttname"><a href="structs__moteur.html#aad14538489467c95b1363a618309f875">s_moteur::font</a></div><div class="ttdeci">TTF_Font * font</div><div class="ttdef"><b>Definition:</b> moteur.h:95</div></div>
+<div class="ttc" id="astructs__moteur_html_ac29f8aa409e51f5dd550d8d214bf954c"><div class="ttname"><a href="structs__moteur.html#ac29f8aa409e51f5dd550d8d214bf954c">s_moteur::controles</a></div><div class="ttdeci">t_controles controles</div><div class="ttdef"><b>Definition:</b> moteur.h:88</div></div>
+<div class="ttc" id="astructs__moteur_html_ae418d27c36cfd2689629679d637becdb"><div class="ttname"><a href="structs__moteur.html#ae418d27c36cfd2689629679d637becdb">s_moteur::state</a></div><div class="ttdeci">state_main state</div><div class="ttdef"><b>Definition:</b> moteur.h:94</div></div>
+<div class="ttc" id="astructt__cache_html"><div class="ttname"><a href="structt__cache.html">t_cache</a></div><div class="ttdoc">Structure contenant les informations que l'on stock dans le cache.</div></div>
+<div class="ttc" id="astructt__camera_html"><div class="ttname"><a href="structt__camera.html">t_camera</a></div><div class="ttdoc">Structure modélisant une caméra.</div></div>
+<div class="ttc" id="astructt__controles_html"><div class="ttname"><a href="structt__controles.html">t_controles</a></div><div class="ttdoc">Struture contenant les touches pour les contrôles du jeu.</div></div>
+<div class="ttc" id="astructt__moteur_html"><div class="ttname"><a href="structt__moteur.html">t_moteur</a></div><div class="ttdoc">Structure contenant les informations globales du jeu.</div></div>
+<div class="ttc" id="astructt__temps_html"><div class="ttname"><a href="structt__temps.html">t_temps</a></div><div class="ttdoc">Structures regroupant les données du temps en jeu.</div></div>
+<div class="ttc" id="astructt__textures_html"><div class="ttname"><a href="structt__textures.html">t_textures</a></div><div class="ttdoc">Structures contenant toutes les textures du jeu.</div></div>
+<div class="ttc" id="astructt__vecteur2_html"><div class="ttname"><a href="structt__vecteur2.html">t_vecteur2</a></div><div class="ttdoc">Structure modélisant un vecteur à deux dimensions.</div></div>
+<div class="ttc" id="atextures_8h_html"><div class="ttname"><a href="textures_8h.html">textures.h</a></div><div class="ttdoc">Module de manipulation des textures.</div></div>
+<div class="ttc" id="autilitaire_8h_html"><div class="ttname"><a href="utilitaire_8h.html">utilitaire.h</a></div><div class="ttdoc">Module de manipulation des données globales.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

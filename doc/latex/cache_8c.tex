@@ -1,0 +1,61 @@
+\hypertarget{cache_8c}{}\doxysection{Référence du fichier src/cache.c}
+\label{cache_8c}\index{src/cache.c@{src/cache.c}}
+
+
+Module de gestion du cache.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/cache.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{cache_8c_aebb68024b82f5044c9e83480c725c241}{detruire\+Cache}} (\mbox{\hyperlink{structt__cache}{t\+\_\+cache}} $\ast$$\ast$cache)
+\begin{DoxyCompactList}\small\item\em Detruit le cache est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__cache}{t\+\_\+cache}} $\ast$ \mbox{\hyperlink{cache_8c_a2a3fa5272cc278a8a58d5a3e0708caaa}{init\+Cache}} ()
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour le cache et l\textquotesingle{}initialise. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion du cache. 
+
+Le cache permet d\textquotesingle{}avoir un accès plus simple et plus rapide à des variables importantes
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+9 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{cache_8c_aebb68024b82f5044c9e83480c725c241}\label{cache_8c_aebb68024b82f5044c9e83480c725c241}} 
+\index{cache.c@{cache.c}!detruireCache@{detruireCache}}
+\index{detruireCache@{detruireCache}!cache.c@{cache.c}}
+\doxysubsubsection{\texorpdfstring{detruireCache()}{detruireCache()}}
+{\footnotesize\ttfamily void detruire\+Cache (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__cache}{t\+\_\+cache}} $\ast$$\ast$}]{cache }\end{DoxyParamCaption})}
+
+
+
+Detruit le cache est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cache} & L\textquotesingle{}adresse du pointeur du cache à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{cache_8c_a2a3fa5272cc278a8a58d5a3e0708caaa}\label{cache_8c_a2a3fa5272cc278a8a58d5a3e0708caaa}} 
+\index{cache.c@{cache.c}!initCache@{initCache}}
+\index{initCache@{initCache}!cache.c@{cache.c}}
+\doxysubsubsection{\texorpdfstring{initCache()}{initCache()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__cache}{t\+\_\+cache}}$\ast$ init\+Cache (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour le cache et l\textquotesingle{}initialise. 
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le cache, NULL si echec 
+\end{DoxyReturn}

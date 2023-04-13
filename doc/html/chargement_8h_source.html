@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/chargement.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">chargement.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="chargement_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef _JEU_CHARGEMENT_</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define _JEU_CHARGEMENT_</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;../include/moteur.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;../include/monde.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;../include/utilitaire.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/***********************************************************************************************</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> *                                          Fonctions                                          *</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> ***********************************************************************************************/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keywordtype">void</span> <a class="code" href="chargement_8h.html#ade2a920f5c24e283777447c92840098f">charger_entite</a>(<a class="code" href="structt__entite.html">t_entite</a>** entite, FILE* fichier);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keywordtype">void</span> <a class="code" href="chargement_8h.html#a6fd7149638b4c9f12c37075290b6d993">charger_entite_vivante</a>(<a class="code" href="structs__entiteVivante.html">t_entiteVivante</a>* entite, FILE* fichier);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keywordtype">void</span> <a class="code" href="chargement_8h.html#a8736474837a4393baae2a35030d028d2">charger_mob</a>(<a class="code" href="structt__mob.html">t_mob</a>* mob, FILE* fichier);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<a class="code" href="utilitaire_8h.html#acbc7b30dd503f54071a344c4d7165c0a">err_sauv</a> <a class="code" href="chargement_8h.html#a4ae15437f3ae37d25012a4845d380afc">charger_joueur</a>(<a class="code" href="structt__joueur.html">t_joueur</a>** joueur, <span class="keywordtype">char</span>* chemin_monde);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<a class="code" href="utilitaire_8h.html#acbc7b30dd503f54071a344c4d7165c0a">err_sauv</a> <a class="code" href="chargement_8h.html#ac8513a6e95a8b24fd0ebe2cffe87d649">charger_overworld</a>(<a class="code" href="structt__map.html">t_map</a>* map, FILE* fichier);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<a class="code" href="utilitaire_8h.html#acbc7b30dd503f54071a344c4d7165c0a">err_sauv</a> <a class="code" href="chargement_8h.html#ae5cba9feaf5da5a29793bdfdc81a3257">charger_map</a>(<a class="code" href="structt__map.html">t_map</a>* map, <span class="keywordtype">char</span>* chemin_monde, <span class="keyword">const</span> <a class="code" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">e_mapType</a> type);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<a class="code" href="utilitaire_8h.html#acbc7b30dd503f54071a344c4d7165c0a">err_sauv</a> <a class="code" href="chargement_8h.html#aae69a332e1670cda245aea667ecfd70b">charger_global</a>(<a class="code" href="structt__monde.html">t_monde</a>* monde, <span class="keywordtype">char</span>* chemin_monde);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<a class="code" href="utilitaire_8h.html#acbc7b30dd503f54071a344c4d7165c0a">err_sauv</a> <a class="code" href="chargement_8h.html#a5b8883514af72d6690f03c65e0726818">charger_monde</a>(<a class="code" href="structt__monde.html">t_monde</a>* monde, <span class="keywordtype">char</span>* nom_monde);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif </span><span class="comment">//_JEU_CHARGEMENT_</span></div>
+<div class="ttc" id="achargement_8h_html_a4ae15437f3ae37d25012a4845d380afc"><div class="ttname"><a href="chargement_8h.html#a4ae15437f3ae37d25012a4845d380afc">charger_joueur</a></div><div class="ttdeci">err_sauv charger_joueur(t_joueur **joueur, char *chemin_monde)</div><div class="ttdoc">Charge le joueur.</div><div class="ttdef"><b>Definition:</b> chargement.c:203</div></div>
+<div class="ttc" id="achargement_8h_html_a5b8883514af72d6690f03c65e0726818"><div class="ttname"><a href="chargement_8h.html#a5b8883514af72d6690f03c65e0726818">charger_monde</a></div><div class="ttdeci">err_sauv charger_monde(t_monde *monde, char *nom_monde)</div><div class="ttdoc">Charge la sauvegarde d'un monde.</div><div class="ttdef"><b>Definition:</b> chargement.c:458</div></div>
+<div class="ttc" id="achargement_8h_html_a6fd7149638b4c9f12c37075290b6d993"><div class="ttname"><a href="chargement_8h.html#a6fd7149638b4c9f12c37075290b6d993">charger_entite_vivante</a></div><div class="ttdeci">void charger_entite_vivante(t_entiteVivante *entite, FILE *fichier)</div><div class="ttdoc">Charge la base d'une entité vivante.</div><div class="ttdef"><b>Definition:</b> chargement.c:141</div></div>
+<div class="ttc" id="achargement_8h_html_a8736474837a4393baae2a35030d028d2"><div class="ttname"><a href="chargement_8h.html#a8736474837a4393baae2a35030d028d2">charger_mob</a></div><div class="ttdeci">void charger_mob(t_mob *mob, FILE *fichier)</div><div class="ttdoc">Charge un mob, c'est-à-dire un animal, un monstre...</div><div class="ttdef"><b>Definition:</b> chargement.c:166</div></div>
+<div class="ttc" id="achargement_8h_html_aae69a332e1670cda245aea667ecfd70b"><div class="ttname"><a href="chargement_8h.html#aae69a332e1670cda245aea667ecfd70b">charger_global</a></div><div class="ttdeci">err_sauv charger_global(t_monde *monde, char *chemin_monde)</div><div class="ttdoc">Charge les paramètres globaux du monde.</div><div class="ttdef"><b>Definition:</b> chargement.c:396</div></div>
+<div class="ttc" id="achargement_8h_html_ac8513a6e95a8b24fd0ebe2cffe87d649"><div class="ttname"><a href="chargement_8h.html#ac8513a6e95a8b24fd0ebe2cffe87d649">charger_overworld</a></div><div class="ttdeci">err_sauv charger_overworld(t_map *map, FILE *fichier)</div><div class="ttdoc">Charge l'overworld (la map de base).</div><div class="ttdef"><b>Definition:</b> chargement.c:252</div></div>
+<div class="ttc" id="achargement_8h_html_ade2a920f5c24e283777447c92840098f"><div class="ttname"><a href="chargement_8h.html#ade2a920f5c24e283777447c92840098f">charger_entite</a></div><div class="ttdeci">void charger_entite(t_entite **entite, FILE *fichier)</div><div class="ttdoc">Charge la base d'une entité.</div><div class="ttdef"><b>Definition:</b> chargement.c:56</div></div>
+<div class="ttc" id="achargement_8h_html_ae5cba9feaf5da5a29793bdfdc81a3257"><div class="ttname"><a href="chargement_8h.html#ae5cba9feaf5da5a29793bdfdc81a3257">charger_map</a></div><div class="ttdeci">err_sauv charger_map(t_map *map, char *chemin_monde, const e_mapType type)</div><div class="ttdoc">Charge la map.</div><div class="ttdef"><b>Definition:</b> chargement.c:266</div></div>
+<div class="ttc" id="amap_8h_html_a3a965fc5c4d50016f0135575ef810ab8"><div class="ttname"><a href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">e_mapType</a></div><div class="ttdeci">e_mapType</div><div class="ttdoc">Le type de la map.</div><div class="ttdef"><b>Definition:</b> map.h:53</div></div>
+<div class="ttc" id="astructs__entiteVivante_html"><div class="ttname"><a href="structs__entiteVivante.html">s_entiteVivante</a></div><div class="ttdef"><b>Definition:</b> entite.h:164</div></div>
+<div class="ttc" id="astructt__entite_html"><div class="ttname"><a href="structt__entite.html">t_entite</a></div><div class="ttdoc">Structure modélisant une entité</div></div>
+<div class="ttc" id="astructt__joueur_html"><div class="ttname"><a href="structt__joueur.html">t_joueur</a></div><div class="ttdoc">Structure modélisant un joueur.</div></div>
+<div class="ttc" id="astructt__map_html"><div class="ttname"><a href="structt__map.html">t_map</a></div><div class="ttdoc">Modélise une map.</div></div>
+<div class="ttc" id="astructt__mob_html"><div class="ttname"><a href="structt__mob.html">t_mob</a></div><div class="ttdoc">Structure représentant un mob.</div></div>
+<div class="ttc" id="astructt__monde_html"><div class="ttname"><a href="structt__monde.html">t_monde</a></div><div class="ttdoc">Modélise un monde.</div></div>
+<div class="ttc" id="autilitaire_8h_html_acbc7b30dd503f54071a344c4d7165c0a"><div class="ttname"><a href="utilitaire_8h.html#acbc7b30dd503f54071a344c4d7165c0a">err_sauv</a></div><div class="ttdeci">err_sauv</div><div class="ttdoc">Définit les erreurs possibles durant la sauvegarde.</div><div class="ttdef"><b>Definition:</b> utilitaire.h:47</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

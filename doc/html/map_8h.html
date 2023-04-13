@@ -1,0 +1,889 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier include/map.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#enum-members">Énumérations</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier map.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Module de manipulation de la map.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="utilitaire_8h_source.html">utilitaire.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="liste_8h_source.html">liste.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="vegetations_8h_source.html">vegetations.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monstre_8h_source.html">monstre.h</a>&quot;</code><br />
+</div>
+<p><a href="map_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__block.html">s_block</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__chunk.html">s_chunk</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__map.html">s_map</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__baseBiome.html">s_baseBiome</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__predominance.html">s_predominance</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a806bbf08aeed7a9436227d64ea5da4db"><td class="memItemLeft" align="right" valign="top"><a id="a806bbf08aeed7a9436227d64ea5da4db"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TAILLE_MAP</b>&#160;&#160;&#160;14</td></tr>
+<tr class="separator:a806bbf08aeed7a9436227d64ea5da4db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc0b6f1c11b1a2b80a8fb3bc825de542"><td class="memItemLeft" align="right" valign="top"><a id="abc0b6f1c11b1a2b80a8fb3bc825de542"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TAILLE_CHUNK</b>&#160;&#160;&#160;16</td></tr>
+<tr class="separator:abc0b6f1c11b1a2b80a8fb3bc825de542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a162acb7780392f8715f815932cfa2365"><td class="memItemLeft" align="right" valign="top"><a id="a162acb7780392f8715f815932cfa2365"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NOMBRE_DE_NORMALISATION_MAP</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a162acb7780392f8715f815932cfa2365"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af769c0ce216a9b14671bf30b07fc4662"><td class="memItemLeft" align="right" valign="top"><a id="af769c0ce216a9b14671bf30b07fc4662"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>NOMBRE_DE_NORMALISATION_CHUNK</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:af769c0ce216a9b14671bf30b07fc4662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:a70ed1bd7b71e35b2384f0d91ac9fc112"><td class="memItemLeft" align="right" valign="top"><a id="a70ed1bd7b71e35b2384f0d91ac9fc112"></a>
+typedef struct <a class="el" href="structs__block.html">s_block</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_block</b></td></tr>
+<tr class="separator:a70ed1bd7b71e35b2384f0d91ac9fc112"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab9f2c508f96e3939767a8b7edb8d00d"><td class="memItemLeft" align="right" valign="top"><a id="aab9f2c508f96e3939767a8b7edb8d00d"></a>
+typedef struct <a class="el" href="structs__chunk.html">s_chunk</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_chunk</b></td></tr>
+<tr class="separator:aab9f2c508f96e3939767a8b7edb8d00d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6370cd7b08553210cd2ca45f421b122"><td class="memItemLeft" align="right" valign="top"><a id="aa6370cd7b08553210cd2ca45f421b122"></a>
+typedef struct <a class="el" href="structs__map.html">s_map</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_map</b></td></tr>
+<tr class="separator:aa6370cd7b08553210cd2ca45f421b122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae09806d448ad35eccb79f7bb254b8294"><td class="memItemLeft" align="right" valign="top"><a id="ae09806d448ad35eccb79f7bb254b8294"></a>
+typedef struct <a class="el" href="structs__baseBiome.html">s_baseBiome</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_baseBiome</b></td></tr>
+<tr class="separator:ae09806d448ad35eccb79f7bb254b8294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a77b43f118d5b89dbfdbf12b9c6da0"><td class="memItemLeft" align="right" valign="top"><a id="a86a77b43f118d5b89dbfdbf12b9c6da0"></a>
+typedef struct <a class="el" href="structs__predominance.html">s_predominance</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_predominance</b></td></tr>
+<tr class="separator:a86a77b43f118d5b89dbfdbf12b9c6da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Énumérations</h2></td></tr>
+<tr class="memitem:a3a965fc5c4d50016f0135575ef810ab8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">e_mapType</a> { <a class="el" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8acb0590055fe6a5ccc4cbbe2c12bf5546">MAP_OVERWORLD</a>
+, <a class="el" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a61670bb27e4e9a34d7d3ff1c8a2bd447">MAP_CAVE</a>
+, <a class="el" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a46039cbcd3514ba3bc348e737991e159">MAP_BOSS_TEMPLE</a>
+, <a class="el" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8a301934b0395e8021cd9cc4fab25f7481">MAP_MAISON</a>
+ }</td></tr>
+<tr class="memdesc:a3a965fc5c4d50016f0135575ef810ab8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le type de la map.  <a href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3a965fc5c4d50016f0135575ef810ab8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a940cb0537dcb926c1efc6e878d60a103"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103">e_coucheMap</a> { <a class="el" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103ab3a1f1290110b4528fddc0926fcdf7a1">COUCHE_SOL</a>
+, <a class="el" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103a8691ffda0d443f564a0a32c19382ba5a">COUCHE_OBJETS</a>
+, <a class="el" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103a410aac13be63858ac275734252e4ea33">NB_COUCHE</a>
+ }</td></tr>
+<tr class="memdesc:a940cb0537dcb926c1efc6e878d60a103"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag permettant de reconnaitre la couche du chunk concerné  <a href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a940cb0537dcb926c1efc6e878d60a103"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03a577c44d494b095cbbc30a2144ba53"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a> { <br />
+&#160;&#160;<b>BIOME_PROFONDEUR</b>
+, <b>BIOME_LAC</b>
+, <b>BIOME_PLAINE</b>
+, <b>BIOME_FORET</b>
+, <br />
+&#160;&#160;<b>BIOME_MONTAGNE</b>
+, <b>NB_BIOMES</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:a03a577c44d494b095cbbc30a2144ba53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag permettant de reconnaitre le biome.  <a href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a03a577c44d494b095cbbc30a2144ba53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5142c535740f7709a64bc789de532b79"><td class="memItemLeft" align="right" valign="top"><a id="a5142c535740f7709a64bc789de532b79"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a5142c535740f7709a64bc789de532b79">e_biomeProba</a> { <br />
+&#160;&#160;<b>PROBA_BIOME_PROFONDEUR</b> = 0
+, <b>PROBA_BIOME_LAC</b> = 15
+, <b>PROBA_BIOME_PLAINE</b> = 45
+, <b>PROBA_BIOME_FORET</b> = 70
+, <br />
+&#160;&#160;<b>PROBA_BIOME_MONTAGNE</b> = 100
+<br />
+ }</td></tr>
+<tr class="memdesc:a5142c535740f7709a64bc789de532b79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumérateur regroupant les probabilités d'apparition d'un biome. <br /></td></tr>
+<tr class="separator:a5142c535740f7709a64bc789de532b79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab24d5ed4277105abcd87fcfd2987b7bd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#ab24d5ed4277105abcd87fcfd2987b7bd">e_solTag</a> { <br />
+&#160;&#160;<b>VIDE</b> = -100
+, <b>SOL_EAU_PROFONDE</b> = 0
+, <b>SOL_EAU</b>
+, <b>SOL_SABLE</b>
+, <br />
+&#160;&#160;<b>SOL_HERBE_1</b>
+, <b>SOL_HERBE_2</b>
+, <b>SOL_HERBE_3</b>
+, <b>SOL_MONTAGNE_1</b>
+, <br />
+&#160;&#160;<b>SOL_MONTAGNE_2</b>
+, <b>SOL_NEIGE</b>
+, <b>NB_TYPES_SOL</b>
+, <b>SOL_CHEMIN</b>
+<br />
+ }</td></tr>
+<tr class="memdesc:ab24d5ed4277105abcd87fcfd2987b7bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag permettant de reconnaitre le type de sol.  <a href="map_8h.html#ab24d5ed4277105abcd87fcfd2987b7bd">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab24d5ed4277105abcd87fcfd2987b7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a633246171d99fabcacadccf89253882a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a633246171d99fabcacadccf89253882a">blockEstDansLeChunk</a> (const int x, const int y)</td></tr>
+<tr class="memdesc:a633246171d99fabcacadccf89253882a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si un block se situe bien à l'intérieur d'un chunk.  <a href="map_8h.html#a633246171d99fabcacadccf89253882a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a633246171d99fabcacadccf89253882a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40611258624d791a9b18c702ace9fab9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a40611258624d791a9b18c702ace9fab9">blockEstDansLaMap</a> (const int x, const int y)</td></tr>
+<tr class="memdesc:a40611258624d791a9b18c702ace9fab9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si un block se situe bien à l'intérieur de la map.  <a href="map_8h.html#a40611258624d791a9b18c702ace9fab9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a40611258624d791a9b18c702ace9fab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafda8eee2701036bb3445015461e6c11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#aafda8eee2701036bb3445015461e6c11">chunkEstDansLaMap</a> (const int x, const int y, const int z)</td></tr>
+<tr class="memdesc:aafda8eee2701036bb3445015461e6c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie que un chunk est bien à l'intérieur de la map.  <a href="map_8h.html#aafda8eee2701036bb3445015461e6c11">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aafda8eee2701036bb3445015461e6c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a409e1fe424003fc6e36a385129295de2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__block.html">t_block</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a409e1fe424003fc6e36a385129295de2">getBlockDansChunk</a> (const int x, const int y, <a class="el" href="structt__chunk.html">t_chunk</a> *chunk)</td></tr>
+<tr class="memdesc:a409e1fe424003fc6e36a385129295de2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère un block se situant dans un chunk.  <a href="map_8h.html#a409e1fe424003fc6e36a385129295de2">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a409e1fe424003fc6e36a385129295de2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a356332cac46166c0b2b443a646ade9a3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__block.html">t_block</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a356332cac46166c0b2b443a646ade9a3">getBlockDansMap</a> (const int x, const int y, const int z, <a class="el" href="structt__map.html">t_map</a> *map)</td></tr>
+<tr class="memdesc:a356332cac46166c0b2b443a646ade9a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère un block se situant dans la map.  <a href="map_8h.html#a356332cac46166c0b2b443a646ade9a3">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a356332cac46166c0b2b443a646ade9a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05f1205b4040957ddb5de2ea1b0a6f6b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__chunk.html">t_chunk</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a05f1205b4040957ddb5de2ea1b0a6f6b">getChunk</a> (const int x, const int y, const int z, <a class="el" href="structt__map.html">t_map</a> *map)</td></tr>
+<tr class="memdesc:a05f1205b4040957ddb5de2ea1b0a6f6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère un chunk se situant dans la map.  <a href="map_8h.html#a05f1205b4040957ddb5de2ea1b0a6f6b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a05f1205b4040957ddb5de2ea1b0a6f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca505e103cd0a49c145206834cb9bd84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__chunk.html">t_chunk</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#aca505e103cd0a49c145206834cb9bd84">getChunkGraceABlock</a> (const int x, const int y, const int z, <a class="el" href="structt__map.html">t_map</a> *map)</td></tr>
+<tr class="memdesc:aca505e103cd0a49c145206834cb9bd84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère un chunk se situant dans la map grâce au coordonnée d'un block.  <a href="map_8h.html#aca505e103cd0a49c145206834cb9bd84">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aca505e103cd0a49c145206834cb9bd84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a218b8d54a5f7644f5c67e42ad2c66536"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__map.html">t_map</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a218b8d54a5f7644f5c67e42ad2c66536">genererMap</a> (<a class="el" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">e_mapType</a> type)</td></tr>
+<tr class="memdesc:a218b8d54a5f7644f5c67e42ad2c66536"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère une map complète.  <a href="map_8h.html#a218b8d54a5f7644f5c67e42ad2c66536">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a218b8d54a5f7644f5c67e42ad2c66536"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a172cb0d05a604a80ef70e333b742bda7"><td class="memItemLeft" align="right" valign="top"><a id="a172cb0d05a604a80ef70e333b742bda7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>genererCave</b> (<a class="el" href="structt__map.html">t_map</a> *map)</td></tr>
+<tr class="separator:a172cb0d05a604a80ef70e333b742bda7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06e3caffbab82f4c7821de460fa0ce5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a06e3caffbab82f4c7821de460fa0ce5c">genererVegetations</a> (<a class="el" href="structt__map.html">t_map</a> *map)</td></tr>
+<tr class="memdesc:a06e3caffbab82f4c7821de460fa0ce5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère les végétaux.  <a href="map_8h.html#a06e3caffbab82f4c7821de460fa0ce5c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a06e3caffbab82f4c7821de460fa0ce5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67c83e20f17f177782fdf8bdb113c2c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a67c83e20f17f177782fdf8bdb113c2c5">genererAnimaux</a> (<a class="el" href="structt__map.html">t_map</a> *map)</td></tr>
+<tr class="memdesc:a67c83e20f17f177782fdf8bdb113c2c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Génère un troupeau d'animaux.  <a href="map_8h.html#a67c83e20f17f177782fdf8bdb113c2c5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a67c83e20f17f177782fdf8bdb113c2c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae75633b4bafa085431940e488b2dc774"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#ae75633b4bafa085431940e488b2dc774">detruireMap</a> (<a class="el" href="structt__map.html">t_map</a> **map)</td></tr>
+<tr class="memdesc:ae75633b4bafa085431940e488b2dc774"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit une map est libère la mémoire allouée pour cette dernière.  <a href="map_8h.html#ae75633b4bafa085431940e488b2dc774">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae75633b4bafa085431940e488b2dc774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d0f75829828188cb17cd9458d0cb34a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a3d0f75829828188cb17cd9458d0cb34a">dessinerSol</a> (<a class="el" href="structt__map.html">t_map</a> *map)</td></tr>
+<tr class="memdesc:a3d0f75829828188cb17cd9458d0cb34a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche le sol de la map en fonction de la taille de la caméra.  <a href="map_8h.html#a3d0f75829828188cb17cd9458d0cb34a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3d0f75829828188cb17cd9458d0cb34a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b6446d0f23ef60af0653ee2aaa95c07"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a3b6446d0f23ef60af0653ee2aaa95c07">dessinerObjets</a> (<a class="el" href="structt__map.html">t_map</a> *map)</td></tr>
+<tr class="memdesc:a3b6446d0f23ef60af0653ee2aaa95c07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les objets d'une map.  <a href="map_8h.html#a3b6446d0f23ef60af0653ee2aaa95c07">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3b6446d0f23ef60af0653ee2aaa95c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:abc0bc0c35b2dca9944af05a6a63e7820"><td class="memItemLeft" align="right" valign="top"><a id="abc0bc0c35b2dca9944af05a6a63e7820"></a>
+const <a class="el" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a>&#160;</td><td class="memItemRight" valign="bottom"><b>biomes</b> []</td></tr>
+<tr class="separator:abc0bc0c35b2dca9944af05a6a63e7820"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e1d64a23bc4962fe429c1078fd684e4"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a2e1d64a23bc4962fe429c1078fd684e4">probabilitesBiomes</a> []</td></tr>
+<tr class="memdesc:a2e1d64a23bc4962fe429c1078fd684e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau regroupant les probabilités d'apparition d'un biome.  <a href="map_8h.html#a2e1d64a23bc4962fe429c1078fd684e4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a2e1d64a23bc4962fe429c1078fd684e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5209636f0cde38d41b8864cf6511d569"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structt__baseBiome.html">t_baseBiome</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="map_8h.html#a5209636f0cde38d41b8864cf6511d569">basesBiomes</a> []</td></tr>
+<tr class="memdesc:a5209636f0cde38d41b8864cf6511d569"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tableau initialisant toutes les informations de bases d'un biome.  <a href="map_8h.html#a5209636f0cde38d41b8864cf6511d569">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5209636f0cde38d41b8864cf6511d569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Module de manipulation de la map. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>21 janvier </dd></dl>
+</div><h2 class="groupheader">Documentation du type de l'énumération</h2>
+<a id="a03a577c44d494b095cbbc30a2144ba53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03a577c44d494b095cbbc30a2144ba53">&#9670;&nbsp;</a></span>e_biome</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tag permettant de reconnaitre le biome. </p>
+<p>Un compteur du nombre de biome est également initialisé à la fin de l'énumérateur </p>
+
+</div>
+</div>
+<a id="a940cb0537dcb926c1efc6e878d60a103"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a940cb0537dcb926c1efc6e878d60a103">&#9670;&nbsp;</a></span>e_coucheMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="map_8h.html#a940cb0537dcb926c1efc6e878d60a103">e_coucheMap</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tag permettant de reconnaitre la couche du chunk concerné </p>
+<p>Un compteur du nombre de couche est également initialisé à la fin de l'énumérateur </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a940cb0537dcb926c1efc6e878d60a103ab3a1f1290110b4528fddc0926fcdf7a1"></a>COUCHE_SOL&#160;</td><td class="fielddoc"><p>La couche où sont stockés les blocks pour le sol </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a940cb0537dcb926c1efc6e878d60a103a8691ffda0d443f564a0a32c19382ba5a"></a>COUCHE_OBJETS&#160;</td><td class="fielddoc"><p>La couche où sont stockés les blocks de décoration </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a940cb0537dcb926c1efc6e878d60a103a410aac13be63858ac275734252e4ea33"></a>NB_COUCHE&#160;</td><td class="fielddoc"><p>Le nombre de couche </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a3a965fc5c4d50016f0135575ef810ab8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a965fc5c4d50016f0135575ef810ab8">&#9670;&nbsp;</a></span>e_mapType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">e_mapType</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Le type de la map. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><a id="a3a965fc5c4d50016f0135575ef810ab8acb0590055fe6a5ccc4cbbe2c12bf5546"></a>MAP_OVERWORLD&#160;</td><td class="fielddoc"><p>La map principale </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3a965fc5c4d50016f0135575ef810ab8a61670bb27e4e9a34d7d3ff1c8a2bd447"></a>MAP_CAVE&#160;</td><td class="fielddoc"><p>La caverne </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3a965fc5c4d50016f0135575ef810ab8a46039cbcd3514ba3bc348e737991e159"></a>MAP_BOSS_TEMPLE&#160;</td><td class="fielddoc"><p>Le temple des boss </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a3a965fc5c4d50016f0135575ef810ab8a301934b0395e8021cd9cc4fab25f7481"></a>MAP_MAISON&#160;</td><td class="fielddoc"><p>L'intérieur des maisons </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ab24d5ed4277105abcd87fcfd2987b7bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab24d5ed4277105abcd87fcfd2987b7bd">&#9670;&nbsp;</a></span>e_solTag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="map_8h.html#ab24d5ed4277105abcd87fcfd2987b7bd">e_solTag</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tag permettant de reconnaitre le type de sol. </p>
+<p>Un compteur du nombre de types de sol est également initialisé à la fin de l'énumérateur </p>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a40611258624d791a9b18c702ace9fab9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40611258624d791a9b18c702ace9fab9">&#9670;&nbsp;</a></span>blockEstDansLaMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int blockEstDansLaMap </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si un block se situe bien à l'intérieur de la map. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>La coordonnée x du block (cordonnée relative à la map) </td></tr>
+    <tr><td class="paramname">y</td><td>La coordonnée y du block (cordonnée relative à la map)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Vrai si le block se situe bien dans la map, faux sinon </dd></dl>
+
+</div>
+</div>
+<a id="a633246171d99fabcacadccf89253882a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a633246171d99fabcacadccf89253882a">&#9670;&nbsp;</a></span>blockEstDansLeChunk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int blockEstDansLeChunk </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si un block se situe bien à l'intérieur d'un chunk. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>La coordonnée x du block (coordonnée relative au chunk) </td></tr>
+    <tr><td class="paramname">y</td><td>La coordonnée y du block (coordonnée relative au chunk)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Vrai si le block se situe bien dans un chunk, faux sinon </dd></dl>
+
+</div>
+</div>
+<a id="aafda8eee2701036bb3445015461e6c11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafda8eee2701036bb3445015461e6c11">&#9670;&nbsp;</a></span>chunkEstDansLaMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int chunkEstDansLaMap </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie que un chunk est bien à l'intérieur de la map. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>La coordonnée x du chunk </td></tr>
+    <tr><td class="paramname">y</td><td>La coordonnée y du chunk </td></tr>
+    <tr><td class="paramname">z</td><td>La coordonnée z du chunk (correspond à la couche du chunk)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Vrai si le chunk se situe bien dans la map, faux sinon </dd></dl>
+
+</div>
+</div>
+<a id="a3b6446d0f23ef60af0653ee2aaa95c07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b6446d0f23ef60af0653ee2aaa95c07">&#9670;&nbsp;</a></span>dessinerObjets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dessinerObjets </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les objets d'une map. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>Un pointeur sur la map dans laquelle se trouve les objets </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3d0f75829828188cb17cd9458d0cb34a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d0f75829828188cb17cd9458d0cb34a">&#9670;&nbsp;</a></span>dessinerSol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dessinerSol </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche le sol de la map en fonction de la taille de la caméra. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>Un pointeur sur la map qui doit être affiché </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae75633b4bafa085431940e488b2dc774"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae75633b4bafa085431940e488b2dc774">&#9670;&nbsp;</a></span>detruireMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireMap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> **&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit une map est libère la mémoire allouée pour cette dernière. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>L'adresse du pointeur de la map à détruire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a67c83e20f17f177782fdf8bdb113c2c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67c83e20f17f177782fdf8bdb113c2c5">&#9670;&nbsp;</a></span>genererAnimaux()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void genererAnimaux </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Génère un troupeau d'animaux. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>Un pointeur sur la map dans laquelle les animaux sont générés </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a218b8d54a5f7644f5c67e42ad2c66536"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a218b8d54a5f7644f5c67e42ad2c66536">&#9670;&nbsp;</a></span>genererMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__map.html">t_map</a>* genererMap </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="map_8h.html#a3a965fc5c4d50016f0135575ef810ab8">e_mapType</a>&#160;</td>
+          <td class="paramname"><em>type</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Génère une map complète. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">type</td><td>Le type de la map à générer</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur la map générée </dd></dl>
+
+</div>
+</div>
+<a id="a06e3caffbab82f4c7821de460fa0ce5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a06e3caffbab82f4c7821de460fa0ce5c">&#9670;&nbsp;</a></span>genererVegetations()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void genererVegetations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Génère les végétaux. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>Un pointeur sur la map dans laquelle sera généré les végétaux </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a409e1fe424003fc6e36a385129295de2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a409e1fe424003fc6e36a385129295de2">&#9670;&nbsp;</a></span>getBlockDansChunk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__block.html">t_block</a>* getBlockDansChunk </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__chunk.html">t_chunk</a> *&#160;</td>
+          <td class="paramname"><em>chunk</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère un block se situant dans un chunk. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>La cooronnée x (relative au chunk) du block </td></tr>
+    <tr><td class="paramname">y</td><td>La cooronnée y (relative au chunk) du block </td></tr>
+    <tr><td class="paramname">chunk</td><td>Un pointeur sur le chunk où sera récupérer le block</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur le block trouvé, NULL sinon </dd></dl>
+
+</div>
+</div>
+<a id="a356332cac46166c0b2b443a646ade9a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a356332cac46166c0b2b443a646ade9a3">&#9670;&nbsp;</a></span>getBlockDansMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__block.html">t_block</a>* getBlockDansMap </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère un block se situant dans la map. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>La cooronnée x (relative à la map) du block </td></tr>
+    <tr><td class="paramname">y</td><td>La cooronnée y (relative à la map) du block </td></tr>
+    <tr><td class="paramname">z</td><td>La couche où se situe du block </td></tr>
+    <tr><td class="paramname">map</td><td>Un pointeur sur la map où sera récupérer le block</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur le block trouvé, NULL sinon </dd></dl>
+
+</div>
+</div>
+<a id="a05f1205b4040957ddb5de2ea1b0a6f6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05f1205b4040957ddb5de2ea1b0a6f6b">&#9670;&nbsp;</a></span>getChunk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__chunk.html">t_chunk</a>* getChunk </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>couche</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère un chunk se situant dans la map. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>La coordonnée x du chunk </td></tr>
+    <tr><td class="paramname">y</td><td>La coordonnée y du chunk </td></tr>
+    <tr><td class="paramname">couche</td><td>La couche du chunk </td></tr>
+    <tr><td class="paramname">map</td><td>Un pointeur sur la map où sera récupéré le chunk</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur le chunk trouvé, NULL sinon </dd></dl>
+
+</div>
+</div>
+<a id="aca505e103cd0a49c145206834cb9bd84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca505e103cd0a49c145206834cb9bd84">&#9670;&nbsp;</a></span>getChunkGraceABlock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__chunk.html">t_chunk</a>* getChunkGraceABlock </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>couche</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère un chunk se situant dans la map grâce au coordonnée d'un block. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>La coordonnée x (relative à la map) d'un block </td></tr>
+    <tr><td class="paramname">y</td><td>La coordonnée y (relative à la map) d'un block </td></tr>
+    <tr><td class="paramname">couche</td><td>La couche du chunk </td></tr>
+    <tr><td class="paramname">map</td><td>Un pointeur sur la map où sera récupéré le chunk</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur le chunk trouvé, NULL sinon </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a id="a5209636f0cde38d41b8864cf6511d569"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5209636f0cde38d41b8864cf6511d569">&#9670;&nbsp;</a></span>basesBiomes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structt__baseBiome.html">t_baseBiome</a> basesBiomes[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tableau initialisant toutes les informations de bases d'un biome. </p>
+<p>Les différents informations définis :</p><ul>
+<li>Le biome</li>
+<li>L'altitude du biome</li>
+<li>Les types de sol que peut avoir le biome</li>
+<li>Les probabilites (cumulative) d'apparition des sols</li>
+<li>Les tag des végétaux pouvant apparaitre dans le biome</li>
+<li>Les probabilites d'apparition des tags des végétaux</li>
+<li>La densite de la végétation</li>
+<li>Les types des monstres qui peuvent apparaitre dans le biome</li>
+<li>Les probabilites d'apparition des types des monstres </li>
+</ul>
+
+</div>
+</div>
+<a id="a2e1d64a23bc4962fe429c1078fd684e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e1d64a23bc4962fe429c1078fd684e4">&#9670;&nbsp;</a></span>probabilitesBiomes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int probabilitesBiomes[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Tableau regroupant les probabilités d'apparition d'un biome. </p>
+<p>Principalement utilisé pour récupérer la probabilité en fonction de l'index du biome souhaité </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

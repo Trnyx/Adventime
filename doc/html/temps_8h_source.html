@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/temps.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">temps.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="temps_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef _JEU_TEMPS_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define _JEU_TEMPS_</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/*                                Enumérations                                */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    CYCLE_NUIT,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    CYCLE_JOUR,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;} e_cycle;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">   46</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    DIMANCHE,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    LUNDI,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    MARDI,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    MERCREDI,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    JEUDI,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    VENDREDI,</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    SAMEDI,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <a class="code" href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="temps_8h.html#a14996ddce5a3c3127065f9b024ff8751">   62</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    PERIODE_JOUR_LEVE_SOLEIL,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    PERIODE_JOUR_MATIN,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    PERIODE_JOUR_APRES_MIDI,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    PERIODE_JOUR_COUCHE_SOLEIL,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    PERIODE_NUIT,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <a class="code" href="temps_8h.html#a14996ddce5a3c3127065f9b024ff8751">e_periode</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="structs__temps.html">   84</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__temps.html">s_temps</a> {</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="structs__temps.html#a6b6692350bae275b62443e1fcca921d4">   85</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__temps.html#a6b6692350bae275b62443e1fcca921d4">heures</a>;            </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="structs__temps.html#a440fb31a44f739607044019bd04484d9">   86</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__temps.html#a440fb31a44f739607044019bd04484d9">minutes</a>;           </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structs__temps.html#a42c1901eb7ed7d3c5a4070a5a0ae0298">   87</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__temps.html#a42c1901eb7ed7d3c5a4070a5a0ae0298">timestampJeu</a>;      </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structs__temps.html#af7301c391ee7e041866d5bc29ef88055">   88</a></span>&#160;    time_t <a class="code" href="structs__temps.html#af7301c391ee7e041866d5bc29ef88055">timestamp</a>;               </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structs__temps.html#a2ed0d1abc5beb0361f3e598cab781756">   90</a></span>&#160;    e_cycle <a class="code" href="structs__temps.html#a2ed0d1abc5beb0361f3e598cab781756">cycleJeu</a>;               </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="structs__temps.html#aa4511414b27598fde73a97ff46763e3e">   91</a></span>&#160;    e_cycle <a class="code" href="structs__temps.html#aa4511414b27598fde73a97ff46763e3e">cycleVrai</a>;              </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="structs__temps.html#a03552b374561995ae73558a0a3ce00e8">   92</a></span>&#160;    <a class="code" href="temps_8h.html#a14996ddce5a3c3127065f9b024ff8751">e_periode</a> <a class="code" href="structs__temps.html#a03552b374561995ae73558a0a3ce00e8">periode</a>;              </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;} <a class="code" href="structt__temps.html">t_temps</a>; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<a class="code" href="structt__temps.html">t_temps</a>* <a class="code" href="temps_8h.html#a3ff9042c75b4cbd8b9f6cceb167c55d5">initTemps</a>(<span class="keyword">const</span> time_t timestamp);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordtype">void</span> <a class="code" href="temps_8h.html#ab28849a8ac95ce2eb08815450445cbda">detruireTemps</a>(<a class="code" href="structt__temps.html">t_temps</a> **temps);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<a class="code" href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a> <a class="code" href="temps_8h.html#a0ddfd7f02961a38a989b55268df8832a">getJourDeLaSemaine</a>(<span class="keyword">const</span> time_t timestamp);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;e_cycle <a class="code" href="temps_8h.html#a6e41454400d8603d286f1a11c0bb1279">getCycleJeu</a>(<a class="code" href="structt__temps.html">t_temps</a> *temps);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;e_cycle <a class="code" href="temps_8h.html#a69422e527e65b0edefc0cde30ada4ca0">getCycleVrai</a>(<span class="keyword">const</span> time_t timestamp);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<a class="code" href="structt__temps.html">t_temps</a>* <a class="code" href="temps_8h.html#acfe511133ab500cfe110d6f85c46b6c6">getTemps</a>(<a class="code" href="structt__temps.html">t_temps</a> *temps, <span class="keyword">const</span> time_t timestamp);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keywordtype">void</span> <a class="code" href="temps_8h.html#adb377cf6406367bb8f03e6c27e57cc2d">gestionnaireTempsEvenements</a>(<a class="code" href="structt__temps.html">t_temps</a> *temps, <span class="keyword">const</span> time_t timestamp);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="astructs__temps_html"><div class="ttname"><a href="structs__temps.html">s_temps</a></div><div class="ttdef"><b>Definition:</b> temps.h:84</div></div>
+<div class="ttc" id="astructs__temps_html_a03552b374561995ae73558a0a3ce00e8"><div class="ttname"><a href="structs__temps.html#a03552b374561995ae73558a0a3ce00e8">s_temps::periode</a></div><div class="ttdeci">e_periode periode</div><div class="ttdef"><b>Definition:</b> temps.h:92</div></div>
+<div class="ttc" id="astructs__temps_html_a2ed0d1abc5beb0361f3e598cab781756"><div class="ttname"><a href="structs__temps.html#a2ed0d1abc5beb0361f3e598cab781756">s_temps::cycleJeu</a></div><div class="ttdeci">e_cycle cycleJeu</div><div class="ttdef"><b>Definition:</b> temps.h:90</div></div>
+<div class="ttc" id="astructs__temps_html_a42c1901eb7ed7d3c5a4070a5a0ae0298"><div class="ttname"><a href="structs__temps.html#a42c1901eb7ed7d3c5a4070a5a0ae0298">s_temps::timestampJeu</a></div><div class="ttdeci">unsigned int timestampJeu</div><div class="ttdef"><b>Definition:</b> temps.h:87</div></div>
+<div class="ttc" id="astructs__temps_html_a440fb31a44f739607044019bd04484d9"><div class="ttname"><a href="structs__temps.html#a440fb31a44f739607044019bd04484d9">s_temps::minutes</a></div><div class="ttdeci">unsigned int minutes</div><div class="ttdef"><b>Definition:</b> temps.h:86</div></div>
+<div class="ttc" id="astructs__temps_html_a6b6692350bae275b62443e1fcca921d4"><div class="ttname"><a href="structs__temps.html#a6b6692350bae275b62443e1fcca921d4">s_temps::heures</a></div><div class="ttdeci">unsigned int heures</div><div class="ttdef"><b>Definition:</b> temps.h:85</div></div>
+<div class="ttc" id="astructs__temps_html_aa4511414b27598fde73a97ff46763e3e"><div class="ttname"><a href="structs__temps.html#aa4511414b27598fde73a97ff46763e3e">s_temps::cycleVrai</a></div><div class="ttdeci">e_cycle cycleVrai</div><div class="ttdef"><b>Definition:</b> temps.h:91</div></div>
+<div class="ttc" id="astructs__temps_html_af7301c391ee7e041866d5bc29ef88055"><div class="ttname"><a href="structs__temps.html#af7301c391ee7e041866d5bc29ef88055">s_temps::timestamp</a></div><div class="ttdeci">time_t timestamp</div><div class="ttdef"><b>Definition:</b> temps.h:88</div></div>
+<div class="ttc" id="astructt__temps_html"><div class="ttname"><a href="structt__temps.html">t_temps</a></div><div class="ttdoc">Structures regroupant les données du temps en jeu.</div></div>
+<div class="ttc" id="atemps_8h_html_a0ddfd7f02961a38a989b55268df8832a"><div class="ttname"><a href="temps_8h.html#a0ddfd7f02961a38a989b55268df8832a">getJourDeLaSemaine</a></div><div class="ttdeci">e_jour getJourDeLaSemaine(const time_t timestamp)</div><div class="ttdoc">Récupère le jour de la semaine.</div><div class="ttdef"><b>Definition:</b> temps.c:41</div></div>
+<div class="ttc" id="atemps_8h_html_a14996ddce5a3c3127065f9b024ff8751"><div class="ttname"><a href="temps_8h.html#a14996ddce5a3c3127065f9b024ff8751">e_periode</a></div><div class="ttdeci">e_periode</div><div class="ttdoc">Enumérateur regroupant les différentes périodes de la journée en jeu.</div><div class="ttdef"><b>Definition:</b> temps.h:62</div></div>
+<div class="ttc" id="atemps_8h_html_a3ff9042c75b4cbd8b9f6cceb167c55d5"><div class="ttname"><a href="temps_8h.html#a3ff9042c75b4cbd8b9f6cceb167c55d5">initTemps</a></div><div class="ttdeci">t_temps * initTemps(const time_t timestamp)</div><div class="ttdoc">Alloue l'espace nécessaire pour le temps et le créer.</div><div class="ttdef"><b>Definition:</b> temps.c:221</div></div>
+<div class="ttc" id="atemps_8h_html_a69422e527e65b0edefc0cde30ada4ca0"><div class="ttname"><a href="temps_8h.html#a69422e527e65b0edefc0cde30ada4ca0">getCycleVrai</a></div><div class="ttdeci">e_cycle getCycleVrai(const time_t timestamp)</div><div class="ttdoc">Récupère le cycle jour/nuit réel.</div><div class="ttdef"><b>Definition:</b> temps.c:68</div></div>
+<div class="ttc" id="atemps_8h_html_a6e41454400d8603d286f1a11c0bb1279"><div class="ttname"><a href="temps_8h.html#a6e41454400d8603d286f1a11c0bb1279">getCycleJeu</a></div><div class="ttdeci">e_cycle getCycleJeu(t_temps *temps)</div><div class="ttdoc">Récupère le cycle jour/nuit du jeu.</div><div class="ttdef"><b>Definition:</b> temps.c:55</div></div>
+<div class="ttc" id="atemps_8h_html_a70e7a478476fe7f6b5bf1955ae2e7169"><div class="ttname"><a href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a></div><div class="ttdeci">e_jour</div><div class="ttdoc">Enumérateur regroupant les jours de la semaine.</div><div class="ttdef"><b>Definition:</b> temps.h:46</div></div>
+<div class="ttc" id="atemps_8h_html_ab28849a8ac95ce2eb08815450445cbda"><div class="ttname"><a href="temps_8h.html#ab28849a8ac95ce2eb08815450445cbda">detruireTemps</a></div><div class="ttdeci">void detruireTemps(t_temps **temps)</div><div class="ttdoc">Detruit le temps est libère la mémoire allouée pour ce dernier.</div><div class="ttdef"><b>Definition:</b> temps.c:249</div></div>
+<div class="ttc" id="atemps_8h_html_acfe511133ab500cfe110d6f85c46b6c6"><div class="ttname"><a href="temps_8h.html#acfe511133ab500cfe110d6f85c46b6c6">getTemps</a></div><div class="ttdeci">t_temps * getTemps(t_temps *temps, const time_t timestamp)</div><div class="ttdoc">Obtient et actualise le temps du jeu en fonction du temps réel.</div><div class="ttdef"><b>Definition:</b> temps.c:117</div></div>
+<div class="ttc" id="atemps_8h_html_adb377cf6406367bb8f03e6c27e57cc2d"><div class="ttname"><a href="temps_8h.html#adb377cf6406367bb8f03e6c27e57cc2d">gestionnaireTempsEvenements</a></div><div class="ttdeci">void gestionnaireTempsEvenements(t_temps *temps, const time_t timestamp)</div><div class="ttdoc">Gère tous les évènements temporels du jeu.</div><div class="ttdef"><b>Definition:</b> temps.c:163</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

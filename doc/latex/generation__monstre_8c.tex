@@ -1,0 +1,112 @@
+\hypertarget{generation__monstre_8c}{}\doxysection{Référence du fichier src/generation\+\_\+monstre.c}
+\label{generation__monstre_8c}\index{src/generation\_monstre.c@{src/generation\_monstre.c}}
+
+
+Module de génération d\textquotesingle{}un monstre.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/physique.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/monstre.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/map.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{monstre_8h_a73006f0dcf50cd05e2355e55899b7f31}{e\+\_\+monstre\+Type}} \mbox{\hyperlink{generation__monstre_8c_a4830ad35d4e412f312ec733c610a3fa0}{choisir\+Type\+Monstre}} (const \mbox{\hyperlink{structt__baseBiome}{t\+\_\+base\+Biome}} base\+Biome)
+\begin{DoxyCompactList}\small\item\em Choisis le type d\textquotesingle{}un monstre en fonction du biome où il apparait. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{generation__monstre_8c_a4f6160794feca891dd4e98b0f5fa9068}{calcul\+Niveau}} (const unsigned int niveau\+Joueur)
+\begin{DoxyCompactList}\small\item\em Selectionne le niveau du monstre. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{generation__monstre_8c_a0baa273e0e45c9b6f4fb470b9b11867e}{est\+Nocturne}} ()
+\begin{DoxyCompactList}\small\item\em Calcul la probabilité que le monstre soit de type Nocturne. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$ \mbox{\hyperlink{generation__monstre_8c_a0d3cde7c92bf7b49ba49e67fb5a5a8a2}{generer\+Monstre}} (\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$monstre, const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}} biome, const int niveau\+Joueur)
+\begin{DoxyCompactList}\small\item\em Génère un monstre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de génération d\textquotesingle{}un monstre. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23 janvier 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{generation__monstre_8c_a4f6160794feca891dd4e98b0f5fa9068}\label{generation__monstre_8c_a4f6160794feca891dd4e98b0f5fa9068}} 
+\index{generation\_monstre.c@{generation\_monstre.c}!calculNiveau@{calculNiveau}}
+\index{calculNiveau@{calculNiveau}!generation\_monstre.c@{generation\_monstre.c}}
+\doxysubsubsection{\texorpdfstring{calculNiveau()}{calculNiveau()}}
+{\footnotesize\ttfamily int calcul\+Niveau (\begin{DoxyParamCaption}\item[{const unsigned int}]{niveau\+Joueur }\end{DoxyParamCaption})}
+
+
+
+Selectionne le niveau du monstre. 
+
+Le niveau du monstre dépend du niveau du joueur et peut être aléatoire selon le niveau de ce dernier
+
+
+\begin{DoxyParams}{Paramètres}
+{\em niveau\+Joueur} & Le niveau actuel du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Len niveau du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{generation__monstre_8c_a4830ad35d4e412f312ec733c610a3fa0}\label{generation__monstre_8c_a4830ad35d4e412f312ec733c610a3fa0}} 
+\index{generation\_monstre.c@{generation\_monstre.c}!choisirTypeMonstre@{choisirTypeMonstre}}
+\index{choisirTypeMonstre@{choisirTypeMonstre}!generation\_monstre.c@{generation\_monstre.c}}
+\doxysubsubsection{\texorpdfstring{choisirTypeMonstre()}{choisirTypeMonstre()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{monstre_8h_a73006f0dcf50cd05e2355e55899b7f31}{e\+\_\+monstre\+Type}} choisir\+Type\+Monstre (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__baseBiome}{t\+\_\+base\+Biome}}}]{base\+Biome }\end{DoxyParamCaption})}
+
+
+
+Choisis le type d\textquotesingle{}un monstre en fonction du biome où il apparait. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em base\+Biome} & La base du biome dans lequel le monstre apparait\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le type du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{generation__monstre_8c_a0baa273e0e45c9b6f4fb470b9b11867e}\label{generation__monstre_8c_a0baa273e0e45c9b6f4fb470b9b11867e}} 
+\index{generation\_monstre.c@{generation\_monstre.c}!estNocturne@{estNocturne}}
+\index{estNocturne@{estNocturne}!generation\_monstre.c@{generation\_monstre.c}}
+\doxysubsubsection{\texorpdfstring{estNocturne()}{estNocturne()}}
+{\footnotesize\ttfamily boolean est\+Nocturne (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calcul la probabilité que le monstre soit de type Nocturne. 
+
+\begin{DoxyReturn}{Renvoie}
+VRAI si le monstre doit être nocturne, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{generation__monstre_8c_a0d3cde7c92bf7b49ba49e67fb5a5a8a2}\label{generation__monstre_8c_a0d3cde7c92bf7b49ba49e67fb5a5a8a2}} 
+\index{generation\_monstre.c@{generation\_monstre.c}!genererMonstre@{genererMonstre}}
+\index{genererMonstre@{genererMonstre}!generation\_monstre.c@{generation\_monstre.c}}
+\doxysubsubsection{\texorpdfstring{genererMonstre()}{genererMonstre()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}}$\ast$ generer\+Monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$}]{monstre,  }\item[{const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}}}]{biome,  }\item[{const int}]{niveau\+Joueur }\end{DoxyParamCaption})}
+
+
+
+Génère un monstre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monstre} & Pointeur sur le monstre à générer \\
+\hline
+{\em biome} & Le biome dans lequel le monstre apparait \\
+\hline
+{\em niveau\+Joueur} & Le niveau du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le monstre généré 
+\end{DoxyReturn}

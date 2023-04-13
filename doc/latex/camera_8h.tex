@@ -1,0 +1,153 @@
+\hypertarget{camera_8h}{}\doxysection{Référence du fichier include/camera.h}
+\label{camera_8h}\index{include/camera.h@{include/camera.h}}
+
+
+Module de manipulation de la caméra.  
+
+
+{\ttfamily \#include \char`\"{}utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}textures.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}map.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}temps.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__camera}{s\+\_\+camera}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{camera_8h_a196b50a8e9a53bc3a1138eca5f10ba3b}\label{camera_8h_a196b50a8e9a53bc3a1138eca5f10ba3b}} 
+\#define {\bfseries TAILLE\+\_\+\+CAMERA\+\_\+\+LARGEUR}~27
+\item 
+\mbox{\Hypertarget{camera_8h_adc1b2a77f57c92e3075dab73e51b731f}\label{camera_8h_adc1b2a77f57c92e3075dab73e51b731f}} 
+\#define {\bfseries TAILLE\+\_\+\+CAMERA\+\_\+\+HAUTEUR}~17
+\item 
+\mbox{\Hypertarget{camera_8h_a5d60721c9e9eb2867b8b16cdb878a042}\label{camera_8h_a5d60721c9e9eb2867b8b16cdb878a042}} 
+\#define {\bfseries TAILLE\+\_\+\+CAMERA\+\_\+\+DEMI\+\_\+\+LARGEUR}~TAILLE\+\_\+\+CAMERA\+\_\+\+LARGEUR / 2
+\item 
+\mbox{\Hypertarget{camera_8h_a5b8ffb994ff396be2d9b850f04d566f9}\label{camera_8h_a5b8ffb994ff396be2d9b850f04d566f9}} 
+\#define {\bfseries TAILLE\+\_\+\+CAMERA\+\_\+\+DEMI\+\_\+\+HAUTEUR}~TAILLE\+\_\+\+CAMERA\+\_\+\+HAUTEUR / 2
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{camera_8h_adad03c73139d662c0f9a3e58dd42d39a}\label{camera_8h_adad03c73139d662c0f9a3e58dd42d39a}} 
+typedef struct \mbox{\hyperlink{structs__camera}{s\+\_\+camera}} {\bfseries t\+\_\+camera}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__camera}{t\+\_\+camera}} $\ast$ \mbox{\hyperlink{camera_8h_aead1dcacd0c65a584272fd5434a676b9}{creer\+Camera}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour une caméra et la créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{camera_8h_a062833823822b332767bf06838a65bea}{detruire\+Camera}} (\mbox{\hyperlink{structt__camera}{t\+\_\+camera}} $\ast$$\ast$camera)
+\begin{DoxyCompactList}\small\item\em Detruit une camera est libère la mémoire allouée pour cette dernière. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{camera_8h_a56f951de203e93866ead0f3dd2eed542}{update\+Camera}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position)
+\begin{DoxyCompactList}\small\item\em Actualise toutes les informations de la caméra. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{camera_8h_afe2be9ab3dd5411ddf5939fdbda1c7e4}{dessiner\+Calque\+Ambiance}} (\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$temps)
+\begin{DoxyCompactList}\small\item\em Dessine le calque dit ambiance. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{camera_8h_a174510fcb83d4659751f25414b920908}{position\+Relative\+En\+Position\+Sur\+Ecran}} (const float coordonnee, const float offset, const float origine, const float taille\+Rendu)
+\begin{DoxyCompactList}\small\item\em Convertie la position relative en position pixel par rapport à l\textquotesingle{}écran. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation de la caméra. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+5 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{camera_8h_aead1dcacd0c65a584272fd5434a676b9}\label{camera_8h_aead1dcacd0c65a584272fd5434a676b9}} 
+\index{camera.h@{camera.h}!creerCamera@{creerCamera}}
+\index{creerCamera@{creerCamera}!camera.h@{camera.h}}
+\doxysubsubsection{\texorpdfstring{creerCamera()}{creerCamera()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__camera}{t\+\_\+camera}}$\ast$ creer\+Camera (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour une caméra et la créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle la caméra doit être créée\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur la caméra créée, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{camera_8h_afe2be9ab3dd5411ddf5939fdbda1c7e4}\label{camera_8h_afe2be9ab3dd5411ddf5939fdbda1c7e4}} 
+\index{camera.h@{camera.h}!dessinerCalqueAmbiance@{dessinerCalqueAmbiance}}
+\index{dessinerCalqueAmbiance@{dessinerCalqueAmbiance}!camera.h@{camera.h}}
+\doxysubsubsection{\texorpdfstring{dessinerCalqueAmbiance()}{dessinerCalqueAmbiance()}}
+{\footnotesize\ttfamily void dessiner\+Calque\+Ambiance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__temps}{t\+\_\+temps}} $\ast$}]{temps }\end{DoxyParamCaption})}
+
+
+
+Dessine le calque dit ambiance. 
+
+Le calque d\textquotesingle{}ambiance permet d\textquotesingle{}indiquer au joueur la période de la journée dans laquelle il se trouve
+
+
+\begin{DoxyParams}{Paramètres}
+{\em temps} & Un pointeur sur le temps en jeu \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{camera_8h_a062833823822b332767bf06838a65bea}\label{camera_8h_a062833823822b332767bf06838a65bea}} 
+\index{camera.h@{camera.h}!detruireCamera@{detruireCamera}}
+\index{detruireCamera@{detruireCamera}!camera.h@{camera.h}}
+\doxysubsubsection{\texorpdfstring{detruireCamera()}{detruireCamera()}}
+{\footnotesize\ttfamily void detruire\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__camera}{t\+\_\+camera}} $\ast$$\ast$}]{camera }\end{DoxyParamCaption})}
+
+
+
+Detruit une camera est libère la mémoire allouée pour cette dernière. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em camera} & L\textquotesingle{}adresse du pointeur de la camera à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{camera_8h_a174510fcb83d4659751f25414b920908}\label{camera_8h_a174510fcb83d4659751f25414b920908}} 
+\index{camera.h@{camera.h}!positionRelativeEnPositionSurEcran@{positionRelativeEnPositionSurEcran}}
+\index{positionRelativeEnPositionSurEcran@{positionRelativeEnPositionSurEcran}!camera.h@{camera.h}}
+\doxysubsubsection{\texorpdfstring{positionRelativeEnPositionSurEcran()}{positionRelativeEnPositionSurEcran()}}
+{\footnotesize\ttfamily int position\+Relative\+En\+Position\+Sur\+Ecran (\begin{DoxyParamCaption}\item[{const float}]{coordonnee,  }\item[{const float}]{offset,  }\item[{const float}]{origine,  }\item[{const float}]{taille\+Rendu }\end{DoxyParamCaption})}
+
+
+
+Convertie la position relative en position pixel par rapport à l\textquotesingle{}écran. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coordonnee} & La cooronnée originale en jeu \\
+\hline
+{\em offset} & Le décalage de bloc \mbox{[}0; 1\mbox{[} \\
+\hline
+{\em origine} & L\textquotesingle{}origine à laquelle sera rapporté les coordonnée relative en jeu \\
+\hline
+{\em taille\+Rendu} & La taille (en pixel) du rendu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La position relative en jeu converti en pixel sur écran 
+\end{DoxyReturn}
+\mbox{\Hypertarget{camera_8h_a56f951de203e93866ead0f3dd2eed542}\label{camera_8h_a56f951de203e93866ead0f3dd2eed542}} 
+\index{camera.h@{camera.h}!updateCamera@{updateCamera}}
+\index{updateCamera@{updateCamera}!camera.h@{camera.h}}
+\doxysubsubsection{\texorpdfstring{updateCamera()}{updateCamera()}}
+{\footnotesize\ttfamily void update\+Camera (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Actualise toutes les informations de la caméra. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle la caméra doit être placé \\
+\hline
+\end{DoxyParams}

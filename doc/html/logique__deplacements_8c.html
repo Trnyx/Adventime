@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier src/logique_deplacements.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier logique_deplacements.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Gestion des déplacement du jeu.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="utilitaire_8h_source.html">../include/utilitaire.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="physique_8h_source.html">../include/physique.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="moteur_8h_source.html">../include/moteur.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mob_8h_source.html">../include/mob.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="deplacement_8h_source.html">../include/deplacement.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ae33224e15c3a501d8361d50429b9b6bf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__deplacements_8c.html#ae33224e15c3a501d8361d50429b9b6bf">finDeplacement</a> (<a class="el" href="structt__mob.html">t_mob</a> *mob)</td></tr>
+<tr class="memdesc:ae33224e15c3a501d8361d50429b9b6bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Termine les déplacement du mob.  <a href="logique__deplacements_8c.html#ae33224e15c3a501d8361d50429b9b6bf">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae33224e15c3a501d8361d50429b9b6bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c17839abec879490d7efc3acb95665"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__deplacements_8c.html#a81c17839abec879490d7efc3acb95665">deplacerVers</a> (<a class="el" href="structt__mob.html">t_mob</a> *mob, const float <a class="el" href="attributs__statistiques_8h.html#aef55e1775d611bfea0196692da1a0bc5">vitesse</a>, const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> cible)</td></tr>
+<tr class="memdesc:a81c17839abec879490d7efc3acb95665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace un mob vers une position cible.  <a href="logique__deplacements_8c.html#a81c17839abec879490d7efc3acb95665">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a81c17839abec879490d7efc3acb95665"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b25d64f5367c17c935496fad5f364b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__deplacements_8c.html#a9b25d64f5367c17c935496fad5f364b1">deplacerAutour</a> (<a class="el" href="structt__mob.html">t_mob</a> *mob, const float <a class="el" href="attributs__statistiques_8h.html#aef55e1775d611bfea0196692da1a0bc5">vitesse</a>, const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> cible)</td></tr>
+<tr class="memdesc:a9b25d64f5367c17c935496fad5f364b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deplace un mob autour d'une position cible.  <a href="logique__deplacements_8c.html#a9b25d64f5367c17c935496fad5f364b1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a9b25d64f5367c17c935496fad5f364b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dc787b6855ec266862a979f24a9b1d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logique__deplacements_8c.html#a6dc787b6855ec266862a979f24a9b1d5">seloigneDe</a> (<a class="el" href="structt__mob.html">t_mob</a> *mob, const float <a class="el" href="attributs__statistiques_8h.html#aef55e1775d611bfea0196692da1a0bc5">vitesse</a>, const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> cible)</td></tr>
+<tr class="memdesc:a6dc787b6855ec266862a979f24a9b1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deplace le mob en direction opposé à la cible.  <a href="logique__deplacements_8c.html#a6dc787b6855ec266862a979f24a9b1d5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6dc787b6855ec266862a979f24a9b1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Gestion des déplacement du jeu. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>10 février </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a9b25d64f5367c17c935496fad5f364b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b25d64f5367c17c935496fad5f364b1">&#9670;&nbsp;</a></span>deplacerAutour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deplacerAutour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__mob.html">t_mob</a> *&#160;</td>
+          <td class="paramname"><em>mob</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>vitesse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>cible</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deplace un mob autour d'une position cible. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>Un pointeur sur le mob qui doit se déplacer </td></tr>
+    <tr><td class="paramname">vitesse</td><td>La vitesse de déplacement </td></tr>
+    <tr><td class="paramname">cible</td><td>La position cible autour de laquelle se déplace le mob </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a81c17839abec879490d7efc3acb95665"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c17839abec879490d7efc3acb95665">&#9670;&nbsp;</a></span>deplacerVers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void deplacerVers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__mob.html">t_mob</a> *&#160;</td>
+          <td class="paramname"><em>mob</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>vitesse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>cible</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déplace un mob vers une position cible. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>Un pointeur sur le mob qui doit se déplacer </td></tr>
+    <tr><td class="paramname">vitesse</td><td>La vitesse de déplacement du mob </td></tr>
+    <tr><td class="paramname">cible</td><td>La position cible que doit rejoindre le mob </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae33224e15c3a501d8361d50429b9b6bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae33224e15c3a501d8361d50429b9b6bf">&#9670;&nbsp;</a></span>finDeplacement()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void finDeplacement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__mob.html">t_mob</a> *&#160;</td>
+          <td class="paramname"><em>mob</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Termine les déplacement du mob. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>Un pointeur sur le mob qui se déplace </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6dc787b6855ec266862a979f24a9b1d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dc787b6855ec266862a979f24a9b1d5">&#9670;&nbsp;</a></span>seloigneDe()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void seloigneDe </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__mob.html">t_mob</a> *&#160;</td>
+          <td class="paramname"><em>mob</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>vitesse</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>cible</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Deplace le mob en direction opposé à la cible. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mob</td><td>Un pointeur sur le mob qui doit se déplacer </td></tr>
+    <tr><td class="paramname">vitesse</td><td>La vitesse de déplacement </td></tr>
+    <tr><td class="paramname">cible</td><td>La position de la cible de laquelle le mob s'éloigne </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

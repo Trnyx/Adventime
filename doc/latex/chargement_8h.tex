@@ -1,0 +1,196 @@
+\hypertarget{chargement_8h}{}\doxysection{Référence du fichier include/chargement.h}
+\label{chargement_8h}\index{include/chargement.h@{include/chargement.h}}
+
+
+Librairie pour la gestion du chargement du jeu.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/monde.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/utilitaire.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{chargement_8h_ade2a920f5c24e283777447c92840098f}{charger\+\_\+entite}} (\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$entite, FILE $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Charge la base d\textquotesingle{}une entité. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{chargement_8h_a6fd7149638b4c9f12c37075290b6d993}{charger\+\_\+entite\+\_\+vivante}} (\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$entite, FILE $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Charge la base d\textquotesingle{}une entité vivante. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{chargement_8h_a8736474837a4393baae2a35030d028d2}{charger\+\_\+mob}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, FILE $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Charge un mob, c\textquotesingle{}est-\/à-\/dire un animal, un monstre... \end{DoxyCompactList}\item 
+\mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \mbox{\hyperlink{chargement_8h_a4ae15437f3ae37d25012a4845d380afc}{charger\+\_\+joueur}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$$\ast$joueur, char $\ast$chemin\+\_\+monde)
+\begin{DoxyCompactList}\small\item\em Charge le joueur. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \mbox{\hyperlink{chargement_8h_ac8513a6e95a8b24fd0ebe2cffe87d649}{charger\+\_\+overworld}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, FILE $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em Charge l\textquotesingle{}overworld (la map de base). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \mbox{\hyperlink{chargement_8h_ae5cba9feaf5da5a29793bdfdc81a3257}{charger\+\_\+map}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, char $\ast$chemin\+\_\+monde, const \mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8}{e\+\_\+map\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Charge la map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \mbox{\hyperlink{chargement_8h_aae69a332e1670cda245aea667ecfd70b}{charger\+\_\+global}} (\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$monde, char $\ast$chemin\+\_\+monde)
+\begin{DoxyCompactList}\small\item\em Charge les paramètres globaux du monde. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} \mbox{\hyperlink{chargement_8h_a5b8883514af72d6690f03c65e0726818}{charger\+\_\+monde}} (\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$monde, char $\ast$nom\+\_\+monde)
+\begin{DoxyCompactList}\small\item\em Charge la sauvegarde d\textquotesingle{}un monde. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Librairie pour la gestion du chargement du jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Julien Houget 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/03-\/31 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{chargement_8h_ade2a920f5c24e283777447c92840098f}\label{chargement_8h_ade2a920f5c24e283777447c92840098f}} 
+\index{chargement.h@{chargement.h}!charger\_entite@{charger\_entite}}
+\index{charger\_entite@{charger\_entite}!chargement.h@{chargement.h}}
+\doxysubsubsection{\texorpdfstring{charger\_entite()}{charger\_entite()}}
+{\footnotesize\ttfamily void charger\+\_\+entite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$}]{entite,  }\item[{FILE $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Charge la base d\textquotesingle{}une entité. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & L\textquotesingle{}entité à charger. \\
+\hline
+{\em fichier} & Le fichier de sauvegarde de la map. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{chargement_8h_a6fd7149638b4c9f12c37075290b6d993}\label{chargement_8h_a6fd7149638b4c9f12c37075290b6d993}} 
+\index{chargement.h@{chargement.h}!charger\_entite\_vivante@{charger\_entite\_vivante}}
+\index{charger\_entite\_vivante@{charger\_entite\_vivante}!chargement.h@{chargement.h}}
+\doxysubsubsection{\texorpdfstring{charger\_entite\_vivante()}{charger\_entite\_vivante()}}
+{\footnotesize\ttfamily void charger\+\_\+entite\+\_\+vivante (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$}]{entite,  }\item[{FILE $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Charge la base d\textquotesingle{}une entité vivante. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & L\textquotesingle{}entité à charger. \\
+\hline
+{\em fichier} & Le fichier de sauvegarde de la map. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{chargement_8h_aae69a332e1670cda245aea667ecfd70b}\label{chargement_8h_aae69a332e1670cda245aea667ecfd70b}} 
+\index{chargement.h@{chargement.h}!charger\_global@{charger\_global}}
+\index{charger\_global@{charger\_global}!chargement.h@{chargement.h}}
+\doxysubsubsection{\texorpdfstring{charger\_global()}{charger\_global()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} charger\+\_\+global (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$}]{monde,  }\item[{char $\ast$}]{chemin\+\_\+monde }\end{DoxyParamCaption})}
+
+
+
+Charge les paramètres globaux du monde. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em seed} & Le nombre permettant de générer la map. \\
+\hline
+{\em chemin\+\_\+monde} & Le chemin d\textquotesingle{}accès au fichier de sauvegarde du monde. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+err\+\_\+sauv, un code d\textquotesingle{}erreur (0 si succès). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{chargement_8h_a4ae15437f3ae37d25012a4845d380afc}\label{chargement_8h_a4ae15437f3ae37d25012a4845d380afc}} 
+\index{chargement.h@{chargement.h}!charger\_joueur@{charger\_joueur}}
+\index{charger\_joueur@{charger\_joueur}!chargement.h@{chargement.h}}
+\doxysubsubsection{\texorpdfstring{charger\_joueur()}{charger\_joueur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} charger\+\_\+joueur (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$$\ast$}]{joueur,  }\item[{char $\ast$}]{chemin\+\_\+monde }\end{DoxyParamCaption})}
+
+
+
+Charge le joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Stocke le joueur à charger. \\
+\hline
+{\em chemin\+\_\+monde} & Le chemin d\textquotesingle{}accès au fichier de sauvegarde du monde. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+err\+\_\+sauv, un code d\textquotesingle{}erreur (0 si succès). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{chargement_8h_ae5cba9feaf5da5a29793bdfdc81a3257}\label{chargement_8h_ae5cba9feaf5da5a29793bdfdc81a3257}} 
+\index{chargement.h@{chargement.h}!charger\_map@{charger\_map}}
+\index{charger\_map@{charger\_map}!chargement.h@{chargement.h}}
+\doxysubsubsection{\texorpdfstring{charger\_map()}{charger\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} charger\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{char $\ast$}]{chemin\+\_\+monde,  }\item[{const \mbox{\hyperlink{map_8h_a3a965fc5c4d50016f0135575ef810ab8}{e\+\_\+map\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Charge la map. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & Stocke la map à charger. \\
+\hline
+{\em chemin\+\_\+monde} & Le chemin d\textquotesingle{}accès au fichier de sauvegarde du monde. \\
+\hline
+{\em type} & Le type de map (pour choisir entre l\textquotesingle{}overworld, les cavernes, ...). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+err\+\_\+sauv, un code d\textquotesingle{}erreur (0 si succès). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{chargement_8h_a8736474837a4393baae2a35030d028d2}\label{chargement_8h_a8736474837a4393baae2a35030d028d2}} 
+\index{chargement.h@{chargement.h}!charger\_mob@{charger\_mob}}
+\index{charger\_mob@{charger\_mob}!chargement.h@{chargement.h}}
+\doxysubsubsection{\texorpdfstring{charger\_mob()}{charger\_mob()}}
+{\footnotesize\ttfamily void charger\+\_\+mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{FILE $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Charge un mob, c\textquotesingle{}est-\/à-\/dire un animal, un monstre... 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Le mob à charger. \\
+\hline
+{\em fichier} & Le fichier de sauvegarde de la map. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{chargement_8h_a5b8883514af72d6690f03c65e0726818}\label{chargement_8h_a5b8883514af72d6690f03c65e0726818}} 
+\index{chargement.h@{chargement.h}!charger\_monde@{charger\_monde}}
+\index{charger\_monde@{charger\_monde}!chargement.h@{chargement.h}}
+\doxysubsubsection{\texorpdfstring{charger\_monde()}{charger\_monde()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} charger\+\_\+monde (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__monde}{t\+\_\+monde}} $\ast$}]{monde,  }\item[{char $\ast$}]{nom\+\_\+monde }\end{DoxyParamCaption})}
+
+
+
+Charge la sauvegarde d\textquotesingle{}un monde. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em nom\+\_\+monde} & Le nom du monde à charger \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+err\+\_\+sauv, un code d\textquotesingle{}erreur (0 si succès). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{chargement_8h_ac8513a6e95a8b24fd0ebe2cffe87d649}\label{chargement_8h_ac8513a6e95a8b24fd0ebe2cffe87d649}} 
+\index{chargement.h@{chargement.h}!charger\_overworld@{charger\_overworld}}
+\index{charger\_overworld@{charger\_overworld}!chargement.h@{chargement.h}}
+\doxysubsubsection{\texorpdfstring{charger\_overworld()}{charger\_overworld()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{utilitaire_8h_acbc7b30dd503f54071a344c4d7165c0a}{err\+\_\+sauv}} charger\+\_\+overworld (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{FILE $\ast$}]{fichier }\end{DoxyParamCaption})}
+
+
+
+Charge l\textquotesingle{}overworld (la map de base). 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & Stocke la map à charger. \\
+\hline
+{\em fichier} & Le fichier de sauvegarde d\textquotesingle{}où provient les données. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+err\+\_\+sauv, un code d\textquotesingle{}erreur (0 si succès). 
+\end{DoxyReturn}

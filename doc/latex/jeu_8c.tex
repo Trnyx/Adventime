@@ -1,0 +1,58 @@
+\hypertarget{jeu_8c}{}\doxysection{Référence du fichier src/jeu.c}
+\label{jeu_8c}\index{src/jeu.c@{src/jeu.c}}
+
+
+Module de gestion pour le jeu.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/jeu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/physique.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/initialiseur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/audio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/textures.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/monde.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/joueur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/input\+\_\+manager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/menus.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/sauvegarde.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+state\+\_\+main \mbox{\hyperlink{jeu_8c_aed247c25d8f01dd7d6d4a5fdaa870bca}{jouer}} (e\+\_\+action\+Monde action)
+\begin{DoxyCompactList}\small\item\em Lance une partie dans un monde en fonction de l\textquotesingle{}action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion pour le jeu. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{jeu_8c_aed247c25d8f01dd7d6d4a5fdaa870bca}\label{jeu_8c_aed247c25d8f01dd7d6d4a5fdaa870bca}} 
+\index{jeu.c@{jeu.c}!jouer@{jouer}}
+\index{jouer@{jouer}!jeu.c@{jeu.c}}
+\doxysubsubsection{\texorpdfstring{jouer()}{jouer()}}
+{\footnotesize\ttfamily state\+\_\+main jouer (\begin{DoxyParamCaption}\item[{e\+\_\+action\+Monde}]{action }\end{DoxyParamCaption})}
+
+
+
+Lance une partie dans un monde en fonction de l\textquotesingle{}action. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em action} & Le choix si on créer un nouveau monde où si on charge un monde exustant\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+L\textquotesingle{}état indiquant le fait qu\textquotesingle{}il faut retourner au menu principal 
+\end{DoxyReturn}

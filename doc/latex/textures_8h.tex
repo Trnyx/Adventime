@@ -1,0 +1,104 @@
+\hypertarget{textures_8h}{}\doxysection{Référence du fichier include/textures.h}
+\label{textures_8h}\index{include/textures.h@{include/textures.h}}
+
+
+Module de manipulation des textures.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__textures}{s\+\_\+textures}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{textures_8h_a22c2b2aa23a461a79661060683611305}\label{textures_8h_a22c2b2aa23a461a79661060683611305}} 
+\#define {\bfseries TAILLE\+\_\+\+TILE}~16
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{textures_8h_ad6d9652cd83578088a1b1d232c145284}\label{textures_8h_ad6d9652cd83578088a1b1d232c145284}} 
+typedef struct \mbox{\hyperlink{structs__textures}{s\+\_\+textures}} {\bfseries t\+\_\+textures}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__textures}{t\+\_\+textures}} $\ast$ \mbox{\hyperlink{textures_8h_ab7779a77d98f10ca2c14c7a8fb88b9c4}{init\+Textures}} (SDL\+\_\+\+Renderer $\ast$renderer)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour les textures et les chargent. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{textures_8h_a48d76eceb81b1e6477d3bb1f80060b7b}{detruire\+Textures}} (\mbox{\hyperlink{structt__textures}{t\+\_\+textures}} $\ast$$\ast$textures)
+\begin{DoxyCompactList}\small\item\em Detruit les textures est libère la mémoire allouée pour ces dernières. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{textures_8h_a79e82f182f9b7c29abecf09245b49801}{split\+Texture}} (SDL\+\_\+\+Rect $\ast$rectangle, const int x, const int y, const int tailleX, const int tailleY)
+\begin{DoxyCompactList}\small\item\em Permet de récupérer une texture au sein d\textquotesingle{}un tileset. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des textures. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{textures_8h_a48d76eceb81b1e6477d3bb1f80060b7b}\label{textures_8h_a48d76eceb81b1e6477d3bb1f80060b7b}} 
+\index{textures.h@{textures.h}!detruireTextures@{detruireTextures}}
+\index{detruireTextures@{detruireTextures}!textures.h@{textures.h}}
+\doxysubsubsection{\texorpdfstring{detruireTextures()}{detruireTextures()}}
+{\footnotesize\ttfamily void detruire\+Textures (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__textures}{t\+\_\+textures}} $\ast$$\ast$}]{textures }\end{DoxyParamCaption})}
+
+
+
+Detruit les textures est libère la mémoire allouée pour ces dernières. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em textures} & L\textquotesingle{}adresse du pointeur sur les textures \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{textures_8h_ab7779a77d98f10ca2c14c7a8fb88b9c4}\label{textures_8h_ab7779a77d98f10ca2c14c7a8fb88b9c4}} 
+\index{textures.h@{textures.h}!initTextures@{initTextures}}
+\index{initTextures@{initTextures}!textures.h@{textures.h}}
+\doxysubsubsection{\texorpdfstring{initTextures()}{initTextures()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__textures}{t\+\_\+textures}}$\ast$ init\+Textures (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour les textures et les chargent. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em renderer} & Le renderer SDL nécessaire pour le rendu du jeu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur les textures, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{textures_8h_a79e82f182f9b7c29abecf09245b49801}\label{textures_8h_a79e82f182f9b7c29abecf09245b49801}} 
+\index{textures.h@{textures.h}!splitTexture@{splitTexture}}
+\index{splitTexture@{splitTexture}!textures.h@{textures.h}}
+\doxysubsubsection{\texorpdfstring{splitTexture()}{splitTexture()}}
+{\footnotesize\ttfamily void split\+Texture (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Rect $\ast$}]{source,  }\item[{const int}]{x,  }\item[{const int}]{y,  }\item[{const int}]{tailleX,  }\item[{const int}]{tailleY }\end{DoxyParamCaption})}
+
+
+
+Permet de récupérer une texture au sein d\textquotesingle{}un tileset. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em source} & Le rectangle stockant la texture finale \\
+\hline
+{\em x} & La position x de la texture dans le tileset \\
+\hline
+{\em y} & La position y de la texture dans le tileset \\
+\hline
+{\em tailleX} & La dimension en largeur de la texture à récupérer \\
+\hline
+{\em tailleY} & La dimension en hauteur de la texture à récupérer \\
+\hline
+\end{DoxyParams}

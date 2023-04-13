@@ -1,0 +1,142 @@
+\hypertarget{combat_8h}{}\doxysection{Référence du fichier include/combat.h}
+\label{combat_8h}\index{include/combat.h@{include/combat.h}}
+
+
+Module de manipulation pour les combats.  
+
+
+{\ttfamily \#include \char`\"{}utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mob.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{combat_8h_a2445884e27d1b21c079998e0496aab4d}{fin\+Combat}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob)
+\begin{DoxyCompactList}\small\item\em Remet un mob en normal. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{combat_8h_a17081d45c320805a0a18eb5d30a07cdf}{touche\+La\+Cible}} (const \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$source, const \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$cible, const float angle\+Attaque, const float range)
+\begin{DoxyCompactList}\small\item\em Vérifie si la cible est touché par la source qui attaque. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{combat_8h_a0be05452cc331b0b1ab60c45731b4e60}{calcul\+Degat}} (const int niveau\+Attaquant, int point\+Attaque, int point\+Defense, const boolean attaquant\+Est\+Nocture, const boolean defenseur\+Est\+Nocturne)
+\begin{DoxyCompactList}\small\item\em Calcul les dégâts. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{combat_8h_a2dac0d258995f05e5ed3d3dfe3a1f3e1}{appliquer\+Degat}} (\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$entite, const float degat)
+\begin{DoxyCompactList}\small\item\em Applique les dégâts à l\textquotesingle{}entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8h_aba180c79ed631aaa23bfca2394ffbc6f}{met\+Un\+Coup}} (\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$entie, \mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$cible, const float angle\+Attaque, const float range)
+\begin{DoxyCompactList}\small\item\em Met un coup à l\textquotesingle{}entité cible. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation pour les combats. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{combat_8h_a2dac0d258995f05e5ed3d3dfe3a1f3e1}\label{combat_8h_a2dac0d258995f05e5ed3d3dfe3a1f3e1}} 
+\index{combat.h@{combat.h}!appliquerDegat@{appliquerDegat}}
+\index{appliquerDegat@{appliquerDegat}!combat.h@{combat.h}}
+\doxysubsubsection{\texorpdfstring{appliquerDegat()}{appliquerDegat()}}
+{\footnotesize\ttfamily boolean appliquer\+Degat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$}]{entite,  }\item[{const float}]{degat }\end{DoxyParamCaption})}
+
+
+
+Applique les dégâts à l\textquotesingle{}entité 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & Un pointeur sur l\textquotesingle{}entité qui subbit les dégats \\
+\hline
+{\em degat} & Les dégats à infliger\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si l\textquotesingle{}entité est morte, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8h_a0be05452cc331b0b1ab60c45731b4e60}\label{combat_8h_a0be05452cc331b0b1ab60c45731b4e60}} 
+\index{combat.h@{combat.h}!calculDegat@{calculDegat}}
+\index{calculDegat@{calculDegat}!combat.h@{combat.h}}
+\doxysubsubsection{\texorpdfstring{calculDegat()}{calculDegat()}}
+{\footnotesize\ttfamily float calcul\+Degat (\begin{DoxyParamCaption}\item[{const int}]{niveau\+Attaquant,  }\item[{int}]{point\+Attaque,  }\item[{int}]{point\+Defense,  }\item[{const boolean}]{attaquant\+Est\+Nocture,  }\item[{const boolean}]{defenseur\+Est\+Nocturne }\end{DoxyParamCaption})}
+
+
+
+Calcul les dégâts. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em niveau\+Attaquant} & Le niveau de l\textquotesingle{}attaquant \\
+\hline
+{\em point\+Attaque} & Les points d\textquotesingle{}attaque de l\textquotesingle{}attaquant \\
+\hline
+{\em point\+Defense} & Les points de défense de l\textquotesingle{}attaqué \\
+\hline
+{\em attaquant\+Est\+Nocture} & Si l\textquotesingle{}attaquant est de type nocturne \\
+\hline
+{\em defenseur\+Est\+Nocturne} & Si le défenseur est de type nocturne\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Les dégâts affliger à l\textquotesingle{}adversaire 
+\end{DoxyReturn}
+\mbox{\Hypertarget{combat_8h_a2445884e27d1b21c079998e0496aab4d}\label{combat_8h_a2445884e27d1b21c079998e0496aab4d}} 
+\index{combat.h@{combat.h}!finCombat@{finCombat}}
+\index{finCombat@{finCombat}!combat.h@{combat.h}}
+\doxysubsubsection{\texorpdfstring{finCombat()}{finCombat()}}
+{\footnotesize\ttfamily void fin\+Combat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob }\end{DoxyParamCaption})}
+
+
+
+Remet un mob en normal. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui n\textquotesingle{}est plus en combat \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8h_aba180c79ed631aaa23bfca2394ffbc6f}\label{combat_8h_aba180c79ed631aaa23bfca2394ffbc6f}} 
+\index{combat.h@{combat.h}!metUnCoup@{metUnCoup}}
+\index{metUnCoup@{metUnCoup}!combat.h@{combat.h}}
+\doxysubsubsection{\texorpdfstring{metUnCoup()}{metUnCoup()}}
+{\footnotesize\ttfamily void met\+Un\+Coup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$}]{entite,  }\item[{\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$}]{cible,  }\item[{const float}]{angle\+Attaque,  }\item[{const float}]{range }\end{DoxyParamCaption})}
+
+
+
+Met un coup à l\textquotesingle{}entité cible. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & Un pointeur sur l\textquotesingle{}entité mettant le coup \\
+\hline
+{\em cible} & Un pointeur sur l\textquotesingle{}entité recevant le coup \\
+\hline
+{\em angle\+Attaque} & L\textquotesingle{}angle dans lequel l\textquotesingle{}entité attaque \\
+\hline
+{\em range} & Le rayon dans lequel l\textquotesingle{}entité attaquante peut touché sa cible \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{combat_8h_a17081d45c320805a0a18eb5d30a07cdf}\label{combat_8h_a17081d45c320805a0a18eb5d30a07cdf}} 
+\index{combat.h@{combat.h}!toucheLaCible@{toucheLaCible}}
+\index{toucheLaCible@{toucheLaCible}!combat.h@{combat.h}}
+\doxysubsubsection{\texorpdfstring{toucheLaCible()}{toucheLaCible()}}
+{\footnotesize\ttfamily boolean touche\+La\+Cible (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{source,  }\item[{const \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{cible,  }\item[{const float}]{angle\+Attaque,  }\item[{const float}]{range }\end{DoxyParamCaption})}
+
+
+
+Vérifie si la cible est touché par la source qui attaque. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em source} & Un pointeur sur l\textquotesingle{}entité attaquante \\
+\hline
+{\em cible} & Un pointeur sur l\textquotesingle{}entité cible attaqué \\
+\hline
+{\em angle\+Attaque} & L\textquotesingle{}angle dans lequel l\textquotesingle{}entité attaquant arrive par rapport à la cible \\
+\hline
+{\em range} & Le rayon dans lequel l\textquotesingle{}entité attaquante peut touché la cible\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si la cible est touchée, FAUX sinon 
+\end{DoxyReturn}

@@ -1,0 +1,117 @@
+\hypertarget{monstre_8c}{}\doxysection{Référence du fichier src/monstre.c}
+\label{monstre_8c}\index{src/monstre.c@{src/monstre.c}}
+
+
+Module de gestion des monstres.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/physique.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/audio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/monstre.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{monstre_8c_a5e433b037924f3971c55d7dde9399caa}{update\+Monstre}} (\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$monstre, float distance, \mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$cible)
+\begin{DoxyCompactList}\small\item\em Actualise un monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monstre_8c_adaaee129a169052ce4f00a27397500bc}{detruire\+Monstre}} (\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$$\ast$monstre)
+\begin{DoxyCompactList}\small\item\em Detruit un monstre est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$ \mbox{\hyperlink{monstre_8c_a180483b80c6873766691ffe27ebb507c}{creer\+Monstre}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position, const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}} biome, const int niveau\+Joueur)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un monstre et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monstre_8c_aa3db13cd64e4d2dc8c2d0ac8178c7d4c}{apparition\+Monstre}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$entites, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position\+Joueur, const int niveau\+Joueur)
+\begin{DoxyCompactList}\small\item\em Fait apparaitre un monstre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion des monstres. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23 janvier 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{monstre_8c_aa3db13cd64e4d2dc8c2d0ac8178c7d4c}\label{monstre_8c_aa3db13cd64e4d2dc8c2d0ac8178c7d4c}} 
+\index{monstre.c@{monstre.c}!apparitionMonstre@{apparitionMonstre}}
+\index{apparitionMonstre@{apparitionMonstre}!monstre.c@{monstre.c}}
+\doxysubsubsection{\texorpdfstring{apparitionMonstre()}{apparitionMonstre()}}
+{\footnotesize\ttfamily void apparition\+Monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{entites,  }\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position\+Joueur,  }\item[{const int}]{niveau\+Joueur }\end{DoxyParamCaption})}
+
+
+
+Fait apparaitre un monstre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entites} & La liste d\textquotesingle{}entités déjà existante \\
+\hline
+{\em biome} & Le biome dans lequel le monstre apparait \\
+\hline
+{\em position\+Joueur} & La position du joueur \\
+\hline
+{\em niveau\+Joueur} & Le niveau actuel du joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monstre_8c_a180483b80c6873766691ffe27ebb507c}\label{monstre_8c_a180483b80c6873766691ffe27ebb507c}} 
+\index{monstre.c@{monstre.c}!creerMonstre@{creerMonstre}}
+\index{creerMonstre@{creerMonstre}!monstre.c@{monstre.c}}
+\doxysubsubsection{\texorpdfstring{creerMonstre()}{creerMonstre()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}}$\ast$ creer\+Monstre (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position,  }\item[{const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}}}]{biome,  }\item[{const int}]{niveau\+Joueur }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un monstre et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle le monstre doit apparaitre \\
+\hline
+{\em biome} & Le biome dans lequel le monstre apparait \\
+\hline
+{\em niveau\+Joueur} & Le niveau actuel du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le monstre créé, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{monstre_8c_adaaee129a169052ce4f00a27397500bc}\label{monstre_8c_adaaee129a169052ce4f00a27397500bc}} 
+\index{monstre.c@{monstre.c}!detruireMonstre@{detruireMonstre}}
+\index{detruireMonstre@{detruireMonstre}!monstre.c@{monstre.c}}
+\doxysubsubsection{\texorpdfstring{detruireMonstre()}{detruireMonstre()}}
+{\footnotesize\ttfamily void detruire\+Monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$$\ast$}]{monstre }\end{DoxyParamCaption})}
+
+
+
+Detruit un monstre est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monstre} & L\textquotesingle{}adresse du pointeur du monstre à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monstre_8c_a5e433b037924f3971c55d7dde9399caa}\label{monstre_8c_a5e433b037924f3971c55d7dde9399caa}} 
+\index{monstre.c@{monstre.c}!updateMonstre@{updateMonstre}}
+\index{updateMonstre@{updateMonstre}!monstre.c@{monstre.c}}
+\doxysubsubsection{\texorpdfstring{updateMonstre()}{updateMonstre()}}
+{\footnotesize\ttfamily void update\+Monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$}]{monstre,  }\item[{float}]{distance,  }\item[{\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$}]{cible }\end{DoxyParamCaption})}
+
+
+
+Actualise un monstre. 
+
+Toute la logique propre à un monstre est gérer dans cette fonction
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monstre} & Un pointeur sur le monstre à actualiser \\
+\hline
+{\em distance} & La distance entre le monstre et le joueur \\
+\hline
+{\em cible} & Un pointeur sur la cible du monstre \\
+\hline
+\end{DoxyParams}

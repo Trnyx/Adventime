@@ -1,0 +1,68 @@
+\hypertarget{generation__vegetations_8c}{}\doxysection{Référence du fichier src/generation\+\_\+vegetations.c}
+\label{generation__vegetations_8c}\index{src/generation\_vegetations.c@{src/generation\_vegetations.c}}
+
+
+Génération de la végétation.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/vegetations.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/map.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/disc\+\_\+sampling.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{vegetations_8h_a83716eeb59a6326787a53030aa9c4a20}{e\+\_\+vegetal\+Tag}} \mbox{\hyperlink{generation__vegetations_8c_a832ca66084e28b13be91b67b40adcaf4}{selection\+Vegetation}} (\mbox{\hyperlink{map_8h_ab24d5ed4277105abcd87fcfd2987b7bd}{e\+\_\+sol\+Tag}} sol)
+\begin{DoxyCompactList}\small\item\em Sélectionne le tag du végétal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{generation__vegetations_8c_a06e3caffbab82f4c7821de460fa0ce5c}{generer\+Vegetations}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Génère les végétaux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Génération de la végétation. 
+
+La génération de la végétation suit le principe du \char`\"{}\+Poisson Disc Sampling\char`\"{} Cf. \mbox{\hyperlink{disc__sampling_8c}{disc\+\_\+sampling.\+c}} pour plus d\textquotesingle{}informations
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+27 janvier 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{generation__vegetations_8c_a06e3caffbab82f4c7821de460fa0ce5c}\label{generation__vegetations_8c_a06e3caffbab82f4c7821de460fa0ce5c}} 
+\index{generation\_vegetations.c@{generation\_vegetations.c}!genererVegetations@{genererVegetations}}
+\index{genererVegetations@{genererVegetations}!generation\_vegetations.c@{generation\_vegetations.c}}
+\doxysubsubsection{\texorpdfstring{genererVegetations()}{genererVegetations()}}
+{\footnotesize\ttfamily void generer\+Vegetations (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Génère les végétaux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & Un pointeur sur la map dans laquelle sera généré les végétaux \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{generation__vegetations_8c_a832ca66084e28b13be91b67b40adcaf4}\label{generation__vegetations_8c_a832ca66084e28b13be91b67b40adcaf4}} 
+\index{generation\_vegetations.c@{generation\_vegetations.c}!selectionVegetation@{selectionVegetation}}
+\index{selectionVegetation@{selectionVegetation}!generation\_vegetations.c@{generation\_vegetations.c}}
+\doxysubsubsection{\texorpdfstring{selectionVegetation()}{selectionVegetation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{vegetations_8h_a83716eeb59a6326787a53030aa9c4a20}{e\+\_\+vegetal\+Tag}} selection\+Vegetation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{map_8h_ab24d5ed4277105abcd87fcfd2987b7bd}{e\+\_\+sol\+Tag}}}]{sol }\end{DoxyParamCaption})}
+
+
+
+Sélectionne le tag du végétal. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em base\+Biome} & La base du biome dans lequel le végétal est placé \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le tag du végétal 
+\end{DoxyReturn}

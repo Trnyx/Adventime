@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/entite.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">entite.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="entite_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _JEU_ENTITE_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define _JEU_ENTITE_</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utilitaire_8h.html">utilitaire.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="statistiques_8h.html">statistiques.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="animation_8h.html">animation.h</a>&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="liste_8h.html">liste.h</a>&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*                                 Enumeration                                */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="entite_8h.html#a513e1b213a57b6cdb6b743c787221a2c">   42</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    ENTITE_RIEN,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    ENTITE_ITEM,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    ENTITE_JOUEUR,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    ENTITE_MOB,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    ENTITE_COFFRE,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    ENTITE_COFFRE_INVENTAIRE,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;} <a class="code" href="entite_8h.html#a513e1b213a57b6cdb6b743c787221a2c">e_entiteType</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">   58</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    TAG_AUCUN,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    TAG_ANIMAL_VACHE,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    TAG_ANIMAL_COCHON,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    TAG_MONSTRE_BASIC,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    TAG_BOSS,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    TAG_COFFRE,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    NB_TAGS,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    TAG_JOUEUR,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <a class="code" href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="entite_8h.html#a8ff093f5cc99eca6106327f870de9a9c">   77</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    SUD,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    OUEST,</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    EST,</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    NORD,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;} <a class="code" href="entite_8h.html#a8ff093f5cc99eca6106327f870de9a9c">e_orientation</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="entite_8h.html#a743573c091dac77c46a2c79e419f21ed">   91</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="entite_8h.html#a743573c091dac77c46a2c79e419f21eda12ae690d94bc769947a5ba2bcb67251f">   93</a></span>&#160;    <a class="code" href="entite_8h.html#a743573c091dac77c46a2c79e419f21eda12ae690d94bc769947a5ba2bcb67251f">ATTENTE</a>,</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="entite_8h.html#a743573c091dac77c46a2c79e419f21eda1a97af552e930cdffd00e2b395cee802">   95</a></span>&#160;    <a class="code" href="entite_8h.html#a743573c091dac77c46a2c79e419f21eda1a97af552e930cdffd00e2b395cee802">SE_DEPLACE_VERS</a>,</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="entite_8h.html#a743573c091dac77c46a2c79e419f21edad09dca134ef8b76d72d6dd44742094ba">   97</a></span>&#160;    <a class="code" href="entite_8h.html#a743573c091dac77c46a2c79e419f21edad09dca134ef8b76d72d6dd44742094ba">SE_DEPLACE_AUTOUR</a>,</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="entite_8h.html#a743573c091dac77c46a2c79e419f21edac83cdb0ebb26349c580c6f91bd2e4061">   99</a></span>&#160;    <a class="code" href="entite_8h.html#a743573c091dac77c46a2c79e419f21edac83cdb0ebb26349c580c6f91bd2e4061">S_ELOIGNE_DE</a>,</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="entite_8h.html#a743573c091dac77c46a2c79e419f21eda70c3712cf958573a15ce5f5cd738eb55">  101</a></span>&#160;    <a class="code" href="entite_8h.html#a743573c091dac77c46a2c79e419f21eda70c3712cf958573a15ce5f5cd738eb55">ATTAQUE</a>,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;} <a class="code" href="entite_8h.html#a743573c091dac77c46a2c79e419f21ed">e_operation</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">// #include &quot;audio.h&quot;</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">// Nous avons besoin de définir cette structure &quot;temporaire&quot;</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">// afin que le compilateur connaisse son existence</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__moteur.html">s_moteur</a> <a class="code" href="structt__moteur.html">t_moteur</a>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__audioPack.html">s_audioPack</a> <a class="code" href="structs__audioPack.html">t_audioPack</a>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__entite.html">s_entite</a> <a class="code" href="structt__entite.html">t_entite</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="structs__entite.html">  126</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structs__entite.html">s_entite</a> {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// #include &quot;attributs_entite.h&quot;</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="structs__entite.html#ab78601dbeb7727b0d7498c0fca16a60c">  128</a></span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="structs__entite.html#ab78601dbeb7727b0d7498c0fca16a60c">id</a>;                                               </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="structs__entite.html#a179f6849ea103452350358e5805effa4">  129</a></span>&#160;    <a class="code" href="structt__vecteur2.html">t_vecteur2</a> <a class="code" href="structs__entite.html#a179f6849ea103452350358e5805effa4">position</a>;                                    </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="structs__entite.html#a683f867e8af705f49b0a683134af011f">  130</a></span>&#160;    <a class="code" href="structt__vecteur2.html">t_vecteur2</a> <a class="code" href="structs__entite.html#a683f867e8af705f49b0a683134af011f">direction</a>;                                   </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="structs__entite.html#a51065f9e47b0f6c94fdc1edc60a02ec0">  131</a></span>&#160;    <a class="code" href="entite_8h.html#a8ff093f5cc99eca6106327f870de9a9c">e_orientation</a> <a class="code" href="structs__entite.html#a51065f9e47b0f6c94fdc1edc60a02ec0">orientation</a>;                              </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="structs__entite.html#a13430389fea6e3d4b068b4d7d1be5da1">  133</a></span>&#160;    <a class="code" href="entite_8h.html#a513e1b213a57b6cdb6b743c787221a2c">e_entiteType</a> <a class="code" href="structs__entite.html#a13430389fea6e3d4b068b4d7d1be5da1">entiteType</a>;                                </div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="structs__entite.html#aa03eac03c040afe68e11325631f17b13">  134</a></span>&#160;    <a class="code" href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a> <a class="code" href="structs__entite.html#aa03eac03c040afe68e11325631f17b13">tag</a>;                                        </div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="structs__entite.html#ab302631c5cc5c080e449c5fb1556f898">  136</a></span>&#160;    SDL_FRect <a class="code" href="structs__entite.html#ab302631c5cc5c080e449c5fb1556f898">hitbox</a>;                                       </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">float</span> taille;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <a class="code" href="structt__animation.html">t_animation</a> *animation;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="structs__entite.html#abbec3424b1a04d5f191b8595e118519d">  141</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__entite.html#abbec3424b1a04d5f191b8595e118519d">timestampCreation</a>;                         </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="structs__entite.html#a99ca7d0b4845c603425bc0186d3747b3">  142</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__entite.html#a99ca7d0b4845c603425bc0186d3747b3">timestampActualisation</a>;                    </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="structs__entite.html#ac06bad7d3e82ec9b6695a67ce6dbe124">  144</a></span>&#160;    <span class="keywordtype">boolean</span> <a class="code" href="structs__entite.html#ac06bad7d3e82ec9b6695a67ce6dbe124">destructionInactif</a>;                             </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="structs__entite.html#a93a961572e8726f610834e2391e9a4ef">  145</a></span>&#160;    <span class="keywordtype">boolean</span> <a class="code" href="structs__entite.html#a93a961572e8726f610834e2391e9a4ef">destructionDelai</a>;                               </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="structs__entite.html#a078de15e17e11b9a2b9ea7106a49dc42">  146</a></span>&#160;    <span class="keywordtype">boolean</span> <a class="code" href="structs__entite.html#a078de15e17e11b9a2b9ea7106a49dc42">interargirAvec</a>;                                 </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <span class="comment">// Audio</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="structs__entite.html#aecd0ecf74abc815d954ad5d3c8638c93">  150</a></span>&#160;    <a class="code" href="structs__audioPack.html">t_audioPack</a> *<a class="code" href="structs__entite.html#aecd0ecf74abc815d954ad5d3c8638c93">bruitages</a>;                                 </div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="structs__entite.html#a472b863a2f9a5ca5655777c5ee4c300b">  153</a></span>&#160;    void (*<a class="code" href="structs__entite.html#a472b863a2f9a5ca5655777c5ee4c300b">update</a>)(<a class="code" href="structt__entite.html">t_entite</a>*, float, <a class="code" href="structt__entite.html">t_entite</a>* cible);      </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="structs__entite.html#a6e65642d120d07b164c9c41d92b03395">  154</a></span>&#160;    void (*<a class="code" href="structs__entite.html#a6e65642d120d07b164c9c41d92b03395">detruire</a>)(<a class="code" href="structt__entite.html">t_entite</a>**);                           </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="structs__entite.html#af0cf7dc1d05baf6dcfbf03ab3fa560d0">  155</a></span>&#160;    void (*<a class="code" href="structs__entite.html#af0cf7dc1d05baf6dcfbf03ab3fa560d0">interaction</a>)(<span class="keywordtype">void</span>*, <span class="keywordtype">void</span>*);                      </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;};</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="structs__entiteVivante.html">  164</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__entiteVivante.html">s_entiteVivante</a> {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keyword">struct </span><a class="code" href="structs__entite.html">s_entite</a>;                        </div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="structs__entiteVivante.html#a4fbfbb4966184d3de8893f0585083795">  167</a></span>&#160;    <a class="code" href="entite_8h.html#a743573c091dac77c46a2c79e419f21ed">e_operation</a> <a class="code" href="structs__entiteVivante.html#a4fbfbb4966184d3de8893f0585083795">operation</a>;                  </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="comment">// Statistiques</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="structs__entiteVivante.html#ad602f28f5671f8dfbabf4ac6244b1167">  170</a></span>&#160;    <a class="code" href="structt__statistiques.html">t_statistiques</a> <a class="code" href="structs__entiteVivante.html#ad602f28f5671f8dfbabf4ac6244b1167">statistiques</a>;            </div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="structs__entiteVivante.html#ae5d815f2601f2fb43b5a91a8ac286569">  171</a></span>&#160;    <a class="code" href="structt__baseStatistiques.html">t_baseStatistiques</a> <a class="code" href="structs__entiteVivante.html#ae5d815f2601f2fb43b5a91a8ac286569">baseStatistiques</a>;    </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="comment">// Cooldowns</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="structs__entiteVivante.html#adf4e30fcdc241a31c53e5f9f6b4af0da">  174</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__entiteVivante.html#adf4e30fcdc241a31c53e5f9f6b4af0da">cooldownAttaque</a>;           </div>
+<div class="line"><a name="l00175"></a><span class="lineno"><a class="line" href="structs__entiteVivante.html#a10701e1b35b765c8e675586471069dc0">  175</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__entiteVivante.html#a10701e1b35b765c8e675586471069dc0">cooldownRegeneration</a>;      </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;} <a class="code" href="structs__entiteVivante.html">t_entiteVivante</a>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="structs__compteur.html">  188</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__compteur.html">s_compteur</a> {</div>
+<div class="line"><a name="l00189"></a><span class="lineno"><a class="line" href="structs__compteur.html#a71ca4dfe4ff5e7cce69dbb8e46a890e0">  189</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__compteur.html#a71ca4dfe4ff5e7cce69dbb8e46a890e0">entites</a>;                </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="structs__compteur.html#affb328d7b75ad58a68b26fe44f8ea090">  190</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__compteur.html#affb328d7b75ad58a68b26fe44f8ea090">mobs</a>;                   </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="structs__compteur.html#a9edc1b6323cdabbaab7e358ad19b0c27">  191</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__compteur.html#a9edc1b6323cdabbaab7e358ad19b0c27">mobAggressifs</a>;          </div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="structs__compteur.html#a63b90f98da9810c392401a8f824c2f06">  192</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__compteur.html#a63b90f98da9810c392401a8f824c2f06">mobPassifs</a>;             </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;} <a class="code" href="structt__compteur.html">t_compteur</a>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__map.html">s_map</a> <a class="code" href="structt__map.html">t_map</a>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="keywordtype">boolean</span> <a class="code" href="entite_8h.html#a62f85274f236742d3796bf21e09e0444">peutApparaitre</a>(<span class="keyword">const</span> <a class="code" href="structt__vecteur2.html">t_vecteur2</a> position, <a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<a class="code" href="structt__liste.html">t_liste</a>* <a class="code" href="entite_8h.html#a3eee4a2d5deb874692165ec57df03924">getEntitesAlentour</a>(<a class="code" href="structt__entite.html">t_entite</a> *centre, <span class="keyword">const</span> <a class="code" href="entite_8h.html#a513e1b213a57b6cdb6b743c787221a2c">e_entiteType</a> <a class="code" href="structs__map.html#a6c97a5653eb4bc2835cabfd7d5491b80">type</a>, <span class="keyword">const</span> <span class="keywordtype">float</span> range);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keywordtype">void</span> regenerationEntite(<a class="code" href="structs__entiteVivante.html">t_entiteVivante</a> *entite);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<a class="code" href="structt__entite.html">t_entite</a>* <a class="code" href="entite_8h.html#af08d9d8a38d0ea9a3bb697f277484f2f">creerEntite</a>(<span class="keyword">const</span> <a class="code" href="structt__vecteur2.html">t_vecteur2</a> position);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a29f11ad700be8e6e8dc23d460863f78a">detruireEntite</a>(<a class="code" href="structt__entite.html">t_entite</a> **entite);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="keywordtype">float</span> <a class="code" href="entite_8h.html#ac9cbb2f457f36fa1151c352e788dfe1f">calculDistanceEntreEntites</a>(<span class="keyword">const</span> <a class="code" href="structt__entite.html">t_entite</a> *entiteSource, <span class="keyword">const</span> <a class="code" href="structt__entite.html">t_entite</a> *entiteCible);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="keywordtype">boolean</span> <a class="code" href="entite_8h.html#a1af47f753b2e56f5ea1e83a988064f38">deplacerEntite</a>(<a class="code" href="structt__entite.html">t_entite</a> *entite, <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="attributs__statistiques_8h.html#aef55e1775d611bfea0196692da1a0bc5">vitesse</a>);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#ac75f8e0051d7275ae66d027bedbac4ab">orienterEntite</a>(<span class="keyword">const</span> <span class="keywordtype">float</span> angle, <a class="code" href="structt__entite.html">t_entite</a> *entite);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="keywordtype">void</span> <a class="code" href="entite_8h.html#a8a2a5b68213cc70260146cb7ffc286a1">dessinerEntite</a>(<a class="code" href="structt__entite.html">t_entite</a> *entite);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aanimation_8h_html"><div class="ttname"><a href="animation_8h.html">animation.h</a></div><div class="ttdoc">Module de manipulation du monde.</div></div>
+<div class="ttc" id="aattributs__statistiques_8h_html_aef55e1775d611bfea0196692da1a0bc5"><div class="ttname"><a href="attributs__statistiques_8h.html#aef55e1775d611bfea0196692da1a0bc5">vitesse</a></div><div class="ttdeci">float vitesse</div><div class="ttdef"><b>Definition:</b> attributs_statistiques.h:18</div></div>
+<div class="ttc" id="aentite_8h_html_a0040801926229213be8bb8a3fe378b15"><div class="ttname"><a href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a></div><div class="ttdeci">e_entiteTag</div><div class="ttdoc">Enumérateur regroupant les différents tags des entités.</div><div class="ttdef"><b>Definition:</b> entite.h:58</div></div>
+<div class="ttc" id="aentite_8h_html_a1af47f753b2e56f5ea1e83a988064f38"><div class="ttname"><a href="entite_8h.html#a1af47f753b2e56f5ea1e83a988064f38">deplacerEntite</a></div><div class="ttdeci">boolean deplacerEntite(t_entite *entite, const float vitesse)</div><div class="ttdoc">Déplace une entité</div><div class="ttdef"><b>Definition:</b> entite.c:292</div></div>
+<div class="ttc" id="aentite_8h_html_a29f11ad700be8e6e8dc23d460863f78a"><div class="ttname"><a href="entite_8h.html#a29f11ad700be8e6e8dc23d460863f78a">detruireEntite</a></div><div class="ttdeci">void detruireEntite(t_entite **entite)</div><div class="ttdoc">Detruit une entité est libère la mémoire allouée pour cette dernière.</div><div class="ttdef"><b>Definition:</b> entite.c:472</div></div>
+<div class="ttc" id="aentite_8h_html_a3eee4a2d5deb874692165ec57df03924"><div class="ttname"><a href="entite_8h.html#a3eee4a2d5deb874692165ec57df03924">getEntitesAlentour</a></div><div class="ttdeci">t_liste * getEntitesAlentour(t_entite *centre, const e_entiteType type, const float range)</div><div class="ttdoc">Obtient toutes les entités souhaités dans un rayon aux alentours d'une entité</div><div class="ttdef"><b>Definition:</b> entite.c:90</div></div>
+<div class="ttc" id="aentite_8h_html_a513e1b213a57b6cdb6b743c787221a2c"><div class="ttname"><a href="entite_8h.html#a513e1b213a57b6cdb6b743c787221a2c">e_entiteType</a></div><div class="ttdeci">e_entiteType</div><div class="ttdoc">Enumérateur regroupant les différents types d'entité</div><div class="ttdef"><b>Definition:</b> entite.h:42</div></div>
+<div class="ttc" id="aentite_8h_html_a62f85274f236742d3796bf21e09e0444"><div class="ttname"><a href="entite_8h.html#a62f85274f236742d3796bf21e09e0444">peutApparaitre</a></div><div class="ttdeci">boolean peutApparaitre(const t_vecteur2 position, t_map *map)</div><div class="ttdoc">Vérifie si l'entité peut apparaître.</div><div class="ttdef"><b>Definition:</b> entite.c:42</div></div>
+<div class="ttc" id="aentite_8h_html_a743573c091dac77c46a2c79e419f21ed"><div class="ttname"><a href="entite_8h.html#a743573c091dac77c46a2c79e419f21ed">e_operation</a></div><div class="ttdeci">e_operation</div><div class="ttdoc">Enumérateur regroupant les différentes opérations des mobs.</div><div class="ttdef"><b>Definition:</b> entite.h:91</div></div>
+<div class="ttc" id="aentite_8h_html_a743573c091dac77c46a2c79e419f21eda12ae690d94bc769947a5ba2bcb67251f"><div class="ttname"><a href="entite_8h.html#a743573c091dac77c46a2c79e419f21eda12ae690d94bc769947a5ba2bcb67251f">ATTENTE</a></div><div class="ttdeci">@ ATTENTE</div><div class="ttdef"><b>Definition:</b> entite.h:93</div></div>
+<div class="ttc" id="aentite_8h_html_a743573c091dac77c46a2c79e419f21eda1a97af552e930cdffd00e2b395cee802"><div class="ttname"><a href="entite_8h.html#a743573c091dac77c46a2c79e419f21eda1a97af552e930cdffd00e2b395cee802">SE_DEPLACE_VERS</a></div><div class="ttdeci">@ SE_DEPLACE_VERS</div><div class="ttdef"><b>Definition:</b> entite.h:95</div></div>
+<div class="ttc" id="aentite_8h_html_a743573c091dac77c46a2c79e419f21eda70c3712cf958573a15ce5f5cd738eb55"><div class="ttname"><a href="entite_8h.html#a743573c091dac77c46a2c79e419f21eda70c3712cf958573a15ce5f5cd738eb55">ATTAQUE</a></div><div class="ttdeci">@ ATTAQUE</div><div class="ttdef"><b>Definition:</b> entite.h:101</div></div>
+<div class="ttc" id="aentite_8h_html_a743573c091dac77c46a2c79e419f21edac83cdb0ebb26349c580c6f91bd2e4061"><div class="ttname"><a href="entite_8h.html#a743573c091dac77c46a2c79e419f21edac83cdb0ebb26349c580c6f91bd2e4061">S_ELOIGNE_DE</a></div><div class="ttdeci">@ S_ELOIGNE_DE</div><div class="ttdef"><b>Definition:</b> entite.h:99</div></div>
+<div class="ttc" id="aentite_8h_html_a743573c091dac77c46a2c79e419f21edad09dca134ef8b76d72d6dd44742094ba"><div class="ttname"><a href="entite_8h.html#a743573c091dac77c46a2c79e419f21edad09dca134ef8b76d72d6dd44742094ba">SE_DEPLACE_AUTOUR</a></div><div class="ttdeci">@ SE_DEPLACE_AUTOUR</div><div class="ttdef"><b>Definition:</b> entite.h:97</div></div>
+<div class="ttc" id="aentite_8h_html_a8a2a5b68213cc70260146cb7ffc286a1"><div class="ttname"><a href="entite_8h.html#a8a2a5b68213cc70260146cb7ffc286a1">dessinerEntite</a></div><div class="ttdeci">void dessinerEntite(t_entite *entite)</div><div class="ttdoc">Dessine l'entité sur l'écran.</div><div class="ttdef"><b>Definition:</b> entite.c:356</div></div>
+<div class="ttc" id="aentite_8h_html_a8ff093f5cc99eca6106327f870de9a9c"><div class="ttname"><a href="entite_8h.html#a8ff093f5cc99eca6106327f870de9a9c">e_orientation</a></div><div class="ttdeci">e_orientation</div><div class="ttdoc">Les orientations.</div><div class="ttdef"><b>Definition:</b> entite.h:77</div></div>
+<div class="ttc" id="aentite_8h_html_ac75f8e0051d7275ae66d027bedbac4ab"><div class="ttname"><a href="entite_8h.html#ac75f8e0051d7275ae66d027bedbac4ab">orienterEntite</a></div><div class="ttdeci">void orienterEntite(const float angle, t_entite *entite)</div><div class="ttdoc">Oriente l'entité</div><div class="ttdef"><b>Definition:</b> entite.c:329</div></div>
+<div class="ttc" id="aentite_8h_html_ac9cbb2f457f36fa1151c352e788dfe1f"><div class="ttname"><a href="entite_8h.html#ac9cbb2f457f36fa1151c352e788dfe1f">calculDistanceEntreEntites</a></div><div class="ttdeci">float calculDistanceEntreEntites(const t_entite *entiteSource, const t_entite *entiteCible)</div><div class="ttdoc">Calcul la distance entre deux entités.</div><div class="ttdef"><b>Definition:</b> entite.c:155</div></div>
+<div class="ttc" id="aentite_8h_html_af08d9d8a38d0ea9a3bb697f277484f2f"><div class="ttname"><a href="entite_8h.html#af08d9d8a38d0ea9a3bb697f277484f2f">creerEntite</a></div><div class="ttdeci">t_entite * creerEntite(const t_vecteur2 position)</div><div class="ttdoc">Alloue l'espace nécessaire pour une entité et la créer.</div><div class="ttdef"><b>Definition:</b> entite.c:513</div></div>
+<div class="ttc" id="aliste_8h_html"><div class="ttname"><a href="liste_8h.html">liste.h</a></div><div class="ttdoc">Module de manipulation des listes.</div></div>
+<div class="ttc" id="astatistiques_8h_html"><div class="ttname"><a href="statistiques_8h.html">statistiques.h</a></div><div class="ttdoc">Module de manipulation des statistiques.</div></div>
+<div class="ttc" id="astructs__audioPack_html"><div class="ttname"><a href="structs__audioPack.html">s_audioPack</a></div><div class="ttdef"><b>Definition:</b> audio.h:134</div></div>
+<div class="ttc" id="astructs__compteur_html"><div class="ttname"><a href="structs__compteur.html">s_compteur</a></div><div class="ttdef"><b>Definition:</b> entite.h:188</div></div>
+<div class="ttc" id="astructs__compteur_html_a63b90f98da9810c392401a8f824c2f06"><div class="ttname"><a href="structs__compteur.html#a63b90f98da9810c392401a8f824c2f06">s_compteur::mobPassifs</a></div><div class="ttdeci">int mobPassifs</div><div class="ttdef"><b>Definition:</b> entite.h:192</div></div>
+<div class="ttc" id="astructs__compteur_html_a71ca4dfe4ff5e7cce69dbb8e46a890e0"><div class="ttname"><a href="structs__compteur.html#a71ca4dfe4ff5e7cce69dbb8e46a890e0">s_compteur::entites</a></div><div class="ttdeci">int entites</div><div class="ttdef"><b>Definition:</b> entite.h:189</div></div>
+<div class="ttc" id="astructs__compteur_html_a9edc1b6323cdabbaab7e358ad19b0c27"><div class="ttname"><a href="structs__compteur.html#a9edc1b6323cdabbaab7e358ad19b0c27">s_compteur::mobAggressifs</a></div><div class="ttdeci">int mobAggressifs</div><div class="ttdef"><b>Definition:</b> entite.h:191</div></div>
+<div class="ttc" id="astructs__compteur_html_affb328d7b75ad58a68b26fe44f8ea090"><div class="ttname"><a href="structs__compteur.html#affb328d7b75ad58a68b26fe44f8ea090">s_compteur::mobs</a></div><div class="ttdeci">int mobs</div><div class="ttdef"><b>Definition:</b> entite.h:190</div></div>
+<div class="ttc" id="astructs__entiteVivante_html"><div class="ttname"><a href="structs__entiteVivante.html">s_entiteVivante</a></div><div class="ttdef"><b>Definition:</b> entite.h:164</div></div>
+<div class="ttc" id="astructs__entiteVivante_html_a10701e1b35b765c8e675586471069dc0"><div class="ttname"><a href="structs__entiteVivante.html#a10701e1b35b765c8e675586471069dc0">s_entiteVivante::cooldownRegeneration</a></div><div class="ttdeci">unsigned int cooldownRegeneration</div><div class="ttdef"><b>Definition:</b> entite.h:175</div></div>
+<div class="ttc" id="astructs__entiteVivante_html_a4fbfbb4966184d3de8893f0585083795"><div class="ttname"><a href="structs__entiteVivante.html#a4fbfbb4966184d3de8893f0585083795">s_entiteVivante::operation</a></div><div class="ttdeci">e_operation operation</div><div class="ttdef"><b>Definition:</b> entite.h:165</div></div>
+<div class="ttc" id="astructs__entiteVivante_html_ad602f28f5671f8dfbabf4ac6244b1167"><div class="ttname"><a href="structs__entiteVivante.html#ad602f28f5671f8dfbabf4ac6244b1167">s_entiteVivante::statistiques</a></div><div class="ttdeci">t_statistiques statistiques</div><div class="ttdef"><b>Definition:</b> entite.h:170</div></div>
+<div class="ttc" id="astructs__entiteVivante_html_adf4e30fcdc241a31c53e5f9f6b4af0da"><div class="ttname"><a href="structs__entiteVivante.html#adf4e30fcdc241a31c53e5f9f6b4af0da">s_entiteVivante::cooldownAttaque</a></div><div class="ttdeci">unsigned int cooldownAttaque</div><div class="ttdef"><b>Definition:</b> entite.h:174</div></div>
+<div class="ttc" id="astructs__entiteVivante_html_ae5d815f2601f2fb43b5a91a8ac286569"><div class="ttname"><a href="structs__entiteVivante.html#ae5d815f2601f2fb43b5a91a8ac286569">s_entiteVivante::baseStatistiques</a></div><div class="ttdeci">t_baseStatistiques baseStatistiques</div><div class="ttdef"><b>Definition:</b> entite.h:171</div></div>
+<div class="ttc" id="astructs__entite_html"><div class="ttname"><a href="structs__entite.html">s_entite</a></div><div class="ttdef"><b>Definition:</b> entite.h:126</div></div>
+<div class="ttc" id="astructs__entite_html_a078de15e17e11b9a2b9ea7106a49dc42"><div class="ttname"><a href="structs__entite.html#a078de15e17e11b9a2b9ea7106a49dc42">s_entite::interargirAvec</a></div><div class="ttdeci">boolean interargirAvec</div><div class="ttdef"><b>Definition:</b> entite.h:146</div></div>
+<div class="ttc" id="astructs__entite_html_a13430389fea6e3d4b068b4d7d1be5da1"><div class="ttname"><a href="structs__entite.html#a13430389fea6e3d4b068b4d7d1be5da1">s_entite::entiteType</a></div><div class="ttdeci">e_entiteType entiteType</div><div class="ttdef"><b>Definition:</b> entite.h:133</div></div>
+<div class="ttc" id="astructs__entite_html_a179f6849ea103452350358e5805effa4"><div class="ttname"><a href="structs__entite.html#a179f6849ea103452350358e5805effa4">s_entite::position</a></div><div class="ttdeci">t_vecteur2 position</div><div class="ttdef"><b>Definition:</b> entite.h:129</div></div>
+<div class="ttc" id="astructs__entite_html_a472b863a2f9a5ca5655777c5ee4c300b"><div class="ttname"><a href="structs__entite.html#a472b863a2f9a5ca5655777c5ee4c300b">s_entite::update</a></div><div class="ttdeci">void(* update)(t_entite *, float, t_entite *cible)</div><div class="ttdef"><b>Definition:</b> entite.h:153</div></div>
+<div class="ttc" id="astructs__entite_html_a51065f9e47b0f6c94fdc1edc60a02ec0"><div class="ttname"><a href="structs__entite.html#a51065f9e47b0f6c94fdc1edc60a02ec0">s_entite::orientation</a></div><div class="ttdeci">e_orientation orientation</div><div class="ttdef"><b>Definition:</b> entite.h:131</div></div>
+<div class="ttc" id="astructs__entite_html_a683f867e8af705f49b0a683134af011f"><div class="ttname"><a href="structs__entite.html#a683f867e8af705f49b0a683134af011f">s_entite::direction</a></div><div class="ttdeci">t_vecteur2 direction</div><div class="ttdef"><b>Definition:</b> entite.h:130</div></div>
+<div class="ttc" id="astructs__entite_html_a6e65642d120d07b164c9c41d92b03395"><div class="ttname"><a href="structs__entite.html#a6e65642d120d07b164c9c41d92b03395">s_entite::detruire</a></div><div class="ttdeci">void(* detruire)(t_entite **)</div><div class="ttdef"><b>Definition:</b> entite.h:154</div></div>
+<div class="ttc" id="astructs__entite_html_a93a961572e8726f610834e2391e9a4ef"><div class="ttname"><a href="structs__entite.html#a93a961572e8726f610834e2391e9a4ef">s_entite::destructionDelai</a></div><div class="ttdeci">boolean destructionDelai</div><div class="ttdef"><b>Definition:</b> entite.h:145</div></div>
+<div class="ttc" id="astructs__entite_html_a99ca7d0b4845c603425bc0186d3747b3"><div class="ttname"><a href="structs__entite.html#a99ca7d0b4845c603425bc0186d3747b3">s_entite::timestampActualisation</a></div><div class="ttdeci">unsigned int timestampActualisation</div><div class="ttdef"><b>Definition:</b> entite.h:142</div></div>
+<div class="ttc" id="astructs__entite_html_aa03eac03c040afe68e11325631f17b13"><div class="ttname"><a href="structs__entite.html#aa03eac03c040afe68e11325631f17b13">s_entite::tag</a></div><div class="ttdeci">e_entiteTag tag</div><div class="ttdef"><b>Definition:</b> entite.h:134</div></div>
+<div class="ttc" id="astructs__entite_html_ab302631c5cc5c080e449c5fb1556f898"><div class="ttname"><a href="structs__entite.html#ab302631c5cc5c080e449c5fb1556f898">s_entite::hitbox</a></div><div class="ttdeci">SDL_FRect hitbox</div><div class="ttdef"><b>Definition:</b> entite.h:136</div></div>
+<div class="ttc" id="astructs__entite_html_ab78601dbeb7727b0d7498c0fca16a60c"><div class="ttname"><a href="structs__entite.html#ab78601dbeb7727b0d7498c0fca16a60c">s_entite::id</a></div><div class="ttdeci">char * id</div><div class="ttdef"><b>Definition:</b> entite.h:128</div></div>
+<div class="ttc" id="astructs__entite_html_abbec3424b1a04d5f191b8595e118519d"><div class="ttname"><a href="structs__entite.html#abbec3424b1a04d5f191b8595e118519d">s_entite::timestampCreation</a></div><div class="ttdeci">unsigned int timestampCreation</div><div class="ttdef"><b>Definition:</b> entite.h:141</div></div>
+<div class="ttc" id="astructs__entite_html_ac06bad7d3e82ec9b6695a67ce6dbe124"><div class="ttname"><a href="structs__entite.html#ac06bad7d3e82ec9b6695a67ce6dbe124">s_entite::destructionInactif</a></div><div class="ttdeci">boolean destructionInactif</div><div class="ttdef"><b>Definition:</b> entite.h:144</div></div>
+<div class="ttc" id="astructs__entite_html_aecd0ecf74abc815d954ad5d3c8638c93"><div class="ttname"><a href="structs__entite.html#aecd0ecf74abc815d954ad5d3c8638c93">s_entite::bruitages</a></div><div class="ttdeci">t_audioPack * bruitages</div><div class="ttdef"><b>Definition:</b> entite.h:150</div></div>
+<div class="ttc" id="astructs__entite_html_af0cf7dc1d05baf6dcfbf03ab3fa560d0"><div class="ttname"><a href="structs__entite.html#af0cf7dc1d05baf6dcfbf03ab3fa560d0">s_entite::interaction</a></div><div class="ttdeci">void(* interaction)(void *, void *)</div><div class="ttdef"><b>Definition:</b> entite.h:155</div></div>
+<div class="ttc" id="astructs__map_html"><div class="ttname"><a href="structs__map.html">s_map</a></div><div class="ttdef"><b>Definition:</b> map.h:168</div></div>
+<div class="ttc" id="astructs__map_html_a6c97a5653eb4bc2835cabfd7d5491b80"><div class="ttname"><a href="structs__map.html#a6c97a5653eb4bc2835cabfd7d5491b80">s_map::type</a></div><div class="ttdeci">e_mapType type</div><div class="ttdef"><b>Definition:</b> map.h:169</div></div>
+<div class="ttc" id="astructs__moteur_html"><div class="ttname"><a href="structs__moteur.html">s_moteur</a></div><div class="ttdef"><b>Definition:</b> moteur.h:76</div></div>
+<div class="ttc" id="astructt__animation_html"><div class="ttname"><a href="structt__animation.html">t_animation</a></div><div class="ttdoc">Structure modélisant une animation.</div></div>
+<div class="ttc" id="astructt__baseStatistiques_html"><div class="ttname"><a href="structt__baseStatistiques.html">t_baseStatistiques</a></div><div class="ttdoc">Structure regroupant les différentes statistiques de base.</div></div>
+<div class="ttc" id="astructt__compteur_html"><div class="ttname"><a href="structt__compteur.html">t_compteur</a></div><div class="ttdoc">Structure permettant de regroupé les compteurs d'entités.</div></div>
+<div class="ttc" id="astructt__entite_html"><div class="ttname"><a href="structt__entite.html">t_entite</a></div><div class="ttdoc">Structure modélisant une entité</div></div>
+<div class="ttc" id="astructt__liste_html"><div class="ttname"><a href="structt__liste.html">t_liste</a></div><div class="ttdoc">Modelise l'emplacement actuel dans la liste.</div></div>
+<div class="ttc" id="astructt__map_html"><div class="ttname"><a href="structt__map.html">t_map</a></div><div class="ttdoc">Modélise une map.</div></div>
+<div class="ttc" id="astructt__moteur_html"><div class="ttname"><a href="structt__moteur.html">t_moteur</a></div><div class="ttdoc">Structure contenant les informations globales du jeu.</div></div>
+<div class="ttc" id="astructt__statistiques_html"><div class="ttname"><a href="structt__statistiques.html">t_statistiques</a></div><div class="ttdoc">Structure regroupant les différentes statistiques.</div></div>
+<div class="ttc" id="astructt__vecteur2_html"><div class="ttname"><a href="structt__vecteur2.html">t_vecteur2</a></div><div class="ttdoc">Structure modélisant un vecteur à deux dimensions.</div></div>
+<div class="ttc" id="autilitaire_8h_html"><div class="ttname"><a href="utilitaire_8h.html">utilitaire.h</a></div><div class="ttdoc">Module de manipulation des données globales.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

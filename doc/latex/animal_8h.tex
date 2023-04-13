@@ -1,0 +1,191 @@
+\hypertarget{animal_8h}{}\doxysection{Référence du fichier include/animal.h}
+\label{animal_8h}\index{include/animal.h@{include/animal.h}}
+
+
+Module de manipulation des animaux.  
+
+
+{\ttfamily \#include \char`\"{}statistiques.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mob.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__animal}{s\+\_\+animal}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{animal_8h_aefb8777562dfc51759073ff579d2dbcf}\label{animal_8h_aefb8777562dfc51759073ff579d2dbcf}} 
+typedef struct \mbox{\hyperlink{structs__animal}{s\+\_\+animal}} {\bfseries t\+\_\+animal}
+\item 
+\mbox{\Hypertarget{animal_8h_aa6370cd7b08553210cd2ca45f421b122}\label{animal_8h_aa6370cd7b08553210cd2ca45f421b122}} 
+typedef struct \mbox{\hyperlink{structs__map}{s\+\_\+map}} {\bfseries t\+\_\+map}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} \mbox{\hyperlink{animal_8h_a45855da67ed1920aeb02da03103fbcba}{generer\+Statistiques\+De\+Base\+Animal}} (const \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Génère les statistiques de base d\textquotesingle{}un animal. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__animal}{t\+\_\+animal}} $\ast$ \mbox{\hyperlink{animal_8h_ad7cf5d1744caf19ed95b3ac5c3077597}{generer\+Animal}} (\mbox{\hyperlink{structt__animal}{t\+\_\+animal}} $\ast$animal, const \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Génère les informations et statistiques d\textquotesingle{}un animal en fonction de sont tag. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__animal}{t\+\_\+animal}} $\ast$ \mbox{\hyperlink{animal_8h_ad6fa28e7ea0a327607ba2b692559d5b6}{creer\+Animal}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position, const \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un animal et le crée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{animal_8h_a91aa0cd779f2d1e5991e4bfecc4abec2}{apparition\+Animal}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position\+Troupeau, \mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$entites, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, const \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Génère / fait apparaitre un animal au sein d\textquotesingle{}un troupeau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{animal_8h_abb2e2bc0008e5c0fb3e72ce6892d25e7}{apparition\+Troupeau}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$entites, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Génère / fait apparaitre un troupeau d\textquotesingle{}animaux. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{animal_8h_a22c77e7bda824efc3964f74df14cb1a5}{detruire\+Animal}} (\mbox{\hyperlink{structt__animal}{t\+\_\+animal}} $\ast$$\ast$animal)
+\begin{DoxyCompactList}\small\item\em Detruit un animal est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{structt__baseStatistiquesIntervales}{t\+\_\+base\+Statistiques\+Intervales}} \mbox{\hyperlink{animal_8h_a1a670d142570728057652e6199c9e896}{statistiques\+De\+Bases\+Intervales\+Animaux}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les statistiques de bases en fonction de l\textquotesingle{}animal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des animaux. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+28 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{animal_8h_a91aa0cd779f2d1e5991e4bfecc4abec2}\label{animal_8h_a91aa0cd779f2d1e5991e4bfecc4abec2}} 
+\index{animal.h@{animal.h}!apparitionAnimal@{apparitionAnimal}}
+\index{apparitionAnimal@{apparitionAnimal}!animal.h@{animal.h}}
+\doxysubsubsection{\texorpdfstring{apparitionAnimal()}{apparitionAnimal()}}
+{\footnotesize\ttfamily void apparition\+Animal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position\+Troupeau,  }\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{entites,  }\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{const \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}}}]{tag }\end{DoxyParamCaption})}
+
+
+
+Génère / fait apparaitre un animal au sein d\textquotesingle{}un troupeau. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position\+Troupeau} & La position du troupeau dans lequel l\textquotesingle{}animal apparait \\
+\hline
+{\em entites} & Le pointeur sur la liste d\textquotesingle{}entité dans laquelle sera ajouté l\textquotesingle{}animal \\
+\hline
+{\em map} & La map dans laquelle l\textquotesingle{}animal apparait \\
+\hline
+{\em tag} & Le tag de l\textquotesingle{}animal qui apparait \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animal_8h_abb2e2bc0008e5c0fb3e72ce6892d25e7}\label{animal_8h_abb2e2bc0008e5c0fb3e72ce6892d25e7}} 
+\index{animal.h@{animal.h}!apparitionTroupeau@{apparitionTroupeau}}
+\index{apparitionTroupeau@{apparitionTroupeau}!animal.h@{animal.h}}
+\doxysubsubsection{\texorpdfstring{apparitionTroupeau()}{apparitionTroupeau()}}
+{\footnotesize\ttfamily void apparition\+Troupeau (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{entites,  }\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Génère / fait apparaitre un troupeau d\textquotesingle{}animaux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entites} & Pointeur sur la liste des entités dans laquelle les animaux seront stockés \\
+\hline
+{\em map} & La map dans laquelle le troupeau apparait \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animal_8h_ad6fa28e7ea0a327607ba2b692559d5b6}\label{animal_8h_ad6fa28e7ea0a327607ba2b692559d5b6}} 
+\index{animal.h@{animal.h}!creerAnimal@{creerAnimal}}
+\index{creerAnimal@{creerAnimal}!animal.h@{animal.h}}
+\doxysubsubsection{\texorpdfstring{creerAnimal()}{creerAnimal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__animal}{t\+\_\+animal}}$\ast$ creer\+Animal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position,  }\item[{const \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}}}]{tag }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un animal et le crée. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle l\textquotesingle{}animal apparait \\
+\hline
+{\em tag} & Le tag de l\textquotesingle{}animal qui apparait\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le pointeur sur l\textquotesingle{}animal, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{animal_8h_a22c77e7bda824efc3964f74df14cb1a5}\label{animal_8h_a22c77e7bda824efc3964f74df14cb1a5}} 
+\index{animal.h@{animal.h}!detruireAnimal@{detruireAnimal}}
+\index{detruireAnimal@{detruireAnimal}!animal.h@{animal.h}}
+\doxysubsubsection{\texorpdfstring{detruireAnimal()}{detruireAnimal()}}
+{\footnotesize\ttfamily void detruire\+Animal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__animal}{t\+\_\+animal}} $\ast$$\ast$}]{animal }\end{DoxyParamCaption})}
+
+
+
+Detruit un animal est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em animal} & L\textquotesingle{}adresse du pointeur de l\textquotesingle{}animal à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animal_8h_ad7cf5d1744caf19ed95b3ac5c3077597}\label{animal_8h_ad7cf5d1744caf19ed95b3ac5c3077597}} 
+\index{animal.h@{animal.h}!genererAnimal@{genererAnimal}}
+\index{genererAnimal@{genererAnimal}!animal.h@{animal.h}}
+\doxysubsubsection{\texorpdfstring{genererAnimal()}{genererAnimal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__animal}{t\+\_\+animal}}$\ast$ generer\+Animal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__animal}{t\+\_\+animal}} $\ast$}]{animal,  }\item[{const \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}}}]{tag }\end{DoxyParamCaption})}
+
+
+
+Génère les informations et statistiques d\textquotesingle{}un animal en fonction de sont tag. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em animal} & Un pointeur sur l\textquotesingle{}animal à générer \\
+\hline
+{\em tag} & Le tag de l\textquotesingle{}animal à générer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le pointeur sur l\textquotesingle{}animal donné en paramètre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{animal_8h_a45855da67ed1920aeb02da03103fbcba}\label{animal_8h_a45855da67ed1920aeb02da03103fbcba}} 
+\index{animal.h@{animal.h}!genererStatistiquesDeBaseAnimal@{genererStatistiquesDeBaseAnimal}}
+\index{genererStatistiquesDeBaseAnimal@{genererStatistiquesDeBaseAnimal}!animal.h@{animal.h}}
+\doxysubsubsection{\texorpdfstring{genererStatistiquesDeBaseAnimal()}{genererStatistiquesDeBaseAnimal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} generer\+Statistiques\+De\+Base\+Animal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}}}]{tag }\end{DoxyParamCaption})}
+
+
+
+Génère les statistiques de base d\textquotesingle{}un animal. 
+
+Elles sont déterminées de façon aléatoire dans un intervalle définit dans les informations de base d\textquotesingle{}un animal Les statistiques de base sont utilisés à chaque fois que les statistiques ont besoins d\textquotesingle{}être calculées
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tag} & Le tag l\textquotesingle{}animal\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Les statistiques de base de l\textquotesingle{}animal 
+\end{DoxyReturn}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{animal_8h_a1a670d142570728057652e6199c9e896}\label{animal_8h_a1a670d142570728057652e6199c9e896}} 
+\index{animal.h@{animal.h}!statistiquesDeBasesIntervalesAnimaux@{statistiquesDeBasesIntervalesAnimaux}}
+\index{statistiquesDeBasesIntervalesAnimaux@{statistiquesDeBasesIntervalesAnimaux}!animal.h@{animal.h}}
+\doxysubsubsection{\texorpdfstring{statistiquesDeBasesIntervalesAnimaux}{statistiquesDeBasesIntervalesAnimaux}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseStatistiquesIntervales}{t\+\_\+base\+Statistiques\+Intervales}} statistiques\+De\+Bases\+Intervales\+Animaux\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tableau regroupant les statistiques de bases en fonction de l\textquotesingle{}animal. 
+
+
+\begin{DoxyItemize}
+\item attaque
+\item defense
+\item vitesse
+\item pv
+\item courbe\+Exp 
+\end{DoxyItemize}

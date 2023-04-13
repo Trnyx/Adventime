@@ -1,0 +1,147 @@
+\hypertarget{structs__entite}{}\doxysection{Référence de la structure s\+\_\+entite}
+\label{structs__entite}\index{s\_entite@{s\_entite}}
+\doxysubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{structs__entite_ab78601dbeb7727b0d7498c0fca16a60c}{id}}
+\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{structs__entite_a179f6849ea103452350358e5805effa4}{position}}
+\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{structs__entite_a683f867e8af705f49b0a683134af011f}{direction}}
+\item 
+\mbox{\hyperlink{entite_8h_a8ff093f5cc99eca6106327f870de9a9c}{e\+\_\+orientation}} \mbox{\hyperlink{structs__entite_a51065f9e47b0f6c94fdc1edc60a02ec0}{orientation}}
+\item 
+\mbox{\hyperlink{entite_8h_a513e1b213a57b6cdb6b743c787221a2c}{e\+\_\+entite\+Type}} \mbox{\hyperlink{structs__entite_a13430389fea6e3d4b068b4d7d1be5da1}{entite\+Type}}
+\item 
+\mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}} \mbox{\hyperlink{structs__entite_aa03eac03c040afe68e11325631f17b13}{tag}}
+\item 
+SDL\+\_\+\+FRect \mbox{\hyperlink{structs__entite_ab302631c5cc5c080e449c5fb1556f898}{hitbox}}
+\item 
+\mbox{\Hypertarget{structs__entite_a2fb6ec402f8467d7d8994b15636dd049}\label{structs__entite_a2fb6ec402f8467d7d8994b15636dd049}} 
+float {\bfseries taille}
+\item 
+\mbox{\Hypertarget{structs__entite_ac01d772ac1c36e8fa47e56c75d064085}\label{structs__entite_ac01d772ac1c36e8fa47e56c75d064085}} 
+\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$ {\bfseries animation}
+\item 
+unsigned int \mbox{\hyperlink{structs__entite_abbec3424b1a04d5f191b8595e118519d}{timestamp\+Creation}}
+\item 
+unsigned int \mbox{\hyperlink{structs__entite_a99ca7d0b4845c603425bc0186d3747b3}{timestamp\+Actualisation}}
+\item 
+boolean \mbox{\hyperlink{structs__entite_ac06bad7d3e82ec9b6695a67ce6dbe124}{destruction\+Inactif}}
+\item 
+boolean \mbox{\hyperlink{structs__entite_a93a961572e8726f610834e2391e9a4ef}{destruction\+Delai}}
+\item 
+boolean \mbox{\hyperlink{structs__entite_a078de15e17e11b9a2b9ea7106a49dc42}{interargir\+Avec}}
+\item 
+\mbox{\hyperlink{structs__audioPack}{t\+\_\+audio\+Pack}} $\ast$ \mbox{\hyperlink{structs__entite_aecd0ecf74abc815d954ad5d3c8638c93}{bruitages}}
+\item 
+void($\ast$ \mbox{\hyperlink{structs__entite_a472b863a2f9a5ca5655777c5ee4c300b}{update}} )(\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$, float, \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$cible)
+\item 
+void($\ast$ \mbox{\hyperlink{structs__entite_a6e65642d120d07b164c9c41d92b03395}{detruire}} )(\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$)
+\item 
+void($\ast$ \mbox{\hyperlink{structs__entite_af0cf7dc1d05baf6dcfbf03ab3fa560d0}{interaction}} )(void $\ast$, void $\ast$)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentation des données membres}
+\mbox{\Hypertarget{structs__entite_aecd0ecf74abc815d954ad5d3c8638c93}\label{structs__entite_aecd0ecf74abc815d954ad5d3c8638c93}} 
+\index{s\_entite@{s\_entite}!bruitages@{bruitages}}
+\index{bruitages@{bruitages}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{bruitages}{bruitages}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structs__audioPack}{t\+\_\+audio\+Pack}}$\ast$ s\+\_\+entite\+::bruitages}
+
+Les bruitages de l\textquotesingle{}entité vivante \mbox{\Hypertarget{structs__entite_a93a961572e8726f610834e2391e9a4ef}\label{structs__entite_a93a961572e8726f610834e2391e9a4ef}} 
+\index{s\_entite@{s\_entite}!destructionDelai@{destructionDelai}}
+\index{destructionDelai@{destructionDelai}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{destructionDelai}{destructionDelai}}
+{\footnotesize\ttfamily boolean s\+\_\+entite\+::destruction\+Delai}
+
+Doit être détruite lorsqu\textquotesingle{}elle est inactive \mbox{\Hypertarget{structs__entite_ac06bad7d3e82ec9b6695a67ce6dbe124}\label{structs__entite_ac06bad7d3e82ec9b6695a67ce6dbe124}} 
+\index{s\_entite@{s\_entite}!destructionInactif@{destructionInactif}}
+\index{destructionInactif@{destructionInactif}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{destructionInactif}{destructionInactif}}
+{\footnotesize\ttfamily boolean s\+\_\+entite\+::destruction\+Inactif}
+
+Doit être détruite lorsqu\textquotesingle{}elle est inactive \mbox{\Hypertarget{structs__entite_a6e65642d120d07b164c9c41d92b03395}\label{structs__entite_a6e65642d120d07b164c9c41d92b03395}} 
+\index{s\_entite@{s\_entite}!detruire@{detruire}}
+\index{detruire@{detruire}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{detruire}{detruire}}
+{\footnotesize\ttfamily void($\ast$ s\+\_\+entite\+::detruire) (\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$)}
+
+Fonction de suppression de l\textquotesingle{}entité \mbox{\Hypertarget{structs__entite_a683f867e8af705f49b0a683134af011f}\label{structs__entite_a683f867e8af705f49b0a683134af011f}} 
+\index{s\_entite@{s\_entite}!direction@{direction}}
+\index{direction@{direction}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} s\+\_\+entite\+::direction}
+
+La direction (déplacement) actuelle de l\textquotesingle{}entité \mbox{\Hypertarget{structs__entite_a13430389fea6e3d4b068b4d7d1be5da1}\label{structs__entite_a13430389fea6e3d4b068b4d7d1be5da1}} 
+\index{s\_entite@{s\_entite}!entiteType@{entiteType}}
+\index{entiteType@{entiteType}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{entiteType}{entiteType}}
+{\footnotesize\ttfamily \mbox{\hyperlink{entite_8h_a513e1b213a57b6cdb6b743c787221a2c}{e\+\_\+entite\+Type}} s\+\_\+entite\+::entite\+Type}
+
+Le type de l\textquotesingle{}entité \mbox{\Hypertarget{structs__entite_ab302631c5cc5c080e449c5fb1556f898}\label{structs__entite_ab302631c5cc5c080e449c5fb1556f898}} 
+\index{s\_entite@{s\_entite}!hitbox@{hitbox}}
+\index{hitbox@{hitbox}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{hitbox}{hitbox}}
+{\footnotesize\ttfamily SDL\+\_\+\+FRect s\+\_\+entite\+::hitbox}
+
+La hitbox de l\textquotesingle{}entité \mbox{\Hypertarget{structs__entite_ab78601dbeb7727b0d7498c0fca16a60c}\label{structs__entite_ab78601dbeb7727b0d7498c0fca16a60c}} 
+\index{s\_entite@{s\_entite}!id@{id}}
+\index{id@{id}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily char$\ast$ s\+\_\+entite\+::id}
+
+L\textquotesingle{}ID de l\textquotesingle{}entité \mbox{\Hypertarget{structs__entite_af0cf7dc1d05baf6dcfbf03ab3fa560d0}\label{structs__entite_af0cf7dc1d05baf6dcfbf03ab3fa560d0}} 
+\index{s\_entite@{s\_entite}!interaction@{interaction}}
+\index{interaction@{interaction}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{interaction}{interaction}}
+{\footnotesize\ttfamily void($\ast$ s\+\_\+entite\+::interaction) (void $\ast$, void $\ast$)}
+
+Fonction d\textquotesingle{}interaction avec l\textquotesingle{}entité \mbox{\Hypertarget{structs__entite_a078de15e17e11b9a2b9ea7106a49dc42}\label{structs__entite_a078de15e17e11b9a2b9ea7106a49dc42}} 
+\index{s\_entite@{s\_entite}!interargirAvec@{interargirAvec}}
+\index{interargirAvec@{interargirAvec}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{interargirAvec}{interargirAvec}}
+{\footnotesize\ttfamily boolean s\+\_\+entite\+::interargir\+Avec}
+
+Peut être interargit \mbox{\Hypertarget{structs__entite_a51065f9e47b0f6c94fdc1edc60a02ec0}\label{structs__entite_a51065f9e47b0f6c94fdc1edc60a02ec0}} 
+\index{s\_entite@{s\_entite}!orientation@{orientation}}
+\index{orientation@{orientation}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{orientation}{orientation}}
+{\footnotesize\ttfamily \mbox{\hyperlink{entite_8h_a8ff093f5cc99eca6106327f870de9a9c}{e\+\_\+orientation}} s\+\_\+entite\+::orientation}
+
+L\textquotesingle{}orientation (regard) actuelle de l\textquotesingle{}entité \mbox{\Hypertarget{structs__entite_a179f6849ea103452350358e5805effa4}\label{structs__entite_a179f6849ea103452350358e5805effa4}} 
+\index{s\_entite@{s\_entite}!position@{position}}
+\index{position@{position}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} s\+\_\+entite\+::position}
+
+La position actuelle de l\textquotesingle{}entité \mbox{\Hypertarget{structs__entite_aa03eac03c040afe68e11325631f17b13}\label{structs__entite_aa03eac03c040afe68e11325631f17b13}} 
+\index{s\_entite@{s\_entite}!tag@{tag}}
+\index{tag@{tag}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{tag}{tag}}
+{\footnotesize\ttfamily \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}} s\+\_\+entite\+::tag}
+
+Le tag de l\textquotesingle{}entité \mbox{\Hypertarget{structs__entite_a99ca7d0b4845c603425bc0186d3747b3}\label{structs__entite_a99ca7d0b4845c603425bc0186d3747b3}} 
+\index{s\_entite@{s\_entite}!timestampActualisation@{timestampActualisation}}
+\index{timestampActualisation@{timestampActualisation}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{timestampActualisation}{timestampActualisation}}
+{\footnotesize\ttfamily unsigned int s\+\_\+entite\+::timestamp\+Actualisation}
+
+Le dernier timestamp à laquelle l\textquotesingle{}entité à été actualisé \mbox{\Hypertarget{structs__entite_abbec3424b1a04d5f191b8595e118519d}\label{structs__entite_abbec3424b1a04d5f191b8595e118519d}} 
+\index{s\_entite@{s\_entite}!timestampCreation@{timestampCreation}}
+\index{timestampCreation@{timestampCreation}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{timestampCreation}{timestampCreation}}
+{\footnotesize\ttfamily unsigned int s\+\_\+entite\+::timestamp\+Creation}
+
+Le timestamp à laquelle l\textquotesingle{}entité à été créé \mbox{\Hypertarget{structs__entite_a472b863a2f9a5ca5655777c5ee4c300b}\label{structs__entite_a472b863a2f9a5ca5655777c5ee4c300b}} 
+\index{s\_entite@{s\_entite}!update@{update}}
+\index{update@{update}!s\_entite@{s\_entite}}
+\doxysubsubsection{\texorpdfstring{update}{update}}
+{\footnotesize\ttfamily void($\ast$ s\+\_\+entite\+::update) (\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$, float, \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$cible)}
+
+Fonction d\textquotesingle{}actualisation de l\textquotesingle{}entité 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{entite_8h}{entite.\+h}}\end{DoxyCompactItemize}

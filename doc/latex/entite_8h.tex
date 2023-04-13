@@ -1,0 +1,323 @@
+\hypertarget{entite_8h}{}\doxysection{Référence du fichier include/entite.h}
+\label{entite_8h}\index{include/entite.h@{include/entite.h}}
+
+
+Module de manipulation des entités.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}statistiques.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}animation.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}liste.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__entite}{s\+\_\+entite}}
+\item 
+struct \mbox{\hyperlink{structs__entiteVivante}{s\+\_\+entite\+Vivante}}
+\item 
+struct \mbox{\hyperlink{structs__compteur}{s\+\_\+compteur}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{entite_8h_a5a3daf0bf964cf6be35cf706dfc7e04c}\label{entite_8h_a5a3daf0bf964cf6be35cf706dfc7e04c}} 
+typedef struct \mbox{\hyperlink{structs__moteur}{s\+\_\+moteur}} {\bfseries t\+\_\+moteur}
+\item 
+\mbox{\Hypertarget{entite_8h_a89e484de01b8856a5c83cc2544b7b96e}\label{entite_8h_a89e484de01b8856a5c83cc2544b7b96e}} 
+typedef struct \mbox{\hyperlink{structs__audioPack}{s\+\_\+audio\+Pack}} {\bfseries t\+\_\+audio\+Pack}
+\item 
+\mbox{\Hypertarget{entite_8h_a2cbf188682c05adae88dc39bdd7ef995}\label{entite_8h_a2cbf188682c05adae88dc39bdd7ef995}} 
+typedef struct \mbox{\hyperlink{structs__entite}{s\+\_\+entite}} {\bfseries t\+\_\+entite}
+\item 
+\mbox{\Hypertarget{entite_8h_a8b41ff34aad389618083a206f28c41d2}\label{entite_8h_a8b41ff34aad389618083a206f28c41d2}} 
+typedef struct \mbox{\hyperlink{structs__entiteVivante}{s\+\_\+entite\+Vivante}} {\bfseries t\+\_\+entite\+Vivante}
+\item 
+\mbox{\Hypertarget{entite_8h_ae7e3951f50dda694f54db3c89d4ec8e1}\label{entite_8h_ae7e3951f50dda694f54db3c89d4ec8e1}} 
+typedef struct \mbox{\hyperlink{structs__compteur}{s\+\_\+compteur}} {\bfseries t\+\_\+compteur}
+\item 
+\mbox{\Hypertarget{entite_8h_aa6370cd7b08553210cd2ca45f421b122}\label{entite_8h_aa6370cd7b08553210cd2ca45f421b122}} 
+typedef struct \mbox{\hyperlink{structs__map}{s\+\_\+map}} {\bfseries t\+\_\+map}
+\end{DoxyCompactItemize}
+\doxysubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{entite_8h_a513e1b213a57b6cdb6b743c787221a2c}\label{entite_8h_a513e1b213a57b6cdb6b743c787221a2c}} 
+enum \mbox{\hyperlink{entite_8h_a513e1b213a57b6cdb6b743c787221a2c}{e\+\_\+entite\+Type}} \{ \newline
+{\bfseries ENTITE\+\_\+\+RIEN}
+, {\bfseries ENTITE\+\_\+\+ITEM}
+, {\bfseries ENTITE\+\_\+\+JOUEUR}
+, {\bfseries ENTITE\+\_\+\+MOB}
+, \newline
+{\bfseries ENTITE\+\_\+\+COFFRE}
+, {\bfseries ENTITE\+\_\+\+COFFRE\+\_\+\+INVENTAIRE}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumérateur regroupant les différents types d\textquotesingle{}entité \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}} \{ \newline
+{\bfseries TAG\+\_\+\+AUCUN}
+, {\bfseries TAG\+\_\+\+ANIMAL\+\_\+\+VACHE}
+, {\bfseries TAG\+\_\+\+ANIMAL\+\_\+\+COCHON}
+, {\bfseries TAG\+\_\+\+MONSTRE\+\_\+\+BASIC}
+, \newline
+{\bfseries TAG\+\_\+\+BOSS}
+, {\bfseries TAG\+\_\+\+COFFRE}
+, {\bfseries NB\+\_\+\+TAGS}
+, {\bfseries TAG\+\_\+\+JOUEUR}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumérateur regroupant les différents tags des entités. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{entite_8h_a8ff093f5cc99eca6106327f870de9a9c}{e\+\_\+orientation}} \{ {\bfseries SUD}
+, {\bfseries OUEST}
+, {\bfseries EST}
+, {\bfseries NORD}
+ \}
+\begin{DoxyCompactList}\small\item\em Les orientations. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{entite_8h_a743573c091dac77c46a2c79e419f21ed}{e\+\_\+operation}} \{ \newline
+\mbox{\hyperlink{entite_8h_a743573c091dac77c46a2c79e419f21eda12ae690d94bc769947a5ba2bcb67251f}{ATTENTE}}
+, \mbox{\hyperlink{entite_8h_a743573c091dac77c46a2c79e419f21eda1a97af552e930cdffd00e2b395cee802}{SE\+\_\+\+DEPLACE\+\_\+\+VERS}}
+, \mbox{\hyperlink{entite_8h_a743573c091dac77c46a2c79e419f21edad09dca134ef8b76d72d6dd44742094ba}{SE\+\_\+\+DEPLACE\+\_\+\+AUTOUR}}
+, \mbox{\hyperlink{entite_8h_a743573c091dac77c46a2c79e419f21edac83cdb0ebb26349c580c6f91bd2e4061}{S\+\_\+\+ELOIGNE\+\_\+\+DE}}
+, \newline
+\mbox{\hyperlink{entite_8h_a743573c091dac77c46a2c79e419f21eda70c3712cf958573a15ce5f5cd738eb55}{ATTAQUE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumérateur regroupant les différentes opérations des mobs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{entite_8h_a62f85274f236742d3796bf21e09e0444}{peut\+Apparaitre}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Vérifie si l\textquotesingle{}entité peut apparaître. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$ \mbox{\hyperlink{entite_8h_a3eee4a2d5deb874692165ec57df03924}{get\+Entites\+Alentour}} (\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$centre, const \mbox{\hyperlink{entite_8h_a513e1b213a57b6cdb6b743c787221a2c}{e\+\_\+entite\+Type}} type, const float range)
+\begin{DoxyCompactList}\small\item\em Obtient toutes les entités souhaités dans un rayon aux alentours d\textquotesingle{}une entité \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{entite_8h_a48007afb30004de528abef8750169c4d}\label{entite_8h_a48007afb30004de528abef8750169c4d}} 
+void {\bfseries regeneration\+Entite} (\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$entite)
+\item 
+\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$ \mbox{\hyperlink{entite_8h_af08d9d8a38d0ea9a3bb697f277484f2f}{creer\+Entite}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour une entité et la créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a29f11ad700be8e6e8dc23d460863f78a}{detruire\+Entite}} (\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$entite)
+\begin{DoxyCompactList}\small\item\em Detruit une entité est libère la mémoire allouée pour cette dernière. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{entite_8h_ac9cbb2f457f36fa1151c352e788dfe1f}{calcul\+Distance\+Entre\+Entites}} (const \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$entite\+Source, const \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$entite\+Cible)
+\begin{DoxyCompactList}\small\item\em Calcul la distance entre deux entités. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{entite_8h_a1af47f753b2e56f5ea1e83a988064f38}{deplacer\+Entite}} (\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$entite, const float \mbox{\hyperlink{attributs__statistiques_8h_aef55e1775d611bfea0196692da1a0bc5}{vitesse}})
+\begin{DoxyCompactList}\small\item\em Déplace une entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_ac75f8e0051d7275ae66d027bedbac4ab}{orienter\+Entite}} (const float angle, \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$entite)
+\begin{DoxyCompactList}\small\item\em Oriente l\textquotesingle{}entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{entite_8h_a8a2a5b68213cc70260146cb7ffc286a1}{dessiner\+Entite}} (\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$entite)
+\begin{DoxyCompactList}\small\item\em Dessine l\textquotesingle{}entité sur l\textquotesingle{}écran. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des entités. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\mbox{\Hypertarget{entite_8h_a0040801926229213be8bb8a3fe378b15}\label{entite_8h_a0040801926229213be8bb8a3fe378b15}} 
+\index{entite.h@{entite.h}!e\_entiteTag@{e\_entiteTag}}
+\index{e\_entiteTag@{e\_entiteTag}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{e\_entiteTag}{e\_entiteTag}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}}}
+
+
+
+Enumérateur regroupant les différents tags des entités. 
+
+Un compteur du nombre de tags est également initialisé à la fin de l\textquotesingle{}énumérateur \mbox{\Hypertarget{entite_8h_a743573c091dac77c46a2c79e419f21ed}\label{entite_8h_a743573c091dac77c46a2c79e419f21ed}} 
+\index{entite.h@{entite.h}!e\_operation@{e\_operation}}
+\index{e\_operation@{e\_operation}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{e\_operation}{e\_operation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{entite_8h_a743573c091dac77c46a2c79e419f21ed}{e\+\_\+operation}}}
+
+
+
+Enumérateur regroupant les différentes opérations des mobs. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTENTE@{ATTENTE}!entite.h@{entite.h}}\index{entite.h@{entite.h}!ATTENTE@{ATTENTE}}}\mbox{\Hypertarget{entite_8h_a743573c091dac77c46a2c79e419f21eda12ae690d94bc769947a5ba2bcb67251f}\label{entite_8h_a743573c091dac77c46a2c79e419f21eda12ae690d94bc769947a5ba2bcb67251f}} 
+ATTENTE&Lorsque le mob est en attente, aucune action particulière ne sera faite \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SE\_DEPLACE\_VERS@{SE\_DEPLACE\_VERS}!entite.h@{entite.h}}\index{entite.h@{entite.h}!SE\_DEPLACE\_VERS@{SE\_DEPLACE\_VERS}}}\mbox{\Hypertarget{entite_8h_a743573c091dac77c46a2c79e419f21eda1a97af552e930cdffd00e2b395cee802}\label{entite_8h_a743573c091dac77c46a2c79e419f21eda1a97af552e930cdffd00e2b395cee802}} 
+SE\+\_\+\+DEPLACE\+\_\+\+VERS&Indique que le mob se déplace vers sa cible \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SE\_DEPLACE\_AUTOUR@{SE\_DEPLACE\_AUTOUR}!entite.h@{entite.h}}\index{entite.h@{entite.h}!SE\_DEPLACE\_AUTOUR@{SE\_DEPLACE\_AUTOUR}}}\mbox{\Hypertarget{entite_8h_a743573c091dac77c46a2c79e419f21edad09dca134ef8b76d72d6dd44742094ba}\label{entite_8h_a743573c091dac77c46a2c79e419f21edad09dca134ef8b76d72d6dd44742094ba}} 
+SE\+\_\+\+DEPLACE\+\_\+\+AUTOUR&Indique que le mob se déplace autour de sa cible \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{S\_ELOIGNE\_DE@{S\_ELOIGNE\_DE}!entite.h@{entite.h}}\index{entite.h@{entite.h}!S\_ELOIGNE\_DE@{S\_ELOIGNE\_DE}}}\mbox{\Hypertarget{entite_8h_a743573c091dac77c46a2c79e419f21edac83cdb0ebb26349c580c6f91bd2e4061}\label{entite_8h_a743573c091dac77c46a2c79e419f21edac83cdb0ebb26349c580c6f91bd2e4061}} 
+S\+\_\+\+ELOIGNE\+\_\+\+DE&Indique que le mob s\textquotesingle{}éloigne de sa cible \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ATTAQUE@{ATTAQUE}!entite.h@{entite.h}}\index{entite.h@{entite.h}!ATTAQUE@{ATTAQUE}}}\mbox{\Hypertarget{entite_8h_a743573c091dac77c46a2c79e419f21eda70c3712cf958573a15ce5f5cd738eb55}\label{entite_8h_a743573c091dac77c46a2c79e419f21eda70c3712cf958573a15ce5f5cd738eb55}} 
+ATTAQUE&Indique que le mob attaque sa cible \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{entite_8h_a8ff093f5cc99eca6106327f870de9a9c}\label{entite_8h_a8ff093f5cc99eca6106327f870de9a9c}} 
+\index{entite.h@{entite.h}!e\_orientation@{e\_orientation}}
+\index{e\_orientation@{e\_orientation}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{e\_orientation}{e\_orientation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{entite_8h_a8ff093f5cc99eca6106327f870de9a9c}{e\+\_\+orientation}}}
+
+
+
+Les orientations. 
+
+Pour simplifier, nous utilisons les points cardinaux 
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{entite_8h_ac9cbb2f457f36fa1151c352e788dfe1f}\label{entite_8h_ac9cbb2f457f36fa1151c352e788dfe1f}} 
+\index{entite.h@{entite.h}!calculDistanceEntreEntites@{calculDistanceEntreEntites}}
+\index{calculDistanceEntreEntites@{calculDistanceEntreEntites}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{calculDistanceEntreEntites()}{calculDistanceEntreEntites()}}
+{\footnotesize\ttfamily float calcul\+Distance\+Entre\+Entites (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{entite\+Source,  }\item[{const \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{entite\+Cible }\end{DoxyParamCaption})}
+
+
+
+Calcul la distance entre deux entités. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite\+Source} & L\textquotesingle{}entité source \\
+\hline
+{\em entite\+Cible} & L\textquotesingle{}entité cible\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La distance entre les deux entités 
+\end{DoxyReturn}
+\mbox{\Hypertarget{entite_8h_af08d9d8a38d0ea9a3bb697f277484f2f}\label{entite_8h_af08d9d8a38d0ea9a3bb697f277484f2f}} 
+\index{entite.h@{entite.h}!creerEntite@{creerEntite}}
+\index{creerEntite@{creerEntite}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{creerEntite()}{creerEntite()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__entite}{t\+\_\+entite}}$\ast$ creer\+Entite (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour une entité et la créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle l\textquotesingle{}entité doit être créée\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur l\textquotesingle{}entité créée, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{entite_8h_a1af47f753b2e56f5ea1e83a988064f38}\label{entite_8h_a1af47f753b2e56f5ea1e83a988064f38}} 
+\index{entite.h@{entite.h}!deplacerEntite@{deplacerEntite}}
+\index{deplacerEntite@{deplacerEntite}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{deplacerEntite()}{deplacerEntite()}}
+{\footnotesize\ttfamily boolean deplacer\+Entite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{entite,  }\item[{const float}]{vitesse }\end{DoxyParamCaption})}
+
+
+
+Déplace une entité 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & Un pointeur sur l\textquotesingle{}entité à déplacer \\
+\hline
+{\em vitesse} & La vitesse à laquelle l\textquotesingle{}entité doit se déplacer\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si l\textquotesingle{}entié à pu se déplacer, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{entite_8h_a8a2a5b68213cc70260146cb7ffc286a1}\label{entite_8h_a8a2a5b68213cc70260146cb7ffc286a1}} 
+\index{entite.h@{entite.h}!dessinerEntite@{dessinerEntite}}
+\index{dessinerEntite@{dessinerEntite}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{dessinerEntite()}{dessinerEntite()}}
+{\footnotesize\ttfamily void dessiner\+Entite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+Dessine l\textquotesingle{}entité sur l\textquotesingle{}écran. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & Pointeur sur l\textquotesingle{}entite à afficher \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a29f11ad700be8e6e8dc23d460863f78a}\label{entite_8h_a29f11ad700be8e6e8dc23d460863f78a}} 
+\index{entite.h@{entite.h}!detruireEntite@{detruireEntite}}
+\index{detruireEntite@{detruireEntite}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{detruireEntite()}{detruireEntite()}}
+{\footnotesize\ttfamily void detruire\+Entite (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+Detruit une entité est libère la mémoire allouée pour cette dernière. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & L\textquotesingle{}adresse du pointeur de l\textquotesingle{}entité à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a3eee4a2d5deb874692165ec57df03924}\label{entite_8h_a3eee4a2d5deb874692165ec57df03924}} 
+\index{entite.h@{entite.h}!getEntitesAlentour@{getEntitesAlentour}}
+\index{getEntitesAlentour@{getEntitesAlentour}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{getEntitesAlentour()}{getEntitesAlentour()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__liste}{t\+\_\+liste}}$\ast$ get\+Entites\+Alentour (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{centre,  }\item[{const \mbox{\hyperlink{entite_8h_a513e1b213a57b6cdb6b743c787221a2c}{e\+\_\+entite\+Type}}}]{type,  }\item[{const float}]{range }\end{DoxyParamCaption})}
+
+
+
+Obtient toutes les entités souhaités dans un rayon aux alentours d\textquotesingle{}une entité 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em centre} & L\textquotesingle{}entité centrale \\
+\hline
+{\em type} & Le type de l\textquotesingle{}entité à regarder \\
+\hline
+{\em range} & Le rayon dans lequel les entités seront \char`\"{}détecté\char`\"{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Une liste contenant toutes les entités detectées aux alentours de l\textquotesingle{}entité centrale 
+\end{DoxyReturn}
+\mbox{\Hypertarget{entite_8h_ac75f8e0051d7275ae66d027bedbac4ab}\label{entite_8h_ac75f8e0051d7275ae66d027bedbac4ab}} 
+\index{entite.h@{entite.h}!orienterEntite@{orienterEntite}}
+\index{orienterEntite@{orienterEntite}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{orienterEntite()}{orienterEntite()}}
+{\footnotesize\ttfamily void orienter\+Entite (\begin{DoxyParamCaption}\item[{const float}]{angle,  }\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+Oriente l\textquotesingle{}entité 
+
+Il y a quatre orientations \+: NORD, EST, OUEST et SUD
+
+
+\begin{DoxyParams}{Paramètres}
+{\em angle} & L\textquotesingle{}angle dans lequel l\textquotesingle{}entité regarde \mbox{[}0; 360\mbox{[} \\
+\hline
+{\em entite} & Pointeur sur l\textquotesingle{}entité à orienter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{entite_8h_a62f85274f236742d3796bf21e09e0444}\label{entite_8h_a62f85274f236742d3796bf21e09e0444}} 
+\index{entite.h@{entite.h}!peutApparaitre@{peutApparaitre}}
+\index{peutApparaitre@{peutApparaitre}!entite.h@{entite.h}}
+\doxysubsubsection{\texorpdfstring{peutApparaitre()}{peutApparaitre()}}
+{\footnotesize\ttfamily boolean peut\+Apparaitre (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position,  }\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Vérifie si l\textquotesingle{}entité peut apparaître. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle l\textquotesingle{}entité doit apparaître \\
+\hline
+{\em map} & La map dans laquelle l\textquotesingle{}entité apparait\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si l\textquotesingle{}entité peut apparaitre, FAUX sinon 
+\end{DoxyReturn}

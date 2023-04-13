@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier include/camera.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Définitions de type</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier camera.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Module de manipulation de la caméra.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="utilitaire_8h_source.html">utilitaire.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="textures_8h_source.html">textures.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="map_8h_source.html">map.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="temps_8h_source.html">temps.h</a>&quot;</code><br />
+</div>
+<p><a href="camera_8h_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structs__camera.html">s_camera</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a196b50a8e9a53bc3a1138eca5f10ba3b"><td class="memItemLeft" align="right" valign="top"><a id="a196b50a8e9a53bc3a1138eca5f10ba3b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TAILLE_CAMERA_LARGEUR</b>&#160;&#160;&#160;27</td></tr>
+<tr class="separator:a196b50a8e9a53bc3a1138eca5f10ba3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc1b2a77f57c92e3075dab73e51b731f"><td class="memItemLeft" align="right" valign="top"><a id="adc1b2a77f57c92e3075dab73e51b731f"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TAILLE_CAMERA_HAUTEUR</b>&#160;&#160;&#160;17</td></tr>
+<tr class="separator:adc1b2a77f57c92e3075dab73e51b731f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d60721c9e9eb2867b8b16cdb878a042"><td class="memItemLeft" align="right" valign="top"><a id="a5d60721c9e9eb2867b8b16cdb878a042"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TAILLE_CAMERA_DEMI_LARGEUR</b>&#160;&#160;&#160;TAILLE_CAMERA_LARGEUR / 2</td></tr>
+<tr class="separator:a5d60721c9e9eb2867b8b16cdb878a042"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b8ffb994ff396be2d9b850f04d566f9"><td class="memItemLeft" align="right" valign="top"><a id="a5b8ffb994ff396be2d9b850f04d566f9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TAILLE_CAMERA_DEMI_HAUTEUR</b>&#160;&#160;&#160;TAILLE_CAMERA_HAUTEUR / 2</td></tr>
+<tr class="separator:a5b8ffb994ff396be2d9b850f04d566f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Définitions de type</h2></td></tr>
+<tr class="memitem:adad03c73139d662c0f9a3e58dd42d39a"><td class="memItemLeft" align="right" valign="top"><a id="adad03c73139d662c0f9a3e58dd42d39a"></a>
+typedef struct <a class="el" href="structs__camera.html">s_camera</a>&#160;</td><td class="memItemRight" valign="bottom"><b>t_camera</b></td></tr>
+<tr class="separator:adad03c73139d662c0f9a3e58dd42d39a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aead1dcacd0c65a584272fd5434a676b9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__camera.html">t_camera</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#aead1dcacd0c65a584272fd5434a676b9">creerCamera</a> (const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> position)</td></tr>
+<tr class="memdesc:aead1dcacd0c65a584272fd5434a676b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue l'espace nécessaire pour une caméra et la créer.  <a href="camera_8h.html#aead1dcacd0c65a584272fd5434a676b9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aead1dcacd0c65a584272fd5434a676b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a062833823822b332767bf06838a65bea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a062833823822b332767bf06838a65bea">detruireCamera</a> (<a class="el" href="structt__camera.html">t_camera</a> **camera)</td></tr>
+<tr class="memdesc:a062833823822b332767bf06838a65bea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit une camera est libère la mémoire allouée pour cette dernière.  <a href="camera_8h.html#a062833823822b332767bf06838a65bea">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a062833823822b332767bf06838a65bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56f951de203e93866ead0f3dd2eed542"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a56f951de203e93866ead0f3dd2eed542">updateCamera</a> (const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> position)</td></tr>
+<tr class="memdesc:a56f951de203e93866ead0f3dd2eed542"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualise toutes les informations de la caméra.  <a href="camera_8h.html#a56f951de203e93866ead0f3dd2eed542">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a56f951de203e93866ead0f3dd2eed542"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe2be9ab3dd5411ddf5939fdbda1c7e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#afe2be9ab3dd5411ddf5939fdbda1c7e4">dessinerCalqueAmbiance</a> (<a class="el" href="structt__temps.html">t_temps</a> *temps)</td></tr>
+<tr class="memdesc:afe2be9ab3dd5411ddf5939fdbda1c7e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dessine le calque dit ambiance.  <a href="camera_8h.html#afe2be9ab3dd5411ddf5939fdbda1c7e4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:afe2be9ab3dd5411ddf5939fdbda1c7e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a174510fcb83d4659751f25414b920908"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="camera_8h.html#a174510fcb83d4659751f25414b920908">positionRelativeEnPositionSurEcran</a> (const float coordonnee, const float offset, const float origine, const float tailleRendu)</td></tr>
+<tr class="memdesc:a174510fcb83d4659751f25414b920908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convertie la position relative en position pixel par rapport à l'écran.  <a href="camera_8h.html#a174510fcb83d4659751f25414b920908">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a174510fcb83d4659751f25414b920908"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Module de manipulation de la caméra. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>5 février </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aead1dcacd0c65a584272fd5434a676b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aead1dcacd0c65a584272fd5434a676b9">&#9670;&nbsp;</a></span>creerCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__camera.html">t_camera</a>* creerCamera </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alloue l'espace nécessaire pour une caméra et la créer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>La position à laquelle la caméra doit être créée</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur la caméra créée, NULL si echec </dd></dl>
+
+</div>
+</div>
+<a id="afe2be9ab3dd5411ddf5939fdbda1c7e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe2be9ab3dd5411ddf5939fdbda1c7e4">&#9670;&nbsp;</a></span>dessinerCalqueAmbiance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dessinerCalqueAmbiance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__temps.html">t_temps</a> *&#160;</td>
+          <td class="paramname"><em>temps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dessine le calque dit ambiance. </p>
+<p>Le calque d'ambiance permet d'indiquer au joueur la période de la journée dans laquelle il se trouve</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">temps</td><td>Un pointeur sur le temps en jeu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a062833823822b332767bf06838a65bea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a062833823822b332767bf06838a65bea">&#9670;&nbsp;</a></span>detruireCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireCamera </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__camera.html">t_camera</a> **&#160;</td>
+          <td class="paramname"><em>camera</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit une camera est libère la mémoire allouée pour cette dernière. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">camera</td><td>L'adresse du pointeur de la camera à détruire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a174510fcb83d4659751f25414b920908"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a174510fcb83d4659751f25414b920908">&#9670;&nbsp;</a></span>positionRelativeEnPositionSurEcran()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int positionRelativeEnPositionSurEcran </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>coordonnee</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>origine</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>tailleRendu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convertie la position relative en position pixel par rapport à l'écran. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coordonnee</td><td>La cooronnée originale en jeu </td></tr>
+    <tr><td class="paramname">offset</td><td>Le décalage de bloc [0; 1[ </td></tr>
+    <tr><td class="paramname">origine</td><td>L'origine à laquelle sera rapporté les coordonnée relative en jeu </td></tr>
+    <tr><td class="paramname">tailleRendu</td><td>La taille (en pixel) du rendu</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La position relative en jeu converti en pixel sur écran </dd></dl>
+
+</div>
+</div>
+<a id="a56f951de203e93866ead0f3dd2eed542"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56f951de203e93866ead0f3dd2eed542">&#9670;&nbsp;</a></span>updateCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateCamera </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualise toutes les informations de la caméra. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>La position à laquelle la caméra doit être placé </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

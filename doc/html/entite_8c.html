@@ -1,0 +1,502 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier src/entite.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier entite.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Module de gestion des entités.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="physique_8h_source.html">../include/physique.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="audio_8h_source.html">../include/audio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="moteur_8h_source.html">../include/moteur.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monde_8h_source.html">../include/monde.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="entite_8h_source.html">../include/entite.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utilitaire_8h_source.html">../include/utilitaire.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a616a91a0b5dc499c531729af6b5d1c9d"><td class="memItemLeft" align="right" valign="top"><a id="a616a91a0b5dc499c531729af6b5d1c9d"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>TAILLE_SET</b>&#160;&#160;&#160;(8 * TAILLE_TILE)</td></tr>
+<tr class="separator:a616a91a0b5dc499c531729af6b5d1c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a62f85274f236742d3796bf21e09e0444"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a62f85274f236742d3796bf21e09e0444">peutApparaitre</a> (const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> position, <a class="el" href="structt__map.html">t_map</a> *map)</td></tr>
+<tr class="memdesc:a62f85274f236742d3796bf21e09e0444"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si l'entité peut apparaître.  <a href="entite_8c.html#a62f85274f236742d3796bf21e09e0444">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a62f85274f236742d3796bf21e09e0444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eee4a2d5deb874692165ec57df03924"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__liste.html">t_liste</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a3eee4a2d5deb874692165ec57df03924">getEntitesAlentour</a> (<a class="el" href="structt__entite.html">t_entite</a> *centre, const <a class="el" href="entite_8h.html#a513e1b213a57b6cdb6b743c787221a2c">e_entiteType</a> type, const float range)</td></tr>
+<tr class="memdesc:a3eee4a2d5deb874692165ec57df03924"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtient toutes les entités souhaités dans un rayon aux alentours d'une entité  <a href="entite_8c.html#a3eee4a2d5deb874692165ec57df03924">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3eee4a2d5deb874692165ec57df03924"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48007afb30004de528abef8750169c4d"><td class="memItemLeft" align="right" valign="top"><a id="a48007afb30004de528abef8750169c4d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>regenerationEntite</b> (<a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *entite)</td></tr>
+<tr class="separator:a48007afb30004de528abef8750169c4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9cbb2f457f36fa1151c352e788dfe1f"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ac9cbb2f457f36fa1151c352e788dfe1f">calculDistanceEntreEntites</a> (const <a class="el" href="structt__entite.html">t_entite</a> *entiteSource, const <a class="el" href="structt__entite.html">t_entite</a> *entiteCible)</td></tr>
+<tr class="memdesc:ac9cbb2f457f36fa1151c352e788dfe1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcul la distance entre deux entités.  <a href="entite_8c.html#ac9cbb2f457f36fa1151c352e788dfe1f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac9cbb2f457f36fa1151c352e788dfe1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10278e2c646f28d04829aafa492a154b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a10278e2c646f28d04829aafa492a154b">pousseEntite</a> (<a class="el" href="structt__entite.html">t_entite</a> *source, <a class="el" href="structt__entite.html">t_entite</a> *cible)</td></tr>
+<tr class="memdesc:a10278e2c646f28d04829aafa492a154b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pousse l'entité cible.  <a href="entite_8c.html#a10278e2c646f28d04829aafa492a154b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a10278e2c646f28d04829aafa492a154b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f7b519f34b7c3abdb2e01720f22978e"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a4f7b519f34b7c3abdb2e01720f22978e">peutDeplacerEntite</a> (<a class="el" href="structt__map.html">t_map</a> *map, <a class="el" href="structt__entite.html">t_entite</a> *entite, const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> positionSuivante)</td></tr>
+<tr class="memdesc:a4f7b519f34b7c3abdb2e01720f22978e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie si l'entité peut se déplacer à la position suivante donnée.  <a href="entite_8c.html#a4f7b519f34b7c3abdb2e01720f22978e">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4f7b519f34b7c3abdb2e01720f22978e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1af47f753b2e56f5ea1e83a988064f38"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a1af47f753b2e56f5ea1e83a988064f38">deplacerEntite</a> (<a class="el" href="structt__entite.html">t_entite</a> *entite, const float <a class="el" href="attributs__statistiques_8h.html#aef55e1775d611bfea0196692da1a0bc5">vitesse</a>)</td></tr>
+<tr class="memdesc:a1af47f753b2e56f5ea1e83a988064f38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Déplace une entité  <a href="entite_8c.html#a1af47f753b2e56f5ea1e83a988064f38">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1af47f753b2e56f5ea1e83a988064f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac75f8e0051d7275ae66d027bedbac4ab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#ac75f8e0051d7275ae66d027bedbac4ab">orienterEntite</a> (const float angle, <a class="el" href="structt__entite.html">t_entite</a> *entite)</td></tr>
+<tr class="memdesc:ac75f8e0051d7275ae66d027bedbac4ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oriente l'entité  <a href="entite_8c.html#ac75f8e0051d7275ae66d027bedbac4ab">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac75f8e0051d7275ae66d027bedbac4ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a2a5b68213cc70260146cb7ffc286a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a8a2a5b68213cc70260146cb7ffc286a1">dessinerEntite</a> (<a class="el" href="structt__entite.html">t_entite</a> *entite)</td></tr>
+<tr class="memdesc:a8a2a5b68213cc70260146cb7ffc286a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dessine l'entité sur l'écran.  <a href="entite_8c.html#a8a2a5b68213cc70260146cb7ffc286a1">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8a2a5b68213cc70260146cb7ffc286a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29f11ad700be8e6e8dc23d460863f78a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#a29f11ad700be8e6e8dc23d460863f78a">detruireEntite</a> (<a class="el" href="structt__entite.html">t_entite</a> **entite)</td></tr>
+<tr class="memdesc:a29f11ad700be8e6e8dc23d460863f78a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit une entité est libère la mémoire allouée pour cette dernière.  <a href="entite_8c.html#a29f11ad700be8e6e8dc23d460863f78a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a29f11ad700be8e6e8dc23d460863f78a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af08d9d8a38d0ea9a3bb697f277484f2f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__entite.html">t_entite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="entite_8c.html#af08d9d8a38d0ea9a3bb697f277484f2f">creerEntite</a> (const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> position)</td></tr>
+<tr class="memdesc:af08d9d8a38d0ea9a3bb697f277484f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue l'espace nécessaire pour une entité et la créer.  <a href="entite_8c.html#af08d9d8a38d0ea9a3bb697f277484f2f">Plus de détails...</a><br /></td></tr>
+<tr class="separator:af08d9d8a38d0ea9a3bb697f277484f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Module de gestion des entités. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>3 février </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ac9cbb2f457f36fa1151c352e788dfe1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9cbb2f457f36fa1151c352e788dfe1f">&#9670;&nbsp;</a></span>calculDistanceEntreEntites()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float calculDistanceEntreEntites </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>entiteSource</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>entiteCible</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcul la distance entre deux entités. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entiteSource</td><td>L'entité source </td></tr>
+    <tr><td class="paramname">entiteCible</td><td>L'entité cible</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La distance entre les deux entités </dd></dl>
+
+</div>
+</div>
+<a id="af08d9d8a38d0ea9a3bb697f277484f2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af08d9d8a38d0ea9a3bb697f277484f2f">&#9670;&nbsp;</a></span>creerEntite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__entite.html">t_entite</a>* creerEntite </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>position</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alloue l'espace nécessaire pour une entité et la créer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>La position à laquelle l'entité doit être créée</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur l'entité créée, NULL si echec </dd></dl>
+
+</div>
+</div>
+<a id="a1af47f753b2e56f5ea1e83a988064f38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1af47f753b2e56f5ea1e83a988064f38">&#9670;&nbsp;</a></span>deplacerEntite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean deplacerEntite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>entite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>vitesse</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Déplace une entité </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>Un pointeur sur l'entité à déplacer </td></tr>
+    <tr><td class="paramname">vitesse</td><td>La vitesse à laquelle l'entité doit se déplacer</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>VRAI si l'entié à pu se déplacer, FAUX sinon </dd></dl>
+
+</div>
+</div>
+<a id="a8a2a5b68213cc70260146cb7ffc286a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a2a5b68213cc70260146cb7ffc286a1">&#9670;&nbsp;</a></span>dessinerEntite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dessinerEntite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>entite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dessine l'entité sur l'écran. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>Pointeur sur l'entite à afficher </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a29f11ad700be8e6e8dc23d460863f78a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29f11ad700be8e6e8dc23d460863f78a">&#9670;&nbsp;</a></span>detruireEntite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireEntite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__entite.html">t_entite</a> **&#160;</td>
+          <td class="paramname"><em>entite</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit une entité est libère la mémoire allouée pour cette dernière. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entite</td><td>L'adresse du pointeur de l'entité à détruire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a3eee4a2d5deb874692165ec57df03924"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eee4a2d5deb874692165ec57df03924">&#9670;&nbsp;</a></span>getEntitesAlentour()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__liste.html">t_liste</a>* getEntitesAlentour </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>centre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="entite_8h.html#a513e1b213a57b6cdb6b743c787221a2c">e_entiteType</a>&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>range</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtient toutes les entités souhaités dans un rayon aux alentours d'une entité </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">centre</td><td>L'entité centrale </td></tr>
+    <tr><td class="paramname">type</td><td>Le type de l'entité à regarder </td></tr>
+    <tr><td class="paramname">range</td><td>Le rayon dans lequel les entités seront "détecté"</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Une liste contenant toutes les entités detectées aux alentours de l'entité centrale </dd></dl>
+
+</div>
+</div>
+<a id="ac75f8e0051d7275ae66d027bedbac4ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac75f8e0051d7275ae66d027bedbac4ab">&#9670;&nbsp;</a></span>orienterEntite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void orienterEntite </td>
+          <td>(</td>
+          <td class="paramtype">const float&#160;</td>
+          <td class="paramname"><em>angle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>entite</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Oriente l'entité </p>
+<p>Il y a quatre orientations : NORD, EST, OUEST et SUD</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">angle</td><td>L'angle dans lequel l'entité regarde [0; 360[ </td></tr>
+    <tr><td class="paramname">entite</td><td>Pointeur sur l'entité à orienter </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a62f85274f236742d3796bf21e09e0444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62f85274f236742d3796bf21e09e0444">&#9670;&nbsp;</a></span>peutApparaitre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean peutApparaitre </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si l'entité peut apparaître. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>La position à laquelle l'entité doit apparaître </td></tr>
+    <tr><td class="paramname">map</td><td>La map dans laquelle l'entité apparait</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>VRAI si l'entité peut apparaitre, FAUX sinon </dd></dl>
+
+</div>
+</div>
+<a id="a4f7b519f34b7c3abdb2e01720f22978e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f7b519f34b7c3abdb2e01720f22978e">&#9670;&nbsp;</a></span>peutDeplacerEntite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">boolean peutDeplacerEntite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>entite</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>positionSuivante</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vérifie si l'entité peut se déplacer à la position suivante donnée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>La map dans laqeulle l'entité se déplace </td></tr>
+    <tr><td class="paramname">entite</td><td>L'entité se déplaçant </td></tr>
+    <tr><td class="paramname">positionSuivante</td><td>La position suivante à laquelle l'entité doit se déplacer</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>VRAI si l'entité peut se déplacer, FAUX sinon </dd></dl>
+
+</div>
+</div>
+<a id="a10278e2c646f28d04829aafa492a154b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10278e2c646f28d04829aafa492a154b">&#9670;&nbsp;</a></span>pousseEntite()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pousseEntite </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__entite.html">t_entite</a> *&#160;</td>
+          <td class="paramname"><em>cible</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pousse l'entité cible. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">source</td><td>L'entité qui pousse </td></tr>
+    <tr><td class="paramname">cible</td><td>L'entité poussé </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/item.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">item.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="item_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifndef _JEU_ITEM_</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define _JEU_ITEM_</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utilitaire_8h.html">utilitaire.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="entite_8h.html">entite.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="item_8h.html#af63f42735746b45cd6f35035ec7bdee7">   25</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    CATEGORIE_MATERIEL,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    CATEGORIE_ARME,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    CATEGORIE_OUTIL,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;} <a class="code" href="item_8h.html#af63f42735746b45cd6f35035ec7bdee7">e_itemCategorie</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="item_8h.html#a7e2152df03629d9a84fcc68cf675b93b">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ITEM_STEAK,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    ITEM_PORC,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    ITEM_MATERIEL_BATON,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    ITEM_OUTIL_PIOCHE,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    ITEM_ARME_EPEE,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <a class="code" href="item_8h.html#a7e2152df03629d9a84fcc68cf675b93b">e_itemTag</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__item.html">s_item</a> <a class="code" href="structt__item.html">t_item</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structs__item.html">   55</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structs__item.html">s_item</a> {</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structs__item.html#acdb4d8de9f31c5fbb3b01e44f0531ec7">   56</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structs__item.html#acdb4d8de9f31c5fbb3b01e44f0531ec7">id</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structs__item.html#a6fa411375825930fbb8f65d44b247e62">   57</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structs__item.html#a6fa411375825930fbb8f65d44b247e62">nom</a>; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structs__item.html#ab11d987a267b0a6a32634cf0c4d17e79">   59</a></span>&#160;    <a class="code" href="item_8h.html#af63f42735746b45cd6f35035ec7bdee7">e_itemCategorie</a> <a class="code" href="structs__item.html#ab11d987a267b0a6a32634cf0c4d17e79">categorie</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structs__item.html#a14defa320e9f18a78795a3e2de48e51b">   60</a></span>&#160;    <a class="code" href="item_8h.html#a7e2152df03629d9a84fcc68cf675b93b">e_itemTag</a> <a class="code" href="structs__item.html#a14defa320e9f18a78795a3e2de48e51b">tag</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    int (*afficher)(<a class="code" href="structt__item.html">t_item</a>* <span class="keyword">const</span>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    int (*detruire)(<a class="code" href="structt__item.html">t_item</a>**);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__arme.html">s_arme</a>  <a class="code" href="structt__arme.html">t_arme</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structs__arme.html">   72</a></span>&#160;<span class="keyword">struct  </span><a class="code" href="structs__arme.html">s_arme</a> {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">struct </span><a class="code" href="structs__item.html">s_item</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> degat;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structs__itemEntite.html">   90</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__itemEntite.html">s_itemEntite</a> {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keyword">struct </span><a class="code" href="structs__entite.html">s_entite</a>;                    </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="structs__itemEntite.html#ad9093b79f9844937a34cb9452c735989">   94</a></span>&#160;  <a class="code" href="structt__item.html">t_item</a> *<a class="code" href="structs__itemEntite.html#ad9093b79f9844937a34cb9452c735989">item</a>;                       </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="structs__itemEntite.html#ae63557f1b67d222014654345b305996a">   95</a></span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__itemEntite.html#ae63557f1b67d222014654345b305996a">rayonPrise</a>;            </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="structs__itemEntite.html#a8277148115b759d8261421c0cb23c88f">   96</a></span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__itemEntite.html#a8277148115b759d8261421c0cb23c88f">cooldownAvantPrise</a>;    </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;} <a class="code" href="structt__itemEntite.html">t_itemEntite</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="structs__baseItem.html">  109</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__baseItem.html">s_baseItem</a> {</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="structs__baseItem.html#a2a4d4e349696c591dc9bb8bfdbeda571">  110</a></span>&#160;  <a class="code" href="item_8h.html#a7e2152df03629d9a84fcc68cf675b93b">e_itemTag</a> <a class="code" href="structs__baseItem.html#a2a4d4e349696c591dc9bb8bfdbeda571">tag</a>;                  </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="structs__baseItem.html#a1af5f042ca0811925539a1501f5cc0ce">  111</a></span>&#160;  <a class="code" href="item_8h.html#af63f42735746b45cd6f35035ec7bdee7">e_itemCategorie</a> <a class="code" href="structs__baseItem.html#a1af5f042ca0811925539a1501f5cc0ce">categorie</a>;      </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="structs__baseItem.html#aee5feffc43bc9fcf40ccdd9405c148be">  113</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="structs__baseItem.html#aee5feffc43bc9fcf40ccdd9405c148be">stackable</a>;                  </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;} <a class="code" href="structt__baseItem.html">t_baseItem</a>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="item_8h.html#a61f9f1c5c397c609c3a9fd417585e3a1">item_cpt</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <span class="keywordtype">int</span> <a class="code" href="item_8h.html#a32c202eff87a9304b0fc1d94d2b76dcf">arme_cpt</a>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">extern</span> <a class="code" href="structt__baseItem.html">t_baseItem</a> <a class="code" href="item_8h.html#a5e430bff9f168c2dc8f5d7d475a60729">basesItems</a>[];</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">boolean</span> <a class="code" href="item_8h.html#aaa6c0278b4e7fceb1fc3d9be59c90ca6">item_existe</a>(<a class="code" href="structt__item.html">t_item</a>* <span class="keyword">const</span> item);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="keyword">extern</span> <a class="code" href="structt__item.html">t_item</a>* <a class="code" href="item_8h.html#a179096058768130909d8b958f4ac69b7">item_creer</a>(<a class="code" href="item_8h.html#a7e2152df03629d9a84fcc68cf675b93b">e_itemTag</a> tag);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="item_8h.html#ae6f8343326d9bec2172cb1aa3bf6e99c">item_afficher</a>(<a class="code" href="structt__item.html">t_item</a>* item);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="item_8h.html#a7d12f37f111117a94a2ee8a08d04175e">item_detruire</a>(<a class="code" href="structt__item.html">t_item</a>** item);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">boolean</span> <a class="code" href="item_8h.html#a06025caa562064d9be43920a868c99af">arme_existe</a>(<a class="code" href="structt__arme.html">t_arme</a>* <span class="keyword">const</span> arme);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="keyword">extern</span> <a class="code" href="structt__arme.html">t_arme</a>* <a class="code" href="item_8h.html#a714128d0f137d9dc2067f936e70e8c97">arme_creer</a>(<a class="code" href="item_8h.html#a7e2152df03629d9a84fcc68cf675b93b">e_itemTag</a> tag);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="keywordtype">void</span> <a class="code" href="item_8h.html#aaa4cda46cdeeb1f64d2a9eed4fba4ecf">detruireItemEntite</a>(<a class="code" href="structt__itemEntite.html">t_itemEntite</a> **itemEntite);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<a class="code" href="structt__itemEntite.html">t_itemEntite</a> *<a class="code" href="item_8h.html#a82b5a32acf1efeeed7ed88f608fd57bc">creerItemEntite</a>(<span class="keyword">const</span> <a class="code" href="structt__vecteur2.html">t_vecteur2</a> position, <span class="keyword">const</span> <a class="code" href="item_8h.html#a7e2152df03629d9a84fcc68cf675b93b">e_itemTag</a> tag);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aentite_8h_html"><div class="ttname"><a href="entite_8h.html">entite.h</a></div><div class="ttdoc">Module de manipulation des entités.</div></div>
+<div class="ttc" id="aitem_8h_html_a06025caa562064d9be43920a868c99af"><div class="ttname"><a href="item_8h.html#a06025caa562064d9be43920a868c99af">arme_existe</a></div><div class="ttdeci">boolean arme_existe(t_arme *const arme)</div><div class="ttdoc">Vérifie que l'arme existe.</div><div class="ttdef"><b>Definition:</b> item.c:124</div></div>
+<div class="ttc" id="aitem_8h_html_a179096058768130909d8b958f4ac69b7"><div class="ttname"><a href="item_8h.html#a179096058768130909d8b958f4ac69b7">item_creer</a></div><div class="ttdeci">t_item * item_creer(e_itemTag tag)</div><div class="ttdoc">Crée un item.</div><div class="ttdef"><b>Definition:</b> item.c:88</div></div>
+<div class="ttc" id="aitem_8h_html_a32c202eff87a9304b0fc1d94d2b76dcf"><div class="ttname"><a href="item_8h.html#a32c202eff87a9304b0fc1d94d2b76dcf">arme_cpt</a></div><div class="ttdeci">unsigned long int arme_cpt</div><div class="ttdef"><b>Definition:</b> item.c:24</div></div>
+<div class="ttc" id="aitem_8h_html_a5e430bff9f168c2dc8f5d7d475a60729"><div class="ttname"><a href="item_8h.html#a5e430bff9f168c2dc8f5d7d475a60729">basesItems</a></div><div class="ttdeci">t_baseItem basesItems[]</div><div class="ttdoc">Tableau regroupant les bases des différents items.</div><div class="ttdef"><b>Definition:</b> item.c:299</div></div>
+<div class="ttc" id="aitem_8h_html_a61f9f1c5c397c609c3a9fd417585e3a1"><div class="ttname"><a href="item_8h.html#a61f9f1c5c397c609c3a9fd417585e3a1">item_cpt</a></div><div class="ttdeci">unsigned long int item_cpt</div><div class="ttdef"><b>Definition:</b> item.c:23</div></div>
+<div class="ttc" id="aitem_8h_html_a714128d0f137d9dc2067f936e70e8c97"><div class="ttname"><a href="item_8h.html#a714128d0f137d9dc2067f936e70e8c97">arme_creer</a></div><div class="ttdeci">t_arme * arme_creer(e_itemTag tag)</div><div class="ttdoc">Crée une arme.</div><div class="ttdef"><b>Definition:</b> item.c:165</div></div>
+<div class="ttc" id="aitem_8h_html_a7d12f37f111117a94a2ee8a08d04175e"><div class="ttname"><a href="item_8h.html#a7d12f37f111117a94a2ee8a08d04175e">item_detruire</a></div><div class="ttdeci">int item_detruire(t_item **item)</div><div class="ttdoc">Détruis un item.</div><div class="ttdef"><b>Definition:</b> item.c:63</div></div>
+<div class="ttc" id="aitem_8h_html_a7e2152df03629d9a84fcc68cf675b93b"><div class="ttname"><a href="item_8h.html#a7e2152df03629d9a84fcc68cf675b93b">e_itemTag</a></div><div class="ttdeci">e_itemTag</div><div class="ttdoc">Enumérateur regroupant les différents tags des items.</div><div class="ttdef"><b>Definition:</b> item.h:38</div></div>
+<div class="ttc" id="aitem_8h_html_a82b5a32acf1efeeed7ed88f608fd57bc"><div class="ttname"><a href="item_8h.html#a82b5a32acf1efeeed7ed88f608fd57bc">creerItemEntite</a></div><div class="ttdeci">t_itemEntite * creerItemEntite(const t_vecteur2 position, const e_itemTag tag)</div><div class="ttdoc">Alloue l'espace nécessaire pour un item entité et le créer.</div><div class="ttdef"><b>Definition:</b> item.c:243</div></div>
+<div class="ttc" id="aitem_8h_html_aaa4cda46cdeeb1f64d2a9eed4fba4ecf"><div class="ttname"><a href="item_8h.html#aaa4cda46cdeeb1f64d2a9eed4fba4ecf">detruireItemEntite</a></div><div class="ttdeci">void detruireItemEntite(t_itemEntite **itemEntite)</div><div class="ttdoc">Detruit un coffre est libère la mémoire allouée pour ce dernier.</div><div class="ttdef"><b>Definition:</b> item.c:221</div></div>
+<div class="ttc" id="aitem_8h_html_aaa6c0278b4e7fceb1fc3d9be59c90ca6"><div class="ttname"><a href="item_8h.html#aaa6c0278b4e7fceb1fc3d9be59c90ca6">item_existe</a></div><div class="ttdeci">boolean item_existe(t_item *const item)</div><div class="ttdoc">Vérifie que l'item existe.</div><div class="ttdef"><b>Definition:</b> item.c:35</div></div>
+<div class="ttc" id="aitem_8h_html_ae6f8343326d9bec2172cb1aa3bf6e99c"><div class="ttname"><a href="item_8h.html#ae6f8343326d9bec2172cb1aa3bf6e99c">item_afficher</a></div><div class="ttdeci">int item_afficher(t_item *item)</div><div class="ttdoc">Affiche les caractéristiques d'un item.</div><div class="ttdef"><b>Definition:</b> item.c:47</div></div>
+<div class="ttc" id="aitem_8h_html_af63f42735746b45cd6f35035ec7bdee7"><div class="ttname"><a href="item_8h.html#af63f42735746b45cd6f35035ec7bdee7">e_itemCategorie</a></div><div class="ttdeci">e_itemCategorie</div><div class="ttdoc">Enumérateur regroupant les différentes catégories des items.</div><div class="ttdef"><b>Definition:</b> item.h:25</div></div>
+<div class="ttc" id="astructs__arme_html"><div class="ttname"><a href="structs__arme.html">s_arme</a></div><div class="ttdef"><b>Definition:</b> item.h:72</div></div>
+<div class="ttc" id="astructs__baseItem_html"><div class="ttname"><a href="structs__baseItem.html">s_baseItem</a></div><div class="ttdef"><b>Definition:</b> item.h:109</div></div>
+<div class="ttc" id="astructs__baseItem_html_a1af5f042ca0811925539a1501f5cc0ce"><div class="ttname"><a href="structs__baseItem.html#a1af5f042ca0811925539a1501f5cc0ce">s_baseItem::categorie</a></div><div class="ttdeci">e_itemCategorie categorie</div><div class="ttdef"><b>Definition:</b> item.h:111</div></div>
+<div class="ttc" id="astructs__baseItem_html_a2a4d4e349696c591dc9bb8bfdbeda571"><div class="ttname"><a href="structs__baseItem.html#a2a4d4e349696c591dc9bb8bfdbeda571">s_baseItem::tag</a></div><div class="ttdeci">e_itemTag tag</div><div class="ttdef"><b>Definition:</b> item.h:110</div></div>
+<div class="ttc" id="astructs__baseItem_html_aee5feffc43bc9fcf40ccdd9405c148be"><div class="ttname"><a href="structs__baseItem.html#aee5feffc43bc9fcf40ccdd9405c148be">s_baseItem::stackable</a></div><div class="ttdeci">int stackable</div><div class="ttdef"><b>Definition:</b> item.h:113</div></div>
+<div class="ttc" id="astructs__entite_html"><div class="ttname"><a href="structs__entite.html">s_entite</a></div><div class="ttdef"><b>Definition:</b> entite.h:126</div></div>
+<div class="ttc" id="astructs__itemEntite_html"><div class="ttname"><a href="structs__itemEntite.html">s_itemEntite</a></div><div class="ttdef"><b>Definition:</b> item.h:90</div></div>
+<div class="ttc" id="astructs__itemEntite_html_a8277148115b759d8261421c0cb23c88f"><div class="ttname"><a href="structs__itemEntite.html#a8277148115b759d8261421c0cb23c88f">s_itemEntite::cooldownAvantPrise</a></div><div class="ttdeci">unsigned int cooldownAvantPrise</div><div class="ttdef"><b>Definition:</b> item.h:96</div></div>
+<div class="ttc" id="astructs__itemEntite_html_ad9093b79f9844937a34cb9452c735989"><div class="ttname"><a href="structs__itemEntite.html#ad9093b79f9844937a34cb9452c735989">s_itemEntite::item</a></div><div class="ttdeci">t_item * item</div><div class="ttdef"><b>Definition:</b> item.h:92</div></div>
+<div class="ttc" id="astructs__itemEntite_html_ae63557f1b67d222014654345b305996a"><div class="ttname"><a href="structs__itemEntite.html#ae63557f1b67d222014654345b305996a">s_itemEntite::rayonPrise</a></div><div class="ttdeci">unsigned int rayonPrise</div><div class="ttdef"><b>Definition:</b> item.h:95</div></div>
+<div class="ttc" id="astructs__item_html"><div class="ttname"><a href="structs__item.html">s_item</a></div><div class="ttdef"><b>Definition:</b> item.h:55</div></div>
+<div class="ttc" id="astructs__item_html_a14defa320e9f18a78795a3e2de48e51b"><div class="ttname"><a href="structs__item.html#a14defa320e9f18a78795a3e2de48e51b">s_item::tag</a></div><div class="ttdeci">e_itemTag tag</div><div class="ttdef"><b>Definition:</b> item.h:60</div></div>
+<div class="ttc" id="astructs__item_html_a6fa411375825930fbb8f65d44b247e62"><div class="ttname"><a href="structs__item.html#a6fa411375825930fbb8f65d44b247e62">s_item::nom</a></div><div class="ttdeci">char * nom</div><div class="ttdef"><b>Definition:</b> item.h:57</div></div>
+<div class="ttc" id="astructs__item_html_ab11d987a267b0a6a32634cf0c4d17e79"><div class="ttname"><a href="structs__item.html#ab11d987a267b0a6a32634cf0c4d17e79">s_item::categorie</a></div><div class="ttdeci">e_itemCategorie categorie</div><div class="ttdef"><b>Definition:</b> item.h:59</div></div>
+<div class="ttc" id="astructs__item_html_acdb4d8de9f31c5fbb3b01e44f0531ec7"><div class="ttname"><a href="structs__item.html#acdb4d8de9f31c5fbb3b01e44f0531ec7">s_item::id</a></div><div class="ttdeci">char * id</div><div class="ttdef"><b>Definition:</b> item.h:56</div></div>
+<div class="ttc" id="astructt__arme_html"><div class="ttname"><a href="structt__arme.html">t_arme</a></div><div class="ttdoc">Définit les armes.</div></div>
+<div class="ttc" id="astructt__baseItem_html"><div class="ttname"><a href="structt__baseItem.html">t_baseItem</a></div><div class="ttdoc">Structure modélisant la base d'un item.</div></div>
+<div class="ttc" id="astructt__itemEntite_html"><div class="ttname"><a href="structt__itemEntite.html">t_itemEntite</a></div><div class="ttdoc">Structure regroupant les données d'un item entité</div></div>
+<div class="ttc" id="astructt__item_html"><div class="ttname"><a href="structt__item.html">t_item</a></div><div class="ttdoc">Définit les items.</div></div>
+<div class="ttc" id="astructt__vecteur2_html"><div class="ttname"><a href="structt__vecteur2.html">t_vecteur2</a></div><div class="ttdoc">Structure modélisant un vecteur à deux dimensions.</div></div>
+<div class="ttc" id="autilitaire_8h_html"><div class="ttname"><a href="utilitaire_8h.html">utilitaire.h</a></div><div class="ttdoc">Module de manipulation des données globales.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

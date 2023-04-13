@@ -1,0 +1,68 @@
+\hypertarget{generation__animaux_8c}{}\doxysection{Référence du fichier src/generation\+\_\+animaux.c}
+\label{generation__animaux_8c}\index{src/generation\_animaux.c@{src/generation\_animaux.c}}
+
+
+Module gérant la génération des animaux.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/animal.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/map.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__animal}{t\+\_\+animal}} $\ast$ \mbox{\hyperlink{generation__animaux_8c_ad7cf5d1744caf19ed95b3ac5c3077597}{generer\+Animal}} (\mbox{\hyperlink{structt__animal}{t\+\_\+animal}} $\ast$animal, const \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}} tag)
+\begin{DoxyCompactList}\small\item\em Génère les informations et statistiques d\textquotesingle{}un animal en fonction de sont tag. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{generation__animaux_8c_a67c83e20f17f177782fdf8bdb113c2c5}{generer\+Animaux}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Génère un troupeau d\textquotesingle{}animaux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module gérant la génération des animaux. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+28 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{generation__animaux_8c_ad7cf5d1744caf19ed95b3ac5c3077597}\label{generation__animaux_8c_ad7cf5d1744caf19ed95b3ac5c3077597}} 
+\index{generation\_animaux.c@{generation\_animaux.c}!genererAnimal@{genererAnimal}}
+\index{genererAnimal@{genererAnimal}!generation\_animaux.c@{generation\_animaux.c}}
+\doxysubsubsection{\texorpdfstring{genererAnimal()}{genererAnimal()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__animal}{t\+\_\+animal}}$\ast$ generer\+Animal (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__animal}{t\+\_\+animal}} $\ast$}]{animal,  }\item[{const \mbox{\hyperlink{entite_8h_a0040801926229213be8bb8a3fe378b15}{e\+\_\+entite\+Tag}}}]{tag }\end{DoxyParamCaption})}
+
+
+
+Génère les informations et statistiques d\textquotesingle{}un animal en fonction de sont tag. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em animal} & Un pointeur sur l\textquotesingle{}animal à générer \\
+\hline
+{\em tag} & Le tag de l\textquotesingle{}animal à générer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le pointeur sur l\textquotesingle{}animal donné en paramètre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{generation__animaux_8c_a67c83e20f17f177782fdf8bdb113c2c5}\label{generation__animaux_8c_a67c83e20f17f177782fdf8bdb113c2c5}} 
+\index{generation\_animaux.c@{generation\_animaux.c}!genererAnimaux@{genererAnimaux}}
+\index{genererAnimaux@{genererAnimaux}!generation\_animaux.c@{generation\_animaux.c}}
+\doxysubsubsection{\texorpdfstring{genererAnimaux()}{genererAnimaux()}}
+{\footnotesize\ttfamily void generer\+Animaux (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Génère un troupeau d\textquotesingle{}animaux. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & Un pointeur sur la map dans laquelle les animaux sont générés \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,85 @@
+\hypertarget{animation_8c}{}\doxysection{Référence du fichier src/animation.c}
+\label{animation_8c}\index{src/animation.c@{src/animation.c}}
+
+
+Module de manipulation des animations.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/animation.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{animation_8c_aa60ccf51e650ae03d6b14f48f5473cea}{update\+Animation}} (\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$animation, const unsigned int timestamp)
+\begin{DoxyCompactList}\small\item\em Actualise l\textquotesingle{}animation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{animation_8c_a1e29331d629c266556bb66cfa75e66e7}{detruire\+Animation}} (\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$$\ast$animation)
+\begin{DoxyCompactList}\small\item\em Detruit une animation est libère la mémoire allouée pour cette dernière. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$ \mbox{\hyperlink{animation_8c_ab6a27f3482d7105b66aa820e710c4e51}{creer\+Animation}} (const unsigned int \mbox{\hyperlink{attributs__statistiques_8h_aef55e1775d611bfea0196692da1a0bc5}{vitesse}}, const unsigned int nombre\+Frame)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour une animation et la créer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des animations. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{animation_8c_ab6a27f3482d7105b66aa820e710c4e51}\label{animation_8c_ab6a27f3482d7105b66aa820e710c4e51}} 
+\index{animation.c@{animation.c}!creerAnimation@{creerAnimation}}
+\index{creerAnimation@{creerAnimation}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{creerAnimation()}{creerAnimation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__animation}{t\+\_\+animation}}$\ast$ creer\+Animation (\begin{DoxyParamCaption}\item[{const unsigned int}]{vitesse,  }\item[{const unsigned int}]{nombre\+Frame }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour une animation et la créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em vitesse} & La vitesse de défilement soit le temps (en milisecondes) entre chaque changement d\textquotesingle{}image \\
+\hline
+{\em nombre\+Frame} & Le nombre d\textquotesingle{}image constituant l\textquotesingle{}animation\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur l\textquotesingle{}animation créée, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{animation_8c_a1e29331d629c266556bb66cfa75e66e7}\label{animation_8c_a1e29331d629c266556bb66cfa75e66e7}} 
+\index{animation.c@{animation.c}!detruireAnimation@{detruireAnimation}}
+\index{detruireAnimation@{detruireAnimation}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{detruireAnimation()}{detruireAnimation()}}
+{\footnotesize\ttfamily void detruire\+Animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$$\ast$}]{animation }\end{DoxyParamCaption})}
+
+
+
+Detruit une animation est libère la mémoire allouée pour cette dernière. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em animation} & L\textquotesingle{}adresse du pointeur de l\textquotesingle{}animation à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{animation_8c_aa60ccf51e650ae03d6b14f48f5473cea}\label{animation_8c_aa60ccf51e650ae03d6b14f48f5473cea}} 
+\index{animation.c@{animation.c}!updateAnimation@{updateAnimation}}
+\index{updateAnimation@{updateAnimation}!animation.c@{animation.c}}
+\doxysubsubsection{\texorpdfstring{updateAnimation()}{updateAnimation()}}
+{\footnotesize\ttfamily void update\+Animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__animation}{t\+\_\+animation}} $\ast$}]{animation,  }\item[{const unsigned int}]{timestamp }\end{DoxyParamCaption})}
+
+
+
+Actualise l\textquotesingle{}animation. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em animation} & Pointeur sur l\textquotesingle{}animation à actualiser \\
+\hline
+{\em timestamp} & Le temps actuel du jeu \\
+\hline
+\end{DoxyParams}

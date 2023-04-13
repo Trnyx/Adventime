@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/mob.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">mob.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="mob_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _JEU_MOB_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define _JEU_MOB_</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="entite_8h.html">entite.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="item_8h.html">item.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/*                                 Enumeration                                */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="mob_8h.html#ac1c585dd3be1942f4ca12403db4313b3">   35</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="mob_8h.html#ac1c585dd3be1942f4ca12403db4313b3a33a77db5b47c85bcbf98d144454b405c">DEPLACEMENT_JOUEUR</a> = -1,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="mob_8h.html#ac1c585dd3be1942f4ca12403db4313b3a6c157464613db1f740992c8a399513dd">DEPLACEMENT_STATIQUE</a>,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="mob_8h.html#ac1c585dd3be1942f4ca12403db4313b3a599df0d2a48acf164900d00fc01bab38">DEPLACEMENT_NORMAL</a>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    DEPLACEMENT_COMBAT,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <a class="code" href="mob_8h.html#ac1c585dd3be1942f4ca12403db4313b3">e_deplacementType</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056">   54</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056a9a5eb6986dbd8dfa1dbc9612c7865a1b">   56</a></span>&#160;    <a class="code" href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056a9a5eb6986dbd8dfa1dbc9612c7865a1b">ROTATION_AUCUNE</a>,</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056aa60aefb6e35a9e91c8495b3496c07574">   58</a></span>&#160;    <a class="code" href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056aa60aefb6e35a9e91c8495b3496c07574">ROTATION_HORAIRE</a>,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056ac0c941bb8ef8f4c22c39b271b4ca4e54">ROTATION_ANTI_HORAIRE</a></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056ac0c941bb8ef8f4c22c39b271b4ca4e54">   61</a></span>&#160;} <a class="code" href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056">e_rotation</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="structs__mob.html">   78</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__mob.html">s_mob</a> {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">struct </span><a class="code" href="structs__entiteVivante.html">s_entiteVivante</a>;                 </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// </span></div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="structs__mob.html#a70b8bee978fb0af3cf08d95d49cce1e4">   82</a></span>&#160;    <span class="keywordtype">boolean</span> <a class="code" href="structs__mob.html#a70b8bee978fb0af3cf08d95d49cce1e4">aggressif</a>;                      </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="structs__mob.html#a48dfa09794c7fc6b8b5280329f03bb9c">   83</a></span>&#160;    <a class="code" href="structs__entiteVivante.html">t_entiteVivante</a> *<a class="code" href="structs__mob.html#a48dfa09794c7fc6b8b5280329f03bb9c">cible</a>;                 </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// Deplacement </span></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structs__mob.html#a6bd0a5fa7dfb0a671c7a5099dd20883a">   87</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__mob.html#a6bd0a5fa7dfb0a671c7a5099dd20883a">rayonDeplacement</a>;          </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structs__mob.html#af296252128298bd5db5c40e894f4da61">   88</a></span>&#160;    <a class="code" href="structt__vecteur2.html">t_vecteur2</a> <a class="code" href="structs__mob.html#af296252128298bd5db5c40e894f4da61">positionDeplacement</a>;         </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="structs__mob.html#a4f996817bc8aea0e5efa02f245cc4cb8">   89</a></span>&#160;    <a class="code" href="mob_8h.html#ac1c585dd3be1942f4ca12403db4313b3">e_deplacementType</a> <a class="code" href="structs__mob.html#a4f996817bc8aea0e5efa02f245cc4cb8">deplacementType</a>;      </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">double</span> gamma;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056">e_rotation</a> rotation;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// Cooldown</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="structs__mob.html#a660793dc737ff5269482e4fac0667232">   95</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__mob.html#a660793dc737ff5269482e4fac0667232">timerDeplacement</a>;          </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="structs__mob.html#a250fc89c327b4bb01c877c9ac3c55e01">   96</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__mob.html#a250fc89c327b4bb01c877c9ac3c55e01">cooldownDeplacement</a>;       </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="structs__mob.html#a4c6f605c61cc6b74bd4af6dad48dedc6">   97</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__mob.html#a4c6f605c61cc6b74bd4af6dad48dedc6">cooldownBruitage</a>;          </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;} <a class="code" href="structt__mob.html">t_mob</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="structs__baseMob.html">  109</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__baseMob.html">s_baseMob</a> {</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="structs__baseMob.html#a00d6119766323482d46d18698cb706dd">  110</a></span>&#160;    <a class="code" href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a> <a class="code" href="structs__baseMob.html#a00d6119766323482d46d18698cb706dd">tag</a>;                        </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="structs__baseMob.html#ace83acd84a43877cfb420962659f7730">  112</a></span>&#160;    <a class="code" href="item_8h.html#a7e2152df03629d9a84fcc68cf675b93b">e_itemTag</a> <a class="code" href="structs__baseMob.html#ace83acd84a43877cfb420962659f7730">loots</a>[2];                     </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="structs__baseMob.html#afac479d2c89c3db550e2795631757f4c">  113</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__baseMob.html#afac479d2c89c3db550e2795631757f4c">lootProbabilite</a>[2];        </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;} <a class="code" href="structt__baseMob.html">t_baseMob</a>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/*                                 Constantes                                 */</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structt__baseMob.html">t_baseMob</a> <a class="code" href="mob_8h.html#a722945534acdabc34c44b76680a09188">basesMobs</a>[];</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<a class="code" href="structt__mob.html">t_mob</a>* <a class="code" href="mob_8h.html#a731fd5a533e504a9fd3297358aeefb21">creerMob</a>(<span class="keyword">const</span> <a class="code" href="structt__vecteur2.html">t_vecteur2</a> position);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mob_8h.html#a6bdd61c265d90d8b5f2ce45b02f1a851">detruireMob</a>(<a class="code" href="structt__mob.html">t_mob</a> **mob);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keywordtype">void</span> <a class="code" href="mob_8h.html#aba284094f9dbbc7e138adfaab5aab798">updateMob</a>(<a class="code" href="structt__mob.html">t_mob</a> *mob, <span class="keywordtype">float</span> distance);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aentite_8h_html"><div class="ttname"><a href="entite_8h.html">entite.h</a></div><div class="ttdoc">Module de manipulation des entités.</div></div>
+<div class="ttc" id="aentite_8h_html_a0040801926229213be8bb8a3fe378b15"><div class="ttname"><a href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a></div><div class="ttdeci">e_entiteTag</div><div class="ttdoc">Enumérateur regroupant les différents tags des entités.</div><div class="ttdef"><b>Definition:</b> entite.h:58</div></div>
+<div class="ttc" id="aitem_8h_html"><div class="ttname"><a href="item_8h.html">item.h</a></div><div class="ttdoc">Librairie pour la gestion des items.</div></div>
+<div class="ttc" id="aitem_8h_html_a7e2152df03629d9a84fcc68cf675b93b"><div class="ttname"><a href="item_8h.html#a7e2152df03629d9a84fcc68cf675b93b">e_itemTag</a></div><div class="ttdeci">e_itemTag</div><div class="ttdoc">Enumérateur regroupant les différents tags des items.</div><div class="ttdef"><b>Definition:</b> item.h:38</div></div>
+<div class="ttc" id="amob_8h_html_a6bdd61c265d90d8b5f2ce45b02f1a851"><div class="ttname"><a href="mob_8h.html#a6bdd61c265d90d8b5f2ce45b02f1a851">detruireMob</a></div><div class="ttdeci">void detruireMob(t_mob **mob)</div><div class="ttdoc">Detruit un mob est libère la mémoire allouée pour ce dernier.</div><div class="ttdef"><b>Definition:</b> mob.c:263</div></div>
+<div class="ttc" id="amob_8h_html_a722945534acdabc34c44b76680a09188"><div class="ttname"><a href="mob_8h.html#a722945534acdabc34c44b76680a09188">basesMobs</a></div><div class="ttdeci">const t_baseMob basesMobs[]</div><div class="ttdoc">Tableau regroupant les informations de bases des mobs.</div><div class="ttdef"><b>Definition:</b> generation_bases.c:147</div></div>
+<div class="ttc" id="amob_8h_html_a731fd5a533e504a9fd3297358aeefb21"><div class="ttname"><a href="mob_8h.html#a731fd5a533e504a9fd3297358aeefb21">creerMob</a></div><div class="ttdeci">t_mob * creerMob(const t_vecteur2 position)</div><div class="ttdoc">Alloue l'espace nécessaire pour un mob et le créer.</div><div class="ttdef"><b>Definition:</b> mob.c:296</div></div>
+<div class="ttc" id="amob_8h_html_ab7ceade2eff1e2d49b3b6ec8d8ad2056"><div class="ttname"><a href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056">e_rotation</a></div><div class="ttdeci">e_rotation</div><div class="ttdoc">Les sens de rotations.</div><div class="ttdef"><b>Definition:</b> mob.h:54</div></div>
+<div class="ttc" id="amob_8h_html_ab7ceade2eff1e2d49b3b6ec8d8ad2056a9a5eb6986dbd8dfa1dbc9612c7865a1b"><div class="ttname"><a href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056a9a5eb6986dbd8dfa1dbc9612c7865a1b">ROTATION_AUCUNE</a></div><div class="ttdeci">@ ROTATION_AUCUNE</div><div class="ttdef"><b>Definition:</b> mob.h:56</div></div>
+<div class="ttc" id="amob_8h_html_ab7ceade2eff1e2d49b3b6ec8d8ad2056aa60aefb6e35a9e91c8495b3496c07574"><div class="ttname"><a href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056aa60aefb6e35a9e91c8495b3496c07574">ROTATION_HORAIRE</a></div><div class="ttdeci">@ ROTATION_HORAIRE</div><div class="ttdef"><b>Definition:</b> mob.h:58</div></div>
+<div class="ttc" id="amob_8h_html_ab7ceade2eff1e2d49b3b6ec8d8ad2056ac0c941bb8ef8f4c22c39b271b4ca4e54"><div class="ttname"><a href="mob_8h.html#ab7ceade2eff1e2d49b3b6ec8d8ad2056ac0c941bb8ef8f4c22c39b271b4ca4e54">ROTATION_ANTI_HORAIRE</a></div><div class="ttdeci">@ ROTATION_ANTI_HORAIRE</div><div class="ttdef"><b>Definition:</b> mob.h:60</div></div>
+<div class="ttc" id="amob_8h_html_aba284094f9dbbc7e138adfaab5aab798"><div class="ttname"><a href="mob_8h.html#aba284094f9dbbc7e138adfaab5aab798">updateMob</a></div><div class="ttdeci">void updateMob(t_mob *mob, float distance)</div><div class="ttdoc">Actualise un mob.</div><div class="ttdef"><b>Definition:</b> mob.c:120</div></div>
+<div class="ttc" id="amob_8h_html_ac1c585dd3be1942f4ca12403db4313b3"><div class="ttname"><a href="mob_8h.html#ac1c585dd3be1942f4ca12403db4313b3">e_deplacementType</a></div><div class="ttdeci">e_deplacementType</div><div class="ttdoc">Les différents types de déplacement.</div><div class="ttdef"><b>Definition:</b> mob.h:35</div></div>
+<div class="ttc" id="amob_8h_html_ac1c585dd3be1942f4ca12403db4313b3a33a77db5b47c85bcbf98d144454b405c"><div class="ttname"><a href="mob_8h.html#ac1c585dd3be1942f4ca12403db4313b3a33a77db5b47c85bcbf98d144454b405c">DEPLACEMENT_JOUEUR</a></div><div class="ttdeci">@ DEPLACEMENT_JOUEUR</div><div class="ttdef"><b>Definition:</b> mob.h:37</div></div>
+<div class="ttc" id="amob_8h_html_ac1c585dd3be1942f4ca12403db4313b3a599df0d2a48acf164900d00fc01bab38"><div class="ttname"><a href="mob_8h.html#ac1c585dd3be1942f4ca12403db4313b3a599df0d2a48acf164900d00fc01bab38">DEPLACEMENT_NORMAL</a></div><div class="ttdeci">@ DEPLACEMENT_NORMAL</div><div class="ttdef"><b>Definition:</b> mob.h:41</div></div>
+<div class="ttc" id="amob_8h_html_ac1c585dd3be1942f4ca12403db4313b3a6c157464613db1f740992c8a399513dd"><div class="ttname"><a href="mob_8h.html#ac1c585dd3be1942f4ca12403db4313b3a6c157464613db1f740992c8a399513dd">DEPLACEMENT_STATIQUE</a></div><div class="ttdeci">@ DEPLACEMENT_STATIQUE</div><div class="ttdef"><b>Definition:</b> mob.h:39</div></div>
+<div class="ttc" id="astructs__baseMob_html"><div class="ttname"><a href="structs__baseMob.html">s_baseMob</a></div><div class="ttdef"><b>Definition:</b> mob.h:109</div></div>
+<div class="ttc" id="astructs__baseMob_html_a00d6119766323482d46d18698cb706dd"><div class="ttname"><a href="structs__baseMob.html#a00d6119766323482d46d18698cb706dd">s_baseMob::tag</a></div><div class="ttdeci">e_entiteTag tag</div><div class="ttdef"><b>Definition:</b> mob.h:110</div></div>
+<div class="ttc" id="astructs__baseMob_html_ace83acd84a43877cfb420962659f7730"><div class="ttname"><a href="structs__baseMob.html#ace83acd84a43877cfb420962659f7730">s_baseMob::loots</a></div><div class="ttdeci">e_itemTag loots[2]</div><div class="ttdef"><b>Definition:</b> mob.h:112</div></div>
+<div class="ttc" id="astructs__baseMob_html_afac479d2c89c3db550e2795631757f4c"><div class="ttname"><a href="structs__baseMob.html#afac479d2c89c3db550e2795631757f4c">s_baseMob::lootProbabilite</a></div><div class="ttdeci">unsigned int lootProbabilite[2]</div><div class="ttdef"><b>Definition:</b> mob.h:113</div></div>
+<div class="ttc" id="astructs__entiteVivante_html"><div class="ttname"><a href="structs__entiteVivante.html">s_entiteVivante</a></div><div class="ttdef"><b>Definition:</b> entite.h:164</div></div>
+<div class="ttc" id="astructs__mob_html"><div class="ttname"><a href="structs__mob.html">s_mob</a></div><div class="ttdef"><b>Definition:</b> mob.h:78</div></div>
+<div class="ttc" id="astructs__mob_html_a250fc89c327b4bb01c877c9ac3c55e01"><div class="ttname"><a href="structs__mob.html#a250fc89c327b4bb01c877c9ac3c55e01">s_mob::cooldownDeplacement</a></div><div class="ttdeci">unsigned int cooldownDeplacement</div><div class="ttdef"><b>Definition:</b> mob.h:96</div></div>
+<div class="ttc" id="astructs__mob_html_a48dfa09794c7fc6b8b5280329f03bb9c"><div class="ttname"><a href="structs__mob.html#a48dfa09794c7fc6b8b5280329f03bb9c">s_mob::cible</a></div><div class="ttdeci">t_entiteVivante * cible</div><div class="ttdef"><b>Definition:</b> mob.h:83</div></div>
+<div class="ttc" id="astructs__mob_html_a4c6f605c61cc6b74bd4af6dad48dedc6"><div class="ttname"><a href="structs__mob.html#a4c6f605c61cc6b74bd4af6dad48dedc6">s_mob::cooldownBruitage</a></div><div class="ttdeci">unsigned int cooldownBruitage</div><div class="ttdef"><b>Definition:</b> mob.h:97</div></div>
+<div class="ttc" id="astructs__mob_html_a4f996817bc8aea0e5efa02f245cc4cb8"><div class="ttname"><a href="structs__mob.html#a4f996817bc8aea0e5efa02f245cc4cb8">s_mob::deplacementType</a></div><div class="ttdeci">e_deplacementType deplacementType</div><div class="ttdef"><b>Definition:</b> mob.h:89</div></div>
+<div class="ttc" id="astructs__mob_html_a660793dc737ff5269482e4fac0667232"><div class="ttname"><a href="structs__mob.html#a660793dc737ff5269482e4fac0667232">s_mob::timerDeplacement</a></div><div class="ttdeci">unsigned int timerDeplacement</div><div class="ttdef"><b>Definition:</b> mob.h:95</div></div>
+<div class="ttc" id="astructs__mob_html_a6bd0a5fa7dfb0a671c7a5099dd20883a"><div class="ttname"><a href="structs__mob.html#a6bd0a5fa7dfb0a671c7a5099dd20883a">s_mob::rayonDeplacement</a></div><div class="ttdeci">unsigned int rayonDeplacement</div><div class="ttdef"><b>Definition:</b> mob.h:87</div></div>
+<div class="ttc" id="astructs__mob_html_a70b8bee978fb0af3cf08d95d49cce1e4"><div class="ttname"><a href="structs__mob.html#a70b8bee978fb0af3cf08d95d49cce1e4">s_mob::aggressif</a></div><div class="ttdeci">boolean aggressif</div><div class="ttdef"><b>Definition:</b> mob.h:79</div></div>
+<div class="ttc" id="astructs__mob_html_af296252128298bd5db5c40e894f4da61"><div class="ttname"><a href="structs__mob.html#af296252128298bd5db5c40e894f4da61">s_mob::positionDeplacement</a></div><div class="ttdeci">t_vecteur2 positionDeplacement</div><div class="ttdef"><b>Definition:</b> mob.h:88</div></div>
+<div class="ttc" id="astructt__baseMob_html"><div class="ttname"><a href="structt__baseMob.html">t_baseMob</a></div><div class="ttdoc">Modélise la base d'un mob.</div></div>
+<div class="ttc" id="astructt__mob_html"><div class="ttname"><a href="structt__mob.html">t_mob</a></div><div class="ttdoc">Structure représentant un mob.</div></div>
+<div class="ttc" id="astructt__vecteur2_html"><div class="ttname"><a href="structt__vecteur2.html">t_vecteur2</a></div><div class="ttdoc">Structure modélisant un vecteur à deux dimensions.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

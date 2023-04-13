@@ -1,0 +1,130 @@
+\hypertarget{mob_8c}{}\doxysection{Référence du fichier src/mob.c}
+\label{mob_8c}\index{src/mob.c@{src/mob.c}}
+
+
+Module de gestion des mobs.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/physique.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/audio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/deplacement.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/combat.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/mob.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{mob_8c_a66fc7fa709486d16886ecbbccee8f52e}{attaquer}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, const float distance\+Finale)
+\begin{DoxyCompactList}\small\item\em Execute l\textquotesingle{}attaque d\textquotesingle{}un mob. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mob_8c_a3e2029e1b417caf5d88bc035ef68ada4}{combat\+Mob}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, float distance)
+\begin{DoxyCompactList}\small\item\em Gère la logique de combat d\textquotesingle{}un mob. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mob_8c_aba284094f9dbbc7e138adfaab5aab798}{update\+Mob}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, float distance)
+\begin{DoxyCompactList}\small\item\em Actualise un mob. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mob_8c_a6bdd61c265d90d8b5f2ce45b02f1a851}{detruire\+Mob}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$$\ast$mob)
+\begin{DoxyCompactList}\small\item\em Detruit un mob est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$ \mbox{\hyperlink{mob_8c_a731fd5a533e504a9fd3297358aeefb21}{creer\+Mob}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un mob et le créer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion des mobs. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{mob_8c_a66fc7fa709486d16886ecbbccee8f52e}\label{mob_8c_a66fc7fa709486d16886ecbbccee8f52e}} 
+\index{mob.c@{mob.c}!attaquer@{attaquer}}
+\index{attaquer@{attaquer}!mob.c@{mob.c}}
+\doxysubsubsection{\texorpdfstring{attaquer()}{attaquer()}}
+{\footnotesize\ttfamily void attaquer (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{const float}]{distance\+Finale }\end{DoxyParamCaption})}
+
+
+
+Execute l\textquotesingle{}attaque d\textquotesingle{}un mob. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Le mob qui attaque \\
+\hline
+{\em distance\+Finale} & La séparant la cible du mob et celui-\/ci \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mob_8c_a3e2029e1b417caf5d88bc035ef68ada4}\label{mob_8c_a3e2029e1b417caf5d88bc035ef68ada4}} 
+\index{mob.c@{mob.c}!combatMob@{combatMob}}
+\index{combatMob@{combatMob}!mob.c@{mob.c}}
+\doxysubsubsection{\texorpdfstring{combatMob()}{combatMob()}}
+{\footnotesize\ttfamily void combat\+Mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{float}]{distance }\end{DoxyParamCaption})}
+
+
+
+Gère la logique de combat d\textquotesingle{}un mob. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui combat \\
+\hline
+{\em distance} & La distance entre le mob et sa cible \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mob_8c_a731fd5a533e504a9fd3297358aeefb21}\label{mob_8c_a731fd5a533e504a9fd3297358aeefb21}} 
+\index{mob.c@{mob.c}!creerMob@{creerMob}}
+\index{creerMob@{creerMob}!mob.c@{mob.c}}
+\doxysubsubsection{\texorpdfstring{creerMob()}{creerMob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__mob}{t\+\_\+mob}}$\ast$ creer\+Mob (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un mob et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle le mob doit apparaitre\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le mob, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mob_8c_a6bdd61c265d90d8b5f2ce45b02f1a851}\label{mob_8c_a6bdd61c265d90d8b5f2ce45b02f1a851}} 
+\index{mob.c@{mob.c}!detruireMob@{detruireMob}}
+\index{detruireMob@{detruireMob}!mob.c@{mob.c}}
+\doxysubsubsection{\texorpdfstring{detruireMob()}{detruireMob()}}
+{\footnotesize\ttfamily void detruire\+Mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$$\ast$}]{mob }\end{DoxyParamCaption})}
+
+
+
+Detruit un mob est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & L\textquotesingle{}adresse du pointeur du mob à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mob_8c_aba284094f9dbbc7e138adfaab5aab798}\label{mob_8c_aba284094f9dbbc7e138adfaab5aab798}} 
+\index{mob.c@{mob.c}!updateMob@{updateMob}}
+\index{updateMob@{updateMob}!mob.c@{mob.c}}
+\doxysubsubsection{\texorpdfstring{updateMob()}{updateMob()}}
+{\footnotesize\ttfamily void update\+Mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{float}]{distance }\end{DoxyParamCaption})}
+
+
+
+Actualise un mob. 
+
+Toute la logique propre aux mobs est gérer dans cette fonction
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui doit être actualisé \\
+\hline
+{\em distance} & La distance entre le mob est le joueur \\
+\hline
+\end{DoxyParams}

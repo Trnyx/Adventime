@@ -1,0 +1,189 @@
+\hypertarget{mob_8h}{}\doxysection{Référence du fichier include/mob.h}
+\label{mob_8h}\index{include/mob.h@{include/mob.h}}
+
+
+Module de manipulation des mobs.  
+
+
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}item.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__mob}{s\+\_\+mob}}
+\item 
+struct \mbox{\hyperlink{structs__baseMob}{s\+\_\+base\+Mob}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{mob_8h_ad4de1842351b6b0ce74e2c5391df90c0}\label{mob_8h_ad4de1842351b6b0ce74e2c5391df90c0}} 
+typedef struct \mbox{\hyperlink{structs__mob}{s\+\_\+mob}} {\bfseries t\+\_\+mob}
+\item 
+\mbox{\Hypertarget{mob_8h_aeb227b42a54fe2dc8eb908a90a005515}\label{mob_8h_aeb227b42a54fe2dc8eb908a90a005515}} 
+typedef struct \mbox{\hyperlink{structs__baseMob}{s\+\_\+base\+Mob}} {\bfseries t\+\_\+base\+Mob}
+\end{DoxyCompactItemize}
+\doxysubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{mob_8h_ac1c585dd3be1942f4ca12403db4313b3}{e\+\_\+deplacement\+Type}} \{ \mbox{\hyperlink{mob_8h_ac1c585dd3be1942f4ca12403db4313b3a33a77db5b47c85bcbf98d144454b405c}{DEPLACEMENT\+\_\+\+JOUEUR}} = -\/1
+, \mbox{\hyperlink{mob_8h_ac1c585dd3be1942f4ca12403db4313b3a6c157464613db1f740992c8a399513dd}{DEPLACEMENT\+\_\+\+STATIQUE}}
+, \mbox{\hyperlink{mob_8h_ac1c585dd3be1942f4ca12403db4313b3a599df0d2a48acf164900d00fc01bab38}{DEPLACEMENT\+\_\+\+NORMAL}}
+, {\bfseries DEPLACEMENT\+\_\+\+COMBAT}
+ \}
+\begin{DoxyCompactList}\small\item\em Les différents types de déplacement. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056}{e\+\_\+rotation}} \{ \mbox{\hyperlink{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056a9a5eb6986dbd8dfa1dbc9612c7865a1b}{ROTATION\+\_\+\+AUCUNE}}
+, \mbox{\hyperlink{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056aa60aefb6e35a9e91c8495b3496c07574}{ROTATION\+\_\+\+HORAIRE}}
+, \mbox{\hyperlink{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056ac0c941bb8ef8f4c22c39b271b4ca4e54}{ROTATION\+\_\+\+ANTI\+\_\+\+HORAIRE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Les sens de rotations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$ \mbox{\hyperlink{mob_8h_a731fd5a533e504a9fd3297358aeefb21}{creer\+Mob}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un mob et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mob_8h_a6bdd61c265d90d8b5f2ce45b02f1a851}{detruire\+Mob}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$$\ast$mob)
+\begin{DoxyCompactList}\small\item\em Detruit un mob est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mob_8h_aba284094f9dbbc7e138adfaab5aab798}{update\+Mob}} (\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$mob, float distance)
+\begin{DoxyCompactList}\small\item\em Actualise un mob. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{structt__baseMob}{t\+\_\+base\+Mob}} \mbox{\hyperlink{mob_8h_a722945534acdabc34c44b76680a09188}{bases\+Mobs}} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les informations de bases des mobs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des mobs. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\mbox{\Hypertarget{mob_8h_ac1c585dd3be1942f4ca12403db4313b3}\label{mob_8h_ac1c585dd3be1942f4ca12403db4313b3}} 
+\index{mob.h@{mob.h}!e\_deplacementType@{e\_deplacementType}}
+\index{e\_deplacementType@{e\_deplacementType}!mob.h@{mob.h}}
+\doxysubsubsection{\texorpdfstring{e\_deplacementType}{e\_deplacementType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{mob_8h_ac1c585dd3be1942f4ca12403db4313b3}{e\+\_\+deplacement\+Type}}}
+
+
+
+Les différents types de déplacement. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEPLACEMENT\_JOUEUR@{DEPLACEMENT\_JOUEUR}!mob.h@{mob.h}}\index{mob.h@{mob.h}!DEPLACEMENT\_JOUEUR@{DEPLACEMENT\_JOUEUR}}}\mbox{\Hypertarget{mob_8h_ac1c585dd3be1942f4ca12403db4313b3a33a77db5b47c85bcbf98d144454b405c}\label{mob_8h_ac1c585dd3be1942f4ca12403db4313b3a33a77db5b47c85bcbf98d144454b405c}} 
+DEPLACEMENT\+\_\+\+JOUEUR&Indique aucun déplacement \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEPLACEMENT\_STATIQUE@{DEPLACEMENT\_STATIQUE}!mob.h@{mob.h}}\index{mob.h@{mob.h}!DEPLACEMENT\_STATIQUE@{DEPLACEMENT\_STATIQUE}}}\mbox{\Hypertarget{mob_8h_ac1c585dd3be1942f4ca12403db4313b3a6c157464613db1f740992c8a399513dd}\label{mob_8h_ac1c585dd3be1942f4ca12403db4313b3a6c157464613db1f740992c8a399513dd}} 
+DEPLACEMENT\+\_\+\+STATIQUE&Indique que le mode de déplacement est normal \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEPLACEMENT\_NORMAL@{DEPLACEMENT\_NORMAL}!mob.h@{mob.h}}\index{mob.h@{mob.h}!DEPLACEMENT\_NORMAL@{DEPLACEMENT\_NORMAL}}}\mbox{\Hypertarget{mob_8h_ac1c585dd3be1942f4ca12403db4313b3a599df0d2a48acf164900d00fc01bab38}\label{mob_8h_ac1c585dd3be1942f4ca12403db4313b3a599df0d2a48acf164900d00fc01bab38}} 
+DEPLACEMENT\+\_\+\+NORMAL&Indique que le mode de déplacement est combat \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056}\label{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056}} 
+\index{mob.h@{mob.h}!e\_rotation@{e\_rotation}}
+\index{e\_rotation@{e\_rotation}!mob.h@{mob.h}}
+\doxysubsubsection{\texorpdfstring{e\_rotation}{e\_rotation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056}{e\+\_\+rotation}}}
+
+
+
+Les sens de rotations. 
+
+Principalement utilisé par les mobs pendant les phases de combat ~\newline
+ \begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROTATION\_AUCUNE@{ROTATION\_AUCUNE}!mob.h@{mob.h}}\index{mob.h@{mob.h}!ROTATION\_AUCUNE@{ROTATION\_AUCUNE}}}\mbox{\Hypertarget{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056a9a5eb6986dbd8dfa1dbc9612c7865a1b}\label{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056a9a5eb6986dbd8dfa1dbc9612c7865a1b}} 
+ROTATION\+\_\+\+AUCUNE&Aucune rotation \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROTATION\_HORAIRE@{ROTATION\_HORAIRE}!mob.h@{mob.h}}\index{mob.h@{mob.h}!ROTATION\_HORAIRE@{ROTATION\_HORAIRE}}}\mbox{\Hypertarget{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056aa60aefb6e35a9e91c8495b3496c07574}\label{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056aa60aefb6e35a9e91c8495b3496c07574}} 
+ROTATION\+\_\+\+HORAIRE&Rotation dans le sens horaire \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROTATION\_ANTI\_HORAIRE@{ROTATION\_ANTI\_HORAIRE}!mob.h@{mob.h}}\index{mob.h@{mob.h}!ROTATION\_ANTI\_HORAIRE@{ROTATION\_ANTI\_HORAIRE}}}\mbox{\Hypertarget{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056ac0c941bb8ef8f4c22c39b271b4ca4e54}\label{mob_8h_ab7ceade2eff1e2d49b3b6ec8d8ad2056ac0c941bb8ef8f4c22c39b271b4ca4e54}} 
+ROTATION\+\_\+\+ANTI\+\_\+\+HORAIRE&Rotation dans le sens anti horaire \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{mob_8h_a731fd5a533e504a9fd3297358aeefb21}\label{mob_8h_a731fd5a533e504a9fd3297358aeefb21}} 
+\index{mob.h@{mob.h}!creerMob@{creerMob}}
+\index{creerMob@{creerMob}!mob.h@{mob.h}}
+\doxysubsubsection{\texorpdfstring{creerMob()}{creerMob()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__mob}{t\+\_\+mob}}$\ast$ creer\+Mob (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un mob et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle le mob doit apparaitre\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le mob, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{mob_8h_a6bdd61c265d90d8b5f2ce45b02f1a851}\label{mob_8h_a6bdd61c265d90d8b5f2ce45b02f1a851}} 
+\index{mob.h@{mob.h}!detruireMob@{detruireMob}}
+\index{detruireMob@{detruireMob}!mob.h@{mob.h}}
+\doxysubsubsection{\texorpdfstring{detruireMob()}{detruireMob()}}
+{\footnotesize\ttfamily void detruire\+Mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$$\ast$}]{mob }\end{DoxyParamCaption})}
+
+
+
+Detruit un mob est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & L\textquotesingle{}adresse du pointeur du mob à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{mob_8h_aba284094f9dbbc7e138adfaab5aab798}\label{mob_8h_aba284094f9dbbc7e138adfaab5aab798}} 
+\index{mob.h@{mob.h}!updateMob@{updateMob}}
+\index{updateMob@{updateMob}!mob.h@{mob.h}}
+\doxysubsubsection{\texorpdfstring{updateMob()}{updateMob()}}
+{\footnotesize\ttfamily void update\+Mob (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__mob}{t\+\_\+mob}} $\ast$}]{mob,  }\item[{float}]{distance }\end{DoxyParamCaption})}
+
+
+
+Actualise un mob. 
+
+Toute la logique propre aux mobs est gérer dans cette fonction
+
+
+\begin{DoxyParams}{Paramètres}
+{\em mob} & Un pointeur sur le mob qui doit être actualisé \\
+\hline
+{\em distance} & La distance entre le mob est le joueur \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{mob_8h_a722945534acdabc34c44b76680a09188}\label{mob_8h_a722945534acdabc34c44b76680a09188}} 
+\index{mob.h@{mob.h}!basesMobs@{basesMobs}}
+\index{basesMobs@{basesMobs}!mob.h@{mob.h}}
+\doxysubsubsection{\texorpdfstring{basesMobs}{basesMobs}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseMob}{t\+\_\+base\+Mob}} bases\+Mobs\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tableau regroupant les informations de bases des mobs. 
+
+
+\begin{DoxyItemize}
+\item Les items dropés
+\item La probabilité de drop des items 
+\end{DoxyItemize}

@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/structures.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">structures.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="structures_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _JEU_STRUCTURES_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define _JEU_STRUCTURES_</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;SDL2/SDL.h&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utilitaire_8h.html">utilitaire.h</a>&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="blocks__tag_8h.html">blocks_tag.h</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="map_8h.html">map.h</a>&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*                                 Enumeration                                */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structures_8h.html#a949e802b1e8c18a685d88c745ccf05ed">   41</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    STRUCTURE_PUIT,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    STRUCTURE_PETITE_MAISON_1,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    STRUCTURE_PETITE_MAISON_2,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    STRUCTURE_PETITE_MAISON_3,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    STRUCTURE_GRANDE_MAISON_1,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    STRUCTURE_GRANDE_MAISON_2,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    STRUCTURE_GRANDE_MAISON_3,</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    STRUCTURE_ENTREE_TEMPLE,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;} <a class="code" href="structures_8h.html#a949e802b1e8c18a685d88c745ccf05ed">e_structureTag</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="structs__structure.html">   66</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__structure.html">s_structure</a> {</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="structs__structure.html#a9143e87666946f66e5ae9e63ea3c8c7f">   67</a></span>&#160;    <a class="code" href="structures_8h.html#a949e802b1e8c18a685d88c745ccf05ed">e_structureTag</a> <a class="code" href="structs__structure.html#a9143e87666946f66e5ae9e63ea3c8c7f">tag</a>;         </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="structs__structure.html#aa707c7f62f14f889692cd0c2433c0696">   69</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__structure.html#aa707c7f62f14f889692cd0c2433c0696">hauteur</a>;       </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="structs__structure.html#ac344d76c6f4349321ad6498a17f8cd06">   70</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__structure.html#ac344d76c6f4349321ad6498a17f8cd06">largeur</a>;       </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structs__structure.html#a49f34ee920f34f62f6dad4088c99aacd">   72</a></span>&#160;    <a class="code" href="blocks__tag_8h.html#a3c78697ff5025c219cebcacd24dcb595">e_blockTag</a> <a class="code" href="structs__structure.html#a49f34ee920f34f62f6dad4088c99aacd">blocks</a>[7][6];    </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;} <a class="code" href="structt__structure.html">t_structure</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">void</span> <a class="code" href="structures_8h.html#a68fc48a447a31c7279bbd1ce1ce35d34">genererStructure</a>(<span class="keyword">const</span> <a class="code" href="structt__vecteur2.html">t_vecteur2</a> position, <span class="keyword">const</span> <a class="code" href="structures_8h.html#a949e802b1e8c18a685d88c745ccf05ed">e_structureTag</a> tag, <a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> <a class="code" href="structures_8h.html#a796b0eb48d7724c94a0227a6de980f65">genererEntreeTemple</a>(<a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="structures_8h.html#a84a9a563ecadaa6799c30db82413c6bf">genererVillage</a>(<a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> <a class="code" href="structures_8h.html#a98d3b791ea5571b0045a4287f68fa012">genererEntreeCaverne</a>(<a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="ablocks__tag_8h_html"><div class="ttname"><a href="blocks__tag_8h.html">blocks_tag.h</a></div><div class="ttdoc">Module regroupant tous les blocks du jeu.</div></div>
+<div class="ttc" id="ablocks__tag_8h_html_a3c78697ff5025c219cebcacd24dcb595"><div class="ttname"><a href="blocks__tag_8h.html#a3c78697ff5025c219cebcacd24dcb595">e_blockTag</a></div><div class="ttdeci">e_blockTag</div><div class="ttdoc">Enumerateur répertoriant tous les &quot;blocs&quot; du jeu à afficher.</div><div class="ttdef"><b>Definition:</b> blocks_tag.h:31</div></div>
+<div class="ttc" id="amap_8h_html"><div class="ttname"><a href="map_8h.html">map.h</a></div><div class="ttdoc">Module de manipulation de la map.</div></div>
+<div class="ttc" id="astructs__structure_html"><div class="ttname"><a href="structs__structure.html">s_structure</a></div><div class="ttdef"><b>Definition:</b> structures.h:66</div></div>
+<div class="ttc" id="astructs__structure_html_a49f34ee920f34f62f6dad4088c99aacd"><div class="ttname"><a href="structs__structure.html#a49f34ee920f34f62f6dad4088c99aacd">s_structure::blocks</a></div><div class="ttdeci">e_blockTag blocks[7][6]</div><div class="ttdef"><b>Definition:</b> structures.h:72</div></div>
+<div class="ttc" id="astructs__structure_html_a9143e87666946f66e5ae9e63ea3c8c7f"><div class="ttname"><a href="structs__structure.html#a9143e87666946f66e5ae9e63ea3c8c7f">s_structure::tag</a></div><div class="ttdeci">e_structureTag tag</div><div class="ttdef"><b>Definition:</b> structures.h:67</div></div>
+<div class="ttc" id="astructs__structure_html_aa707c7f62f14f889692cd0c2433c0696"><div class="ttname"><a href="structs__structure.html#aa707c7f62f14f889692cd0c2433c0696">s_structure::hauteur</a></div><div class="ttdeci">unsigned int hauteur</div><div class="ttdef"><b>Definition:</b> structures.h:69</div></div>
+<div class="ttc" id="astructs__structure_html_ac344d76c6f4349321ad6498a17f8cd06"><div class="ttname"><a href="structs__structure.html#ac344d76c6f4349321ad6498a17f8cd06">s_structure::largeur</a></div><div class="ttdeci">unsigned int largeur</div><div class="ttdef"><b>Definition:</b> structures.h:70</div></div>
+<div class="ttc" id="astructt__map_html"><div class="ttname"><a href="structt__map.html">t_map</a></div><div class="ttdoc">Modélise une map.</div></div>
+<div class="ttc" id="astructt__structure_html"><div class="ttname"><a href="structt__structure.html">t_structure</a></div><div class="ttdoc">Structures modélisant les données d'une structure.</div></div>
+<div class="ttc" id="astructt__vecteur2_html"><div class="ttname"><a href="structt__vecteur2.html">t_vecteur2</a></div><div class="ttdoc">Structure modélisant un vecteur à deux dimensions.</div></div>
+<div class="ttc" id="astructures_8h_html_a68fc48a447a31c7279bbd1ce1ce35d34"><div class="ttname"><a href="structures_8h.html#a68fc48a447a31c7279bbd1ce1ce35d34">genererStructure</a></div><div class="ttdeci">void genererStructure(const t_vecteur2 position, const e_structureTag tag, t_map *map)</div><div class="ttdoc">Permet de génèrer une structure demandé</div><div class="ttdef"><b>Definition:</b> generation_structures.c:159</div></div>
+<div class="ttc" id="astructures_8h_html_a796b0eb48d7724c94a0227a6de980f65"><div class="ttname"><a href="structures_8h.html#a796b0eb48d7724c94a0227a6de980f65">genererEntreeTemple</a></div><div class="ttdeci">void genererEntreeTemple(t_map *map)</div><div class="ttdoc">Génère l'entrée du temple du boss.</div><div class="ttdef"><b>Definition:</b> structures.c:606</div></div>
+<div class="ttc" id="astructures_8h_html_a84a9a563ecadaa6799c30db82413c6bf"><div class="ttname"><a href="structures_8h.html#a84a9a563ecadaa6799c30db82413c6bf">genererVillage</a></div><div class="ttdeci">void genererVillage(t_map *map)</div><div class="ttdoc">Génère un village.</div><div class="ttdef"><b>Definition:</b> structures.c:544</div></div>
+<div class="ttc" id="astructures_8h_html_a949e802b1e8c18a685d88c745ccf05ed"><div class="ttname"><a href="structures_8h.html#a949e802b1e8c18a685d88c745ccf05ed">e_structureTag</a></div><div class="ttdeci">e_structureTag</div><div class="ttdoc">Enumerateur contenant les tags des structures.</div><div class="ttdef"><b>Definition:</b> structures.h:41</div></div>
+<div class="ttc" id="astructures_8h_html_a98d3b791ea5571b0045a4287f68fa012"><div class="ttname"><a href="structures_8h.html#a98d3b791ea5571b0045a4287f68fa012">genererEntreeCaverne</a></div><div class="ttdeci">void genererEntreeCaverne(t_map *map)</div><div class="ttdef"><b>Definition:</b> structures.c:635</div></div>
+<div class="ttc" id="autilitaire_8h_html"><div class="ttname"><a href="utilitaire_8h.html">utilitaire.h</a></div><div class="ttdoc">Module de manipulation des données globales.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

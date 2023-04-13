@@ -1,0 +1,128 @@
+\hypertarget{seed_8c}{}\doxysection{Référence du fichier src/seed.c}
+\label{seed_8c}\index{src/seed.c@{src/seed.c}}
+
+
+Module de gestion du seed.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$limits.\+h$>$}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{seed_8c_a6e5b4d2056b2f683242ceb67a01725ef}{char\+To\+Int}} (char c)
+\begin{DoxyCompactList}\small\item\em Converti un caractère en int (code ascii) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{seed_8c_a17cb9e948fbbd373e42bbff709e64815}{reverse}} (char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Inverse une chaine de caractères. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{seed_8c_a37bd0f41109ff5eb3c756c6d25f9aebc}{my\+Itoa}} (int n, char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Fonction convertissant un nombre en chaine de caractères. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{seed_8c_a754db266fdcb9e51c007e3e474f59d7c}{convertion\+Chaine\+En\+Chaine\+Ascii}} (char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Convertie une chaine de caractère en une chaine de caractère contenant le code ascii des caractère de la première chaine. \end{DoxyCompactList}\item 
+long long int \mbox{\hyperlink{seed_8c_a74ee27a7c00b72e74796c847f2f9c57a}{convertir\+En\+Seed}} (char $\ast$string)
+\begin{DoxyCompactList}\small\item\em Converti une chaine de caractère en long long int. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion du seed. 
+
+Toute la gestion du seed (convertion) est géré ici
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+31 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{seed_8c_a6e5b4d2056b2f683242ceb67a01725ef}\label{seed_8c_a6e5b4d2056b2f683242ceb67a01725ef}} 
+\index{seed.c@{seed.c}!charToInt@{charToInt}}
+\index{charToInt@{charToInt}!seed.c@{seed.c}}
+\doxysubsubsection{\texorpdfstring{charToInt()}{charToInt()}}
+{\footnotesize\ttfamily unsigned int char\+To\+Int (\begin{DoxyParamCaption}\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Converti un caractère en int (code ascii) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em c} & Le caractère à convertir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le code ascii du caractère 
+\end{DoxyReturn}
+\mbox{\Hypertarget{seed_8c_a754db266fdcb9e51c007e3e474f59d7c}\label{seed_8c_a754db266fdcb9e51c007e3e474f59d7c}} 
+\index{seed.c@{seed.c}!convertionChaineEnChaineAscii@{convertionChaineEnChaineAscii}}
+\index{convertionChaineEnChaineAscii@{convertionChaineEnChaineAscii}!seed.c@{seed.c}}
+\doxysubsubsection{\texorpdfstring{convertionChaineEnChaineAscii()}{convertionChaineEnChaineAscii()}}
+{\footnotesize\ttfamily char$\ast$ convertion\+Chaine\+En\+Chaine\+Ascii (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+
+
+Convertie une chaine de caractère en une chaine de caractère contenant le code ascii des caractère de la première chaine. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em string} & La chaine à convertir\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La chaine de caractère ascii 
+\end{DoxyReturn}
+\mbox{\Hypertarget{seed_8c_a74ee27a7c00b72e74796c847f2f9c57a}\label{seed_8c_a74ee27a7c00b72e74796c847f2f9c57a}} 
+\index{seed.c@{seed.c}!convertirEnSeed@{convertirEnSeed}}
+\index{convertirEnSeed@{convertirEnSeed}!seed.c@{seed.c}}
+\doxysubsubsection{\texorpdfstring{convertirEnSeed()}{convertirEnSeed()}}
+{\footnotesize\ttfamily long long int convertir\+En\+Seed (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+
+
+Converti une chaine de caractère en long long int. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em string} & La chaine de caractère à convertir\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un nombre correspondant à la chaine donnée en paramètre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{seed_8c_a37bd0f41109ff5eb3c756c6d25f9aebc}\label{seed_8c_a37bd0f41109ff5eb3c756c6d25f9aebc}} 
+\index{seed.c@{seed.c}!myItoa@{myItoa}}
+\index{myItoa@{myItoa}!seed.c@{seed.c}}
+\doxysubsubsection{\texorpdfstring{myItoa()}{myItoa()}}
+{\footnotesize\ttfamily void my\+Itoa (\begin{DoxyParamCaption}\item[{int}]{n,  }\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+
+
+Fonction convertissant un nombre en chaine de caractères. 
+
+Une fonction itoa existe déjà mais aucune référence vers celle ci est fait lors de la compilation
+
+
+\begin{DoxyParams}{Paramètres}
+{\em n} & Le nombre à convertir \\
+\hline
+{\em string} & La chaine de caractère finale \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{seed_8c_a17cb9e948fbbd373e42bbff709e64815}\label{seed_8c_a17cb9e948fbbd373e42bbff709e64815}} 
+\index{seed.c@{seed.c}!reverse@{reverse}}
+\index{reverse@{reverse}!seed.c@{seed.c}}
+\doxysubsubsection{\texorpdfstring{reverse()}{reverse()}}
+{\footnotesize\ttfamily void reverse (\begin{DoxyParamCaption}\item[{char $\ast$}]{string }\end{DoxyParamCaption})}
+
+
+
+Inverse une chaine de caractères. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em string} & La chaine de caractères à inverser \\
+\hline
+\end{DoxyParams}

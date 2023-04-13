@@ -1,0 +1,101 @@
+\hypertarget{structs__monde}{}\doxysection{Référence de la structure s\+\_\+monde}
+\label{structs__monde}\index{s\_monde@{s\_monde}}
+\doxysubsection*{Attributs publics}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{structs__monde_a3790e4432031a0d592a45ad7a6d20832}{id}}
+\item 
+long long int \mbox{\hyperlink{structs__monde_a15e8abbba9e63dae78d2f5de5cf39933}{seed}}
+\item 
+\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$ \mbox{\hyperlink{structs__monde_a50439803d477c2d63215239feead4474}{overworld}}
+\item 
+\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$ \mbox{\hyperlink{structs__monde_ae2b869d9fe8da5d3d76822ebccc1465f}{caverne}}
+\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{structs__monde_ab4bf6b3070fec4c6d7b5dbd74ea6980d}{position\+Apparition\+Boss}}
+\item 
+\mbox{\hyperlink{structt__boss}{t\+\_\+boss}} $\ast$ \mbox{\hyperlink{structs__monde_ad3fc1e6ebcfc3b71b3cdd0854dbe04e6}{boss}}
+\item 
+\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$ \mbox{\hyperlink{structs__monde_ad626c530a214c1927f645d92e5816019}{joueur}}
+\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{structs__monde_a4974bc523ef8107b6196167937ba4b87}{point\+Apparition\+Defaut}}
+\item 
+\mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} \mbox{\hyperlink{structs__monde_ab99120c7f26e6c354af7046d94a74ccd}{point\+Apparition}}
+\item 
+\mbox{\hyperlink{structt__boss__flags}{t\+\_\+boss\+\_\+flags}} \mbox{\hyperlink{structs__monde_ae1ebc82d556b987778c71c13de096154}{boss\+Flags}}
+\item 
+time\+\_\+t \mbox{\hyperlink{structs__monde_a3ad803a9516db14830123bf3b06c66c2}{timestamp\+Renouvellement}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Documentation des données membres}
+\mbox{\Hypertarget{structs__monde_ad3fc1e6ebcfc3b71b3cdd0854dbe04e6}\label{structs__monde_ad3fc1e6ebcfc3b71b3cdd0854dbe04e6}} 
+\index{s\_monde@{s\_monde}!boss@{boss}}
+\index{boss@{boss}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{boss}{boss}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__boss}{t\+\_\+boss}}$\ast$ s\+\_\+monde\+::boss}
+
+Le boss qui est actuellement présent dans le monde \mbox{\Hypertarget{structs__monde_ae1ebc82d556b987778c71c13de096154}\label{structs__monde_ae1ebc82d556b987778c71c13de096154}} 
+\index{s\_monde@{s\_monde}!bossFlags@{bossFlags}}
+\index{bossFlags@{bossFlags}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{bossFlags}{bossFlags}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__boss__flags}{t\+\_\+boss\+\_\+flags}} s\+\_\+monde\+::boss\+Flags}
+
+Les différent boss battue par le joueur \mbox{\Hypertarget{structs__monde_ae2b869d9fe8da5d3d76822ebccc1465f}\label{structs__monde_ae2b869d9fe8da5d3d76822ebccc1465f}} 
+\index{s\_monde@{s\_monde}!caverne@{caverne}}
+\index{caverne@{caverne}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{caverne}{caverne}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__map}{t\+\_\+map}}$\ast$ s\+\_\+monde\+::caverne}
+
+La map caverne \mbox{\Hypertarget{structs__monde_a3790e4432031a0d592a45ad7a6d20832}\label{structs__monde_a3790e4432031a0d592a45ad7a6d20832}} 
+\index{s\_monde@{s\_monde}!id@{id}}
+\index{id@{id}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily char$\ast$ s\+\_\+monde\+::id}
+
+L\textquotesingle{}ID du monde \mbox{\Hypertarget{structs__monde_ad626c530a214c1927f645d92e5816019}\label{structs__monde_ad626c530a214c1927f645d92e5816019}} 
+\index{s\_monde@{s\_monde}!joueur@{joueur}}
+\index{joueur@{joueur}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{joueur}{joueur}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}}$\ast$ s\+\_\+monde\+::joueur}
+
+Les informations du joueur dans le monde \mbox{\Hypertarget{structs__monde_a50439803d477c2d63215239feead4474}\label{structs__monde_a50439803d477c2d63215239feead4474}} 
+\index{s\_monde@{s\_monde}!overworld@{overworld}}
+\index{overworld@{overworld}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{overworld}{overworld}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__map}{t\+\_\+map}}$\ast$ s\+\_\+monde\+::overworld}
+
+La map overworld \mbox{\Hypertarget{structs__monde_ab99120c7f26e6c354af7046d94a74ccd}\label{structs__monde_ab99120c7f26e6c354af7046d94a74ccd}} 
+\index{s\_monde@{s\_monde}!pointApparition@{pointApparition}}
+\index{pointApparition@{pointApparition}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{pointApparition}{pointApparition}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} s\+\_\+monde\+::point\+Apparition}
+
+Le point d\textquotesingle{}apparition du joueur si il le modifie \mbox{\Hypertarget{structs__monde_a4974bc523ef8107b6196167937ba4b87}\label{structs__monde_a4974bc523ef8107b6196167937ba4b87}} 
+\index{s\_monde@{s\_monde}!pointApparitionDefaut@{pointApparitionDefaut}}
+\index{pointApparitionDefaut@{pointApparitionDefaut}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{pointApparitionDefaut}{pointApparitionDefaut}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} s\+\_\+monde\+::point\+Apparition\+Defaut}
+
+Le point d\textquotesingle{}apparition par défaut pour le joueur \mbox{\Hypertarget{structs__monde_ab4bf6b3070fec4c6d7b5dbd74ea6980d}\label{structs__monde_ab4bf6b3070fec4c6d7b5dbd74ea6980d}} 
+\index{s\_monde@{s\_monde}!positionApparitionBoss@{positionApparitionBoss}}
+\index{positionApparitionBoss@{positionApparitionBoss}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{positionApparitionBoss}{positionApparitionBoss}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} s\+\_\+monde\+::position\+Apparition\+Boss}
+
+La point d\textquotesingle{}apparition du boss \mbox{\Hypertarget{structs__monde_a15e8abbba9e63dae78d2f5de5cf39933}\label{structs__monde_a15e8abbba9e63dae78d2f5de5cf39933}} 
+\index{s\_monde@{s\_monde}!seed@{seed}}
+\index{seed@{seed}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{seed}{seed}}
+{\footnotesize\ttfamily long long int s\+\_\+monde\+::seed}
+
+La seed de génération du monde \mbox{\Hypertarget{structs__monde_a3ad803a9516db14830123bf3b06c66c2}\label{structs__monde_a3ad803a9516db14830123bf3b06c66c2}} 
+\index{s\_monde@{s\_monde}!timestampRenouvellement@{timestampRenouvellement}}
+\index{timestampRenouvellement@{timestampRenouvellement}!s\_monde@{s\_monde}}
+\doxysubsubsection{\texorpdfstring{timestampRenouvellement}{timestampRenouvellement}}
+{\footnotesize\ttfamily time\+\_\+t s\+\_\+monde\+::timestamp\+Renouvellement}
+
+Le timestamp lors du dernier renouvellement du monde 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{monde_8h}{monde.\+h}}\end{DoxyCompactItemize}

@@ -1,0 +1,68 @@
+\hypertarget{initialiseur_8c}{}\doxysection{Référence du fichier src/initialiseur.c}
+\label{initialiseur_8c}\index{src/initialiseur.c@{src/initialiseur.c}}
+
+
+Module d\textquotesingle{}initialisation.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/\+SDL2/\+SDL\+\_\+ttf.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/initialiseur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/menus.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{initialiseur_8c_a7e038da80ea0d8caec88d5f291b0f09d}{init\+All}} (\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$$\ast$moteur, \mbox{\hyperlink{structt__audio}{t\+\_\+audio}} $\ast$$\ast$audio)
+\begin{DoxyCompactList}\small\item\em Initialise tout ce qui est nécessaire pour le bon fonctionnement du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{initialiseur_8c_ad5f629c26787bde0270eebe93a9ecddb}{detruire\+All}} (\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$moteur, \mbox{\hyperlink{structt__audio}{t\+\_\+audio}} $\ast$audio)
+\begin{DoxyCompactList}\small\item\em Detruit tout ce qui a été initialisé pour le fonctionnement du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module d\textquotesingle{}initialisation. 
+
+\begin{DoxyAuthor}{Auteur}
+Eliott Remars \& Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+3 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{initialiseur_8c_ad5f629c26787bde0270eebe93a9ecddb}\label{initialiseur_8c_ad5f629c26787bde0270eebe93a9ecddb}} 
+\index{initialiseur.c@{initialiseur.c}!detruireAll@{detruireAll}}
+\index{detruireAll@{detruireAll}!initialiseur.c@{initialiseur.c}}
+\doxysubsubsection{\texorpdfstring{detruireAll()}{detruireAll()}}
+{\footnotesize\ttfamily void detruire\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$}]{moteur,  }\item[{\mbox{\hyperlink{structt__audio}{t\+\_\+audio}} $\ast$}]{audio }\end{DoxyParamCaption})}
+
+
+
+Detruit tout ce qui a été initialisé pour le fonctionnement du jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em moteur} & Le pointeur sur le moteur qui sera détruit \\
+\hline
+{\em audio} & Le pointeur sur l\textquotesingle{}audio qui sera détruit \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{initialiseur_8c_a7e038da80ea0d8caec88d5f291b0f09d}\label{initialiseur_8c_a7e038da80ea0d8caec88d5f291b0f09d}} 
+\index{initialiseur.c@{initialiseur.c}!initAll@{initAll}}
+\index{initAll@{initAll}!initialiseur.c@{initialiseur.c}}
+\doxysubsubsection{\texorpdfstring{initAll()}{initAll()}}
+{\footnotesize\ttfamily void init\+All (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__moteur}{t\+\_\+moteur}} $\ast$$\ast$}]{moteur,  }\item[{\mbox{\hyperlink{structt__audio}{t\+\_\+audio}} $\ast$$\ast$}]{audio }\end{DoxyParamCaption})}
+
+
+
+Initialise tout ce qui est nécessaire pour le bon fonctionnement du jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em moteur} & L\textquotesingle{}adresse du pointeur sur le moteur qui sera intialisé \\
+\hline
+{\em audio} & L\textquotesingle{}adresse du pointeur sur l\textquotesingle{}audio qui sera intialisé \\
+\hline
+\end{DoxyParams}

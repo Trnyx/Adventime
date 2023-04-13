@@ -1,0 +1,123 @@
+\hypertarget{structures_8h}{}\doxysection{Référence du fichier include/structures.h}
+\label{structures_8h}\index{include/structures.h@{include/structures.h}}
+
+
+Module de manipulation des structures.  
+
+
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}blocks\+\_\+tag.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}map.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__structure}{s\+\_\+structure}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structures_8h_a4df70bb84429fb17c414213068270c6b}\label{structures_8h_a4df70bb84429fb17c414213068270c6b}} 
+typedef struct \mbox{\hyperlink{structs__structure}{s\+\_\+structure}} {\bfseries t\+\_\+structure}
+\end{DoxyCompactItemize}
+\doxysubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structures_8h_a949e802b1e8c18a685d88c745ccf05ed}\label{structures_8h_a949e802b1e8c18a685d88c745ccf05ed}} 
+enum \mbox{\hyperlink{structures_8h_a949e802b1e8c18a685d88c745ccf05ed}{e\+\_\+structure\+Tag}} \{ \newline
+{\bfseries STRUCTURE\+\_\+\+PUIT}
+, {\bfseries STRUCTURE\+\_\+\+PETITE\+\_\+\+MAISON\+\_\+1}
+, {\bfseries STRUCTURE\+\_\+\+PETITE\+\_\+\+MAISON\+\_\+2}
+, {\bfseries STRUCTURE\+\_\+\+PETITE\+\_\+\+MAISON\+\_\+3}
+, \newline
+{\bfseries STRUCTURE\+\_\+\+GRANDE\+\_\+\+MAISON\+\_\+1}
+, {\bfseries STRUCTURE\+\_\+\+GRANDE\+\_\+\+MAISON\+\_\+2}
+, {\bfseries STRUCTURE\+\_\+\+GRANDE\+\_\+\+MAISON\+\_\+3}
+, {\bfseries STRUCTURE\+\_\+\+ENTREE\+\_\+\+TEMPLE}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerateur contenant les tags des structures. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{structures_8h_a68fc48a447a31c7279bbd1ce1ce35d34}{generer\+Structure}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position, const \mbox{\hyperlink{structures_8h_a949e802b1e8c18a685d88c745ccf05ed}{e\+\_\+structure\+Tag}} tag, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Permet de génèrer une structure demandé \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8h_a796b0eb48d7724c94a0227a6de980f65}{generer\+Entree\+Temple}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Génère l\textquotesingle{}entrée du temple du boss. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8h_a84a9a563ecadaa6799c30db82413c6bf}{generer\+Village}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\begin{DoxyCompactList}\small\item\em Génère un village. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{structures_8h_a98d3b791ea5571b0045a4287f68fa012}{generer\+Entree\+Caverne}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des structures. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{structures_8h_a98d3b791ea5571b0045a4287f68fa012}\label{structures_8h_a98d3b791ea5571b0045a4287f68fa012}} 
+\index{structures.h@{structures.h}!genererEntreeCaverne@{genererEntreeCaverne}}
+\index{genererEntreeCaverne@{genererEntreeCaverne}!structures.h@{structures.h}}
+\doxysubsubsection{\texorpdfstring{genererEntreeCaverne()}{genererEntreeCaverne()}}
+{\footnotesize\ttfamily void generer\+Entree\+Caverne (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8h_a796b0eb48d7724c94a0227a6de980f65}\label{structures_8h_a796b0eb48d7724c94a0227a6de980f65}} 
+\index{structures.h@{structures.h}!genererEntreeTemple@{genererEntreeTemple}}
+\index{genererEntreeTemple@{genererEntreeTemple}!structures.h@{structures.h}}
+\doxysubsubsection{\texorpdfstring{genererEntreeTemple()}{genererEntreeTemple()}}
+{\footnotesize\ttfamily void generer\+Entree\+Temple (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Génère l\textquotesingle{}entrée du temple du boss. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle l\textquotesingle{}entrée du boss est généré \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8h_a68fc48a447a31c7279bbd1ce1ce35d34}\label{structures_8h_a68fc48a447a31c7279bbd1ce1ce35d34}} 
+\index{structures.h@{structures.h}!genererStructure@{genererStructure}}
+\index{genererStructure@{genererStructure}!structures.h@{structures.h}}
+\doxysubsubsection{\texorpdfstring{genererStructure()}{genererStructure()}}
+{\footnotesize\ttfamily void generer\+Structure (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position,  }\item[{const \mbox{\hyperlink{structures_8h_a949e802b1e8c18a685d88c745ccf05ed}{e\+\_\+structure\+Tag}}}]{tag,  }\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Permet de génèrer une structure demandé 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position où est générée la structure \\
+\hline
+{\em tag} & Le tag de la structure \\
+\hline
+{\em map} & La map dans laquelle est générée la structure \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structures_8h_a84a9a563ecadaa6799c30db82413c6bf}\label{structures_8h_a84a9a563ecadaa6799c30db82413c6bf}} 
+\index{structures.h@{structures.h}!genererVillage@{genererVillage}}
+\index{genererVillage@{genererVillage}!structures.h@{structures.h}}
+\doxysubsubsection{\texorpdfstring{genererVillage()}{genererVillage()}}
+{\footnotesize\ttfamily void generer\+Village (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map }\end{DoxyParamCaption})}
+
+
+
+Génère un village. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & La map dans laquelle est généré le village \\
+\hline
+\end{DoxyParams}

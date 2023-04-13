@@ -1,0 +1,105 @@
+\hypertarget{coffre_8c}{}\doxysection{Référence du fichier src/coffre.c}
+\label{coffre_8c}\index{src/coffre.c@{src/coffre.c}}
+
+
+Module de gestion des coffres.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/joueur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/coffre.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{coffre_8c_a060610628ffafca03f57a57e9554ba22}{coffre\+Est\+Vide}} (\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$coffre)
+\begin{DoxyCompactList}\small\item\em Vérifie si le coffre est vide. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{coffre_8c_a908c484f4cf9726af234fd0b51c41aae}{recuperer\+Coffre}} (\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$coffre, \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$recuperateur)
+\begin{DoxyCompactList}\small\item\em Permet à une entité de récupérer le stockage d\textquotesingle{}un coffre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{coffre_8c_adf424b4a82bd4d2df36cb434363a083e}{detruire\+Coffre}} (\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$$\ast$coffre)
+\begin{DoxyCompactList}\small\item\em Detruit un coffre est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$ \mbox{\hyperlink{coffre_8c_aec7fc04235a45bfe3967e27ff8e3a17e}{creer\+Coffre}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un coffre et le créer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion des coffres. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+31 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{coffre_8c_a060610628ffafca03f57a57e9554ba22}\label{coffre_8c_a060610628ffafca03f57a57e9554ba22}} 
+\index{coffre.c@{coffre.c}!coffreEstVide@{coffreEstVide}}
+\index{coffreEstVide@{coffreEstVide}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{coffreEstVide()}{coffreEstVide()}}
+{\footnotesize\ttfamily boolean coffre\+Est\+Vide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$}]{coffre }\end{DoxyParamCaption})}
+
+
+
+Vérifie si le coffre est vide. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coffre} & Le coffre à vérifier\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si le coffre est vide, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{coffre_8c_aec7fc04235a45bfe3967e27ff8e3a17e}\label{coffre_8c_aec7fc04235a45bfe3967e27ff8e3a17e}} 
+\index{coffre.c@{coffre.c}!creerCoffre@{creerCoffre}}
+\index{creerCoffre@{creerCoffre}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{creerCoffre()}{creerCoffre()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}}$\ast$ creer\+Coffre (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un coffre et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle le coffre doit être créé\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le coffre créé, NULL si echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{coffre_8c_adf424b4a82bd4d2df36cb434363a083e}\label{coffre_8c_adf424b4a82bd4d2df36cb434363a083e}} 
+\index{coffre.c@{coffre.c}!detruireCoffre@{detruireCoffre}}
+\index{detruireCoffre@{detruireCoffre}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{detruireCoffre()}{detruireCoffre()}}
+{\footnotesize\ttfamily void detruire\+Coffre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$$\ast$}]{coffre }\end{DoxyParamCaption})}
+
+
+
+Detruit un coffre est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coffre} & L\textquotesingle{}adresse du pointeur du coffre à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{coffre_8c_a908c484f4cf9726af234fd0b51c41aae}\label{coffre_8c_a908c484f4cf9726af234fd0b51c41aae}} 
+\index{coffre.c@{coffre.c}!recupererCoffre@{recupererCoffre}}
+\index{recupererCoffre@{recupererCoffre}!coffre.c@{coffre.c}}
+\doxysubsubsection{\texorpdfstring{recupererCoffre()}{recupererCoffre()}}
+{\footnotesize\ttfamily void recuperer\+Coffre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__coffre}{t\+\_\+coffre}} $\ast$}]{coffre,  }\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{recuperateur }\end{DoxyParamCaption})}
+
+
+
+Permet à une entité de récupérer le stockage d\textquotesingle{}un coffre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em coffre} & Le coffre que l\textquotesingle{}entité souhaite récupérer \\
+\hline
+{\em recuperateur} & L\textquotesingle{}entité voulant récupérer le coffre \\
+\hline
+\end{DoxyParams}

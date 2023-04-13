@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/stockage.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">stockage.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="stockage_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _JEU_STOCKAGE_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define _JEU_STOCKAGE_</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="item_8h.html">item.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structs__itemSlot.html">   37</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__itemSlot.html">s_itemSlot</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structs__itemSlot.html#a08e3a264528019b1f9a1a507a0f8269a">   38</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__itemSlot.html#a08e3a264528019b1f9a1a507a0f8269a">slot</a>;                   </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structs__itemSlot.html#a389015ab028293197a2efe8503e8ed50">   40</a></span>&#160;    <a class="code" href="structt__item.html">t_item</a> *<a class="code" href="structs__itemSlot.html#a389015ab028293197a2efe8503e8ed50">item</a>;               </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structs__itemSlot.html#a89cc32ee67391bf0f557508fe6633a53">   41</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__itemSlot.html#a89cc32ee67391bf0f557508fe6633a53">quantite</a>;               </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// boolean estSelectionne;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;} <a class="code" href="structt__itemSlot.html">t_itemSlot</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structs__stockage.html">   54</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__stockage.html">s_stockage</a> {</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structs__stockage.html#af5a6d5b7b44a08f6d8240769826651b4">   55</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__stockage.html#af5a6d5b7b44a08f6d8240769826651b4">nbSlots</a>;                </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// int nbSlotsMax;          /**&lt; Le nombre de slots maximal que peut avoir le stockage */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structs__stockage.html#aec846c8702b7433650dee3bf8ba81f5f">   57</a></span>&#160;    <a class="code" href="structt__itemSlot.html">t_itemSlot</a> *<a class="code" href="structs__stockage.html#aec846c8702b7433650dee3bf8ba81f5f">itemSlots</a>;      </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;} <a class="code" href="structt__stockage.html">t_stockage</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">boolean</span> <a class="code" href="stockage_8h.html#a1cd7700ce85753a195825b7949979e21">stockageEstVide</a>(<a class="code" href="structt__stockage.html">t_stockage</a> *stockage);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<a class="code" href="structt__stockage.html">t_stockage</a>* <a class="code" href="stockage_8h.html#a86e48b12ae9c926e63abf6b92a178fd8">creerStockage</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nbSlots);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span> <a class="code" href="stockage_8h.html#aab38ac7a7b9bbd36e36025034ae513a1">transfererStockage</a>(<a class="code" href="structt__stockage.html">t_stockage</a> *source, <a class="code" href="structt__stockage.html">t_stockage</a> *cible);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">void</span> <a class="code" href="stockage_8h.html#a14493929b12f18b5171e9a6768cd641c">viderStockage</a>(<a class="code" href="structt__stockage.html">t_stockage</a> *stockage);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> <a class="code" href="stockage_8h.html#abc6d5f62fec44cb53c974bfb40822151">detruireSlot</a>(<a class="code" href="structt__itemSlot.html">t_itemSlot</a> *slot);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="stockage_8h.html#ab4d1962fd3047eb2b525adaada53872d">detruireStockage</a>(<a class="code" href="structt__stockage.html">t_stockage</a> **stockage);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aitem_8h_html"><div class="ttname"><a href="item_8h.html">item.h</a></div><div class="ttdoc">Librairie pour la gestion des items.</div></div>
+<div class="ttc" id="astockage_8h_html_a14493929b12f18b5171e9a6768cd641c"><div class="ttname"><a href="stockage_8h.html#a14493929b12f18b5171e9a6768cd641c">viderStockage</a></div><div class="ttdeci">void viderStockage(t_stockage *stockage)</div><div class="ttdoc">Permet de vider l'entièreté d'un stockage sans le détruire.</div><div class="ttdef"><b>Definition:</b> stockage.c:166</div></div>
+<div class="ttc" id="astockage_8h_html_a1cd7700ce85753a195825b7949979e21"><div class="ttname"><a href="stockage_8h.html#a1cd7700ce85753a195825b7949979e21">stockageEstVide</a></div><div class="ttdeci">boolean stockageEstVide(t_stockage *stockage)</div><div class="ttdoc">Vérifie si le stockage est vide.</div><div class="ttdef"><b>Definition:</b> stockage.c:30</div></div>
+<div class="ttc" id="astockage_8h_html_a86e48b12ae9c926e63abf6b92a178fd8"><div class="ttname"><a href="stockage_8h.html#a86e48b12ae9c926e63abf6b92a178fd8">creerStockage</a></div><div class="ttdeci">t_stockage * creerStockage(const unsigned int nbSlots)</div><div class="ttdoc">Alloue l'espace nécessaire pour un stockage et le créer.</div><div class="ttdef"><b>Definition:</b> stockage.c:137</div></div>
+<div class="ttc" id="astockage_8h_html_aab38ac7a7b9bbd36e36025034ae513a1"><div class="ttname"><a href="stockage_8h.html#aab38ac7a7b9bbd36e36025034ae513a1">transfererStockage</a></div><div class="ttdeci">void transfererStockage(t_stockage *source, t_stockage *cible)</div><div class="ttdoc">Permet de transférer les items contenuent dans un stockage dans un autre stockage.</div><div class="ttdef"><b>Definition:</b> stockage.c:51</div></div>
+<div class="ttc" id="astockage_8h_html_ab4d1962fd3047eb2b525adaada53872d"><div class="ttname"><a href="stockage_8h.html#ab4d1962fd3047eb2b525adaada53872d">detruireStockage</a></div><div class="ttdeci">void detruireStockage(t_stockage **stockage)</div><div class="ttdoc">Detruit un stockage est libère la mémoire allouée pour ce dernier.</div><div class="ttdef"><b>Definition:</b> stockage.c:203</div></div>
+<div class="ttc" id="astockage_8h_html_abc6d5f62fec44cb53c974bfb40822151"><div class="ttname"><a href="stockage_8h.html#abc6d5f62fec44cb53c974bfb40822151">detruireSlot</a></div><div class="ttdeci">void detruireSlot(t_itemSlot *slot)</div><div class="ttdoc">Détruit le slot d'un stockage.</div><div class="ttdef"><b>Definition:</b> stockage.c:184</div></div>
+<div class="ttc" id="astructs__itemSlot_html"><div class="ttname"><a href="structs__itemSlot.html">s_itemSlot</a></div><div class="ttdef"><b>Definition:</b> stockage.h:37</div></div>
+<div class="ttc" id="astructs__itemSlot_html_a08e3a264528019b1f9a1a507a0f8269a"><div class="ttname"><a href="structs__itemSlot.html#a08e3a264528019b1f9a1a507a0f8269a">s_itemSlot::slot</a></div><div class="ttdeci">int slot</div><div class="ttdef"><b>Definition:</b> stockage.h:38</div></div>
+<div class="ttc" id="astructs__itemSlot_html_a389015ab028293197a2efe8503e8ed50"><div class="ttname"><a href="structs__itemSlot.html#a389015ab028293197a2efe8503e8ed50">s_itemSlot::item</a></div><div class="ttdeci">t_item * item</div><div class="ttdef"><b>Definition:</b> stockage.h:40</div></div>
+<div class="ttc" id="astructs__itemSlot_html_a89cc32ee67391bf0f557508fe6633a53"><div class="ttname"><a href="structs__itemSlot.html#a89cc32ee67391bf0f557508fe6633a53">s_itemSlot::quantite</a></div><div class="ttdeci">int quantite</div><div class="ttdef"><b>Definition:</b> stockage.h:41</div></div>
+<div class="ttc" id="astructs__stockage_html"><div class="ttname"><a href="structs__stockage.html">s_stockage</a></div><div class="ttdef"><b>Definition:</b> stockage.h:54</div></div>
+<div class="ttc" id="astructs__stockage_html_aec846c8702b7433650dee3bf8ba81f5f"><div class="ttname"><a href="structs__stockage.html#aec846c8702b7433650dee3bf8ba81f5f">s_stockage::itemSlots</a></div><div class="ttdeci">t_itemSlot * itemSlots</div><div class="ttdef"><b>Definition:</b> stockage.h:57</div></div>
+<div class="ttc" id="astructs__stockage_html_af5a6d5b7b44a08f6d8240769826651b4"><div class="ttname"><a href="structs__stockage.html#af5a6d5b7b44a08f6d8240769826651b4">s_stockage::nbSlots</a></div><div class="ttdeci">int nbSlots</div><div class="ttdef"><b>Definition:</b> stockage.h:55</div></div>
+<div class="ttc" id="astructt__itemSlot_html"><div class="ttname"><a href="structt__itemSlot.html">t_itemSlot</a></div><div class="ttdoc">Structure modélisant un slot d'un stockage.</div></div>
+<div class="ttc" id="astructt__item_html"><div class="ttname"><a href="structt__item.html">t_item</a></div><div class="ttdoc">Définit les items.</div></div>
+<div class="ttc" id="astructt__stockage_html"><div class="ttname"><a href="structt__stockage.html">t_stockage</a></div><div class="ttdoc">Structure modélisant la base d'un inventaire.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

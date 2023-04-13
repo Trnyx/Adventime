@@ -1,0 +1,386 @@
+\hypertarget{liste_8h}{}\doxysection{Référence du fichier include/liste.h}
+\label{liste_8h}\index{include/liste.h@{include/liste.h}}
+
+
+Module de manipulation des listes.  
+
+
+{\ttfamily \#include \char`\"{}utilitaire.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__element}{s\+\_\+element}}
+\item 
+struct \mbox{\hyperlink{structs__liste}{s\+\_\+liste}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{liste_8h_a2cbf188682c05adae88dc39bdd7ef995}\label{liste_8h_a2cbf188682c05adae88dc39bdd7ef995}} 
+typedef struct \mbox{\hyperlink{structs__entite}{s\+\_\+entite}} {\bfseries t\+\_\+entite}
+\item 
+\mbox{\Hypertarget{liste_8h_a41e8b1b5fa0ec1db39ba459bddd83901}\label{liste_8h_a41e8b1b5fa0ec1db39ba459bddd83901}} 
+typedef struct \mbox{\hyperlink{structs__element}{s\+\_\+element}} {\bfseries t\+\_\+element}
+\item 
+\mbox{\Hypertarget{liste_8h_a4e606e9c680c840688f46054994527e9}\label{liste_8h_a4e606e9c680c840688f46054994527e9}} 
+typedef struct \mbox{\hyperlink{structs__liste}{s\+\_\+liste}} {\bfseries t\+\_\+liste}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{liste_8h_a7dda997062b284703a6637cb25a8871a}{init\+\_\+liste}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Initialise la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_ad5b069705682d9575af1123aae1299b8}{detruire\+\_\+liste}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$$\ast$liste)
+\begin{DoxyCompactList}\small\item\em Détruit la liste et libere la mémoire allouée. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{liste_8h_ac0acf115fd58838596b88295a9c983d9}{liste\+\_\+vide}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Vérifie si la liste est vide. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{liste_8h_a47af77c244cb0519ffd954a5070202ca}{hors\+\_\+liste}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Vérifie si l\textquotesingle{}element courant est hors liste. \end{DoxyCompactList}\item 
+boolean \mbox{\hyperlink{liste_8h_ad4964855b04eb4c2d325fbb117048cb1}{hors\+\_\+liste\+\_\+cache}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Vérifie si l\textquotesingle{}element courant au niveau du drapeau cache est hors liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_a6f3dc42709b31e9eb527e3018568e766}{en\+\_\+tete}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Met l\textquotesingle{}element courant au premier element de la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_adfcd75398085343e1d84407dbffad6b4}{en\+\_\+tete\+\_\+cache}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Met l\textquotesingle{}element courant du drapeau cache au premier element de la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_a0070ce853ee19eac4f1226988a494e01}{en\+\_\+queue}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Met l\textquotesingle{}element courant au dernier element de la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_a74675eac0a0d929f29e7fa163950a28c}{en\+\_\+queue\+\_\+cache}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Met l\textquotesingle{}element courant du drapeau cache au dernier element de la liste. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_a8e2e7a55e996e294e79a6e607cad00dc}{precedent}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Met l\textquotesingle{}element courant a l\textquotesingle{}element juste avant l\textquotesingle{}element courant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_aca8b531ecb56a206557313e2f238197f}{precedent\+\_\+cache}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Met l\textquotesingle{}element courant au drapeau cache a l\textquotesingle{}element juste avant l\textquotesingle{}element courant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_ac76a08dfdd4e447188d85378a1c39aba}{suivant}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Met l\textquotesingle{}element courant a l\textquotesingle{}element juste apres l\textquotesingle{}element courant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_acfda4d93132e38657f0713fcc607dab8}{suivant\+\_\+cache}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Met l\textquotesingle{}element courant au drapeau cache a l\textquotesingle{}element juste apres l\textquotesingle{}element courant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_a2dd459d2a87ac820c1104a4a0482f061}{valeur\+\_\+elt}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste, \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$entite)
+\begin{DoxyCompactList}\small\item\em Recupere la valeur de l\textquotesingle{}element de la liste et \+\_\+entite. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_ae5490f0f73219eec9623e1f0924f8193}{valeur\+\_\+elt\+\_\+cache}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste, \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$entite)
+\begin{DoxyCompactList}\small\item\em Recupere la valeur de l\textquotesingle{}element de la liste au niveau du drapeau \char`\"{}cache\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_ab5156689caf5504054a447b6168ff587}{modif\+\_\+elt}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste, \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$entite)
+\begin{DoxyCompactList}\small\item\em Recupere la valeur de l\textquotesingle{}element de la liste et l\textquotesingle{}assigne a entité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_a6173fcd0d246aa6ab73cfd9395d1e179}{oter\+\_\+elt}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste)
+\begin{DoxyCompactList}\small\item\em Supprime l\textquotesingle{}element de la liste a l\textquotesingle{}endroit ou est l\textquotesingle{}element courant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_ae50586c9b8808123b8a100097ca88ef6}{ajout\+\_\+droit}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste, \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$entite)
+\begin{DoxyCompactList}\small\item\em Ajoute a droite de l\textquotesingle{}element courant. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{liste_8h_af4c4c356463a6c07922cd9bb13ee082e}{ajout\+\_\+gauche}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$liste, \mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$entite)
+\begin{DoxyCompactList}\small\item\em Ajoute a gauche de l\textquotesingle{}element courant. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des listes. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{liste_8h_ae50586c9b8808123b8a100097ca88ef6}\label{liste_8h_ae50586c9b8808123b8a100097ca88ef6}} 
+\index{liste.h@{liste.h}!ajout\_droit@{ajout\_droit}}
+\index{ajout\_droit@{ajout\_droit}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{ajout\_droit()}{ajout\_droit()}}
+{\footnotesize\ttfamily void ajout\+\_\+droit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste,  }\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+Ajoute a droite de l\textquotesingle{}element courant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+{\em entite} & L\textquotesingle{}entité à ajouter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_af4c4c356463a6c07922cd9bb13ee082e}\label{liste_8h_af4c4c356463a6c07922cd9bb13ee082e}} 
+\index{liste.h@{liste.h}!ajout\_gauche@{ajout\_gauche}}
+\index{ajout\_gauche@{ajout\_gauche}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{ajout\_gauche()}{ajout\_gauche()}}
+{\footnotesize\ttfamily void ajout\+\_\+gauche (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste,  }\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+Ajoute a gauche de l\textquotesingle{}element courant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+{\em entite} & L\textquotesingle{}entité à ajouter \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_ad5b069705682d9575af1123aae1299b8}\label{liste_8h_ad5b069705682d9575af1123aae1299b8}} 
+\index{liste.h@{liste.h}!detruire\_liste@{detruire\_liste}}
+\index{detruire\_liste@{detruire\_liste}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{detruire\_liste()}{detruire\_liste()}}
+{\footnotesize\ttfamily void detruire\+\_\+liste (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$$\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Détruit la liste et libere la mémoire allouée. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & Adresse du pointeur de la liste a détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_a0070ce853ee19eac4f1226988a494e01}\label{liste_8h_a0070ce853ee19eac4f1226988a494e01}} 
+\index{liste.h@{liste.h}!en\_queue@{en\_queue}}
+\index{en\_queue@{en\_queue}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{en\_queue()}{en\_queue()}}
+{\footnotesize\ttfamily void en\+\_\+queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Met l\textquotesingle{}element courant au dernier element de la liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_a74675eac0a0d929f29e7fa163950a28c}\label{liste_8h_a74675eac0a0d929f29e7fa163950a28c}} 
+\index{liste.h@{liste.h}!en\_queue\_cache@{en\_queue\_cache}}
+\index{en\_queue\_cache@{en\_queue\_cache}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{en\_queue\_cache()}{en\_queue\_cache()}}
+{\footnotesize\ttfamily void en\+\_\+queue\+\_\+cache (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Met l\textquotesingle{}element courant du drapeau cache au dernier element de la liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_a6f3dc42709b31e9eb527e3018568e766}\label{liste_8h_a6f3dc42709b31e9eb527e3018568e766}} 
+\index{liste.h@{liste.h}!en\_tete@{en\_tete}}
+\index{en\_tete@{en\_tete}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{en\_tete()}{en\_tete()}}
+{\footnotesize\ttfamily void en\+\_\+tete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Met l\textquotesingle{}element courant au premier element de la liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_adfcd75398085343e1d84407dbffad6b4}\label{liste_8h_adfcd75398085343e1d84407dbffad6b4}} 
+\index{liste.h@{liste.h}!en\_tete\_cache@{en\_tete\_cache}}
+\index{en\_tete\_cache@{en\_tete\_cache}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{en\_tete\_cache()}{en\_tete\_cache()}}
+{\footnotesize\ttfamily void en\+\_\+tete\+\_\+cache (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Met l\textquotesingle{}element courant du drapeau cache au premier element de la liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_a47af77c244cb0519ffd954a5070202ca}\label{liste_8h_a47af77c244cb0519ffd954a5070202ca}} 
+\index{liste.h@{liste.h}!hors\_liste@{hors\_liste}}
+\index{hors\_liste@{hors\_liste}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{hors\_liste()}{hors\_liste()}}
+{\footnotesize\ttfamily boolean hors\+\_\+liste (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Vérifie si l\textquotesingle{}element courant est hors liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si l\textquotesingle{}élément courant est hors liste, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{liste_8h_ad4964855b04eb4c2d325fbb117048cb1}\label{liste_8h_ad4964855b04eb4c2d325fbb117048cb1}} 
+\index{liste.h@{liste.h}!hors\_liste\_cache@{hors\_liste\_cache}}
+\index{hors\_liste\_cache@{hors\_liste\_cache}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{hors\_liste\_cache()}{hors\_liste\_cache()}}
+{\footnotesize\ttfamily boolean hors\+\_\+liste\+\_\+cache (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Vérifie si l\textquotesingle{}element courant au niveau du drapeau cache est hors liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si l\textquotesingle{}élément courant est hors liste, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{liste_8h_a7dda997062b284703a6637cb25a8871a}\label{liste_8h_a7dda997062b284703a6637cb25a8871a}} 
+\index{liste.h@{liste.h}!init\_liste@{init\_liste}}
+\index{init\_liste@{init\_liste}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{init\_liste()}{init\_liste()}}
+{\footnotesize\ttfamily void init\+\_\+liste (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Initialise la liste. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste à initialiser \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_ac0acf115fd58838596b88295a9c983d9}\label{liste_8h_ac0acf115fd58838596b88295a9c983d9}} 
+\index{liste.h@{liste.h}!liste\_vide@{liste\_vide}}
+\index{liste\_vide@{liste\_vide}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{liste\_vide()}{liste\_vide()}}
+{\footnotesize\ttfamily boolean liste\+\_\+vide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Vérifie si la liste est vide. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+VRAI si la liste est vide, FAUX sinon 
+\end{DoxyReturn}
+\mbox{\Hypertarget{liste_8h_ab5156689caf5504054a447b6168ff587}\label{liste_8h_ab5156689caf5504054a447b6168ff587}} 
+\index{liste.h@{liste.h}!modif\_elt@{modif\_elt}}
+\index{modif\_elt@{modif\_elt}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{modif\_elt()}{modif\_elt()}}
+{\footnotesize\ttfamily void modif\+\_\+elt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste,  }\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+Recupere la valeur de l\textquotesingle{}element de la liste et l\textquotesingle{}assigne a entité 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+{\em entite} & La nouvelle valeur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_a6173fcd0d246aa6ab73cfd9395d1e179}\label{liste_8h_a6173fcd0d246aa6ab73cfd9395d1e179}} 
+\index{liste.h@{liste.h}!oter\_elt@{oter\_elt}}
+\index{oter\_elt@{oter\_elt}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{oter\_elt()}{oter\_elt()}}
+{\footnotesize\ttfamily void oter\+\_\+elt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Supprime l\textquotesingle{}element de la liste a l\textquotesingle{}endroit ou est l\textquotesingle{}element courant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_a8e2e7a55e996e294e79a6e607cad00dc}\label{liste_8h_a8e2e7a55e996e294e79a6e607cad00dc}} 
+\index{liste.h@{liste.h}!precedent@{precedent}}
+\index{precedent@{precedent}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{precedent()}{precedent()}}
+{\footnotesize\ttfamily void precedent (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Met l\textquotesingle{}element courant a l\textquotesingle{}element juste avant l\textquotesingle{}element courant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_aca8b531ecb56a206557313e2f238197f}\label{liste_8h_aca8b531ecb56a206557313e2f238197f}} 
+\index{liste.h@{liste.h}!precedent\_cache@{precedent\_cache}}
+\index{precedent\_cache@{precedent\_cache}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{precedent\_cache()}{precedent\_cache()}}
+{\footnotesize\ttfamily void precedent\+\_\+cache (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Met l\textquotesingle{}element courant au drapeau cache a l\textquotesingle{}element juste avant l\textquotesingle{}element courant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_ac76a08dfdd4e447188d85378a1c39aba}\label{liste_8h_ac76a08dfdd4e447188d85378a1c39aba}} 
+\index{liste.h@{liste.h}!suivant@{suivant}}
+\index{suivant@{suivant}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{suivant()}{suivant()}}
+{\footnotesize\ttfamily void suivant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Met l\textquotesingle{}element courant a l\textquotesingle{}element juste apres l\textquotesingle{}element courant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_acfda4d93132e38657f0713fcc607dab8}\label{liste_8h_acfda4d93132e38657f0713fcc607dab8}} 
+\index{liste.h@{liste.h}!suivant\_cache@{suivant\_cache}}
+\index{suivant\_cache@{suivant\_cache}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{suivant\_cache()}{suivant\_cache()}}
+{\footnotesize\ttfamily void suivant\+\_\+cache (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste }\end{DoxyParamCaption})}
+
+
+
+Met l\textquotesingle{}element courant au drapeau cache a l\textquotesingle{}element juste apres l\textquotesingle{}element courant. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_a2dd459d2a87ac820c1104a4a0482f061}\label{liste_8h_a2dd459d2a87ac820c1104a4a0482f061}} 
+\index{liste.h@{liste.h}!valeur\_elt@{valeur\_elt}}
+\index{valeur\_elt@{valeur\_elt}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{valeur\_elt()}{valeur\_elt()}}
+{\footnotesize\ttfamily void valeur\+\_\+elt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste,  }\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+Recupere la valeur de l\textquotesingle{}element de la liste et \+\_\+entite. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+{\em entite} & Adresse du pointeur sur l\textquotesingle{}entité \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{liste_8h_ae5490f0f73219eec9623e1f0924f8193}\label{liste_8h_ae5490f0f73219eec9623e1f0924f8193}} 
+\index{liste.h@{liste.h}!valeur\_elt\_cache@{valeur\_elt\_cache}}
+\index{valeur\_elt\_cache@{valeur\_elt\_cache}!liste.h@{liste.h}}
+\doxysubsubsection{\texorpdfstring{valeur\_elt\_cache()}{valeur\_elt\_cache()}}
+{\footnotesize\ttfamily void valeur\+\_\+elt\+\_\+cache (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{liste,  }\item[{\mbox{\hyperlink{structt__entite}{t\+\_\+entite}} $\ast$$\ast$}]{entite }\end{DoxyParamCaption})}
+
+
+
+Recupere la valeur de l\textquotesingle{}element de la liste au niveau du drapeau \char`\"{}cache\char`\"{}. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em liste} & La liste \\
+\hline
+{\em entite} & Adresse du pointeur sur l\textquotesingle{}entité \\
+\hline
+\end{DoxyParams}

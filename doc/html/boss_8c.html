@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier src/boss.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier boss.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Module de gestion des boss.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="physique_8h_source.html">../include/physique.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utilitaire_8h_source.html">../include/utilitaire.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="moteur_8h_source.html">../include/moteur.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="audio_8h_source.html">../include/audio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="blocks__tag_8h_source.html">../include/blocks_tag.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="combat_8h_source.html">../include/combat.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="boss_8h_source.html">../include/boss.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:aedd5cb25826bb52ae938cc80ec15c304"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="boss_8c.html#aedd5cb25826bb52ae938cc80ec15c304">updateBoss</a> (<a class="el" href="structt__boss.html">t_boss</a> *boss, float distance, <a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *cible)</td></tr>
+<tr class="memdesc:aedd5cb25826bb52ae938cc80ec15c304"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour le boss.  <a href="boss_8c.html#aedd5cb25826bb52ae938cc80ec15c304">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aedd5cb25826bb52ae938cc80ec15c304"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e43be3e46d79ef623a2841be23db37c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__boss.html">t_boss</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="boss_8c.html#a1e43be3e46d79ef623a2841be23db37c">chargerBoss</a> ()</td></tr>
+<tr class="memdesc:a1e43be3e46d79ef623a2841be23db37c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge un boss dans la map.  <a href="boss_8c.html#a1e43be3e46d79ef623a2841be23db37c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1e43be3e46d79ef623a2841be23db37c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90ab31b31639440782f454c8cdde14bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="boss_8c.html#a90ab31b31639440782f454c8cdde14bc">changerFlag</a> (const <a class="el" href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a> jour)</td></tr>
+<tr class="memdesc:a90ab31b31639440782f454c8cdde14bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour le flag du boss vaincu.  <a href="boss_8c.html#a90ab31b31639440782f454c8cdde14bc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a90ab31b31639440782f454c8cdde14bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb0e4eb60797ec7358a6eac2649fe5f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="boss_8c.html#adb0e4eb60797ec7358a6eac2649fe5f9">getPointApparitionBoss</a> (<a class="el" href="structt__map.html">t_map</a> *map)</td></tr>
+<tr class="memdesc:adb0e4eb60797ec7358a6eac2649fe5f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtient le point d'apparition du boss.  <a href="boss_8c.html#adb0e4eb60797ec7358a6eac2649fe5f9">Plus de détails...</a><br /></td></tr>
+<tr class="separator:adb0e4eb60797ec7358a6eac2649fe5f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a780c240668652ef948dc3b1fea7bc18b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__boss__flags.html">t_boss_flags</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="boss_8c.html#a780c240668652ef948dc3b1fea7bc18b">initialiserBossFlags</a> ()</td></tr>
+<tr class="memdesc:a780c240668652ef948dc3b1fea7bc18b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Créer et initialise les flags des boss vaincus à 0.  <a href="boss_8c.html#a780c240668652ef948dc3b1fea7bc18b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a780c240668652ef948dc3b1fea7bc18b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7216997470c8d912b59d414b349147d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="boss_8c.html#ab7216997470c8d912b59d414b349147d">detruireBoss</a> (<a class="el" href="structt__boss.html">t_boss</a> **boss)</td></tr>
+<tr class="memdesc:ab7216997470c8d912b59d414b349147d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit un boss est libère la mémoire allouée pour ce dernier.  <a href="boss_8c.html#ab7216997470c8d912b59d414b349147d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab7216997470c8d912b59d414b349147d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f39cf873ba128eb65fba7baba225dd6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__boss.html">t_boss</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="boss_8c.html#a4f39cf873ba128eb65fba7baba225dd6">creerBoss</a> (const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> position, const <a class="el" href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a> jour)</td></tr>
+<tr class="memdesc:a4f39cf873ba128eb65fba7baba225dd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue l'espace nécessaire pour les flags des inputs du joueur et les initialise.  <a href="boss_8c.html#a4f39cf873ba128eb65fba7baba225dd6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a4f39cf873ba128eb65fba7baba225dd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Module de gestion des boss. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>18 mars </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="a90ab31b31639440782f454c8cdde14bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90ab31b31639440782f454c8cdde14bc">&#9670;&nbsp;</a></span>changerFlag()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void changerFlag </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a>&#160;</td>
+          <td class="paramname"><em>jour</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour le flag du boss vaincu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">jour</td><td>Le jour du boss vaincu </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1e43be3e46d79ef623a2841be23db37c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e43be3e46d79ef623a2841be23db37c">&#9670;&nbsp;</a></span>chargerBoss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__boss.html">t_boss</a>* chargerBoss </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge un boss dans la map. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>Le boss actif, NULL si aucun boss </dd></dl>
+
+</div>
+</div>
+<a id="a4f39cf873ba128eb65fba7baba225dd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f39cf873ba128eb65fba7baba225dd6">&#9670;&nbsp;</a></span>creerBoss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__boss.html">t_boss</a>* creerBoss </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a>&#160;</td>
+          <td class="paramname"><em>jour</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alloue l'espace nécessaire pour les flags des inputs du joueur et les initialise. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>La position à laquelle le boss apparaît </td></tr>
+    <tr><td class="paramname">jour</td><td>Le jour correspondant au boss</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur les flags des inputs, NULL si echec </dd></dl>
+
+</div>
+</div>
+<a id="ab7216997470c8d912b59d414b349147d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7216997470c8d912b59d414b349147d">&#9670;&nbsp;</a></span>detruireBoss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireBoss </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__boss.html">t_boss</a> **&#160;</td>
+          <td class="paramname"><em>boss</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit un boss est libère la mémoire allouée pour ce dernier. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">boss</td><td>L'adresse du pointeur du boss à détruire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adb0e4eb60797ec7358a6eac2649fe5f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb0e4eb60797ec7358a6eac2649fe5f9">&#9670;&nbsp;</a></span>getPointApparitionBoss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__vecteur2.html">t_vecteur2</a> getPointApparitionBoss </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtient le point d'apparition du boss. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">map</td><td>La map dans laquelle le boss doit apparaitre</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La position où apparait le boss </dd></dl>
+
+</div>
+</div>
+<a id="a780c240668652ef948dc3b1fea7bc18b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a780c240668652ef948dc3b1fea7bc18b">&#9670;&nbsp;</a></span>initialiserBossFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__boss__flags.html">t_boss_flags</a> initialiserBossFlags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Créer et initialise les flags des boss vaincus à 0. </p>
+<p>Les flags des boss indique que le boss à bien été vaincu</p>
+<dl class="section return"><dt>Renvoie</dt><dd>Une structure contenant les flags des boss </dd></dl>
+
+</div>
+</div>
+<a id="aedd5cb25826bb52ae938cc80ec15c304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedd5cb25826bb52ae938cc80ec15c304">&#9670;&nbsp;</a></span>updateBoss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateBoss </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__boss.html">t_boss</a> *&#160;</td>
+          <td class="paramname"><em>boss</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *&#160;</td>
+          <td class="paramname"><em>cible</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Met à jour le boss. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">boss</td><td>Le boss qui est mit à jour </td></tr>
+    <tr><td class="paramname">distance</td><td>La distance entre le boss et sa cible </td></tr>
+    <tr><td class="paramname">cible</td><td>La cible du boss </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

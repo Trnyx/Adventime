@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/statistiques.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">statistiques.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="statistiques_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef _JEU_STATISTIQUES_</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define _JEU_STATISTIQUES_</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="temps_8h.html">temps.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/*                                 Enumeration                                */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9fe">   36</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9fea5c952702153559b7219f4cf0c0a3d15c">   38</a></span>&#160;    <a class="code" href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9fea5c952702153559b7219f4cf0c0a3d15c">EXPERIENCE_LENT</a>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9fea98a11d11be32e8f653be7d8f03f1bda7">   40</a></span>&#160;    <a class="code" href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9fea98a11d11be32e8f653be7d8f03f1bda7">EXPERIENCE_MOYEN</a>,</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9feae6c0532534bea14f93a12e9277ea0814">   42</a></span>&#160;    <a class="code" href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9feae6c0532534bea14f93a12e9277ea0814">EXPERIENCE_RAPIDE</a>,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;} <a class="code" href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9fe">e_courbeExperience</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structs__statistiques.html">   58</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__statistiques.html">s_statistiques</a> {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">    #include &quot;<a class="code" href="attributs__statistiques_8h.html">attributs_statistiques.h</a>&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="structs__statistiques.html#a71495d44b1084fac234dc7e510ed73b8">   61</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__statistiques.html#a71495d44b1084fac234dc7e510ed73b8">pvMax</a>;         </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structs__statistiques.html#af3f0a6fc979a7a65836e33887f08c7cc">   62</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__statistiques.html#af3f0a6fc979a7a65836e33887f08c7cc">experience</a>;    </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="structs__statistiques.html#af790b4447ef436485358348b585edb2c">   63</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="structs__statistiques.html#af790b4447ef436485358348b585edb2c">niveau</a>;        </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <a class="code" href="structt__statistiques.html">t_statistiques</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structs__baseStatistiques.html">   72</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__baseStatistiques.html">s_baseStatistiques</a> {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">    #include &quot;<a class="code" href="attributs__statistiques_8h.html">attributs_statistiques.h</a>&quot;</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="structs__baseStatistiques.html#a91167defb028f1606f8ae85100281fe8">   75</a></span>&#160;    <a class="code" href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9fe">e_courbeExperience</a> <a class="code" href="structs__baseStatistiques.html#a91167defb028f1606f8ae85100281fe8">experience_courbe</a>;   </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;} <a class="code" href="structt__baseStatistiques.html">t_baseStatistiques</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="structs__baseStatistiquesIntervales.html">   86</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__baseStatistiquesIntervales.html">s_baseStatistiquesIntervales</a> {</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="structs__baseStatistiquesIntervales.html#a4457f1e94d3b43d687c4d4176aec65a4">   87</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__baseStatistiquesIntervales.html#a4457f1e94d3b43d687c4d4176aec65a4">attaque</a>[2];         </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="structs__baseStatistiquesIntervales.html#aef9130ca037365dbbc9553c6cea4791d">   88</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__baseStatistiquesIntervales.html#aef9130ca037365dbbc9553c6cea4791d">defense</a>[2];         </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="structs__baseStatistiquesIntervales.html#a99be9debb4d7b1afc0ec819815298fb6">   89</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__baseStatistiquesIntervales.html#a99be9debb4d7b1afc0ec819815298fb6">vitesse</a>[2];         </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="structs__baseStatistiquesIntervales.html#a1b7c64f6a21b8e0cab78a20c244e16d4">   90</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__baseStatistiquesIntervales.html#a1b7c64f6a21b8e0cab78a20c244e16d4">pv</a>;                 </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="structs__baseStatistiquesIntervales.html#a2cb2b6e06ad5568b122744ce67957779">   91</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structs__baseStatistiquesIntervales.html#a2cb2b6e06ad5568b122744ce67957779">courbeExp</a>[2];       </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;} <a class="code" href="structt__baseStatistiquesIntervales.html">t_baseStatistiquesIntervales</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">int</span> <a class="code" href="statistiques_8h.html#a0390e977e123067add242c7a3a3e424b">calculStatistique</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> base, <span class="keyword">const</span> <span class="keywordtype">int</span> niveau);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keywordtype">int</span> <a class="code" href="statistiques_8h.html#a3f434b959635e4d5e5f5beecf6a4bd00">calculPv</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="attributs__statistiques_8h.html#af1160328126a84d46f6b93733ab1a696">attaque</a>, <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="attributs__statistiques_8h.html#a868ae20110b956778ed41d48f31d910f">defense</a>, <span class="keyword">const</span> <span class="keywordtype">int</span> basePv);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<a class="code" href="structt__statistiques.html">t_statistiques</a> <a class="code" href="statistiques_8h.html#aa0aa33c723d18010dbd783b7a84997d7">genererStatistiques</a>(<span class="keyword">const</span> <a class="code" href="structt__baseStatistiques.html">t_baseStatistiques</a> baseStatistiques, <span class="keyword">const</span> <span class="keywordtype">int</span> niveau);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<a class="code" href="structt__baseStatistiques.html">t_baseStatistiques</a> <a class="code" href="statistiques_8h.html#aff40eff7ccbb86ffc4a4e6d94d4fd308">genererStatistiquesDeBaseBoss</a>(<span class="keyword">const</span> <a class="code" href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a> jour);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<a class="code" href="structt__baseStatistiques.html">t_baseStatistiques</a> <a class="code" href="statistiques_8h.html#a0470bb7a9ee606ea29e70cb6d7bad5bb">genererStatistiquesDeBaseJoueur</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aattributs__statistiques_8h_html"><div class="ttname"><a href="attributs__statistiques_8h.html">attributs_statistiques.h</a></div><div class="ttdoc">Module des paramètres des statistiques.</div></div>
+<div class="ttc" id="aattributs__statistiques_8h_html_a868ae20110b956778ed41d48f31d910f"><div class="ttname"><a href="attributs__statistiques_8h.html#a868ae20110b956778ed41d48f31d910f">defense</a></div><div class="ttdeci">float defense</div><div class="ttdef"><b>Definition:</b> attributs_statistiques.h:17</div></div>
+<div class="ttc" id="aattributs__statistiques_8h_html_af1160328126a84d46f6b93733ab1a696"><div class="ttname"><a href="attributs__statistiques_8h.html#af1160328126a84d46f6b93733ab1a696">attaque</a></div><div class="ttdeci">float attaque</div><div class="ttdef"><b>Definition:</b> attributs_statistiques.h:16</div></div>
+<div class="ttc" id="astatistiques_8h_html_a0390e977e123067add242c7a3a3e424b"><div class="ttname"><a href="statistiques_8h.html#a0390e977e123067add242c7a3a3e424b">calculStatistique</a></div><div class="ttdeci">int calculStatistique(const int base, const int niveau)</div><div class="ttdoc">Calcul des statistiques en fonction des statistiques de bases et du niveau du monstre.</div><div class="ttdef"><b>Definition:</b> statistiques.c:142</div></div>
+<div class="ttc" id="astatistiques_8h_html_a0470bb7a9ee606ea29e70cb6d7bad5bb"><div class="ttname"><a href="statistiques_8h.html#a0470bb7a9ee606ea29e70cb6d7bad5bb">genererStatistiquesDeBaseJoueur</a></div><div class="ttdeci">t_baseStatistiques genererStatistiquesDeBaseJoueur()</div><div class="ttdoc">Génère les statistiques de base du joueur.</div><div class="ttdef"><b>Definition:</b> statistiques.c:113</div></div>
+<div class="ttc" id="astatistiques_8h_html_a3f434b959635e4d5e5f5beecf6a4bd00"><div class="ttname"><a href="statistiques_8h.html#a3f434b959635e4d5e5f5beecf6a4bd00">calculPv</a></div><div class="ttdeci">int calculPv(const int attaque, const int defense, const int basePv)</div><div class="ttdoc">Calcul la statistique &quot;pv&quot; d'un monstre en fonction de ses points d'attaque, de défense et de la base...</div><div class="ttdef"><b>Definition:</b> statistiques.c:155</div></div>
+<div class="ttc" id="astatistiques_8h_html_a4dd6415a844265297e6dc609827fc9fe"><div class="ttname"><a href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9fe">e_courbeExperience</a></div><div class="ttdeci">e_courbeExperience</div><div class="ttdoc">Enumération regroupant les différentes type de courbe d'expérience.</div><div class="ttdef"><b>Definition:</b> statistiques.h:36</div></div>
+<div class="ttc" id="astatistiques_8h_html_a4dd6415a844265297e6dc609827fc9fea5c952702153559b7219f4cf0c0a3d15c"><div class="ttname"><a href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9fea5c952702153559b7219f4cf0c0a3d15c">EXPERIENCE_LENT</a></div><div class="ttdeci">@ EXPERIENCE_LENT</div><div class="ttdef"><b>Definition:</b> statistiques.h:38</div></div>
+<div class="ttc" id="astatistiques_8h_html_a4dd6415a844265297e6dc609827fc9fea98a11d11be32e8f653be7d8f03f1bda7"><div class="ttname"><a href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9fea98a11d11be32e8f653be7d8f03f1bda7">EXPERIENCE_MOYEN</a></div><div class="ttdeci">@ EXPERIENCE_MOYEN</div><div class="ttdef"><b>Definition:</b> statistiques.h:40</div></div>
+<div class="ttc" id="astatistiques_8h_html_a4dd6415a844265297e6dc609827fc9feae6c0532534bea14f93a12e9277ea0814"><div class="ttname"><a href="statistiques_8h.html#a4dd6415a844265297e6dc609827fc9feae6c0532534bea14f93a12e9277ea0814">EXPERIENCE_RAPIDE</a></div><div class="ttdeci">@ EXPERIENCE_RAPIDE</div><div class="ttdef"><b>Definition:</b> statistiques.h:42</div></div>
+<div class="ttc" id="astatistiques_8h_html_aa0aa33c723d18010dbd783b7a84997d7"><div class="ttname"><a href="statistiques_8h.html#aa0aa33c723d18010dbd783b7a84997d7">genererStatistiques</a></div><div class="ttdeci">t_statistiques genererStatistiques(const t_baseStatistiques baseStatistiques, const int niveau)</div><div class="ttdoc">Génère les statistiques d'un mob en fonction des statistiques de base.</div><div class="ttdef"><b>Definition:</b> statistiques.c:176</div></div>
+<div class="ttc" id="astatistiques_8h_html_aff40eff7ccbb86ffc4a4e6d94d4fd308"><div class="ttname"><a href="statistiques_8h.html#aff40eff7ccbb86ffc4a4e6d94d4fd308">genererStatistiquesDeBaseBoss</a></div><div class="ttdeci">t_baseStatistiques genererStatistiquesDeBaseBoss(const e_jour jour)</div><div class="ttdoc">Génère les statistiques de base d'un boss.</div><div class="ttdef"><b>Definition:</b> statistiques.c:98</div></div>
+<div class="ttc" id="astructs__baseStatistiquesIntervales_html"><div class="ttname"><a href="structs__baseStatistiquesIntervales.html">s_baseStatistiquesIntervales</a></div><div class="ttdef"><b>Definition:</b> statistiques.h:86</div></div>
+<div class="ttc" id="astructs__baseStatistiquesIntervales_html_a1b7c64f6a21b8e0cab78a20c244e16d4"><div class="ttname"><a href="structs__baseStatistiquesIntervales.html#a1b7c64f6a21b8e0cab78a20c244e16d4">s_baseStatistiquesIntervales::pv</a></div><div class="ttdeci">int pv</div><div class="ttdef"><b>Definition:</b> statistiques.h:90</div></div>
+<div class="ttc" id="astructs__baseStatistiquesIntervales_html_a2cb2b6e06ad5568b122744ce67957779"><div class="ttname"><a href="structs__baseStatistiquesIntervales.html#a2cb2b6e06ad5568b122744ce67957779">s_baseStatistiquesIntervales::courbeExp</a></div><div class="ttdeci">int courbeExp[2]</div><div class="ttdef"><b>Definition:</b> statistiques.h:91</div></div>
+<div class="ttc" id="astructs__baseStatistiquesIntervales_html_a4457f1e94d3b43d687c4d4176aec65a4"><div class="ttname"><a href="structs__baseStatistiquesIntervales.html#a4457f1e94d3b43d687c4d4176aec65a4">s_baseStatistiquesIntervales::attaque</a></div><div class="ttdeci">int attaque[2]</div><div class="ttdef"><b>Definition:</b> statistiques.h:87</div></div>
+<div class="ttc" id="astructs__baseStatistiquesIntervales_html_a99be9debb4d7b1afc0ec819815298fb6"><div class="ttname"><a href="structs__baseStatistiquesIntervales.html#a99be9debb4d7b1afc0ec819815298fb6">s_baseStatistiquesIntervales::vitesse</a></div><div class="ttdeci">int vitesse[2]</div><div class="ttdef"><b>Definition:</b> statistiques.h:89</div></div>
+<div class="ttc" id="astructs__baseStatistiquesIntervales_html_aef9130ca037365dbbc9553c6cea4791d"><div class="ttname"><a href="structs__baseStatistiquesIntervales.html#aef9130ca037365dbbc9553c6cea4791d">s_baseStatistiquesIntervales::defense</a></div><div class="ttdeci">int defense[2]</div><div class="ttdef"><b>Definition:</b> statistiques.h:88</div></div>
+<div class="ttc" id="astructs__baseStatistiques_html"><div class="ttname"><a href="structs__baseStatistiques.html">s_baseStatistiques</a></div><div class="ttdef"><b>Definition:</b> statistiques.h:72</div></div>
+<div class="ttc" id="astructs__baseStatistiques_html_a91167defb028f1606f8ae85100281fe8"><div class="ttname"><a href="structs__baseStatistiques.html#a91167defb028f1606f8ae85100281fe8">s_baseStatistiques::experience_courbe</a></div><div class="ttdeci">e_courbeExperience experience_courbe</div><div class="ttdef"><b>Definition:</b> statistiques.h:75</div></div>
+<div class="ttc" id="astructs__statistiques_html"><div class="ttname"><a href="structs__statistiques.html">s_statistiques</a></div><div class="ttdef"><b>Definition:</b> statistiques.h:58</div></div>
+<div class="ttc" id="astructs__statistiques_html_a71495d44b1084fac234dc7e510ed73b8"><div class="ttname"><a href="structs__statistiques.html#a71495d44b1084fac234dc7e510ed73b8">s_statistiques::pvMax</a></div><div class="ttdeci">unsigned int pvMax</div><div class="ttdef"><b>Definition:</b> statistiques.h:61</div></div>
+<div class="ttc" id="astructs__statistiques_html_af3f0a6fc979a7a65836e33887f08c7cc"><div class="ttname"><a href="structs__statistiques.html#af3f0a6fc979a7a65836e33887f08c7cc">s_statistiques::experience</a></div><div class="ttdeci">unsigned int experience</div><div class="ttdef"><b>Definition:</b> statistiques.h:62</div></div>
+<div class="ttc" id="astructs__statistiques_html_af790b4447ef436485358348b585edb2c"><div class="ttname"><a href="structs__statistiques.html#af790b4447ef436485358348b585edb2c">s_statistiques::niveau</a></div><div class="ttdeci">unsigned int niveau</div><div class="ttdef"><b>Definition:</b> statistiques.h:63</div></div>
+<div class="ttc" id="astructt__baseStatistiquesIntervales_html"><div class="ttname"><a href="structt__baseStatistiquesIntervales.html">t_baseStatistiquesIntervales</a></div><div class="ttdoc">Modélise les intervales des statistiques de base.</div></div>
+<div class="ttc" id="astructt__baseStatistiques_html"><div class="ttname"><a href="structt__baseStatistiques.html">t_baseStatistiques</a></div><div class="ttdoc">Structure regroupant les différentes statistiques de base.</div></div>
+<div class="ttc" id="astructt__statistiques_html"><div class="ttname"><a href="structt__statistiques.html">t_statistiques</a></div><div class="ttdoc">Structure regroupant les différentes statistiques.</div></div>
+<div class="ttc" id="atemps_8h_html"><div class="ttname"><a href="temps_8h.html">temps.h</a></div><div class="ttdoc">Module de manipulation du temps.</div></div>
+<div class="ttc" id="atemps_8h_html_a70e7a478476fe7f6b5bf1955ae2e7169"><div class="ttname"><a href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a></div><div class="ttdeci">e_jour</div><div class="ttdoc">Enumérateur regroupant les jours de la semaine.</div><div class="ttdef"><b>Definition:</b> temps.h:46</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

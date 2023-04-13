@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime:  Fichier source de include/animal.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">animal.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="animal_8h.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef _JEU_ANIMAUX_</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define _JEU_ANIMAUX_</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="statistiques_8h.html">statistiques.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mob_8h.html">mob.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/*                                 Enumeration                                */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/*                                 Structures                                 */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structs__animal.html">   43</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__animal.html">s_animal</a> {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">struct </span><a class="code" href="structs__mob.html">s_mob</a>;           </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structs__animal.html#ac42cb3a66b07c508d6786fac4a8dd889">   46</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structs__animal.html#ac42cb3a66b07c508d6786fac4a8dd889">name</a>;             </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;} <a class="code" href="structt__animal.html">t_animal</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/*                                 Constantes                                 */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">extern</span> <span class="keyword">const</span> <a class="code" href="structt__baseStatistiquesIntervales.html">t_baseStatistiquesIntervales</a> <a class="code" href="animal_8h.html#a1a670d142570728057652e6199c9e896">statistiquesDeBasesIntervalesAnimaux</a>[];</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*                                  Fonctions                                 */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/* -------------------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structs__map.html">s_map</a> <a class="code" href="structt__map.html">t_map</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<a class="code" href="structt__baseStatistiques.html">t_baseStatistiques</a> <a class="code" href="animal_8h.html#a45855da67ed1920aeb02da03103fbcba">genererStatistiquesDeBaseAnimal</a>(<span class="keyword">const</span> <a class="code" href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a> tag);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<a class="code" href="structt__animal.html">t_animal</a>* <a class="code" href="animal_8h.html#ad7cf5d1744caf19ed95b3ac5c3077597">genererAnimal</a>(<a class="code" href="structt__animal.html">t_animal</a> *animal, <span class="keyword">const</span> <a class="code" href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a> tag);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<a class="code" href="structt__animal.html">t_animal</a>* <a class="code" href="animal_8h.html#ad6fa28e7ea0a327607ba2b692559d5b6">creerAnimal</a>(<span class="keyword">const</span> <a class="code" href="structt__vecteur2.html">t_vecteur2</a> position, <span class="keyword">const</span> <a class="code" href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a> tag);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">void</span> <a class="code" href="animal_8h.html#a91aa0cd779f2d1e5991e4bfecc4abec2">apparitionAnimal</a>(<span class="keyword">const</span> <a class="code" href="structt__vecteur2.html">t_vecteur2</a> positionTroupeau, <a class="code" href="structt__liste.html">t_liste</a> *<a class="code" href="structs__map.html#acf20c8c525a9590c247bc8bcd7de06ca">entites</a>, <a class="code" href="structt__map.html">t_map</a> *map, <span class="keyword">const</span> <a class="code" href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a> tag);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> <a class="code" href="animal_8h.html#abb2e2bc0008e5c0fb3e72ce6892d25e7">apparitionTroupeau</a>(<a class="code" href="structt__liste.html">t_liste</a> *<a class="code" href="structs__map.html#acf20c8c525a9590c247bc8bcd7de06ca">entites</a>, <a class="code" href="structt__map.html">t_map</a> *map);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> <a class="code" href="animal_8h.html#a22c77e7bda824efc3964f74df14cb1a5">detruireAnimal</a>(<a class="code" href="structt__animal.html">t_animal</a> **animal);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aanimal_8h_html_a1a670d142570728057652e6199c9e896"><div class="ttname"><a href="animal_8h.html#a1a670d142570728057652e6199c9e896">statistiquesDeBasesIntervalesAnimaux</a></div><div class="ttdeci">const t_baseStatistiquesIntervales statistiquesDeBasesIntervalesAnimaux[]</div><div class="ttdoc">Tableau regroupant les statistiques de bases en fonction de l'animal.</div><div class="ttdef"><b>Definition:</b> generation_bases.c:202</div></div>
+<div class="ttc" id="aanimal_8h_html_a22c77e7bda824efc3964f74df14cb1a5"><div class="ttname"><a href="animal_8h.html#a22c77e7bda824efc3964f74df14cb1a5">detruireAnimal</a></div><div class="ttdeci">void detruireAnimal(t_animal **animal)</div><div class="ttdoc">Detruit un animal est libère la mémoire allouée pour ce dernier.</div><div class="ttdef"><b>Definition:</b> animal.c:143</div></div>
+<div class="ttc" id="aanimal_8h_html_a45855da67ed1920aeb02da03103fbcba"><div class="ttname"><a href="animal_8h.html#a45855da67ed1920aeb02da03103fbcba">genererStatistiquesDeBaseAnimal</a></div><div class="ttdeci">t_baseStatistiques genererStatistiquesDeBaseAnimal(const e_entiteTag tag)</div><div class="ttdoc">Génère les statistiques de base d'un animal.</div><div class="ttdef"><b>Definition:</b> statistiques.c:71</div></div>
+<div class="ttc" id="aanimal_8h_html_a91aa0cd779f2d1e5991e4bfecc4abec2"><div class="ttname"><a href="animal_8h.html#a91aa0cd779f2d1e5991e4bfecc4abec2">apparitionAnimal</a></div><div class="ttdeci">void apparitionAnimal(const t_vecteur2 positionTroupeau, t_liste *entites, t_map *map, const e_entiteTag tag)</div><div class="ttdoc">Génère / fait apparaitre un animal au sein d'un troupeau.</div><div class="ttdef"><b>Definition:</b> animal.c:230</div></div>
+<div class="ttc" id="aanimal_8h_html_abb2e2bc0008e5c0fb3e72ce6892d25e7"><div class="ttname"><a href="animal_8h.html#abb2e2bc0008e5c0fb3e72ce6892d25e7">apparitionTroupeau</a></div><div class="ttdeci">void apparitionTroupeau(t_liste *entites, t_map *map)</div><div class="ttdoc">Génère / fait apparaitre un troupeau d'animaux.</div><div class="ttdef"><b>Definition:</b> animal.c:252</div></div>
+<div class="ttc" id="aanimal_8h_html_ad6fa28e7ea0a327607ba2b692559d5b6"><div class="ttname"><a href="animal_8h.html#ad6fa28e7ea0a327607ba2b692559d5b6">creerAnimal</a></div><div class="ttdeci">t_animal * creerAnimal(const t_vecteur2 position, const e_entiteTag tag)</div><div class="ttdoc">Alloue l'espace nécessaire pour un animal et le crée.</div><div class="ttdef"><b>Definition:</b> animal.c:168</div></div>
+<div class="ttc" id="aanimal_8h_html_ad7cf5d1744caf19ed95b3ac5c3077597"><div class="ttname"><a href="animal_8h.html#ad7cf5d1744caf19ed95b3ac5c3077597">genererAnimal</a></div><div class="ttdeci">t_animal * genererAnimal(t_animal *animal, const e_entiteTag tag)</div><div class="ttdoc">Génère les informations et statistiques d'un animal en fonction de sont tag.</div><div class="ttdef"><b>Definition:</b> generation_animaux.c:35</div></div>
+<div class="ttc" id="aentite_8h_html_a0040801926229213be8bb8a3fe378b15"><div class="ttname"><a href="entite_8h.html#a0040801926229213be8bb8a3fe378b15">e_entiteTag</a></div><div class="ttdeci">e_entiteTag</div><div class="ttdoc">Enumérateur regroupant les différents tags des entités.</div><div class="ttdef"><b>Definition:</b> entite.h:58</div></div>
+<div class="ttc" id="amob_8h_html"><div class="ttname"><a href="mob_8h.html">mob.h</a></div><div class="ttdoc">Module de manipulation des mobs.</div></div>
+<div class="ttc" id="astatistiques_8h_html"><div class="ttname"><a href="statistiques_8h.html">statistiques.h</a></div><div class="ttdoc">Module de manipulation des statistiques.</div></div>
+<div class="ttc" id="astructs__animal_html"><div class="ttname"><a href="structs__animal.html">s_animal</a></div><div class="ttdef"><b>Definition:</b> animal.h:43</div></div>
+<div class="ttc" id="astructs__animal_html_ac42cb3a66b07c508d6786fac4a8dd889"><div class="ttname"><a href="structs__animal.html#ac42cb3a66b07c508d6786fac4a8dd889">s_animal::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> animal.h:44</div></div>
+<div class="ttc" id="astructs__map_html"><div class="ttname"><a href="structs__map.html">s_map</a></div><div class="ttdef"><b>Definition:</b> map.h:168</div></div>
+<div class="ttc" id="astructs__map_html_acf20c8c525a9590c247bc8bcd7de06ca"><div class="ttname"><a href="structs__map.html#acf20c8c525a9590c247bc8bcd7de06ca">s_map::entites</a></div><div class="ttdeci">t_liste * entites</div><div class="ttdef"><b>Definition:</b> map.h:172</div></div>
+<div class="ttc" id="astructs__mob_html"><div class="ttname"><a href="structs__mob.html">s_mob</a></div><div class="ttdef"><b>Definition:</b> mob.h:78</div></div>
+<div class="ttc" id="astructt__animal_html"><div class="ttname"><a href="structt__animal.html">t_animal</a></div><div class="ttdoc">Modélise un animal.</div></div>
+<div class="ttc" id="astructt__baseStatistiquesIntervales_html"><div class="ttname"><a href="structt__baseStatistiquesIntervales.html">t_baseStatistiquesIntervales</a></div><div class="ttdoc">Modélise les intervales des statistiques de base.</div></div>
+<div class="ttc" id="astructt__baseStatistiques_html"><div class="ttname"><a href="structt__baseStatistiques.html">t_baseStatistiques</a></div><div class="ttdoc">Structure regroupant les différentes statistiques de base.</div></div>
+<div class="ttc" id="astructt__liste_html"><div class="ttname"><a href="structt__liste.html">t_liste</a></div><div class="ttdoc">Modelise l'emplacement actuel dans la liste.</div></div>
+<div class="ttc" id="astructt__map_html"><div class="ttname"><a href="structt__map.html">t_map</a></div><div class="ttdoc">Modélise une map.</div></div>
+<div class="ttc" id="astructt__vecteur2_html"><div class="ttname"><a href="structt__vecteur2.html">t_vecteur2</a></div><div class="ttdoc">Structure modélisant un vecteur à deux dimensions.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

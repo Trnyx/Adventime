@@ -1,0 +1,46 @@
+\hypertarget{input__manager_8h}{}\doxysection{Référence du fichier include/input\+\_\+manager.h}
+\label{input__manager_8h}\index{include/input\_manager.h@{include/input\_manager.h}}
+
+
+Module de manipulations des inputs du joueur.  
+
+
+{\ttfamily \#include \char`\"{}joueur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}moteur.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{input__manager_8h_ac0140572b01d5e2709cee783b7da8f59}{input\+Manager}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Regarde l\textquotesingle{}état du clavier et de la souris et met à jour les états des inputs dans le joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulations des inputs du joueur. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{input__manager_8h_ac0140572b01d5e2709cee783b7da8f59}\label{input__manager_8h_ac0140572b01d5e2709cee783b7da8f59}} 
+\index{input\_manager.h@{input\_manager.h}!inputManager@{inputManager}}
+\index{inputManager@{inputManager}!input\_manager.h@{input\_manager.h}}
+\doxysubsubsection{\texorpdfstring{inputManager()}{inputManager()}}
+{\footnotesize\ttfamily int input\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Regarde l\textquotesingle{}état du clavier et de la souris et met à jour les états des inputs dans le joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Un pointeur sur le joueur où sont stockés les différentes informations sur l\textquotesingle{}état actuel des inputs du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+L\textquotesingle{}état du jeu (J\+\_\+\+MORT, M\+\_\+\+PAUSE, M\+\_\+\+QUIT) 
+\end{DoxyReturn}

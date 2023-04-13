@@ -1,0 +1,187 @@
+\hypertarget{statistiques_8h}{}\doxysection{Référence du fichier include/statistiques.h}
+\label{statistiques_8h}\index{include/statistiques.h@{include/statistiques.h}}
+
+
+Module de manipulation des statistiques.  
+
+
+{\ttfamily \#include \char`\"{}temps.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}attributs\+\_\+statistiques.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__statistiques}{s\+\_\+statistiques}}
+\item 
+struct \mbox{\hyperlink{structs__baseStatistiques}{s\+\_\+base\+Statistiques}}
+\item 
+struct \mbox{\hyperlink{structs__baseStatistiquesIntervales}{s\+\_\+base\+Statistiques\+Intervales}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{statistiques_8h_a0b0bd8f6a262a349adf7bc20409a8a36}\label{statistiques_8h_a0b0bd8f6a262a349adf7bc20409a8a36}} 
+typedef struct \mbox{\hyperlink{structs__statistiques}{s\+\_\+statistiques}} {\bfseries t\+\_\+statistiques}
+\item 
+\mbox{\Hypertarget{statistiques_8h_ac4c04d64e5200e458fff190350739fd5}\label{statistiques_8h_ac4c04d64e5200e458fff190350739fd5}} 
+typedef struct \mbox{\hyperlink{structs__baseStatistiques}{s\+\_\+base\+Statistiques}} {\bfseries t\+\_\+base\+Statistiques}
+\item 
+\mbox{\Hypertarget{statistiques_8h_a9c8cd03d503c243c9e0d75f193d4a206}\label{statistiques_8h_a9c8cd03d503c243c9e0d75f193d4a206}} 
+typedef struct \mbox{\hyperlink{structs__baseStatistiquesIntervales}{s\+\_\+base\+Statistiques\+Intervales}} {\bfseries t\+\_\+base\+Statistiques\+Intervales}
+\end{DoxyCompactItemize}
+\doxysubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9fe}{e\+\_\+courbe\+Experience}} \{ \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9fea5c952702153559b7219f4cf0c0a3d15c}{EXPERIENCE\+\_\+\+LENT}}
+, \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9fea98a11d11be32e8f653be7d8f03f1bda7}{EXPERIENCE\+\_\+\+MOYEN}}
+, \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9feae6c0532534bea14f93a12e9277ea0814}{EXPERIENCE\+\_\+\+RAPIDE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumération regroupant les différentes type de courbe d\textquotesingle{}expérience. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{statistiques_8h_a0390e977e123067add242c7a3a3e424b}{calcul\+Statistique}} (const int base, const int niveau)
+\begin{DoxyCompactList}\small\item\em Calcul des statistiques en fonction des statistiques de bases et du niveau du monstre. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{statistiques_8h_a3f434b959635e4d5e5f5beecf6a4bd00}{calcul\+Pv}} (const int \mbox{\hyperlink{attributs__statistiques_8h_af1160328126a84d46f6b93733ab1a696}{attaque}}, const int \mbox{\hyperlink{attributs__statistiques_8h_a868ae20110b956778ed41d48f31d910f}{defense}}, const int base\+Pv)
+\begin{DoxyCompactList}\small\item\em Calcul la statistique \char`\"{}pv\char`\"{} d\textquotesingle{}un monstre en fonction de ses points d\textquotesingle{}attaque, de défense et de la base des pv. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__statistiques}{t\+\_\+statistiques}} \mbox{\hyperlink{statistiques_8h_aa0aa33c723d18010dbd783b7a84997d7}{generer\+Statistiques}} (const \mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} base\+Statistiques, const int niveau)
+\begin{DoxyCompactList}\small\item\em Génère les statistiques d\textquotesingle{}un mob en fonction des statistiques de base. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} \mbox{\hyperlink{statistiques_8h_aff40eff7ccbb86ffc4a4e6d94d4fd308}{generer\+Statistiques\+De\+Base\+Boss}} (const \mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}} jour)
+\begin{DoxyCompactList}\small\item\em Génère les statistiques de base d\textquotesingle{}un boss. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} \mbox{\hyperlink{statistiques_8h_a0470bb7a9ee606ea29e70cb6d7bad5bb}{generer\+Statistiques\+De\+Base\+Joueur}} ()
+\begin{DoxyCompactList}\small\item\em Génère les statistiques de base du joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des statistiques. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23 janvier 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\mbox{\Hypertarget{statistiques_8h_a4dd6415a844265297e6dc609827fc9fe}\label{statistiques_8h_a4dd6415a844265297e6dc609827fc9fe}} 
+\index{statistiques.h@{statistiques.h}!e\_courbeExperience@{e\_courbeExperience}}
+\index{e\_courbeExperience@{e\_courbeExperience}!statistiques.h@{statistiques.h}}
+\doxysubsubsection{\texorpdfstring{e\_courbeExperience}{e\_courbeExperience}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9fe}{e\+\_\+courbe\+Experience}}}
+
+
+
+Enumération regroupant les différentes type de courbe d\textquotesingle{}expérience. 
+
+\begin{DoxyEnumFields}{Valeurs énumérées}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPERIENCE\_LENT@{EXPERIENCE\_LENT}!statistiques.h@{statistiques.h}}\index{statistiques.h@{statistiques.h}!EXPERIENCE\_LENT@{EXPERIENCE\_LENT}}}\mbox{\Hypertarget{statistiques_8h_a4dd6415a844265297e6dc609827fc9fea5c952702153559b7219f4cf0c0a3d15c}\label{statistiques_8h_a4dd6415a844265297e6dc609827fc9fea5c952702153559b7219f4cf0c0a3d15c}} 
+EXPERIENCE\+\_\+\+LENT&Indique que la vitesse de progression des niveaux est lente \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPERIENCE\_MOYEN@{EXPERIENCE\_MOYEN}!statistiques.h@{statistiques.h}}\index{statistiques.h@{statistiques.h}!EXPERIENCE\_MOYEN@{EXPERIENCE\_MOYEN}}}\mbox{\Hypertarget{statistiques_8h_a4dd6415a844265297e6dc609827fc9fea98a11d11be32e8f653be7d8f03f1bda7}\label{statistiques_8h_a4dd6415a844265297e6dc609827fc9fea98a11d11be32e8f653be7d8f03f1bda7}} 
+EXPERIENCE\+\_\+\+MOYEN&Indique que la vitesse de progression des niveaux est moyenne \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EXPERIENCE\_RAPIDE@{EXPERIENCE\_RAPIDE}!statistiques.h@{statistiques.h}}\index{statistiques.h@{statistiques.h}!EXPERIENCE\_RAPIDE@{EXPERIENCE\_RAPIDE}}}\mbox{\Hypertarget{statistiques_8h_a4dd6415a844265297e6dc609827fc9feae6c0532534bea14f93a12e9277ea0814}\label{statistiques_8h_a4dd6415a844265297e6dc609827fc9feae6c0532534bea14f93a12e9277ea0814}} 
+EXPERIENCE\+\_\+\+RAPIDE&Indique que la vitesse de progression des niveaux est rapide \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{statistiques_8h_a3f434b959635e4d5e5f5beecf6a4bd00}\label{statistiques_8h_a3f434b959635e4d5e5f5beecf6a4bd00}} 
+\index{statistiques.h@{statistiques.h}!calculPv@{calculPv}}
+\index{calculPv@{calculPv}!statistiques.h@{statistiques.h}}
+\doxysubsubsection{\texorpdfstring{calculPv()}{calculPv()}}
+{\footnotesize\ttfamily int calcul\+Pv (\begin{DoxyParamCaption}\item[{const int}]{attaque,  }\item[{const int}]{defense,  }\item[{const int}]{base\+Pv }\end{DoxyParamCaption})}
+
+
+
+Calcul la statistique \char`\"{}pv\char`\"{} d\textquotesingle{}un monstre en fonction de ses points d\textquotesingle{}attaque, de défense et de la base des pv. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em attaque} & Les points d\textquotesingle{}attaque du monstre \\
+\hline
+{\em defense} & Les points de défense du monstre \\
+\hline
+{\em base\+Pv} & La statistique de base \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le nombre de point de vie maximum du monstre 
+\end{DoxyReturn}
+\mbox{\Hypertarget{statistiques_8h_a0390e977e123067add242c7a3a3e424b}\label{statistiques_8h_a0390e977e123067add242c7a3a3e424b}} 
+\index{statistiques.h@{statistiques.h}!calculStatistique@{calculStatistique}}
+\index{calculStatistique@{calculStatistique}!statistiques.h@{statistiques.h}}
+\doxysubsubsection{\texorpdfstring{calculStatistique()}{calculStatistique()}}
+{\footnotesize\ttfamily int calcul\+Statistique (\begin{DoxyParamCaption}\item[{const int}]{base,  }\item[{const int}]{niveau }\end{DoxyParamCaption})}
+
+
+
+Calcul des statistiques en fonction des statistiques de bases et du niveau du monstre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em base} & La statistique de base concerné \\
+\hline
+{\em niveau} & Le niveau du monstre\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+La valeur de la statistique 
+\end{DoxyReturn}
+\mbox{\Hypertarget{statistiques_8h_aa0aa33c723d18010dbd783b7a84997d7}\label{statistiques_8h_aa0aa33c723d18010dbd783b7a84997d7}} 
+\index{statistiques.h@{statistiques.h}!genererStatistiques@{genererStatistiques}}
+\index{genererStatistiques@{genererStatistiques}!statistiques.h@{statistiques.h}}
+\doxysubsubsection{\texorpdfstring{genererStatistiques()}{genererStatistiques()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__statistiques}{t\+\_\+statistiques}} generer\+Statistiques (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}}}]{base\+Statistiques,  }\item[{const int}]{niveau }\end{DoxyParamCaption})}
+
+
+
+Génère les statistiques d\textquotesingle{}un mob en fonction des statistiques de base. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em base\+Statistiques} & Les statistiques de base d\textquotesingle{}un mob \\
+\hline
+{\em niveau} & Le niveau du mob\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Les statistiques du mob 
+\end{DoxyReturn}
+\mbox{\Hypertarget{statistiques_8h_aff40eff7ccbb86ffc4a4e6d94d4fd308}\label{statistiques_8h_aff40eff7ccbb86ffc4a4e6d94d4fd308}} 
+\index{statistiques.h@{statistiques.h}!genererStatistiquesDeBaseBoss@{genererStatistiquesDeBaseBoss}}
+\index{genererStatistiquesDeBaseBoss@{genererStatistiquesDeBaseBoss}!statistiques.h@{statistiques.h}}
+\doxysubsubsection{\texorpdfstring{genererStatistiquesDeBaseBoss()}{genererStatistiquesDeBaseBoss()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} generer\+Statistiques\+De\+Base\+Boss (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{temps_8h_a70e7a478476fe7f6b5bf1955ae2e7169}{e\+\_\+jour}}}]{jour }\end{DoxyParamCaption})}
+
+
+
+Génère les statistiques de base d\textquotesingle{}un boss. 
+
+Elles sont déterminées de façon aléatoire dans un intervalle définit dans les informations de base d\textquotesingle{}un boss Les statistiques de base sont utilisés à chaque fois que les statistiques ont besoins d\textquotesingle{}être calculées
+
+
+\begin{DoxyParams}{Paramètres}
+{\em jour} & Le jour du boss\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Les statistiques de base du boss 
+\end{DoxyReturn}
+\mbox{\Hypertarget{statistiques_8h_a0470bb7a9ee606ea29e70cb6d7bad5bb}\label{statistiques_8h_a0470bb7a9ee606ea29e70cb6d7bad5bb}} 
+\index{statistiques.h@{statistiques.h}!genererStatistiquesDeBaseJoueur@{genererStatistiquesDeBaseJoueur}}
+\index{genererStatistiquesDeBaseJoueur@{genererStatistiquesDeBaseJoueur}!statistiques.h@{statistiques.h}}
+\doxysubsubsection{\texorpdfstring{genererStatistiquesDeBaseJoueur()}{genererStatistiquesDeBaseJoueur()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} generer\+Statistiques\+De\+Base\+Joueur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Génère les statistiques de base du joueur. 
+
+\begin{DoxyReturn}{Renvoie}
+Les statistiques de bases du joueur 
+\end{DoxyReturn}

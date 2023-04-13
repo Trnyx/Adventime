@@ -1,0 +1,51 @@
+\hypertarget{inputs__manager_8c}{}\doxysection{Référence du fichier src/inputs\+\_\+manager.c}
+\label{inputs__manager_8c}\index{src/inputs\_manager.c@{src/inputs\_manager.c}}
+
+
+Module qui gère tous les inputs du joueur.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/input\+\_\+manager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/menus.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{inputs__manager_8c_ac0140572b01d5e2709cee783b7da8f59}{input\+Manager}} (\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Regarde l\textquotesingle{}état du clavier et de la souris et met à jour les états des inputs dans le joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module qui gère tous les inputs du joueur. 
+
+Clavier et souris
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+6 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{inputs__manager_8c_ac0140572b01d5e2709cee783b7da8f59}\label{inputs__manager_8c_ac0140572b01d5e2709cee783b7da8f59}} 
+\index{inputs\_manager.c@{inputs\_manager.c}!inputManager@{inputManager}}
+\index{inputManager@{inputManager}!inputs\_manager.c@{inputs\_manager.c}}
+\doxysubsubsection{\texorpdfstring{inputManager()}{inputManager()}}
+{\footnotesize\ttfamily int input\+Manager (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Regarde l\textquotesingle{}état du clavier et de la souris et met à jour les états des inputs dans le joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em joueur} & Un pointeur sur le joueur où sont stockés les différentes informations sur l\textquotesingle{}état actuel des inputs du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+L\textquotesingle{}état du jeu (J\+\_\+\+MORT, M\+\_\+\+PAUSE, M\+\_\+\+QUIT) 
+\end{DoxyReturn}

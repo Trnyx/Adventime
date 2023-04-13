@@ -1,0 +1,81 @@
+\hypertarget{menus_8h}{}\doxysection{Référence du fichier include/menus.h}
+\label{menus_8h}\index{include/menus.h@{include/menus.h}}
+
+
+Regroupe les fonctions des menus.  
+
+
+{\ttfamily \#include \char`\"{}Nuklear/nuklear.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Nuklear/nuklear\+\_\+sdl\+\_\+renderer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Nuklear/style.\+c\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}audio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}joueur.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{menus_8h_a4a039b54706c6ce84dfe700e79571da5}\label{menus_8h_a4a039b54706c6ce84dfe700e79571da5}} 
+state\+\_\+main {\bfseries main\+\_\+menu} (struct nk\+\_\+context $\ast$\mbox{\hyperlink{menus_8h_a619fe39ce089c292840698c4634e0261}{ctx}})
+\item 
+\mbox{\Hypertarget{menus_8h_a127a9d4aedcf64ac8c399a6929f7c1d0}\label{menus_8h_a127a9d4aedcf64ac8c399a6929f7c1d0}} 
+state\+\_\+main {\bfseries menu\+\_\+options} (struct nk\+\_\+context $\ast$\mbox{\hyperlink{menus_8h_a619fe39ce089c292840698c4634e0261}{ctx}})
+\item 
+\mbox{\Hypertarget{menus_8h_af29ed192e4f4f04a790c39c6ca9a9a39}\label{menus_8h_af29ed192e4f4f04a790c39c6ca9a9a39}} 
+void {\bfseries update\+HUD} (struct nk\+\_\+context $\ast$\mbox{\hyperlink{menus_8h_a619fe39ce089c292840698c4634e0261}{ctx}}, \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\item 
+\mbox{\Hypertarget{menus_8h_aa7210a8b505a9c6767068b2a5969f28b}\label{menus_8h_aa7210a8b505a9c6767068b2a5969f28b}} 
+state\+\_\+main {\bfseries pause\+Menu} (struct nk\+\_\+context $\ast$\mbox{\hyperlink{menus_8h_a619fe39ce089c292840698c4634e0261}{ctx}})
+\item 
+\mbox{\Hypertarget{menus_8h_a7a7f9661d14381c32e78dce3340e06eb}\label{menus_8h_a7a7f9661d14381c32e78dce3340e06eb}} 
+state\+\_\+main {\bfseries game\+Over} (struct nk\+\_\+context $\ast$\mbox{\hyperlink{menus_8h_a619fe39ce089c292840698c4634e0261}{ctx}}, \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\item 
+\mbox{\Hypertarget{menus_8h_aeabbde209302a48f7f25852b4dfe0063}\label{menus_8h_aeabbde209302a48f7f25852b4dfe0063}} 
+void {\bfseries menu\+\_\+inventaire} (struct nk\+\_\+context $\ast$\mbox{\hyperlink{menus_8h_a619fe39ce089c292840698c4634e0261}{ctx}}, \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\item 
+\mbox{\Hypertarget{menus_8h_a7eddbd48e8950c44191fd6115f5ad988}\label{menus_8h_a7eddbd48e8950c44191fd6115f5ad988}} 
+void {\bfseries inv\+\_\+stats} (struct nk\+\_\+context $\ast$\mbox{\hyperlink{menus_8h_a619fe39ce089c292840698c4634e0261}{ctx}}, \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\item 
+\mbox{\Hypertarget{menus_8h_aa05ebd6f27d6cbb9e1f35d0b8d41046c}\label{menus_8h_aa05ebd6f27d6cbb9e1f35d0b8d41046c}} 
+void {\bfseries inventaire} (struct nk\+\_\+context $\ast$\mbox{\hyperlink{menus_8h_a619fe39ce089c292840698c4634e0261}{ctx}}, \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct nk\+\_\+context $\ast$ \mbox{\hyperlink{menus_8h_a619fe39ce089c292840698c4634e0261}{ctx}}
+\begin{DoxyCompactList}\small\item\em Fait le menu principal du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Regroupe les fonctions des menus. 
+
+\begin{DoxyAuthor}{Auteur}
+Eliott Remars 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2023-\/02-\/07 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{menus_8h_a619fe39ce089c292840698c4634e0261}\label{menus_8h_a619fe39ce089c292840698c4634e0261}} 
+\index{menus.h@{menus.h}!ctx@{ctx}}
+\index{ctx@{ctx}!menus.h@{menus.h}}
+\doxysubsubsection{\texorpdfstring{ctx}{ctx}}
+{\footnotesize\ttfamily struct nk\+\_\+context$\ast$ ctx\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Fait le menu principal du jeu. 
+
+Afficher les boutons Jouer, Options et Quitter du menu principal
+
+
+\begin{DoxyParams}{Paramètres}
+{\em ctx} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+void 
+\end{DoxyReturn}

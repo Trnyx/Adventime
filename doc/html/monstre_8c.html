@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier src/monstre.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier monstre.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Module de gestion des monstres.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="physique_8h_source.html">../include/physique.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="audio_8h_source.html">../include/audio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="moteur_8h_source.html">../include/moteur.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="monstre_8h_source.html">../include/monstre.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a5e433b037924f3971c55d7dde9399caa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monstre_8c.html#a5e433b037924f3971c55d7dde9399caa">updateMonstre</a> (<a class="el" href="structt__monstre.html">t_monstre</a> *monstre, float distance, <a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *cible)</td></tr>
+<tr class="memdesc:a5e433b037924f3971c55d7dde9399caa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualise un monstre.  <a href="monstre_8c.html#a5e433b037924f3971c55d7dde9399caa">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a5e433b037924f3971c55d7dde9399caa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adaaee129a169052ce4f00a27397500bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monstre_8c.html#adaaee129a169052ce4f00a27397500bc">detruireMonstre</a> (<a class="el" href="structt__monstre.html">t_monstre</a> **monstre)</td></tr>
+<tr class="memdesc:adaaee129a169052ce4f00a27397500bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit un monstre est libère la mémoire allouée pour ce dernier.  <a href="monstre_8c.html#adaaee129a169052ce4f00a27397500bc">Plus de détails...</a><br /></td></tr>
+<tr class="separator:adaaee129a169052ce4f00a27397500bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a180483b80c6873766691ffe27ebb507c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__monstre.html">t_monstre</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monstre_8c.html#a180483b80c6873766691ffe27ebb507c">creerMonstre</a> (const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> position, const <a class="el" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a> biome, const int niveauJoueur)</td></tr>
+<tr class="memdesc:a180483b80c6873766691ffe27ebb507c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue l'espace nécessaire pour un monstre et le créer.  <a href="monstre_8c.html#a180483b80c6873766691ffe27ebb507c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a180483b80c6873766691ffe27ebb507c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3db13cd64e4d2dc8c2d0ac8178c7d4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monstre_8c.html#aa3db13cd64e4d2dc8c2d0ac8178c7d4c">apparitionMonstre</a> (<a class="el" href="structt__liste.html">t_liste</a> *entites, <a class="el" href="structt__map.html">t_map</a> *map, const <a class="el" href="structt__vecteur2.html">t_vecteur2</a> positionJoueur, const int niveauJoueur)</td></tr>
+<tr class="memdesc:aa3db13cd64e4d2dc8c2d0ac8178c7d4c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fait apparaitre un monstre.  <a href="monstre_8c.html#aa3db13cd64e4d2dc8c2d0ac8178c7d4c">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa3db13cd64e4d2dc8c2d0ac8178c7d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Module de gestion des monstres. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>23 janvier </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="aa3db13cd64e4d2dc8c2d0ac8178c7d4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3db13cd64e4d2dc8c2d0ac8178c7d4c">&#9670;&nbsp;</a></span>apparitionMonstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void apparitionMonstre </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__liste.html">t_liste</a> *&#160;</td>
+          <td class="paramname"><em>entites</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structt__map.html">t_map</a> *&#160;</td>
+          <td class="paramname"><em>map</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>positionJoueur</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>niveauJoueur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fait apparaitre un monstre. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entites</td><td>La liste d'entités déjà existante </td></tr>
+    <tr><td class="paramname">biome</td><td>Le biome dans lequel le monstre apparait </td></tr>
+    <tr><td class="paramname">positionJoueur</td><td>La position du joueur </td></tr>
+    <tr><td class="paramname">niveauJoueur</td><td>Le niveau actuel du joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a180483b80c6873766691ffe27ebb507c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a180483b80c6873766691ffe27ebb507c">&#9670;&nbsp;</a></span>creerMonstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__monstre.html">t_monstre</a>* creerMonstre </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structt__vecteur2.html">t_vecteur2</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="map_8h.html#a03a577c44d494b095cbbc30a2144ba53">e_biome</a>&#160;</td>
+          <td class="paramname"><em>biome</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>niveauJoueur</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alloue l'espace nécessaire pour un monstre et le créer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">position</td><td>La position à laquelle le monstre doit apparaitre </td></tr>
+    <tr><td class="paramname">biome</td><td>Le biome dans lequel le monstre apparait </td></tr>
+    <tr><td class="paramname">niveauJoueur</td><td>Le niveau actuel du joueur</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur le monstre créé, NULL en cas d'echec </dd></dl>
+
+</div>
+</div>
+<a id="adaaee129a169052ce4f00a27397500bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adaaee129a169052ce4f00a27397500bc">&#9670;&nbsp;</a></span>detruireMonstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireMonstre </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__monstre.html">t_monstre</a> **&#160;</td>
+          <td class="paramname"><em>monstre</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit un monstre est libère la mémoire allouée pour ce dernier. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monstre</td><td>L'adresse du pointeur du monstre à détruire </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5e433b037924f3971c55d7dde9399caa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e433b037924f3971c55d7dde9399caa">&#9670;&nbsp;</a></span>updateMonstre()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateMonstre </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__monstre.html">t_monstre</a> *&#160;</td>
+          <td class="paramname"><em>monstre</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>distance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structs__entiteVivante.html">t_entiteVivante</a> *&#160;</td>
+          <td class="paramname"><em>cible</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Actualise un monstre. </p>
+<p>Toute la logique propre à un monstre est gérer dans cette fonction</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">monstre</td><td>Un pointeur sur le monstre à actualiser </td></tr>
+    <tr><td class="paramname">distance</td><td>La distance entre le monstre et le joueur </td></tr>
+    <tr><td class="paramname">cible</td><td>Un pointeur sur la cible du monstre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

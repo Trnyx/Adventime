@@ -1,0 +1,73 @@
+\hypertarget{experience_8h}{}\doxysection{Référence du fichier include/experience.h}
+\label{experience_8h}\index{include/experience.h@{include/experience.h}}
+
+
+Module de manipulation pour l\textquotesingle{}expérience.  
+
+
+{\ttfamily \#include \char`\"{}entite.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}statistiques.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{experience_8h_ad3db32276fd9af66d19289fd09a26a96}{calcul\+Experience}} (\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$cible)
+\begin{DoxyCompactList}\small\item\em Calcul le nombre de point d\textquotesingle{}expèrience qui sera donner/retirer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{experience_8h_abcd2e54088ea9d44e92ff68a6684f34a}{donner\+Experience}} (\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$entite, const int experience)
+\begin{DoxyCompactList}\small\item\em On donne les points d\textquotesingle{}expèrience à l\textquotesingle{}entité \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{experience_8h_af363392e402d5b5998eb9ee8c48b6914}\label{experience_8h_af363392e402d5b5998eb9ee8c48b6914}} 
+int($\ast$)(const unsigned int) {\bfseries get\+Experience\+Courbe} (const \mbox{\hyperlink{statistiques_8h_a4dd6415a844265297e6dc609827fc9fe}{e\+\_\+courbe\+Experience}} courbe)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation pour l\textquotesingle{}expérience. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23 janvier 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{experience_8h_ad3db32276fd9af66d19289fd09a26a96}\label{experience_8h_ad3db32276fd9af66d19289fd09a26a96}} 
+\index{experience.h@{experience.h}!calculExperience@{calculExperience}}
+\index{calculExperience@{calculExperience}!experience.h@{experience.h}}
+\doxysubsubsection{\texorpdfstring{calculExperience()}{calculExperience()}}
+{\footnotesize\ttfamily int calcul\+Experience (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$}]{cible }\end{DoxyParamCaption})}
+
+
+
+Calcul le nombre de point d\textquotesingle{}expèrience qui sera donner/retirer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em cible} & L\textquotesingle{}entité qui a été vaincu\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Le nombre de point d\textquotesingle{}expèrience 
+\end{DoxyReturn}
+\mbox{\Hypertarget{experience_8h_abcd2e54088ea9d44e92ff68a6684f34a}\label{experience_8h_abcd2e54088ea9d44e92ff68a6684f34a}} 
+\index{experience.h@{experience.h}!donnerExperience@{donnerExperience}}
+\index{donnerExperience@{donnerExperience}!experience.h@{experience.h}}
+\doxysubsubsection{\texorpdfstring{donnerExperience()}{donnerExperience()}}
+{\footnotesize\ttfamily void donner\+Experience (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structs__entiteVivante}{t\+\_\+entite\+Vivante}} $\ast$}]{entite,  }\item[{const int}]{experience }\end{DoxyParamCaption})}
+
+
+
+On donne les points d\textquotesingle{}expèrience à l\textquotesingle{}entité 
+
+Donner une valeur d\textquotesingle{}experience négative pour retiré de l\textquotesingle{}expèrience
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entite} & L\textquotesingle{}entité à laquelle les points d\textquotesingle{}expèrience sont donnée \\
+\hline
+{\em experience} & Les points d\textquotesingle{}expèrience qu\textquotesingle{}il faut donner \\
+\hline
+\end{DoxyParams}

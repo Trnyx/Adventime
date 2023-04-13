@@ -1,0 +1,101 @@
+\hypertarget{inventaire_8h}{}\doxysection{Référence du fichier include/inventaire.h}
+\label{inventaire_8h}\index{include/inventaire.h@{include/inventaire.h}}
+
+
+Module de manipulation de l\textquotesingle{}inventaire.  
+
+
+{\ttfamily \#include \char`\"{}stockage.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__extensionInventaire}{s\+\_\+extension\+Inventaire}}
+\item 
+struct \mbox{\hyperlink{structs__inventaire}{s\+\_\+inventaire}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{inventaire_8h_a0e36f053c5828258756b638d6668e888}\label{inventaire_8h_a0e36f053c5828258756b638d6668e888}} 
+\#define {\bfseries NOMBRE\+\_\+\+SLOT\+\_\+\+INVENTAIRE}~36
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{inventaire_8h_ac59fee89fa9bfc79cc4cfab342cba890}\label{inventaire_8h_ac59fee89fa9bfc79cc4cfab342cba890}} 
+typedef struct \mbox{\hyperlink{structs__extensionInventaire}{s\+\_\+extension\+Inventaire}} {\bfseries t\+\_\+extension\+Inventaire}
+\item 
+\mbox{\Hypertarget{inventaire_8h_a135b9128c0a492df961ab0e9cfa47e61}\label{inventaire_8h_a135b9128c0a492df961ab0e9cfa47e61}} 
+typedef struct \mbox{\hyperlink{structs__inventaire}{s\+\_\+inventaire}} {\bfseries t\+\_\+inventaire}
+\item 
+\mbox{\Hypertarget{inventaire_8h_a562df2301504c40a35596ed45f41f2b2}\label{inventaire_8h_a562df2301504c40a35596ed45f41f2b2}} 
+typedef struct \mbox{\hyperlink{structs__joueur}{s\+\_\+joueur}} {\bfseries t\+\_\+joueur}
+\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__inventaire}{t\+\_\+inventaire}} $\ast$ \mbox{\hyperlink{inventaire_8h_a82380ea05028cefe0abb40826ba76c74}{creer\+Inventaire}} ()
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un inventaire et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inventaire_8h_af8e6cd3a081801acfe923b425f13723a}{recuperer\+Item}} (\mbox{\hyperlink{structt__itemEntite}{t\+\_\+item\+Entite}} $\ast$item\+Entite, \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$recuperateur)
+\begin{DoxyCompactList}\small\item\em Récupère l\textquotesingle{}item souhaité \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inventaire_8h_a1a1ba65eb9ce42d29adc04e0d9bc796d}{detruire\+Inventaire}} (\mbox{\hyperlink{structt__inventaire}{t\+\_\+inventaire}} $\ast$$\ast$inventaire)
+\begin{DoxyCompactList}\small\item\em Detruit un inventaire est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation de l\textquotesingle{}inventaire. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+24 mars 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{inventaire_8h_a82380ea05028cefe0abb40826ba76c74}\label{inventaire_8h_a82380ea05028cefe0abb40826ba76c74}} 
+\index{inventaire.h@{inventaire.h}!creerInventaire@{creerInventaire}}
+\index{creerInventaire@{creerInventaire}!inventaire.h@{inventaire.h}}
+\doxysubsubsection{\texorpdfstring{creerInventaire()}{creerInventaire()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__inventaire}{t\+\_\+inventaire}}$\ast$ creer\+Inventaire (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un inventaire et le créer. 
+
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le inventaire, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{inventaire_8h_a1a1ba65eb9ce42d29adc04e0d9bc796d}\label{inventaire_8h_a1a1ba65eb9ce42d29adc04e0d9bc796d}} 
+\index{inventaire.h@{inventaire.h}!detruireInventaire@{detruireInventaire}}
+\index{detruireInventaire@{detruireInventaire}!inventaire.h@{inventaire.h}}
+\doxysubsubsection{\texorpdfstring{detruireInventaire()}{detruireInventaire()}}
+{\footnotesize\ttfamily void detruire\+Inventaire (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__inventaire}{t\+\_\+inventaire}} $\ast$$\ast$}]{inventaire }\end{DoxyParamCaption})}
+
+
+
+Detruit un inventaire est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em inventaire} & L\textquotesingle{}adresse du pointeur du inventaire à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{inventaire_8h_af8e6cd3a081801acfe923b425f13723a}\label{inventaire_8h_af8e6cd3a081801acfe923b425f13723a}} 
+\index{inventaire.h@{inventaire.h}!recupererItem@{recupererItem}}
+\index{recupererItem@{recupererItem}!inventaire.h@{inventaire.h}}
+\doxysubsubsection{\texorpdfstring{recupererItem()}{recupererItem()}}
+{\footnotesize\ttfamily void recuperer\+Item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__itemEntite}{t\+\_\+item\+Entite}} $\ast$}]{item\+Entite,  }\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{recuperateur }\end{DoxyParamCaption})}
+
+
+
+Récupère l\textquotesingle{}item souhaité 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em item\+Entite} & l\textquotesingle{}item (entité) qui doit être récupéré \\
+\hline
+{\em recuperateur} & L\textquotesingle{}entité souhaitant récupérer l\textquotesingle{}item \\
+\hline
+\end{DoxyParams}

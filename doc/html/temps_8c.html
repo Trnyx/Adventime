@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Adventime: Référence du fichier src/temps.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Adventime
+   </div>
+   <div id="projectbrief">Projet étudiant - L2 Informatique</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Recherche');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier temps.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Module de gestion du temps en jeu et réel.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="temps_8h_source.html">../include/temps.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="physique_8h_source.html">../include/physique.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="moteur_8h_source.html">../include/moteur.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="audio_8h_source.html">../include/audio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="animal_8h_source.html">../include/animal.h</a>&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a0ddfd7f02961a38a989b55268df8832a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temps_8c.html#a0ddfd7f02961a38a989b55268df8832a">getJourDeLaSemaine</a> (const time_t timestamp)</td></tr>
+<tr class="memdesc:a0ddfd7f02961a38a989b55268df8832a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le jour de la semaine.  <a href="temps_8c.html#a0ddfd7f02961a38a989b55268df8832a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a0ddfd7f02961a38a989b55268df8832a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e41454400d8603d286f1a11c0bb1279"><td class="memItemLeft" align="right" valign="top">e_cycle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temps_8c.html#a6e41454400d8603d286f1a11c0bb1279">getCycleJeu</a> (<a class="el" href="structt__temps.html">t_temps</a> *temps)</td></tr>
+<tr class="memdesc:a6e41454400d8603d286f1a11c0bb1279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le cycle jour/nuit du jeu.  <a href="temps_8c.html#a6e41454400d8603d286f1a11c0bb1279">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a6e41454400d8603d286f1a11c0bb1279"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69422e527e65b0edefc0cde30ada4ca0"><td class="memItemLeft" align="right" valign="top">e_cycle&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temps_8c.html#a69422e527e65b0edefc0cde30ada4ca0">getCycleVrai</a> (const time_t timestamp)</td></tr>
+<tr class="memdesc:a69422e527e65b0edefc0cde30ada4ca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère le cycle jour/nuit réel.  <a href="temps_8c.html#a69422e527e65b0edefc0cde30ada4ca0">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a69422e527e65b0edefc0cde30ada4ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3a60cd42e8518c66e8be859096310fb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="temps_8h.html#a14996ddce5a3c3127065f9b024ff8751">e_periode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temps_8c.html#ad3a60cd42e8518c66e8be859096310fb">getPeriode</a> (<a class="el" href="structt__temps.html">t_temps</a> *temps)</td></tr>
+<tr class="memdesc:ad3a60cd42e8518c66e8be859096310fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la période de la journée.  <a href="temps_8c.html#ad3a60cd42e8518c66e8be859096310fb">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad3a60cd42e8518c66e8be859096310fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfe511133ab500cfe110d6f85c46b6c6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__temps.html">t_temps</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temps_8c.html#acfe511133ab500cfe110d6f85c46b6c6">getTemps</a> (<a class="el" href="structt__temps.html">t_temps</a> *temps, const time_t timestamp)</td></tr>
+<tr class="memdesc:acfe511133ab500cfe110d6f85c46b6c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtient et actualise le temps du jeu en fonction du temps réel.  <a href="temps_8c.html#acfe511133ab500cfe110d6f85c46b6c6">Plus de détails...</a><br /></td></tr>
+<tr class="separator:acfe511133ab500cfe110d6f85c46b6c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb377cf6406367bb8f03e6c27e57cc2d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temps_8c.html#adb377cf6406367bb8f03e6c27e57cc2d">gestionnaireTempsEvenements</a> (<a class="el" href="structt__temps.html">t_temps</a> *temps, const time_t timestamp)</td></tr>
+<tr class="memdesc:adb377cf6406367bb8f03e6c27e57cc2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère tous les évènements temporels du jeu.  <a href="temps_8c.html#adb377cf6406367bb8f03e6c27e57cc2d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:adb377cf6406367bb8f03e6c27e57cc2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ff9042c75b4cbd8b9f6cceb167c55d5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__temps.html">t_temps</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temps_8c.html#a3ff9042c75b4cbd8b9f6cceb167c55d5">initTemps</a> (const time_t timestamp)</td></tr>
+<tr class="memdesc:a3ff9042c75b4cbd8b9f6cceb167c55d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alloue l'espace nécessaire pour le temps et le créer.  <a href="temps_8c.html#a3ff9042c75b4cbd8b9f6cceb167c55d5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a3ff9042c75b4cbd8b9f6cceb167c55d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab28849a8ac95ce2eb08815450445cbda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="temps_8c.html#ab28849a8ac95ce2eb08815450445cbda">detruireTemps</a> (<a class="el" href="structt__temps.html">t_temps</a> **temps)</td></tr>
+<tr class="memdesc:ab28849a8ac95ce2eb08815450445cbda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Detruit le temps est libère la mémoire allouée pour ce dernier.  <a href="temps_8c.html#ab28849a8ac95ce2eb08815450445cbda">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ab28849a8ac95ce2eb08815450445cbda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Module de gestion du temps en jeu et réel. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Clément Hibon </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>23 février </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="ab28849a8ac95ce2eb08815450445cbda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab28849a8ac95ce2eb08815450445cbda">&#9670;&nbsp;</a></span>detruireTemps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void detruireTemps </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__temps.html">t_temps</a> **&#160;</td>
+          <td class="paramname"><em>temps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Detruit le temps est libère la mémoire allouée pour ce dernier. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">temps</td><td>L'adresse du pointeur sur le temps </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="adb377cf6406367bb8f03e6c27e57cc2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb377cf6406367bb8f03e6c27e57cc2d">&#9670;&nbsp;</a></span>gestionnaireTempsEvenements()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gestionnaireTempsEvenements </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__temps.html">t_temps</a> *&#160;</td>
+          <td class="paramname"><em>temps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const time_t&#160;</td>
+          <td class="paramname"><em>timestamp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère tous les évènements temporels du jeu. </p>
+<p>Ces évènements se basent sur le temps réel tout comme le temps en jeu</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">temps</td><td>Un pointeur sur le temps </td></tr>
+    <tr><td class="paramname">timestamp</td><td>Le timestamp réel </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6e41454400d8603d286f1a11c0bb1279"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e41454400d8603d286f1a11c0bb1279">&#9670;&nbsp;</a></span>getCycleJeu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">e_cycle getCycleJeu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__temps.html">t_temps</a> *&#160;</td>
+          <td class="paramname"><em>temps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère le cycle jour/nuit du jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">temps</td><td>Un pointeur sur la structure temps du jeu</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>e_cycle, si il fait jour ou nuit </dd></dl>
+
+</div>
+</div>
+<a id="a69422e527e65b0edefc0cde30ada4ca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69422e527e65b0edefc0cde30ada4ca0">&#9670;&nbsp;</a></span>getCycleVrai()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">e_cycle getCycleVrai </td>
+          <td>(</td>
+          <td class="paramtype">const time_t&#160;</td>
+          <td class="paramname"><em>timestamp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère le cycle jour/nuit réel. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timestamp</td><td>Le timestamp actuel</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>e_cycle, si il fait jour ou nuit </dd></dl>
+
+</div>
+</div>
+<a id="a0ddfd7f02961a38a989b55268df8832a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddfd7f02961a38a989b55268df8832a">&#9670;&nbsp;</a></span>getJourDeLaSemaine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="temps_8h.html#a70e7a478476fe7f6b5bf1955ae2e7169">e_jour</a> getJourDeLaSemaine </td>
+          <td>(</td>
+          <td class="paramtype">const time_t&#160;</td>
+          <td class="paramname"><em>timestamp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère le jour de la semaine. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timestamp</td><td>Le timestamp actuel</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>e_jour, le jour de la semaine </dd></dl>
+
+</div>
+</div>
+<a id="ad3a60cd42e8518c66e8be859096310fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3a60cd42e8518c66e8be859096310fb">&#9670;&nbsp;</a></span>getPeriode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="temps_8h.html#a14996ddce5a3c3127065f9b024ff8751">e_periode</a> getPeriode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__temps.html">t_temps</a> *&#160;</td>
+          <td class="paramname"><em>temps</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Récupère la période de la journée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">temps</td><td>Le temps actuel</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>e_periode, la periode de la journée </dd></dl>
+
+</div>
+</div>
+<a id="acfe511133ab500cfe110d6f85c46b6c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfe511133ab500cfe110d6f85c46b6c6">&#9670;&nbsp;</a></span>getTemps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__temps.html">t_temps</a>* getTemps </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__temps.html">t_temps</a> *&#160;</td>
+          <td class="paramname"><em>temps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const time_t&#160;</td>
+          <td class="paramname"><em>timestamp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtient et actualise le temps du jeu en fonction du temps réel. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">temps</td><td>Un pointeur sur la structure temps du jeu </td></tr>
+    <tr><td class="paramname">timestamp</td><td>Le timestamp réel permettant d'actualiser le temps du jeu</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La structure de temps donnée en paramètre </dd></dl>
+
+</div>
+</div>
+<a id="a3ff9042c75b4cbd8b9f6cceb167c55d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ff9042c75b4cbd8b9f6cceb167c55d5">&#9670;&nbsp;</a></span>initTemps()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__temps.html">t_temps</a>* initTemps </td>
+          <td>(</td>
+          <td class="paramtype">const time_t&#160;</td>
+          <td class="paramname"><em>timestamp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Alloue l'espace nécessaire pour le temps et le créer. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">timestamp</td><td>Le timestamp réel permettant d'intialiser le temps du jeu</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un pointeur sur le temps, NULL en cas d'echec </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

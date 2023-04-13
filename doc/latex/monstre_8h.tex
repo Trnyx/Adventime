@@ -1,0 +1,199 @@
+\hypertarget{monstre_8h}{}\doxysection{Référence du fichier include/monstre.h}
+\label{monstre_8h}\index{include/monstre.h@{include/monstre.h}}
+
+
+Module de manipulation des monstres.  
+
+
+{\ttfamily \#include \char`\"{}statistiques.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mob.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}map.\+h\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structs__monstre}{s\+\_\+monstre}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Définitions de type}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{monstre_8h_a6763c5d6cbaf1c4bbe54a3daa998c422}\label{monstre_8h_a6763c5d6cbaf1c4bbe54a3daa998c422}} 
+typedef struct \mbox{\hyperlink{structs__monstre}{s\+\_\+monstre}} {\bfseries t\+\_\+monstre}
+\item 
+\mbox{\Hypertarget{monstre_8h_aa6370cd7b08553210cd2ca45f421b122}\label{monstre_8h_aa6370cd7b08553210cd2ca45f421b122}} 
+typedef struct \mbox{\hyperlink{structs__map}{s\+\_\+map}} {\bfseries t\+\_\+map}
+\end{DoxyCompactItemize}
+\doxysubsection*{Énumérations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{monstre_8h_a73006f0dcf50cd05e2355e55899b7f31}{e\+\_\+monstre\+Type}} \{ {\bfseries MONSTRE\+\_\+\+TYPE\+\_\+\+NORMAL}
+, {\bfseries MONSTRE\+\_\+\+TYPE\+\_\+\+PLANTE}
+, {\bfseries MONSTRE\+\_\+\+TYPE\+\_\+\+MONTAGNARD}
+, {\bfseries NB\+\_\+\+MONSTRE\+\_\+\+TYPES}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumérateur regroupant les différents types des monstres. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} \mbox{\hyperlink{monstre_8h_a9075d9338012a6c9e7abf48441ebf1c0}{generer\+Statistiques\+De\+Base\+Monstre}} (const \mbox{\hyperlink{monstre_8h_a73006f0dcf50cd05e2355e55899b7f31}{e\+\_\+monstre\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Génère les statistiques de base d\textquotesingle{}un monstre. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$ \mbox{\hyperlink{monstre_8h_a0d3cde7c92bf7b49ba49e67fb5a5a8a2}{generer\+Monstre}} (\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$monstre, const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}} biome, const int niveau\+Joueur)
+\begin{DoxyCompactList}\small\item\em Génère un monstre. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$ \mbox{\hyperlink{monstre_8h_a180483b80c6873766691ffe27ebb507c}{creer\+Monstre}} (const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position, const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}} biome, const int niveau\+Joueur)
+\begin{DoxyCompactList}\small\item\em Alloue l\textquotesingle{}espace nécessaire pour un monstre et le créer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monstre_8h_aa3db13cd64e4d2dc8c2d0ac8178c7d4c}{apparition\+Monstre}} (\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$entites, \mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}} position\+Joueur, const int niveau\+Joueur)
+\begin{DoxyCompactList}\small\item\em Fait apparaitre un monstre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{monstre_8h_adaaee129a169052ce4f00a27397500bc}{detruire\+Monstre}} (\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$$\ast$monstre)
+\begin{DoxyCompactList}\small\item\em Detruit un monstre est libère la mémoire allouée pour ce dernier. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{structt__baseStatistiquesIntervales}{t\+\_\+base\+Statistiques\+Intervales}} \mbox{\hyperlink{monstre_8h_ae4c38faf0caef0d9c4780b90200ef3a4}{statistiques\+De\+Bases\+Intervales\+Monstres}} \mbox{[}NB\+\_\+\+MONSTRE\+\_\+\+TYPES\mbox{]}
+\begin{DoxyCompactList}\small\item\em Tableau regroupant les intervales des statistiques de bases en fonction du type du monstre. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de manipulation des monstres. 
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+23 janvier 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation du type de l\textquotesingle{}énumération}
+\mbox{\Hypertarget{monstre_8h_a73006f0dcf50cd05e2355e55899b7f31}\label{monstre_8h_a73006f0dcf50cd05e2355e55899b7f31}} 
+\index{monstre.h@{monstre.h}!e\_monstreType@{e\_monstreType}}
+\index{e\_monstreType@{e\_monstreType}!monstre.h@{monstre.h}}
+\doxysubsubsection{\texorpdfstring{e\_monstreType}{e\_monstreType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{monstre_8h_a73006f0dcf50cd05e2355e55899b7f31}{e\+\_\+monstre\+Type}}}
+
+
+
+Enumérateur regroupant les différents types des monstres. 
+
+Un compteur du nombre de types est également initialisé à la fin de l\textquotesingle{}énumérateur 
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{monstre_8h_aa3db13cd64e4d2dc8c2d0ac8178c7d4c}\label{monstre_8h_aa3db13cd64e4d2dc8c2d0ac8178c7d4c}} 
+\index{monstre.h@{monstre.h}!apparitionMonstre@{apparitionMonstre}}
+\index{apparitionMonstre@{apparitionMonstre}!monstre.h@{monstre.h}}
+\doxysubsubsection{\texorpdfstring{apparitionMonstre()}{apparitionMonstre()}}
+{\footnotesize\ttfamily void apparition\+Monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__liste}{t\+\_\+liste}} $\ast$}]{entites,  }\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position\+Joueur,  }\item[{const int}]{niveau\+Joueur }\end{DoxyParamCaption})}
+
+
+
+Fait apparaitre un monstre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em entites} & La liste d\textquotesingle{}entités déjà existante \\
+\hline
+{\em biome} & Le biome dans lequel le monstre apparait \\
+\hline
+{\em position\+Joueur} & La position du joueur \\
+\hline
+{\em niveau\+Joueur} & Le niveau actuel du joueur \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monstre_8h_a180483b80c6873766691ffe27ebb507c}\label{monstre_8h_a180483b80c6873766691ffe27ebb507c}} 
+\index{monstre.h@{monstre.h}!creerMonstre@{creerMonstre}}
+\index{creerMonstre@{creerMonstre}!monstre.h@{monstre.h}}
+\doxysubsubsection{\texorpdfstring{creerMonstre()}{creerMonstre()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}}$\ast$ creer\+Monstre (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structt__vecteur2}{t\+\_\+vecteur2}}}]{position,  }\item[{const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}}}]{biome,  }\item[{const int}]{niveau\+Joueur }\end{DoxyParamCaption})}
+
+
+
+Alloue l\textquotesingle{}espace nécessaire pour un monstre et le créer. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em position} & La position à laquelle le monstre doit apparaitre \\
+\hline
+{\em biome} & Le biome dans lequel le monstre apparait \\
+\hline
+{\em niveau\+Joueur} & Le niveau actuel du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le monstre créé, NULL en cas d\textquotesingle{}echec 
+\end{DoxyReturn}
+\mbox{\Hypertarget{monstre_8h_adaaee129a169052ce4f00a27397500bc}\label{monstre_8h_adaaee129a169052ce4f00a27397500bc}} 
+\index{monstre.h@{monstre.h}!detruireMonstre@{detruireMonstre}}
+\index{detruireMonstre@{detruireMonstre}!monstre.h@{monstre.h}}
+\doxysubsubsection{\texorpdfstring{detruireMonstre()}{detruireMonstre()}}
+{\footnotesize\ttfamily void detruire\+Monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$$\ast$}]{monstre }\end{DoxyParamCaption})}
+
+
+
+Detruit un monstre est libère la mémoire allouée pour ce dernier. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monstre} & L\textquotesingle{}adresse du pointeur du monstre à détruire \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{monstre_8h_a0d3cde7c92bf7b49ba49e67fb5a5a8a2}\label{monstre_8h_a0d3cde7c92bf7b49ba49e67fb5a5a8a2}} 
+\index{monstre.h@{monstre.h}!genererMonstre@{genererMonstre}}
+\index{genererMonstre@{genererMonstre}!monstre.h@{monstre.h}}
+\doxysubsubsection{\texorpdfstring{genererMonstre()}{genererMonstre()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}}$\ast$ generer\+Monstre (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__monstre}{t\+\_\+monstre}} $\ast$}]{monstre,  }\item[{const \mbox{\hyperlink{map_8h_a03a577c44d494b095cbbc30a2144ba53}{e\+\_\+biome}}}]{biome,  }\item[{const int}]{niveau\+Joueur }\end{DoxyParamCaption})}
+
+
+
+Génère un monstre. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em monstre} & Pointeur sur le monstre à générer \\
+\hline
+{\em biome} & Le biome dans lequel le monstre apparait \\
+\hline
+{\em niveau\+Joueur} & Le niveau du joueur\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Un pointeur sur le monstre généré 
+\end{DoxyReturn}
+\mbox{\Hypertarget{monstre_8h_a9075d9338012a6c9e7abf48441ebf1c0}\label{monstre_8h_a9075d9338012a6c9e7abf48441ebf1c0}} 
+\index{monstre.h@{monstre.h}!genererStatistiquesDeBaseMonstre@{genererStatistiquesDeBaseMonstre}}
+\index{genererStatistiquesDeBaseMonstre@{genererStatistiquesDeBaseMonstre}!monstre.h@{monstre.h}}
+\doxysubsubsection{\texorpdfstring{genererStatistiquesDeBaseMonstre()}{genererStatistiquesDeBaseMonstre()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structt__baseStatistiques}{t\+\_\+base\+Statistiques}} generer\+Statistiques\+De\+Base\+Monstre (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{monstre_8h_a73006f0dcf50cd05e2355e55899b7f31}{e\+\_\+monstre\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Génère les statistiques de base d\textquotesingle{}un monstre. 
+
+Elles sont déterminées de façon aléatoire dans un intervalle définit dans les informations de base d\textquotesingle{}un monstre Les statistiques de base sont utilisés à chaque fois que les statistiques ont besoins d\textquotesingle{}être calculées
+
+
+\begin{DoxyParams}{Paramètres}
+{\em type} & Le type du monstre\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Les statistiques de base du monstre 
+\end{DoxyReturn}
+
+
+\doxysubsection{Documentation des variables}
+\mbox{\Hypertarget{monstre_8h_ae4c38faf0caef0d9c4780b90200ef3a4}\label{monstre_8h_ae4c38faf0caef0d9c4780b90200ef3a4}} 
+\index{monstre.h@{monstre.h}!statistiquesDeBasesIntervalesMonstres@{statistiquesDeBasesIntervalesMonstres}}
+\index{statistiquesDeBasesIntervalesMonstres@{statistiquesDeBasesIntervalesMonstres}!monstre.h@{monstre.h}}
+\doxysubsubsection{\texorpdfstring{statistiquesDeBasesIntervalesMonstres}{statistiquesDeBasesIntervalesMonstres}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structt__baseStatistiquesIntervales}{t\+\_\+base\+Statistiques\+Intervales}} statistiques\+De\+Bases\+Intervales\+Monstres\mbox{[}NB\+\_\+\+MONSTRE\+\_\+\+TYPES\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Tableau regroupant les intervales des statistiques de bases en fonction du type du monstre. 
+
+
+\begin{DoxyItemize}
+\item attaque
+\item defense
+\item vitesse
+\item pv
+\item courbe\+Exp 
+\end{DoxyItemize}

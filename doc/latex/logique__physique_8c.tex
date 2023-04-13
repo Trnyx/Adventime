@@ -1,0 +1,57 @@
+\hypertarget{logique__physique_8c}{}\doxysection{Référence du fichier src/logique\+\_\+physique.c}
+\label{logique__physique_8c}\index{src/logique\_physique.c@{src/logique\_physique.c}}
+
+
+Module de gestion pour la physique / logique du jeu.  
+
+
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}../include/physique.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/utilitaire.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/moteur.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/audio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/menus.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/mob.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../include/coffre.\+h\char`\"{}}\newline
+\doxysubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{logique__physique_8c_a3b6113360bf1dc2ce79e1cbb377e435c}{update}} (\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$map, \mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$joueur)
+\begin{DoxyCompactList}\small\item\em Fonction appelé à chaque frame du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Module de gestion pour la physique / logique du jeu. 
+
+A chaque frame la fonction update est executer afin de mettre à jour toute la physique / logique du jeu
+
+\begin{DoxyAuthor}{Auteur}
+Clément Hibon 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10 février 
+\end{DoxyDate}
+
+
+\doxysubsection{Documentation des fonctions}
+\mbox{\Hypertarget{logique__physique_8c_a3b6113360bf1dc2ce79e1cbb377e435c}\label{logique__physique_8c_a3b6113360bf1dc2ce79e1cbb377e435c}} 
+\index{logique\_physique.c@{logique\_physique.c}!update@{update}}
+\index{update@{update}!logique\_physique.c@{logique\_physique.c}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structt__map}{t\+\_\+map}} $\ast$}]{map,  }\item[{\mbox{\hyperlink{structt__joueur}{t\+\_\+joueur}} $\ast$}]{joueur }\end{DoxyParamCaption})}
+
+
+
+Fonction appelé à chaque frame du jeu. 
+
+Elle gère toute la physique et logique du jeu
+
+
+\begin{DoxyParams}{Paramètres}
+{\em map} & Un pointeur sur la map dans laquelle le joueur progresse \\
+\hline
+{\em joueur} & Un pointeur sur le joueur \\
+\hline
+\end{DoxyParams}
